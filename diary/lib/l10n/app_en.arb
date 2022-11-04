@@ -1,0 +1,6 @@
+{
+    "verifyEmailSnackBarText": "Please check your email to verify your email address",
+    "@verifyEmailSnackBarText":{
+        "description": "Text asking the user to verify email"
+    }
+}
