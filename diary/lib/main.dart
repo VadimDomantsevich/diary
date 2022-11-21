@@ -1,3 +1,4 @@
+import 'package:diary/firebase_options.dart';
 import 'package:diary/l10n/all_locales.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,8 @@ class DiaryApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: Firebase.initializeApp(),
+        future: Firebase.initializeApp(
+            options: DefaultFirebaseOptions.currentPlatform),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return BlocBuilder<LocaleBloc, LocaleState>(

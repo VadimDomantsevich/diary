@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:diary/authentication/functions.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import '../router/diary_router.gr.dart';
@@ -30,6 +31,8 @@ class SignInScreenWidget extends StatelessWidget {
               return;
             }
             if (state is UserCreated) {
+              addNewUserToFirestore();
+              
               user.updateDisplayName(user.email!.split('@')[0]);
             }
             if (!user.emailVerified) {

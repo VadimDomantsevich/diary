@@ -17,22 +17,23 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$LocaleState {
   Locale get locale => throw _privateConstructorUsedError;
+  LocaleType get localeType => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Locale locale) initial,
-    required TResult Function(Locale locale) chosen,
+    required TResult Function(Locale locale, LocaleType localeType) initial,
+    required TResult Function(Locale locale, LocaleType localeType) chosen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Locale locale)? initial,
-    TResult? Function(Locale locale)? chosen,
+    TResult? Function(Locale locale, LocaleType localeType)? initial,
+    TResult? Function(Locale locale, LocaleType localeType)? chosen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Locale locale)? initial,
-    TResult Function(Locale locale)? chosen,
+    TResult Function(Locale locale, LocaleType localeType)? initial,
+    TResult Function(Locale locale, LocaleType localeType)? chosen,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -67,7 +68,7 @@ abstract class $LocaleStateCopyWith<$Res> {
           LocaleState value, $Res Function(LocaleState) then) =
       _$LocaleStateCopyWithImpl<$Res, LocaleState>;
   @useResult
-  $Res call({Locale locale});
+  $Res call({Locale locale, LocaleType localeType});
 }
 
 /// @nodoc
@@ -84,12 +85,17 @@ class _$LocaleStateCopyWithImpl<$Res, $Val extends LocaleState>
   @override
   $Res call({
     Object? locale = null,
+    Object? localeType = null,
   }) {
     return _then(_value.copyWith(
       locale: null == locale
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
               as Locale,
+      localeType: null == localeType
+          ? _value.localeType
+          : localeType // ignore: cast_nullable_to_non_nullable
+              as LocaleType,
     ) as $Val);
   }
 }
@@ -101,7 +107,7 @@ abstract class _$$_InitialCopyWith<$Res> implements $LocaleStateCopyWith<$Res> {
       __$$_InitialCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Locale locale});
+  $Res call({Locale locale, LocaleType localeType});
 }
 
 /// @nodoc
@@ -115,12 +121,17 @@ class __$$_InitialCopyWithImpl<$Res>
   @override
   $Res call({
     Object? locale = null,
+    Object? localeType = null,
   }) {
     return _then(_$_Initial(
       locale: null == locale
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
               as Locale,
+      localeType: null == localeType
+          ? _value.localeType
+          : localeType // ignore: cast_nullable_to_non_nullable
+              as LocaleType,
     ));
   }
 }
@@ -128,14 +139,16 @@ class __$$_InitialCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Initial implements _Initial {
-  const _$_Initial({required this.locale});
+  const _$_Initial({required this.locale, required this.localeType});
 
   @override
   final Locale locale;
+  @override
+  final LocaleType localeType;
 
   @override
   String toString() {
-    return 'LocaleState.initial(locale: $locale)';
+    return 'LocaleState.initial(locale: $locale, localeType: $localeType)';
   }
 
   @override
@@ -143,11 +156,13 @@ class _$_Initial implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Initial &&
-            (identical(other.locale, locale) || other.locale == locale));
+            (identical(other.locale, locale) || other.locale == locale) &&
+            (identical(other.localeType, localeType) ||
+                other.localeType == localeType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, locale);
+  int get hashCode => Object.hash(runtimeType, locale, localeType);
 
   @JsonKey(ignore: true)
   @override
@@ -158,30 +173,30 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Locale locale) initial,
-    required TResult Function(Locale locale) chosen,
+    required TResult Function(Locale locale, LocaleType localeType) initial,
+    required TResult Function(Locale locale, LocaleType localeType) chosen,
   }) {
-    return initial(locale);
+    return initial(locale, localeType);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Locale locale)? initial,
-    TResult? Function(Locale locale)? chosen,
+    TResult? Function(Locale locale, LocaleType localeType)? initial,
+    TResult? Function(Locale locale, LocaleType localeType)? chosen,
   }) {
-    return initial?.call(locale);
+    return initial?.call(locale, localeType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Locale locale)? initial,
-    TResult Function(Locale locale)? chosen,
+    TResult Function(Locale locale, LocaleType localeType)? initial,
+    TResult Function(Locale locale, LocaleType localeType)? chosen,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(locale);
+      return initial(locale, localeType);
     }
     return orElse();
   }
@@ -219,10 +234,14 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements LocaleState {
-  const factory _Initial({required final Locale locale}) = _$_Initial;
+  const factory _Initial(
+      {required final Locale locale,
+      required final LocaleType localeType}) = _$_Initial;
 
   @override
   Locale get locale;
+  @override
+  LocaleType get localeType;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>
@@ -235,7 +254,7 @@ abstract class _$$_ChosenCopyWith<$Res> implements $LocaleStateCopyWith<$Res> {
       __$$_ChosenCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Locale locale});
+  $Res call({Locale locale, LocaleType localeType});
 }
 
 /// @nodoc
@@ -249,12 +268,17 @@ class __$$_ChosenCopyWithImpl<$Res>
   @override
   $Res call({
     Object? locale = null,
+    Object? localeType = null,
   }) {
     return _then(_$_Chosen(
       locale: null == locale
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
               as Locale,
+      localeType: null == localeType
+          ? _value.localeType
+          : localeType // ignore: cast_nullable_to_non_nullable
+              as LocaleType,
     ));
   }
 }
@@ -262,14 +286,16 @@ class __$$_ChosenCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Chosen implements _Chosen {
-  const _$_Chosen({required this.locale});
+  const _$_Chosen({required this.locale, required this.localeType});
 
   @override
   final Locale locale;
+  @override
+  final LocaleType localeType;
 
   @override
   String toString() {
-    return 'LocaleState.chosen(locale: $locale)';
+    return 'LocaleState.chosen(locale: $locale, localeType: $localeType)';
   }
 
   @override
@@ -277,11 +303,13 @@ class _$_Chosen implements _Chosen {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Chosen &&
-            (identical(other.locale, locale) || other.locale == locale));
+            (identical(other.locale, locale) || other.locale == locale) &&
+            (identical(other.localeType, localeType) ||
+                other.localeType == localeType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, locale);
+  int get hashCode => Object.hash(runtimeType, locale, localeType);
 
   @JsonKey(ignore: true)
   @override
@@ -292,30 +320,30 @@ class _$_Chosen implements _Chosen {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Locale locale) initial,
-    required TResult Function(Locale locale) chosen,
+    required TResult Function(Locale locale, LocaleType localeType) initial,
+    required TResult Function(Locale locale, LocaleType localeType) chosen,
   }) {
-    return chosen(locale);
+    return chosen(locale, localeType);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Locale locale)? initial,
-    TResult? Function(Locale locale)? chosen,
+    TResult? Function(Locale locale, LocaleType localeType)? initial,
+    TResult? Function(Locale locale, LocaleType localeType)? chosen,
   }) {
-    return chosen?.call(locale);
+    return chosen?.call(locale, localeType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Locale locale)? initial,
-    TResult Function(Locale locale)? chosen,
+    TResult Function(Locale locale, LocaleType localeType)? initial,
+    TResult Function(Locale locale, LocaleType localeType)? chosen,
     required TResult orElse(),
   }) {
     if (chosen != null) {
-      return chosen(locale);
+      return chosen(locale, localeType);
     }
     return orElse();
   }
@@ -353,10 +381,14 @@ class _$_Chosen implements _Chosen {
 }
 
 abstract class _Chosen implements LocaleState {
-  const factory _Chosen({required final Locale locale}) = _$_Chosen;
+  const factory _Chosen(
+      {required final Locale locale,
+      required final LocaleType localeType}) = _$_Chosen;
 
   @override
   Locale get locale;
+  @override
+  LocaleType get localeType;
   @override
   @JsonKey(ignore: true)
   _$$_ChosenCopyWith<_$_Chosen> get copyWith =>
@@ -366,19 +398,21 @@ abstract class _Chosen implements LocaleState {
 /// @nodoc
 mixin _$LocaleEvent {
   Locale get locale => throw _privateConstructorUsedError;
+  LocaleType get localeType => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Locale locale) chooseLocale,
+    required TResult Function(Locale locale, LocaleType localeType)
+        chooseLocale,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Locale locale)? chooseLocale,
+    TResult? Function(Locale locale, LocaleType localeType)? chooseLocale,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Locale locale)? chooseLocale,
+    TResult Function(Locale locale, LocaleType localeType)? chooseLocale,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -410,7 +444,7 @@ abstract class $LocaleEventCopyWith<$Res> {
           LocaleEvent value, $Res Function(LocaleEvent) then) =
       _$LocaleEventCopyWithImpl<$Res, LocaleEvent>;
   @useResult
-  $Res call({Locale locale});
+  $Res call({Locale locale, LocaleType localeType});
 }
 
 /// @nodoc
@@ -427,12 +461,17 @@ class _$LocaleEventCopyWithImpl<$Res, $Val extends LocaleEvent>
   @override
   $Res call({
     Object? locale = null,
+    Object? localeType = null,
   }) {
     return _then(_value.copyWith(
       locale: null == locale
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
               as Locale,
+      localeType: null == localeType
+          ? _value.localeType
+          : localeType // ignore: cast_nullable_to_non_nullable
+              as LocaleType,
     ) as $Val);
   }
 }
@@ -445,7 +484,7 @@ abstract class _$$ChooseLocaleEventCopyWith<$Res>
       __$$ChooseLocaleEventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Locale locale});
+  $Res call({Locale locale, LocaleType localeType});
 }
 
 /// @nodoc
@@ -460,12 +499,17 @@ class __$$ChooseLocaleEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? locale = null,
+    Object? localeType = null,
   }) {
     return _then(_$ChooseLocaleEvent(
       locale: null == locale
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
               as Locale,
+      localeType: null == localeType
+          ? _value.localeType
+          : localeType // ignore: cast_nullable_to_non_nullable
+              as LocaleType,
     ));
   }
 }
@@ -473,14 +517,16 @@ class __$$ChooseLocaleEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ChooseLocaleEvent implements ChooseLocaleEvent {
-  const _$ChooseLocaleEvent({required this.locale});
+  const _$ChooseLocaleEvent({required this.locale, required this.localeType});
 
   @override
   final Locale locale;
+  @override
+  final LocaleType localeType;
 
   @override
   String toString() {
-    return 'LocaleEvent.chooseLocale(locale: $locale)';
+    return 'LocaleEvent.chooseLocale(locale: $locale, localeType: $localeType)';
   }
 
   @override
@@ -488,11 +534,13 @@ class _$ChooseLocaleEvent implements ChooseLocaleEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChooseLocaleEvent &&
-            (identical(other.locale, locale) || other.locale == locale));
+            (identical(other.locale, locale) || other.locale == locale) &&
+            (identical(other.localeType, localeType) ||
+                other.localeType == localeType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, locale);
+  int get hashCode => Object.hash(runtimeType, locale, localeType);
 
   @JsonKey(ignore: true)
   @override
@@ -503,27 +551,28 @@ class _$ChooseLocaleEvent implements ChooseLocaleEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Locale locale) chooseLocale,
+    required TResult Function(Locale locale, LocaleType localeType)
+        chooseLocale,
   }) {
-    return chooseLocale(locale);
+    return chooseLocale(locale, localeType);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Locale locale)? chooseLocale,
+    TResult? Function(Locale locale, LocaleType localeType)? chooseLocale,
   }) {
-    return chooseLocale?.call(locale);
+    return chooseLocale?.call(locale, localeType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Locale locale)? chooseLocale,
+    TResult Function(Locale locale, LocaleType localeType)? chooseLocale,
     required TResult orElse(),
   }) {
     if (chooseLocale != null) {
-      return chooseLocale(locale);
+      return chooseLocale(locale, localeType);
     }
     return orElse();
   }
@@ -558,11 +607,14 @@ class _$ChooseLocaleEvent implements ChooseLocaleEvent {
 }
 
 abstract class ChooseLocaleEvent implements LocaleEvent {
-  const factory ChooseLocaleEvent({required final Locale locale}) =
-      _$ChooseLocaleEvent;
+  const factory ChooseLocaleEvent(
+      {required final Locale locale,
+      required final LocaleType localeType}) = _$ChooseLocaleEvent;
 
   @override
   Locale get locale;
+  @override
+  LocaleType get localeType;
   @override
   @JsonKey(ignore: true)
   _$$ChooseLocaleEventCopyWith<_$ChooseLocaleEvent> get copyWith =>
