@@ -43,16 +43,12 @@ class SampleWidget extends StatelessWidget {
                       children: [
                         Column(
                           children: cells
-                              .map((e) => BlocDiaryCellWidget(
-                                    diaryCell: e,
-                                  ))
+                              .map((e) => BlocDiaryCellWidget(diaryCell: e))
                               .toList(),
                         ),
                         Column(
                           children: cellsTwo
-                              .map((e) => BlocDiaryCellWidget(
-                                    diaryCell: e,
-                                  ))
+                              .map((e) => BlocDiaryCellWidget(diaryCell: e))
                               .toList(),
                         )
                       ],
@@ -87,24 +83,19 @@ class SampleWidget extends StatelessWidget {
                       children: [
                         Column(
                           children: cells
-                              .map((e) => BlocDiaryCellWidget(
-                                    diaryCell: e,
-                                  ))
+                              .map((e) => BlocDiaryCellWidget(diaryCell: e))
                               .toList(),
                         ),
                         Column(
                           children: cellsTwo
-                              .map((e) => BlocDiaryCellWidget(
-                                    diaryCell: e,
-                                  ))
+                              .map((e) => BlocDiaryCellWidget(diaryCell: e))
                               .toList(),
                         )
                       ],
                     ),
                   ),
                 ),
-                BlocDiaryCellEditPanel(
-                )
+                const BlocDiaryCellEditPanel()
               ],
             );
           },

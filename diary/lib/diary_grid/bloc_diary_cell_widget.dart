@@ -16,21 +16,37 @@ class BlocDiaryCellWidget extends StatelessWidget {
   final String? textFieldText;
 
   @override
-  Widget build(BuildContext context) => DiaryCellWidget.model(
-        //Selected diaryCell
-        diaryCell: diaryCell,
-        onTap: () {
-          textFieldText != null
-              ? context.read<DiaryListBloc>().add(
-                    DiaryListEvent.selectDiaryCell(
-                      diaryCell: diaryCell,
+  Widget build(BuildContext context) =>
+      BlocBuilder<DiaryListBloc, DiaryListState>(
+        builder: (context, state) {
+          return state.maybeWhen(
+            cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell) {
+              bool isSelected = false;
+              if (selectedCell == diaryCell) {
+                isSelected = true;
+              }
+              return DiaryCellWidget.model(
+                isSelected: isSelected,
+                diaryCell: diaryCell,
+                onTap: () => context.read<DiaryListBloc>().add(
+                      DiaryListEvent.selectDiaryCell(
+                        diaryCell: diaryCell,
+                      ),
                     ),
-                  )
-              : context.read<DiaryListBloc>().add(
-                    DiaryListEvent.selectDiaryCell(
-                      diaryCell: diaryCell,
+              );
+            },
+            orElse: (() {
+              return DiaryCellWidget.model(
+                isSelected: false,
+                diaryCell: diaryCell,
+                onTap: () => context.read<DiaryListBloc>().add(
+                      DiaryListEvent.selectDiaryCell(
+                        diaryCell: diaryCell,
+                      ),
                     ),
-                  ); //А сюда то и не передать никак эту строку
+              );
+            }),
+          );
         },
       );
 

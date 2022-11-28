@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diary/core/constants/collections.dart';
+import 'package:diary/core/constants/constants.dart';
 import 'package:diary/core/constants/enums.dart';
 import 'package:diary/core/functions.dart';
 import 'package:diary/model/diary_cell.dart';
 import 'package:diary/model/diary_column.dart';
 import 'package:diary/model/diary_list.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -17,14 +17,10 @@ class DiaryCellService {
   }) async {
     final daysInMonth = DateUtils.getDaysInMonth(
         diaryList.listDate.year, diaryList.listDate.month);
-    final cellsCollection = FirebaseFirestore.instance
-        .collection(Collections.usersCollection)
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .collection(Collections.diaryListsCollection)
-        .doc(getDiaryListName(diaryList))
-        .collection(Collections.diaryColumnsCollection)
-        .doc(diaryColumn.name)
-        .collection(Collections.diaryCellsCollection);
+    final cellsCollection = getDiaryColumnDoc(
+      diaryList: diaryList,
+      diaryColumnName: diaryColumn.name,
+    ).collection(Collections.diaryCellsCollection);
     for (var i = 1; i < diaryColumn.columnsCount + 1; i++) {
       for (var j = 1; j <= daysInMonth; j++) {
         final newCell = DiaryCell(
@@ -37,7 +33,7 @@ class DiaryCellService {
             .set(newCell.toFirestore());
       }
     }
-  } //Create should create all cells for column/columnPosition
+  }
 
   DiaryCell read({required DocumentSnapshot doc}) =>
       DiaryCell.fromFirestore(doc);
@@ -46,19 +42,20 @@ class DiaryCellService {
     required DiaryList diaryList,
     required DiaryColumn diaryColumn,
   }) async {
-    final docWithName = await FirebaseFirestore.instance
-        .collection(Collections.usersCollection)
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .collection(Collections.diaryListsCollection)
-        .doc(getDiaryListName(diaryList))
+    final docWithName = await getDiaryListDoc(diaryList: diaryList)
         .collection(Collections.diaryColumnsCollection)
-        .where('name', isEqualTo: diaryColumn.name) //const value
+        .where(
+          Constants.diaryColumnNameField,
+          isEqualTo: diaryColumn.name,
+        )
         .get();
     final columnDocPath = docWithName.docs.first.reference.path;
     final cells = await FirebaseFirestore.instance
         .doc(columnDocPath)
         .collection(Collections.diaryCellsCollection)
-        .orderBy('day') //all values like this should be constants
+        .orderBy(
+          Constants.diaryCellDayField,
+        )
         .get();
     List<DiaryCell> diaryCells = [];
 
@@ -83,35 +80,25 @@ class DiaryCellService {
     required DataTypesEnum dataType,
     required dynamic content,
   }) async {
-    final doc = await FirebaseFirestore.instance
-        .collection(Collections.usersCollection)
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .collection(Collections.diaryListsCollection)
-        .doc(getDiaryListName(diaryList))
-        .collection(Collections.diaryColumnsCollection)
-        .doc(diaryCell.columnName)
-        .collection(Collections.diaryCellsCollection)
-        .doc(getDiaryCellName(diaryCell))
-        .get();
+    final doc = await getDiaryCellDoc(
+      diaryList: diaryList,
+      diaryCell: diaryCell,
+    ).get();
     if (doc.data() != null) {
       final newCell = diaryCell.copyWith(dataType: dataType, content: content);
       await FirebaseFirestore.instance
           .doc(doc.reference.path)
           .update(newCell.toFirestore());
     }
-  } // Update columnName?
+  }
 
   Future<void> createDateCells({
     required DiaryList diaryList,
   }) async {
-    final cellsCollection = FirebaseFirestore.instance
-        .collection(Collections.usersCollection)
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .collection(Collections.diaryListsCollection)
-        .doc(getDiaryListName(diaryList))
-        .collection(Collections.diaryColumnsCollection)
-        .doc('Date') //const value
-        .collection(Collections.diaryCellsCollection);
+    final cellsCollection = getDiaryColumnDoc(
+      diaryList: diaryList,
+      diaryColumnName: Constants.diaryColumnDateField,
+    ).collection(Collections.diaryCellsCollection);
     final daysInMonth = DateUtils.getDaysInMonth(
         diaryList.listDate.year, diaryList.listDate.month);
     final firstDayOfMonth =
@@ -120,7 +107,7 @@ class DiaryCellService {
       for (var j = 1; j <= daysInMonth; j++) {
         if (i == 1) {
           final newCell = DiaryCell(
-            columnName: 'Date', //Const value
+            columnName: Constants.diaryColumnDateField,
             columnPosition: i,
             day: j,
             dataType: DataTypesEnum.integerNumber,
@@ -133,7 +120,7 @@ class DiaryCellService {
           final day = DateUtils.addDaysToDate(firstDayOfMonth, j - 1);
           final String dayOfTheWeek = DateFormat('EEEE').format(day);
           final newCell = DiaryCell(
-              columnName: 'Date',
+              columnName: Constants.diaryColumnDateField,
               columnPosition: i,
               day: j,
               dataType: DataTypesEnum.text,

@@ -6,4 +6,6 @@ class Collections {
   static const diaryColumnsCollection = 'columns';
 
   static const diaryCellsCollection = 'cells';
+
+  static const usersSettingsCollection = 'settings';
 }

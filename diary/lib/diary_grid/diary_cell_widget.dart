@@ -6,10 +6,12 @@ class DiaryCellWidget extends StatelessWidget {
     super.key,
     required this.contentWidget,
     required this.onTap,
+    required this.backgroundColor,
   });
 
   final Widget contentWidget;
   final VoidCallback onTap;
+  final Color backgroundColor;
 
   factory DiaryCellWidget.common({
     required String content,
@@ -18,15 +20,33 @@ class DiaryCellWidget extends StatelessWidget {
       DiaryCellWidget(
         contentWidget: Text(content),
         onTap: onTap,
+        backgroundColor: Colors.white,//Цвет будет где-то храниться
       );
 
   factory DiaryCellWidget.model({
     required DiaryCell diaryCell,
     required VoidCallback onTap,
+    required bool isSelected,
+  }) {
+    return isSelected
+        ? DiaryCellWidget.selected(
+            content: diaryCell.content.toString(),
+            onTap: onTap,
+          )
+        : DiaryCellWidget.common(
+            content: diaryCell.content.toString(),
+            onTap: onTap,
+          );
+  }
+
+  factory DiaryCellWidget.selected({
+    required String content,
+    required VoidCallback onTap,
   }) =>
-      DiaryCellWidget.common(
-        content: diaryCell.content.toString(),
+      DiaryCellWidget(
+        contentWidget: Text(content),
         onTap: onTap,
+        backgroundColor: Colors.blueAccent,//Цвет будет где-то храниться
       );
 
   @override
@@ -34,7 +54,7 @@ class DiaryCellWidget extends StatelessWidget {
     //По-хорошему нужны все параметры, которые будут редактироваться
     return Card(
       child: InkWell(
-        onTap: onTap,
+        onTap: onTap,//добавить onDoubleTap, onLongPress
         child: Container(
           constraints: const BoxConstraints(
             maxWidth: 100,
@@ -44,8 +64,9 @@ class DiaryCellWidget extends StatelessWidget {
           alignment: Alignment.center,
           //height: 20, //Should depend on content
           //width: 40, //ColumnWidth
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(2)),
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: const BorderRadius.all(Radius.circular(2)),
             //color: Color.fromARGB(255, 136, 178, 252),
           ),
           child: Padding(
