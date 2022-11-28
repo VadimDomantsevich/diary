@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diary/core/constants/collections.dart';
+import 'package:diary/core/functions.dart';
 import 'package:diary/model/diary_list.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -11,7 +12,7 @@ class DiaryListService {
         .collection(Collections.usersCollection)
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection(Collections.diaryListsCollection)
-        .doc('${date.month}.${date.year}')
+        .doc(getDiaryListName(newList))
         .set(newList.toFirestore());
   }
 
@@ -23,7 +24,7 @@ class DiaryListService {
         .collection(Collections.usersCollection)
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection(Collections.diaryListsCollection)
-        .doc('${date.month}.${date.year}')
+        .doc(getDiaryListNameByDate(date))
         .get();
     return read(doc: doc);
   }

@@ -5,6 +5,7 @@ import 'package:diary/model/diary_list.dart';
 import 'package:diary/services/diary_cell_service.dart';
 import 'package:diary/services/diary_column_service.dart';
 import 'package:diary/services/diary_list_service.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'diary_list_state.dart';
@@ -25,6 +26,10 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     on<GetDiaryColumnsEvent>(
         (event, emit) => _onGetDiaryColumnsEvent(event, emit));
     on<GetDiaryCellsEvent>((event, emit) => _onGetDiaryCellsEvent(event, emit));
+    on<SelectDiaryCellEvent>(
+        ((event, emit) => _onSelectDiaryCellEvent(event, emit)));
+    on<ChangeDiaryCellEvent>(
+        ((event, emit) => _onChangeDiaryCellEvent(event, emit)));
   }
 
   Future<void> _onCreateSampleEvent(
@@ -67,8 +72,6 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         diaryColumns: diaryColumns,
       ),
     );
-
-    //add(DiaryListEvent.checkLoaded(diaryColumns: diaryColumns)); //NO
   }
 
   Future<void> _onGetDiaryCellsEvent(
@@ -85,12 +88,92 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
 
       diaryCells.addAll(newCells);
     }
+
+    //Если добавить проверку на стэйт здесь?
+    //Работает, но не обновляется контроллер
+    // state.maybeWhen(
+    //   cellSelected: (diaryList, diaryColumns, cells, selectedCell) {
+    //     emit(DiaryListState.cellSelected(
+    //         diaryList: diaryList,
+    //         diaryColumns: diaryColumns,
+    //         diaryCells: diaryCells,
+    //         selectedCell: selectedCell));
+    //   },
+    //   orElse: () {
+    //     emit(
+    //       DiaryListState.loaded(
+    //         diaryList: event.diaryList,
+    //         diaryColumns: event.diaryColumns,
+    //         diaryCells: diaryCells,
+    //       ),
+    //     );
+    //   },
+    // );
     emit(
       DiaryListState.loaded(
         diaryList: event.diaryList,
         diaryColumns: event.diaryColumns,
         diaryCells: diaryCells,
       ),
+    );
+  }
+
+  Future<void> _onSelectDiaryCellEvent(
+    SelectDiaryCellEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(loaded: (diaryList, diaryColumns, diaryCells) {
+      emit(DiaryListState.cellSelected(
+        diaryList: diaryList,
+        diaryColumns: diaryColumns,
+        diaryCells: diaryCells,
+        selectedCell: event.diaryCell,
+      ));
+    }, cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell) {
+      // if (event.textFieldText != null &&
+      //     event.textFieldText!.isNotEmpty &&
+      //     event.textFieldText != selectedCell.content) {
+      //   print('Text: ${event.textFieldText}');
+      //   print('Content: ${selectedCell.content}');
+      //   _diaryCellService.update(
+      //       diaryList: diaryList,
+      //       diaryCell: selectedCell,
+      //       dataType: selectedCell.dataType,
+      //       content: event.textFieldText);
+      //   add(GetDiaryCellsEvent(
+      //       diaryList: diaryList, diaryColumns: diaryColumns));
+      //   add(SelectDiaryCellEvent(diaryCell: selectedCell));
+      // }
+      emit(DiaryListState.cellSelected(
+        diaryList: diaryList,
+        diaryColumns: diaryColumns,
+        diaryCells: diaryCells,
+        selectedCell: event.diaryCell,
+      ));
+    });
+  }
+
+  Future<void> _onChangeDiaryCellEvent(
+    ChangeDiaryCellEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell) async {
+        if (event.textFieldText != selectedCell.content.toString()) {
+          await _diaryCellService.update(
+            diaryList: diaryList,
+            diaryCell: selectedCell,
+            dataType: selectedCell.dataType,
+            content: event.textFieldText,
+          );
+          final index = diaryCells.indexOf(selectedCell);
+          diaryCells.elementAt(index).copyWith(content: event.textFieldText);
+          add(
+            GetDiaryCellsEvent(
+                diaryList: diaryList, diaryColumns: diaryColumns),
+          );
+        }
+      },
     );
   }
 }

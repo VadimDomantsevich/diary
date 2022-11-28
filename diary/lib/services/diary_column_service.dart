@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diary/core/constants/collections.dart';
+import 'package:diary/core/functions.dart';
 import 'package:diary/model/diary_column.dart';
 import 'package:diary/model/diary_list.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,9 +15,10 @@ class DiaryColumnService {
         .collection(Collections.usersCollection)
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection(Collections.diaryListsCollection)
-        .doc('${diaryList.listDate.month}.${diaryList.listDate.year}')
+        .doc(getDiaryListName(diaryList))
         .collection(Collections.diaryColumnsCollection);
-    final col = await columns.where('name', isEqualTo: name).get();
+    final col =
+        await columns.where('name', isEqualTo: name).get(); //const value
     if (col.docs.isEmpty) {
       final newColumn = DiaryColumn(name: name, columnsCount: count);
       await columns.add(newColumn.toFirestore());
@@ -34,7 +36,7 @@ class DiaryColumnService {
         .collection(Collections.usersCollection)
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection(Collections.diaryListsCollection)
-        .doc('${diaryList.listDate.month}.${diaryList.listDate.year}')
+        .doc(getDiaryListName(diaryList))
         .collection(Collections.diaryColumnsCollection)
         .get();
 
@@ -47,21 +49,26 @@ class DiaryColumnService {
   }
 
   Future<void> update({
-    required DocumentSnapshot doc,
+    required DiaryList diaryList,
+    required DiaryColumn diaryColumn,
     required String name,
     required int count,
   }) async {
+    final columns = FirebaseFirestore.instance
+        .collection(Collections.usersCollection)
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection(Collections.diaryListsCollection)
+        .doc(getDiaryListName(diaryList))
+        .collection(Collections.diaryColumnsCollection);
+    final column = await columns
+        .where('name', isEqualTo: diaryColumn.name) //const value
+        .get();
+    final doc = await column.docs.first.reference.get();
     if (doc.data() != null) {
-      final updatedColumn = read(doc: doc);
-      final col =
-          await doc.reference.parent.where('name', isEqualTo: name).get();
-      if (col.docs.isEmpty || updatedColumn.name == name) {
-        final newColumn =
-            read(doc: doc).copyWith(name: name, columnsCount: count);
-        await FirebaseFirestore.instance
-            .doc(doc.reference.path)
-            .update(newColumn.toFirestore());
-      }
+      final newColumn = diaryColumn.copyWith(name: name, columnsCount: count);
+      await FirebaseFirestore.instance
+          .doc(doc.reference.path)
+          .update(newColumn.toFirestore());
     }
   }
 
@@ -76,10 +83,10 @@ class DiaryColumnService {
         .collection(Collections.usersCollection)
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection(Collections.diaryListsCollection)
-        .doc('${diaryList.listDate.month}.${diaryList.listDate.year}')
+        .doc(getDiaryListName(diaryList))
         .collection(Collections.diaryColumnsCollection)
         .doc('Date');
-    final dateColumn = DiaryColumn(name: 'Date', columnsCount: 2);
+    final dateColumn = DiaryColumn(name: 'Date', columnsCount: 2); //const value
     await doc.set(dateColumn.toFirestore());
   }
 }

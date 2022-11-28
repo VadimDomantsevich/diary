@@ -26,6 +26,12 @@ mixin _$DiaryListState {
     required TResult Function(DiaryList diaryList,
             List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
         loaded,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell)
+        cellSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,6 +43,9 @@ mixin _$DiaryListState {
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells)?
         loaded,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+        cellSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -48,6 +57,9 @@ mixin _$DiaryListState {
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells)?
         loaded,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+        cellSelected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -57,6 +69,7 @@ mixin _$DiaryListState {
     required TResult Function(_ListLoaded value) listLoaded,
     required TResult Function(_ColumnsLoaded value) columnsLoaded,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_CellSelected value) cellSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +78,7 @@ mixin _$DiaryListState {
     TResult? Function(_ListLoaded value)? listLoaded,
     TResult? Function(_ColumnsLoaded value)? columnsLoaded,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_CellSelected value)? cellSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +87,7 @@ mixin _$DiaryListState {
     TResult Function(_ListLoaded value)? listLoaded,
     TResult Function(_ColumnsLoaded value)? columnsLoaded,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_CellSelected value)? cellSelected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,6 +156,12 @@ class _$_Initial implements _Initial {
     required TResult Function(DiaryList diaryList,
             List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
         loaded,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell)
+        cellSelected,
   }) {
     return initial();
   }
@@ -155,6 +176,9 @@ class _$_Initial implements _Initial {
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells)?
         loaded,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+        cellSelected,
   }) {
     return initial?.call();
   }
@@ -169,6 +193,9 @@ class _$_Initial implements _Initial {
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells)?
         loaded,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+        cellSelected,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -184,6 +211,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_ListLoaded value) listLoaded,
     required TResult Function(_ColumnsLoaded value) columnsLoaded,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_CellSelected value) cellSelected,
   }) {
     return initial(this);
   }
@@ -195,6 +223,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_ListLoaded value)? listLoaded,
     TResult? Function(_ColumnsLoaded value)? columnsLoaded,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_CellSelected value)? cellSelected,
   }) {
     return initial?.call(this);
   }
@@ -206,6 +235,7 @@ class _$_Initial implements _Initial {
     TResult Function(_ListLoaded value)? listLoaded,
     TResult Function(_ColumnsLoaded value)? columnsLoaded,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_CellSelected value)? cellSelected,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -292,6 +322,12 @@ class _$_ListLoaded implements _ListLoaded {
     required TResult Function(DiaryList diaryList,
             List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
         loaded,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell)
+        cellSelected,
   }) {
     return listLoaded(diaryList);
   }
@@ -306,6 +342,9 @@ class _$_ListLoaded implements _ListLoaded {
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells)?
         loaded,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+        cellSelected,
   }) {
     return listLoaded?.call(diaryList);
   }
@@ -320,6 +359,9 @@ class _$_ListLoaded implements _ListLoaded {
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells)?
         loaded,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+        cellSelected,
     required TResult orElse(),
   }) {
     if (listLoaded != null) {
@@ -335,6 +377,7 @@ class _$_ListLoaded implements _ListLoaded {
     required TResult Function(_ListLoaded value) listLoaded,
     required TResult Function(_ColumnsLoaded value) columnsLoaded,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_CellSelected value) cellSelected,
   }) {
     return listLoaded(this);
   }
@@ -346,6 +389,7 @@ class _$_ListLoaded implements _ListLoaded {
     TResult? Function(_ListLoaded value)? listLoaded,
     TResult? Function(_ColumnsLoaded value)? columnsLoaded,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_CellSelected value)? cellSelected,
   }) {
     return listLoaded?.call(this);
   }
@@ -357,6 +401,7 @@ class _$_ListLoaded implements _ListLoaded {
     TResult Function(_ListLoaded value)? listLoaded,
     TResult Function(_ColumnsLoaded value)? columnsLoaded,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_CellSelected value)? cellSelected,
     required TResult orElse(),
   }) {
     if (listLoaded != null) {
@@ -465,6 +510,12 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     required TResult Function(DiaryList diaryList,
             List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
         loaded,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell)
+        cellSelected,
   }) {
     return columnsLoaded(diaryList, diaryColumns);
   }
@@ -479,6 +530,9 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells)?
         loaded,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+        cellSelected,
   }) {
     return columnsLoaded?.call(diaryList, diaryColumns);
   }
@@ -493,6 +547,9 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells)?
         loaded,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+        cellSelected,
     required TResult orElse(),
   }) {
     if (columnsLoaded != null) {
@@ -508,6 +565,7 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     required TResult Function(_ListLoaded value) listLoaded,
     required TResult Function(_ColumnsLoaded value) columnsLoaded,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_CellSelected value) cellSelected,
   }) {
     return columnsLoaded(this);
   }
@@ -519,6 +577,7 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     TResult? Function(_ListLoaded value)? listLoaded,
     TResult? Function(_ColumnsLoaded value)? columnsLoaded,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_CellSelected value)? cellSelected,
   }) {
     return columnsLoaded?.call(this);
   }
@@ -530,6 +589,7 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     TResult Function(_ListLoaded value)? listLoaded,
     TResult Function(_ColumnsLoaded value)? columnsLoaded,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_CellSelected value)? cellSelected,
     required TResult orElse(),
   }) {
     if (columnsLoaded != null) {
@@ -661,6 +721,12 @@ class _$_Loaded implements _Loaded {
     required TResult Function(DiaryList diaryList,
             List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
         loaded,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell)
+        cellSelected,
   }) {
     return loaded(diaryList, diaryColumns, diaryCells);
   }
@@ -675,6 +741,9 @@ class _$_Loaded implements _Loaded {
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells)?
         loaded,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+        cellSelected,
   }) {
     return loaded?.call(diaryList, diaryColumns, diaryCells);
   }
@@ -689,6 +758,9 @@ class _$_Loaded implements _Loaded {
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells)?
         loaded,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+        cellSelected,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -704,6 +776,7 @@ class _$_Loaded implements _Loaded {
     required TResult Function(_ListLoaded value) listLoaded,
     required TResult Function(_ColumnsLoaded value) columnsLoaded,
     required TResult Function(_Loaded value) loaded,
+    required TResult Function(_CellSelected value) cellSelected,
   }) {
     return loaded(this);
   }
@@ -715,6 +788,7 @@ class _$_Loaded implements _Loaded {
     TResult? Function(_ListLoaded value)? listLoaded,
     TResult? Function(_ColumnsLoaded value)? columnsLoaded,
     TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_CellSelected value)? cellSelected,
   }) {
     return loaded?.call(this);
   }
@@ -726,6 +800,7 @@ class _$_Loaded implements _Loaded {
     TResult Function(_ListLoaded value)? listLoaded,
     TResult Function(_ColumnsLoaded value)? columnsLoaded,
     TResult Function(_Loaded value)? loaded,
+    TResult Function(_CellSelected value)? cellSelected,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -750,6 +825,237 @@ abstract class _Loaded implements DiaryListState {
 }
 
 /// @nodoc
+abstract class _$$_CellSelectedCopyWith<$Res> {
+  factory _$$_CellSelectedCopyWith(
+          _$_CellSelected value, $Res Function(_$_CellSelected) then) =
+      __$$_CellSelectedCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {DiaryList diaryList,
+      List<DiaryColumn> diaryColumns,
+      List<DiaryCell> diaryCells,
+      DiaryCell selectedCell});
+}
+
+/// @nodoc
+class __$$_CellSelectedCopyWithImpl<$Res>
+    extends _$DiaryListStateCopyWithImpl<$Res, _$_CellSelected>
+    implements _$$_CellSelectedCopyWith<$Res> {
+  __$$_CellSelectedCopyWithImpl(
+      _$_CellSelected _value, $Res Function(_$_CellSelected) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? diaryList = null,
+    Object? diaryColumns = null,
+    Object? diaryCells = null,
+    Object? selectedCell = null,
+  }) {
+    return _then(_$_CellSelected(
+      diaryList: null == diaryList
+          ? _value.diaryList
+          : diaryList // ignore: cast_nullable_to_non_nullable
+              as DiaryList,
+      diaryColumns: null == diaryColumns
+          ? _value._diaryColumns
+          : diaryColumns // ignore: cast_nullable_to_non_nullable
+              as List<DiaryColumn>,
+      diaryCells: null == diaryCells
+          ? _value._diaryCells
+          : diaryCells // ignore: cast_nullable_to_non_nullable
+              as List<DiaryCell>,
+      selectedCell: null == selectedCell
+          ? _value.selectedCell
+          : selectedCell // ignore: cast_nullable_to_non_nullable
+              as DiaryCell,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_CellSelected implements _CellSelected {
+  const _$_CellSelected(
+      {required this.diaryList,
+      required final List<DiaryColumn> diaryColumns,
+      required final List<DiaryCell> diaryCells,
+      required this.selectedCell})
+      : _diaryColumns = diaryColumns,
+        _diaryCells = diaryCells;
+
+  @override
+  final DiaryList diaryList;
+  final List<DiaryColumn> _diaryColumns;
+  @override
+  List<DiaryColumn> get diaryColumns {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_diaryColumns);
+  }
+
+  final List<DiaryCell> _diaryCells;
+  @override
+  List<DiaryCell> get diaryCells {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_diaryCells);
+  }
+
+  @override
+  final DiaryCell selectedCell;
+
+  @override
+  String toString() {
+    return 'DiaryListState.cellSelected(diaryList: $diaryList, diaryColumns: $diaryColumns, diaryCells: $diaryCells, selectedCell: $selectedCell)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_CellSelected &&
+            (identical(other.diaryList, diaryList) ||
+                other.diaryList == diaryList) &&
+            const DeepCollectionEquality()
+                .equals(other._diaryColumns, _diaryColumns) &&
+            const DeepCollectionEquality()
+                .equals(other._diaryCells, _diaryCells) &&
+            (identical(other.selectedCell, selectedCell) ||
+                other.selectedCell == selectedCell));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      diaryList,
+      const DeepCollectionEquality().hash(_diaryColumns),
+      const DeepCollectionEquality().hash(_diaryCells),
+      selectedCell);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CellSelectedCopyWith<_$_CellSelected> get copyWith =>
+      __$$_CellSelectedCopyWithImpl<_$_CellSelected>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(DiaryList diaryList) listLoaded,
+    required TResult Function(
+            DiaryList diaryList, List<DiaryColumn> diaryColumns)
+        columnsLoaded,
+    required TResult Function(DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+        loaded,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell)
+        cellSelected,
+  }) {
+    return cellSelected(diaryList, diaryColumns, diaryCells, selectedCell);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(DiaryList diaryList)? listLoaded,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
+        columnsLoaded,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells)?
+        loaded,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+        cellSelected,
+  }) {
+    return cellSelected?.call(
+        diaryList, diaryColumns, diaryCells, selectedCell);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(DiaryList diaryList)? listLoaded,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
+        columnsLoaded,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells)?
+        loaded,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+        cellSelected,
+    required TResult orElse(),
+  }) {
+    if (cellSelected != null) {
+      return cellSelected(diaryList, diaryColumns, diaryCells, selectedCell);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ListLoaded value) listLoaded,
+    required TResult Function(_ColumnsLoaded value) columnsLoaded,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_CellSelected value) cellSelected,
+  }) {
+    return cellSelected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ListLoaded value)? listLoaded,
+    TResult? Function(_ColumnsLoaded value)? columnsLoaded,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_CellSelected value)? cellSelected,
+  }) {
+    return cellSelected?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ListLoaded value)? listLoaded,
+    TResult Function(_ColumnsLoaded value)? columnsLoaded,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_CellSelected value)? cellSelected,
+    required TResult orElse(),
+  }) {
+    if (cellSelected != null) {
+      return cellSelected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CellSelected implements DiaryListState {
+  const factory _CellSelected(
+      {required final DiaryList diaryList,
+      required final List<DiaryColumn> diaryColumns,
+      required final List<DiaryCell> diaryCells,
+      required final DiaryCell selectedCell}) = _$_CellSelected;
+
+  DiaryList get diaryList;
+  List<DiaryColumn> get diaryColumns;
+  List<DiaryCell> get diaryCells;
+  DiaryCell get selectedCell;
+  @JsonKey(ignore: true)
+  _$$_CellSelectedCopyWith<_$_CellSelected> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$DiaryListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -759,6 +1065,9 @@ mixin _$DiaryListEvent {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         getDiaryCells,
+    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        changeDiaryCell,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -768,6 +1077,9 @@ mixin _$DiaryListEvent {
     TResult? Function(DiaryList diaryList)? getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
+    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -777,6 +1089,9 @@ mixin _$DiaryListEvent {
     TResult Function(DiaryList diaryList)? getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
+    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -786,6 +1101,8 @@ mixin _$DiaryListEvent {
     required TResult Function(GetDiaryListEvent value) getDiaryList,
     required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
     required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
+    required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -794,6 +1111,8 @@ mixin _$DiaryListEvent {
     TResult? Function(GetDiaryListEvent value)? getDiaryList,
     TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -802,6 +1121,8 @@ mixin _$DiaryListEvent {
     TResult Function(GetDiaryListEvent value)? getDiaryList,
     TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -869,6 +1190,9 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         getDiaryCells,
+    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        changeDiaryCell,
   }) {
     return createSample();
   }
@@ -881,6 +1205,9 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     TResult? Function(DiaryList diaryList)? getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
+    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
   }) {
     return createSample?.call();
   }
@@ -893,6 +1220,9 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     TResult Function(DiaryList diaryList)? getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
+    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
     required TResult orElse(),
   }) {
     if (createSample != null) {
@@ -908,6 +1238,8 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     required TResult Function(GetDiaryListEvent value) getDiaryList,
     required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
     required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
+    required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
   }) {
     return createSample(this);
   }
@@ -919,6 +1251,8 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     TResult? Function(GetDiaryListEvent value)? getDiaryList,
     TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
   }) {
     return createSample?.call(this);
   }
@@ -930,6 +1264,8 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     TResult Function(GetDiaryListEvent value)? getDiaryList,
     TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     required TResult orElse(),
   }) {
     if (createSample != null) {
@@ -1013,6 +1349,9 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         getDiaryCells,
+    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        changeDiaryCell,
   }) {
     return getDiaryList(date);
   }
@@ -1025,6 +1364,9 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     TResult? Function(DiaryList diaryList)? getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
+    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
   }) {
     return getDiaryList?.call(date);
   }
@@ -1037,6 +1379,9 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     TResult Function(DiaryList diaryList)? getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
+    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
     required TResult orElse(),
   }) {
     if (getDiaryList != null) {
@@ -1052,6 +1397,8 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     required TResult Function(GetDiaryListEvent value) getDiaryList,
     required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
     required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
+    required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
   }) {
     return getDiaryList(this);
   }
@@ -1063,6 +1410,8 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     TResult? Function(GetDiaryListEvent value)? getDiaryList,
     TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
   }) {
     return getDiaryList?.call(this);
   }
@@ -1074,6 +1423,8 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     TResult Function(GetDiaryListEvent value)? getDiaryList,
     TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     required TResult orElse(),
   }) {
     if (getDiaryList != null) {
@@ -1165,6 +1516,9 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         getDiaryCells,
+    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        changeDiaryCell,
   }) {
     return getDiaryColumns(diaryList);
   }
@@ -1177,6 +1531,9 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     TResult? Function(DiaryList diaryList)? getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
+    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
   }) {
     return getDiaryColumns?.call(diaryList);
   }
@@ -1189,6 +1546,9 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     TResult Function(DiaryList diaryList)? getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
+    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
     required TResult orElse(),
   }) {
     if (getDiaryColumns != null) {
@@ -1204,6 +1564,8 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     required TResult Function(GetDiaryListEvent value) getDiaryList,
     required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
     required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
+    required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
   }) {
     return getDiaryColumns(this);
   }
@@ -1215,6 +1577,8 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     TResult? Function(GetDiaryListEvent value)? getDiaryList,
     TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
   }) {
     return getDiaryColumns?.call(this);
   }
@@ -1226,6 +1590,8 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     TResult Function(GetDiaryListEvent value)? getDiaryList,
     TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     required TResult orElse(),
   }) {
     if (getDiaryColumns != null) {
@@ -1333,6 +1699,9 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         getDiaryCells,
+    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        changeDiaryCell,
   }) {
     return getDiaryCells(diaryList, diaryColumns);
   }
@@ -1345,6 +1714,9 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     TResult? Function(DiaryList diaryList)? getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
+    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
   }) {
     return getDiaryCells?.call(diaryList, diaryColumns);
   }
@@ -1357,6 +1729,9 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     TResult Function(DiaryList diaryList)? getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
+    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
     required TResult orElse(),
   }) {
     if (getDiaryCells != null) {
@@ -1372,6 +1747,8 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     required TResult Function(GetDiaryListEvent value) getDiaryList,
     required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
     required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
+    required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
   }) {
     return getDiaryCells(this);
   }
@@ -1383,6 +1760,8 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     TResult? Function(GetDiaryListEvent value)? getDiaryList,
     TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
   }) {
     return getDiaryCells?.call(this);
   }
@@ -1394,6 +1773,8 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     TResult Function(GetDiaryListEvent value)? getDiaryList,
     TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     required TResult orElse(),
   }) {
     if (getDiaryCells != null) {
@@ -1412,5 +1793,350 @@ abstract class GetDiaryCellsEvent implements DiaryListEvent {
   List<DiaryColumn> get diaryColumns;
   @JsonKey(ignore: true)
   _$$GetDiaryCellsEventCopyWith<_$GetDiaryCellsEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SelectDiaryCellEventCopyWith<$Res> {
+  factory _$$SelectDiaryCellEventCopyWith(_$SelectDiaryCellEvent value,
+          $Res Function(_$SelectDiaryCellEvent) then) =
+      __$$SelectDiaryCellEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DiaryCell diaryCell});
+}
+
+/// @nodoc
+class __$$SelectDiaryCellEventCopyWithImpl<$Res>
+    extends _$DiaryListEventCopyWithImpl<$Res, _$SelectDiaryCellEvent>
+    implements _$$SelectDiaryCellEventCopyWith<$Res> {
+  __$$SelectDiaryCellEventCopyWithImpl(_$SelectDiaryCellEvent _value,
+      $Res Function(_$SelectDiaryCellEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? diaryCell = null,
+  }) {
+    return _then(_$SelectDiaryCellEvent(
+      diaryCell: null == diaryCell
+          ? _value.diaryCell
+          : diaryCell // ignore: cast_nullable_to_non_nullable
+              as DiaryCell,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
+  const _$SelectDiaryCellEvent({required this.diaryCell});
+
+  @override
+  final DiaryCell diaryCell;
+
+  @override
+  String toString() {
+    return 'DiaryListEvent.selectDiaryCell(diaryCell: $diaryCell)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SelectDiaryCellEvent &&
+            (identical(other.diaryCell, diaryCell) ||
+                other.diaryCell == diaryCell));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, diaryCell);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SelectDiaryCellEventCopyWith<_$SelectDiaryCellEvent> get copyWith =>
+      __$$SelectDiaryCellEventCopyWithImpl<_$SelectDiaryCellEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() createSample,
+    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DiaryList diaryList) getDiaryColumns,
+    required TResult Function(
+            DiaryList diaryList, List<DiaryColumn> diaryColumns)
+        getDiaryCells,
+    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        changeDiaryCell,
+  }) {
+    return selectDiaryCell(diaryCell);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? createSample,
+    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DiaryList diaryList)? getDiaryColumns,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
+        getDiaryCells,
+    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
+  }) {
+    return selectDiaryCell?.call(diaryCell);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? createSample,
+    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DiaryList diaryList)? getDiaryColumns,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
+        getDiaryCells,
+    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
+    required TResult orElse(),
+  }) {
+    if (selectDiaryCell != null) {
+      return selectDiaryCell(diaryCell);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CreateSampleEvent value) createSample,
+    required TResult Function(GetDiaryListEvent value) getDiaryList,
+    required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
+    required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
+    required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
+  }) {
+    return selectDiaryCell(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CreateSampleEvent value)? createSample,
+    TResult? Function(GetDiaryListEvent value)? getDiaryList,
+    TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
+    TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
+  }) {
+    return selectDiaryCell?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CreateSampleEvent value)? createSample,
+    TResult Function(GetDiaryListEvent value)? getDiaryList,
+    TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
+    TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
+    required TResult orElse(),
+  }) {
+    if (selectDiaryCell != null) {
+      return selectDiaryCell(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SelectDiaryCellEvent implements DiaryListEvent {
+  const factory SelectDiaryCellEvent({required final DiaryCell diaryCell}) =
+      _$SelectDiaryCellEvent;
+
+  DiaryCell get diaryCell;
+  @JsonKey(ignore: true)
+  _$$SelectDiaryCellEventCopyWith<_$SelectDiaryCellEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeDiaryCellEventCopyWith<$Res> {
+  factory _$$ChangeDiaryCellEventCopyWith(_$ChangeDiaryCellEvent value,
+          $Res Function(_$ChangeDiaryCellEvent) then) =
+      __$$ChangeDiaryCellEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DiaryCell diaryCell, String? textFieldText});
+}
+
+/// @nodoc
+class __$$ChangeDiaryCellEventCopyWithImpl<$Res>
+    extends _$DiaryListEventCopyWithImpl<$Res, _$ChangeDiaryCellEvent>
+    implements _$$ChangeDiaryCellEventCopyWith<$Res> {
+  __$$ChangeDiaryCellEventCopyWithImpl(_$ChangeDiaryCellEvent _value,
+      $Res Function(_$ChangeDiaryCellEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? diaryCell = null,
+    Object? textFieldText = freezed,
+  }) {
+    return _then(_$ChangeDiaryCellEvent(
+      diaryCell: null == diaryCell
+          ? _value.diaryCell
+          : diaryCell // ignore: cast_nullable_to_non_nullable
+              as DiaryCell,
+      textFieldText: freezed == textFieldText
+          ? _value.textFieldText
+          : textFieldText // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
+  const _$ChangeDiaryCellEvent({required this.diaryCell, this.textFieldText});
+
+  @override
+  final DiaryCell diaryCell;
+  @override
+  final String? textFieldText;
+
+  @override
+  String toString() {
+    return 'DiaryListEvent.changeDiaryCell(diaryCell: $diaryCell, textFieldText: $textFieldText)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeDiaryCellEvent &&
+            (identical(other.diaryCell, diaryCell) ||
+                other.diaryCell == diaryCell) &&
+            (identical(other.textFieldText, textFieldText) ||
+                other.textFieldText == textFieldText));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, diaryCell, textFieldText);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeDiaryCellEventCopyWith<_$ChangeDiaryCellEvent> get copyWith =>
+      __$$ChangeDiaryCellEventCopyWithImpl<_$ChangeDiaryCellEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() createSample,
+    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DiaryList diaryList) getDiaryColumns,
+    required TResult Function(
+            DiaryList diaryList, List<DiaryColumn> diaryColumns)
+        getDiaryCells,
+    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        changeDiaryCell,
+  }) {
+    return changeDiaryCell(diaryCell, textFieldText);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? createSample,
+    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DiaryList diaryList)? getDiaryColumns,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
+        getDiaryCells,
+    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
+  }) {
+    return changeDiaryCell?.call(diaryCell, textFieldText);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? createSample,
+    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DiaryList diaryList)? getDiaryColumns,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
+        getDiaryCells,
+    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
+    required TResult orElse(),
+  }) {
+    if (changeDiaryCell != null) {
+      return changeDiaryCell(diaryCell, textFieldText);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CreateSampleEvent value) createSample,
+    required TResult Function(GetDiaryListEvent value) getDiaryList,
+    required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
+    required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
+    required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
+  }) {
+    return changeDiaryCell(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CreateSampleEvent value)? createSample,
+    TResult? Function(GetDiaryListEvent value)? getDiaryList,
+    TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
+    TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
+  }) {
+    return changeDiaryCell?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CreateSampleEvent value)? createSample,
+    TResult Function(GetDiaryListEvent value)? getDiaryList,
+    TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
+    TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
+    required TResult orElse(),
+  }) {
+    if (changeDiaryCell != null) {
+      return changeDiaryCell(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeDiaryCellEvent implements DiaryListEvent {
+  const factory ChangeDiaryCellEvent(
+      {required final DiaryCell diaryCell,
+      final String? textFieldText}) = _$ChangeDiaryCellEvent;
+
+  DiaryCell get diaryCell;
+  String? get textFieldText;
+  @JsonKey(ignore: true)
+  _$$ChangeDiaryCellEventCopyWith<_$ChangeDiaryCellEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }

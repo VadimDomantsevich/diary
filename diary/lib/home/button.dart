@@ -10,7 +10,11 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      onPressed: () {},
+      onPressed: () {
+        context.read<DiaryListBloc>().add(
+              DiaryListEvent.getDiaryList(date: DateTime.now()),
+            );
+      },
       // onPressed: () => context
       //     .read<DiaryListBloc>()
       //     .add(const DiaryListEvent.createSample()),

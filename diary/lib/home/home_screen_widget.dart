@@ -3,6 +3,8 @@ import 'package:diary/core/constants/collections.dart';
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
 import 'package:diary/home/builder.dart';
 import 'package:diary/home/button.dart';
+import 'package:diary/home/pluto_grid.dart';
+import 'package:diary/home/sample.dart';
 import 'package:diary/locale/locale_bloc.dart';
 import 'package:diary/model/diary_column.dart';
 import 'package:diary/model/diary_list.dart';
@@ -13,6 +15,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:month_year_picker/month_year_picker.dart';
 
 class HomeScreenWidget extends StatelessWidget {
   const HomeScreenWidget({super.key});
@@ -20,22 +23,26 @@ class HomeScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
-        providers: [
-          RepositoryProvider(create: (context) => DiaryListService()),
-          RepositoryProvider(create: (context) => DiaryColumnService()),
-          RepositoryProvider(create: (context) => DiaryCellService()),
-        ],
-        child: BlocProvider(
-          create: (context) => DiaryListBloc(
-            RepositoryProvider.of<DiaryListService>(context),
-            RepositoryProvider.of<DiaryColumnService>(context),
-            RepositoryProvider.of<DiaryCellService>(context),
+      providers: [
+        RepositoryProvider(create: (context) => DiaryListService()),
+        RepositoryProvider(create: (context) => DiaryColumnService()),
+        RepositoryProvider(create: (context) => DiaryCellService()),
+      ],
+      child: BlocProvider(
+        create: (context) => DiaryListBloc(
+          RepositoryProvider.of<DiaryListService>(context),
+          RepositoryProvider.of<DiaryColumnService>(context),
+          RepositoryProvider.of<DiaryCellService>(context),
+        ),
+        child: const Scaffold(
+          body: SafeArea(
+            child: SampleWidget(),
           ),
-          child: const Scaffold(
-            body: BuilderWidget(),
-            floatingActionButton: ButtonWidget(),
-          ),
-        ));
+          floatingActionButton: ButtonWidget(),
+        ),
+        //body: PlutoGridExamplePage(), //BuilderWidget(),
+      ),
+    );
     // return Scaffold(
     //   body: StreamBuilder(
     //     stream: DiaryListService().getAll().asStream(),

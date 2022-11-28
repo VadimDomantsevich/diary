@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:month_year_picker/month_year_picker.dart';
 import 'locale/locale_bloc.dart';
 import 'router/diary_router.gr.dart';
 
@@ -37,6 +38,7 @@ class DiaryApp extends StatelessWidget {
                     GlobalMaterialLocalizations.delegate,
                     GlobalWidgetsLocalizations.delegate,
                     GlobalCupertinoLocalizations.delegate,
+                    MonthYearPickerLocalizations.delegate,
                   ],
                   routerDelegate: _diaryRouter.delegate(),
                   routeInformationParser: _diaryRouter.defaultRouteParser(),

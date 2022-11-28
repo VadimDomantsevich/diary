@@ -3,6 +3,7 @@ import 'package:diary/authentication/forgot_password_screen_widget.dart';
 import 'package:diary/authentication/profile_screen_widget.dart';
 import 'package:diary/authentication/sign_in_screen_widget.dart';
 import 'package:diary/home/home_screen_widget.dart';
+import 'package:diary/home/pluto_grid.dart';
 
 @MaterialAutoRouter(
   routes: <AutoRoute>[
@@ -18,6 +19,9 @@ import 'package:diary/home/home_screen_widget.dart';
     ),
     AutoRoute(
       page: ProfileScreenWidget,
+    ),
+    AutoRoute(
+      page: PlutoGridExamplePage,
     ),
   ],
 )

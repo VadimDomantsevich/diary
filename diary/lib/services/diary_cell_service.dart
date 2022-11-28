@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diary/core/constants/collections.dart';
 import 'package:diary/core/constants/enums.dart';
+import 'package:diary/core/functions.dart';
 import 'package:diary/model/diary_cell.dart';
 import 'package:diary/model/diary_column.dart';
 import 'package:diary/model/diary_list.dart';
@@ -20,7 +21,7 @@ class DiaryCellService {
         .collection(Collections.usersCollection)
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection(Collections.diaryListsCollection)
-        .doc('${diaryList.listDate.month}.${diaryList.listDate.year}')
+        .doc(getDiaryListName(diaryList))
         .collection(Collections.diaryColumnsCollection)
         .doc(diaryColumn.name)
         .collection(Collections.diaryCellsCollection);
@@ -32,7 +33,7 @@ class DiaryCellService {
             day: i,
             dataType: dataType);
         await cellsCollection
-            .doc('${newCell.columnPosition}.${newCell.day}')
+            .doc(getDiaryCellName(newCell))
             .set(newCell.toFirestore());
       }
     }
@@ -49,9 +50,9 @@ class DiaryCellService {
         .collection(Collections.usersCollection)
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection(Collections.diaryListsCollection)
-        .doc('${diaryList.listDate.month}.${diaryList.listDate.year}')
+        .doc(getDiaryListName(diaryList))
         .collection(Collections.diaryColumnsCollection)
-        .where('name', isEqualTo: diaryColumn.name)
+        .where('name', isEqualTo: diaryColumn.name) //const value
         .get();
     final columnDocPath = docWithName.docs.first.reference.path;
     final cells = await FirebaseFirestore.instance
@@ -77,13 +78,23 @@ class DiaryCellService {
   }
 
   Future<void> update({
-    required DocumentSnapshot doc,
+    required DiaryList diaryList,
+    required DiaryCell diaryCell,
     required DataTypesEnum dataType,
     required dynamic content,
   }) async {
+    final doc = await FirebaseFirestore.instance
+        .collection(Collections.usersCollection)
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection(Collections.diaryListsCollection)
+        .doc(getDiaryListName(diaryList))
+        .collection(Collections.diaryColumnsCollection)
+        .doc(diaryCell.columnName)
+        .collection(Collections.diaryCellsCollection)
+        .doc(getDiaryCellName(diaryCell))
+        .get();
     if (doc.data() != null) {
-      final newCell =
-          read(doc: doc).copyWith(dataType: dataType, content: content);
+      final newCell = diaryCell.copyWith(dataType: dataType, content: content);
       await FirebaseFirestore.instance
           .doc(doc.reference.path)
           .update(newCell.toFirestore());
@@ -97,9 +108,9 @@ class DiaryCellService {
         .collection(Collections.usersCollection)
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection(Collections.diaryListsCollection)
-        .doc('${diaryList.listDate.month}.${diaryList.listDate.year}')
+        .doc(getDiaryListName(diaryList))
         .collection(Collections.diaryColumnsCollection)
-        .doc('Date')
+        .doc('Date') //const value
         .collection(Collections.diaryCellsCollection);
     final daysInMonth = DateUtils.getDaysInMonth(
         diaryList.listDate.year, diaryList.listDate.month);
@@ -116,7 +127,7 @@ class DiaryCellService {
             content: j,
           );
           await cellsCollection
-              .doc('${newCell.columnPosition}.${newCell.day}')
+              .doc(getDiaryCellName(newCell))
               .set(newCell.toFirestore());
         } else {
           final day = DateUtils.addDaysToDate(firstDayOfMonth, j - 1);
@@ -128,7 +139,7 @@ class DiaryCellService {
               dataType: DataTypesEnum.text,
               content: dayOfTheWeek);
           await cellsCollection
-              .doc('${newCell.columnPosition}.${newCell.day}')
+              .doc(getDiaryCellName(newCell))
               .set(newCell.toFirestore());
         }
       }

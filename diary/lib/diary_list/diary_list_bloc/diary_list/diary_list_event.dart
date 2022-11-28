@@ -16,4 +16,13 @@ class DiaryListEvent with _$DiaryListEvent {
     required DiaryList diaryList,
     required List<DiaryColumn> diaryColumns,
   }) = GetDiaryCellsEvent;
+
+  const factory DiaryListEvent.selectDiaryCell({
+    required DiaryCell diaryCell,
+  }) = SelectDiaryCellEvent;
+
+  const factory DiaryListEvent.changeDiaryCell({
+    required DiaryCell diaryCell,
+    String? textFieldText,
+  }) = ChangeDiaryCellEvent;
 }

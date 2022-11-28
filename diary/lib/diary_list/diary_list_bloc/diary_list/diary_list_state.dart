@@ -18,4 +18,11 @@ class DiaryListState with _$DiaryListState {
     required List<DiaryColumn> diaryColumns,
     required List<DiaryCell> diaryCells,
   }) = _Loaded;
+
+  const factory DiaryListState.cellSelected({
+    required DiaryList diaryList,
+    required List<DiaryColumn> diaryColumns,
+    required List<DiaryCell> diaryCells,
+    required DiaryCell selectedCell,
+  }) = _CellSelected;
 }
