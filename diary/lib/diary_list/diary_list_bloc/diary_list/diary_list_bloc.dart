@@ -30,6 +30,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         ((event, emit) => _onSelectDiaryCellEvent(event, emit)));
     on<ChangeDiaryCellEvent>(
         ((event, emit) => _onChangeDiaryCellEvent(event, emit)));
+    on<UpdateDiaryCellEvent>(
+        ((event, emit) => _onUpdateDiaryCellEvent(event, emit)));
   }
 
   Future<void> _onCreateSampleEvent(
@@ -89,26 +91,6 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       diaryCells.addAll(newCells);
     }
 
-    //Если добавить проверку на стэйт здесь?
-    //Работает, но не обновляется контроллер
-    // state.maybeWhen(
-    //   cellSelected: (diaryList, diaryColumns, cells, selectedCell) {
-    //     emit(DiaryListState.cellSelected(
-    //         diaryList: diaryList,
-    //         diaryColumns: diaryColumns,
-    //         diaryCells: diaryCells,
-    //         selectedCell: selectedCell));
-    //   },
-    //   orElse: () {
-    //     emit(
-    //       DiaryListState.loaded(
-    //         diaryList: event.diaryList,
-    //         diaryColumns: event.diaryColumns,
-    //         diaryCells: diaryCells,
-    //       ),
-    //     );
-    //   },
-    // );
     emit(
       DiaryListState.loaded(
         diaryList: event.diaryList,
@@ -119,6 +101,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
   }
 
   Future<void> _onSelectDiaryCellEvent(
+    //seemed to should be refactored in future
     SelectDiaryCellEvent event,
     Emitter<DiaryListState> emit,
   ) async {
@@ -130,20 +113,6 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         selectedCell: event.diaryCell,
       ));
     }, cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell) {
-      // if (event.textFieldText != null &&
-      //     event.textFieldText!.isNotEmpty &&
-      //     event.textFieldText != selectedCell.content) {
-      //   print('Text: ${event.textFieldText}');
-      //   print('Content: ${selectedCell.content}');
-      //   _diaryCellService.update(
-      //       diaryList: diaryList,
-      //       diaryCell: selectedCell,
-      //       dataType: selectedCell.dataType,
-      //       content: event.textFieldText);
-      //   add(GetDiaryCellsEvent(
-      //       diaryList: diaryList, diaryColumns: diaryColumns));
-      //   add(SelectDiaryCellEvent(diaryCell: selectedCell));
-      // }
       emit(DiaryListState.cellSelected(
         diaryList: diaryList,
         diaryColumns: diaryColumns,
@@ -166,13 +135,30 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             dataType: selectedCell.dataType,
             content: event.textFieldText,
           );
-          final index = diaryCells.indexOf(selectedCell);
-          diaryCells.elementAt(index).copyWith(content: event.textFieldText);
-          add(
-            GetDiaryCellsEvent(
-                diaryList: diaryList, diaryColumns: diaryColumns),
-          );
+
+          add(UpdateDiaryCellEvent(textFieldText: event.textFieldText));
         }
+      },
+    );
+  }
+
+  Future<void> _onUpdateDiaryCellEvent(
+    UpdateDiaryCellEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell) {
+        final index = diaryCells.indexOf(selectedCell);
+        selectedCell = selectedCell.copyWith(content: event.textFieldText);
+        List<DiaryCell> newCells = List<DiaryCell>.empty(growable: true);
+        for (var i = 0; i < diaryCells.length; i++) {
+          i == index ? newCells.add(selectedCell) : newCells.add(diaryCells[i]);
+        }
+        emit(DiaryListState.loaded(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: newCells));
+        add(SelectDiaryCellEvent(diaryCell: selectedCell));
       },
     );
   }

@@ -34,10 +34,9 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
   Widget build(BuildContext context) {
     return TextField(
       controller: widget.controller,
-      onEditingComplete: () {
-        widget.onChanged(widget.controller.text);
+      onChanged: (value) {
+        widget.onChanged(value);
       },
-      //onChanged: ((value) => widget.onChanged(value)),
     );
   }
 }

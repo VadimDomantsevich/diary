@@ -25,4 +25,8 @@ class DiaryListEvent with _$DiaryListEvent {
     required DiaryCell diaryCell,
     String? textFieldText,
   }) = ChangeDiaryCellEvent;
+
+  const factory DiaryListEvent.updateDiaryCell({
+    String? textFieldText,
+  }) = UpdateDiaryCellEvent;
 }
