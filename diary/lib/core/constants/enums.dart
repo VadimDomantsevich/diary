@@ -5,3 +5,15 @@ enum DataTypesEnum {
   time,
   timeInterval,
 }
+
+enum AlignmentsEnum{
+  bottomCenter,
+  bottomLeft,
+  bottomRight,
+  center,
+  centerLeft,
+  centerRight,
+  topCenter,
+  topLeft,
+  topRight,
+}

@@ -7,5 +7,7 @@ class Collections {
 
   static const diaryCellsCollection = 'cells';
 
+  static const diaryCellSettingsCollection = 'cellSettings';
+
   static const usersSettingsCollection = 'settings';
 }

@@ -23,13 +23,17 @@ mixin _$DiaryListState {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         columnsLoaded,
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)
         loaded,
     required TResult Function(
             DiaryList diaryList,
             List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
             DiaryCell selectedCell)
         cellSelected,
   }) =>
@@ -40,11 +44,18 @@ mixin _$DiaryListState {
     TResult? Function(DiaryList diaryList)? listLoaded,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)?
         loaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
+            DiaryCell selectedCell)?
         cellSelected,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,11 +65,18 @@ mixin _$DiaryListState {
     TResult Function(DiaryList diaryList)? listLoaded,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)?
         loaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
+            DiaryCell selectedCell)?
         cellSelected,
     required TResult orElse(),
   }) =>
@@ -153,13 +171,17 @@ class _$_Initial implements _Initial {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         columnsLoaded,
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)
         loaded,
     required TResult Function(
             DiaryList diaryList,
             List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
             DiaryCell selectedCell)
         cellSelected,
   }) {
@@ -173,11 +195,18 @@ class _$_Initial implements _Initial {
     TResult? Function(DiaryList diaryList)? listLoaded,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)?
         loaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
+            DiaryCell selectedCell)?
         cellSelected,
   }) {
     return initial?.call();
@@ -190,11 +219,18 @@ class _$_Initial implements _Initial {
     TResult Function(DiaryList diaryList)? listLoaded,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)?
         loaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
+            DiaryCell selectedCell)?
         cellSelected,
     required TResult orElse(),
   }) {
@@ -319,13 +355,17 @@ class _$_ListLoaded implements _ListLoaded {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         columnsLoaded,
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)
         loaded,
     required TResult Function(
             DiaryList diaryList,
             List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
             DiaryCell selectedCell)
         cellSelected,
   }) {
@@ -339,11 +379,18 @@ class _$_ListLoaded implements _ListLoaded {
     TResult? Function(DiaryList diaryList)? listLoaded,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)?
         loaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
+            DiaryCell selectedCell)?
         cellSelected,
   }) {
     return listLoaded?.call(diaryList);
@@ -356,11 +403,18 @@ class _$_ListLoaded implements _ListLoaded {
     TResult Function(DiaryList diaryList)? listLoaded,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)?
         loaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
+            DiaryCell selectedCell)?
         cellSelected,
     required TResult orElse(),
   }) {
@@ -507,13 +561,17 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         columnsLoaded,
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)
         loaded,
     required TResult Function(
             DiaryList diaryList,
             List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
             DiaryCell selectedCell)
         cellSelected,
   }) {
@@ -527,11 +585,18 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     TResult? Function(DiaryList diaryList)? listLoaded,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)?
         loaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
+            DiaryCell selectedCell)?
         cellSelected,
   }) {
     return columnsLoaded?.call(diaryList, diaryColumns);
@@ -544,11 +609,18 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     TResult Function(DiaryList diaryList)? listLoaded,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)?
         loaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
+            DiaryCell selectedCell)?
         cellSelected,
     required TResult orElse(),
   }) {
@@ -619,7 +691,8 @@ abstract class _$$_LoadedCopyWith<$Res> {
   $Res call(
       {DiaryList diaryList,
       List<DiaryColumn> diaryColumns,
-      List<DiaryCell> diaryCells});
+      List<DiaryCell> diaryCells,
+      List<DiaryCellSettings> diaryCellsSettings});
 }
 
 /// @nodoc
@@ -635,6 +708,7 @@ class __$$_LoadedCopyWithImpl<$Res>
     Object? diaryList = null,
     Object? diaryColumns = null,
     Object? diaryCells = null,
+    Object? diaryCellsSettings = null,
   }) {
     return _then(_$_Loaded(
       diaryList: null == diaryList
@@ -649,6 +723,10 @@ class __$$_LoadedCopyWithImpl<$Res>
           ? _value._diaryCells
           : diaryCells // ignore: cast_nullable_to_non_nullable
               as List<DiaryCell>,
+      diaryCellsSettings: null == diaryCellsSettings
+          ? _value._diaryCellsSettings
+          : diaryCellsSettings // ignore: cast_nullable_to_non_nullable
+              as List<DiaryCellSettings>,
     ));
   }
 }
@@ -659,9 +737,11 @@ class _$_Loaded implements _Loaded {
   const _$_Loaded(
       {required this.diaryList,
       required final List<DiaryColumn> diaryColumns,
-      required final List<DiaryCell> diaryCells})
+      required final List<DiaryCell> diaryCells,
+      required final List<DiaryCellSettings> diaryCellsSettings})
       : _diaryColumns = diaryColumns,
-        _diaryCells = diaryCells;
+        _diaryCells = diaryCells,
+        _diaryCellsSettings = diaryCellsSettings;
 
   @override
   final DiaryList diaryList;
@@ -679,9 +759,18 @@ class _$_Loaded implements _Loaded {
     return EqualUnmodifiableListView(_diaryCells);
   }
 
+//List<DiaryCellSettings> settings?
+  final List<DiaryCellSettings> _diaryCellsSettings;
+//List<DiaryCellSettings> settings?
+  @override
+  List<DiaryCellSettings> get diaryCellsSettings {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_diaryCellsSettings);
+  }
+
   @override
   String toString() {
-    return 'DiaryListState.loaded(diaryList: $diaryList, diaryColumns: $diaryColumns, diaryCells: $diaryCells)';
+    return 'DiaryListState.loaded(diaryList: $diaryList, diaryColumns: $diaryColumns, diaryCells: $diaryCells, diaryCellsSettings: $diaryCellsSettings)';
   }
 
   @override
@@ -694,7 +783,9 @@ class _$_Loaded implements _Loaded {
             const DeepCollectionEquality()
                 .equals(other._diaryColumns, _diaryColumns) &&
             const DeepCollectionEquality()
-                .equals(other._diaryCells, _diaryCells));
+                .equals(other._diaryCells, _diaryCells) &&
+            const DeepCollectionEquality()
+                .equals(other._diaryCellsSettings, _diaryCellsSettings));
   }
 
   @override
@@ -702,7 +793,8 @@ class _$_Loaded implements _Loaded {
       runtimeType,
       diaryList,
       const DeepCollectionEquality().hash(_diaryColumns),
-      const DeepCollectionEquality().hash(_diaryCells));
+      const DeepCollectionEquality().hash(_diaryCells),
+      const DeepCollectionEquality().hash(_diaryCellsSettings));
 
   @JsonKey(ignore: true)
   @override
@@ -718,17 +810,21 @@ class _$_Loaded implements _Loaded {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         columnsLoaded,
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)
         loaded,
     required TResult Function(
             DiaryList diaryList,
             List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
             DiaryCell selectedCell)
         cellSelected,
   }) {
-    return loaded(diaryList, diaryColumns, diaryCells);
+    return loaded(diaryList, diaryColumns, diaryCells, diaryCellsSettings);
   }
 
   @override
@@ -738,14 +834,22 @@ class _$_Loaded implements _Loaded {
     TResult? Function(DiaryList diaryList)? listLoaded,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)?
         loaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
+            DiaryCell selectedCell)?
         cellSelected,
   }) {
-    return loaded?.call(diaryList, diaryColumns, diaryCells);
+    return loaded?.call(
+        diaryList, diaryColumns, diaryCells, diaryCellsSettings);
   }
 
   @override
@@ -755,16 +859,23 @@ class _$_Loaded implements _Loaded {
     TResult Function(DiaryList diaryList)? listLoaded,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)?
         loaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
+            DiaryCell selectedCell)?
         cellSelected,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(diaryList, diaryColumns, diaryCells);
+      return loaded(diaryList, diaryColumns, diaryCells, diaryCellsSettings);
     }
     return orElse();
   }
@@ -814,11 +925,13 @@ abstract class _Loaded implements DiaryListState {
   const factory _Loaded(
       {required final DiaryList diaryList,
       required final List<DiaryColumn> diaryColumns,
-      required final List<DiaryCell> diaryCells}) = _$_Loaded;
+      required final List<DiaryCell> diaryCells,
+      required final List<DiaryCellSettings> diaryCellsSettings}) = _$_Loaded;
 
   DiaryList get diaryList;
   List<DiaryColumn> get diaryColumns;
-  List<DiaryCell> get diaryCells;
+  List<DiaryCell> get diaryCells; //List<DiaryCellSettings> settings?
+  List<DiaryCellSettings> get diaryCellsSettings;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -834,6 +947,7 @@ abstract class _$$_CellSelectedCopyWith<$Res> {
       {DiaryList diaryList,
       List<DiaryColumn> diaryColumns,
       List<DiaryCell> diaryCells,
+      List<DiaryCellSettings> diaryCellsSettings,
       DiaryCell selectedCell});
 }
 
@@ -851,6 +965,7 @@ class __$$_CellSelectedCopyWithImpl<$Res>
     Object? diaryList = null,
     Object? diaryColumns = null,
     Object? diaryCells = null,
+    Object? diaryCellsSettings = null,
     Object? selectedCell = null,
   }) {
     return _then(_$_CellSelected(
@@ -866,6 +981,10 @@ class __$$_CellSelectedCopyWithImpl<$Res>
           ? _value._diaryCells
           : diaryCells // ignore: cast_nullable_to_non_nullable
               as List<DiaryCell>,
+      diaryCellsSettings: null == diaryCellsSettings
+          ? _value._diaryCellsSettings
+          : diaryCellsSettings // ignore: cast_nullable_to_non_nullable
+              as List<DiaryCellSettings>,
       selectedCell: null == selectedCell
           ? _value.selectedCell
           : selectedCell // ignore: cast_nullable_to_non_nullable
@@ -881,9 +1000,11 @@ class _$_CellSelected implements _CellSelected {
       {required this.diaryList,
       required final List<DiaryColumn> diaryColumns,
       required final List<DiaryCell> diaryCells,
+      required final List<DiaryCellSettings> diaryCellsSettings,
       required this.selectedCell})
       : _diaryColumns = diaryColumns,
-        _diaryCells = diaryCells;
+        _diaryCells = diaryCells,
+        _diaryCellsSettings = diaryCellsSettings;
 
   @override
   final DiaryList diaryList;
@@ -901,12 +1022,19 @@ class _$_CellSelected implements _CellSelected {
     return EqualUnmodifiableListView(_diaryCells);
   }
 
+  final List<DiaryCellSettings> _diaryCellsSettings;
+  @override
+  List<DiaryCellSettings> get diaryCellsSettings {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_diaryCellsSettings);
+  }
+
   @override
   final DiaryCell selectedCell;
 
   @override
   String toString() {
-    return 'DiaryListState.cellSelected(diaryList: $diaryList, diaryColumns: $diaryColumns, diaryCells: $diaryCells, selectedCell: $selectedCell)';
+    return 'DiaryListState.cellSelected(diaryList: $diaryList, diaryColumns: $diaryColumns, diaryCells: $diaryCells, diaryCellsSettings: $diaryCellsSettings, selectedCell: $selectedCell)';
   }
 
   @override
@@ -920,6 +1048,8 @@ class _$_CellSelected implements _CellSelected {
                 .equals(other._diaryColumns, _diaryColumns) &&
             const DeepCollectionEquality()
                 .equals(other._diaryCells, _diaryCells) &&
+            const DeepCollectionEquality()
+                .equals(other._diaryCellsSettings, _diaryCellsSettings) &&
             (identical(other.selectedCell, selectedCell) ||
                 other.selectedCell == selectedCell));
   }
@@ -930,6 +1060,7 @@ class _$_CellSelected implements _CellSelected {
       diaryList,
       const DeepCollectionEquality().hash(_diaryColumns),
       const DeepCollectionEquality().hash(_diaryCells),
+      const DeepCollectionEquality().hash(_diaryCellsSettings),
       selectedCell);
 
   @JsonKey(ignore: true)
@@ -946,17 +1077,22 @@ class _$_CellSelected implements _CellSelected {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         columnsLoaded,
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)
         loaded,
     required TResult Function(
             DiaryList diaryList,
             List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
             DiaryCell selectedCell)
         cellSelected,
   }) {
-    return cellSelected(diaryList, diaryColumns, diaryCells, selectedCell);
+    return cellSelected(
+        diaryList, diaryColumns, diaryCells, diaryCellsSettings, selectedCell);
   }
 
   @override
@@ -966,15 +1102,22 @@ class _$_CellSelected implements _CellSelected {
     TResult? Function(DiaryList diaryList)? listLoaded,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)?
         loaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
+            DiaryCell selectedCell)?
         cellSelected,
   }) {
     return cellSelected?.call(
-        diaryList, diaryColumns, diaryCells, selectedCell);
+        diaryList, diaryColumns, diaryCells, diaryCellsSettings, selectedCell);
   }
 
   @override
@@ -984,16 +1127,24 @@ class _$_CellSelected implements _CellSelected {
     TResult Function(DiaryList diaryList)? listLoaded,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings)?
         loaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<DiaryCellSettings> diaryCellsSettings,
+            DiaryCell selectedCell)?
         cellSelected,
     required TResult orElse(),
   }) {
     if (cellSelected != null) {
-      return cellSelected(diaryList, diaryColumns, diaryCells, selectedCell);
+      return cellSelected(diaryList, diaryColumns, diaryCells,
+          diaryCellsSettings, selectedCell);
     }
     return orElse();
   }
@@ -1044,11 +1195,13 @@ abstract class _CellSelected implements DiaryListState {
       {required final DiaryList diaryList,
       required final List<DiaryColumn> diaryColumns,
       required final List<DiaryCell> diaryCells,
+      required final List<DiaryCellSettings> diaryCellsSettings,
       required final DiaryCell selectedCell}) = _$_CellSelected;
 
   DiaryList get diaryList;
   List<DiaryColumn> get diaryColumns;
   List<DiaryCell> get diaryCells;
+  List<DiaryCellSettings> get diaryCellsSettings;
   DiaryCell get selectedCell;
   @JsonKey(ignore: true)
   _$$_CellSelectedCopyWith<_$_CellSelected> get copyWith =>

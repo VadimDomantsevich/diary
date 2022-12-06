@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diary/core/constants/collections.dart';
+import 'package:diary/core/constants/constants.dart';
 import 'package:diary/core/constants/enums.dart';
 import 'package:diary/model/diary_cell.dart';
 import 'package:diary/model/diary_column.dart';
@@ -43,6 +44,22 @@ CollectionReference getDiaryColumnsCollection({
     getDiaryListDoc(diaryList: diaryList)
         .collection(Collections.diaryColumnsCollection);
 
+Future<CollectionReference> getDiaryCellsCollection({
+  required DiaryList diaryList,
+  required DiaryColumn diaryColumn,
+}) async {
+  final docByName = await getDiaryColumnsCollection(diaryList: diaryList)
+      .where(
+        Constants.diaryColumnNameField,
+        isEqualTo: diaryColumn.name,
+      )
+      .get();
+  final columnDocPath = docByName.docs.first.reference.path;
+  return FirebaseFirestore.instance
+      .doc(columnDocPath)
+      .collection(Collections.diaryCellsCollection);
+}
+
 DocumentReference getDiaryCellDoc({
   required DiaryList diaryList,
   required DiaryCell diaryCell,
@@ -54,6 +71,28 @@ DocumentReference getDiaryCellDoc({
         .collection(Collections.diaryCellsCollection)
         .doc(getDiaryCellName(diaryCell));
 
+Alignment converterAlignmentFromAlignmentsEnum(AlignmentsEnum alignment) {
+  switch (alignment) {
+    case AlignmentsEnum.bottomCenter:
+      return Alignment.bottomCenter;
+    case AlignmentsEnum.bottomLeft:
+      return Alignment.bottomLeft;
+    case AlignmentsEnum.bottomRight:
+      return Alignment.bottomRight;
+    case AlignmentsEnum.center:
+      return Alignment.center;
+    case AlignmentsEnum.centerLeft:
+      return Alignment.centerLeft;
+    case AlignmentsEnum.centerRight:
+      return Alignment.centerRight;
+    case AlignmentsEnum.topCenter:
+      return Alignment.topCenter;
+    case AlignmentsEnum.topLeft:
+      return Alignment.topLeft;
+    case AlignmentsEnum.topRight:
+      return Alignment.topRight;
+  }
+}
 // TextInputType converterFromDataTypesEnum(DataTypesEnum dataType) {
 //   switch (dataType) {
 //     case DataTypesEnum.integerNumber:

@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
-import 'package:diary/model/diary_column.dart';
 
 part 'diary_list.g.dart';
 
