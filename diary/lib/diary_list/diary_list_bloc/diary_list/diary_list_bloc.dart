@@ -41,12 +41,16 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     _diaryListService.create(date: DateTime.now());
     final diaryList = await _diaryListService.getByDate(date: DateTime.now());
     _diaryColumnService.createDateColumn(diaryList: diaryList);
-    _diaryCellService.createDateCells(diaryList: diaryList);
+    final dateColumn =
+        await _diaryColumnService.getDateColumn(diaryList: diaryList);
+    _diaryCellService.createDateCells(
+      diaryList: diaryList,
+      diaryColumn: dateColumn,
+    );
     //create other columns
     add(DiaryListEvent.getDiaryList(date: DateTime.now()));
   }
 
-  //Null checks?
   Future<void> _onGetDiaryListEvent(
     GetDiaryListEvent event,
     Emitter<DiaryListState> emit,
@@ -81,26 +85,19 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     Emitter<DiaryListState> emit,
   ) async {
     List<DiaryCell> diaryCells = List<DiaryCell>.empty(growable: true);
-    List<DiaryCellSettings> diaryCellsSettings =
-        List<DiaryCellSettings>.empty(growable: true);
+
     for (var column in event.diaryColumns) {
       final newCells = await _diaryCellService.getAll(
         diaryList: event.diaryList,
         diaryColumn: column,
       );
       diaryCells.addAll(newCells);
-      final newCellsSettings = await _diaryCellService.getAllSettings(
-        diaryList: event.diaryList,
-        diaryColumn: column,
-      );
-      diaryCellsSettings.addAll(newCellsSettings);
     }
     emit(
       DiaryListState.loaded(
         diaryList: event.diaryList,
         diaryColumns: event.diaryColumns,
         diaryCells: diaryCells,
-        diaryCellsSettings: diaryCellsSettings,
       ),
     );
   }
@@ -110,26 +107,18 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     SelectDiaryCellEvent event,
     Emitter<DiaryListState> emit,
   ) async {
-    state.whenOrNull(loaded:
-        (diaryList, diaryColumns, diaryCells, diaryCellsSettings) async {
-      // final settings = await _diaryCellService.getCellSettings(
-      //     diaryList: diaryList, diaryCell: event.diaryCell);
+    state.whenOrNull(loaded: (diaryList, diaryColumns, diaryCells) async {
       emit(DiaryListState.cellSelected(
         diaryList: diaryList,
         diaryColumns: diaryColumns,
         diaryCells: diaryCells,
-        diaryCellsSettings: diaryCellsSettings,
         selectedCell: event.diaryCell,
       ));
-    }, cellSelected: (diaryList, diaryColumns, diaryCells, diaryCellSettings,
-        selectedCell) async {
-      // final settings = await _diaryCellService.getCellSettings(
-      //     diaryList: diaryList, diaryCell: event.diaryCell);
+    }, cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell) async {
       emit(DiaryListState.cellSelected(
         diaryList: diaryList,
         diaryColumns: diaryColumns,
         diaryCells: diaryCells,
-        diaryCellsSettings: diaryCellSettings,
         selectedCell: event.diaryCell,
       ));
     });
@@ -140,8 +129,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      cellSelected: (diaryList, diaryColumns, diaryCells, diaryCellsSettings,
-          selectedCell) async {
+      cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell) async {
         if (event.textFieldText != selectedCell.content.toString()) {
           await _diaryCellService.update(
             diaryList: diaryList,
@@ -162,27 +150,17 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      cellSelected: (diaryList, diaryColumns, diaryCells, diaryCellsSettings,
-          selectedCell) async {
+      cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell) async {
         final index = diaryCells.indexOf(selectedCell);
-        selectedCell = selectedCell.copyWith(content: event.textFieldText);//copyWith не работает?
-        // List<DiaryCell> newCells = List<DiaryCell>.empty(growable: true);
-        // for (var i = 0; i < diaryCells.length; i++) {
-        //   i == index ? newCells.add(selectedCell) : newCells.add(diaryCells[i]);
-        // }
-        // List<DiaryCellSettings> settings =
-        //     await _diaryCellService.getAllSettings(
-        //   diaryList: diaryList,
-        //   diaryCells: newCells,
-        // );
-        List<DiaryCell> newCells = diaryCells.toList(growable: true);//growable?
+        selectedCell = selectedCell.copyWith(
+            content: event.textFieldText);
+        List<DiaryCell> newCells =
+            diaryCells.toList();
         newCells[index] = selectedCell;
-        // List<DiaryCellSettings> settings = diaryCellsSettings;
         emit(DiaryListState.loaded(
           diaryList: diaryList,
           diaryColumns: diaryColumns,
           diaryCells: newCells,
-          diaryCellsSettings: diaryCellsSettings,
         ));
         add(SelectDiaryCellEvent(diaryCell: selectedCell));
       },

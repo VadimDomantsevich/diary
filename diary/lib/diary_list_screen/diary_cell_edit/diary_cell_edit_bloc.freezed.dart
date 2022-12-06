@@ -18,35 +18,23 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DiaryCellEditState {
   DiaryList get diaryList => throw _privateConstructorUsedError;
   DiaryCell get diaryCell => throw _privateConstructorUsedError;
-  DiaryCellSettings get diaryCellSettings => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)
+    required TResult Function(DiaryList diaryList, DiaryCell diaryCell)
         cellSelected,
-    required TResult Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)
-        editing,
+    required TResult Function(DiaryList diaryList, DiaryCell diaryCell) editing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)?
-        cellSelected,
-    TResult? Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)?
-        editing,
+    TResult? Function(DiaryList diaryList, DiaryCell diaryCell)? cellSelected,
+    TResult? Function(DiaryList diaryList, DiaryCell diaryCell)? editing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)?
-        cellSelected,
-    TResult Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)?
-        editing,
+    TResult Function(DiaryList diaryList, DiaryCell diaryCell)? cellSelected,
+    TResult Function(DiaryList diaryList, DiaryCell diaryCell)? editing,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -81,10 +69,7 @@ abstract class $DiaryCellEditStateCopyWith<$Res> {
           DiaryCellEditState value, $Res Function(DiaryCellEditState) then) =
       _$DiaryCellEditStateCopyWithImpl<$Res, DiaryCellEditState>;
   @useResult
-  $Res call(
-      {DiaryList diaryList,
-      DiaryCell diaryCell,
-      DiaryCellSettings diaryCellSettings});
+  $Res call({DiaryList diaryList, DiaryCell diaryCell});
 }
 
 /// @nodoc
@@ -102,7 +87,6 @@ class _$DiaryCellEditStateCopyWithImpl<$Res, $Val extends DiaryCellEditState>
   $Res call({
     Object? diaryList = null,
     Object? diaryCell = null,
-    Object? diaryCellSettings = null,
   }) {
     return _then(_value.copyWith(
       diaryList: null == diaryList
@@ -113,10 +97,6 @@ class _$DiaryCellEditStateCopyWithImpl<$Res, $Val extends DiaryCellEditState>
           ? _value.diaryCell
           : diaryCell // ignore: cast_nullable_to_non_nullable
               as DiaryCell,
-      diaryCellSettings: null == diaryCellSettings
-          ? _value.diaryCellSettings
-          : diaryCellSettings // ignore: cast_nullable_to_non_nullable
-              as DiaryCellSettings,
     ) as $Val);
   }
 }
@@ -129,10 +109,7 @@ abstract class _$$_CellSelectedStateCopyWith<$Res>
       __$$_CellSelectedStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {DiaryList diaryList,
-      DiaryCell diaryCell,
-      DiaryCellSettings diaryCellSettings});
+  $Res call({DiaryList diaryList, DiaryCell diaryCell});
 }
 
 /// @nodoc
@@ -148,7 +125,6 @@ class __$$_CellSelectedStateCopyWithImpl<$Res>
   $Res call({
     Object? diaryList = null,
     Object? diaryCell = null,
-    Object? diaryCellSettings = null,
   }) {
     return _then(_$_CellSelectedState(
       diaryList: null == diaryList
@@ -159,10 +135,6 @@ class __$$_CellSelectedStateCopyWithImpl<$Res>
           ? _value.diaryCell
           : diaryCell // ignore: cast_nullable_to_non_nullable
               as DiaryCell,
-      diaryCellSettings: null == diaryCellSettings
-          ? _value.diaryCellSettings
-          : diaryCellSettings // ignore: cast_nullable_to_non_nullable
-              as DiaryCellSettings,
     ));
   }
 }
@@ -171,20 +143,16 @@ class __$$_CellSelectedStateCopyWithImpl<$Res>
 
 class _$_CellSelectedState implements _CellSelectedState {
   const _$_CellSelectedState(
-      {required this.diaryList,
-      required this.diaryCell,
-      required this.diaryCellSettings});
+      {required this.diaryList, required this.diaryCell});
 
   @override
   final DiaryList diaryList;
   @override
   final DiaryCell diaryCell;
-  @override
-  final DiaryCellSettings diaryCellSettings;
 
   @override
   String toString() {
-    return 'DiaryCellEditState.cellSelected(diaryList: $diaryList, diaryCell: $diaryCell, diaryCellSettings: $diaryCellSettings)';
+    return 'DiaryCellEditState.cellSelected(diaryList: $diaryList, diaryCell: $diaryCell)';
   }
 
   @override
@@ -195,14 +163,11 @@ class _$_CellSelectedState implements _CellSelectedState {
             (identical(other.diaryList, diaryList) ||
                 other.diaryList == diaryList) &&
             (identical(other.diaryCell, diaryCell) ||
-                other.diaryCell == diaryCell) &&
-            (identical(other.diaryCellSettings, diaryCellSettings) ||
-                other.diaryCellSettings == diaryCellSettings));
+                other.diaryCell == diaryCell));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, diaryList, diaryCell, diaryCellSettings);
+  int get hashCode => Object.hash(runtimeType, diaryList, diaryCell);
 
   @JsonKey(ignore: true)
   @override
@@ -214,42 +179,31 @@ class _$_CellSelectedState implements _CellSelectedState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)
+    required TResult Function(DiaryList diaryList, DiaryCell diaryCell)
         cellSelected,
-    required TResult Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)
-        editing,
+    required TResult Function(DiaryList diaryList, DiaryCell diaryCell) editing,
   }) {
-    return cellSelected(diaryList, diaryCell, diaryCellSettings);
+    return cellSelected(diaryList, diaryCell);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)?
-        cellSelected,
-    TResult? Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)?
-        editing,
+    TResult? Function(DiaryList diaryList, DiaryCell diaryCell)? cellSelected,
+    TResult? Function(DiaryList diaryList, DiaryCell diaryCell)? editing,
   }) {
-    return cellSelected?.call(diaryList, diaryCell, diaryCellSettings);
+    return cellSelected?.call(diaryList, diaryCell);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)?
-        cellSelected,
-    TResult Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)?
-        editing,
+    TResult Function(DiaryList diaryList, DiaryCell diaryCell)? cellSelected,
+    TResult Function(DiaryList diaryList, DiaryCell diaryCell)? editing,
     required TResult orElse(),
   }) {
     if (cellSelected != null) {
-      return cellSelected(diaryList, diaryCell, diaryCellSettings);
+      return cellSelected(diaryList, diaryCell);
     }
     return orElse();
   }
@@ -288,17 +242,13 @@ class _$_CellSelectedState implements _CellSelectedState {
 
 abstract class _CellSelectedState implements DiaryCellEditState {
   const factory _CellSelectedState(
-          {required final DiaryList diaryList,
-          required final DiaryCell diaryCell,
-          required final DiaryCellSettings diaryCellSettings}) =
-      _$_CellSelectedState;
+      {required final DiaryList diaryList,
+      required final DiaryCell diaryCell}) = _$_CellSelectedState;
 
   @override
   DiaryList get diaryList;
   @override
   DiaryCell get diaryCell;
-  @override
-  DiaryCellSettings get diaryCellSettings;
   @override
   @JsonKey(ignore: true)
   _$$_CellSelectedStateCopyWith<_$_CellSelectedState> get copyWith =>
@@ -313,10 +263,7 @@ abstract class _$$_CellEditingStateCopyWith<$Res>
       __$$_CellEditingStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {DiaryList diaryList,
-      DiaryCell diaryCell,
-      DiaryCellSettings diaryCellSettings});
+  $Res call({DiaryList diaryList, DiaryCell diaryCell});
 }
 
 /// @nodoc
@@ -332,7 +279,6 @@ class __$$_CellEditingStateCopyWithImpl<$Res>
   $Res call({
     Object? diaryList = null,
     Object? diaryCell = null,
-    Object? diaryCellSettings = null,
   }) {
     return _then(_$_CellEditingState(
       diaryList: null == diaryList
@@ -343,10 +289,6 @@ class __$$_CellEditingStateCopyWithImpl<$Res>
           ? _value.diaryCell
           : diaryCell // ignore: cast_nullable_to_non_nullable
               as DiaryCell,
-      diaryCellSettings: null == diaryCellSettings
-          ? _value.diaryCellSettings
-          : diaryCellSettings // ignore: cast_nullable_to_non_nullable
-              as DiaryCellSettings,
     ));
   }
 }
@@ -354,21 +296,16 @@ class __$$_CellEditingStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CellEditingState implements _CellEditingState {
-  const _$_CellEditingState(
-      {required this.diaryList,
-      required this.diaryCell,
-      required this.diaryCellSettings});
+  const _$_CellEditingState({required this.diaryList, required this.diaryCell});
 
   @override
   final DiaryList diaryList;
   @override
   final DiaryCell diaryCell;
-  @override
-  final DiaryCellSettings diaryCellSettings;
 
   @override
   String toString() {
-    return 'DiaryCellEditState.editing(diaryList: $diaryList, diaryCell: $diaryCell, diaryCellSettings: $diaryCellSettings)';
+    return 'DiaryCellEditState.editing(diaryList: $diaryList, diaryCell: $diaryCell)';
   }
 
   @override
@@ -379,14 +316,11 @@ class _$_CellEditingState implements _CellEditingState {
             (identical(other.diaryList, diaryList) ||
                 other.diaryList == diaryList) &&
             (identical(other.diaryCell, diaryCell) ||
-                other.diaryCell == diaryCell) &&
-            (identical(other.diaryCellSettings, diaryCellSettings) ||
-                other.diaryCellSettings == diaryCellSettings));
+                other.diaryCell == diaryCell));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, diaryList, diaryCell, diaryCellSettings);
+  int get hashCode => Object.hash(runtimeType, diaryList, diaryCell);
 
   @JsonKey(ignore: true)
   @override
@@ -397,42 +331,31 @@ class _$_CellEditingState implements _CellEditingState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)
+    required TResult Function(DiaryList diaryList, DiaryCell diaryCell)
         cellSelected,
-    required TResult Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)
-        editing,
+    required TResult Function(DiaryList diaryList, DiaryCell diaryCell) editing,
   }) {
-    return editing(diaryList, diaryCell, diaryCellSettings);
+    return editing(diaryList, diaryCell);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)?
-        cellSelected,
-    TResult? Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)?
-        editing,
+    TResult? Function(DiaryList diaryList, DiaryCell diaryCell)? cellSelected,
+    TResult? Function(DiaryList diaryList, DiaryCell diaryCell)? editing,
   }) {
-    return editing?.call(diaryList, diaryCell, diaryCellSettings);
+    return editing?.call(diaryList, diaryCell);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)?
-        cellSelected,
-    TResult Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings diaryCellSettings)?
-        editing,
+    TResult Function(DiaryList diaryList, DiaryCell diaryCell)? cellSelected,
+    TResult Function(DiaryList diaryList, DiaryCell diaryCell)? editing,
     required TResult orElse(),
   }) {
     if (editing != null) {
-      return editing(diaryList, diaryCell, diaryCellSettings);
+      return editing(diaryList, diaryCell);
     }
     return orElse();
   }
@@ -471,17 +394,13 @@ class _$_CellEditingState implements _CellEditingState {
 
 abstract class _CellEditingState implements DiaryCellEditState {
   const factory _CellEditingState(
-          {required final DiaryList diaryList,
-          required final DiaryCell diaryCell,
-          required final DiaryCellSettings diaryCellSettings}) =
-      _$_CellEditingState;
+      {required final DiaryList diaryList,
+      required final DiaryCell diaryCell}) = _$_CellEditingState;
 
   @override
   DiaryList get diaryList;
   @override
   DiaryCell get diaryCell;
-  @override
-  DiaryCellSettings get diaryCellSettings;
   @override
   @JsonKey(ignore: true)
   _$$_CellEditingStateCopyWith<_$_CellEditingState> get copyWith =>
@@ -492,26 +411,20 @@ abstract class _CellEditingState implements DiaryCellEditState {
 mixin _$DiaryCellEditEvent {
   DiaryList get diaryList => throw _privateConstructorUsedError;
   DiaryCell get diaryCell => throw _privateConstructorUsedError;
-  DiaryCellSettings get cellSettings => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings cellSettings)
+    required TResult Function(DiaryList diaryList, DiaryCell diaryCell)
         editCell,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings cellSettings)?
-        editCell,
+    TResult? Function(DiaryList diaryList, DiaryCell diaryCell)? editCell,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings cellSettings)?
-        editCell,
+    TResult Function(DiaryList diaryList, DiaryCell diaryCell)? editCell,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -543,10 +456,7 @@ abstract class $DiaryCellEditEventCopyWith<$Res> {
           DiaryCellEditEvent value, $Res Function(DiaryCellEditEvent) then) =
       _$DiaryCellEditEventCopyWithImpl<$Res, DiaryCellEditEvent>;
   @useResult
-  $Res call(
-      {DiaryList diaryList,
-      DiaryCell diaryCell,
-      DiaryCellSettings cellSettings});
+  $Res call({DiaryList diaryList, DiaryCell diaryCell});
 }
 
 /// @nodoc
@@ -564,7 +474,6 @@ class _$DiaryCellEditEventCopyWithImpl<$Res, $Val extends DiaryCellEditEvent>
   $Res call({
     Object? diaryList = null,
     Object? diaryCell = null,
-    Object? cellSettings = null,
   }) {
     return _then(_value.copyWith(
       diaryList: null == diaryList
@@ -575,10 +484,6 @@ class _$DiaryCellEditEventCopyWithImpl<$Res, $Val extends DiaryCellEditEvent>
           ? _value.diaryCell
           : diaryCell // ignore: cast_nullable_to_non_nullable
               as DiaryCell,
-      cellSettings: null == cellSettings
-          ? _value.cellSettings
-          : cellSettings // ignore: cast_nullable_to_non_nullable
-              as DiaryCellSettings,
     ) as $Val);
   }
 }
@@ -591,10 +496,7 @@ abstract class _$$EditCellEventCopyWith<$Res>
       __$$EditCellEventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {DiaryList diaryList,
-      DiaryCell diaryCell,
-      DiaryCellSettings cellSettings});
+  $Res call({DiaryList diaryList, DiaryCell diaryCell});
 }
 
 /// @nodoc
@@ -610,7 +512,6 @@ class __$$EditCellEventCopyWithImpl<$Res>
   $Res call({
     Object? diaryList = null,
     Object? diaryCell = null,
-    Object? cellSettings = null,
   }) {
     return _then(_$EditCellEvent(
       diaryList: null == diaryList
@@ -621,10 +522,6 @@ class __$$EditCellEventCopyWithImpl<$Res>
           ? _value.diaryCell
           : diaryCell // ignore: cast_nullable_to_non_nullable
               as DiaryCell,
-      cellSettings: null == cellSettings
-          ? _value.cellSettings
-          : cellSettings // ignore: cast_nullable_to_non_nullable
-              as DiaryCellSettings,
     ));
   }
 }
@@ -632,21 +529,16 @@ class __$$EditCellEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EditCellEvent implements EditCellEvent {
-  const _$EditCellEvent(
-      {required this.diaryList,
-      required this.diaryCell,
-      required this.cellSettings});
+  const _$EditCellEvent({required this.diaryList, required this.diaryCell});
 
   @override
   final DiaryList diaryList;
   @override
   final DiaryCell diaryCell;
-  @override
-  final DiaryCellSettings cellSettings;
 
   @override
   String toString() {
-    return 'DiaryCellEditEvent.editCell(diaryList: $diaryList, diaryCell: $diaryCell, cellSettings: $cellSettings)';
+    return 'DiaryCellEditEvent.editCell(diaryList: $diaryList, diaryCell: $diaryCell)';
   }
 
   @override
@@ -657,14 +549,11 @@ class _$EditCellEvent implements EditCellEvent {
             (identical(other.diaryList, diaryList) ||
                 other.diaryList == diaryList) &&
             (identical(other.diaryCell, diaryCell) ||
-                other.diaryCell == diaryCell) &&
-            (identical(other.cellSettings, cellSettings) ||
-                other.cellSettings == cellSettings));
+                other.diaryCell == diaryCell));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, diaryList, diaryCell, cellSettings);
+  int get hashCode => Object.hash(runtimeType, diaryList, diaryCell);
 
   @JsonKey(ignore: true)
   @override
@@ -675,33 +564,28 @@ class _$EditCellEvent implements EditCellEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings cellSettings)
+    required TResult Function(DiaryList diaryList, DiaryCell diaryCell)
         editCell,
   }) {
-    return editCell(diaryList, diaryCell, cellSettings);
+    return editCell(diaryList, diaryCell);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings cellSettings)?
-        editCell,
+    TResult? Function(DiaryList diaryList, DiaryCell diaryCell)? editCell,
   }) {
-    return editCell?.call(diaryList, diaryCell, cellSettings);
+    return editCell?.call(diaryList, diaryCell);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryList diaryList, DiaryCell diaryCell,
-            DiaryCellSettings cellSettings)?
-        editCell,
+    TResult Function(DiaryList diaryList, DiaryCell diaryCell)? editCell,
     required TResult orElse(),
   }) {
     if (editCell != null) {
-      return editCell(diaryList, diaryCell, cellSettings);
+      return editCell(diaryList, diaryCell);
     }
     return orElse();
   }
@@ -738,15 +622,12 @@ class _$EditCellEvent implements EditCellEvent {
 abstract class EditCellEvent implements DiaryCellEditEvent {
   const factory EditCellEvent(
       {required final DiaryList diaryList,
-      required final DiaryCell diaryCell,
-      required final DiaryCellSettings cellSettings}) = _$EditCellEvent;
+      required final DiaryCell diaryCell}) = _$EditCellEvent;
 
   @override
   DiaryList get diaryList;
   @override
   DiaryCell get diaryCell;
-  @override
-  DiaryCellSettings get cellSettings;
   @override
   @JsonKey(ignore: true)
   _$$EditCellEventCopyWith<_$EditCellEvent> get copyWith =>

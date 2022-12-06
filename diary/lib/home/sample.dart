@@ -21,7 +21,7 @@ class SampleWidget extends StatelessWidget {
           columnsLoaded:
               (DiaryList diaryList, List<DiaryColumn> diaryColumns) =>
                   const Center(child: CircularProgressIndicator()),
-          loaded: (diaryList, diaryColumns, diaryCells, diaryCellsSettings) {
+          loaded: (diaryList, diaryColumns, diaryCells) {
             List<DiaryCell> cells = List<DiaryCell>.empty(growable: true);
             List<DiaryCell> cellsTwo = List<DiaryCell>.empty(growable: true);
             for (var column in diaryColumns) {
@@ -32,26 +32,24 @@ class SampleWidget extends StatelessWidget {
                   element.columnName == column.name &&
                   element.columnPosition == 2));
             }
-            List<BlocDiaryCellWidget> cellWidgets =
-                List<BlocDiaryCellWidget>.empty(growable: true);
-            for (var i = 0; i < cells.length; i++) {
-              cellWidgets.add(
-                BlocDiaryCellWidget(
-                  diaryCell: cells[i],
-                  diaryCellSettings: diaryCellsSettings[i],
-                ),
-              );
-            }
-            List<BlocDiaryCellWidget> cellWidgetsTwo =
-                List<BlocDiaryCellWidget>.empty(growable: true);
-            for (var i = 0; i < cellsTwo.length; i++) {
-              cellWidgets.add(
-                BlocDiaryCellWidget(
-                  diaryCell: cellsTwo[i],
-                  diaryCellSettings: diaryCellsSettings[i + cells.length],
-                ),
-              );
-            }
+            // List<BlocDiaryCellWidget> cellWidgets =
+            //     List<BlocDiaryCellWidget>.empty(growable: true);
+            // for (var i = 0; i < cells.length; i++) {
+            //   cellWidgets.add(
+            //     BlocDiaryCellWidget(
+            //       diaryCell: cells[i],
+            //     ),
+            //   );
+            // }
+            // List<BlocDiaryCellWidget> cellWidgetsTwo =
+            //     List<BlocDiaryCellWidget>.empty(growable: true);
+            // for (var i = 0; i < cellsTwo.length; i++) {
+            //   cellWidgets.add(
+            //     BlocDiaryCellWidget(
+            //       diaryCell: cellsTwo[i],
+            //     ),
+            //   );
+            // }
             return Column(
               children: [
                 Expanded(
@@ -59,16 +57,16 @@ class SampleWidget extends StatelessWidget {
                     child: Row(
                       children: [
                         Column(
-                          children: cellWidgets.toList(),
-                          // cells
-                          //     .map((e) => BlocDiaryCellWidget(diaryCell: e, diaryCellSettings: diaryCellsSettings[0],))
-                          //     .toList(),
+                          children: //cellWidgets.toList(),
+                              cells
+                                  .map((e) => BlocDiaryCellWidget(diaryCell: e))
+                                  .toList(),
                         ),
                         Column(
-                          children: cellWidgetsTwo.toList(),
-                          // cellsTwo
-                          //     .map((e) => BlocDiaryCellWidget(diaryCell: e))
-                          //     .toList(),
+                          children: //cellWidgetsTwo.toList(),
+                              cellsTwo
+                                  .map((e) => BlocDiaryCellWidget(diaryCell: e))
+                                  .toList(),
                         )
                       ],
                     ),
@@ -78,8 +76,7 @@ class SampleWidget extends StatelessWidget {
               ],
             );
           },
-          cellSelected: (diaryList, diaryColumns, diaryCells,
-              diaryCellsSettings, selectedCell) {
+          cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell) {
             List<DiaryCell> cells = List<DiaryCell>.empty(growable: true);
             List<DiaryCell> cellsTwo = List<DiaryCell>.empty(growable: true);
             for (var column in diaryColumns) {
@@ -90,26 +87,24 @@ class SampleWidget extends StatelessWidget {
                   element.columnName == column.name &&
                   element.columnPosition == 2));
             }
-            List<BlocDiaryCellWidget> cellWidgets =
-                List<BlocDiaryCellWidget>.empty(growable: true);
-            for (var i = 0; i < cells.length; i++) {
-              cellWidgets.add(
-                BlocDiaryCellWidget(
-                  diaryCell: cells[i],
-                  diaryCellSettings: diaryCellsSettings[i],
-                ),
-              );
-            }
-            List<BlocDiaryCellWidget> cellWidgetsTwo =
-                List<BlocDiaryCellWidget>.empty(growable: true);
-            for (var i = 0; i < cellsTwo.length; i++) {
-              cellWidgets.add(
-                BlocDiaryCellWidget(
-                  diaryCell: cellsTwo[i],
-                  diaryCellSettings: diaryCellsSettings[i + cells.length],
-                ),
-              );
-            }
+            // List<BlocDiaryCellWidget> cellWidgets =
+            //     List<BlocDiaryCellWidget>.empty(growable: true);
+            // for (var i = 0; i < cells.length; i++) {
+            //   cellWidgets.add(
+            //     BlocDiaryCellWidget(
+            //       diaryCell: cells[i],
+            //     ),
+            //   );
+            // }
+            // List<BlocDiaryCellWidget> cellWidgetsTwo =
+            //     List<BlocDiaryCellWidget>.empty(growable: true);
+            // for (var i = 0; i < cellsTwo.length; i++) {
+            //   cellWidgets.add(
+            //     BlocDiaryCellWidget(
+            //       diaryCell: cellsTwo[i],
+            //     ),
+            //   );
+            // }
             return Column(
               children: [
                 Expanded(
@@ -117,16 +112,16 @@ class SampleWidget extends StatelessWidget {
                     child: Row(
                       children: [
                         Column(
-                          children: cellWidgets.toList(),
-                          //  cells
-                          //     .map((e) => BlocDiaryCellWidget(diaryCell: e))
-                          //     .toList(),
+                          children: //cellWidgets.toList(),
+                              cells
+                                  .map((e) => BlocDiaryCellWidget(diaryCell: e))
+                                  .toList(),
                         ),
                         Column(
-                          children: cellWidgetsTwo.toList(),
-                          // cellsTwo
-                          //     .map((e) => BlocDiaryCellWidget(diaryCell: e))
-                          //     .toList(),
+                          children: //cellWidgetsTwo.toList(),
+                              cellsTwo
+                                  .map((e) => BlocDiaryCellWidget(diaryCell: e))
+                                  .toList(),
                         )
                       ],
                     ),

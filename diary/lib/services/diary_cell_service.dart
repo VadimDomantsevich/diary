@@ -21,36 +21,41 @@ class DiaryCellService {
     final cellsCollection = getDiaryColumnDoc(
       diaryList: diaryList,
       diaryColumnName: diaryColumn.name,
-    ).collection(Collections.diaryCellsCollection);
+    ).collection(
+      Collections.diaryCellsCollection,
+    );
+    await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).set(
+          createDefaultSettings().toFirestore(),
+        );
+    final defaultSettings = await getDefaultCellSettings(
+      diaryList: diaryList,
+      diaryColumn: diaryColumn,
+    );
+
     for (var i = 1; i < diaryColumn.columnsCount + 1; i++) {
       for (var j = 1; j <= daysInMonth; j++) {
         final newCell = DiaryCell(
-            columnName: diaryColumn.name,
-            columnPosition: j,
-            day: i,
-            dataType: dataType);
-        await cellsCollection
-            .doc(getDiaryCellName(newCell))
-            .set(newCell.toFirestore());
-
-        //Это себя не оправдало
-        // await cellsCollection
-        //     .doc(getDiaryCellName(newCell))
-        //     .collection(Collections.diaryCellSettingsCollection)
-        //     .doc(Constants.cellSettingsDocName)
-        //     .set(createDefaultSettings().toFirestore());
+          columnName: diaryColumn.name,
+          columnPosition: j,
+          day: i,
+          dataType: dataType,
+          settings: defaultSettings,
+        );
+        await cellsCollection.doc(getDiaryCellName(newCell)).set(
+              newCell.toFirestore(),
+            );
       }
     }
-    await cellsCollection
-        .doc(Constants.cellsDefaultSettingsDocName)
-        .set(createDefaultSettings().toFirestore());
   }
 
   DiaryCell read({
     required DocumentSnapshot doc,
-    DiaryCellSettings? defaultSettings,
+    required DiaryCellSettings defaultSettings,
   }) =>
-      DiaryCell.fromFirestore(doc);
+      DiaryCell.fromFirestore(
+        doc: doc,
+        defaultSettings: defaultSettings,
+      );
 
   DiaryCellSettings readSettings({
     required DocumentSnapshot doc,
@@ -70,41 +75,36 @@ class DiaryCellService {
       diaryColumn: diaryColumn,
     );
     return readSettings(
-        doc: await cellsCollection
-            .doc(Constants.cellsDefaultSettingsDocName)
-            .get());
+      doc: await cellsCollection
+          .doc(Constants.cellsDefaultSettingsDocName)
+          .get(),
+    );
   }
 
   Future<List<DiaryCell>> getAll({
     required DiaryList diaryList,
     required DiaryColumn diaryColumn,
   }) async {
-    // final docWithName = await getDiaryListDoc(diaryList: diaryList)
-    //     .collection(Collections.diaryColumnsCollection)
-    //     .where(
-    //       Constants.diaryColumnNameField,
-    //       isEqualTo: diaryColumn.name,
-    //     )
-    //     .get();
-    // final columnDocPath = docWithName.docs.first.reference.path;
-    // final cells = await FirebaseFirestore.instance
-    //     .doc(columnDocPath)
-    //     .collection(Collections.diaryCellsCollection)
     final cellsCollection = await getDiaryCellsCollection(
       diaryList: diaryList,
       diaryColumn: diaryColumn,
     );
     final cells = await cellsCollection.get();
-    // cells.orderBy(
-    //   Constants.diaryCellDayField,
-    // )
-    // .get();
+
     List<DiaryCell> diaryCells = List<DiaryCell>.empty(growable: true);
+
+    final defaultSettings = await getDefaultCellSettings(
+      diaryList: diaryList,
+      diaryColumn: diaryColumn,
+    );
 
     for (var doc in cells.docs) {
       if (doc.id != Constants.cellsDefaultSettingsDocName) {
         diaryCells.add(
-          read(doc: doc),
+          read(
+            doc: doc,
+            defaultSettings: defaultSettings,
+          ),
         );
       }
     }
@@ -120,57 +120,35 @@ class DiaryCellService {
     return diaryCells;
   }
 
-  // Future<DiaryCellSettings> getCellSettings({
-  //   //NO
+  // Future<List<DiaryCellSettings>> getAllSettings({
   //   required DiaryList diaryList,
-  //   required DiaryCell diaryCell,
+  //   required DiaryColumn diaryColumn,
   // }) async {
-  //   final columnDoc = getDiaryColumnsCollection(diaryList: diaryList)
-  //       .doc(diaryCell.columnName);
-  //   final cellDoc = await columnDoc
-  //       .collection(Collections.diaryCellsCollection)
-  //       .doc(getDiaryCellName(diaryCell))
-  //       .collection(Collections.diaryCellSettingsCollection)
-  //       .doc(Constants.cellSettingsDocName)
-  //       .get();
-  //   return readSettings(doc: cellDoc);
+  //   List<DiaryCellSettings> diaryCellsSettings = List<DiaryCellSettings>.empty(
+  //     growable: true,
+  //   );
+  //   final defaultCellSettings = await getDefaultCellSettings(
+  //     diaryList: diaryList,
+  //     diaryColumn: diaryColumn,
+  //   );
+  //   final cellsCollection = await getDiaryCellsCollection(
+  //     diaryList: diaryList,
+  //     diaryColumn: diaryColumn,
+  //   );
+  //   final cells = await cellsCollection.get();
+  //   for (var doc in cells.docs) {
+  //     diaryCellsSettings.add(
+  //       readSettings(
+  //         doc: doc,
+  //         defaultSettings: defaultCellSettings,
+  //       ),
+  //     );
+  //   }
+  //   return diaryCellsSettings;
   // }
 
-  Future<List<DiaryCellSettings>> getAllSettings({
-    required DiaryList diaryList,
-    required DiaryColumn diaryColumn,
-  }) async {
-    List<DiaryCellSettings> diaryCellsSettings =
-        List<DiaryCellSettings>.empty(growable: true);
-
-    final defaultCellSettings = await getDefaultCellSettings(
-      diaryList: diaryList,
-      diaryColumn: diaryColumn,
-    );
-
-    final cellsCollection = await getDiaryCellsCollection(
-      diaryList: diaryList,
-      diaryColumn: diaryColumn,
-    );
-    final cells = await cellsCollection.get();
-    for (var doc in cells.docs) {
-      diaryCellsSettings.add(readSettings(
-        doc: doc,
-        defaultSettings: defaultCellSettings,
-      ));
-    }
-    // for (var cell in diaryCells) {
-    //   diaryCellsSettings.add(
-    //     await getCellSettings(
-    //       diaryList: diaryList,
-    //       diaryCell: cell,
-    //     ),
-    //   );
-    // }
-    return diaryCellsSettings;
-  }
-
   Future<void> update({
+    //Возможно надо сделать updateSettings
     required DiaryList diaryList,
     required DiaryCell diaryCell,
     required DataTypesEnum dataType,
@@ -182,25 +160,28 @@ class DiaryCellService {
     ).get();
     if (doc.data() != null) {
       final newCell = diaryCell.copyWith(dataType: dataType, content: content);
-      await FirebaseFirestore.instance
-          .doc(doc.reference.path)
-          .update(newCell.toFirestore());
+      await FirebaseFirestore.instance.doc(doc.reference.path).update(
+            newCell.toFirestore(),
+          );
     }
   }
 
   Future<void> createDateCells({
     //ПЕРЕДЕЛАТЬ
     required DiaryList diaryList,
+    required DiaryColumn diaryColumn,
   }) async {
     final cellsCollection = getDiaryColumnDoc(
       diaryList: diaryList,
       diaryColumnName: Constants.diaryColumnDateField,
     ).collection(Collections.diaryCellsCollection);
-
     await cellsCollection
         .doc(Constants.cellsDefaultSettingsDocName)
         .set(createDefaultSettings().toFirestore());
-
+    final defaultSettings = await getDefaultCellSettings(
+      diaryList: diaryList,
+      diaryColumn: diaryColumn,
+    );
     final daysInMonth = DateUtils.getDaysInMonth(
         diaryList.listDate.year, diaryList.listDate.month);
     final firstDayOfMonth =
@@ -214,16 +195,11 @@ class DiaryCellService {
             day: j,
             dataType: DataTypesEnum.integerNumber,
             content: j,
+            settings: defaultSettings,
           );
-          await cellsCollection
-              .doc(getDiaryCellName(newCell))
-              .set(newCell.toFirestore());
-
-          // await cellsCollection
-          //     .doc(getDiaryCellName(newCell))
-          //     .collection(Collections.diaryCellSettingsCollection)
-          //     .doc(Constants.cellSettingsDocName)
-          //     .set(createDefaultSettings().toFirestore());
+          await cellsCollection.doc(getDiaryCellName(newCell)).set(
+                newCell.toFirestore(),
+              );
         } else {
           final day = DateUtils.addDaysToDate(firstDayOfMonth, j - 1);
           final String dayOfTheWeek = DateFormat('EEEE').format(day);
@@ -233,16 +209,11 @@ class DiaryCellService {
             day: j,
             dataType: DataTypesEnum.text,
             content: dayOfTheWeek,
+            settings: defaultSettings,
           );
-          await cellsCollection
-              .doc(getDiaryCellName(newCell))
-              .set(newCell.toFirestore());
-
-          // await cellsCollection
-          //     .doc(getDiaryCellName(newCell))
-          //     .collection(Collections.diaryCellSettingsCollection)
-          //     .doc(Constants.cellSettingsDocName)
-          //     .set(createDefaultSettings().toFirestore());
+          await cellsCollection.doc(getDiaryCellName(newCell)).set(
+                newCell.toFirestore(),
+              );
         }
       }
     }

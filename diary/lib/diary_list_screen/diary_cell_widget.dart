@@ -1,6 +1,5 @@
 import 'package:diary/core/functions.dart';
 import 'package:diary/model/diary_cell.dart';
-import 'package:diary/model/diary_cell_settings.dart';
 import 'package:flutter/material.dart';
 
 class DiaryCellWidget extends StatelessWidget {
@@ -9,21 +8,21 @@ class DiaryCellWidget extends StatelessWidget {
     required this.contentWidget,
     required this.onTap,
     required this.backgroundColor,
-    required this.settings, //alignment and others? Just settings
+    required this.alignment,
   });
 
   final Widget contentWidget;
   final VoidCallback onTap;
   final Color backgroundColor;
-  final DiaryCellSettings settings;
+  final Alignment alignment;
 
   factory DiaryCellWidget.common({
+    required Alignment alignment,
     required String content,
     required VoidCallback onTap,
-    required DiaryCellSettings settings,
   }) =>
       DiaryCellWidget(
-        settings: settings,
+        alignment: alignment,
         contentWidget: Text(content),
         onTap: onTap,
         backgroundColor: Colors.white, //Цвет будет где-то храниться
@@ -33,28 +32,29 @@ class DiaryCellWidget extends StatelessWidget {
     required DiaryCell diaryCell,
     required VoidCallback onTap,
     required bool isSelected,
-    required DiaryCellSettings settings,
   }) {
     return isSelected
         ? DiaryCellWidget.selected(
-            settings: settings,
+            alignment: converterAlignmentFromAlignmentsEnum(
+                diaryCell.settings.alignment),
             content: diaryCell.content.toString(),
             onTap: onTap,
           )
         : DiaryCellWidget.common(
-            settings: settings,
+            alignment: converterAlignmentFromAlignmentsEnum(
+                diaryCell.settings.alignment),
             content: diaryCell.content.toString(),
             onTap: onTap,
           );
   }
 
   factory DiaryCellWidget.selected({
+    required Alignment alignment,
     required String content,
     required VoidCallback onTap,
-    required DiaryCellSettings settings,
   }) =>
       DiaryCellWidget(
-        settings: settings,
+        alignment: alignment,
         contentWidget: Text(content),
         onTap: onTap,
         backgroundColor: Colors.blueAccent, //Цвет будет где-то храниться
@@ -66,13 +66,14 @@ class DiaryCellWidget extends StatelessWidget {
     return Card(
       child: InkWell(
         onTap: onTap, //добавить onDoubleTap, onLongPress
-        child: Container( // Весь контейнер вынести в отдельный виджет
+        child: Container(
+          // Весь контейнер вынести в отдельный виджет
           constraints: const BoxConstraints(
             maxWidth: 100,
             maxHeight: 20,
             minWidth: 10,
           ),
-          alignment: converterAlignmentFromAlignmentsEnum(settings.alignment),
+          alignment: alignment,
           //height: 20, //Should depend on content
           //width: 40, //ColumnWidth
           decoration: BoxDecoration(

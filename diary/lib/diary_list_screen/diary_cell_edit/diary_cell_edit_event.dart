@@ -5,6 +5,5 @@ class DiaryCellEditEvent with _$DiaryCellEditEvent {
   const factory DiaryCellEditEvent.editCell({
     required DiaryList diaryList,
     required DiaryCell diaryCell,
-    required DiaryCellSettings cellSettings,
   }) = EditCellEvent;
 }

@@ -17,6 +17,8 @@ abstract class _$DiaryCellCWProxy {
 
   DiaryCell day(int day);
 
+  DiaryCell settings(DiaryCellSettings settings);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `DiaryCell(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -29,6 +31,7 @@ abstract class _$DiaryCellCWProxy {
     dynamic? content,
     DataTypesEnum? dataType,
     int? day,
+    DiaryCellSettings? settings,
   });
 }
 
@@ -55,6 +58,9 @@ class _$DiaryCellCWProxyImpl implements _$DiaryCellCWProxy {
   DiaryCell day(int day) => this(day: day);
 
   @override
+  DiaryCell settings(DiaryCellSettings settings) => this(settings: settings);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `DiaryCell(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -68,6 +74,7 @@ class _$DiaryCellCWProxyImpl implements _$DiaryCellCWProxy {
     Object? content = const $CopyWithPlaceholder(),
     Object? dataType = const $CopyWithPlaceholder(),
     Object? day = const $CopyWithPlaceholder(),
+    Object? settings = const $CopyWithPlaceholder(),
   }) {
     return DiaryCell(
       columnName:
@@ -92,6 +99,10 @@ class _$DiaryCellCWProxyImpl implements _$DiaryCellCWProxy {
           ? _value.day
           // ignore: cast_nullable_to_non_nullable
           : day as int,
+      settings: settings == const $CopyWithPlaceholder() || settings == null
+          ? _value.settings
+          // ignore: cast_nullable_to_non_nullable
+          : settings as DiaryCellSettings,
     );
   }
 }

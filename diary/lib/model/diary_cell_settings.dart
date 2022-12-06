@@ -26,9 +26,7 @@ class DiaryCellSettings {
       return DiaryCellSettings(
           alignment: AlignmentsEnum.values
               .firstWhere((element) => element.name == data['alignment']));
-      //Мб так
-    } else{
-      //надо как-то проверять все значения на null
+    } else {
       AlignmentsEnum alignment = defaultSettings!.alignment;
       if (data['alignment'] != null) {
         alignment = AlignmentsEnum.values.firstWhere(

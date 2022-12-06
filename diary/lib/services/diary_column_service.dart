@@ -1,10 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:diary/core/constants/collections.dart';
 import 'package:diary/core/constants/constants.dart';
 import 'package:diary/core/functions.dart';
 import 'package:diary/model/diary_column.dart';
 import 'package:diary/model/diary_list.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class DiaryColumnService {
   Future<void> create({
@@ -18,7 +16,9 @@ class DiaryColumnService {
         .get();
     if (col.docs.isEmpty) {
       final newColumn = DiaryColumn(name: name, columnsCount: count);
-      await columns.add(newColumn.toFirestore());
+      await columns.add(
+        newColumn.toFirestore(),
+      );
     }
   }
 
@@ -33,9 +33,21 @@ class DiaryColumnService {
     List<DiaryColumn> diaryColumns = [];
 
     for (var doc in columns.docs) {
-      diaryColumns.add(read(doc: doc));
+      diaryColumns.add(
+        read(doc: doc),
+      );
     }
     return diaryColumns;
+  }
+
+  Future<DiaryColumn> getDateColumn({
+    required DiaryList diaryList,
+  }) async {
+    final dateColumnDoc = await getDiaryColumnDoc(
+      diaryList: diaryList,
+      diaryColumnName: Constants.diaryColumnDateField,
+    ).get();
+    return read(doc: dateColumnDoc);
   }
 
   Future<void> update({
@@ -54,9 +66,9 @@ class DiaryColumnService {
     final doc = await column.docs.first.reference.get();
     if (doc.data() != null) {
       final newColumn = diaryColumn.copyWith(name: name, columnsCount: count);
-      await FirebaseFirestore.instance
-          .doc(doc.reference.path)
-          .update(newColumn.toFirestore());
+      await FirebaseFirestore.instance.doc(doc.reference.path).update(
+            newColumn.toFirestore(),
+          );
     }
   }
 
@@ -71,6 +83,8 @@ class DiaryColumnService {
         .doc(Constants.diaryColumnDateField);
     final dateColumn =
         DiaryColumn(name: Constants.diaryColumnDateField, columnsCount: 2);
-    await doc.set(dateColumn.toFirestore());
+    await doc.set(
+      dateColumn.toFirestore(),
+    );
   }
 }

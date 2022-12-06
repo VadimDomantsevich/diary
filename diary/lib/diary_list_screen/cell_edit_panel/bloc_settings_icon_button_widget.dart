@@ -19,7 +19,7 @@ class BlocSettingsIconButtonWidget extends StatelessWidget {
     return BlocBuilder<DiaryCellEditBloc, DiaryCellEditState>(
       builder: (context, state) {
         return state.maybeWhen(
-          cellSelected: (diaryList, diaryCell, diaryCellSettings) {
+          cellSelected: (diaryList, diaryCell) {
             return IconButtonWidget.settings(
               //get cellSettings?
               onPressed: () {
@@ -27,7 +27,6 @@ class BlocSettingsIconButtonWidget extends StatelessWidget {
                       EditCellEvent(
                         diaryList: diaryList,
                         diaryCell: diaryCell,
-                        cellSettings: diaryCellSettings,
                       ),
                     );
                 context.router

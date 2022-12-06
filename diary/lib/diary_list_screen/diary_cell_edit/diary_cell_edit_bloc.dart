@@ -12,15 +12,15 @@ part 'diary_cell_edit_bloc.freezed.dart';
 class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
   final DiaryList diaryList;
   final DiaryCell diaryCell;
-  final DiaryCellSettings diaryCellSettings;
   final DiaryCellService _diaryCellService; //Мб другой сервис здесь
-  DiaryCellEditBloc(this._diaryCellService, this.diaryCell, this.diaryList,
-      this.diaryCellSettings)
-      : super(
+  DiaryCellEditBloc(
+    this._diaryCellService,
+    this.diaryCell,
+    this.diaryList,
+  ) : super(
           DiaryCellEditState.cellSelected(
             diaryCell: diaryCell,
             diaryList: diaryList,
-            diaryCellSettings: diaryCellSettings,
           ),
         ) {
     on<EditCellEvent>((event, emit) => onEditCellEvent(event, emit));
@@ -37,7 +37,6 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
     emit(DiaryCellEditState.editing(
       diaryList: event.diaryList,
       diaryCell: event.diaryCell,
-      diaryCellSettings: event.cellSettings,
     ));
   }
 }
