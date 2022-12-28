@@ -9,6 +9,8 @@ part of 'diary_cell_settings.dart';
 abstract class _$DiaryCellSettingsCWProxy {
   DiaryCellSettings alignment(AlignmentsEnum alignment);
 
+  DiaryCellSettings height(double height);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `DiaryCellSettings(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -17,6 +19,7 @@ abstract class _$DiaryCellSettingsCWProxy {
   /// ````
   DiaryCellSettings call({
     AlignmentsEnum? alignment,
+    double? height,
   });
 }
 
@@ -31,6 +34,9 @@ class _$DiaryCellSettingsCWProxyImpl implements _$DiaryCellSettingsCWProxy {
       this(alignment: alignment);
 
   @override
+  DiaryCellSettings height(double height) => this(height: height);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `DiaryCellSettings(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -40,12 +46,17 @@ class _$DiaryCellSettingsCWProxyImpl implements _$DiaryCellSettingsCWProxy {
   /// ````
   DiaryCellSettings call({
     Object? alignment = const $CopyWithPlaceholder(),
+    Object? height = const $CopyWithPlaceholder(),
   }) {
     return DiaryCellSettings(
       alignment: alignment == const $CopyWithPlaceholder() || alignment == null
           ? _value.alignment
           // ignore: cast_nullable_to_non_nullable
           : alignment as AlignmentsEnum,
+      height: height == const $CopyWithPlaceholder() || height == null
+          ? _value.height
+          // ignore: cast_nullable_to_non_nullable
+          : height as double,
     );
   }
 }

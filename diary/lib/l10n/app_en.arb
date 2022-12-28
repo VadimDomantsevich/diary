@@ -1,6 +1,54 @@
 {
     "verifyEmailSnackBarText": "Please check your email to verify your email address",
-    "@verifyEmailSnackBarText":{
+    "@verifyEmailSnackBarText": {
         "description": "Text asking the user to verify email"
+    },
+    "discardButtonText": "discard",
+    "@discardButtonText": {
+        "description": "Text of the discard button"
+    },
+    "confirmButtonText": "confirm",
+    "@confirmButtonText": {
+        "description": "Text of the confirm button"
+    },
+    "bottomCenter": "Bottom center",
+    "@bottomCenter": {
+        "description": "Bottom center text of the alignment DropdownMenuItem"
+    },
+    "bottomLeft": "Bottom left",
+    "@bottomLeft": {
+        "description": "Bottom left text of the alignment DropdownMenuItem"
+    },
+    "bottomRight": "Bottom right",
+    "@bottomRight": {
+        "description": "Bottom right text of the alignment DropdownMenuItem"
+    },
+    "center": "Center",
+    "@center": {
+        "description": "Center text of the alignment DropdownMenuItem"
+    },
+    "centerLeft": "Center left",
+    "@centerLeft": {
+        "description": "Center left text of the alignment DropdownMenuItem"
+    },
+    "centerRight": "Center right",
+    "@centerRight": {
+        "description": "Center right text of the alignment DropdownMenuItem"
+    },
+    "topCenter": "Top center",
+    "@topCenter": {
+        "description": "Top center text of the alignment DropdownMenuItem"
+    },
+    "topLeft": "Top left",
+    "@topLeft": {
+        "description": "Top left text of the alignment DropdownMenuItem"
+    },
+    "topRight": "Top right",
+    "@topRight": {
+        "description": "Top right text of the alignment DropdownMenuItem"
+    },
+    "alignmentHint": "Alignment",
+    "@alignmentHint": {
+        "description": "Alignment hint of the alignment DropdownButton"
     }
 }

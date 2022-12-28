@@ -20,7 +20,7 @@ class DiaryCellEditPanel extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0), //const value
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Flexible(
             child: FractionallySizedBox(
@@ -32,11 +32,7 @@ class DiaryCellEditPanel extends StatelessWidget {
               ),
             ),
           ),
-          // IconButton(
-          //   onPressed: () {},
-          //   icon: const Icon(Icons.border_all),
-          // ), //borderEditButton
-          BlocSettingsIconButtonWidget(diaryCell: diaryCell)
+          BlocSettingsIconButtonWidget(diaryCell: diaryCell),
           //возможно ещё кнопку хочу на редактирование размера текста, жирного шрифта или запихну это в alignment
           //Надо ли подтверждающая кнопка?
         ],

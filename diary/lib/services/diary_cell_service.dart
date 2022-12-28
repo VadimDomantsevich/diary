@@ -18,15 +18,17 @@ class DiaryCellService {
   }) async {
     final daysInMonth = DateUtils.getDaysInMonth(
         diaryList.listDate.year, diaryList.listDate.month);
-    final cellsCollection = getDiaryColumnDoc(
+    final diaryColumnDoc = getDiaryColumnDoc(
       diaryList: diaryList,
-      diaryColumnName: diaryColumn.name,
-    ).collection(
+      diaryColumnId: diaryColumn.id,
+    );
+    final cellsCollection = diaryColumnDoc.collection(
       Collections.diaryCellsCollection,
     );
     await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).set(
           createDefaultSettings().toFirestore(),
-        );
+        ); //Оно всегда будет переписывать дефолт сеттинги на прописанные
+    //меня это не устраивает
     final defaultSettings = await getDefaultCellSettings(
       diaryList: diaryList,
       diaryColumn: diaryColumn,
@@ -35,7 +37,7 @@ class DiaryCellService {
     for (var i = 1; i < diaryColumn.columnsCount + 1; i++) {
       for (var j = 1; j <= daysInMonth; j++) {
         final newCell = DiaryCell(
-          columnName: diaryColumn.name,
+          columnName: diaryColumnDoc.id, //It seems to be the right way
           columnPosition: j,
           day: i,
           dataType: dataType,
@@ -110,45 +112,37 @@ class DiaryCellService {
     }
     diaryCells.sort(
       ((a, b) {
-        int columnPosition = a.columnPosition.compareTo(b.columnPosition);
-        if (columnPosition == 0) {
-          return a.day.compareTo(b.day);
+        int day = a.day.compareTo(b.day);
+        if (day == 0) {
+          return a.columnPosition.compareTo(b.columnPosition);
         }
-        return columnPosition;
+        return day;
       }),
     );
     return diaryCells;
   }
 
-  // Future<List<DiaryCellSettings>> getAllSettings({
-  //   required DiaryList diaryList,
-  //   required DiaryColumn diaryColumn,
-  // }) async {
-  //   List<DiaryCellSettings> diaryCellsSettings = List<DiaryCellSettings>.empty(
-  //     growable: true,
-  //   );
-  //   final defaultCellSettings = await getDefaultCellSettings(
-  //     diaryList: diaryList,
-  //     diaryColumn: diaryColumn,
-  //   );
-  //   final cellsCollection = await getDiaryCellsCollection(
-  //     diaryList: diaryList,
-  //     diaryColumn: diaryColumn,
-  //   );
-  //   final cells = await cellsCollection.get();
-  //   for (var doc in cells.docs) {
-  //     diaryCellsSettings.add(
-  //       readSettings(
-  //         doc: doc,
-  //         defaultSettings: defaultCellSettings,
-  //       ),
-  //     );
-  //   }
-  //   return diaryCellsSettings;
-  // }
+  Future<DiaryCell> getDiaryCell({
+    required DiaryList diaryList,
+    required DiaryColumn diaryColumn,
+    required DiaryCell diaryCell,
+  }) async {
+    final doc = await getDiaryCellDoc(
+      diaryList: diaryList,
+      diaryCell: diaryCell,
+    ).get();
+    if (doc.data() != null) {
+      final defaultSettings = await getDefaultCellSettings(
+        diaryList: diaryList,
+        diaryColumn: diaryColumn,
+      );
+      return read(doc: doc, defaultSettings: defaultSettings);
+    } else {
+      return diaryCell;
+    }
+  }
 
   Future<void> update({
-    //Возможно надо сделать updateSettings
     required DiaryList diaryList,
     required DiaryCell diaryCell,
     required DataTypesEnum dataType,
@@ -166,6 +160,23 @@ class DiaryCellService {
     }
   }
 
+  Future<void> updateSettings({
+    required DiaryList diaryList,
+    required DiaryCell diaryCell,
+    required DiaryCellSettings settings,
+  }) async {
+    final doc = await getDiaryCellDoc(
+      diaryList: diaryList,
+      diaryCell: diaryCell,
+    ).get();
+    if (doc.data() != null) {
+      final newCell = diaryCell.copyWith(settings: settings);
+      await FirebaseFirestore.instance.doc(doc.reference.path).update(
+            newCell.settings.toFirestore(),
+          );
+    }
+  }
+
   Future<void> createDateCells({
     //ПЕРЕДЕЛАТЬ
     required DiaryList diaryList,
@@ -173,7 +184,7 @@ class DiaryCellService {
   }) async {
     final cellsCollection = getDiaryColumnDoc(
       diaryList: diaryList,
-      diaryColumnName: Constants.diaryColumnDateField,
+      diaryColumnId: Constants.diaryColumnDateField,
     ).collection(Collections.diaryCellsCollection);
     await cellsCollection
         .doc(Constants.cellsDefaultSettingsDocName)
@@ -220,6 +231,66 @@ class DiaryCellService {
   }
 
   DiaryCellSettings createDefaultSettings() {
-    return DiaryCellSettings(alignment: AlignmentsEnum.center);
+    return DiaryCellSettings(
+      alignment: AlignmentsEnum.center,
+      height: 30,
+    );
+  }
+
+  double getSummaryHeight({
+    required List<DiaryCell> cells,
+  }) {
+    double height = 0;
+    for (var cell in cells) {
+      height += cell.settings.height;
+    }
+    return height;
+  }
+
+  bool isRectTouchTheCell({
+    required double leftPosition,
+    required double rightPosition,
+    required double topPosition,
+    required double bottomPosition,
+    required GlobalObjectKey cellKey,
+  }) {
+    final cellBox = cellKey.currentContext!.findRenderObject() as RenderBox;
+    final cellPosition = cellBox.localToGlobal(Offset.zero);
+    final cellLeftPosition = cellPosition.dx;
+    final cellRightPosition = cellPosition.dx + cellBox.size.width;
+    final cellTopPosition = cellPosition.dy;
+    final cellBottomPosition = cellPosition.dy + cellBox.size.height;
+    if (cellRightPosition <= leftPosition ||
+        cellLeftPosition >= rightPosition) {
+      //     print('Start right');
+      // print('cellTop: ${cellTopPosition}');
+      // print('cellBottom: ${cellBottomPosition}');
+      // print('cellLeft: ${cellLeftPosition}');
+      // print('cellRight: ${cellRightPosition}');
+      // print('----');
+      // print('TopPosition: ${topPosition}');
+      // print('BottomPosition: ${bottomPosition}');
+      // print('LeftPosition: ${leftPosition}');
+      // print('RightPosition: ${rightPosition}');
+      // print('END');
+      return false;
+    }
+    if (cellTopPosition >= bottomPosition ||
+        cellBottomPosition <= topPosition) {
+      // print('Start top');
+      // print('cellTop: ${cellTopPosition}');
+      // print('cellBottom: ${cellBottomPosition}');
+      // print('cellLeft: ${cellLeftPosition}');
+      // print('cellRight: ${cellRightPosition}');
+      // print('----');
+      // print('TopPosition: ${topPosition}');
+      // print('BottomPosition: ${bottomPosition}');
+      // print('LeftPosition: ${leftPosition}');
+      // print('RightPosition: ${rightPosition}');
+      // print('END');
+      return false;
+    }
+
+    return true;
   }
 }

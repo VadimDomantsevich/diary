@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diary/core/constants/collections.dart';
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
+import 'package:diary/home/bloc_datagrid_sample.dart';
 import 'package:diary/home/builder.dart';
 import 'package:diary/home/button.dart';
+import 'package:diary/home/datagrid_sample.dart';
 import 'package:diary/home/pluto_grid.dart';
 import 'package:diary/home/sample.dart';
 import 'package:diary/locale/locale_bloc.dart';
@@ -35,9 +37,7 @@ class HomeScreenWidget extends StatelessWidget {
           RepositoryProvider.of<DiaryCellService>(context),
         ),
         child: const Scaffold(
-          body: SafeArea(
-            child: SampleWidget(),
-          ),
+          body: BlocDataGridSample(),
           floatingActionButton: ButtonWidget(),
         ),
         //body: PlutoGridExamplePage(), //BuilderWidget(),

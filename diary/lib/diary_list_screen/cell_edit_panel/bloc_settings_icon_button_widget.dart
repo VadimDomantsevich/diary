@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
 import 'package:diary/diary_list_screen/cell_edit_panel/icon_button_widget.dart';
 import 'package:diary/diary_list_screen/diary_cell_edit/diary_cell_edit_bloc.dart';
 import 'package:diary/model/diary_cell.dart';
@@ -19,18 +20,51 @@ class BlocSettingsIconButtonWidget extends StatelessWidget {
     return BlocBuilder<DiaryCellEditBloc, DiaryCellEditState>(
       builder: (context, state) {
         return state.maybeWhen(
-          cellSelected: (diaryList, diaryCell) {
+          cellSelected: (diaryList, stateDiaryCell) {
             return IconButtonWidget.settings(
-              //get cellSettings?
-              onPressed: () {
+              onPressed: () async {
                 context.read<DiaryCellEditBloc>().add(
                       EditCellEvent(
                         diaryList: diaryList,
                         diaryCell: diaryCell,
                       ),
                     );
-                context.router
-                    .push(CellEditScreenWidgetRoute(diaryCell: diaryCell));
+                await context.router
+                    .push(
+                      BlocCellEditScreenWidgetRoute(
+                        diaryList: diaryList,
+                        diaryCell: diaryCell,
+                      ),
+                    )
+                    .whenComplete(
+                      () => context.read<DiaryListBloc>().add(
+                            ChangeDiaryCellEvent(diaryCell: diaryCell),
+                          ),
+                    );
+              },
+            );
+          },
+          editing: (diaryList, stateDiaryCell) {
+            return IconButtonWidget.settings(
+              onPressed: () async {
+                context.read<DiaryCellEditBloc>().add(
+                      EditCellEvent(
+                        diaryList: diaryList,
+                        diaryCell: diaryCell,
+                      ),
+                    );
+                await context.router
+                    .push(
+                      BlocCellEditScreenWidgetRoute(
+                        diaryList: diaryList,
+                        diaryCell: diaryCell,
+                      ),
+                    )
+                    .whenComplete(
+                      () => context.read<DiaryListBloc>().add(
+                            ChangeDiaryCellEvent(diaryCell: diaryCell),
+                          ),
+                    );
               },
             );
           },

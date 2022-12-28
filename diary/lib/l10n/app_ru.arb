@@ -1,3 +1,15 @@
 {
-    "verifyEmailSnackBarText": "Пожалуйста, проверьте свою электронную почту, чтобы подтвердить адрес электронной почты"
+    "verifyEmailSnackBarText": "Пожалуйста, проверьте свою электронную почту, чтобы подтвердить адрес электронной почты",
+    "discardButtonText": "Отменить",
+    "confirmButtonText": "Подтвердить",
+    "bottomCenter": "Центр снизу",
+    "bottomLeft": "Слева снизу",
+    "bottomRight": "Справа снизу",
+    "center": "Центр",
+    "centerLeft": "Центр слева",
+    "centerRight": "Центр справа",
+    "topCenter": "Центр сверху",
+    "topLeft": "Слева сверху",
+    "topRight": "Справа сверху",
+    "alignmentHint": "Выравнивание"
 }

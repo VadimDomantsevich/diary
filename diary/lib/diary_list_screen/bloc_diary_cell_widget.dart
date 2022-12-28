@@ -8,39 +8,69 @@ class BlocDiaryCellWidget extends StatelessWidget {
   const BlocDiaryCellWidget({
     super.key,
     required this.diaryCell,
+    required this.gridKey,
+    required this.cellKey,
   });
 
   final DiaryCell diaryCell;
+  final GlobalObjectKey cellKey;
+  final GlobalKey gridKey;
 
   @override
   Widget build(BuildContext context) =>
       BlocBuilder<DiaryListBloc, DiaryListState>(
         builder: (context, state) {
           return state.maybeWhen(
-            cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell) {
+            cellSelected:
+                (diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys) {
               bool isSelected = false;
               if (selectedCell == diaryCell) {
                 isSelected = true;
               }
               return DiaryCellWidget.model(
+                cellKey: cellKey,
                 isSelected: isSelected,
                 diaryCell: diaryCell,
-                onTap: () => context.read<DiaryListBloc>().add(
-                      DiaryListEvent.selectDiaryCell(
-                        diaryCell: diaryCell,
-                      ),
-                    ),
+                height: diaryCell.settings.height,
+                onTap: () {
+                  context.read<DiaryListBloc>().add(
+                        DiaryListEvent.selectDiaryCell(
+                          cellKey: cellKey,
+                          diaryCell: diaryCell,
+                        ),
+                      );
+                },
+                onPanUpdate: isSelected
+                    ? (details) {
+                        final box = gridKey.currentContext!.findRenderObject()
+                            as RenderBox;
+                        box.paintBounds.shift(details.delta);
+                        context.read<DiaryListBloc>().add(
+                              OnPanUpdateEvent(
+                                diaryCell: diaryCell,
+                                cellKey: cellKey,
+                                gridKey: gridKey,
+                                details: details,
+                              ),
+                            );
+                      }
+                    : null,
               );
             },
             orElse: (() {
+              GlobalObjectKey cellKey = GlobalObjectKey(diaryCell);
               return DiaryCellWidget.model(
+                cellKey: cellKey,
                 isSelected: false,
                 diaryCell: diaryCell,
+                height: diaryCell.settings.height,
                 onTap: () => context.read<DiaryListBloc>().add(
                       DiaryListEvent.selectDiaryCell(
+                        cellKey: cellKey,
                         diaryCell: diaryCell,
                       ),
                     ),
+                //onPanUpdate: (details) {},
               );
             }),
           );

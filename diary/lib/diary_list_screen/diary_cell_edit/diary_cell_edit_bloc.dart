@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:diary/core/constants/enums.dart';
 import 'package:diary/model/diary_cell.dart';
 import 'package:diary/model/diary_cell_settings.dart';
 import 'package:diary/model/diary_list.dart';
@@ -24,19 +25,60 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
           ),
         ) {
     on<EditCellEvent>((event, emit) => onEditCellEvent(event, emit));
+    on<ChangeCellAlignmentEvent>(
+        (event, emit) => onChangeCellAlignmentEvent(event, emit));
+    on<ConfirmChangesEvent>(
+        (event, emit) => onConfirmChangesEvent(event, emit));
   }
 
-  Future<void> onEditCellEvent(
+  void onEditCellEvent(
     EditCellEvent event,
     Emitter<DiaryCellEditState> emit,
+  ) {
+    emit(
+      DiaryCellEditState.editing(
+        diaryList: event.diaryList,
+        diaryCell: event.diaryCell,
+      ),
+    );
+  }
+
+  void onChangeCellAlignmentEvent(
+    ChangeCellAlignmentEvent event,
+    Emitter<DiaryCellEditState> emit,
+  ) {
+    final alignment = AlignmentsEnum.values
+        .firstWhere((element) => element.name == event.alignment);
+    final newSettings = event.diaryCell.settings.copyWith(alignment: alignment);
+    final newCell = diaryCell.copyWith(settings: newSettings);
+    emit(
+      DiaryCellEditState.cellSelected(
+        diaryList: diaryList,
+        diaryCell: newCell,
+      ),
+    );
+    add(
+      EditCellEvent(
+        diaryList: diaryList,
+        diaryCell: newCell,
+      ),
+    );
+  }
+
+  Future<void> onConfirmChangesEvent(
+    ConfirmChangesEvent event,
+    Emitter<DiaryCellEditState> emit,
   ) async {
-    // final settings = await _diaryCellService.getCellSettings(
-    //   diaryList: event.diaryList,
-    //   diaryCell: event.diaryCell,
-    // );
-    emit(DiaryCellEditState.editing(
+    _diaryCellService.updateSettings(
       diaryList: event.diaryList,
       diaryCell: event.diaryCell,
-    ));
+      settings: event.diaryCell.settings,
+    );
+    emit(
+      DiaryCellEditState.cellSelected(
+        diaryList: event.diaryList,
+        diaryCell: event.diaryCell,
+      ),
+    );
   }
 }

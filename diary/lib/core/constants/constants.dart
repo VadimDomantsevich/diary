@@ -1,4 +1,6 @@
 class Constants {
+  static const diaryColumnIdField = 'id';
+
   static const diaryColumnNameField = 'name';
 
   static const diaryColumnDateField = 'Date';
@@ -8,4 +10,10 @@ class Constants {
   static const cellSettingsDocName = 'settings';
 
   static const cellsDefaultSettingsDocName = 'defaultCellSettings';
+
+  static const columnsDefaultSettingsDocName = 'defaultColumnSettings';
+
+  static const interactiveViewerMinScale = 0.1;
+
+  static const interactiveViewerMaxScale = 4;
 }

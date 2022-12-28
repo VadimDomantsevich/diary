@@ -8,13 +8,16 @@ part 'diary_cell_settings.g.dart';
 @CopyWith()
 class DiaryCellSettings {
   final AlignmentsEnum alignment;
+  final double height;
 
   DiaryCellSettings({
     required this.alignment,
+    required this.height,
   });
 
   Map<String, dynamic> toFirestore() => {
         'alignment': alignment.name,
+        'height': height,
       };
 
   factory DiaryCellSettings.fromFirestore({
@@ -24,17 +27,24 @@ class DiaryCellSettings {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     if (doc.id == Constants.cellsDefaultSettingsDocName) {
       return DiaryCellSettings(
-          alignment: AlignmentsEnum.values
-              .firstWhere((element) => element.name == data['alignment']));
+        alignment: AlignmentsEnum.values
+            .firstWhere((element) => element.name == data['alignment']),
+        height: data['height'],
+      );
     } else {
       AlignmentsEnum alignment = defaultSettings!.alignment;
+      double height = defaultSettings.height;
       if (data['alignment'] != null) {
         alignment = AlignmentsEnum.values.firstWhere(
           (element) => element.name == data['alignment'],
         );
       }
+      if (data['height'] != null) {
+        height = data['height'];
+      }
       return DiaryCellSettings(
         alignment: alignment,
+        height: height,
       );
     }
   }

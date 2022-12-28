@@ -23,15 +23,27 @@ mixin _$DiaryListState {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         columnsLoaded,
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
         loaded,
     required TResult Function(
             DiaryList diaryList,
             List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells,
-            DiaryCell selectedCell)
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
         cellSelected,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
+        cellsSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,12 +52,27 @@ mixin _$DiaryListState {
     TResult? Function(DiaryList diaryList)? listLoaded,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         loaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         cellSelected,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        cellsSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,12 +81,27 @@ mixin _$DiaryListState {
     TResult Function(DiaryList diaryList)? listLoaded,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         loaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         cellSelected,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        cellsSelected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -70,6 +112,7 @@ mixin _$DiaryListState {
     required TResult Function(_ColumnsLoaded value) columnsLoaded,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_CellSelected value) cellSelected,
+    required TResult Function(_CellsSelected value) cellsSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -79,6 +122,7 @@ mixin _$DiaryListState {
     TResult? Function(_ColumnsLoaded value)? columnsLoaded,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_CellSelected value)? cellSelected,
+    TResult? Function(_CellsSelected value)? cellsSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -88,6 +132,7 @@ mixin _$DiaryListState {
     TResult Function(_ColumnsLoaded value)? columnsLoaded,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_CellSelected value)? cellSelected,
+    TResult Function(_CellsSelected value)? cellsSelected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -153,15 +198,27 @@ class _$_Initial implements _Initial {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         columnsLoaded,
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
         loaded,
     required TResult Function(
             DiaryList diaryList,
             List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells,
-            DiaryCell selectedCell)
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
         cellSelected,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
+        cellsSelected,
   }) {
     return initial();
   }
@@ -173,12 +230,27 @@ class _$_Initial implements _Initial {
     TResult? Function(DiaryList diaryList)? listLoaded,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         loaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         cellSelected,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        cellsSelected,
   }) {
     return initial?.call();
   }
@@ -190,12 +262,27 @@ class _$_Initial implements _Initial {
     TResult Function(DiaryList diaryList)? listLoaded,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         loaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         cellSelected,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        cellsSelected,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -212,6 +299,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_ColumnsLoaded value) columnsLoaded,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_CellSelected value) cellSelected,
+    required TResult Function(_CellsSelected value) cellsSelected,
   }) {
     return initial(this);
   }
@@ -224,6 +312,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_ColumnsLoaded value)? columnsLoaded,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_CellSelected value)? cellSelected,
+    TResult? Function(_CellsSelected value)? cellsSelected,
   }) {
     return initial?.call(this);
   }
@@ -236,6 +325,7 @@ class _$_Initial implements _Initial {
     TResult Function(_ColumnsLoaded value)? columnsLoaded,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_CellSelected value)? cellSelected,
+    TResult Function(_CellsSelected value)? cellsSelected,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -319,15 +409,27 @@ class _$_ListLoaded implements _ListLoaded {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         columnsLoaded,
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
         loaded,
     required TResult Function(
             DiaryList diaryList,
             List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells,
-            DiaryCell selectedCell)
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
         cellSelected,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
+        cellsSelected,
   }) {
     return listLoaded(diaryList);
   }
@@ -339,12 +441,27 @@ class _$_ListLoaded implements _ListLoaded {
     TResult? Function(DiaryList diaryList)? listLoaded,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         loaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         cellSelected,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        cellsSelected,
   }) {
     return listLoaded?.call(diaryList);
   }
@@ -356,12 +473,27 @@ class _$_ListLoaded implements _ListLoaded {
     TResult Function(DiaryList diaryList)? listLoaded,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         loaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         cellSelected,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        cellsSelected,
     required TResult orElse(),
   }) {
     if (listLoaded != null) {
@@ -378,6 +510,7 @@ class _$_ListLoaded implements _ListLoaded {
     required TResult Function(_ColumnsLoaded value) columnsLoaded,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_CellSelected value) cellSelected,
+    required TResult Function(_CellsSelected value) cellsSelected,
   }) {
     return listLoaded(this);
   }
@@ -390,6 +523,7 @@ class _$_ListLoaded implements _ListLoaded {
     TResult? Function(_ColumnsLoaded value)? columnsLoaded,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_CellSelected value)? cellSelected,
+    TResult? Function(_CellsSelected value)? cellsSelected,
   }) {
     return listLoaded?.call(this);
   }
@@ -402,6 +536,7 @@ class _$_ListLoaded implements _ListLoaded {
     TResult Function(_ColumnsLoaded value)? columnsLoaded,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_CellSelected value)? cellSelected,
+    TResult Function(_CellsSelected value)? cellsSelected,
     required TResult orElse(),
   }) {
     if (listLoaded != null) {
@@ -507,15 +642,27 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         columnsLoaded,
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
         loaded,
     required TResult Function(
             DiaryList diaryList,
             List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells,
-            DiaryCell selectedCell)
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
         cellSelected,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
+        cellsSelected,
   }) {
     return columnsLoaded(diaryList, diaryColumns);
   }
@@ -527,12 +674,27 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     TResult? Function(DiaryList diaryList)? listLoaded,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         loaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         cellSelected,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        cellsSelected,
   }) {
     return columnsLoaded?.call(diaryList, diaryColumns);
   }
@@ -544,12 +706,27 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     TResult Function(DiaryList diaryList)? listLoaded,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         loaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         cellSelected,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        cellsSelected,
     required TResult orElse(),
   }) {
     if (columnsLoaded != null) {
@@ -566,6 +743,7 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     required TResult Function(_ColumnsLoaded value) columnsLoaded,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_CellSelected value) cellSelected,
+    required TResult Function(_CellsSelected value) cellsSelected,
   }) {
     return columnsLoaded(this);
   }
@@ -578,6 +756,7 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     TResult? Function(_ColumnsLoaded value)? columnsLoaded,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_CellSelected value)? cellSelected,
+    TResult? Function(_CellsSelected value)? cellsSelected,
   }) {
     return columnsLoaded?.call(this);
   }
@@ -590,6 +769,7 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     TResult Function(_ColumnsLoaded value)? columnsLoaded,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_CellSelected value)? cellSelected,
+    TResult Function(_CellsSelected value)? cellsSelected,
     required TResult orElse(),
   }) {
     if (columnsLoaded != null) {
@@ -619,7 +799,8 @@ abstract class _$$_LoadedCopyWith<$Res> {
   $Res call(
       {DiaryList diaryList,
       List<DiaryColumn> diaryColumns,
-      List<DiaryCell> diaryCells});
+      List<DiaryCell> diaryCells,
+      List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys});
 }
 
 /// @nodoc
@@ -635,6 +816,7 @@ class __$$_LoadedCopyWithImpl<$Res>
     Object? diaryList = null,
     Object? diaryColumns = null,
     Object? diaryCells = null,
+    Object? cellsKeys = null,
   }) {
     return _then(_$_Loaded(
       diaryList: null == diaryList
@@ -649,6 +831,10 @@ class __$$_LoadedCopyWithImpl<$Res>
           ? _value._diaryCells
           : diaryCells // ignore: cast_nullable_to_non_nullable
               as List<DiaryCell>,
+      cellsKeys: null == cellsKeys
+          ? _value._cellsKeys
+          : cellsKeys // ignore: cast_nullable_to_non_nullable
+              as List<GlobalObjectKey<State<StatefulWidget>>>,
     ));
   }
 }
@@ -659,9 +845,11 @@ class _$_Loaded implements _Loaded {
   const _$_Loaded(
       {required this.diaryList,
       required final List<DiaryColumn> diaryColumns,
-      required final List<DiaryCell> diaryCells})
+      required final List<DiaryCell> diaryCells,
+      required final List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys})
       : _diaryColumns = diaryColumns,
-        _diaryCells = diaryCells;
+        _diaryCells = diaryCells,
+        _cellsKeys = cellsKeys;
 
   @override
   final DiaryList diaryList;
@@ -679,9 +867,16 @@ class _$_Loaded implements _Loaded {
     return EqualUnmodifiableListView(_diaryCells);
   }
 
+  final List<GlobalObjectKey<State<StatefulWidget>>> _cellsKeys;
+  @override
+  List<GlobalObjectKey<State<StatefulWidget>>> get cellsKeys {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_cellsKeys);
+  }
+
   @override
   String toString() {
-    return 'DiaryListState.loaded(diaryList: $diaryList, diaryColumns: $diaryColumns, diaryCells: $diaryCells)';
+    return 'DiaryListState.loaded(diaryList: $diaryList, diaryColumns: $diaryColumns, diaryCells: $diaryCells, cellsKeys: $cellsKeys)';
   }
 
   @override
@@ -694,7 +889,9 @@ class _$_Loaded implements _Loaded {
             const DeepCollectionEquality()
                 .equals(other._diaryColumns, _diaryColumns) &&
             const DeepCollectionEquality()
-                .equals(other._diaryCells, _diaryCells));
+                .equals(other._diaryCells, _diaryCells) &&
+            const DeepCollectionEquality()
+                .equals(other._cellsKeys, _cellsKeys));
   }
 
   @override
@@ -702,7 +899,8 @@ class _$_Loaded implements _Loaded {
       runtimeType,
       diaryList,
       const DeepCollectionEquality().hash(_diaryColumns),
-      const DeepCollectionEquality().hash(_diaryCells));
+      const DeepCollectionEquality().hash(_diaryCells),
+      const DeepCollectionEquality().hash(_cellsKeys));
 
   @JsonKey(ignore: true)
   @override
@@ -718,17 +916,29 @@ class _$_Loaded implements _Loaded {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         columnsLoaded,
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
         loaded,
     required TResult Function(
             DiaryList diaryList,
             List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells,
-            DiaryCell selectedCell)
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
         cellSelected,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
+        cellsSelected,
   }) {
-    return loaded(diaryList, diaryColumns, diaryCells);
+    return loaded(diaryList, diaryColumns, diaryCells, cellsKeys);
   }
 
   @override
@@ -738,14 +948,29 @@ class _$_Loaded implements _Loaded {
     TResult? Function(DiaryList diaryList)? listLoaded,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         loaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         cellSelected,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        cellsSelected,
   }) {
-    return loaded?.call(diaryList, diaryColumns, diaryCells);
+    return loaded?.call(diaryList, diaryColumns, diaryCells, cellsKeys);
   }
 
   @override
@@ -755,16 +980,31 @@ class _$_Loaded implements _Loaded {
     TResult Function(DiaryList diaryList)? listLoaded,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         loaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         cellSelected,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        cellsSelected,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(diaryList, diaryColumns, diaryCells);
+      return loaded(diaryList, diaryColumns, diaryCells, cellsKeys);
     }
     return orElse();
   }
@@ -777,6 +1017,7 @@ class _$_Loaded implements _Loaded {
     required TResult Function(_ColumnsLoaded value) columnsLoaded,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_CellSelected value) cellSelected,
+    required TResult Function(_CellsSelected value) cellsSelected,
   }) {
     return loaded(this);
   }
@@ -789,6 +1030,7 @@ class _$_Loaded implements _Loaded {
     TResult? Function(_ColumnsLoaded value)? columnsLoaded,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_CellSelected value)? cellSelected,
+    TResult? Function(_CellsSelected value)? cellsSelected,
   }) {
     return loaded?.call(this);
   }
@@ -801,6 +1043,7 @@ class _$_Loaded implements _Loaded {
     TResult Function(_ColumnsLoaded value)? columnsLoaded,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_CellSelected value)? cellSelected,
+    TResult Function(_CellsSelected value)? cellsSelected,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -814,11 +1057,14 @@ abstract class _Loaded implements DiaryListState {
   const factory _Loaded(
       {required final DiaryList diaryList,
       required final List<DiaryColumn> diaryColumns,
-      required final List<DiaryCell> diaryCells}) = _$_Loaded;
+      required final List<DiaryCell> diaryCells,
+      required final List<GlobalObjectKey<State<StatefulWidget>>>
+          cellsKeys}) = _$_Loaded;
 
   DiaryList get diaryList;
   List<DiaryColumn> get diaryColumns;
   List<DiaryCell> get diaryCells;
+  List<GlobalObjectKey<State<StatefulWidget>>> get cellsKeys;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -834,7 +1080,8 @@ abstract class _$$_CellSelectedCopyWith<$Res> {
       {DiaryList diaryList,
       List<DiaryColumn> diaryColumns,
       List<DiaryCell> diaryCells,
-      DiaryCell selectedCell});
+      DiaryCell selectedCell,
+      List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys});
 }
 
 /// @nodoc
@@ -852,6 +1099,7 @@ class __$$_CellSelectedCopyWithImpl<$Res>
     Object? diaryColumns = null,
     Object? diaryCells = null,
     Object? selectedCell = null,
+    Object? cellsKeys = null,
   }) {
     return _then(_$_CellSelected(
       diaryList: null == diaryList
@@ -870,6 +1118,10 @@ class __$$_CellSelectedCopyWithImpl<$Res>
           ? _value.selectedCell
           : selectedCell // ignore: cast_nullable_to_non_nullable
               as DiaryCell,
+      cellsKeys: null == cellsKeys
+          ? _value._cellsKeys
+          : cellsKeys // ignore: cast_nullable_to_non_nullable
+              as List<GlobalObjectKey<State<StatefulWidget>>>,
     ));
   }
 }
@@ -881,9 +1133,11 @@ class _$_CellSelected implements _CellSelected {
       {required this.diaryList,
       required final List<DiaryColumn> diaryColumns,
       required final List<DiaryCell> diaryCells,
-      required this.selectedCell})
+      required this.selectedCell,
+      required final List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys})
       : _diaryColumns = diaryColumns,
-        _diaryCells = diaryCells;
+        _diaryCells = diaryCells,
+        _cellsKeys = cellsKeys;
 
   @override
   final DiaryList diaryList;
@@ -903,10 +1157,16 @@ class _$_CellSelected implements _CellSelected {
 
   @override
   final DiaryCell selectedCell;
+  final List<GlobalObjectKey<State<StatefulWidget>>> _cellsKeys;
+  @override
+  List<GlobalObjectKey<State<StatefulWidget>>> get cellsKeys {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_cellsKeys);
+  }
 
   @override
   String toString() {
-    return 'DiaryListState.cellSelected(diaryList: $diaryList, diaryColumns: $diaryColumns, diaryCells: $diaryCells, selectedCell: $selectedCell)';
+    return 'DiaryListState.cellSelected(diaryList: $diaryList, diaryColumns: $diaryColumns, diaryCells: $diaryCells, selectedCell: $selectedCell, cellsKeys: $cellsKeys)';
   }
 
   @override
@@ -921,7 +1181,9 @@ class _$_CellSelected implements _CellSelected {
             const DeepCollectionEquality()
                 .equals(other._diaryCells, _diaryCells) &&
             (identical(other.selectedCell, selectedCell) ||
-                other.selectedCell == selectedCell));
+                other.selectedCell == selectedCell) &&
+            const DeepCollectionEquality()
+                .equals(other._cellsKeys, _cellsKeys));
   }
 
   @override
@@ -930,7 +1192,8 @@ class _$_CellSelected implements _CellSelected {
       diaryList,
       const DeepCollectionEquality().hash(_diaryColumns),
       const DeepCollectionEquality().hash(_diaryCells),
-      selectedCell);
+      selectedCell,
+      const DeepCollectionEquality().hash(_cellsKeys));
 
   @JsonKey(ignore: true)
   @override
@@ -946,17 +1209,30 @@ class _$_CellSelected implements _CellSelected {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         columnsLoaded,
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
         loaded,
     required TResult Function(
             DiaryList diaryList,
             List<DiaryColumn> diaryColumns,
             List<DiaryCell> diaryCells,
-            DiaryCell selectedCell)
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
         cellSelected,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
+        cellsSelected,
   }) {
-    return cellSelected(diaryList, diaryColumns, diaryCells, selectedCell);
+    return cellSelected(
+        diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys);
   }
 
   @override
@@ -966,15 +1242,30 @@ class _$_CellSelected implements _CellSelected {
     TResult? Function(DiaryList diaryList)? listLoaded,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         loaded,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         cellSelected,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        cellsSelected,
   }) {
     return cellSelected?.call(
-        diaryList, diaryColumns, diaryCells, selectedCell);
+        diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys);
   }
 
   @override
@@ -984,16 +1275,32 @@ class _$_CellSelected implements _CellSelected {
     TResult Function(DiaryList diaryList)? listLoaded,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         columnsLoaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         loaded,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells, DiaryCell selectedCell)?
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
         cellSelected,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        cellsSelected,
     required TResult orElse(),
   }) {
     if (cellSelected != null) {
-      return cellSelected(diaryList, diaryColumns, diaryCells, selectedCell);
+      return cellSelected(
+          diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys);
     }
     return orElse();
   }
@@ -1006,6 +1313,7 @@ class _$_CellSelected implements _CellSelected {
     required TResult Function(_ColumnsLoaded value) columnsLoaded,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_CellSelected value) cellSelected,
+    required TResult Function(_CellsSelected value) cellsSelected,
   }) {
     return cellSelected(this);
   }
@@ -1018,6 +1326,7 @@ class _$_CellSelected implements _CellSelected {
     TResult? Function(_ColumnsLoaded value)? columnsLoaded,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_CellSelected value)? cellSelected,
+    TResult? Function(_CellsSelected value)? cellsSelected,
   }) {
     return cellSelected?.call(this);
   }
@@ -1030,6 +1339,7 @@ class _$_CellSelected implements _CellSelected {
     TResult Function(_ColumnsLoaded value)? columnsLoaded,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_CellSelected value)? cellSelected,
+    TResult Function(_CellsSelected value)? cellsSelected,
     required TResult orElse(),
   }) {
     if (cellSelected != null) {
@@ -1044,14 +1354,335 @@ abstract class _CellSelected implements DiaryListState {
       {required final DiaryList diaryList,
       required final List<DiaryColumn> diaryColumns,
       required final List<DiaryCell> diaryCells,
-      required final DiaryCell selectedCell}) = _$_CellSelected;
+      required final DiaryCell selectedCell,
+      required final List<GlobalObjectKey<State<StatefulWidget>>>
+          cellsKeys}) = _$_CellSelected;
 
   DiaryList get diaryList;
   List<DiaryColumn> get diaryColumns;
   List<DiaryCell> get diaryCells;
   DiaryCell get selectedCell;
+  List<GlobalObjectKey<State<StatefulWidget>>> get cellsKeys;
   @JsonKey(ignore: true)
   _$$_CellSelectedCopyWith<_$_CellSelected> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_CellsSelectedCopyWith<$Res> {
+  factory _$$_CellsSelectedCopyWith(
+          _$_CellsSelected value, $Res Function(_$_CellsSelected) then) =
+      __$$_CellsSelectedCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {DiaryList diaryList,
+      List<DiaryColumn> diaryColumns,
+      List<DiaryCell> diaryCells,
+      DiaryCell firstSelectedCell,
+      List<DiaryCell> selectedCells,
+      List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys});
+}
+
+/// @nodoc
+class __$$_CellsSelectedCopyWithImpl<$Res>
+    extends _$DiaryListStateCopyWithImpl<$Res, _$_CellsSelected>
+    implements _$$_CellsSelectedCopyWith<$Res> {
+  __$$_CellsSelectedCopyWithImpl(
+      _$_CellsSelected _value, $Res Function(_$_CellsSelected) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? diaryList = null,
+    Object? diaryColumns = null,
+    Object? diaryCells = null,
+    Object? firstSelectedCell = null,
+    Object? selectedCells = null,
+    Object? cellsKeys = null,
+  }) {
+    return _then(_$_CellsSelected(
+      diaryList: null == diaryList
+          ? _value.diaryList
+          : diaryList // ignore: cast_nullable_to_non_nullable
+              as DiaryList,
+      diaryColumns: null == diaryColumns
+          ? _value._diaryColumns
+          : diaryColumns // ignore: cast_nullable_to_non_nullable
+              as List<DiaryColumn>,
+      diaryCells: null == diaryCells
+          ? _value._diaryCells
+          : diaryCells // ignore: cast_nullable_to_non_nullable
+              as List<DiaryCell>,
+      firstSelectedCell: null == firstSelectedCell
+          ? _value.firstSelectedCell
+          : firstSelectedCell // ignore: cast_nullable_to_non_nullable
+              as DiaryCell,
+      selectedCells: null == selectedCells
+          ? _value._selectedCells
+          : selectedCells // ignore: cast_nullable_to_non_nullable
+              as List<DiaryCell>,
+      cellsKeys: null == cellsKeys
+          ? _value._cellsKeys
+          : cellsKeys // ignore: cast_nullable_to_non_nullable
+              as List<GlobalObjectKey<State<StatefulWidget>>>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_CellsSelected implements _CellsSelected {
+  const _$_CellsSelected(
+      {required this.diaryList,
+      required final List<DiaryColumn> diaryColumns,
+      required final List<DiaryCell> diaryCells,
+      required this.firstSelectedCell,
+      required final List<DiaryCell> selectedCells,
+      required final List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys})
+      : _diaryColumns = diaryColumns,
+        _diaryCells = diaryCells,
+        _selectedCells = selectedCells,
+        _cellsKeys = cellsKeys;
+
+  @override
+  final DiaryList diaryList;
+  final List<DiaryColumn> _diaryColumns;
+  @override
+  List<DiaryColumn> get diaryColumns {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_diaryColumns);
+  }
+
+  final List<DiaryCell> _diaryCells;
+  @override
+  List<DiaryCell> get diaryCells {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_diaryCells);
+  }
+
+  @override
+  final DiaryCell firstSelectedCell;
+  final List<DiaryCell> _selectedCells;
+  @override
+  List<DiaryCell> get selectedCells {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedCells);
+  }
+
+  final List<GlobalObjectKey<State<StatefulWidget>>> _cellsKeys;
+  @override
+  List<GlobalObjectKey<State<StatefulWidget>>> get cellsKeys {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_cellsKeys);
+  }
+
+  @override
+  String toString() {
+    return 'DiaryListState.cellsSelected(diaryList: $diaryList, diaryColumns: $diaryColumns, diaryCells: $diaryCells, firstSelectedCell: $firstSelectedCell, selectedCells: $selectedCells, cellsKeys: $cellsKeys)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_CellsSelected &&
+            (identical(other.diaryList, diaryList) ||
+                other.diaryList == diaryList) &&
+            const DeepCollectionEquality()
+                .equals(other._diaryColumns, _diaryColumns) &&
+            const DeepCollectionEquality()
+                .equals(other._diaryCells, _diaryCells) &&
+            (identical(other.firstSelectedCell, firstSelectedCell) ||
+                other.firstSelectedCell == firstSelectedCell) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedCells, _selectedCells) &&
+            const DeepCollectionEquality()
+                .equals(other._cellsKeys, _cellsKeys));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      diaryList,
+      const DeepCollectionEquality().hash(_diaryColumns),
+      const DeepCollectionEquality().hash(_diaryCells),
+      firstSelectedCell,
+      const DeepCollectionEquality().hash(_selectedCells),
+      const DeepCollectionEquality().hash(_cellsKeys));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CellsSelectedCopyWith<_$_CellsSelected> get copyWith =>
+      __$$_CellsSelectedCopyWithImpl<_$_CellsSelected>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(DiaryList diaryList) listLoaded,
+    required TResult Function(
+            DiaryList diaryList, List<DiaryColumn> diaryColumns)
+        columnsLoaded,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
+        loaded,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
+        cellSelected,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)
+        cellsSelected,
+  }) {
+    return cellsSelected(diaryList, diaryColumns, diaryCells, firstSelectedCell,
+        selectedCells, cellsKeys);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(DiaryList diaryList)? listLoaded,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
+        columnsLoaded,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        loaded,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        cellSelected,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        cellsSelected,
+  }) {
+    return cellsSelected?.call(diaryList, diaryColumns, diaryCells,
+        firstSelectedCell, selectedCells, cellsKeys);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(DiaryList diaryList)? listLoaded,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
+        columnsLoaded,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        loaded,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell selectedCell,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        cellSelected,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys)?
+        cellsSelected,
+    required TResult orElse(),
+  }) {
+    if (cellsSelected != null) {
+      return cellsSelected(diaryList, diaryColumns, diaryCells,
+          firstSelectedCell, selectedCells, cellsKeys);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ListLoaded value) listLoaded,
+    required TResult Function(_ColumnsLoaded value) columnsLoaded,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_CellSelected value) cellSelected,
+    required TResult Function(_CellsSelected value) cellsSelected,
+  }) {
+    return cellsSelected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ListLoaded value)? listLoaded,
+    TResult? Function(_ColumnsLoaded value)? columnsLoaded,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_CellSelected value)? cellSelected,
+    TResult? Function(_CellsSelected value)? cellsSelected,
+  }) {
+    return cellsSelected?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ListLoaded value)? listLoaded,
+    TResult Function(_ColumnsLoaded value)? columnsLoaded,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_CellSelected value)? cellSelected,
+    TResult Function(_CellsSelected value)? cellsSelected,
+    required TResult orElse(),
+  }) {
+    if (cellsSelected != null) {
+      return cellsSelected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CellsSelected implements DiaryListState {
+  const factory _CellsSelected(
+      {required final DiaryList diaryList,
+      required final List<DiaryColumn> diaryColumns,
+      required final List<DiaryCell> diaryCells,
+      required final DiaryCell firstSelectedCell,
+      required final List<DiaryCell> selectedCells,
+      required final List<GlobalObjectKey<State<StatefulWidget>>>
+          cellsKeys}) = _$_CellsSelected;
+
+  DiaryList get diaryList;
+  List<DiaryColumn> get diaryColumns;
+  List<DiaryCell> get diaryCells;
+  DiaryCell get firstSelectedCell;
+  List<DiaryCell> get selectedCells;
+  List<GlobalObjectKey<State<StatefulWidget>>> get cellsKeys;
+  @JsonKey(ignore: true)
+  _$$_CellsSelectedCopyWith<_$_CellsSelected> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1065,10 +1696,18 @@ mixin _$DiaryListEvent {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         getDiaryCells,
-    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(
+            DiaryCell diaryCell, GlobalObjectKey<State<StatefulWidget>> cellKey)
+        selectDiaryCell,
+    required TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)
+        onPanUpdate,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         changeDiaryCell,
-    required TResult Function(String? textFieldText) updateDiaryCell,
+    required TResult Function(DiaryCell diaryCell) updateDiaryCell,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1078,10 +1717,18 @@ mixin _$DiaryListEvent {
     TResult? Function(DiaryList diaryList)? getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
-    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult? Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
-    TResult? Function(String? textFieldText)? updateDiaryCell,
+    TResult? Function(DiaryCell diaryCell)? updateDiaryCell,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1091,10 +1738,18 @@ mixin _$DiaryListEvent {
     TResult Function(DiaryList diaryList)? getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
-    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
-    TResult Function(String? textFieldText)? updateDiaryCell,
+    TResult Function(DiaryCell diaryCell)? updateDiaryCell,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1105,6 +1760,7 @@ mixin _$DiaryListEvent {
     required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
     required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
     required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(OnPanUpdateEvent value) onPanUpdate,
     required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
     required TResult Function(UpdateDiaryCellEvent value) updateDiaryCell,
   }) =>
@@ -1116,6 +1772,7 @@ mixin _$DiaryListEvent {
     TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
     TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(OnPanUpdateEvent value)? onPanUpdate,
     TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     TResult? Function(UpdateDiaryCellEvent value)? updateDiaryCell,
   }) =>
@@ -1127,6 +1784,7 @@ mixin _$DiaryListEvent {
     TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
     TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(OnPanUpdateEvent value)? onPanUpdate,
     TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     TResult Function(UpdateDiaryCellEvent value)? updateDiaryCell,
     required TResult orElse(),
@@ -1196,10 +1854,18 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         getDiaryCells,
-    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(
+            DiaryCell diaryCell, GlobalObjectKey<State<StatefulWidget>> cellKey)
+        selectDiaryCell,
+    required TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)
+        onPanUpdate,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         changeDiaryCell,
-    required TResult Function(String? textFieldText) updateDiaryCell,
+    required TResult Function(DiaryCell diaryCell) updateDiaryCell,
   }) {
     return createSample();
   }
@@ -1212,10 +1878,18 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     TResult? Function(DiaryList diaryList)? getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
-    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult? Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
-    TResult? Function(String? textFieldText)? updateDiaryCell,
+    TResult? Function(DiaryCell diaryCell)? updateDiaryCell,
   }) {
     return createSample?.call();
   }
@@ -1228,10 +1902,18 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     TResult Function(DiaryList diaryList)? getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
-    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
-    TResult Function(String? textFieldText)? updateDiaryCell,
+    TResult Function(DiaryCell diaryCell)? updateDiaryCell,
     required TResult orElse(),
   }) {
     if (createSample != null) {
@@ -1248,6 +1930,7 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
     required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
     required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(OnPanUpdateEvent value) onPanUpdate,
     required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
     required TResult Function(UpdateDiaryCellEvent value) updateDiaryCell,
   }) {
@@ -1262,6 +1945,7 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
     TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(OnPanUpdateEvent value)? onPanUpdate,
     TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     TResult? Function(UpdateDiaryCellEvent value)? updateDiaryCell,
   }) {
@@ -1276,6 +1960,7 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
     TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(OnPanUpdateEvent value)? onPanUpdate,
     TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     TResult Function(UpdateDiaryCellEvent value)? updateDiaryCell,
     required TResult orElse(),
@@ -1361,10 +2046,18 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         getDiaryCells,
-    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(
+            DiaryCell diaryCell, GlobalObjectKey<State<StatefulWidget>> cellKey)
+        selectDiaryCell,
+    required TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)
+        onPanUpdate,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         changeDiaryCell,
-    required TResult Function(String? textFieldText) updateDiaryCell,
+    required TResult Function(DiaryCell diaryCell) updateDiaryCell,
   }) {
     return getDiaryList(date);
   }
@@ -1377,10 +2070,18 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     TResult? Function(DiaryList diaryList)? getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
-    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult? Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
-    TResult? Function(String? textFieldText)? updateDiaryCell,
+    TResult? Function(DiaryCell diaryCell)? updateDiaryCell,
   }) {
     return getDiaryList?.call(date);
   }
@@ -1393,10 +2094,18 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     TResult Function(DiaryList diaryList)? getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
-    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
-    TResult Function(String? textFieldText)? updateDiaryCell,
+    TResult Function(DiaryCell diaryCell)? updateDiaryCell,
     required TResult orElse(),
   }) {
     if (getDiaryList != null) {
@@ -1413,6 +2122,7 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
     required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
     required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(OnPanUpdateEvent value) onPanUpdate,
     required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
     required TResult Function(UpdateDiaryCellEvent value) updateDiaryCell,
   }) {
@@ -1427,6 +2137,7 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
     TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(OnPanUpdateEvent value)? onPanUpdate,
     TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     TResult? Function(UpdateDiaryCellEvent value)? updateDiaryCell,
   }) {
@@ -1441,6 +2152,7 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
     TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(OnPanUpdateEvent value)? onPanUpdate,
     TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     TResult Function(UpdateDiaryCellEvent value)? updateDiaryCell,
     required TResult orElse(),
@@ -1534,10 +2246,18 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         getDiaryCells,
-    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(
+            DiaryCell diaryCell, GlobalObjectKey<State<StatefulWidget>> cellKey)
+        selectDiaryCell,
+    required TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)
+        onPanUpdate,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         changeDiaryCell,
-    required TResult Function(String? textFieldText) updateDiaryCell,
+    required TResult Function(DiaryCell diaryCell) updateDiaryCell,
   }) {
     return getDiaryColumns(diaryList);
   }
@@ -1550,10 +2270,18 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     TResult? Function(DiaryList diaryList)? getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
-    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult? Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
-    TResult? Function(String? textFieldText)? updateDiaryCell,
+    TResult? Function(DiaryCell diaryCell)? updateDiaryCell,
   }) {
     return getDiaryColumns?.call(diaryList);
   }
@@ -1566,10 +2294,18 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     TResult Function(DiaryList diaryList)? getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
-    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
-    TResult Function(String? textFieldText)? updateDiaryCell,
+    TResult Function(DiaryCell diaryCell)? updateDiaryCell,
     required TResult orElse(),
   }) {
     if (getDiaryColumns != null) {
@@ -1586,6 +2322,7 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
     required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
     required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(OnPanUpdateEvent value) onPanUpdate,
     required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
     required TResult Function(UpdateDiaryCellEvent value) updateDiaryCell,
   }) {
@@ -1600,6 +2337,7 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
     TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(OnPanUpdateEvent value)? onPanUpdate,
     TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     TResult? Function(UpdateDiaryCellEvent value)? updateDiaryCell,
   }) {
@@ -1614,6 +2352,7 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
     TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(OnPanUpdateEvent value)? onPanUpdate,
     TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     TResult Function(UpdateDiaryCellEvent value)? updateDiaryCell,
     required TResult orElse(),
@@ -1723,10 +2462,18 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         getDiaryCells,
-    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(
+            DiaryCell diaryCell, GlobalObjectKey<State<StatefulWidget>> cellKey)
+        selectDiaryCell,
+    required TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)
+        onPanUpdate,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         changeDiaryCell,
-    required TResult Function(String? textFieldText) updateDiaryCell,
+    required TResult Function(DiaryCell diaryCell) updateDiaryCell,
   }) {
     return getDiaryCells(diaryList, diaryColumns);
   }
@@ -1739,10 +2486,18 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     TResult? Function(DiaryList diaryList)? getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
-    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult? Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
-    TResult? Function(String? textFieldText)? updateDiaryCell,
+    TResult? Function(DiaryCell diaryCell)? updateDiaryCell,
   }) {
     return getDiaryCells?.call(diaryList, diaryColumns);
   }
@@ -1755,10 +2510,18 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     TResult Function(DiaryList diaryList)? getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
-    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
-    TResult Function(String? textFieldText)? updateDiaryCell,
+    TResult Function(DiaryCell diaryCell)? updateDiaryCell,
     required TResult orElse(),
   }) {
     if (getDiaryCells != null) {
@@ -1775,6 +2538,7 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
     required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
     required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(OnPanUpdateEvent value) onPanUpdate,
     required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
     required TResult Function(UpdateDiaryCellEvent value) updateDiaryCell,
   }) {
@@ -1789,6 +2553,7 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
     TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(OnPanUpdateEvent value)? onPanUpdate,
     TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     TResult? Function(UpdateDiaryCellEvent value)? updateDiaryCell,
   }) {
@@ -1803,6 +2568,7 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
     TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(OnPanUpdateEvent value)? onPanUpdate,
     TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     TResult Function(UpdateDiaryCellEvent value)? updateDiaryCell,
     required TResult orElse(),
@@ -1832,7 +2598,8 @@ abstract class _$$SelectDiaryCellEventCopyWith<$Res> {
           $Res Function(_$SelectDiaryCellEvent) then) =
       __$$SelectDiaryCellEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({DiaryCell diaryCell});
+  $Res call(
+      {DiaryCell diaryCell, GlobalObjectKey<State<StatefulWidget>> cellKey});
 }
 
 /// @nodoc
@@ -1847,12 +2614,17 @@ class __$$SelectDiaryCellEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? diaryCell = null,
+    Object? cellKey = null,
   }) {
     return _then(_$SelectDiaryCellEvent(
       diaryCell: null == diaryCell
           ? _value.diaryCell
           : diaryCell // ignore: cast_nullable_to_non_nullable
               as DiaryCell,
+      cellKey: null == cellKey
+          ? _value.cellKey
+          : cellKey // ignore: cast_nullable_to_non_nullable
+              as GlobalObjectKey<State<StatefulWidget>>,
     ));
   }
 }
@@ -1860,14 +2632,17 @@ class __$$SelectDiaryCellEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
-  const _$SelectDiaryCellEvent({required this.diaryCell});
+  const _$SelectDiaryCellEvent(
+      {required this.diaryCell, required this.cellKey});
 
   @override
   final DiaryCell diaryCell;
+  @override
+  final GlobalObjectKey<State<StatefulWidget>> cellKey;
 
   @override
   String toString() {
-    return 'DiaryListEvent.selectDiaryCell(diaryCell: $diaryCell)';
+    return 'DiaryListEvent.selectDiaryCell(diaryCell: $diaryCell, cellKey: $cellKey)';
   }
 
   @override
@@ -1876,11 +2651,12 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
         (other.runtimeType == runtimeType &&
             other is _$SelectDiaryCellEvent &&
             (identical(other.diaryCell, diaryCell) ||
-                other.diaryCell == diaryCell));
+                other.diaryCell == diaryCell) &&
+            (identical(other.cellKey, cellKey) || other.cellKey == cellKey));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, diaryCell);
+  int get hashCode => Object.hash(runtimeType, diaryCell, cellKey);
 
   @JsonKey(ignore: true)
   @override
@@ -1898,12 +2674,20 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         getDiaryCells,
-    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(
+            DiaryCell diaryCell, GlobalObjectKey<State<StatefulWidget>> cellKey)
+        selectDiaryCell,
+    required TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)
+        onPanUpdate,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         changeDiaryCell,
-    required TResult Function(String? textFieldText) updateDiaryCell,
+    required TResult Function(DiaryCell diaryCell) updateDiaryCell,
   }) {
-    return selectDiaryCell(diaryCell);
+    return selectDiaryCell(diaryCell, cellKey);
   }
 
   @override
@@ -1914,12 +2698,20 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
     TResult? Function(DiaryList diaryList)? getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
-    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult? Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
-    TResult? Function(String? textFieldText)? updateDiaryCell,
+    TResult? Function(DiaryCell diaryCell)? updateDiaryCell,
   }) {
-    return selectDiaryCell?.call(diaryCell);
+    return selectDiaryCell?.call(diaryCell, cellKey);
   }
 
   @override
@@ -1930,14 +2722,22 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
     TResult Function(DiaryList diaryList)? getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
-    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
-    TResult Function(String? textFieldText)? updateDiaryCell,
+    TResult Function(DiaryCell diaryCell)? updateDiaryCell,
     required TResult orElse(),
   }) {
     if (selectDiaryCell != null) {
-      return selectDiaryCell(diaryCell);
+      return selectDiaryCell(diaryCell, cellKey);
     }
     return orElse();
   }
@@ -1950,6 +2750,7 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
     required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
     required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
     required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(OnPanUpdateEvent value) onPanUpdate,
     required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
     required TResult Function(UpdateDiaryCellEvent value) updateDiaryCell,
   }) {
@@ -1964,6 +2765,7 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
     TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
     TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(OnPanUpdateEvent value)? onPanUpdate,
     TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     TResult? Function(UpdateDiaryCellEvent value)? updateDiaryCell,
   }) {
@@ -1978,6 +2780,7 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
     TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
     TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(OnPanUpdateEvent value)? onPanUpdate,
     TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     TResult Function(UpdateDiaryCellEvent value)? updateDiaryCell,
     required TResult orElse(),
@@ -1990,12 +2793,253 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
 }
 
 abstract class SelectDiaryCellEvent implements DiaryListEvent {
-  const factory SelectDiaryCellEvent({required final DiaryCell diaryCell}) =
+  const factory SelectDiaryCellEvent(
+          {required final DiaryCell diaryCell,
+          required final GlobalObjectKey<State<StatefulWidget>> cellKey}) =
       _$SelectDiaryCellEvent;
 
   DiaryCell get diaryCell;
+  GlobalObjectKey<State<StatefulWidget>> get cellKey;
   @JsonKey(ignore: true)
   _$$SelectDiaryCellEventCopyWith<_$SelectDiaryCellEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OnPanUpdateEventCopyWith<$Res> {
+  factory _$$OnPanUpdateEventCopyWith(
+          _$OnPanUpdateEvent value, $Res Function(_$OnPanUpdateEvent) then) =
+      __$$OnPanUpdateEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {DiaryCell diaryCell,
+      GlobalObjectKey<State<StatefulWidget>> cellKey,
+      GlobalKey<State<StatefulWidget>> gridKey,
+      DragUpdateDetails details});
+}
+
+/// @nodoc
+class __$$OnPanUpdateEventCopyWithImpl<$Res>
+    extends _$DiaryListEventCopyWithImpl<$Res, _$OnPanUpdateEvent>
+    implements _$$OnPanUpdateEventCopyWith<$Res> {
+  __$$OnPanUpdateEventCopyWithImpl(
+      _$OnPanUpdateEvent _value, $Res Function(_$OnPanUpdateEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? diaryCell = null,
+    Object? cellKey = null,
+    Object? gridKey = null,
+    Object? details = null,
+  }) {
+    return _then(_$OnPanUpdateEvent(
+      diaryCell: null == diaryCell
+          ? _value.diaryCell
+          : diaryCell // ignore: cast_nullable_to_non_nullable
+              as DiaryCell,
+      cellKey: null == cellKey
+          ? _value.cellKey
+          : cellKey // ignore: cast_nullable_to_non_nullable
+              as GlobalObjectKey<State<StatefulWidget>>,
+      gridKey: null == gridKey
+          ? _value.gridKey
+          : gridKey // ignore: cast_nullable_to_non_nullable
+              as GlobalKey<State<StatefulWidget>>,
+      details: null == details
+          ? _value.details
+          : details // ignore: cast_nullable_to_non_nullable
+              as DragUpdateDetails,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnPanUpdateEvent implements OnPanUpdateEvent {
+  const _$OnPanUpdateEvent(
+      {required this.diaryCell,
+      required this.cellKey,
+      required this.gridKey,
+      required this.details});
+
+  @override
+  final DiaryCell diaryCell;
+  @override
+  final GlobalObjectKey<State<StatefulWidget>> cellKey;
+  @override
+  final GlobalKey<State<StatefulWidget>> gridKey;
+  @override
+  final DragUpdateDetails details;
+
+  @override
+  String toString() {
+    return 'DiaryListEvent.onPanUpdate(diaryCell: $diaryCell, cellKey: $cellKey, gridKey: $gridKey, details: $details)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnPanUpdateEvent &&
+            (identical(other.diaryCell, diaryCell) ||
+                other.diaryCell == diaryCell) &&
+            (identical(other.cellKey, cellKey) || other.cellKey == cellKey) &&
+            (identical(other.gridKey, gridKey) || other.gridKey == gridKey) &&
+            (identical(other.details, details) || other.details == details));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, diaryCell, cellKey, gridKey, details);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnPanUpdateEventCopyWith<_$OnPanUpdateEvent> get copyWith =>
+      __$$OnPanUpdateEventCopyWithImpl<_$OnPanUpdateEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() createSample,
+    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DiaryList diaryList) getDiaryColumns,
+    required TResult Function(
+            DiaryList diaryList, List<DiaryColumn> diaryColumns)
+        getDiaryCells,
+    required TResult Function(
+            DiaryCell diaryCell, GlobalObjectKey<State<StatefulWidget>> cellKey)
+        selectDiaryCell,
+    required TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)
+        onPanUpdate,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        changeDiaryCell,
+    required TResult Function(DiaryCell diaryCell) updateDiaryCell,
+  }) {
+    return onPanUpdate(diaryCell, cellKey, gridKey, details);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? createSample,
+    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DiaryList diaryList)? getDiaryColumns,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
+        getDiaryCells,
+    TResult? Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult? Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
+    TResult? Function(DiaryCell diaryCell)? updateDiaryCell,
+  }) {
+    return onPanUpdate?.call(diaryCell, cellKey, gridKey, details);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? createSample,
+    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DiaryList diaryList)? getDiaryColumns,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
+        getDiaryCells,
+    TResult Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
+    TResult Function(DiaryCell diaryCell)? updateDiaryCell,
+    required TResult orElse(),
+  }) {
+    if (onPanUpdate != null) {
+      return onPanUpdate(diaryCell, cellKey, gridKey, details);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CreateSampleEvent value) createSample,
+    required TResult Function(GetDiaryListEvent value) getDiaryList,
+    required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
+    required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
+    required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(OnPanUpdateEvent value) onPanUpdate,
+    required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
+    required TResult Function(UpdateDiaryCellEvent value) updateDiaryCell,
+  }) {
+    return onPanUpdate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CreateSampleEvent value)? createSample,
+    TResult? Function(GetDiaryListEvent value)? getDiaryList,
+    TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
+    TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(OnPanUpdateEvent value)? onPanUpdate,
+    TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
+    TResult? Function(UpdateDiaryCellEvent value)? updateDiaryCell,
+  }) {
+    return onPanUpdate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CreateSampleEvent value)? createSample,
+    TResult Function(GetDiaryListEvent value)? getDiaryList,
+    TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
+    TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(OnPanUpdateEvent value)? onPanUpdate,
+    TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
+    TResult Function(UpdateDiaryCellEvent value)? updateDiaryCell,
+    required TResult orElse(),
+  }) {
+    if (onPanUpdate != null) {
+      return onPanUpdate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnPanUpdateEvent implements DiaryListEvent {
+  const factory OnPanUpdateEvent(
+      {required final DiaryCell diaryCell,
+      required final GlobalObjectKey<State<StatefulWidget>> cellKey,
+      required final GlobalKey<State<StatefulWidget>> gridKey,
+      required final DragUpdateDetails details}) = _$OnPanUpdateEvent;
+
+  DiaryCell get diaryCell;
+  GlobalObjectKey<State<StatefulWidget>> get cellKey;
+  GlobalKey<State<StatefulWidget>> get gridKey;
+  DragUpdateDetails get details;
+  @JsonKey(ignore: true)
+  _$$OnPanUpdateEventCopyWith<_$OnPanUpdateEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2080,10 +3124,18 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         getDiaryCells,
-    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(
+            DiaryCell diaryCell, GlobalObjectKey<State<StatefulWidget>> cellKey)
+        selectDiaryCell,
+    required TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)
+        onPanUpdate,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         changeDiaryCell,
-    required TResult Function(String? textFieldText) updateDiaryCell,
+    required TResult Function(DiaryCell diaryCell) updateDiaryCell,
   }) {
     return changeDiaryCell(diaryCell, textFieldText);
   }
@@ -2096,10 +3148,18 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
     TResult? Function(DiaryList diaryList)? getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
-    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult? Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
-    TResult? Function(String? textFieldText)? updateDiaryCell,
+    TResult? Function(DiaryCell diaryCell)? updateDiaryCell,
   }) {
     return changeDiaryCell?.call(diaryCell, textFieldText);
   }
@@ -2112,10 +3172,18 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
     TResult Function(DiaryList diaryList)? getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
-    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
-    TResult Function(String? textFieldText)? updateDiaryCell,
+    TResult Function(DiaryCell diaryCell)? updateDiaryCell,
     required TResult orElse(),
   }) {
     if (changeDiaryCell != null) {
@@ -2132,6 +3200,7 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
     required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
     required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
     required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(OnPanUpdateEvent value) onPanUpdate,
     required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
     required TResult Function(UpdateDiaryCellEvent value) updateDiaryCell,
   }) {
@@ -2146,6 +3215,7 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
     TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
     TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(OnPanUpdateEvent value)? onPanUpdate,
     TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     TResult? Function(UpdateDiaryCellEvent value)? updateDiaryCell,
   }) {
@@ -2160,6 +3230,7 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
     TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
     TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(OnPanUpdateEvent value)? onPanUpdate,
     TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     TResult Function(UpdateDiaryCellEvent value)? updateDiaryCell,
     required TResult orElse(),
@@ -2189,7 +3260,7 @@ abstract class _$$UpdateDiaryCellEventCopyWith<$Res> {
           $Res Function(_$UpdateDiaryCellEvent) then) =
       __$$UpdateDiaryCellEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? textFieldText});
+  $Res call({DiaryCell diaryCell});
 }
 
 /// @nodoc
@@ -2203,13 +3274,13 @@ class __$$UpdateDiaryCellEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? textFieldText = freezed,
+    Object? diaryCell = null,
   }) {
     return _then(_$UpdateDiaryCellEvent(
-      textFieldText: freezed == textFieldText
-          ? _value.textFieldText
-          : textFieldText // ignore: cast_nullable_to_non_nullable
-              as String?,
+      diaryCell: null == diaryCell
+          ? _value.diaryCell
+          : diaryCell // ignore: cast_nullable_to_non_nullable
+              as DiaryCell,
     ));
   }
 }
@@ -2217,14 +3288,14 @@ class __$$UpdateDiaryCellEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UpdateDiaryCellEvent implements UpdateDiaryCellEvent {
-  const _$UpdateDiaryCellEvent({this.textFieldText});
+  const _$UpdateDiaryCellEvent({required this.diaryCell});
 
   @override
-  final String? textFieldText;
+  final DiaryCell diaryCell;
 
   @override
   String toString() {
-    return 'DiaryListEvent.updateDiaryCell(textFieldText: $textFieldText)';
+    return 'DiaryListEvent.updateDiaryCell(diaryCell: $diaryCell)';
   }
 
   @override
@@ -2232,12 +3303,12 @@ class _$UpdateDiaryCellEvent implements UpdateDiaryCellEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateDiaryCellEvent &&
-            (identical(other.textFieldText, textFieldText) ||
-                other.textFieldText == textFieldText));
+            (identical(other.diaryCell, diaryCell) ||
+                other.diaryCell == diaryCell));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, textFieldText);
+  int get hashCode => Object.hash(runtimeType, diaryCell);
 
   @JsonKey(ignore: true)
   @override
@@ -2255,12 +3326,20 @@ class _$UpdateDiaryCellEvent implements UpdateDiaryCellEvent {
     required TResult Function(
             DiaryList diaryList, List<DiaryColumn> diaryColumns)
         getDiaryCells,
-    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(
+            DiaryCell diaryCell, GlobalObjectKey<State<StatefulWidget>> cellKey)
+        selectDiaryCell,
+    required TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)
+        onPanUpdate,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         changeDiaryCell,
-    required TResult Function(String? textFieldText) updateDiaryCell,
+    required TResult Function(DiaryCell diaryCell) updateDiaryCell,
   }) {
-    return updateDiaryCell(textFieldText);
+    return updateDiaryCell(diaryCell);
   }
 
   @override
@@ -2271,12 +3350,20 @@ class _$UpdateDiaryCellEvent implements UpdateDiaryCellEvent {
     TResult? Function(DiaryList diaryList)? getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
-    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult? Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
-    TResult? Function(String? textFieldText)? updateDiaryCell,
+    TResult? Function(DiaryCell diaryCell)? updateDiaryCell,
   }) {
-    return updateDiaryCell?.call(textFieldText);
+    return updateDiaryCell?.call(diaryCell);
   }
 
   @override
@@ -2287,14 +3374,22 @@ class _$UpdateDiaryCellEvent implements UpdateDiaryCellEvent {
     TResult Function(DiaryList diaryList)? getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns)?
         getDiaryCells,
-    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey)?
+        selectDiaryCell,
+    TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            GlobalKey<State<StatefulWidget>> gridKey,
+            DragUpdateDetails details)?
+        onPanUpdate,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
-    TResult Function(String? textFieldText)? updateDiaryCell,
+    TResult Function(DiaryCell diaryCell)? updateDiaryCell,
     required TResult orElse(),
   }) {
     if (updateDiaryCell != null) {
-      return updateDiaryCell(textFieldText);
+      return updateDiaryCell(diaryCell);
     }
     return orElse();
   }
@@ -2307,6 +3402,7 @@ class _$UpdateDiaryCellEvent implements UpdateDiaryCellEvent {
     required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
     required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
     required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(OnPanUpdateEvent value) onPanUpdate,
     required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
     required TResult Function(UpdateDiaryCellEvent value) updateDiaryCell,
   }) {
@@ -2321,6 +3417,7 @@ class _$UpdateDiaryCellEvent implements UpdateDiaryCellEvent {
     TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
     TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(OnPanUpdateEvent value)? onPanUpdate,
     TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     TResult? Function(UpdateDiaryCellEvent value)? updateDiaryCell,
   }) {
@@ -2335,6 +3432,7 @@ class _$UpdateDiaryCellEvent implements UpdateDiaryCellEvent {
     TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
     TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
     TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(OnPanUpdateEvent value)? onPanUpdate,
     TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
     TResult Function(UpdateDiaryCellEvent value)? updateDiaryCell,
     required TResult orElse(),
@@ -2347,10 +3445,10 @@ class _$UpdateDiaryCellEvent implements UpdateDiaryCellEvent {
 }
 
 abstract class UpdateDiaryCellEvent implements DiaryListEvent {
-  const factory UpdateDiaryCellEvent({final String? textFieldText}) =
+  const factory UpdateDiaryCellEvent({required final DiaryCell diaryCell}) =
       _$UpdateDiaryCellEvent;
 
-  String? get textFieldText;
+  DiaryCell get diaryCell;
   @JsonKey(ignore: true)
   _$$UpdateDiaryCellEventCopyWith<_$UpdateDiaryCellEvent> get copyWith =>
       throw _privateConstructorUsedError;

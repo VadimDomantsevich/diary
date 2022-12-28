@@ -1,11 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:diary/model/diary_cell.dart';
-import 'package:diary/model/diary_cell_settings.dart';
 import 'package:diary/model/diary_column.dart';
 import 'package:diary/model/diary_list.dart';
 import 'package:diary/services/diary_cell_service.dart';
 import 'package:diary/services/diary_column_service.dart';
 import 'package:diary/services/diary_list_service.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'diary_list_state.dart';
@@ -32,6 +32,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         ((event, emit) => _onChangeDiaryCellEvent(event, emit)));
     on<UpdateDiaryCellEvent>(
         ((event, emit) => _onUpdateDiaryCellEvent(event, emit)));
+    on<OnPanUpdateEvent>(((event, emit) => _onPanUpdateEvent(event, emit)));
+    // on<OnPointerDownEvent>(((event, emit) => _onPointerDownEvent(event, emit)));
   }
 
   Future<void> _onCreateSampleEvent(
@@ -93,11 +95,18 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       );
       diaryCells.addAll(newCells);
     }
+    //List of global cells keys
+    List<GlobalObjectKey> cellsKeys =
+        List<GlobalObjectKey>.empty(growable: true);
+    for (var cell in diaryCells) {
+      cellsKeys.add(GlobalObjectKey(cell));
+    }
     emit(
       DiaryListState.loaded(
         diaryList: event.diaryList,
         diaryColumns: event.diaryColumns,
         diaryCells: diaryCells,
+        cellsKeys: cellsKeys,
       ),
     );
   }
@@ -107,29 +116,236 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     SelectDiaryCellEvent event,
     Emitter<DiaryListState> emit,
   ) async {
-    state.whenOrNull(loaded: (diaryList, diaryColumns, diaryCells) async {
-      emit(DiaryListState.cellSelected(
-        diaryList: diaryList,
-        diaryColumns: diaryColumns,
-        diaryCells: diaryCells,
-        selectedCell: event.diaryCell,
-      ));
-    }, cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell) async {
-      emit(DiaryListState.cellSelected(
-        diaryList: diaryList,
-        diaryColumns: diaryColumns,
-        diaryCells: diaryCells,
-        selectedCell: event.diaryCell,
-      ));
-    });
+    state.whenOrNull(
+      loaded: (diaryList, diaryColumns, diaryCells, cellsKeys) async {
+        emit(DiaryListState.cellSelected(
+          diaryList: diaryList,
+          diaryColumns: diaryColumns,
+          diaryCells: diaryCells,
+          selectedCell: event.diaryCell,
+          cellsKeys: cellsKeys,
+        ));
+      },
+      cellSelected:
+          (diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys) async {
+        emit(
+          DiaryListState.cellSelected(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            selectedCell: event.diaryCell,
+            cellsKeys: cellsKeys,
+          ),
+        );
+      },
+      cellsSelected: (diaryList, diaryColumns, diaryCells, firstSelectedCell,
+          selectedCells, cellsKeys) {
+        emit(
+          DiaryListState.cellSelected(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            selectedCell: event.diaryCell,
+            cellsKeys: cellsKeys,
+          ),
+        );
+      },
+    );
   }
 
+  Future<void> _onPanUpdateEvent(
+    OnPanUpdateEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      cellSelected:
+          (diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys) {
+        final cellBox =
+            event.cellKey.currentContext!.findRenderObject() as RenderBox;
+        // final gridBox =
+        //     event.gridKey.currentContext!.findRenderObject() as RenderBox;
+        //final position = gridBox.localToGlobal(Offset.zero);
+
+        //print('gridPosition: ${position.dy}');
+        final cellRect = Rect.fromLTWH(
+          cellBox.localToGlobal(Offset.zero).dx,
+          cellBox.localToGlobal(Offset.zero).dy,
+          cellBox.size.width,
+          cellBox.size.height,
+        );
+        // final cellLeft = cellBox.localToGlobal(Offset.zero).dx;
+        // final cellTop = cellBox.localToGlobal(Offset.zero).dy;
+        // final cellRight = cellLeft + cellBox.size.width;
+        // final cellBottom = cellTop + cellBox.size.height;
+
+        //I need to know all the corners of the rect
+
+        double leftPosition = cellRect.left;
+        double rightPosition = cellRect.right;
+        double topPosition = cellRect.top;
+        double bottomPosition = cellRect.bottom;
+        // print('Start');
+        // print('cellTop: ${cellRect.top}');
+        // print('cellBottom: ${cellRect.bottom}');
+        // print('cellLeft: ${cellRect.left}');
+        // print('cellRight: ${cellRect.right}');
+        event.details.globalPosition.dy < cellRect.top
+            ? topPosition = event.details.globalPosition.dy
+            : topPosition = cellRect.top;
+        // print('topPosition: ${topPosition}');
+        event.details.globalPosition.dy > cellRect.bottom
+            ? bottomPosition = event.details.globalPosition.dy
+            : bottomPosition = cellRect.bottom;
+        // print('bottomPosition: ${bottomPosition}');
+        event.details.globalPosition.dx < cellRect.left
+            ? leftPosition = event.details.globalPosition.dx
+            : leftPosition = cellRect.left;
+        // print('leftPosition: ${leftPosition}');
+        event.details.globalPosition.dx > cellRect.right
+            ? rightPosition = event.details.globalPosition.dx
+            : rightPosition = cellRect.right;
+        // print('rightPosition: ${rightPosition}');
+        // print('End');
+        //The corners of the selected rect
+
+        int verticalStep = 0;
+        for (var column in diaryColumns) {
+          verticalStep += column.columnsCount;
+        }
+        verticalStep--;
+        //print('Step: $verticalStep');
+        List<int> touchedCellsIndexes = List<int>.empty(growable: true);
+
+        //up direction
+        bool isTouch = true;
+        int index = diaryCells.indexOf(selectedCell);
+        int checksCount = 0;
+        touchedCellsIndexes.add(index);
+        if (index >= 0) {
+          index--;
+        } else {
+          isTouch = false;
+        }
+        do {
+          if (index >= 0 &&
+              _diaryCellService.isRectTouchTheCell(
+                leftPosition: leftPosition,
+                rightPosition: rightPosition,
+                topPosition: topPosition,
+                bottomPosition: bottomPosition,
+                cellKey: cellsKeys[index],
+              )) {
+            if (!touchedCellsIndexes.contains(index)) {
+              touchedCellsIndexes.add(index);
+            }
+            index--;
+            checksCount++;
+          } else if (index - verticalStep >= 0 &&
+              _diaryCellService.isRectTouchTheCell(
+                leftPosition: leftPosition,
+                rightPosition: rightPosition,
+                topPosition: topPosition,
+                bottomPosition: bottomPosition,
+                cellKey: cellsKeys[index - verticalStep],
+              )) {
+            index -= verticalStep;
+            checksCount++;
+          } else {
+            isTouch = false;
+            checksCount++;
+          }
+        } while (isTouch == true);
+        //down direction
+        isTouch = true;
+        index = diaryCells.indexOf(selectedCell);
+        if (index < cellsKeys.length - 1) {
+          index++;
+        } else {
+          isTouch = false;
+        }
+        do {
+          if (index < cellsKeys.length &&
+              _diaryCellService.isRectTouchTheCell(
+                leftPosition: leftPosition,
+                rightPosition: rightPosition,
+                topPosition: topPosition,
+                bottomPosition: bottomPosition,
+                cellKey: cellsKeys[index],
+              )) {
+            if (!touchedCellsIndexes.contains(index)) {
+              touchedCellsIndexes.add(index);
+            }
+            index++;
+            checksCount++;
+          } else if (index + verticalStep < cellsKeys.length &&
+              _diaryCellService.isRectTouchTheCell(
+                leftPosition: leftPosition,
+                rightPosition: rightPosition,
+                topPosition: topPosition,
+                bottomPosition: bottomPosition,
+                cellKey: cellsKeys[index + verticalStep],
+              )) {
+            index += verticalStep;
+          } else {
+            isTouch = false;
+            checksCount++;
+          }
+        } while (isTouch == true);
+        // for (int i = 0; i < cellsKeys.length; i++) {//Это можно оптимизировать
+        //   var key = cellsKeys[i];
+        //   if (_diaryCellService.isRectTouchTheCell(
+        //     leftPosition: leftPosition,
+        //     rightPosition: rightPosition,
+        //     topPosition: topPosition,
+        //     bottomPosition: bottomPosition,
+        //     cellKey: key,
+        //   )) {
+        //     touchedCellsKeys.add(key);
+        //   }
+        // }
+        print('ChecksCount: $checksCount');
+        print(touchedCellsIndexes.length);
+        for (var i in touchedCellsIndexes) {
+          print('Touched Index: $i');
+        }
+        //Usually I scare nothing, but this thing... It frightens me
+        //теперь надо узнать какие ячейки входят в эту область
+        //сделать это можно канеш через ключи
+      },
+    );
+  }
+
+  // Future<void> _onPointerDownEvent(
+  //   OnPointerDownEvent event,
+  //   Emitter<DiaryListState> emit,
+  // ) async {
+  //   state.whenOrNull(
+  //     cellSelected:
+  //         (diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys) {
+  //           if(event.event.position.dx >=){
+
+  //           }
+  //           final cellBox =
+  //           event.cellKey.currentContext!.findRenderObject() as RenderBox;
+
+  //       final cellRect = Rect.fromLTWH(
+  //         cellBox.localToGlobal(Offset.zero).dx,
+  //         cellBox.localToGlobal(Offset.zero).dy,
+  //         cellBox.size.width,
+  //         cellBox.size.height,
+  //       );
+  //         },
+  //   );
+  // }
+
   Future<void> _onChangeDiaryCellEvent(
+    //И на апдейт контента и сеттингов
     ChangeDiaryCellEvent event,
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell) async {
+      cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell,
+          cellRenderBox) async {
         if (event.textFieldText != selectedCell.content.toString()) {
           await _diaryCellService.update(
             diaryList: diaryList,
@@ -137,32 +353,42 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             dataType: selectedCell.dataType,
             content: event.textFieldText,
           );
-
-          add(UpdateDiaryCellEvent(textFieldText: event.textFieldText));
+          final diaryColumn = diaryColumns.firstWhere(
+            ((element) => element.id == selectedCell.columnName),
+          );
+          final updatedCell = await _diaryCellService.getDiaryCell(
+            diaryList: diaryList,
+            diaryColumn: diaryColumn,
+            diaryCell: selectedCell,
+          );
+          add(UpdateDiaryCellEvent(diaryCell: updatedCell));
         }
       },
     );
   }
 
   Future<void> _onUpdateDiaryCellEvent(
-    //По идее апдейт запускается при изменении контента, а не редактировании settings
     UpdateDiaryCellEvent event,
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell) async {
+      cellSelected:
+          (diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys) async {
         final index = diaryCells.indexOf(selectedCell);
-        selectedCell = selectedCell.copyWith(
-            content: event.textFieldText);
-        List<DiaryCell> newCells =
-            diaryCells.toList();
-        newCells[index] = selectedCell;
-        emit(DiaryListState.loaded(
-          diaryList: diaryList,
-          diaryColumns: diaryColumns,
-          diaryCells: newCells,
-        ));
-        add(SelectDiaryCellEvent(diaryCell: selectedCell));
+        List<DiaryCell> newCells = diaryCells.toList();
+        newCells[index] = event.diaryCell;
+        emit(
+          DiaryListState.loaded(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: newCells,
+            cellsKeys: cellsKeys,
+          ),
+        );
+        final cellKey = GlobalObjectKey(event.diaryCell);
+        add(
+          SelectDiaryCellEvent(cellKey: cellKey, diaryCell: event.diaryCell),
+        );
       },
     );
   }

@@ -17,12 +17,11 @@ class BlocDiaryCellEditPanel extends StatelessWidget {
     return BlocBuilder<DiaryListBloc, DiaryListState>(
         builder: ((context, state) {
       return state.maybeWhen(
-          cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell) {
+          cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell,
+              cellRenderBox) {
             controller.text = selectedCell.content.toString();
             controller.selection = TextSelection.fromPosition(
                 TextPosition(offset: controller.text.length));
-            final index = diaryCells
-                .indexOf(selectedCell); //Это не должно быть здесь по-хорошему
             return BlocProvider(
               create: (context) => DiaryCellEditBloc(
                 RepositoryProvider.of<DiaryCellService>(context),

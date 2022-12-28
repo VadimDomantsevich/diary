@@ -7,6 +7,7 @@ import 'package:diary/model/diary_column.dart';
 import 'package:diary/model/diary_list.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 String getDiaryListName(DiaryList diaryList) =>
     '${diaryList.listDate.month}.${diaryList.listDate.year}';
@@ -32,11 +33,11 @@ DocumentReference getDiaryListDocByDate({required DateTime date}) =>
 
 DocumentReference getDiaryColumnDoc({
   required DiaryList diaryList,
-  required String diaryColumnName,
+  required String diaryColumnId,
 }) =>
     getDiaryListDoc(diaryList: diaryList)
         .collection(Collections.diaryColumnsCollection)
-        .doc(diaryColumnName);
+        .doc(diaryColumnId);
 
 CollectionReference getDiaryColumnsCollection({
   required DiaryList diaryList,
@@ -50,8 +51,8 @@ Future<CollectionReference> getDiaryCellsCollection({
 }) async {
   final docByName = await getDiaryColumnsCollection(diaryList: diaryList)
       .where(
-        Constants.diaryColumnNameField,
-        isEqualTo: diaryColumn.name,
+        Constants.diaryColumnIdField,
+        isEqualTo: diaryColumn.id,
       )
       .get();
   final columnDocPath = docByName.docs.first.reference.path;
@@ -66,7 +67,7 @@ DocumentReference getDiaryCellDoc({
 }) =>
     getDiaryColumnDoc(
       diaryList: diaryList,
-      diaryColumnName: diaryCell.columnName,
+      diaryColumnId: diaryCell.columnName,
     )
         .collection(Collections.diaryCellsCollection)
         .doc(getDiaryCellName(diaryCell));
@@ -91,6 +92,30 @@ Alignment converterAlignmentFromAlignmentsEnum(AlignmentsEnum alignment) {
       return Alignment.topLeft;
     case AlignmentsEnum.topRight:
       return Alignment.topRight;
+  }
+}
+
+String converterLocalizationStringFromAlignment(
+    BuildContext context, AlignmentsEnum alignment) {
+  switch (alignment) {
+    case AlignmentsEnum.bottomCenter:
+      return AppLocalizations.of(context).bottomCenter;
+    case AlignmentsEnum.bottomLeft:
+      return AppLocalizations.of(context).bottomLeft;
+    case AlignmentsEnum.bottomRight:
+      return AppLocalizations.of(context).bottomRight;
+    case AlignmentsEnum.center:
+      return AppLocalizations.of(context).center;
+    case AlignmentsEnum.centerLeft:
+      return AppLocalizations.of(context).centerLeft;
+    case AlignmentsEnum.centerRight:
+      return AppLocalizations.of(context).centerRight;
+    case AlignmentsEnum.topCenter:
+      return AppLocalizations.of(context).topCenter;
+    case AlignmentsEnum.topLeft:
+      return AppLocalizations.of(context).topLeft;
+    case AlignmentsEnum.topRight:
+      return AppLocalizations.of(context).topRight;
   }
 }
 // TextInputType converterFromDataTypesEnum(DataTypesEnum dataType) {

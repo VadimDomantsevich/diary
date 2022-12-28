@@ -17,6 +17,7 @@ class DiaryListState with _$DiaryListState {
     required DiaryList diaryList,
     required List<DiaryColumn> diaryColumns,
     required List<DiaryCell> diaryCells,
+    required List<GlobalObjectKey> cellsKeys,
   }) = _Loaded;
 
   const factory DiaryListState.cellSelected({
@@ -24,5 +25,23 @@ class DiaryListState with _$DiaryListState {
     required List<DiaryColumn> diaryColumns,
     required List<DiaryCell> diaryCells,
     required DiaryCell selectedCell,
+    required List<GlobalObjectKey> cellsKeys,
   }) = _CellSelected;
+
+  // const factory DiaryListState.pointerMoving({
+  //   required DiaryList diaryList,
+  //   required List<DiaryColumn> diaryColumns,
+  //   required List<DiaryCell> diaryCells,
+  //   DiaryCell? selectedCell,
+  //   required List<GlobalObjectKey> cellsKeys,
+  // }) = _PointerMoving;
+
+  const factory DiaryListState.cellsSelected({
+    required DiaryList diaryList,
+    required List<DiaryColumn> diaryColumns,
+    required List<DiaryCell> diaryCells,
+    required DiaryCell firstSelectedCell,
+    required List<DiaryCell> selectedCells,
+    required List<GlobalObjectKey> cellsKeys,
+  }) = _CellsSelected;
 }

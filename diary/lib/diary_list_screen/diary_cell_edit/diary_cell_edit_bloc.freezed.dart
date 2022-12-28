@@ -415,32 +415,52 @@ mixin _$DiaryCellEditEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(DiaryList diaryList, DiaryCell diaryCell)
         editCell,
+    required TResult Function(
+            DiaryList diaryList, DiaryCell diaryCell, String alignment)
+        changeCellAlignment,
+    required TResult Function(DiaryList diaryList, DiaryCell diaryCell)
+        confirmChanges,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DiaryList diaryList, DiaryCell diaryCell)? editCell,
+    TResult? Function(
+            DiaryList diaryList, DiaryCell diaryCell, String alignment)?
+        changeCellAlignment,
+    TResult? Function(DiaryList diaryList, DiaryCell diaryCell)? confirmChanges,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DiaryList diaryList, DiaryCell diaryCell)? editCell,
+    TResult Function(
+            DiaryList diaryList, DiaryCell diaryCell, String alignment)?
+        changeCellAlignment,
+    TResult Function(DiaryList diaryList, DiaryCell diaryCell)? confirmChanges,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EditCellEvent value) editCell,
+    required TResult Function(ChangeCellAlignmentEvent value)
+        changeCellAlignment,
+    required TResult Function(ConfirmChangesEvent value) confirmChanges,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(EditCellEvent value)? editCell,
+    TResult? Function(ChangeCellAlignmentEvent value)? changeCellAlignment,
+    TResult? Function(ConfirmChangesEvent value)? confirmChanges,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EditCellEvent value)? editCell,
+    TResult Function(ChangeCellAlignmentEvent value)? changeCellAlignment,
+    TResult Function(ConfirmChangesEvent value)? confirmChanges,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -566,6 +586,11 @@ class _$EditCellEvent implements EditCellEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(DiaryList diaryList, DiaryCell diaryCell)
         editCell,
+    required TResult Function(
+            DiaryList diaryList, DiaryCell diaryCell, String alignment)
+        changeCellAlignment,
+    required TResult Function(DiaryList diaryList, DiaryCell diaryCell)
+        confirmChanges,
   }) {
     return editCell(diaryList, diaryCell);
   }
@@ -574,6 +599,10 @@ class _$EditCellEvent implements EditCellEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(DiaryList diaryList, DiaryCell diaryCell)? editCell,
+    TResult? Function(
+            DiaryList diaryList, DiaryCell diaryCell, String alignment)?
+        changeCellAlignment,
+    TResult? Function(DiaryList diaryList, DiaryCell diaryCell)? confirmChanges,
   }) {
     return editCell?.call(diaryList, diaryCell);
   }
@@ -582,6 +611,10 @@ class _$EditCellEvent implements EditCellEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DiaryList diaryList, DiaryCell diaryCell)? editCell,
+    TResult Function(
+            DiaryList diaryList, DiaryCell diaryCell, String alignment)?
+        changeCellAlignment,
+    TResult Function(DiaryList diaryList, DiaryCell diaryCell)? confirmChanges,
     required TResult orElse(),
   }) {
     if (editCell != null) {
@@ -594,6 +627,9 @@ class _$EditCellEvent implements EditCellEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EditCellEvent value) editCell,
+    required TResult Function(ChangeCellAlignmentEvent value)
+        changeCellAlignment,
+    required TResult Function(ConfirmChangesEvent value) confirmChanges,
   }) {
     return editCell(this);
   }
@@ -602,6 +638,8 @@ class _$EditCellEvent implements EditCellEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(EditCellEvent value)? editCell,
+    TResult? Function(ChangeCellAlignmentEvent value)? changeCellAlignment,
+    TResult? Function(ConfirmChangesEvent value)? confirmChanges,
   }) {
     return editCell?.call(this);
   }
@@ -610,6 +648,8 @@ class _$EditCellEvent implements EditCellEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EditCellEvent value)? editCell,
+    TResult Function(ChangeCellAlignmentEvent value)? changeCellAlignment,
+    TResult Function(ConfirmChangesEvent value)? confirmChanges,
     required TResult orElse(),
   }) {
     if (editCell != null) {
@@ -631,5 +671,355 @@ abstract class EditCellEvent implements DiaryCellEditEvent {
   @override
   @JsonKey(ignore: true)
   _$$EditCellEventCopyWith<_$EditCellEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeCellAlignmentEventCopyWith<$Res>
+    implements $DiaryCellEditEventCopyWith<$Res> {
+  factory _$$ChangeCellAlignmentEventCopyWith(_$ChangeCellAlignmentEvent value,
+          $Res Function(_$ChangeCellAlignmentEvent) then) =
+      __$$ChangeCellAlignmentEventCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({DiaryList diaryList, DiaryCell diaryCell, String alignment});
+}
+
+/// @nodoc
+class __$$ChangeCellAlignmentEventCopyWithImpl<$Res>
+    extends _$DiaryCellEditEventCopyWithImpl<$Res, _$ChangeCellAlignmentEvent>
+    implements _$$ChangeCellAlignmentEventCopyWith<$Res> {
+  __$$ChangeCellAlignmentEventCopyWithImpl(_$ChangeCellAlignmentEvent _value,
+      $Res Function(_$ChangeCellAlignmentEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? diaryList = null,
+    Object? diaryCell = null,
+    Object? alignment = null,
+  }) {
+    return _then(_$ChangeCellAlignmentEvent(
+      diaryList: null == diaryList
+          ? _value.diaryList
+          : diaryList // ignore: cast_nullable_to_non_nullable
+              as DiaryList,
+      diaryCell: null == diaryCell
+          ? _value.diaryCell
+          : diaryCell // ignore: cast_nullable_to_non_nullable
+              as DiaryCell,
+      alignment: null == alignment
+          ? _value.alignment
+          : alignment // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeCellAlignmentEvent implements ChangeCellAlignmentEvent {
+  const _$ChangeCellAlignmentEvent(
+      {required this.diaryList,
+      required this.diaryCell,
+      required this.alignment});
+
+  @override
+  final DiaryList diaryList;
+  @override
+  final DiaryCell diaryCell;
+  @override
+  final String alignment;
+
+  @override
+  String toString() {
+    return 'DiaryCellEditEvent.changeCellAlignment(diaryList: $diaryList, diaryCell: $diaryCell, alignment: $alignment)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeCellAlignmentEvent &&
+            (identical(other.diaryList, diaryList) ||
+                other.diaryList == diaryList) &&
+            (identical(other.diaryCell, diaryCell) ||
+                other.diaryCell == diaryCell) &&
+            (identical(other.alignment, alignment) ||
+                other.alignment == alignment));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, diaryList, diaryCell, alignment);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeCellAlignmentEventCopyWith<_$ChangeCellAlignmentEvent>
+      get copyWith =>
+          __$$ChangeCellAlignmentEventCopyWithImpl<_$ChangeCellAlignmentEvent>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DiaryList diaryList, DiaryCell diaryCell)
+        editCell,
+    required TResult Function(
+            DiaryList diaryList, DiaryCell diaryCell, String alignment)
+        changeCellAlignment,
+    required TResult Function(DiaryList diaryList, DiaryCell diaryCell)
+        confirmChanges,
+  }) {
+    return changeCellAlignment(diaryList, diaryCell, alignment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DiaryList diaryList, DiaryCell diaryCell)? editCell,
+    TResult? Function(
+            DiaryList diaryList, DiaryCell diaryCell, String alignment)?
+        changeCellAlignment,
+    TResult? Function(DiaryList diaryList, DiaryCell diaryCell)? confirmChanges,
+  }) {
+    return changeCellAlignment?.call(diaryList, diaryCell, alignment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DiaryList diaryList, DiaryCell diaryCell)? editCell,
+    TResult Function(
+            DiaryList diaryList, DiaryCell diaryCell, String alignment)?
+        changeCellAlignment,
+    TResult Function(DiaryList diaryList, DiaryCell diaryCell)? confirmChanges,
+    required TResult orElse(),
+  }) {
+    if (changeCellAlignment != null) {
+      return changeCellAlignment(diaryList, diaryCell, alignment);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EditCellEvent value) editCell,
+    required TResult Function(ChangeCellAlignmentEvent value)
+        changeCellAlignment,
+    required TResult Function(ConfirmChangesEvent value) confirmChanges,
+  }) {
+    return changeCellAlignment(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EditCellEvent value)? editCell,
+    TResult? Function(ChangeCellAlignmentEvent value)? changeCellAlignment,
+    TResult? Function(ConfirmChangesEvent value)? confirmChanges,
+  }) {
+    return changeCellAlignment?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EditCellEvent value)? editCell,
+    TResult Function(ChangeCellAlignmentEvent value)? changeCellAlignment,
+    TResult Function(ConfirmChangesEvent value)? confirmChanges,
+    required TResult orElse(),
+  }) {
+    if (changeCellAlignment != null) {
+      return changeCellAlignment(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeCellAlignmentEvent implements DiaryCellEditEvent {
+  const factory ChangeCellAlignmentEvent(
+      {required final DiaryList diaryList,
+      required final DiaryCell diaryCell,
+      required final String alignment}) = _$ChangeCellAlignmentEvent;
+
+  @override
+  DiaryList get diaryList;
+  @override
+  DiaryCell get diaryCell;
+  String get alignment;
+  @override
+  @JsonKey(ignore: true)
+  _$$ChangeCellAlignmentEventCopyWith<_$ChangeCellAlignmentEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ConfirmChangesEventCopyWith<$Res>
+    implements $DiaryCellEditEventCopyWith<$Res> {
+  factory _$$ConfirmChangesEventCopyWith(_$ConfirmChangesEvent value,
+          $Res Function(_$ConfirmChangesEvent) then) =
+      __$$ConfirmChangesEventCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({DiaryList diaryList, DiaryCell diaryCell});
+}
+
+/// @nodoc
+class __$$ConfirmChangesEventCopyWithImpl<$Res>
+    extends _$DiaryCellEditEventCopyWithImpl<$Res, _$ConfirmChangesEvent>
+    implements _$$ConfirmChangesEventCopyWith<$Res> {
+  __$$ConfirmChangesEventCopyWithImpl(
+      _$ConfirmChangesEvent _value, $Res Function(_$ConfirmChangesEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? diaryList = null,
+    Object? diaryCell = null,
+  }) {
+    return _then(_$ConfirmChangesEvent(
+      diaryList: null == diaryList
+          ? _value.diaryList
+          : diaryList // ignore: cast_nullable_to_non_nullable
+              as DiaryList,
+      diaryCell: null == diaryCell
+          ? _value.diaryCell
+          : diaryCell // ignore: cast_nullable_to_non_nullable
+              as DiaryCell,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ConfirmChangesEvent implements ConfirmChangesEvent {
+  const _$ConfirmChangesEvent(
+      {required this.diaryList, required this.diaryCell});
+
+  @override
+  final DiaryList diaryList;
+  @override
+  final DiaryCell diaryCell;
+
+  @override
+  String toString() {
+    return 'DiaryCellEditEvent.confirmChanges(diaryList: $diaryList, diaryCell: $diaryCell)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ConfirmChangesEvent &&
+            (identical(other.diaryList, diaryList) ||
+                other.diaryList == diaryList) &&
+            (identical(other.diaryCell, diaryCell) ||
+                other.diaryCell == diaryCell));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, diaryList, diaryCell);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ConfirmChangesEventCopyWith<_$ConfirmChangesEvent> get copyWith =>
+      __$$ConfirmChangesEventCopyWithImpl<_$ConfirmChangesEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DiaryList diaryList, DiaryCell diaryCell)
+        editCell,
+    required TResult Function(
+            DiaryList diaryList, DiaryCell diaryCell, String alignment)
+        changeCellAlignment,
+    required TResult Function(DiaryList diaryList, DiaryCell diaryCell)
+        confirmChanges,
+  }) {
+    return confirmChanges(diaryList, diaryCell);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DiaryList diaryList, DiaryCell diaryCell)? editCell,
+    TResult? Function(
+            DiaryList diaryList, DiaryCell diaryCell, String alignment)?
+        changeCellAlignment,
+    TResult? Function(DiaryList diaryList, DiaryCell diaryCell)? confirmChanges,
+  }) {
+    return confirmChanges?.call(diaryList, diaryCell);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DiaryList diaryList, DiaryCell diaryCell)? editCell,
+    TResult Function(
+            DiaryList diaryList, DiaryCell diaryCell, String alignment)?
+        changeCellAlignment,
+    TResult Function(DiaryList diaryList, DiaryCell diaryCell)? confirmChanges,
+    required TResult orElse(),
+  }) {
+    if (confirmChanges != null) {
+      return confirmChanges(diaryList, diaryCell);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EditCellEvent value) editCell,
+    required TResult Function(ChangeCellAlignmentEvent value)
+        changeCellAlignment,
+    required TResult Function(ConfirmChangesEvent value) confirmChanges,
+  }) {
+    return confirmChanges(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EditCellEvent value)? editCell,
+    TResult? Function(ChangeCellAlignmentEvent value)? changeCellAlignment,
+    TResult? Function(ConfirmChangesEvent value)? confirmChanges,
+  }) {
+    return confirmChanges?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EditCellEvent value)? editCell,
+    TResult Function(ChangeCellAlignmentEvent value)? changeCellAlignment,
+    TResult Function(ConfirmChangesEvent value)? confirmChanges,
+    required TResult orElse(),
+  }) {
+    if (confirmChanges != null) {
+      return confirmChanges(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ConfirmChangesEvent implements DiaryCellEditEvent {
+  const factory ConfirmChangesEvent(
+      {required final DiaryList diaryList,
+      required final DiaryCell diaryCell}) = _$ConfirmChangesEvent;
+
+  @override
+  DiaryList get diaryList;
+  @override
+  DiaryCell get diaryCell;
+  @override
+  @JsonKey(ignore: true)
+  _$$ConfirmChangesEventCopyWith<_$ConfirmChangesEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }

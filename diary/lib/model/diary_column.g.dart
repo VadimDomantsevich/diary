@@ -9,7 +9,11 @@ part of 'diary_column.dart';
 abstract class _$DiaryColumnCWProxy {
   DiaryColumn columnsCount(int columnsCount);
 
+  DiaryColumn id(String id);
+
   DiaryColumn name(String name);
+
+  DiaryColumn settings(DiaryColumnSettings settings);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `DiaryColumn(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -19,7 +23,9 @@ abstract class _$DiaryColumnCWProxy {
   /// ````
   DiaryColumn call({
     int? columnsCount,
+    String? id,
     String? name,
+    DiaryColumnSettings? settings,
   });
 }
 
@@ -34,7 +40,14 @@ class _$DiaryColumnCWProxyImpl implements _$DiaryColumnCWProxy {
       this(columnsCount: columnsCount);
 
   @override
+  DiaryColumn id(String id) => this(id: id);
+
+  @override
   DiaryColumn name(String name) => this(name: name);
+
+  @override
+  DiaryColumn settings(DiaryColumnSettings settings) =>
+      this(settings: settings);
 
   @override
 
@@ -46,7 +59,9 @@ class _$DiaryColumnCWProxyImpl implements _$DiaryColumnCWProxy {
   /// ````
   DiaryColumn call({
     Object? columnsCount = const $CopyWithPlaceholder(),
+    Object? id = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
+    Object? settings = const $CopyWithPlaceholder(),
   }) {
     return DiaryColumn(
       columnsCount:
@@ -54,10 +69,18 @@ class _$DiaryColumnCWProxyImpl implements _$DiaryColumnCWProxy {
               ? _value.columnsCount
               // ignore: cast_nullable_to_non_nullable
               : columnsCount as int,
+      id: id == const $CopyWithPlaceholder() || id == null
+          ? _value.id
+          // ignore: cast_nullable_to_non_nullable
+          : id as String,
       name: name == const $CopyWithPlaceholder() || name == null
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
           : name as String,
+      settings: settings == const $CopyWithPlaceholder() || settings == null
+          ? _value.settings
+          // ignore: cast_nullable_to_non_nullable
+          : settings as DiaryColumnSettings,
     );
   }
 }
