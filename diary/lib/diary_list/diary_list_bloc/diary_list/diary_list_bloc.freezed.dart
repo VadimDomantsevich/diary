@@ -1702,8 +1702,8 @@ mixin _$DiaryListEvent {
     required TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)
+            DragUpdateDetails details,
+            double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         changeDiaryCell,
@@ -1723,8 +1723,8 @@ mixin _$DiaryListEvent {
     TResult? Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
@@ -1744,8 +1744,8 @@ mixin _$DiaryListEvent {
     TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
@@ -1860,8 +1860,8 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     required TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)
+            DragUpdateDetails details,
+            double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         changeDiaryCell,
@@ -1884,8 +1884,8 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     TResult? Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
@@ -1908,8 +1908,8 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
@@ -2052,8 +2052,8 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     required TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)
+            DragUpdateDetails details,
+            double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         changeDiaryCell,
@@ -2076,8 +2076,8 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     TResult? Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
@@ -2100,8 +2100,8 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
@@ -2252,8 +2252,8 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     required TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)
+            DragUpdateDetails details,
+            double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         changeDiaryCell,
@@ -2276,8 +2276,8 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     TResult? Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
@@ -2300,8 +2300,8 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
@@ -2468,8 +2468,8 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     required TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)
+            DragUpdateDetails details,
+            double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         changeDiaryCell,
@@ -2492,8 +2492,8 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     TResult? Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
@@ -2516,8 +2516,8 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
@@ -2680,8 +2680,8 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
     required TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)
+            DragUpdateDetails details,
+            double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         changeDiaryCell,
@@ -2704,8 +2704,8 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
     TResult? Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
@@ -2728,8 +2728,8 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
     TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
@@ -2814,8 +2814,8 @@ abstract class _$$OnPanUpdateEventCopyWith<$Res> {
   $Res call(
       {DiaryCell diaryCell,
       GlobalObjectKey<State<StatefulWidget>> cellKey,
-      GlobalKey<State<StatefulWidget>> gridKey,
-      DragUpdateDetails details});
+      DragUpdateDetails details,
+      double scaleFactor});
 }
 
 /// @nodoc
@@ -2831,8 +2831,8 @@ class __$$OnPanUpdateEventCopyWithImpl<$Res>
   $Res call({
     Object? diaryCell = null,
     Object? cellKey = null,
-    Object? gridKey = null,
     Object? details = null,
+    Object? scaleFactor = null,
   }) {
     return _then(_$OnPanUpdateEvent(
       diaryCell: null == diaryCell
@@ -2843,14 +2843,14 @@ class __$$OnPanUpdateEventCopyWithImpl<$Res>
           ? _value.cellKey
           : cellKey // ignore: cast_nullable_to_non_nullable
               as GlobalObjectKey<State<StatefulWidget>>,
-      gridKey: null == gridKey
-          ? _value.gridKey
-          : gridKey // ignore: cast_nullable_to_non_nullable
-              as GlobalKey<State<StatefulWidget>>,
       details: null == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
               as DragUpdateDetails,
+      scaleFactor: null == scaleFactor
+          ? _value.scaleFactor
+          : scaleFactor // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -2861,21 +2861,21 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
   const _$OnPanUpdateEvent(
       {required this.diaryCell,
       required this.cellKey,
-      required this.gridKey,
-      required this.details});
+      required this.details,
+      required this.scaleFactor});
 
   @override
   final DiaryCell diaryCell;
   @override
   final GlobalObjectKey<State<StatefulWidget>> cellKey;
   @override
-  final GlobalKey<State<StatefulWidget>> gridKey;
-  @override
   final DragUpdateDetails details;
+  @override
+  final double scaleFactor;
 
   @override
   String toString() {
-    return 'DiaryListEvent.onPanUpdate(diaryCell: $diaryCell, cellKey: $cellKey, gridKey: $gridKey, details: $details)';
+    return 'DiaryListEvent.onPanUpdate(diaryCell: $diaryCell, cellKey: $cellKey, details: $details, scaleFactor: $scaleFactor)';
   }
 
   @override
@@ -2886,13 +2886,14 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
             (identical(other.diaryCell, diaryCell) ||
                 other.diaryCell == diaryCell) &&
             (identical(other.cellKey, cellKey) || other.cellKey == cellKey) &&
-            (identical(other.gridKey, gridKey) || other.gridKey == gridKey) &&
-            (identical(other.details, details) || other.details == details));
+            (identical(other.details, details) || other.details == details) &&
+            (identical(other.scaleFactor, scaleFactor) ||
+                other.scaleFactor == scaleFactor));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, diaryCell, cellKey, gridKey, details);
+      Object.hash(runtimeType, diaryCell, cellKey, details, scaleFactor);
 
   @JsonKey(ignore: true)
   @override
@@ -2915,14 +2916,14 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
     required TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)
+            DragUpdateDetails details,
+            double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         changeDiaryCell,
     required TResult Function(DiaryCell diaryCell) updateDiaryCell,
   }) {
-    return onPanUpdate(diaryCell, cellKey, gridKey, details);
+    return onPanUpdate(diaryCell, cellKey, details, scaleFactor);
   }
 
   @override
@@ -2939,14 +2940,14 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
     TResult? Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
     TResult? Function(DiaryCell diaryCell)? updateDiaryCell,
   }) {
-    return onPanUpdate?.call(diaryCell, cellKey, gridKey, details);
+    return onPanUpdate?.call(diaryCell, cellKey, details, scaleFactor);
   }
 
   @override
@@ -2963,8 +2964,8 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
     TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
@@ -2972,7 +2973,7 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
     required TResult orElse(),
   }) {
     if (onPanUpdate != null) {
-      return onPanUpdate(diaryCell, cellKey, gridKey, details);
+      return onPanUpdate(diaryCell, cellKey, details, scaleFactor);
     }
     return orElse();
   }
@@ -3031,13 +3032,13 @@ abstract class OnPanUpdateEvent implements DiaryListEvent {
   const factory OnPanUpdateEvent(
       {required final DiaryCell diaryCell,
       required final GlobalObjectKey<State<StatefulWidget>> cellKey,
-      required final GlobalKey<State<StatefulWidget>> gridKey,
-      required final DragUpdateDetails details}) = _$OnPanUpdateEvent;
+      required final DragUpdateDetails details,
+      required final double scaleFactor}) = _$OnPanUpdateEvent;
 
   DiaryCell get diaryCell;
   GlobalObjectKey<State<StatefulWidget>> get cellKey;
-  GlobalKey<State<StatefulWidget>> get gridKey;
   DragUpdateDetails get details;
+  double get scaleFactor;
   @JsonKey(ignore: true)
   _$$OnPanUpdateEventCopyWith<_$OnPanUpdateEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -3130,8 +3131,8 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
     required TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)
+            DragUpdateDetails details,
+            double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         changeDiaryCell,
@@ -3154,8 +3155,8 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
     TResult? Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
@@ -3178,8 +3179,8 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
     TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
@@ -3332,8 +3333,8 @@ class _$UpdateDiaryCellEvent implements UpdateDiaryCellEvent {
     required TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)
+            DragUpdateDetails details,
+            double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         changeDiaryCell,
@@ -3356,8 +3357,8 @@ class _$UpdateDiaryCellEvent implements UpdateDiaryCellEvent {
     TResult? Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,
@@ -3380,8 +3381,8 @@ class _$UpdateDiaryCellEvent implements UpdateDiaryCellEvent {
     TResult Function(
             DiaryCell diaryCell,
             GlobalObjectKey<State<StatefulWidget>> cellKey,
-            GlobalKey<State<StatefulWidget>> gridKey,
-            DragUpdateDetails details)?
+            DragUpdateDetails details,
+            double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         changeDiaryCell,

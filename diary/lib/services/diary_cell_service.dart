@@ -253,13 +253,14 @@ class DiaryCellService {
     required double topPosition,
     required double bottomPosition,
     required GlobalObjectKey cellKey,
+    required double scaleFactor,
   }) {
     final cellBox = cellKey.currentContext!.findRenderObject() as RenderBox;
     final cellPosition = cellBox.localToGlobal(Offset.zero);
     final cellLeftPosition = cellPosition.dx;
-    final cellRightPosition = cellPosition.dx + cellBox.size.width;
+    final cellRightPosition = cellPosition.dx + cellBox.size.width*scaleFactor;
     final cellTopPosition = cellPosition.dy;
-    final cellBottomPosition = cellPosition.dy + cellBox.size.height;
+    final cellBottomPosition = cellPosition.dy + cellBox.size.height*scaleFactor;
     if (cellRightPosition <= leftPosition ||
         cellLeftPosition >= rightPosition) {
       //     print('Start right');

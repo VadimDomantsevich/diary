@@ -160,18 +160,24 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     state.whenOrNull(
       cellSelected:
           (diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys) {
+            
         final cellBox =
             event.cellKey.currentContext!.findRenderObject() as RenderBox;
-        // final gridBox =
-        //     event.gridKey.currentContext!.findRenderObject() as RenderBox;
-        //final position = gridBox.localToGlobal(Offset.zero);
+
+        int columnsCount = 0;
+        for (var column in diaryColumns) {
+          columnsCount += column.columnsCount;
+        }
+        double cellTopOffset = cellBox.localToGlobal(Offset.zero).dy;
+        // print('PanUpdate');
+        // print('ScaleFactor: ${event.scaleFactor}');
 
         //print('gridPosition: ${position.dy}');
         final cellRect = Rect.fromLTWH(
           cellBox.localToGlobal(Offset.zero).dx,
-          cellBox.localToGlobal(Offset.zero).dy,
-          cellBox.size.width,
-          cellBox.size.height,
+          cellTopOffset,
+          cellBox.size.width * event.scaleFactor,
+          cellBox.size.height * event.scaleFactor,
         );
         // final cellLeft = cellBox.localToGlobal(Offset.zero).dx;
         // final cellTop = cellBox.localToGlobal(Offset.zero).dy;
@@ -208,11 +214,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         // print('End');
         //The corners of the selected rect
 
-        int verticalStep = 0;
-        for (var column in diaryColumns) {
-          verticalStep += column.columnsCount;
-        }
-        verticalStep--;
+        int verticalStep = columnsCount - 1;
         //print('Step: $verticalStep');
         List<int> touchedCellsIndexes = List<int>.empty(growable: true);
 
@@ -234,6 +236,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
                 topPosition: topPosition,
                 bottomPosition: bottomPosition,
                 cellKey: cellsKeys[index],
+                scaleFactor: event.scaleFactor,
               )) {
             if (!touchedCellsIndexes.contains(index)) {
               touchedCellsIndexes.add(index);
@@ -247,6 +250,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
                 topPosition: topPosition,
                 bottomPosition: bottomPosition,
                 cellKey: cellsKeys[index - verticalStep],
+                scaleFactor: event.scaleFactor,
               )) {
             index -= verticalStep;
             checksCount++;
@@ -271,6 +275,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
                 topPosition: topPosition,
                 bottomPosition: bottomPosition,
                 cellKey: cellsKeys[index],
+                scaleFactor: event.scaleFactor,
               )) {
             if (!touchedCellsIndexes.contains(index)) {
               touchedCellsIndexes.add(index);
@@ -284,6 +289,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
                 topPosition: topPosition,
                 bottomPosition: bottomPosition,
                 cellKey: cellsKeys[index + verticalStep],
+                scaleFactor: event.scaleFactor,
               )) {
             index += verticalStep;
           } else {
@@ -291,52 +297,14 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             checksCount++;
           }
         } while (isTouch == true);
-        // for (int i = 0; i < cellsKeys.length; i++) {//Это можно оптимизировать
-        //   var key = cellsKeys[i];
-        //   if (_diaryCellService.isRectTouchTheCell(
-        //     leftPosition: leftPosition,
-        //     rightPosition: rightPosition,
-        //     topPosition: topPosition,
-        //     bottomPosition: bottomPosition,
-        //     cellKey: key,
-        //   )) {
-        //     touchedCellsKeys.add(key);
-        //   }
-        // }
         print('ChecksCount: $checksCount');
         print(touchedCellsIndexes.length);
         for (var i in touchedCellsIndexes) {
           print('Touched Index: $i');
         }
-        //Usually I scare nothing, but this thing... It frightens me
-        //теперь надо узнать какие ячейки входят в эту область
-        //сделать это можно канеш через ключи
       },
     );
   }
-
-  // Future<void> _onPointerDownEvent(
-  //   OnPointerDownEvent event,
-  //   Emitter<DiaryListState> emit,
-  // ) async {
-  //   state.whenOrNull(
-  //     cellSelected:
-  //         (diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys) {
-  //           if(event.event.position.dx >=){
-
-  //           }
-  //           final cellBox =
-  //           event.cellKey.currentContext!.findRenderObject() as RenderBox;
-
-  //       final cellRect = Rect.fromLTWH(
-  //         cellBox.localToGlobal(Offset.zero).dx,
-  //         cellBox.localToGlobal(Offset.zero).dy,
-  //         cellBox.size.width,
-  //         cellBox.size.height,
-  //       );
-  //         },
-  //   );
-  // }
 
   Future<void> _onChangeDiaryCellEvent(
     //И на апдейт контента и сеттингов

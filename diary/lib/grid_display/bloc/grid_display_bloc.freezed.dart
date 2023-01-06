@@ -18,95 +18,82 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GridDisplayEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+    required TResult Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)
         getConstraints,
-    required TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerDown,
     required TResult Function(PointerEvent details) onPointerSelectMove,
-    required TResult Function(PointerEvent details) onPointerScrollMove,
-    required TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerUp,
-    required TResult Function(ScaleStartDetails details) onScaleStart,
-    required TResult Function(ScaleUpdateDetails details) onScaleUpdate,
-    required TResult Function(ScaleEndDetails details) onScaleEnd,
+    required TResult Function(ScaleEndDetails details) onInteractionEnd,
+    required TResult Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)
+        onPointerDown,
+    required TResult Function(PointerUpEvent details) onPointerUp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult? Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)?
         getConstraints,
-    TResult? Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
     TResult? Function(PointerEvent details)? onPointerSelectMove,
-    TResult? Function(PointerEvent details)? onPointerScrollMove,
-    TResult? Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult? Function(ScaleStartDetails details)? onScaleStart,
-    TResult? Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult? Function(ScaleEndDetails details)? onScaleEnd,
+    TResult? Function(ScaleEndDetails details)? onInteractionEnd,
+    TResult? Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
+        onPointerDown,
+    TResult? Function(PointerUpEvent details)? onPointerUp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)?
         getConstraints,
-    TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
     TResult Function(PointerEvent details)? onPointerSelectMove,
-    TResult Function(PointerEvent details)? onPointerScrollMove,
-    TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult Function(ScaleStartDetails details)? onScaleStart,
-    TResult Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult Function(ScaleEndDetails details)? onScaleEnd,
+    TResult Function(ScaleEndDetails details)? onInteractionEnd,
+    TResult Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
+        onPointerDown,
+    TResult Function(PointerUpEvent details)? onPointerUp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetConstraintsEvent value) getConstraints,
-    required TResult Function(_OnPointerDownEvent value) onPointerDown,
     required TResult Function(_OnPointerSelectMoveEvent value)
         onPointerSelectMove,
-    required TResult Function(_OnPointerScrollMoveEvent value)
-        onPointerScrollMove,
+    required TResult Function(_OnInteractionEndEvent value) onInteractionEnd,
+    required TResult Function(_OnPointerDownEvent value) onPointerDown,
     required TResult Function(_OnPointerUpEvent value) onPointerUp,
-    required TResult Function(_OnScaleStartEvent value) onScaleStart,
-    required TResult Function(_OnScaleUpdateEvent value) onScaleUpdate,
-    required TResult Function(_OnScaleEndEvent value) onScaleEnd,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetConstraintsEvent value)? getConstraints,
-    TResult? Function(_OnPointerDownEvent value)? onPointerDown,
     TResult? Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult? Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
+    TResult? Function(_OnInteractionEndEvent value)? onInteractionEnd,
+    TResult? Function(_OnPointerDownEvent value)? onPointerDown,
     TResult? Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult? Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult? Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult? Function(_OnScaleEndEvent value)? onScaleEnd,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetConstraintsEvent value)? getConstraints,
-    TResult Function(_OnPointerDownEvent value)? onPointerDown,
     TResult Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
+    TResult Function(_OnInteractionEndEvent value)? onInteractionEnd,
+    TResult Function(_OnPointerDownEvent value)? onPointerDown,
     TResult Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult Function(_OnScaleEndEvent value)? onScaleEnd,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -137,9 +124,11 @@ abstract class _$$_GetConstraintsEventCopyWith<$Res> {
       __$$_GetConstraintsEventCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {DiaryList diaryList,
+      {double scaleFactor,
+      DiaryList diaryList,
       List<DiaryColumn> diaryColumns,
-      List<DiaryCell> diaryCells});
+      List<DiaryCell> diaryCells,
+      bool isScaled});
 }
 
 /// @nodoc
@@ -153,11 +142,17 @@ class __$$_GetConstraintsEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? scaleFactor = null,
     Object? diaryList = null,
     Object? diaryColumns = null,
     Object? diaryCells = null,
+    Object? isScaled = null,
   }) {
     return _then(_$_GetConstraintsEvent(
+      scaleFactor: null == scaleFactor
+          ? _value.scaleFactor
+          : scaleFactor // ignore: cast_nullable_to_non_nullable
+              as double,
       diaryList: null == diaryList
           ? _value.diaryList
           : diaryList // ignore: cast_nullable_to_non_nullable
@@ -170,6 +165,10 @@ class __$$_GetConstraintsEventCopyWithImpl<$Res>
           ? _value._diaryCells
           : diaryCells // ignore: cast_nullable_to_non_nullable
               as List<DiaryCell>,
+      isScaled: null == isScaled
+          ? _value.isScaled
+          : isScaled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -178,12 +177,16 @@ class __$$_GetConstraintsEventCopyWithImpl<$Res>
 
 class _$_GetConstraintsEvent implements _GetConstraintsEvent {
   const _$_GetConstraintsEvent(
-      {required this.diaryList,
+      {required this.scaleFactor,
+      required this.diaryList,
       required final List<DiaryColumn> diaryColumns,
-      required final List<DiaryCell> diaryCells})
+      required final List<DiaryCell> diaryCells,
+      required this.isScaled})
       : _diaryColumns = diaryColumns,
         _diaryCells = diaryCells;
 
+  @override
+  final double scaleFactor;
   @override
   final DiaryList diaryList;
   final List<DiaryColumn> _diaryColumns;
@@ -201,8 +204,11 @@ class _$_GetConstraintsEvent implements _GetConstraintsEvent {
   }
 
   @override
+  final bool isScaled;
+
+  @override
   String toString() {
-    return 'GridDisplayEvent.getConstraints(diaryList: $diaryList, diaryColumns: $diaryColumns, diaryCells: $diaryCells)';
+    return 'GridDisplayEvent.getConstraints(scaleFactor: $scaleFactor, diaryList: $diaryList, diaryColumns: $diaryColumns, diaryCells: $diaryCells, isScaled: $isScaled)';
   }
 
   @override
@@ -210,20 +216,26 @@ class _$_GetConstraintsEvent implements _GetConstraintsEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GetConstraintsEvent &&
+            (identical(other.scaleFactor, scaleFactor) ||
+                other.scaleFactor == scaleFactor) &&
             (identical(other.diaryList, diaryList) ||
                 other.diaryList == diaryList) &&
             const DeepCollectionEquality()
                 .equals(other._diaryColumns, _diaryColumns) &&
             const DeepCollectionEquality()
-                .equals(other._diaryCells, _diaryCells));
+                .equals(other._diaryCells, _diaryCells) &&
+            (identical(other.isScaled, isScaled) ||
+                other.isScaled == isScaled));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      scaleFactor,
       diaryList,
       const DeepCollectionEquality().hash(_diaryColumns),
-      const DeepCollectionEquality().hash(_diaryCells));
+      const DeepCollectionEquality().hash(_diaryCells),
+      isScaled);
 
   @JsonKey(ignore: true)
   @override
@@ -235,66 +247,66 @@ class _$_GetConstraintsEvent implements _GetConstraintsEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+    required TResult Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)
         getConstraints,
-    required TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerDown,
     required TResult Function(PointerEvent details) onPointerSelectMove,
-    required TResult Function(PointerEvent details) onPointerScrollMove,
-    required TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerUp,
-    required TResult Function(ScaleStartDetails details) onScaleStart,
-    required TResult Function(ScaleUpdateDetails details) onScaleUpdate,
-    required TResult Function(ScaleEndDetails details) onScaleEnd,
+    required TResult Function(ScaleEndDetails details) onInteractionEnd,
+    required TResult Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)
+        onPointerDown,
+    required TResult Function(PointerUpEvent details) onPointerUp,
   }) {
-    return getConstraints(diaryList, diaryColumns, diaryCells);
+    return getConstraints(
+        scaleFactor, diaryList, diaryColumns, diaryCells, isScaled);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult? Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)?
         getConstraints,
-    TResult? Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
     TResult? Function(PointerEvent details)? onPointerSelectMove,
-    TResult? Function(PointerEvent details)? onPointerScrollMove,
-    TResult? Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult? Function(ScaleStartDetails details)? onScaleStart,
-    TResult? Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult? Function(ScaleEndDetails details)? onScaleEnd,
+    TResult? Function(ScaleEndDetails details)? onInteractionEnd,
+    TResult? Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
+        onPointerDown,
+    TResult? Function(PointerUpEvent details)? onPointerUp,
   }) {
-    return getConstraints?.call(diaryList, diaryColumns, diaryCells);
+    return getConstraints?.call(
+        scaleFactor, diaryList, diaryColumns, diaryCells, isScaled);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)?
         getConstraints,
-    TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
     TResult Function(PointerEvent details)? onPointerSelectMove,
-    TResult Function(PointerEvent details)? onPointerScrollMove,
-    TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult Function(ScaleStartDetails details)? onScaleStart,
-    TResult Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult Function(ScaleEndDetails details)? onScaleEnd,
+    TResult Function(ScaleEndDetails details)? onInteractionEnd,
+    TResult Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
+        onPointerDown,
+    TResult Function(PointerUpEvent details)? onPointerUp,
     required TResult orElse(),
   }) {
     if (getConstraints != null) {
-      return getConstraints(diaryList, diaryColumns, diaryCells);
+      return getConstraints(
+          scaleFactor, diaryList, diaryColumns, diaryCells, isScaled);
     }
     return orElse();
   }
@@ -303,15 +315,11 @@ class _$_GetConstraintsEvent implements _GetConstraintsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetConstraintsEvent value) getConstraints,
-    required TResult Function(_OnPointerDownEvent value) onPointerDown,
     required TResult Function(_OnPointerSelectMoveEvent value)
         onPointerSelectMove,
-    required TResult Function(_OnPointerScrollMoveEvent value)
-        onPointerScrollMove,
+    required TResult Function(_OnInteractionEndEvent value) onInteractionEnd,
+    required TResult Function(_OnPointerDownEvent value) onPointerDown,
     required TResult Function(_OnPointerUpEvent value) onPointerUp,
-    required TResult Function(_OnScaleStartEvent value) onScaleStart,
-    required TResult Function(_OnScaleUpdateEvent value) onScaleUpdate,
-    required TResult Function(_OnScaleEndEvent value) onScaleEnd,
   }) {
     return getConstraints(this);
   }
@@ -320,13 +328,10 @@ class _$_GetConstraintsEvent implements _GetConstraintsEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetConstraintsEvent value)? getConstraints,
-    TResult? Function(_OnPointerDownEvent value)? onPointerDown,
     TResult? Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult? Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
+    TResult? Function(_OnInteractionEndEvent value)? onInteractionEnd,
+    TResult? Function(_OnPointerDownEvent value)? onPointerDown,
     TResult? Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult? Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult? Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult? Function(_OnScaleEndEvent value)? onScaleEnd,
   }) {
     return getConstraints?.call(this);
   }
@@ -335,13 +340,10 @@ class _$_GetConstraintsEvent implements _GetConstraintsEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetConstraintsEvent value)? getConstraints,
-    TResult Function(_OnPointerDownEvent value)? onPointerDown,
     TResult Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
+    TResult Function(_OnInteractionEndEvent value)? onInteractionEnd,
+    TResult Function(_OnPointerDownEvent value)? onPointerDown,
     TResult Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult Function(_OnScaleEndEvent value)? onScaleEnd,
     required TResult orElse(),
   }) {
     if (getConstraints != null) {
@@ -353,220 +355,19 @@ class _$_GetConstraintsEvent implements _GetConstraintsEvent {
 
 abstract class _GetConstraintsEvent implements GridDisplayEvent {
   const factory _GetConstraintsEvent(
-      {required final DiaryList diaryList,
+      {required final double scaleFactor,
+      required final DiaryList diaryList,
       required final List<DiaryColumn> diaryColumns,
-      required final List<DiaryCell> diaryCells}) = _$_GetConstraintsEvent;
+      required final List<DiaryCell> diaryCells,
+      required final bool isScaled}) = _$_GetConstraintsEvent;
 
+  double get scaleFactor;
   DiaryList get diaryList;
   List<DiaryColumn> get diaryColumns;
   List<DiaryCell> get diaryCells;
+  bool get isScaled;
   @JsonKey(ignore: true)
   _$$_GetConstraintsEventCopyWith<_$_GetConstraintsEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_OnPointerDownEventCopyWith<$Res> {
-  factory _$$_OnPointerDownEventCopyWith(_$_OnPointerDownEvent value,
-          $Res Function(_$_OnPointerDownEvent) then) =
-      __$$_OnPointerDownEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call(
-      {PointerDownEvent details,
-      GlobalObjectKey<State<StatefulWidget>>? selectedCellKey});
-}
-
-/// @nodoc
-class __$$_OnPointerDownEventCopyWithImpl<$Res>
-    extends _$GridDisplayEventCopyWithImpl<$Res, _$_OnPointerDownEvent>
-    implements _$$_OnPointerDownEventCopyWith<$Res> {
-  __$$_OnPointerDownEventCopyWithImpl(
-      _$_OnPointerDownEvent _value, $Res Function(_$_OnPointerDownEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? details = null,
-    Object? selectedCellKey = freezed,
-  }) {
-    return _then(_$_OnPointerDownEvent(
-      details: null == details
-          ? _value.details
-          : details // ignore: cast_nullable_to_non_nullable
-              as PointerDownEvent,
-      selectedCellKey: freezed == selectedCellKey
-          ? _value.selectedCellKey
-          : selectedCellKey // ignore: cast_nullable_to_non_nullable
-              as GlobalObjectKey<State<StatefulWidget>>?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_OnPointerDownEvent implements _OnPointerDownEvent {
-  const _$_OnPointerDownEvent({required this.details, this.selectedCellKey});
-
-  @override
-  final PointerDownEvent details;
-  @override
-  final GlobalObjectKey<State<StatefulWidget>>? selectedCellKey;
-
-  @override
-  String toString() {
-    return 'GridDisplayEvent.onPointerDown(details: $details, selectedCellKey: $selectedCellKey)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_OnPointerDownEvent &&
-            (identical(other.details, details) || other.details == details) &&
-            (identical(other.selectedCellKey, selectedCellKey) ||
-                other.selectedCellKey == selectedCellKey));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, details, selectedCellKey);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_OnPointerDownEventCopyWith<_$_OnPointerDownEvent> get copyWith =>
-      __$$_OnPointerDownEventCopyWithImpl<_$_OnPointerDownEvent>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
-        getConstraints,
-    required TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerDown,
-    required TResult Function(PointerEvent details) onPointerSelectMove,
-    required TResult Function(PointerEvent details) onPointerScrollMove,
-    required TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerUp,
-    required TResult Function(ScaleStartDetails details) onScaleStart,
-    required TResult Function(ScaleUpdateDetails details) onScaleUpdate,
-    required TResult Function(ScaleEndDetails details) onScaleEnd,
-  }) {
-    return onPointerDown(details, selectedCellKey);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
-        getConstraints,
-    TResult? Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
-    TResult? Function(PointerEvent details)? onPointerSelectMove,
-    TResult? Function(PointerEvent details)? onPointerScrollMove,
-    TResult? Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult? Function(ScaleStartDetails details)? onScaleStart,
-    TResult? Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult? Function(ScaleEndDetails details)? onScaleEnd,
-  }) {
-    return onPointerDown?.call(details, selectedCellKey);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
-        getConstraints,
-    TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
-    TResult Function(PointerEvent details)? onPointerSelectMove,
-    TResult Function(PointerEvent details)? onPointerScrollMove,
-    TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult Function(ScaleStartDetails details)? onScaleStart,
-    TResult Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult Function(ScaleEndDetails details)? onScaleEnd,
-    required TResult orElse(),
-  }) {
-    if (onPointerDown != null) {
-      return onPointerDown(details, selectedCellKey);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetConstraintsEvent value) getConstraints,
-    required TResult Function(_OnPointerDownEvent value) onPointerDown,
-    required TResult Function(_OnPointerSelectMoveEvent value)
-        onPointerSelectMove,
-    required TResult Function(_OnPointerScrollMoveEvent value)
-        onPointerScrollMove,
-    required TResult Function(_OnPointerUpEvent value) onPointerUp,
-    required TResult Function(_OnScaleStartEvent value) onScaleStart,
-    required TResult Function(_OnScaleUpdateEvent value) onScaleUpdate,
-    required TResult Function(_OnScaleEndEvent value) onScaleEnd,
-  }) {
-    return onPointerDown(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetConstraintsEvent value)? getConstraints,
-    TResult? Function(_OnPointerDownEvent value)? onPointerDown,
-    TResult? Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult? Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
-    TResult? Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult? Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult? Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult? Function(_OnScaleEndEvent value)? onScaleEnd,
-  }) {
-    return onPointerDown?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetConstraintsEvent value)? getConstraints,
-    TResult Function(_OnPointerDownEvent value)? onPointerDown,
-    TResult Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
-    TResult Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult Function(_OnScaleEndEvent value)? onScaleEnd,
-    required TResult orElse(),
-  }) {
-    if (onPointerDown != null) {
-      return onPointerDown(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _OnPointerDownEvent implements GridDisplayEvent {
-  const factory _OnPointerDownEvent(
-          {required final PointerDownEvent details,
-          final GlobalObjectKey<State<StatefulWidget>>? selectedCellKey}) =
-      _$_OnPointerDownEvent;
-
-  PointerDownEvent get details;
-  GlobalObjectKey<State<StatefulWidget>>? get selectedCellKey;
-  @JsonKey(ignore: true)
-  _$$_OnPointerDownEventCopyWith<_$_OnPointerDownEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -636,20 +437,19 @@ class _$_OnPointerSelectMoveEvent implements _OnPointerSelectMoveEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+    required TResult Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)
         getConstraints,
-    required TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerDown,
     required TResult Function(PointerEvent details) onPointerSelectMove,
-    required TResult Function(PointerEvent details) onPointerScrollMove,
-    required TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerUp,
-    required TResult Function(ScaleStartDetails details) onScaleStart,
-    required TResult Function(ScaleUpdateDetails details) onScaleUpdate,
-    required TResult Function(ScaleEndDetails details) onScaleEnd,
+    required TResult Function(ScaleEndDetails details) onInteractionEnd,
+    required TResult Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)
+        onPointerDown,
+    required TResult Function(PointerUpEvent details) onPointerUp,
   }) {
     return onPointerSelectMove(details);
   }
@@ -657,20 +457,19 @@ class _$_OnPointerSelectMoveEvent implements _OnPointerSelectMoveEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult? Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)?
         getConstraints,
-    TResult? Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
     TResult? Function(PointerEvent details)? onPointerSelectMove,
-    TResult? Function(PointerEvent details)? onPointerScrollMove,
-    TResult? Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult? Function(ScaleStartDetails details)? onScaleStart,
-    TResult? Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult? Function(ScaleEndDetails details)? onScaleEnd,
+    TResult? Function(ScaleEndDetails details)? onInteractionEnd,
+    TResult? Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
+        onPointerDown,
+    TResult? Function(PointerUpEvent details)? onPointerUp,
   }) {
     return onPointerSelectMove?.call(details);
   }
@@ -678,20 +477,19 @@ class _$_OnPointerSelectMoveEvent implements _OnPointerSelectMoveEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)?
         getConstraints,
-    TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
     TResult Function(PointerEvent details)? onPointerSelectMove,
-    TResult Function(PointerEvent details)? onPointerScrollMove,
-    TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult Function(ScaleStartDetails details)? onScaleStart,
-    TResult Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult Function(ScaleEndDetails details)? onScaleEnd,
+    TResult Function(ScaleEndDetails details)? onInteractionEnd,
+    TResult Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
+        onPointerDown,
+    TResult Function(PointerUpEvent details)? onPointerUp,
     required TResult orElse(),
   }) {
     if (onPointerSelectMove != null) {
@@ -704,15 +502,11 @@ class _$_OnPointerSelectMoveEvent implements _OnPointerSelectMoveEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetConstraintsEvent value) getConstraints,
-    required TResult Function(_OnPointerDownEvent value) onPointerDown,
     required TResult Function(_OnPointerSelectMoveEvent value)
         onPointerSelectMove,
-    required TResult Function(_OnPointerScrollMoveEvent value)
-        onPointerScrollMove,
+    required TResult Function(_OnInteractionEndEvent value) onInteractionEnd,
+    required TResult Function(_OnPointerDownEvent value) onPointerDown,
     required TResult Function(_OnPointerUpEvent value) onPointerUp,
-    required TResult Function(_OnScaleStartEvent value) onScaleStart,
-    required TResult Function(_OnScaleUpdateEvent value) onScaleUpdate,
-    required TResult Function(_OnScaleEndEvent value) onScaleEnd,
   }) {
     return onPointerSelectMove(this);
   }
@@ -721,13 +515,10 @@ class _$_OnPointerSelectMoveEvent implements _OnPointerSelectMoveEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetConstraintsEvent value)? getConstraints,
-    TResult? Function(_OnPointerDownEvent value)? onPointerDown,
     TResult? Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult? Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
+    TResult? Function(_OnInteractionEndEvent value)? onInteractionEnd,
+    TResult? Function(_OnPointerDownEvent value)? onPointerDown,
     TResult? Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult? Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult? Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult? Function(_OnScaleEndEvent value)? onScaleEnd,
   }) {
     return onPointerSelectMove?.call(this);
   }
@@ -736,13 +527,10 @@ class _$_OnPointerSelectMoveEvent implements _OnPointerSelectMoveEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetConstraintsEvent value)? getConstraints,
-    TResult Function(_OnPointerDownEvent value)? onPointerDown,
     TResult Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
+    TResult Function(_OnInteractionEndEvent value)? onInteractionEnd,
+    TResult Function(_OnPointerDownEvent value)? onPointerDown,
     TResult Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult Function(_OnScaleEndEvent value)? onScaleEnd,
     required TResult orElse(),
   }) {
     if (onPointerSelectMove != null) {
@@ -763,21 +551,20 @@ abstract class _OnPointerSelectMoveEvent implements GridDisplayEvent {
 }
 
 /// @nodoc
-abstract class _$$_OnPointerScrollMoveEventCopyWith<$Res> {
-  factory _$$_OnPointerScrollMoveEventCopyWith(
-          _$_OnPointerScrollMoveEvent value,
-          $Res Function(_$_OnPointerScrollMoveEvent) then) =
-      __$$_OnPointerScrollMoveEventCopyWithImpl<$Res>;
+abstract class _$$_OnInteractionEndEventCopyWith<$Res> {
+  factory _$$_OnInteractionEndEventCopyWith(_$_OnInteractionEndEvent value,
+          $Res Function(_$_OnInteractionEndEvent) then) =
+      __$$_OnInteractionEndEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({PointerEvent details});
+  $Res call({ScaleEndDetails details});
 }
 
 /// @nodoc
-class __$$_OnPointerScrollMoveEventCopyWithImpl<$Res>
-    extends _$GridDisplayEventCopyWithImpl<$Res, _$_OnPointerScrollMoveEvent>
-    implements _$$_OnPointerScrollMoveEventCopyWith<$Res> {
-  __$$_OnPointerScrollMoveEventCopyWithImpl(_$_OnPointerScrollMoveEvent _value,
-      $Res Function(_$_OnPointerScrollMoveEvent) _then)
+class __$$_OnInteractionEndEventCopyWithImpl<$Res>
+    extends _$GridDisplayEventCopyWithImpl<$Res, _$_OnInteractionEndEvent>
+    implements _$$_OnInteractionEndEventCopyWith<$Res> {
+  __$$_OnInteractionEndEventCopyWithImpl(_$_OnInteractionEndEvent _value,
+      $Res Function(_$_OnInteractionEndEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -785,33 +572,33 @@ class __$$_OnPointerScrollMoveEventCopyWithImpl<$Res>
   $Res call({
     Object? details = null,
   }) {
-    return _then(_$_OnPointerScrollMoveEvent(
+    return _then(_$_OnInteractionEndEvent(
       details: null == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
-              as PointerEvent,
+              as ScaleEndDetails,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_OnPointerScrollMoveEvent implements _OnPointerScrollMoveEvent {
-  const _$_OnPointerScrollMoveEvent({required this.details});
+class _$_OnInteractionEndEvent implements _OnInteractionEndEvent {
+  const _$_OnInteractionEndEvent({required this.details});
 
   @override
-  final PointerEvent details;
+  final ScaleEndDetails details;
 
   @override
   String toString() {
-    return 'GridDisplayEvent.onPointerScrollMove(details: $details)';
+    return 'GridDisplayEvent.onInteractionEnd(details: $details)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnPointerScrollMoveEvent &&
+            other is _$_OnInteractionEndEvent &&
             (identical(other.details, details) || other.details == details));
   }
 
@@ -821,73 +608,70 @@ class _$_OnPointerScrollMoveEvent implements _OnPointerScrollMoveEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnPointerScrollMoveEventCopyWith<_$_OnPointerScrollMoveEvent>
-      get copyWith => __$$_OnPointerScrollMoveEventCopyWithImpl<
-          _$_OnPointerScrollMoveEvent>(this, _$identity);
+  _$$_OnInteractionEndEventCopyWith<_$_OnInteractionEndEvent> get copyWith =>
+      __$$_OnInteractionEndEventCopyWithImpl<_$_OnInteractionEndEvent>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+    required TResult Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)
         getConstraints,
-    required TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerDown,
     required TResult Function(PointerEvent details) onPointerSelectMove,
-    required TResult Function(PointerEvent details) onPointerScrollMove,
-    required TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerUp,
-    required TResult Function(ScaleStartDetails details) onScaleStart,
-    required TResult Function(ScaleUpdateDetails details) onScaleUpdate,
-    required TResult Function(ScaleEndDetails details) onScaleEnd,
+    required TResult Function(ScaleEndDetails details) onInteractionEnd,
+    required TResult Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)
+        onPointerDown,
+    required TResult Function(PointerUpEvent details) onPointerUp,
   }) {
-    return onPointerScrollMove(details);
+    return onInteractionEnd(details);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult? Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)?
         getConstraints,
-    TResult? Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
     TResult? Function(PointerEvent details)? onPointerSelectMove,
-    TResult? Function(PointerEvent details)? onPointerScrollMove,
-    TResult? Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult? Function(ScaleStartDetails details)? onScaleStart,
-    TResult? Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult? Function(ScaleEndDetails details)? onScaleEnd,
+    TResult? Function(ScaleEndDetails details)? onInteractionEnd,
+    TResult? Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
+        onPointerDown,
+    TResult? Function(PointerUpEvent details)? onPointerUp,
   }) {
-    return onPointerScrollMove?.call(details);
+    return onInteractionEnd?.call(details);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)?
         getConstraints,
-    TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
     TResult Function(PointerEvent details)? onPointerSelectMove,
-    TResult Function(PointerEvent details)? onPointerScrollMove,
-    TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult Function(ScaleStartDetails details)? onScaleStart,
-    TResult Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult Function(ScaleEndDetails details)? onScaleEnd,
+    TResult Function(ScaleEndDetails details)? onInteractionEnd,
+    TResult Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
+        onPointerDown,
+    TResult Function(PointerUpEvent details)? onPointerUp,
     required TResult orElse(),
   }) {
-    if (onPointerScrollMove != null) {
-      return onPointerScrollMove(details);
+    if (onInteractionEnd != null) {
+      return onInteractionEnd(details);
     }
     return orElse();
   }
@@ -896,62 +680,245 @@ class _$_OnPointerScrollMoveEvent implements _OnPointerScrollMoveEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetConstraintsEvent value) getConstraints,
-    required TResult Function(_OnPointerDownEvent value) onPointerDown,
     required TResult Function(_OnPointerSelectMoveEvent value)
         onPointerSelectMove,
-    required TResult Function(_OnPointerScrollMoveEvent value)
-        onPointerScrollMove,
+    required TResult Function(_OnInteractionEndEvent value) onInteractionEnd,
+    required TResult Function(_OnPointerDownEvent value) onPointerDown,
     required TResult Function(_OnPointerUpEvent value) onPointerUp,
-    required TResult Function(_OnScaleStartEvent value) onScaleStart,
-    required TResult Function(_OnScaleUpdateEvent value) onScaleUpdate,
-    required TResult Function(_OnScaleEndEvent value) onScaleEnd,
   }) {
-    return onPointerScrollMove(this);
+    return onInteractionEnd(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetConstraintsEvent value)? getConstraints,
-    TResult? Function(_OnPointerDownEvent value)? onPointerDown,
     TResult? Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult? Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
+    TResult? Function(_OnInteractionEndEvent value)? onInteractionEnd,
+    TResult? Function(_OnPointerDownEvent value)? onPointerDown,
     TResult? Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult? Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult? Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult? Function(_OnScaleEndEvent value)? onScaleEnd,
   }) {
-    return onPointerScrollMove?.call(this);
+    return onInteractionEnd?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetConstraintsEvent value)? getConstraints,
-    TResult Function(_OnPointerDownEvent value)? onPointerDown,
     TResult Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
+    TResult Function(_OnInteractionEndEvent value)? onInteractionEnd,
+    TResult Function(_OnPointerDownEvent value)? onPointerDown,
     TResult Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult Function(_OnScaleEndEvent value)? onScaleEnd,
     required TResult orElse(),
   }) {
-    if (onPointerScrollMove != null) {
-      return onPointerScrollMove(this);
+    if (onInteractionEnd != null) {
+      return onInteractionEnd(this);
     }
     return orElse();
   }
 }
 
-abstract class _OnPointerScrollMoveEvent implements GridDisplayEvent {
-  const factory _OnPointerScrollMoveEvent(
-      {required final PointerEvent details}) = _$_OnPointerScrollMoveEvent;
+abstract class _OnInteractionEndEvent implements GridDisplayEvent {
+  const factory _OnInteractionEndEvent(
+      {required final ScaleEndDetails details}) = _$_OnInteractionEndEvent;
 
-  PointerEvent get details;
+  ScaleEndDetails get details;
   @JsonKey(ignore: true)
-  _$$_OnPointerScrollMoveEventCopyWith<_$_OnPointerScrollMoveEvent>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$_OnInteractionEndEventCopyWith<_$_OnInteractionEndEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OnPointerDownEventCopyWith<$Res> {
+  factory _$$_OnPointerDownEventCopyWith(_$_OnPointerDownEvent value,
+          $Res Function(_$_OnPointerDownEvent) then) =
+      __$$_OnPointerDownEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {PointerDownEvent details,
+      GlobalObjectKey<State<StatefulWidget>> selectedCellKey});
+}
+
+/// @nodoc
+class __$$_OnPointerDownEventCopyWithImpl<$Res>
+    extends _$GridDisplayEventCopyWithImpl<$Res, _$_OnPointerDownEvent>
+    implements _$$_OnPointerDownEventCopyWith<$Res> {
+  __$$_OnPointerDownEventCopyWithImpl(
+      _$_OnPointerDownEvent _value, $Res Function(_$_OnPointerDownEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? details = null,
+    Object? selectedCellKey = null,
+  }) {
+    return _then(_$_OnPointerDownEvent(
+      details: null == details
+          ? _value.details
+          : details // ignore: cast_nullable_to_non_nullable
+              as PointerDownEvent,
+      selectedCellKey: null == selectedCellKey
+          ? _value.selectedCellKey
+          : selectedCellKey // ignore: cast_nullable_to_non_nullable
+              as GlobalObjectKey<State<StatefulWidget>>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnPointerDownEvent implements _OnPointerDownEvent {
+  const _$_OnPointerDownEvent(
+      {required this.details, required this.selectedCellKey});
+
+  @override
+  final PointerDownEvent details;
+  @override
+  final GlobalObjectKey<State<StatefulWidget>> selectedCellKey;
+
+  @override
+  String toString() {
+    return 'GridDisplayEvent.onPointerDown(details: $details, selectedCellKey: $selectedCellKey)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OnPointerDownEvent &&
+            (identical(other.details, details) || other.details == details) &&
+            (identical(other.selectedCellKey, selectedCellKey) ||
+                other.selectedCellKey == selectedCellKey));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, details, selectedCellKey);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_OnPointerDownEventCopyWith<_$_OnPointerDownEvent> get copyWith =>
+      __$$_OnPointerDownEventCopyWithImpl<_$_OnPointerDownEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)
+        getConstraints,
+    required TResult Function(PointerEvent details) onPointerSelectMove,
+    required TResult Function(ScaleEndDetails details) onInteractionEnd,
+    required TResult Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)
+        onPointerDown,
+    required TResult Function(PointerUpEvent details) onPointerUp,
+  }) {
+    return onPointerDown(details, selectedCellKey);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)?
+        getConstraints,
+    TResult? Function(PointerEvent details)? onPointerSelectMove,
+    TResult? Function(ScaleEndDetails details)? onInteractionEnd,
+    TResult? Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
+        onPointerDown,
+    TResult? Function(PointerUpEvent details)? onPointerUp,
+  }) {
+    return onPointerDown?.call(details, selectedCellKey);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)?
+        getConstraints,
+    TResult Function(PointerEvent details)? onPointerSelectMove,
+    TResult Function(ScaleEndDetails details)? onInteractionEnd,
+    TResult Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
+        onPointerDown,
+    TResult Function(PointerUpEvent details)? onPointerUp,
+    required TResult orElse(),
+  }) {
+    if (onPointerDown != null) {
+      return onPointerDown(details, selectedCellKey);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetConstraintsEvent value) getConstraints,
+    required TResult Function(_OnPointerSelectMoveEvent value)
+        onPointerSelectMove,
+    required TResult Function(_OnInteractionEndEvent value) onInteractionEnd,
+    required TResult Function(_OnPointerDownEvent value) onPointerDown,
+    required TResult Function(_OnPointerUpEvent value) onPointerUp,
+  }) {
+    return onPointerDown(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetConstraintsEvent value)? getConstraints,
+    TResult? Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
+    TResult? Function(_OnInteractionEndEvent value)? onInteractionEnd,
+    TResult? Function(_OnPointerDownEvent value)? onPointerDown,
+    TResult? Function(_OnPointerUpEvent value)? onPointerUp,
+  }) {
+    return onPointerDown?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetConstraintsEvent value)? getConstraints,
+    TResult Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
+    TResult Function(_OnInteractionEndEvent value)? onInteractionEnd,
+    TResult Function(_OnPointerDownEvent value)? onPointerDown,
+    TResult Function(_OnPointerUpEvent value)? onPointerUp,
+    required TResult orElse(),
+  }) {
+    if (onPointerDown != null) {
+      return onPointerDown(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnPointerDownEvent implements GridDisplayEvent {
+  const factory _OnPointerDownEvent(
+      {required final PointerDownEvent details,
+      required final GlobalObjectKey<State<StatefulWidget>>
+          selectedCellKey}) = _$_OnPointerDownEvent;
+
+  PointerDownEvent get details;
+  GlobalObjectKey<State<StatefulWidget>> get selectedCellKey;
+  @JsonKey(ignore: true)
+  _$$_OnPointerDownEventCopyWith<_$_OnPointerDownEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -960,9 +927,7 @@ abstract class _$$_OnPointerUpEventCopyWith<$Res> {
           _$_OnPointerUpEvent value, $Res Function(_$_OnPointerUpEvent) then) =
       __$$_OnPointerUpEventCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {PointerUpEvent details,
-      GlobalObjectKey<State<StatefulWidget>>? selectedCellKey});
+  $Res call({PointerUpEvent details});
 }
 
 /// @nodoc
@@ -977,17 +942,12 @@ class __$$_OnPointerUpEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? details = null,
-    Object? selectedCellKey = freezed,
   }) {
     return _then(_$_OnPointerUpEvent(
       details: null == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
               as PointerUpEvent,
-      selectedCellKey: freezed == selectedCellKey
-          ? _value.selectedCellKey
-          : selectedCellKey // ignore: cast_nullable_to_non_nullable
-              as GlobalObjectKey<State<StatefulWidget>>?,
     ));
   }
 }
@@ -995,16 +955,14 @@ class __$$_OnPointerUpEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OnPointerUpEvent implements _OnPointerUpEvent {
-  const _$_OnPointerUpEvent({required this.details, this.selectedCellKey});
+  const _$_OnPointerUpEvent({required this.details});
 
   @override
   final PointerUpEvent details;
-  @override
-  final GlobalObjectKey<State<StatefulWidget>>? selectedCellKey;
 
   @override
   String toString() {
-    return 'GridDisplayEvent.onPointerUp(details: $details, selectedCellKey: $selectedCellKey)';
+    return 'GridDisplayEvent.onPointerUp(details: $details)';
   }
 
   @override
@@ -1012,13 +970,11 @@ class _$_OnPointerUpEvent implements _OnPointerUpEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnPointerUpEvent &&
-            (identical(other.details, details) || other.details == details) &&
-            (identical(other.selectedCellKey, selectedCellKey) ||
-                other.selectedCellKey == selectedCellKey));
+            (identical(other.details, details) || other.details == details));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, details, selectedCellKey);
+  int get hashCode => Object.hash(runtimeType, details);
 
   @JsonKey(ignore: true)
   @override
@@ -1029,66 +985,63 @@ class _$_OnPointerUpEvent implements _OnPointerUpEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
+    required TResult Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)
         getConstraints,
-    required TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerDown,
     required TResult Function(PointerEvent details) onPointerSelectMove,
-    required TResult Function(PointerEvent details) onPointerScrollMove,
-    required TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerUp,
-    required TResult Function(ScaleStartDetails details) onScaleStart,
-    required TResult Function(ScaleUpdateDetails details) onScaleUpdate,
-    required TResult Function(ScaleEndDetails details) onScaleEnd,
+    required TResult Function(ScaleEndDetails details) onInteractionEnd,
+    required TResult Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)
+        onPointerDown,
+    required TResult Function(PointerUpEvent details) onPointerUp,
   }) {
-    return onPointerUp(details, selectedCellKey);
+    return onPointerUp(details);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult? Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)?
         getConstraints,
-    TResult? Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
     TResult? Function(PointerEvent details)? onPointerSelectMove,
-    TResult? Function(PointerEvent details)? onPointerScrollMove,
-    TResult? Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult? Function(ScaleStartDetails details)? onScaleStart,
-    TResult? Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult? Function(ScaleEndDetails details)? onScaleEnd,
+    TResult? Function(ScaleEndDetails details)? onInteractionEnd,
+    TResult? Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
+        onPointerDown,
+    TResult? Function(PointerUpEvent details)? onPointerUp,
   }) {
-    return onPointerUp?.call(details, selectedCellKey);
+    return onPointerUp?.call(details);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
+    TResult Function(
+            double scaleFactor,
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            bool isScaled)?
         getConstraints,
-    TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
     TResult Function(PointerEvent details)? onPointerSelectMove,
-    TResult Function(PointerEvent details)? onPointerScrollMove,
-    TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult Function(ScaleStartDetails details)? onScaleStart,
-    TResult Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult Function(ScaleEndDetails details)? onScaleEnd,
+    TResult Function(ScaleEndDetails details)? onInteractionEnd,
+    TResult Function(PointerDownEvent details,
+            GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
+        onPointerDown,
+    TResult Function(PointerUpEvent details)? onPointerUp,
     required TResult orElse(),
   }) {
     if (onPointerUp != null) {
-      return onPointerUp(details, selectedCellKey);
+      return onPointerUp(details);
     }
     return orElse();
   }
@@ -1097,15 +1050,11 @@ class _$_OnPointerUpEvent implements _OnPointerUpEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetConstraintsEvent value) getConstraints,
-    required TResult Function(_OnPointerDownEvent value) onPointerDown,
     required TResult Function(_OnPointerSelectMoveEvent value)
         onPointerSelectMove,
-    required TResult Function(_OnPointerScrollMoveEvent value)
-        onPointerScrollMove,
+    required TResult Function(_OnInteractionEndEvent value) onInteractionEnd,
+    required TResult Function(_OnPointerDownEvent value) onPointerDown,
     required TResult Function(_OnPointerUpEvent value) onPointerUp,
-    required TResult Function(_OnScaleStartEvent value) onScaleStart,
-    required TResult Function(_OnScaleUpdateEvent value) onScaleUpdate,
-    required TResult Function(_OnScaleEndEvent value) onScaleEnd,
   }) {
     return onPointerUp(this);
   }
@@ -1114,13 +1063,10 @@ class _$_OnPointerUpEvent implements _OnPointerUpEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetConstraintsEvent value)? getConstraints,
-    TResult? Function(_OnPointerDownEvent value)? onPointerDown,
     TResult? Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult? Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
+    TResult? Function(_OnInteractionEndEvent value)? onInteractionEnd,
+    TResult? Function(_OnPointerDownEvent value)? onPointerDown,
     TResult? Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult? Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult? Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult? Function(_OnScaleEndEvent value)? onScaleEnd,
   }) {
     return onPointerUp?.call(this);
   }
@@ -1129,13 +1075,10 @@ class _$_OnPointerUpEvent implements _OnPointerUpEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetConstraintsEvent value)? getConstraints,
-    TResult Function(_OnPointerDownEvent value)? onPointerDown,
     TResult Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
+    TResult Function(_OnInteractionEndEvent value)? onInteractionEnd,
+    TResult Function(_OnPointerDownEvent value)? onPointerDown,
     TResult Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult Function(_OnScaleEndEvent value)? onScaleEnd,
     required TResult orElse(),
   }) {
     if (onPointerUp != null) {
@@ -1146,706 +1089,98 @@ class _$_OnPointerUpEvent implements _OnPointerUpEvent {
 }
 
 abstract class _OnPointerUpEvent implements GridDisplayEvent {
-  const factory _OnPointerUpEvent(
-          {required final PointerUpEvent details,
-          final GlobalObjectKey<State<StatefulWidget>>? selectedCellKey}) =
+  const factory _OnPointerUpEvent({required final PointerUpEvent details}) =
       _$_OnPointerUpEvent;
 
   PointerUpEvent get details;
-  GlobalObjectKey<State<StatefulWidget>>? get selectedCellKey;
   @JsonKey(ignore: true)
   _$$_OnPointerUpEventCopyWith<_$_OnPointerUpEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnScaleStartEventCopyWith<$Res> {
-  factory _$$_OnScaleStartEventCopyWith(_$_OnScaleStartEvent value,
-          $Res Function(_$_OnScaleStartEvent) then) =
-      __$$_OnScaleStartEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({ScaleStartDetails details});
-}
-
-/// @nodoc
-class __$$_OnScaleStartEventCopyWithImpl<$Res>
-    extends _$GridDisplayEventCopyWithImpl<$Res, _$_OnScaleStartEvent>
-    implements _$$_OnScaleStartEventCopyWith<$Res> {
-  __$$_OnScaleStartEventCopyWithImpl(
-      _$_OnScaleStartEvent _value, $Res Function(_$_OnScaleStartEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? details = null,
-  }) {
-    return _then(_$_OnScaleStartEvent(
-      details: null == details
-          ? _value.details
-          : details // ignore: cast_nullable_to_non_nullable
-              as ScaleStartDetails,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_OnScaleStartEvent implements _OnScaleStartEvent {
-  const _$_OnScaleStartEvent({required this.details});
-
-  @override
-  final ScaleStartDetails details;
-
-  @override
-  String toString() {
-    return 'GridDisplayEvent.onScaleStart(details: $details)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_OnScaleStartEvent &&
-            (identical(other.details, details) || other.details == details));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, details);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_OnScaleStartEventCopyWith<_$_OnScaleStartEvent> get copyWith =>
-      __$$_OnScaleStartEventCopyWithImpl<_$_OnScaleStartEvent>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
-        getConstraints,
-    required TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerDown,
-    required TResult Function(PointerEvent details) onPointerSelectMove,
-    required TResult Function(PointerEvent details) onPointerScrollMove,
-    required TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerUp,
-    required TResult Function(ScaleStartDetails details) onScaleStart,
-    required TResult Function(ScaleUpdateDetails details) onScaleUpdate,
-    required TResult Function(ScaleEndDetails details) onScaleEnd,
-  }) {
-    return onScaleStart(details);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
-        getConstraints,
-    TResult? Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
-    TResult? Function(PointerEvent details)? onPointerSelectMove,
-    TResult? Function(PointerEvent details)? onPointerScrollMove,
-    TResult? Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult? Function(ScaleStartDetails details)? onScaleStart,
-    TResult? Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult? Function(ScaleEndDetails details)? onScaleEnd,
-  }) {
-    return onScaleStart?.call(details);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
-        getConstraints,
-    TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
-    TResult Function(PointerEvent details)? onPointerSelectMove,
-    TResult Function(PointerEvent details)? onPointerScrollMove,
-    TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult Function(ScaleStartDetails details)? onScaleStart,
-    TResult Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult Function(ScaleEndDetails details)? onScaleEnd,
-    required TResult orElse(),
-  }) {
-    if (onScaleStart != null) {
-      return onScaleStart(details);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetConstraintsEvent value) getConstraints,
-    required TResult Function(_OnPointerDownEvent value) onPointerDown,
-    required TResult Function(_OnPointerSelectMoveEvent value)
-        onPointerSelectMove,
-    required TResult Function(_OnPointerScrollMoveEvent value)
-        onPointerScrollMove,
-    required TResult Function(_OnPointerUpEvent value) onPointerUp,
-    required TResult Function(_OnScaleStartEvent value) onScaleStart,
-    required TResult Function(_OnScaleUpdateEvent value) onScaleUpdate,
-    required TResult Function(_OnScaleEndEvent value) onScaleEnd,
-  }) {
-    return onScaleStart(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetConstraintsEvent value)? getConstraints,
-    TResult? Function(_OnPointerDownEvent value)? onPointerDown,
-    TResult? Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult? Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
-    TResult? Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult? Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult? Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult? Function(_OnScaleEndEvent value)? onScaleEnd,
-  }) {
-    return onScaleStart?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetConstraintsEvent value)? getConstraints,
-    TResult Function(_OnPointerDownEvent value)? onPointerDown,
-    TResult Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
-    TResult Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult Function(_OnScaleEndEvent value)? onScaleEnd,
-    required TResult orElse(),
-  }) {
-    if (onScaleStart != null) {
-      return onScaleStart(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _OnScaleStartEvent implements GridDisplayEvent {
-  const factory _OnScaleStartEvent({required final ScaleStartDetails details}) =
-      _$_OnScaleStartEvent;
-
-  ScaleStartDetails get details;
-  @JsonKey(ignore: true)
-  _$$_OnScaleStartEventCopyWith<_$_OnScaleStartEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_OnScaleUpdateEventCopyWith<$Res> {
-  factory _$$_OnScaleUpdateEventCopyWith(_$_OnScaleUpdateEvent value,
-          $Res Function(_$_OnScaleUpdateEvent) then) =
-      __$$_OnScaleUpdateEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({ScaleUpdateDetails details});
-}
-
-/// @nodoc
-class __$$_OnScaleUpdateEventCopyWithImpl<$Res>
-    extends _$GridDisplayEventCopyWithImpl<$Res, _$_OnScaleUpdateEvent>
-    implements _$$_OnScaleUpdateEventCopyWith<$Res> {
-  __$$_OnScaleUpdateEventCopyWithImpl(
-      _$_OnScaleUpdateEvent _value, $Res Function(_$_OnScaleUpdateEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? details = null,
-  }) {
-    return _then(_$_OnScaleUpdateEvent(
-      details: null == details
-          ? _value.details
-          : details // ignore: cast_nullable_to_non_nullable
-              as ScaleUpdateDetails,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_OnScaleUpdateEvent implements _OnScaleUpdateEvent {
-  const _$_OnScaleUpdateEvent({required this.details});
-
-  @override
-  final ScaleUpdateDetails details;
-
-  @override
-  String toString() {
-    return 'GridDisplayEvent.onScaleUpdate(details: $details)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_OnScaleUpdateEvent &&
-            (identical(other.details, details) || other.details == details));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, details);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_OnScaleUpdateEventCopyWith<_$_OnScaleUpdateEvent> get copyWith =>
-      __$$_OnScaleUpdateEventCopyWithImpl<_$_OnScaleUpdateEvent>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
-        getConstraints,
-    required TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerDown,
-    required TResult Function(PointerEvent details) onPointerSelectMove,
-    required TResult Function(PointerEvent details) onPointerScrollMove,
-    required TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerUp,
-    required TResult Function(ScaleStartDetails details) onScaleStart,
-    required TResult Function(ScaleUpdateDetails details) onScaleUpdate,
-    required TResult Function(ScaleEndDetails details) onScaleEnd,
-  }) {
-    return onScaleUpdate(details);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
-        getConstraints,
-    TResult? Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
-    TResult? Function(PointerEvent details)? onPointerSelectMove,
-    TResult? Function(PointerEvent details)? onPointerScrollMove,
-    TResult? Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult? Function(ScaleStartDetails details)? onScaleStart,
-    TResult? Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult? Function(ScaleEndDetails details)? onScaleEnd,
-  }) {
-    return onScaleUpdate?.call(details);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
-        getConstraints,
-    TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
-    TResult Function(PointerEvent details)? onPointerSelectMove,
-    TResult Function(PointerEvent details)? onPointerScrollMove,
-    TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult Function(ScaleStartDetails details)? onScaleStart,
-    TResult Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult Function(ScaleEndDetails details)? onScaleEnd,
-    required TResult orElse(),
-  }) {
-    if (onScaleUpdate != null) {
-      return onScaleUpdate(details);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetConstraintsEvent value) getConstraints,
-    required TResult Function(_OnPointerDownEvent value) onPointerDown,
-    required TResult Function(_OnPointerSelectMoveEvent value)
-        onPointerSelectMove,
-    required TResult Function(_OnPointerScrollMoveEvent value)
-        onPointerScrollMove,
-    required TResult Function(_OnPointerUpEvent value) onPointerUp,
-    required TResult Function(_OnScaleStartEvent value) onScaleStart,
-    required TResult Function(_OnScaleUpdateEvent value) onScaleUpdate,
-    required TResult Function(_OnScaleEndEvent value) onScaleEnd,
-  }) {
-    return onScaleUpdate(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetConstraintsEvent value)? getConstraints,
-    TResult? Function(_OnPointerDownEvent value)? onPointerDown,
-    TResult? Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult? Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
-    TResult? Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult? Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult? Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult? Function(_OnScaleEndEvent value)? onScaleEnd,
-  }) {
-    return onScaleUpdate?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetConstraintsEvent value)? getConstraints,
-    TResult Function(_OnPointerDownEvent value)? onPointerDown,
-    TResult Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
-    TResult Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult Function(_OnScaleEndEvent value)? onScaleEnd,
-    required TResult orElse(),
-  }) {
-    if (onScaleUpdate != null) {
-      return onScaleUpdate(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _OnScaleUpdateEvent implements GridDisplayEvent {
-  const factory _OnScaleUpdateEvent(
-      {required final ScaleUpdateDetails details}) = _$_OnScaleUpdateEvent;
-
-  ScaleUpdateDetails get details;
-  @JsonKey(ignore: true)
-  _$$_OnScaleUpdateEventCopyWith<_$_OnScaleUpdateEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_OnScaleEndEventCopyWith<$Res> {
-  factory _$$_OnScaleEndEventCopyWith(
-          _$_OnScaleEndEvent value, $Res Function(_$_OnScaleEndEvent) then) =
-      __$$_OnScaleEndEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({ScaleEndDetails details});
-}
-
-/// @nodoc
-class __$$_OnScaleEndEventCopyWithImpl<$Res>
-    extends _$GridDisplayEventCopyWithImpl<$Res, _$_OnScaleEndEvent>
-    implements _$$_OnScaleEndEventCopyWith<$Res> {
-  __$$_OnScaleEndEventCopyWithImpl(
-      _$_OnScaleEndEvent _value, $Res Function(_$_OnScaleEndEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? details = null,
-  }) {
-    return _then(_$_OnScaleEndEvent(
-      details: null == details
-          ? _value.details
-          : details // ignore: cast_nullable_to_non_nullable
-              as ScaleEndDetails,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_OnScaleEndEvent implements _OnScaleEndEvent {
-  const _$_OnScaleEndEvent({required this.details});
-
-  @override
-  final ScaleEndDetails details;
-
-  @override
-  String toString() {
-    return 'GridDisplayEvent.onScaleEnd(details: $details)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_OnScaleEndEvent &&
-            (identical(other.details, details) || other.details == details));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, details);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_OnScaleEndEventCopyWith<_$_OnScaleEndEvent> get copyWith =>
-      __$$_OnScaleEndEventCopyWithImpl<_$_OnScaleEndEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(DiaryList diaryList,
-            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
-        getConstraints,
-    required TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerDown,
-    required TResult Function(PointerEvent details) onPointerSelectMove,
-    required TResult Function(PointerEvent details) onPointerScrollMove,
-    required TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)
-        onPointerUp,
-    required TResult Function(ScaleStartDetails details) onScaleStart,
-    required TResult Function(ScaleUpdateDetails details) onScaleUpdate,
-    required TResult Function(ScaleEndDetails details) onScaleEnd,
-  }) {
-    return onScaleEnd(details);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
-        getConstraints,
-    TResult? Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
-    TResult? Function(PointerEvent details)? onPointerSelectMove,
-    TResult? Function(PointerEvent details)? onPointerScrollMove,
-    TResult? Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult? Function(ScaleStartDetails details)? onScaleStart,
-    TResult? Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult? Function(ScaleEndDetails details)? onScaleEnd,
-  }) {
-    return onScaleEnd?.call(details);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells)?
-        getConstraints,
-    TResult Function(PointerDownEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerDown,
-    TResult Function(PointerEvent details)? onPointerSelectMove,
-    TResult Function(PointerEvent details)? onPointerScrollMove,
-    TResult Function(PointerUpEvent details,
-            GlobalObjectKey<State<StatefulWidget>>? selectedCellKey)?
-        onPointerUp,
-    TResult Function(ScaleStartDetails details)? onScaleStart,
-    TResult Function(ScaleUpdateDetails details)? onScaleUpdate,
-    TResult Function(ScaleEndDetails details)? onScaleEnd,
-    required TResult orElse(),
-  }) {
-    if (onScaleEnd != null) {
-      return onScaleEnd(details);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetConstraintsEvent value) getConstraints,
-    required TResult Function(_OnPointerDownEvent value) onPointerDown,
-    required TResult Function(_OnPointerSelectMoveEvent value)
-        onPointerSelectMove,
-    required TResult Function(_OnPointerScrollMoveEvent value)
-        onPointerScrollMove,
-    required TResult Function(_OnPointerUpEvent value) onPointerUp,
-    required TResult Function(_OnScaleStartEvent value) onScaleStart,
-    required TResult Function(_OnScaleUpdateEvent value) onScaleUpdate,
-    required TResult Function(_OnScaleEndEvent value) onScaleEnd,
-  }) {
-    return onScaleEnd(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetConstraintsEvent value)? getConstraints,
-    TResult? Function(_OnPointerDownEvent value)? onPointerDown,
-    TResult? Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult? Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
-    TResult? Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult? Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult? Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult? Function(_OnScaleEndEvent value)? onScaleEnd,
-  }) {
-    return onScaleEnd?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetConstraintsEvent value)? getConstraints,
-    TResult Function(_OnPointerDownEvent value)? onPointerDown,
-    TResult Function(_OnPointerSelectMoveEvent value)? onPointerSelectMove,
-    TResult Function(_OnPointerScrollMoveEvent value)? onPointerScrollMove,
-    TResult Function(_OnPointerUpEvent value)? onPointerUp,
-    TResult Function(_OnScaleStartEvent value)? onScaleStart,
-    TResult Function(_OnScaleUpdateEvent value)? onScaleUpdate,
-    TResult Function(_OnScaleEndEvent value)? onScaleEnd,
-    required TResult orElse(),
-  }) {
-    if (onScaleEnd != null) {
-      return onScaleEnd(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _OnScaleEndEvent implements GridDisplayEvent {
-  const factory _OnScaleEndEvent({required final ScaleEndDetails details}) =
-      _$_OnScaleEndEvent;
-
-  ScaleEndDetails get details;
-  @JsonKey(ignore: true)
-  _$$_OnScaleEndEventCopyWith<_$_OnScaleEndEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 mixin _$GridDisplayState {
   double get scaleFactor => throw _privateConstructorUsedError;
-  ScrollController get verticalScrollController =>
+  TransformationController get transformationController =>
       throw _privateConstructorUsedError;
-  ScrollController get horizontalScrollController =>
-      throw _privateConstructorUsedError;
+  double get translateX => throw _privateConstructorUsedError;
+  double get translateY => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
             double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
+            TransformationController transformationController,
+            double translateX,
+            double translateY)
         initial,
     required TResult Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
+            TransformationController transformationController,
+            double translateX,
+            double translateY)
         loaded,
     required TResult Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
+            TransformationController transformationController,
+            double translateX,
+            double translateY)
         selectedMoving,
-    required TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        scrolling,
-    required TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        scaling,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         initial,
     TResult? Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         loaded,
     TResult? Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         selectedMoving,
-    TResult? Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scrolling,
-    TResult? Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scaling,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         initial,
     TResult Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         loaded,
     TResult Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         selectedMoving,
-    TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scrolling,
-    TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scaling,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1854,8 +1189,6 @@ mixin _$GridDisplayState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_SelectedMoving value) selectedMoving,
-    required TResult Function(_Scrolling value) scrolling,
-    required TResult Function(_Scaling value) scaling,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1863,8 +1196,6 @@ mixin _$GridDisplayState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_SelectedMoving value)? selectedMoving,
-    TResult? Function(_Scrolling value)? scrolling,
-    TResult? Function(_Scaling value)? scaling,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1872,8 +1203,6 @@ mixin _$GridDisplayState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_SelectedMoving value)? selectedMoving,
-    TResult Function(_Scrolling value)? scrolling,
-    TResult Function(_Scaling value)? scaling,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1891,8 +1220,9 @@ abstract class $GridDisplayStateCopyWith<$Res> {
   @useResult
   $Res call(
       {double scaleFactor,
-      ScrollController verticalScrollController,
-      ScrollController horizontalScrollController});
+      TransformationController transformationController,
+      double translateX,
+      double translateY});
 }
 
 /// @nodoc
@@ -1909,22 +1239,27 @@ class _$GridDisplayStateCopyWithImpl<$Res, $Val extends GridDisplayState>
   @override
   $Res call({
     Object? scaleFactor = null,
-    Object? verticalScrollController = null,
-    Object? horizontalScrollController = null,
+    Object? transformationController = null,
+    Object? translateX = null,
+    Object? translateY = null,
   }) {
     return _then(_value.copyWith(
       scaleFactor: null == scaleFactor
           ? _value.scaleFactor
           : scaleFactor // ignore: cast_nullable_to_non_nullable
               as double,
-      verticalScrollController: null == verticalScrollController
-          ? _value.verticalScrollController
-          : verticalScrollController // ignore: cast_nullable_to_non_nullable
-              as ScrollController,
-      horizontalScrollController: null == horizontalScrollController
-          ? _value.horizontalScrollController
-          : horizontalScrollController // ignore: cast_nullable_to_non_nullable
-              as ScrollController,
+      transformationController: null == transformationController
+          ? _value.transformationController
+          : transformationController // ignore: cast_nullable_to_non_nullable
+              as TransformationController,
+      translateX: null == translateX
+          ? _value.translateX
+          : translateX // ignore: cast_nullable_to_non_nullable
+              as double,
+      translateY: null == translateY
+          ? _value.translateY
+          : translateY // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -1939,8 +1274,9 @@ abstract class _$$_InitialCopyWith<$Res>
   @useResult
   $Res call(
       {double scaleFactor,
-      ScrollController verticalScrollController,
-      ScrollController horizontalScrollController});
+      TransformationController transformationController,
+      double translateX,
+      double translateY});
 }
 
 /// @nodoc
@@ -1954,22 +1290,27 @@ class __$$_InitialCopyWithImpl<$Res>
   @override
   $Res call({
     Object? scaleFactor = null,
-    Object? verticalScrollController = null,
-    Object? horizontalScrollController = null,
+    Object? transformationController = null,
+    Object? translateX = null,
+    Object? translateY = null,
   }) {
     return _then(_$_Initial(
       scaleFactor: null == scaleFactor
           ? _value.scaleFactor
           : scaleFactor // ignore: cast_nullable_to_non_nullable
               as double,
-      verticalScrollController: null == verticalScrollController
-          ? _value.verticalScrollController
-          : verticalScrollController // ignore: cast_nullable_to_non_nullable
-              as ScrollController,
-      horizontalScrollController: null == horizontalScrollController
-          ? _value.horizontalScrollController
-          : horizontalScrollController // ignore: cast_nullable_to_non_nullable
-              as ScrollController,
+      transformationController: null == transformationController
+          ? _value.transformationController
+          : transformationController // ignore: cast_nullable_to_non_nullable
+              as TransformationController,
+      translateX: null == translateX
+          ? _value.translateX
+          : translateX // ignore: cast_nullable_to_non_nullable
+              as double,
+      translateY: null == translateY
+          ? _value.translateY
+          : translateY // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -1979,19 +1320,22 @@ class __$$_InitialCopyWithImpl<$Res>
 class _$_Initial implements _Initial {
   const _$_Initial(
       {required this.scaleFactor,
-      required this.verticalScrollController,
-      required this.horizontalScrollController});
+      required this.transformationController,
+      required this.translateX,
+      required this.translateY});
 
   @override
   final double scaleFactor;
   @override
-  final ScrollController verticalScrollController;
+  final TransformationController transformationController;
   @override
-  final ScrollController horizontalScrollController;
+  final double translateX;
+  @override
+  final double translateY;
 
   @override
   String toString() {
-    return 'GridDisplayState.initial(scaleFactor: $scaleFactor, verticalScrollController: $verticalScrollController, horizontalScrollController: $horizontalScrollController)';
+    return 'GridDisplayState.initial(scaleFactor: $scaleFactor, transformationController: $transformationController, translateX: $translateX, translateY: $translateY)';
   }
 
   @override
@@ -2002,17 +1346,17 @@ class _$_Initial implements _Initial {
             (identical(other.scaleFactor, scaleFactor) ||
                 other.scaleFactor == scaleFactor) &&
             (identical(
-                    other.verticalScrollController, verticalScrollController) ||
-                other.verticalScrollController == verticalScrollController) &&
-            (identical(other.horizontalScrollController,
-                    horizontalScrollController) ||
-                other.horizontalScrollController ==
-                    horizontalScrollController));
+                    other.transformationController, transformationController) ||
+                other.transformationController == transformationController) &&
+            (identical(other.translateX, translateX) ||
+                other.translateX == translateX) &&
+            (identical(other.translateY, translateY) ||
+                other.translateY == translateY));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, scaleFactor,
-      verticalScrollController, horizontalScrollController);
+      transformationController, translateX, translateY);
 
   @JsonKey(ignore: true)
   @override
@@ -2025,40 +1369,29 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function(
             double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
+            TransformationController transformationController,
+            double translateX,
+            double translateY)
         initial,
     required TResult Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
+            TransformationController transformationController,
+            double translateX,
+            double translateY)
         loaded,
     required TResult Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
+            TransformationController transformationController,
+            double translateX,
+            double translateY)
         selectedMoving,
-    required TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        scrolling,
-    required TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        scaling,
   }) {
     return initial(
-        scaleFactor, verticalScrollController, horizontalScrollController);
+        scaleFactor, transformationController, translateX, translateY);
   }
 
   @override
@@ -2066,40 +1399,29 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         initial,
     TResult? Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         loaded,
     TResult? Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         selectedMoving,
-    TResult? Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scrolling,
-    TResult? Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scaling,
   }) {
     return initial?.call(
-        scaleFactor, verticalScrollController, horizontalScrollController);
+        scaleFactor, transformationController, translateX, translateY);
   }
 
   @override
@@ -2107,42 +1429,31 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         initial,
     TResult Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         loaded,
     TResult Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         selectedMoving,
-    TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scrolling,
-    TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scaling,
     required TResult orElse(),
   }) {
     if (initial != null) {
       return initial(
-          scaleFactor, verticalScrollController, horizontalScrollController);
+          scaleFactor, transformationController, translateX, translateY);
     }
     return orElse();
   }
@@ -2153,8 +1464,6 @@ class _$_Initial implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_SelectedMoving value) selectedMoving,
-    required TResult Function(_Scrolling value) scrolling,
-    required TResult Function(_Scaling value) scaling,
   }) {
     return initial(this);
   }
@@ -2165,8 +1474,6 @@ class _$_Initial implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_SelectedMoving value)? selectedMoving,
-    TResult? Function(_Scrolling value)? scrolling,
-    TResult? Function(_Scaling value)? scaling,
   }) {
     return initial?.call(this);
   }
@@ -2177,8 +1484,6 @@ class _$_Initial implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_SelectedMoving value)? selectedMoving,
-    TResult Function(_Scrolling value)? scrolling,
-    TResult Function(_Scaling value)? scaling,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -2191,15 +1496,18 @@ class _$_Initial implements _Initial {
 abstract class _Initial implements GridDisplayState {
   const factory _Initial(
       {required final double scaleFactor,
-      required final ScrollController verticalScrollController,
-      required final ScrollController horizontalScrollController}) = _$_Initial;
+      required final TransformationController transformationController,
+      required final double translateX,
+      required final double translateY}) = _$_Initial;
 
   @override
   double get scaleFactor;
   @override
-  ScrollController get verticalScrollController;
+  TransformationController get transformationController;
   @override
-  ScrollController get horizontalScrollController;
+  double get translateX;
+  @override
+  double get translateY;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>
@@ -2217,8 +1525,9 @@ abstract class _$$_LoadedCopyWith<$Res>
       {double scaleFactor,
       double width,
       double height,
-      ScrollController verticalScrollController,
-      ScrollController horizontalScrollController});
+      TransformationController transformationController,
+      double translateX,
+      double translateY});
 }
 
 /// @nodoc
@@ -2234,8 +1543,9 @@ class __$$_LoadedCopyWithImpl<$Res>
     Object? scaleFactor = null,
     Object? width = null,
     Object? height = null,
-    Object? verticalScrollController = null,
-    Object? horizontalScrollController = null,
+    Object? transformationController = null,
+    Object? translateX = null,
+    Object? translateY = null,
   }) {
     return _then(_$_Loaded(
       scaleFactor: null == scaleFactor
@@ -2250,14 +1560,18 @@ class __$$_LoadedCopyWithImpl<$Res>
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
               as double,
-      verticalScrollController: null == verticalScrollController
-          ? _value.verticalScrollController
-          : verticalScrollController // ignore: cast_nullable_to_non_nullable
-              as ScrollController,
-      horizontalScrollController: null == horizontalScrollController
-          ? _value.horizontalScrollController
-          : horizontalScrollController // ignore: cast_nullable_to_non_nullable
-              as ScrollController,
+      transformationController: null == transformationController
+          ? _value.transformationController
+          : transformationController // ignore: cast_nullable_to_non_nullable
+              as TransformationController,
+      translateX: null == translateX
+          ? _value.translateX
+          : translateX // ignore: cast_nullable_to_non_nullable
+              as double,
+      translateY: null == translateY
+          ? _value.translateY
+          : translateY // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -2269,8 +1583,9 @@ class _$_Loaded implements _Loaded {
       {required this.scaleFactor,
       required this.width,
       required this.height,
-      required this.verticalScrollController,
-      required this.horizontalScrollController});
+      required this.transformationController,
+      required this.translateX,
+      required this.translateY});
 
   @override
   final double scaleFactor;
@@ -2279,13 +1594,15 @@ class _$_Loaded implements _Loaded {
   @override
   final double height;
   @override
-  final ScrollController verticalScrollController;
+  final TransformationController transformationController;
   @override
-  final ScrollController horizontalScrollController;
+  final double translateX;
+  @override
+  final double translateY;
 
   @override
   String toString() {
-    return 'GridDisplayState.loaded(scaleFactor: $scaleFactor, width: $width, height: $height, verticalScrollController: $verticalScrollController, horizontalScrollController: $horizontalScrollController)';
+    return 'GridDisplayState.loaded(scaleFactor: $scaleFactor, width: $width, height: $height, transformationController: $transformationController, translateX: $translateX, translateY: $translateY)';
   }
 
   @override
@@ -2298,17 +1615,17 @@ class _$_Loaded implements _Loaded {
             (identical(other.width, width) || other.width == width) &&
             (identical(other.height, height) || other.height == height) &&
             (identical(
-                    other.verticalScrollController, verticalScrollController) ||
-                other.verticalScrollController == verticalScrollController) &&
-            (identical(other.horizontalScrollController,
-                    horizontalScrollController) ||
-                other.horizontalScrollController ==
-                    horizontalScrollController));
+                    other.transformationController, transformationController) ||
+                other.transformationController == transformationController) &&
+            (identical(other.translateX, translateX) ||
+                other.translateX == translateX) &&
+            (identical(other.translateY, translateY) ||
+                other.translateY == translateY));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, scaleFactor, width, height,
-      verticalScrollController, horizontalScrollController);
+      transformationController, translateX, translateY);
 
   @JsonKey(ignore: true)
   @override
@@ -2321,40 +1638,29 @@ class _$_Loaded implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function(
             double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
+            TransformationController transformationController,
+            double translateX,
+            double translateY)
         initial,
     required TResult Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
+            TransformationController transformationController,
+            double translateX,
+            double translateY)
         loaded,
     required TResult Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
+            TransformationController transformationController,
+            double translateX,
+            double translateY)
         selectedMoving,
-    required TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        scrolling,
-    required TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        scaling,
   }) {
-    return loaded(scaleFactor, width, height, verticalScrollController,
-        horizontalScrollController);
+    return loaded(scaleFactor, width, height, transformationController,
+        translateX, translateY);
   }
 
   @override
@@ -2362,40 +1668,29 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         initial,
     TResult? Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         loaded,
     TResult? Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         selectedMoving,
-    TResult? Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scrolling,
-    TResult? Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scaling,
   }) {
-    return loaded?.call(scaleFactor, width, height, verticalScrollController,
-        horizontalScrollController);
+    return loaded?.call(scaleFactor, width, height, transformationController,
+        translateX, translateY);
   }
 
   @override
@@ -2403,42 +1698,31 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         initial,
     TResult Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         loaded,
     TResult Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         selectedMoving,
-    TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scrolling,
-    TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scaling,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(scaleFactor, width, height, verticalScrollController,
-          horizontalScrollController);
+      return loaded(scaleFactor, width, height, transformationController,
+          translateX, translateY);
     }
     return orElse();
   }
@@ -2449,8 +1733,6 @@ class _$_Loaded implements _Loaded {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_SelectedMoving value) selectedMoving,
-    required TResult Function(_Scrolling value) scrolling,
-    required TResult Function(_Scaling value) scaling,
   }) {
     return loaded(this);
   }
@@ -2461,8 +1743,6 @@ class _$_Loaded implements _Loaded {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_SelectedMoving value)? selectedMoving,
-    TResult? Function(_Scrolling value)? scrolling,
-    TResult? Function(_Scaling value)? scaling,
   }) {
     return loaded?.call(this);
   }
@@ -2473,8 +1753,6 @@ class _$_Loaded implements _Loaded {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_SelectedMoving value)? selectedMoving,
-    TResult Function(_Scrolling value)? scrolling,
-    TResult Function(_Scaling value)? scaling,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -2489,17 +1767,20 @@ abstract class _Loaded implements GridDisplayState {
       {required final double scaleFactor,
       required final double width,
       required final double height,
-      required final ScrollController verticalScrollController,
-      required final ScrollController horizontalScrollController}) = _$_Loaded;
+      required final TransformationController transformationController,
+      required final double translateX,
+      required final double translateY}) = _$_Loaded;
 
   @override
   double get scaleFactor;
   double get width;
   double get height;
   @override
-  ScrollController get verticalScrollController;
+  TransformationController get transformationController;
   @override
-  ScrollController get horizontalScrollController;
+  double get translateX;
+  @override
+  double get translateY;
   @override
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
@@ -2518,8 +1799,9 @@ abstract class _$$_SelectedMovingCopyWith<$Res>
       {double scaleFactor,
       double width,
       double height,
-      ScrollController verticalScrollController,
-      ScrollController horizontalScrollController});
+      TransformationController transformationController,
+      double translateX,
+      double translateY});
 }
 
 /// @nodoc
@@ -2536,8 +1818,9 @@ class __$$_SelectedMovingCopyWithImpl<$Res>
     Object? scaleFactor = null,
     Object? width = null,
     Object? height = null,
-    Object? verticalScrollController = null,
-    Object? horizontalScrollController = null,
+    Object? transformationController = null,
+    Object? translateX = null,
+    Object? translateY = null,
   }) {
     return _then(_$_SelectedMoving(
       scaleFactor: null == scaleFactor
@@ -2552,14 +1835,18 @@ class __$$_SelectedMovingCopyWithImpl<$Res>
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
               as double,
-      verticalScrollController: null == verticalScrollController
-          ? _value.verticalScrollController
-          : verticalScrollController // ignore: cast_nullable_to_non_nullable
-              as ScrollController,
-      horizontalScrollController: null == horizontalScrollController
-          ? _value.horizontalScrollController
-          : horizontalScrollController // ignore: cast_nullable_to_non_nullable
-              as ScrollController,
+      transformationController: null == transformationController
+          ? _value.transformationController
+          : transformationController // ignore: cast_nullable_to_non_nullable
+              as TransformationController,
+      translateX: null == translateX
+          ? _value.translateX
+          : translateX // ignore: cast_nullable_to_non_nullable
+              as double,
+      translateY: null == translateY
+          ? _value.translateY
+          : translateY // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -2571,8 +1858,9 @@ class _$_SelectedMoving implements _SelectedMoving {
       {required this.scaleFactor,
       required this.width,
       required this.height,
-      required this.verticalScrollController,
-      required this.horizontalScrollController});
+      required this.transformationController,
+      required this.translateX,
+      required this.translateY});
 
   @override
   final double scaleFactor;
@@ -2581,13 +1869,15 @@ class _$_SelectedMoving implements _SelectedMoving {
   @override
   final double height;
   @override
-  final ScrollController verticalScrollController;
+  final TransformationController transformationController;
   @override
-  final ScrollController horizontalScrollController;
+  final double translateX;
+  @override
+  final double translateY;
 
   @override
   String toString() {
-    return 'GridDisplayState.selectedMoving(scaleFactor: $scaleFactor, width: $width, height: $height, verticalScrollController: $verticalScrollController, horizontalScrollController: $horizontalScrollController)';
+    return 'GridDisplayState.selectedMoving(scaleFactor: $scaleFactor, width: $width, height: $height, transformationController: $transformationController, translateX: $translateX, translateY: $translateY)';
   }
 
   @override
@@ -2600,17 +1890,17 @@ class _$_SelectedMoving implements _SelectedMoving {
             (identical(other.width, width) || other.width == width) &&
             (identical(other.height, height) || other.height == height) &&
             (identical(
-                    other.verticalScrollController, verticalScrollController) ||
-                other.verticalScrollController == verticalScrollController) &&
-            (identical(other.horizontalScrollController,
-                    horizontalScrollController) ||
-                other.horizontalScrollController ==
-                    horizontalScrollController));
+                    other.transformationController, transformationController) ||
+                other.transformationController == transformationController) &&
+            (identical(other.translateX, translateX) ||
+                other.translateX == translateX) &&
+            (identical(other.translateY, translateY) ||
+                other.translateY == translateY));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, scaleFactor, width, height,
-      verticalScrollController, horizontalScrollController);
+      transformationController, translateX, translateY);
 
   @JsonKey(ignore: true)
   @override
@@ -2623,40 +1913,29 @@ class _$_SelectedMoving implements _SelectedMoving {
   TResult when<TResult extends Object?>({
     required TResult Function(
             double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
+            TransformationController transformationController,
+            double translateX,
+            double translateY)
         initial,
     required TResult Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
+            TransformationController transformationController,
+            double translateX,
+            double translateY)
         loaded,
     required TResult Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
+            TransformationController transformationController,
+            double translateX,
+            double translateY)
         selectedMoving,
-    required TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        scrolling,
-    required TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        scaling,
   }) {
-    return selectedMoving(scaleFactor, width, height, verticalScrollController,
-        horizontalScrollController);
+    return selectedMoving(scaleFactor, width, height, transformationController,
+        translateX, translateY);
   }
 
   @override
@@ -2664,40 +1943,29 @@ class _$_SelectedMoving implements _SelectedMoving {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
             double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         initial,
     TResult? Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         loaded,
     TResult? Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         selectedMoving,
-    TResult? Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scrolling,
-    TResult? Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scaling,
   }) {
     return selectedMoving?.call(scaleFactor, width, height,
-        verticalScrollController, horizontalScrollController);
+        transformationController, translateX, translateY);
   }
 
   @override
@@ -2705,42 +1973,31 @@ class _$_SelectedMoving implements _SelectedMoving {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         initial,
     TResult Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         loaded,
     TResult Function(
             double scaleFactor,
             double width,
             double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
+            TransformationController transformationController,
+            double translateX,
+            double translateY)?
         selectedMoving,
-    TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scrolling,
-    TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scaling,
     required TResult orElse(),
   }) {
     if (selectedMoving != null) {
       return selectedMoving(scaleFactor, width, height,
-          verticalScrollController, horizontalScrollController);
+          transformationController, translateX, translateY);
     }
     return orElse();
   }
@@ -2751,8 +2008,6 @@ class _$_SelectedMoving implements _SelectedMoving {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_SelectedMoving value) selectedMoving,
-    required TResult Function(_Scrolling value) scrolling,
-    required TResult Function(_Scaling value) scaling,
   }) {
     return selectedMoving(this);
   }
@@ -2763,8 +2018,6 @@ class _$_SelectedMoving implements _SelectedMoving {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_SelectedMoving value)? selectedMoving,
-    TResult? Function(_Scrolling value)? scrolling,
-    TResult? Function(_Scaling value)? scaling,
   }) {
     return selectedMoving?.call(this);
   }
@@ -2775,8 +2028,6 @@ class _$_SelectedMoving implements _SelectedMoving {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_SelectedMoving value)? selectedMoving,
-    TResult Function(_Scrolling value)? scrolling,
-    TResult Function(_Scaling value)? scaling,
     required TResult orElse(),
   }) {
     if (selectedMoving != null) {
@@ -2788,627 +2039,25 @@ class _$_SelectedMoving implements _SelectedMoving {
 
 abstract class _SelectedMoving implements GridDisplayState {
   const factory _SelectedMoving(
-          {required final double scaleFactor,
-          required final double width,
-          required final double height,
-          required final ScrollController verticalScrollController,
-          required final ScrollController horizontalScrollController}) =
-      _$_SelectedMoving;
-
-  @override
-  double get scaleFactor;
-  double get width;
-  double get height;
-  @override
-  ScrollController get verticalScrollController;
-  @override
-  ScrollController get horizontalScrollController;
-  @override
-  @JsonKey(ignore: true)
-  _$$_SelectedMovingCopyWith<_$_SelectedMoving> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_ScrollingCopyWith<$Res>
-    implements $GridDisplayStateCopyWith<$Res> {
-  factory _$$_ScrollingCopyWith(
-          _$_Scrolling value, $Res Function(_$_Scrolling) then) =
-      __$$_ScrollingCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {double scaleFactor,
-      double width,
-      double height,
-      ScrollController verticalScrollController,
-      ScrollController horizontalScrollController});
-}
-
-/// @nodoc
-class __$$_ScrollingCopyWithImpl<$Res>
-    extends _$GridDisplayStateCopyWithImpl<$Res, _$_Scrolling>
-    implements _$$_ScrollingCopyWith<$Res> {
-  __$$_ScrollingCopyWithImpl(
-      _$_Scrolling _value, $Res Function(_$_Scrolling) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? scaleFactor = null,
-    Object? width = null,
-    Object? height = null,
-    Object? verticalScrollController = null,
-    Object? horizontalScrollController = null,
-  }) {
-    return _then(_$_Scrolling(
-      scaleFactor: null == scaleFactor
-          ? _value.scaleFactor
-          : scaleFactor // ignore: cast_nullable_to_non_nullable
-              as double,
-      width: null == width
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as double,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as double,
-      verticalScrollController: null == verticalScrollController
-          ? _value.verticalScrollController
-          : verticalScrollController // ignore: cast_nullable_to_non_nullable
-              as ScrollController,
-      horizontalScrollController: null == horizontalScrollController
-          ? _value.horizontalScrollController
-          : horizontalScrollController // ignore: cast_nullable_to_non_nullable
-              as ScrollController,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_Scrolling implements _Scrolling {
-  const _$_Scrolling(
-      {required this.scaleFactor,
-      required this.width,
-      required this.height,
-      required this.verticalScrollController,
-      required this.horizontalScrollController});
-
-  @override
-  final double scaleFactor;
-  @override
-  final double width;
-  @override
-  final double height;
-  @override
-  final ScrollController verticalScrollController;
-  @override
-  final ScrollController horizontalScrollController;
-
-  @override
-  String toString() {
-    return 'GridDisplayState.scrolling(scaleFactor: $scaleFactor, width: $width, height: $height, verticalScrollController: $verticalScrollController, horizontalScrollController: $horizontalScrollController)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Scrolling &&
-            (identical(other.scaleFactor, scaleFactor) ||
-                other.scaleFactor == scaleFactor) &&
-            (identical(other.width, width) || other.width == width) &&
-            (identical(other.height, height) || other.height == height) &&
-            (identical(
-                    other.verticalScrollController, verticalScrollController) ||
-                other.verticalScrollController == verticalScrollController) &&
-            (identical(other.horizontalScrollController,
-                    horizontalScrollController) ||
-                other.horizontalScrollController ==
-                    horizontalScrollController));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, scaleFactor, width, height,
-      verticalScrollController, horizontalScrollController);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_ScrollingCopyWith<_$_Scrolling> get copyWith =>
-      __$$_ScrollingCopyWithImpl<_$_Scrolling>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        initial,
-    required TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        loaded,
-    required TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        selectedMoving,
-    required TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        scrolling,
-    required TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        scaling,
-  }) {
-    return scrolling(scaleFactor, width, height, verticalScrollController,
-        horizontalScrollController);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        initial,
-    TResult? Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        loaded,
-    TResult? Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        selectedMoving,
-    TResult? Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scrolling,
-    TResult? Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scaling,
-  }) {
-    return scrolling?.call(scaleFactor, width, height, verticalScrollController,
-        horizontalScrollController);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        initial,
-    TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        loaded,
-    TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        selectedMoving,
-    TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scrolling,
-    TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scaling,
-    required TResult orElse(),
-  }) {
-    if (scrolling != null) {
-      return scrolling(scaleFactor, width, height, verticalScrollController,
-          horizontalScrollController);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_SelectedMoving value) selectedMoving,
-    required TResult Function(_Scrolling value) scrolling,
-    required TResult Function(_Scaling value) scaling,
-  }) {
-    return scrolling(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_SelectedMoving value)? selectedMoving,
-    TResult? Function(_Scrolling value)? scrolling,
-    TResult? Function(_Scaling value)? scaling,
-  }) {
-    return scrolling?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_SelectedMoving value)? selectedMoving,
-    TResult Function(_Scrolling value)? scrolling,
-    TResult Function(_Scaling value)? scaling,
-    required TResult orElse(),
-  }) {
-    if (scrolling != null) {
-      return scrolling(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Scrolling implements GridDisplayState {
-  const factory _Scrolling(
-          {required final double scaleFactor,
-          required final double width,
-          required final double height,
-          required final ScrollController verticalScrollController,
-          required final ScrollController horizontalScrollController}) =
-      _$_Scrolling;
-
-  @override
-  double get scaleFactor;
-  double get width;
-  double get height;
-  @override
-  ScrollController get verticalScrollController;
-  @override
-  ScrollController get horizontalScrollController;
-  @override
-  @JsonKey(ignore: true)
-  _$$_ScrollingCopyWith<_$_Scrolling> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_ScalingCopyWith<$Res>
-    implements $GridDisplayStateCopyWith<$Res> {
-  factory _$$_ScalingCopyWith(
-          _$_Scaling value, $Res Function(_$_Scaling) then) =
-      __$$_ScalingCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {double scaleFactor,
-      double width,
-      double height,
-      ScrollController verticalScrollController,
-      ScrollController horizontalScrollController});
-}
-
-/// @nodoc
-class __$$_ScalingCopyWithImpl<$Res>
-    extends _$GridDisplayStateCopyWithImpl<$Res, _$_Scaling>
-    implements _$$_ScalingCopyWith<$Res> {
-  __$$_ScalingCopyWithImpl(_$_Scaling _value, $Res Function(_$_Scaling) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? scaleFactor = null,
-    Object? width = null,
-    Object? height = null,
-    Object? verticalScrollController = null,
-    Object? horizontalScrollController = null,
-  }) {
-    return _then(_$_Scaling(
-      scaleFactor: null == scaleFactor
-          ? _value.scaleFactor
-          : scaleFactor // ignore: cast_nullable_to_non_nullable
-              as double,
-      width: null == width
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as double,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as double,
-      verticalScrollController: null == verticalScrollController
-          ? _value.verticalScrollController
-          : verticalScrollController // ignore: cast_nullable_to_non_nullable
-              as ScrollController,
-      horizontalScrollController: null == horizontalScrollController
-          ? _value.horizontalScrollController
-          : horizontalScrollController // ignore: cast_nullable_to_non_nullable
-              as ScrollController,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_Scaling implements _Scaling {
-  const _$_Scaling(
-      {required this.scaleFactor,
-      required this.width,
-      required this.height,
-      required this.verticalScrollController,
-      required this.horizontalScrollController});
-
-  @override
-  final double scaleFactor;
-  @override
-  final double width;
-  @override
-  final double height;
-  @override
-  final ScrollController verticalScrollController;
-  @override
-  final ScrollController horizontalScrollController;
-
-  @override
-  String toString() {
-    return 'GridDisplayState.scaling(scaleFactor: $scaleFactor, width: $width, height: $height, verticalScrollController: $verticalScrollController, horizontalScrollController: $horizontalScrollController)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Scaling &&
-            (identical(other.scaleFactor, scaleFactor) ||
-                other.scaleFactor == scaleFactor) &&
-            (identical(other.width, width) || other.width == width) &&
-            (identical(other.height, height) || other.height == height) &&
-            (identical(
-                    other.verticalScrollController, verticalScrollController) ||
-                other.verticalScrollController == verticalScrollController) &&
-            (identical(other.horizontalScrollController,
-                    horizontalScrollController) ||
-                other.horizontalScrollController ==
-                    horizontalScrollController));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, scaleFactor, width, height,
-      verticalScrollController, horizontalScrollController);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_ScalingCopyWith<_$_Scaling> get copyWith =>
-      __$$_ScalingCopyWithImpl<_$_Scaling>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        initial,
-    required TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        loaded,
-    required TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        selectedMoving,
-    required TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        scrolling,
-    required TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)
-        scaling,
-  }) {
-    return scaling(scaleFactor, width, height, verticalScrollController,
-        horizontalScrollController);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        initial,
-    TResult? Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        loaded,
-    TResult? Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        selectedMoving,
-    TResult? Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scrolling,
-    TResult? Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scaling,
-  }) {
-    return scaling?.call(scaleFactor, width, height, verticalScrollController,
-        horizontalScrollController);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            double scaleFactor,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        initial,
-    TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        loaded,
-    TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        selectedMoving,
-    TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scrolling,
-    TResult Function(
-            double scaleFactor,
-            double width,
-            double height,
-            ScrollController verticalScrollController,
-            ScrollController horizontalScrollController)?
-        scaling,
-    required TResult orElse(),
-  }) {
-    if (scaling != null) {
-      return scaling(scaleFactor, width, height, verticalScrollController,
-          horizontalScrollController);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_SelectedMoving value) selectedMoving,
-    required TResult Function(_Scrolling value) scrolling,
-    required TResult Function(_Scaling value) scaling,
-  }) {
-    return scaling(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_SelectedMoving value)? selectedMoving,
-    TResult? Function(_Scrolling value)? scrolling,
-    TResult? Function(_Scaling value)? scaling,
-  }) {
-    return scaling?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_SelectedMoving value)? selectedMoving,
-    TResult Function(_Scrolling value)? scrolling,
-    TResult Function(_Scaling value)? scaling,
-    required TResult orElse(),
-  }) {
-    if (scaling != null) {
-      return scaling(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Scaling implements GridDisplayState {
-  const factory _Scaling(
       {required final double scaleFactor,
       required final double width,
       required final double height,
-      required final ScrollController verticalScrollController,
-      required final ScrollController horizontalScrollController}) = _$_Scaling;
+      required final TransformationController transformationController,
+      required final double translateX,
+      required final double translateY}) = _$_SelectedMoving;
 
   @override
   double get scaleFactor;
   double get width;
   double get height;
   @override
-  ScrollController get verticalScrollController;
+  TransformationController get transformationController;
   @override
-  ScrollController get horizontalScrollController;
+  double get translateX;
+  @override
+  double get translateY;
   @override
   @JsonKey(ignore: true)
-  _$$_ScalingCopyWith<_$_Scaling> get copyWith =>
+  _$$_SelectedMovingCopyWith<_$_SelectedMoving> get copyWith =>
       throw _privateConstructorUsedError;
 }

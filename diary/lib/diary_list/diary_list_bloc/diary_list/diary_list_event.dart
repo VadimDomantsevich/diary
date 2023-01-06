@@ -25,21 +25,10 @@ class DiaryListEvent with _$DiaryListEvent {
   const factory DiaryListEvent.onPanUpdate({
     required DiaryCell diaryCell,
     required GlobalObjectKey cellKey,
-    required GlobalKey gridKey,
     required DragUpdateDetails details,
+    required double scaleFactor,
   }) = OnPanUpdateEvent;
 
-  // const factory DiaryListEvent.onPointerDown({
-  //   DiaryCell? diaryCell,
-  //   GlobalObjectKey? cellKey,
-  //   required PointerDownEvent event,
-  // }) = OnPointerDownEvent;
-
-  // const factory DiaryListEvent.onPointerUp({
-  //   DiaryCell? diaryCell,
-  //   GlobalObjectKey? cellKey,
-  //   required PointerUpEvent event,
-  // }) = OnPointerUpEvent;
 
   const factory DiaryListEvent.changeDiaryCell({
     required DiaryCell diaryCell,

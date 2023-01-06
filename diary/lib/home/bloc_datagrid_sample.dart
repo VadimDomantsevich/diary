@@ -20,8 +20,7 @@ class BlocDataGridSample extends StatelessWidget {
                 diaryList: diaryList,
                 diaryColumns: diaryColumns,
                 diaryCells: diaryCells,
-                verticalScrollController: ScrollController(),
-                horizontalScrollController: ScrollController(),
+                transformationController: TransformationController(),
               ),
               child: const DataGridSample(),
             );
@@ -33,8 +32,7 @@ class BlocDataGridSample extends StatelessWidget {
                 diaryList: diaryList,
                 diaryColumns: diaryColumns,
                 diaryCells: diaryCells,
-                verticalScrollController: ScrollController(),
-                horizontalScrollController: ScrollController(),
+                transformationController: TransformationController(),
               ),
               child: const DataGridSample(),
             );

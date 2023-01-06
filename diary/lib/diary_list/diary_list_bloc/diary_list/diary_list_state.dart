@@ -27,15 +27,7 @@ class DiaryListState with _$DiaryListState {
     required DiaryCell selectedCell,
     required List<GlobalObjectKey> cellsKeys,
   }) = _CellSelected;
-
-  // const factory DiaryListState.pointerMoving({
-  //   required DiaryList diaryList,
-  //   required List<DiaryColumn> diaryColumns,
-  //   required List<DiaryCell> diaryCells,
-  //   DiaryCell? selectedCell,
-  //   required List<GlobalObjectKey> cellsKeys,
-  // }) = _PointerMoving;
-
+  
   const factory DiaryListState.cellsSelected({
     required DiaryList diaryList,
     required List<DiaryColumn> diaryColumns,

@@ -8,13 +8,13 @@ class BlocDiaryCellWidget extends StatelessWidget {
   const BlocDiaryCellWidget({
     super.key,
     required this.diaryCell,
-    required this.gridKey,
     required this.cellKey,
+    required this.scaleFactor,
   });
 
   final DiaryCell diaryCell;
   final GlobalObjectKey cellKey;
-  final GlobalKey gridKey;
+  final double scaleFactor;
 
   @override
   Widget build(BuildContext context) =>
@@ -32,6 +32,7 @@ class BlocDiaryCellWidget extends StatelessWidget {
                 isSelected: isSelected,
                 diaryCell: diaryCell,
                 height: diaryCell.settings.height,
+                scaleFactor: scaleFactor,
                 onTap: () {
                   context.read<DiaryListBloc>().add(
                         DiaryListEvent.selectDiaryCell(
@@ -42,15 +43,12 @@ class BlocDiaryCellWidget extends StatelessWidget {
                 },
                 onPanUpdate: isSelected
                     ? (details) {
-                        final box = gridKey.currentContext!.findRenderObject()
-                            as RenderBox;
-                        box.paintBounds.shift(details.delta);
                         context.read<DiaryListBloc>().add(
                               OnPanUpdateEvent(
                                 diaryCell: diaryCell,
                                 cellKey: cellKey,
-                                gridKey: gridKey,
                                 details: details,
+                                scaleFactor: scaleFactor
                               ),
                             );
                       }
@@ -64,6 +62,7 @@ class BlocDiaryCellWidget extends StatelessWidget {
                 isSelected: false,
                 diaryCell: diaryCell,
                 height: diaryCell.settings.height,
+                scaleFactor: scaleFactor,
                 onTap: () => context.read<DiaryListBloc>().add(
                       DiaryListEvent.selectDiaryCell(
                         cellKey: cellKey,

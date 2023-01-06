@@ -42,6 +42,7 @@ class BlocCellEditScreenWidget extends StatelessWidget {
                     ),
                     content: diaryCell.content.toString(),
                     onTap: () {},
+                    scaleFactor: 1,
                   ),
                 );
               },
@@ -55,6 +56,7 @@ class BlocCellEditScreenWidget extends StatelessWidget {
                     ),
                     content: diaryCell.content.toString(),
                     onTap: () {},
+                    scaleFactor: 1,
                   ),
                 );
               },

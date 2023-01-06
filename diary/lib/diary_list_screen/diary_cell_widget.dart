@@ -12,6 +12,7 @@ class DiaryCellWidget extends StatelessWidget {
     required this.cellKey,
     this.onPanUpdate,
     required this.height,
+    required this.scaleFactor,
   });
 
   final Widget contentWidget;
@@ -21,6 +22,7 @@ class DiaryCellWidget extends StatelessWidget {
   final GlobalObjectKey cellKey;
   final Function(DragUpdateDetails)? onPanUpdate;
   final double height;
+  final double scaleFactor;
 
   factory DiaryCellWidget.common({
     required Alignment alignment,
@@ -28,6 +30,7 @@ class DiaryCellWidget extends StatelessWidget {
     required VoidCallback onTap,
     required GlobalObjectKey cellKey,
     required double height,
+    required double scaleFactor,
   }) =>
       DiaryCellWidget(
         cellKey: cellKey,
@@ -36,6 +39,7 @@ class DiaryCellWidget extends StatelessWidget {
         onTap: onTap,
         backgroundColor: Colors.white, //Цвет будет где-то храниться
         height: height,
+        scaleFactor: scaleFactor,
       );
 
   factory DiaryCellWidget.model({
@@ -45,6 +49,7 @@ class DiaryCellWidget extends StatelessWidget {
     required GlobalObjectKey cellKey,
     Function(DragUpdateDetails)? onPanUpdate,
     required double height,
+    required double scaleFactor,
   }) {
     return isSelected
         ? DiaryCellWidget.selected(
@@ -55,6 +60,7 @@ class DiaryCellWidget extends StatelessWidget {
             onTap: onTap,
             onPanUpdate: (p0) => onPanUpdate!(p0),
             height: height,
+            scaleFactor: scaleFactor,
           )
         : DiaryCellWidget.common(
             cellKey: cellKey,
@@ -63,6 +69,7 @@ class DiaryCellWidget extends StatelessWidget {
             content: diaryCell.content.toString(),
             onTap: onTap,
             height: height,
+            scaleFactor: scaleFactor,
             //onPanUpdate: (p0) => onPanUpdate(p0),
           );
   }
@@ -74,6 +81,7 @@ class DiaryCellWidget extends StatelessWidget {
     required GlobalObjectKey cellKey,
     required Function(DragUpdateDetails) onPanUpdate,
     required double height,
+    required double scaleFactor,
   }) =>
       DiaryCellWidget(
         cellKey: cellKey,
@@ -83,6 +91,7 @@ class DiaryCellWidget extends StatelessWidget {
         onPanUpdate: (p0) => onPanUpdate(p0),
         backgroundColor: Colors.blueAccent, //Цвет будет где-то храниться
         height: height,
+        scaleFactor: scaleFactor,
       );
 
   @override
