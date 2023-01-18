@@ -2,6 +2,7 @@ import 'package:diary/core/functions.dart';
 import 'package:diary/diary_cell_edit_screen/cell_edit_screen_widget.dart';
 import 'package:diary/diary_list_screen/diary_cell_edit/diary_cell_edit_bloc.dart';
 import 'package:diary/diary_list_screen/diary_cell_widget.dart';
+import 'package:diary/diary_list_screen/wraps.dart';
 import 'package:diary/model/diary_cell.dart';
 import 'package:diary/model/diary_list.dart';
 import 'package:diary/services/diary_cell_service.dart';
@@ -43,6 +44,7 @@ class BlocCellEditScreenWidget extends StatelessWidget {
                     content: diaryCell.content.toString(),
                     onTap: () {},
                     scaleFactor: 1,
+                    border: buildBorder(diaryCell.settings),
                   ),
                 );
               },
@@ -57,6 +59,7 @@ class BlocCellEditScreenWidget extends StatelessWidget {
                     content: diaryCell.content.toString(),
                     onTap: () {},
                     scaleFactor: 1,
+                    border: buildBorder(diaryCell.settings),
                   ),
                 );
               },

@@ -13,7 +13,7 @@ class DataGridSample extends StatelessWidget {
     return Scaffold(
       body: BlocBuilder<DiaryListBloc, DiaryListState>(
         builder: (context, state) => state.maybeWhen(
-            loaded: (diaryList, diaryColumns, diaryCells, cellsKeys) {
+            loaded: (diaryList, diaryColumns, diaryCells, cellsKeys, lists) {
               int crossAxisCount = 0;
               for (var column in diaryColumns) {
                 crossAxisCount += column.columnsCount;
@@ -21,8 +21,15 @@ class DataGridSample extends StatelessWidget {
               return BlocBuilder<GridDisplayBloc, GridDisplayState>(
                 builder: (context, state) {
                   return state.maybeWhen(
-                    loaded: (scaleFactor, width, height,
-                        transformationController, translateX, translateY) {
+                    loaded: (
+                      scaleFactor,
+                      width,
+                      height,
+                      transformationController,
+                      translateX,
+                      translateY,
+                      isPanelShown,
+                    ) {
                       return SampleWidget.listLoadedGridLoaded(
                         scaleFactor: scaleFactor,
                         transformationController: transformationController,
@@ -31,10 +38,17 @@ class DataGridSample extends StatelessWidget {
                         diaryCells: diaryCells,
                         cellsKeys: cellsKeys,
                         crossAxisCount: crossAxisCount,
-                        onInteractionEnd: (details) => context
+                        onPointerUp: (details) => context
                             .read<GridDisplayBloc>()
-                            .add(GridDisplayEvent.onInteractionEnd(
-                                details: details)),
+                            .add(
+                              GridDisplayEvent.onPointerUp(details: details),
+                            ),
+                        onInteractionEnd: (details) =>
+                            context.read<GridDisplayBloc>().add(
+                                  GridDisplayEvent.onInteractionEnd(
+                                    details: details,
+                                  ),
+                                ),
                       );
                     },
                     orElse: () {
@@ -44,8 +58,168 @@ class DataGridSample extends StatelessWidget {
                 },
               );
             },
-            cellSelected:
-                (diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys) {
+            // cellSelected:
+            //     (diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys) {
+            //   int crossAxisCount = 0;
+            //   for (var column in diaryColumns) {
+            //     crossAxisCount += column.columnsCount;
+            //   }
+            //   return BlocBuilder<GridDisplayBloc, GridDisplayState>(
+            //     builder: (context, state) {
+            //       return state.maybeWhen(
+            //         loaded: (
+            //           scaleFactor,
+            //           width,
+            //           height,
+            //           transformationController,
+            //           translateX,
+            //           translateY,
+            //           selectedCells,
+            //         ) {
+            //           return SampleWidget.cellSelectedGridLoaded(
+            //             scaleFactor: scaleFactor,
+            //             transformationController: transformationController,
+            //             height: height,
+            //             width: width,
+            //             diaryCells: diaryCells,
+            //             cellsKeys: cellsKeys,
+            //             crossAxisCount: crossAxisCount,
+            //             onPointerDown: (details) {
+            //               context
+            //                   .read<GridDisplayBloc>()
+            //                   .add(GridDisplayEvent.onPointerDown(
+            //                     details: details,
+            //                     firstSelectedCell: selectedCell,
+            //                     selectedCells: selectedCells!,
+            //                     selectedCellKey:
+            //                         cellsKeys[diaryCells.indexOf(selectedCell)],
+            //                   ));
+            //             },
+            //             onInteractionEnd: (details) => context
+            //                 .read<GridDisplayBloc>()
+            //                 .add(GridDisplayEvent.onInteractionEnd(
+            //                     details: details)),
+            //           );
+            //         },
+            //         selectedMoving: (
+            //           scaleFactor,
+            //           width,
+            //           height,
+            //           transformationController,
+            //           translateX,
+            //           translateY,
+            //           firstSelectedCell,
+            //           selectedCells,
+            //         ) {
+            //           return SampleWidget.cellSelectedGridSelectedMoving(
+            //             scaleFactor: scaleFactor,
+            //             transformationController: transformationController,
+            //             height: height,
+            //             width: width,
+            //             diaryCells: diaryCells,
+            //             cellsKeys: cellsKeys,
+            //             crossAxisCount: crossAxisCount,
+            //             onPointerUp: (details) {
+            //               context.read<GridDisplayBloc>().add(
+            //                   GridDisplayEvent.onPointerUp(details: details));
+            //             },
+            //             onPointerMove: (details) {
+            //               context.read<GridDisplayBloc>().add(
+            //                   GridDisplayEvent.onPointerSelectMove(
+            //                       details: details));
+            //             },
+            //           );
+            //         },
+            //         orElse: () => Container(),
+            //       );
+            //     },
+            //   );
+            // },
+            cellsSelected: (diaryList, diaryColumns, diaryCells,
+                firstSelectedCell, selectedCells, cellsKeys, lists) {
+              int crossAxisCount = 0;
+              for (var column in diaryColumns) {
+                crossAxisCount += column.columnsCount;
+              }
+              return BlocBuilder<GridDisplayBloc, GridDisplayState>(
+                builder: ((context, state) {
+                  return state.maybeWhen(
+                    loaded: (
+                      scaleFactor,
+                      width,
+                      height,
+                      transformationController,
+                      translateX,
+                      translateY,
+                      isPanelShown,
+                    ) {
+                      return SampleWidget.cellsSelectedGridLoaded(
+                        transformationController: transformationController,
+                        height: height,
+                        width: width,
+                        diaryCells: diaryCells,
+                        cellsKeys: cellsKeys,
+                        crossAxisCount: crossAxisCount,
+                        scaleFactor: scaleFactor,
+                        onPointerDown: (details) {
+                          context
+                              .read<GridDisplayBloc>()
+                              .add(GridDisplayEvent.onPointerDown(
+                                details: details,
+                                firstSelectedCell: firstSelectedCell,
+                                selectedCells: selectedCells,
+                                selectedCellKey: cellsKeys[
+                                    diaryCells.indexOf(firstSelectedCell)],
+                              ));
+                        },
+                        onInteractionEnd: (details) =>
+                            context.read<GridDisplayBloc>().add(
+                                  GridDisplayEvent.onInteractionEnd(
+                                    details: details,
+                                  ),
+                                ),
+                      );
+                    },
+                    selectedMoving: (
+                      scaleFactor,
+                      width,
+                      height,
+                      transformationController,
+                      translateX,
+                      translateY,
+                      firstSelectedCellGrid,
+                    ) {
+                      return SampleWidget.cellsSelectedGridSelectedMoving(
+                        transformationController: transformationController,
+                        height: height,
+                        width: width,
+                        diaryCells: diaryCells,
+                        cellsKeys: cellsKeys,
+                        crossAxisCount: crossAxisCount,
+                        scaleFactor: scaleFactor,
+                        onPointerUp: (details) => context
+                            .read<GridDisplayBloc>()
+                            .add(
+                              GridDisplayEvent.onPointerUp(details: details),
+                            ),
+                        onPointerMove: (details) => context
+                            .read<GridDisplayBloc>()
+                            .add(
+                              GridDisplayEvent.onPointerSelectMove(
+                                details: details,
+                                firstSelectedCell: firstSelectedCell,
+                                selectedCells: selectedCells,
+                              ),
+                            ),
+                      );
+                    },
+                    orElse: () => Container(),
+                  );
+                }),
+              );
+            },
+            listEditing: (diaryList, diaryColumns, diaryCells, cellsKeys, lists,
+                selectedList) {
               int crossAxisCount = 0;
               for (var column in diaryColumns) {
                 crossAxisCount += column.columnsCount;
@@ -53,9 +227,16 @@ class DataGridSample extends StatelessWidget {
               return BlocBuilder<GridDisplayBloc, GridDisplayState>(
                 builder: (context, state) {
                   return state.maybeWhen(
-                    loaded: (scaleFactor, width, height,
-                        transformationController, translateX, translateY) {
-                      return SampleWidget.cellSelectedGridLoaded(
+                    loaded: (
+                      scaleFactor,
+                      width,
+                      height,
+                      transformationController,
+                      translateX,
+                      translateY,
+                      isPanelShown,
+                    ) {
+                      return SampleWidget.listEditingGridLoaded(
                         scaleFactor: scaleFactor,
                         transformationController: transformationController,
                         height: height,
@@ -63,40 +244,15 @@ class DataGridSample extends StatelessWidget {
                         diaryCells: diaryCells,
                         cellsKeys: cellsKeys,
                         crossAxisCount: crossAxisCount,
-                        onPointerDown: (details) {
-                          context
-                              .read<GridDisplayBloc>()
-                              .add(GridDisplayEvent.onPointerDown(
-                                details: details,
-                                selectedCellKey:
-                                    cellsKeys[diaryCells.indexOf(selectedCell)],
-                              ));
-                        },
-                        onInteractionEnd: (details) => context
+                        onPointerDown: (details) =>
+                            context.read<DiaryListBloc>().add(
+                                  const DiaryListEvent.returnToLoaded(),
+                                ),
+                        onPointerUp: (details) => context
                             .read<GridDisplayBloc>()
-                            .add(GridDisplayEvent.onInteractionEnd(
-                                details: details)),
-                      );
-                    },
-                    selectedMoving: (scaleFactor, width, height,
-                        transformationController, translateX, translateY) {
-                      return SampleWidget.cellSelectedGridSelectedMoving(
-                        scaleFactor: scaleFactor,
-                        transformationController: transformationController,
-                        height: height,
-                        width: width,
-                        diaryCells: diaryCells,
-                        cellsKeys: cellsKeys,
-                        crossAxisCount: crossAxisCount,
-                        onPointerUp: (details) {
-                          context.read<GridDisplayBloc>().add(
-                              GridDisplayEvent.onPointerUp(details: details));
-                        },
-                        onPointerMove: (details) {
-                          context.read<GridDisplayBloc>().add(
-                              GridDisplayEvent.onPointerSelectMove(
-                                  details: details));
-                        },
+                            .add(
+                              GridDisplayEvent.onPointerUp(details: details),
+                            ),
                       );
                     },
                     orElse: () {

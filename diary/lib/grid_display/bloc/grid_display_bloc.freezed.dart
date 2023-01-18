@@ -18,16 +18,17 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GridDisplayEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)
+    required TResult Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
         getConstraints,
-    required TResult Function(PointerEvent details) onPointerSelectMove,
+    required TResult Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)
+        onPointerSelectMove,
     required TResult Function(ScaleEndDetails details) onInteractionEnd,
-    required TResult Function(PointerDownEvent details,
+    required TResult Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)
         onPointerDown,
     required TResult Function(PointerUpEvent details) onPointerUp,
@@ -35,16 +36,17 @@ mixin _$GridDisplayEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)?
+    TResult? Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)?
         getConstraints,
-    TResult? Function(PointerEvent details)? onPointerSelectMove,
+    TResult? Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)?
+        onPointerSelectMove,
     TResult? Function(ScaleEndDetails details)? onInteractionEnd,
-    TResult? Function(PointerDownEvent details,
+    TResult? Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
         onPointerDown,
     TResult? Function(PointerUpEvent details)? onPointerUp,
@@ -52,16 +54,17 @@ mixin _$GridDisplayEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)?
+    TResult Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)?
         getConstraints,
-    TResult Function(PointerEvent details)? onPointerSelectMove,
+    TResult Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)?
+        onPointerSelectMove,
     TResult Function(ScaleEndDetails details)? onInteractionEnd,
-    TResult Function(PointerDownEvent details,
+    TResult Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
         onPointerDown,
     TResult Function(PointerUpEvent details)? onPointerUp,
@@ -127,8 +130,7 @@ abstract class _$$_GetConstraintsEventCopyWith<$Res> {
       {double scaleFactor,
       DiaryList diaryList,
       List<DiaryColumn> diaryColumns,
-      List<DiaryCell> diaryCells,
-      bool isScaled});
+      List<DiaryCell> diaryCells});
 }
 
 /// @nodoc
@@ -146,7 +148,6 @@ class __$$_GetConstraintsEventCopyWithImpl<$Res>
     Object? diaryList = null,
     Object? diaryColumns = null,
     Object? diaryCells = null,
-    Object? isScaled = null,
   }) {
     return _then(_$_GetConstraintsEvent(
       scaleFactor: null == scaleFactor
@@ -165,10 +166,6 @@ class __$$_GetConstraintsEventCopyWithImpl<$Res>
           ? _value._diaryCells
           : diaryCells // ignore: cast_nullable_to_non_nullable
               as List<DiaryCell>,
-      isScaled: null == isScaled
-          ? _value.isScaled
-          : isScaled // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -180,8 +177,7 @@ class _$_GetConstraintsEvent implements _GetConstraintsEvent {
       {required this.scaleFactor,
       required this.diaryList,
       required final List<DiaryColumn> diaryColumns,
-      required final List<DiaryCell> diaryCells,
-      required this.isScaled})
+      required final List<DiaryCell> diaryCells})
       : _diaryColumns = diaryColumns,
         _diaryCells = diaryCells;
 
@@ -204,11 +200,8 @@ class _$_GetConstraintsEvent implements _GetConstraintsEvent {
   }
 
   @override
-  final bool isScaled;
-
-  @override
   String toString() {
-    return 'GridDisplayEvent.getConstraints(scaleFactor: $scaleFactor, diaryList: $diaryList, diaryColumns: $diaryColumns, diaryCells: $diaryCells, isScaled: $isScaled)';
+    return 'GridDisplayEvent.getConstraints(scaleFactor: $scaleFactor, diaryList: $diaryList, diaryColumns: $diaryColumns, diaryCells: $diaryCells)';
   }
 
   @override
@@ -223,9 +216,7 @@ class _$_GetConstraintsEvent implements _GetConstraintsEvent {
             const DeepCollectionEquality()
                 .equals(other._diaryColumns, _diaryColumns) &&
             const DeepCollectionEquality()
-                .equals(other._diaryCells, _diaryCells) &&
-            (identical(other.isScaled, isScaled) ||
-                other.isScaled == isScaled));
+                .equals(other._diaryCells, _diaryCells));
   }
 
   @override
@@ -234,8 +225,7 @@ class _$_GetConstraintsEvent implements _GetConstraintsEvent {
       scaleFactor,
       diaryList,
       const DeepCollectionEquality().hash(_diaryColumns),
-      const DeepCollectionEquality().hash(_diaryCells),
-      isScaled);
+      const DeepCollectionEquality().hash(_diaryCells));
 
   @JsonKey(ignore: true)
   @override
@@ -247,66 +237,67 @@ class _$_GetConstraintsEvent implements _GetConstraintsEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)
+    required TResult Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
         getConstraints,
-    required TResult Function(PointerEvent details) onPointerSelectMove,
+    required TResult Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)
+        onPointerSelectMove,
     required TResult Function(ScaleEndDetails details) onInteractionEnd,
-    required TResult Function(PointerDownEvent details,
+    required TResult Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)
         onPointerDown,
     required TResult Function(PointerUpEvent details) onPointerUp,
   }) {
-    return getConstraints(
-        scaleFactor, diaryList, diaryColumns, diaryCells, isScaled);
+    return getConstraints(scaleFactor, diaryList, diaryColumns, diaryCells);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)?
+    TResult? Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)?
         getConstraints,
-    TResult? Function(PointerEvent details)? onPointerSelectMove,
+    TResult? Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)?
+        onPointerSelectMove,
     TResult? Function(ScaleEndDetails details)? onInteractionEnd,
-    TResult? Function(PointerDownEvent details,
+    TResult? Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
         onPointerDown,
     TResult? Function(PointerUpEvent details)? onPointerUp,
   }) {
     return getConstraints?.call(
-        scaleFactor, diaryList, diaryColumns, diaryCells, isScaled);
+        scaleFactor, diaryList, diaryColumns, diaryCells);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)?
+    TResult Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)?
         getConstraints,
-    TResult Function(PointerEvent details)? onPointerSelectMove,
+    TResult Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)?
+        onPointerSelectMove,
     TResult Function(ScaleEndDetails details)? onInteractionEnd,
-    TResult Function(PointerDownEvent details,
+    TResult Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
         onPointerDown,
     TResult Function(PointerUpEvent details)? onPointerUp,
     required TResult orElse(),
   }) {
     if (getConstraints != null) {
-      return getConstraints(
-          scaleFactor, diaryList, diaryColumns, diaryCells, isScaled);
+      return getConstraints(scaleFactor, diaryList, diaryColumns, diaryCells);
     }
     return orElse();
   }
@@ -358,14 +349,12 @@ abstract class _GetConstraintsEvent implements GridDisplayEvent {
       {required final double scaleFactor,
       required final DiaryList diaryList,
       required final List<DiaryColumn> diaryColumns,
-      required final List<DiaryCell> diaryCells,
-      required final bool isScaled}) = _$_GetConstraintsEvent;
+      required final List<DiaryCell> diaryCells}) = _$_GetConstraintsEvent;
 
   double get scaleFactor;
   DiaryList get diaryList;
   List<DiaryColumn> get diaryColumns;
   List<DiaryCell> get diaryCells;
-  bool get isScaled;
   @JsonKey(ignore: true)
   _$$_GetConstraintsEventCopyWith<_$_GetConstraintsEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -378,7 +367,10 @@ abstract class _$$_OnPointerSelectMoveEventCopyWith<$Res> {
           $Res Function(_$_OnPointerSelectMoveEvent) then) =
       __$$_OnPointerSelectMoveEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({PointerEvent details});
+  $Res call(
+      {PointerEvent details,
+      DiaryCell firstSelectedCell,
+      List<DiaryCell> selectedCells});
 }
 
 /// @nodoc
@@ -393,12 +385,22 @@ class __$$_OnPointerSelectMoveEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? details = null,
+    Object? firstSelectedCell = null,
+    Object? selectedCells = null,
   }) {
     return _then(_$_OnPointerSelectMoveEvent(
       details: null == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
               as PointerEvent,
+      firstSelectedCell: null == firstSelectedCell
+          ? _value.firstSelectedCell
+          : firstSelectedCell // ignore: cast_nullable_to_non_nullable
+              as DiaryCell,
+      selectedCells: null == selectedCells
+          ? _value._selectedCells
+          : selectedCells // ignore: cast_nullable_to_non_nullable
+              as List<DiaryCell>,
     ));
   }
 }
@@ -406,14 +408,26 @@ class __$$_OnPointerSelectMoveEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OnPointerSelectMoveEvent implements _OnPointerSelectMoveEvent {
-  const _$_OnPointerSelectMoveEvent({required this.details});
+  const _$_OnPointerSelectMoveEvent(
+      {required this.details,
+      required this.firstSelectedCell,
+      required final List<DiaryCell> selectedCells})
+      : _selectedCells = selectedCells;
 
   @override
   final PointerEvent details;
+  @override
+  final DiaryCell firstSelectedCell;
+  final List<DiaryCell> _selectedCells;
+  @override
+  List<DiaryCell> get selectedCells {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedCells);
+  }
 
   @override
   String toString() {
-    return 'GridDisplayEvent.onPointerSelectMove(details: $details)';
+    return 'GridDisplayEvent.onPointerSelectMove(details: $details, firstSelectedCell: $firstSelectedCell, selectedCells: $selectedCells)';
   }
 
   @override
@@ -421,11 +435,16 @@ class _$_OnPointerSelectMoveEvent implements _OnPointerSelectMoveEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnPointerSelectMoveEvent &&
-            (identical(other.details, details) || other.details == details));
+            (identical(other.details, details) || other.details == details) &&
+            (identical(other.firstSelectedCell, firstSelectedCell) ||
+                other.firstSelectedCell == firstSelectedCell) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedCells, _selectedCells));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, details);
+  int get hashCode => Object.hash(runtimeType, details, firstSelectedCell,
+      const DeepCollectionEquality().hash(_selectedCells));
 
   @JsonKey(ignore: true)
   @override
@@ -437,63 +456,66 @@ class _$_OnPointerSelectMoveEvent implements _OnPointerSelectMoveEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)
+    required TResult Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
         getConstraints,
-    required TResult Function(PointerEvent details) onPointerSelectMove,
+    required TResult Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)
+        onPointerSelectMove,
     required TResult Function(ScaleEndDetails details) onInteractionEnd,
-    required TResult Function(PointerDownEvent details,
+    required TResult Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)
         onPointerDown,
     required TResult Function(PointerUpEvent details) onPointerUp,
   }) {
-    return onPointerSelectMove(details);
+    return onPointerSelectMove(details, firstSelectedCell, selectedCells);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)?
+    TResult? Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)?
         getConstraints,
-    TResult? Function(PointerEvent details)? onPointerSelectMove,
+    TResult? Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)?
+        onPointerSelectMove,
     TResult? Function(ScaleEndDetails details)? onInteractionEnd,
-    TResult? Function(PointerDownEvent details,
+    TResult? Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
         onPointerDown,
     TResult? Function(PointerUpEvent details)? onPointerUp,
   }) {
-    return onPointerSelectMove?.call(details);
+    return onPointerSelectMove?.call(details, firstSelectedCell, selectedCells);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)?
+    TResult Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)?
         getConstraints,
-    TResult Function(PointerEvent details)? onPointerSelectMove,
+    TResult Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)?
+        onPointerSelectMove,
     TResult Function(ScaleEndDetails details)? onInteractionEnd,
-    TResult Function(PointerDownEvent details,
+    TResult Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
         onPointerDown,
     TResult Function(PointerUpEvent details)? onPointerUp,
     required TResult orElse(),
   }) {
     if (onPointerSelectMove != null) {
-      return onPointerSelectMove(details);
+      return onPointerSelectMove(details, firstSelectedCell, selectedCells);
     }
     return orElse();
   }
@@ -542,9 +564,14 @@ class _$_OnPointerSelectMoveEvent implements _OnPointerSelectMoveEvent {
 
 abstract class _OnPointerSelectMoveEvent implements GridDisplayEvent {
   const factory _OnPointerSelectMoveEvent(
-      {required final PointerEvent details}) = _$_OnPointerSelectMoveEvent;
+          {required final PointerEvent details,
+          required final DiaryCell firstSelectedCell,
+          required final List<DiaryCell> selectedCells}) =
+      _$_OnPointerSelectMoveEvent;
 
   PointerEvent get details;
+  DiaryCell get firstSelectedCell;
+  List<DiaryCell> get selectedCells;
   @JsonKey(ignore: true)
   _$$_OnPointerSelectMoveEventCopyWith<_$_OnPointerSelectMoveEvent>
       get copyWith => throw _privateConstructorUsedError;
@@ -615,16 +642,17 @@ class _$_OnInteractionEndEvent implements _OnInteractionEndEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)
+    required TResult Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
         getConstraints,
-    required TResult Function(PointerEvent details) onPointerSelectMove,
+    required TResult Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)
+        onPointerSelectMove,
     required TResult Function(ScaleEndDetails details) onInteractionEnd,
-    required TResult Function(PointerDownEvent details,
+    required TResult Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)
         onPointerDown,
     required TResult Function(PointerUpEvent details) onPointerUp,
@@ -635,16 +663,17 @@ class _$_OnInteractionEndEvent implements _OnInteractionEndEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)?
+    TResult? Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)?
         getConstraints,
-    TResult? Function(PointerEvent details)? onPointerSelectMove,
+    TResult? Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)?
+        onPointerSelectMove,
     TResult? Function(ScaleEndDetails details)? onInteractionEnd,
-    TResult? Function(PointerDownEvent details,
+    TResult? Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
         onPointerDown,
     TResult? Function(PointerUpEvent details)? onPointerUp,
@@ -655,16 +684,17 @@ class _$_OnInteractionEndEvent implements _OnInteractionEndEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)?
+    TResult Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)?
         getConstraints,
-    TResult Function(PointerEvent details)? onPointerSelectMove,
+    TResult Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)?
+        onPointerSelectMove,
     TResult Function(ScaleEndDetails details)? onInteractionEnd,
-    TResult Function(PointerDownEvent details,
+    TResult Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
         onPointerDown,
     TResult Function(PointerUpEvent details)? onPointerUp,
@@ -736,6 +766,8 @@ abstract class _$$_OnPointerDownEventCopyWith<$Res> {
   @useResult
   $Res call(
       {PointerDownEvent details,
+      DiaryCell firstSelectedCell,
+      List<DiaryCell> selectedCells,
       GlobalObjectKey<State<StatefulWidget>> selectedCellKey});
 }
 
@@ -751,6 +783,8 @@ class __$$_OnPointerDownEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? details = null,
+    Object? firstSelectedCell = null,
+    Object? selectedCells = null,
     Object? selectedCellKey = null,
   }) {
     return _then(_$_OnPointerDownEvent(
@@ -758,6 +792,14 @@ class __$$_OnPointerDownEventCopyWithImpl<$Res>
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
               as PointerDownEvent,
+      firstSelectedCell: null == firstSelectedCell
+          ? _value.firstSelectedCell
+          : firstSelectedCell // ignore: cast_nullable_to_non_nullable
+              as DiaryCell,
+      selectedCells: null == selectedCells
+          ? _value._selectedCells
+          : selectedCells // ignore: cast_nullable_to_non_nullable
+              as List<DiaryCell>,
       selectedCellKey: null == selectedCellKey
           ? _value.selectedCellKey
           : selectedCellKey // ignore: cast_nullable_to_non_nullable
@@ -770,16 +812,29 @@ class __$$_OnPointerDownEventCopyWithImpl<$Res>
 
 class _$_OnPointerDownEvent implements _OnPointerDownEvent {
   const _$_OnPointerDownEvent(
-      {required this.details, required this.selectedCellKey});
+      {required this.details,
+      required this.firstSelectedCell,
+      required final List<DiaryCell> selectedCells,
+      required this.selectedCellKey})
+      : _selectedCells = selectedCells;
 
   @override
   final PointerDownEvent details;
+  @override
+  final DiaryCell firstSelectedCell;
+  final List<DiaryCell> _selectedCells;
+  @override
+  List<DiaryCell> get selectedCells {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedCells);
+  }
+
   @override
   final GlobalObjectKey<State<StatefulWidget>> selectedCellKey;
 
   @override
   String toString() {
-    return 'GridDisplayEvent.onPointerDown(details: $details, selectedCellKey: $selectedCellKey)';
+    return 'GridDisplayEvent.onPointerDown(details: $details, firstSelectedCell: $firstSelectedCell, selectedCells: $selectedCells, selectedCellKey: $selectedCellKey)';
   }
 
   @override
@@ -788,12 +843,17 @@ class _$_OnPointerDownEvent implements _OnPointerDownEvent {
         (other.runtimeType == runtimeType &&
             other is _$_OnPointerDownEvent &&
             (identical(other.details, details) || other.details == details) &&
+            (identical(other.firstSelectedCell, firstSelectedCell) ||
+                other.firstSelectedCell == firstSelectedCell) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedCells, _selectedCells) &&
             (identical(other.selectedCellKey, selectedCellKey) ||
                 other.selectedCellKey == selectedCellKey));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, details, selectedCellKey);
+  int get hashCode => Object.hash(runtimeType, details, firstSelectedCell,
+      const DeepCollectionEquality().hash(_selectedCells), selectedCellKey);
 
   @JsonKey(ignore: true)
   @override
@@ -805,63 +865,69 @@ class _$_OnPointerDownEvent implements _OnPointerDownEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)
+    required TResult Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
         getConstraints,
-    required TResult Function(PointerEvent details) onPointerSelectMove,
+    required TResult Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)
+        onPointerSelectMove,
     required TResult Function(ScaleEndDetails details) onInteractionEnd,
-    required TResult Function(PointerDownEvent details,
+    required TResult Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)
         onPointerDown,
     required TResult Function(PointerUpEvent details) onPointerUp,
   }) {
-    return onPointerDown(details, selectedCellKey);
+    return onPointerDown(
+        details, firstSelectedCell, selectedCells, selectedCellKey);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)?
+    TResult? Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)?
         getConstraints,
-    TResult? Function(PointerEvent details)? onPointerSelectMove,
+    TResult? Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)?
+        onPointerSelectMove,
     TResult? Function(ScaleEndDetails details)? onInteractionEnd,
-    TResult? Function(PointerDownEvent details,
+    TResult? Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
         onPointerDown,
     TResult? Function(PointerUpEvent details)? onPointerUp,
   }) {
-    return onPointerDown?.call(details, selectedCellKey);
+    return onPointerDown?.call(
+        details, firstSelectedCell, selectedCells, selectedCellKey);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)?
+    TResult Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)?
         getConstraints,
-    TResult Function(PointerEvent details)? onPointerSelectMove,
+    TResult Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)?
+        onPointerSelectMove,
     TResult Function(ScaleEndDetails details)? onInteractionEnd,
-    TResult Function(PointerDownEvent details,
+    TResult Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
         onPointerDown,
     TResult Function(PointerUpEvent details)? onPointerUp,
     required TResult orElse(),
   }) {
     if (onPointerDown != null) {
-      return onPointerDown(details, selectedCellKey);
+      return onPointerDown(
+          details, firstSelectedCell, selectedCells, selectedCellKey);
     }
     return orElse();
   }
@@ -911,10 +977,14 @@ class _$_OnPointerDownEvent implements _OnPointerDownEvent {
 abstract class _OnPointerDownEvent implements GridDisplayEvent {
   const factory _OnPointerDownEvent(
       {required final PointerDownEvent details,
+      required final DiaryCell firstSelectedCell,
+      required final List<DiaryCell> selectedCells,
       required final GlobalObjectKey<State<StatefulWidget>>
           selectedCellKey}) = _$_OnPointerDownEvent;
 
   PointerDownEvent get details;
+  DiaryCell get firstSelectedCell;
+  List<DiaryCell> get selectedCells;
   GlobalObjectKey<State<StatefulWidget>> get selectedCellKey;
   @JsonKey(ignore: true)
   _$$_OnPointerDownEventCopyWith<_$_OnPointerDownEvent> get copyWith =>
@@ -985,16 +1055,17 @@ class _$_OnPointerUpEvent implements _OnPointerUpEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)
+    required TResult Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)
         getConstraints,
-    required TResult Function(PointerEvent details) onPointerSelectMove,
+    required TResult Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)
+        onPointerSelectMove,
     required TResult Function(ScaleEndDetails details) onInteractionEnd,
-    required TResult Function(PointerDownEvent details,
+    required TResult Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)
         onPointerDown,
     required TResult Function(PointerUpEvent details) onPointerUp,
@@ -1005,16 +1076,17 @@ class _$_OnPointerUpEvent implements _OnPointerUpEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)?
+    TResult? Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)?
         getConstraints,
-    TResult? Function(PointerEvent details)? onPointerSelectMove,
+    TResult? Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)?
+        onPointerSelectMove,
     TResult? Function(ScaleEndDetails details)? onInteractionEnd,
-    TResult? Function(PointerDownEvent details,
+    TResult? Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
         onPointerDown,
     TResult? Function(PointerUpEvent details)? onPointerUp,
@@ -1025,16 +1097,17 @@ class _$_OnPointerUpEvent implements _OnPointerUpEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            double scaleFactor,
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<DiaryCell> diaryCells,
-            bool isScaled)?
+    TResult Function(double scaleFactor, DiaryList diaryList,
+            List<DiaryColumn> diaryColumns, List<DiaryCell> diaryCells)?
         getConstraints,
-    TResult Function(PointerEvent details)? onPointerSelectMove,
+    TResult Function(PointerEvent details, DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells)?
+        onPointerSelectMove,
     TResult Function(ScaleEndDetails details)? onInteractionEnd,
-    TResult Function(PointerDownEvent details,
+    TResult Function(
+            PointerDownEvent details,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
             GlobalObjectKey<State<StatefulWidget>> selectedCellKey)?
         onPointerDown,
     TResult Function(PointerUpEvent details)? onPointerUp,
@@ -1119,7 +1192,8 @@ mixin _$GridDisplayState {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)
+            double translateY,
+            bool isPanelShown)
         loaded,
     required TResult Function(
             double scaleFactor,
@@ -1127,7 +1201,8 @@ mixin _$GridDisplayState {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)
+            double translateY,
+            DiaryCell firstSelectedCell)
         selectedMoving,
   }) =>
       throw _privateConstructorUsedError;
@@ -1145,7 +1220,8 @@ mixin _$GridDisplayState {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)?
+            double translateY,
+            bool isPanelShown)?
         loaded,
     TResult? Function(
             double scaleFactor,
@@ -1153,7 +1229,8 @@ mixin _$GridDisplayState {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)?
+            double translateY,
+            DiaryCell firstSelectedCell)?
         selectedMoving,
   }) =>
       throw _privateConstructorUsedError;
@@ -1171,7 +1248,8 @@ mixin _$GridDisplayState {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)?
+            double translateY,
+            bool isPanelShown)?
         loaded,
     TResult Function(
             double scaleFactor,
@@ -1179,7 +1257,8 @@ mixin _$GridDisplayState {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)?
+            double translateY,
+            DiaryCell firstSelectedCell)?
         selectedMoving,
     required TResult orElse(),
   }) =>
@@ -1379,7 +1458,8 @@ class _$_Initial implements _Initial {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)
+            double translateY,
+            bool isPanelShown)
         loaded,
     required TResult Function(
             double scaleFactor,
@@ -1387,7 +1467,8 @@ class _$_Initial implements _Initial {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)
+            double translateY,
+            DiaryCell firstSelectedCell)
         selectedMoving,
   }) {
     return initial(
@@ -1409,7 +1490,8 @@ class _$_Initial implements _Initial {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)?
+            double translateY,
+            bool isPanelShown)?
         loaded,
     TResult? Function(
             double scaleFactor,
@@ -1417,7 +1499,8 @@ class _$_Initial implements _Initial {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)?
+            double translateY,
+            DiaryCell firstSelectedCell)?
         selectedMoving,
   }) {
     return initial?.call(
@@ -1439,7 +1522,8 @@ class _$_Initial implements _Initial {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)?
+            double translateY,
+            bool isPanelShown)?
         loaded,
     TResult Function(
             double scaleFactor,
@@ -1447,7 +1531,8 @@ class _$_Initial implements _Initial {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)?
+            double translateY,
+            DiaryCell firstSelectedCell)?
         selectedMoving,
     required TResult orElse(),
   }) {
@@ -1527,7 +1612,8 @@ abstract class _$$_LoadedCopyWith<$Res>
       double height,
       TransformationController transformationController,
       double translateX,
-      double translateY});
+      double translateY,
+      bool isPanelShown});
 }
 
 /// @nodoc
@@ -1546,6 +1632,7 @@ class __$$_LoadedCopyWithImpl<$Res>
     Object? transformationController = null,
     Object? translateX = null,
     Object? translateY = null,
+    Object? isPanelShown = null,
   }) {
     return _then(_$_Loaded(
       scaleFactor: null == scaleFactor
@@ -1572,6 +1659,10 @@ class __$$_LoadedCopyWithImpl<$Res>
           ? _value.translateY
           : translateY // ignore: cast_nullable_to_non_nullable
               as double,
+      isPanelShown: null == isPanelShown
+          ? _value.isPanelShown
+          : isPanelShown // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1585,7 +1676,8 @@ class _$_Loaded implements _Loaded {
       required this.height,
       required this.transformationController,
       required this.translateX,
-      required this.translateY});
+      required this.translateY,
+      required this.isPanelShown});
 
   @override
   final double scaleFactor;
@@ -1599,10 +1691,12 @@ class _$_Loaded implements _Loaded {
   final double translateX;
   @override
   final double translateY;
+  @override
+  final bool isPanelShown;
 
   @override
   String toString() {
-    return 'GridDisplayState.loaded(scaleFactor: $scaleFactor, width: $width, height: $height, transformationController: $transformationController, translateX: $translateX, translateY: $translateY)';
+    return 'GridDisplayState.loaded(scaleFactor: $scaleFactor, width: $width, height: $height, transformationController: $transformationController, translateX: $translateX, translateY: $translateY, isPanelShown: $isPanelShown)';
   }
 
   @override
@@ -1620,12 +1714,14 @@ class _$_Loaded implements _Loaded {
             (identical(other.translateX, translateX) ||
                 other.translateX == translateX) &&
             (identical(other.translateY, translateY) ||
-                other.translateY == translateY));
+                other.translateY == translateY) &&
+            (identical(other.isPanelShown, isPanelShown) ||
+                other.isPanelShown == isPanelShown));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, scaleFactor, width, height,
-      transformationController, translateX, translateY);
+      transformationController, translateX, translateY, isPanelShown);
 
   @JsonKey(ignore: true)
   @override
@@ -1648,7 +1744,8 @@ class _$_Loaded implements _Loaded {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)
+            double translateY,
+            bool isPanelShown)
         loaded,
     required TResult Function(
             double scaleFactor,
@@ -1656,11 +1753,12 @@ class _$_Loaded implements _Loaded {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)
+            double translateY,
+            DiaryCell firstSelectedCell)
         selectedMoving,
   }) {
     return loaded(scaleFactor, width, height, transformationController,
-        translateX, translateY);
+        translateX, translateY, isPanelShown);
   }
 
   @override
@@ -1678,7 +1776,8 @@ class _$_Loaded implements _Loaded {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)?
+            double translateY,
+            bool isPanelShown)?
         loaded,
     TResult? Function(
             double scaleFactor,
@@ -1686,11 +1785,12 @@ class _$_Loaded implements _Loaded {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)?
+            double translateY,
+            DiaryCell firstSelectedCell)?
         selectedMoving,
   }) {
     return loaded?.call(scaleFactor, width, height, transformationController,
-        translateX, translateY);
+        translateX, translateY, isPanelShown);
   }
 
   @override
@@ -1708,7 +1808,8 @@ class _$_Loaded implements _Loaded {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)?
+            double translateY,
+            bool isPanelShown)?
         loaded,
     TResult Function(
             double scaleFactor,
@@ -1716,13 +1817,14 @@ class _$_Loaded implements _Loaded {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)?
+            double translateY,
+            DiaryCell firstSelectedCell)?
         selectedMoving,
     required TResult orElse(),
   }) {
     if (loaded != null) {
       return loaded(scaleFactor, width, height, transformationController,
-          translateX, translateY);
+          translateX, translateY, isPanelShown);
     }
     return orElse();
   }
@@ -1769,7 +1871,8 @@ abstract class _Loaded implements GridDisplayState {
       required final double height,
       required final TransformationController transformationController,
       required final double translateX,
-      required final double translateY}) = _$_Loaded;
+      required final double translateY,
+      required final bool isPanelShown}) = _$_Loaded;
 
   @override
   double get scaleFactor;
@@ -1781,6 +1884,7 @@ abstract class _Loaded implements GridDisplayState {
   double get translateX;
   @override
   double get translateY;
+  bool get isPanelShown;
   @override
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
@@ -1801,7 +1905,8 @@ abstract class _$$_SelectedMovingCopyWith<$Res>
       double height,
       TransformationController transformationController,
       double translateX,
-      double translateY});
+      double translateY,
+      DiaryCell firstSelectedCell});
 }
 
 /// @nodoc
@@ -1821,6 +1926,7 @@ class __$$_SelectedMovingCopyWithImpl<$Res>
     Object? transformationController = null,
     Object? translateX = null,
     Object? translateY = null,
+    Object? firstSelectedCell = null,
   }) {
     return _then(_$_SelectedMoving(
       scaleFactor: null == scaleFactor
@@ -1847,6 +1953,10 @@ class __$$_SelectedMovingCopyWithImpl<$Res>
           ? _value.translateY
           : translateY // ignore: cast_nullable_to_non_nullable
               as double,
+      firstSelectedCell: null == firstSelectedCell
+          ? _value.firstSelectedCell
+          : firstSelectedCell // ignore: cast_nullable_to_non_nullable
+              as DiaryCell,
     ));
   }
 }
@@ -1860,7 +1970,8 @@ class _$_SelectedMoving implements _SelectedMoving {
       required this.height,
       required this.transformationController,
       required this.translateX,
-      required this.translateY});
+      required this.translateY,
+      required this.firstSelectedCell});
 
   @override
   final double scaleFactor;
@@ -1874,10 +1985,12 @@ class _$_SelectedMoving implements _SelectedMoving {
   final double translateX;
   @override
   final double translateY;
+  @override
+  final DiaryCell firstSelectedCell;
 
   @override
   String toString() {
-    return 'GridDisplayState.selectedMoving(scaleFactor: $scaleFactor, width: $width, height: $height, transformationController: $transformationController, translateX: $translateX, translateY: $translateY)';
+    return 'GridDisplayState.selectedMoving(scaleFactor: $scaleFactor, width: $width, height: $height, transformationController: $transformationController, translateX: $translateX, translateY: $translateY, firstSelectedCell: $firstSelectedCell)';
   }
 
   @override
@@ -1895,12 +2008,14 @@ class _$_SelectedMoving implements _SelectedMoving {
             (identical(other.translateX, translateX) ||
                 other.translateX == translateX) &&
             (identical(other.translateY, translateY) ||
-                other.translateY == translateY));
+                other.translateY == translateY) &&
+            (identical(other.firstSelectedCell, firstSelectedCell) ||
+                other.firstSelectedCell == firstSelectedCell));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, scaleFactor, width, height,
-      transformationController, translateX, translateY);
+      transformationController, translateX, translateY, firstSelectedCell);
 
   @JsonKey(ignore: true)
   @override
@@ -1923,7 +2038,8 @@ class _$_SelectedMoving implements _SelectedMoving {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)
+            double translateY,
+            bool isPanelShown)
         loaded,
     required TResult Function(
             double scaleFactor,
@@ -1931,11 +2047,12 @@ class _$_SelectedMoving implements _SelectedMoving {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)
+            double translateY,
+            DiaryCell firstSelectedCell)
         selectedMoving,
   }) {
     return selectedMoving(scaleFactor, width, height, transformationController,
-        translateX, translateY);
+        translateX, translateY, firstSelectedCell);
   }
 
   @override
@@ -1953,7 +2070,8 @@ class _$_SelectedMoving implements _SelectedMoving {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)?
+            double translateY,
+            bool isPanelShown)?
         loaded,
     TResult? Function(
             double scaleFactor,
@@ -1961,11 +2079,12 @@ class _$_SelectedMoving implements _SelectedMoving {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)?
+            double translateY,
+            DiaryCell firstSelectedCell)?
         selectedMoving,
   }) {
     return selectedMoving?.call(scaleFactor, width, height,
-        transformationController, translateX, translateY);
+        transformationController, translateX, translateY, firstSelectedCell);
   }
 
   @override
@@ -1983,7 +2102,8 @@ class _$_SelectedMoving implements _SelectedMoving {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)?
+            double translateY,
+            bool isPanelShown)?
         loaded,
     TResult Function(
             double scaleFactor,
@@ -1991,13 +2111,14 @@ class _$_SelectedMoving implements _SelectedMoving {
             double height,
             TransformationController transformationController,
             double translateX,
-            double translateY)?
+            double translateY,
+            DiaryCell firstSelectedCell)?
         selectedMoving,
     required TResult orElse(),
   }) {
     if (selectedMoving != null) {
       return selectedMoving(scaleFactor, width, height,
-          transformationController, translateX, translateY);
+          transformationController, translateX, translateY, firstSelectedCell);
     }
     return orElse();
   }
@@ -2044,7 +2165,8 @@ abstract class _SelectedMoving implements GridDisplayState {
       required final double height,
       required final TransformationController transformationController,
       required final double translateX,
-      required final double translateY}) = _$_SelectedMoving;
+      required final double translateY,
+      required final DiaryCell firstSelectedCell}) = _$_SelectedMoving;
 
   @override
   double get scaleFactor;
@@ -2056,6 +2178,7 @@ abstract class _SelectedMoving implements GridDisplayState {
   double get translateX;
   @override
   double get translateY;
+  DiaryCell get firstSelectedCell;
   @override
   @JsonKey(ignore: true)
   _$$_SelectedMovingCopyWith<_$_SelectedMoving> get copyWith =>

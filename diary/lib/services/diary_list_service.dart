@@ -6,8 +6,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class DiaryListService {
   Future<void> create({required DateTime date}) async {
-    final newList =
-        DiaryList(listDate: date, uid: FirebaseAuth.instance.currentUser!.uid);
+    final newList = DiaryList(
+      name: getDiaryListNameByDate(date),
+      listDate: date,
+      uid: FirebaseAuth.instance.currentUser!.uid,
+    );
     await getDiaryListDoc(diaryList: newList).set(
       newList.toFirestore(),
     );
@@ -33,5 +36,18 @@ class DiaryListService {
       );
     }
     return diaryLists;
+  }
+
+  Future<void> update({
+    required DiaryList diaryList,
+    required String newName,
+  }) async {
+    final doc = await getDiaryListDoc(diaryList: diaryList).get();
+    if (doc.data() != null) {
+      final newList = diaryList.copyWith(name: newName);
+      await FirebaseFirestore.instance.doc(doc.reference.path).update(
+            newList.toFirestore(),
+          );
+    }
   }
 }

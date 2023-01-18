@@ -6,11 +6,13 @@ class DiaryListState with _$DiaryListState {
 
   const factory DiaryListState.listLoaded({
     required DiaryList diaryList,
+    required List<DiaryList> lists,
   }) = _ListLoaded;
 
   const factory DiaryListState.columnsLoaded({
     required DiaryList diaryList,
     required List<DiaryColumn> diaryColumns,
+    required List<DiaryList> lists,
   }) = _ColumnsLoaded;
 
   const factory DiaryListState.loaded({
@@ -18,16 +20,9 @@ class DiaryListState with _$DiaryListState {
     required List<DiaryColumn> diaryColumns,
     required List<DiaryCell> diaryCells,
     required List<GlobalObjectKey> cellsKeys,
+    required List<DiaryList> lists,
   }) = _Loaded;
 
-  const factory DiaryListState.cellSelected({
-    required DiaryList diaryList,
-    required List<DiaryColumn> diaryColumns,
-    required List<DiaryCell> diaryCells,
-    required DiaryCell selectedCell,
-    required List<GlobalObjectKey> cellsKeys,
-  }) = _CellSelected;
-  
   const factory DiaryListState.cellsSelected({
     required DiaryList diaryList,
     required List<DiaryColumn> diaryColumns,
@@ -35,5 +30,15 @@ class DiaryListState with _$DiaryListState {
     required DiaryCell firstSelectedCell,
     required List<DiaryCell> selectedCells,
     required List<GlobalObjectKey> cellsKeys,
+    required List<DiaryList> lists,
   }) = _CellsSelected;
+
+  const factory DiaryListState.listEditing({
+    required DiaryList diaryList,
+    required List<DiaryColumn> diaryColumns,
+    required List<DiaryCell> diaryCells,
+    required List<GlobalObjectKey> cellsKeys,
+    required List<DiaryList> lists,
+    DiaryList? selectedList,
+  }) = _ListEditing;
 }

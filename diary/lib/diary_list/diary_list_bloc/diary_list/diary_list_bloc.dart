@@ -28,12 +28,19 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     on<GetDiaryCellsEvent>((event, emit) => _onGetDiaryCellsEvent(event, emit));
     on<SelectDiaryCellEvent>(
         ((event, emit) => _onSelectDiaryCellEvent(event, emit)));
+    on<SelectDiaryCellsEvent>(
+        ((event, emit) => _onSelectDiaryCellsEvent(event, emit)));
+    on<StartEditingListEvent>(
+        ((event, emit) => _onStartEditingListEvent(event, emit)));
+    on<ReturnToLoadedEvent>(
+        ((event, emit) => _onReturnToLoadedEvent(event, emit)));
+    on<UpdateDiaryListNameEvent>(
+        ((event, emit) => _onUpdateDiaryListNameEvent(event, emit)));
     on<ChangeDiaryCellEvent>(
         ((event, emit) => _onChangeDiaryCellEvent(event, emit)));
     on<UpdateDiaryCellEvent>(
         ((event, emit) => _onUpdateDiaryCellEvent(event, emit)));
     on<OnPanUpdateEvent>(((event, emit) => _onPanUpdateEvent(event, emit)));
-    // on<OnPointerDownEvent>(((event, emit) => _onPointerDownEvent(event, emit)));
   }
 
   Future<void> _onCreateSampleEvent(
@@ -57,9 +64,20 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     GetDiaryListEvent event,
     Emitter<DiaryListState> emit,
   ) async {
+    final lists = await _diaryListService.getAll();
     final diaryList = await _diaryListService.getByDate(date: event.date);
-    emit(DiaryListState.listLoaded(diaryList: diaryList));
-    add(DiaryListEvent.getDiaryColumns(diaryList: diaryList));
+    emit(
+      DiaryListState.listLoaded(
+        diaryList: diaryList,
+        lists: lists,
+      ),
+    );
+    add(
+      DiaryListEvent.getDiaryColumns(
+        diaryList: diaryList,
+        lists: lists,
+      ),
+    );
   }
 
   Future<void> _onGetDiaryColumnsEvent(
@@ -72,12 +90,14 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       DiaryListState.columnsLoaded(
         diaryList: event.diaryList,
         diaryColumns: diaryColumns,
+        lists: event.lists,
       ),
     );
     add(
       DiaryListEvent.getDiaryCells(
         diaryList: event.diaryList,
         diaryColumns: diaryColumns,
+        lists: event.lists,
       ),
     );
   }
@@ -107,48 +127,141 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         diaryColumns: event.diaryColumns,
         diaryCells: diaryCells,
         cellsKeys: cellsKeys,
+        lists: event.lists,
       ),
     );
   }
 
   Future<void> _onSelectDiaryCellEvent(
-    //seemed to should be refactored in future
     SelectDiaryCellEvent event,
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      loaded: (diaryList, diaryColumns, diaryCells, cellsKeys) async {
-        emit(DiaryListState.cellSelected(
-          diaryList: diaryList,
-          diaryColumns: diaryColumns,
-          diaryCells: diaryCells,
-          selectedCell: event.diaryCell,
-          cellsKeys: cellsKeys,
-        ));
-      },
-      cellSelected:
-          (diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys) async {
+      loaded: (diaryList, diaryColumns, diaryCells, cellsKeys, lists) async {
+        List<DiaryCell> selectedCells = [event.diaryCell];
         emit(
-          DiaryListState.cellSelected(
+          DiaryListState.cellsSelected(
             diaryList: diaryList,
             diaryColumns: diaryColumns,
             diaryCells: diaryCells,
-            selectedCell: event.diaryCell,
+            firstSelectedCell: event.diaryCell,
+            selectedCells: selectedCells,
             cellsKeys: cellsKeys,
+            lists: lists,
           ),
         );
       },
       cellsSelected: (diaryList, diaryColumns, diaryCells, firstSelectedCell,
-          selectedCells, cellsKeys) {
+          selectedCells, cellsKeys, lists) {
+        List<DiaryCell> selectedCells = [event.diaryCell];
         emit(
-          DiaryListState.cellSelected(
+          DiaryListState.cellsSelected(
             diaryList: diaryList,
             diaryColumns: diaryColumns,
             diaryCells: diaryCells,
-            selectedCell: event.diaryCell,
+            firstSelectedCell: event.diaryCell,
+            selectedCells: selectedCells,
             cellsKeys: cellsKeys,
+            lists: lists,
           ),
         );
+      },
+    );
+  }
+
+  Future<void> _onSelectDiaryCellsEvent(
+    SelectDiaryCellsEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      cellsSelected: (diaryList, diaryColumns, diaryCells, firstSelectedCell,
+          selectedCells, cellsKeys, lists) {
+        emit(
+          DiaryListState.cellsSelected(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            firstSelectedCell: firstSelectedCell,
+            selectedCells: event.diaryCells,
+            cellsKeys: cellsKeys,
+            lists: lists,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _onStartEditingListEvent(
+    StartEditingListEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      loaded: (diaryList, diaryColumns, diaryCells, cellsKeys, lists) {
+        emit(
+          DiaryListState.listEditing(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            cellsKeys: cellsKeys,
+            lists: lists,
+            selectedList: event.selectedList,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _onReturnToLoadedEvent(
+    ReturnToLoadedEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      listEditing: (diaryList, diaryColumns, diaryCells, cellsKeys, lists,
+          selectedList) {
+        if (event.newName != null && event.newName!.isNotEmpty) {
+          final changedDiaryList = diaryList.copyWith(name: event.newName);
+          List<DiaryList> updatedLists = List<DiaryList>.empty(growable: true);
+          for (var list in lists) {
+            if (list.listDate == diaryList.listDate) {
+              updatedLists.add(changedDiaryList);
+            } else {
+              updatedLists.add(list);
+            }
+          }
+          emit(
+            DiaryListState.loaded(
+              diaryList: changedDiaryList,
+              diaryColumns: diaryColumns,
+              diaryCells: diaryCells,
+              cellsKeys: cellsKeys,
+              lists: updatedLists,
+            ),
+          );
+        } else {
+          emit(
+            DiaryListState.loaded(
+              diaryList: diaryList,
+              diaryColumns: diaryColumns,
+              diaryCells: diaryCells,
+              cellsKeys: cellsKeys,
+              lists: lists,
+            ),
+          );
+        }
+      },
+    );
+  }
+
+  Future<void> _onUpdateDiaryListNameEvent(
+    UpdateDiaryListNameEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      initial: () {
+        if (event.newName.isNotEmpty) {
+          _diaryListService.update(
+              diaryList: event.diaryList, newName: event.newName);
+        }
       },
     );
   }
@@ -158,9 +271,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      cellSelected:
-          (diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys) {
-            
+      cellsSelected: (diaryList, diaryColumns, diaryCells, firstSelectedCell,
+          selectedCells, cellsKeys, lists) {
         final cellBox =
             event.cellKey.currentContext!.findRenderObject() as RenderBox;
 
@@ -220,7 +332,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
 
         //up direction
         bool isTouch = true;
-        int index = diaryCells.indexOf(selectedCell);
+        int index = diaryCells.indexOf(firstSelectedCell);
         int checksCount = 0;
         touchedCellsIndexes.add(index);
         if (index >= 0) {
@@ -261,7 +373,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         } while (isTouch == true);
         //down direction
         isTouch = true;
-        index = diaryCells.indexOf(selectedCell);
+        index = diaryCells.indexOf(firstSelectedCell);
         if (index < cellsKeys.length - 1) {
           index++;
         } else {
@@ -297,11 +409,19 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             checksCount++;
           }
         } while (isTouch == true);
-        print('ChecksCount: $checksCount');
-        print(touchedCellsIndexes.length);
-        for (var i in touchedCellsIndexes) {
-          print('Touched Index: $i');
+        // print('ChecksCount: $checksCount');
+        // print(touchedCellsIndexes.length);
+        // for (var i in touchedCellsIndexes) {
+        //   print('Touched Index: $i');
+        // }
+        //Event selectCells
+        List<DiaryCell> selectedCells = List<DiaryCell>.empty(
+          growable: true,
+        );
+        for (var index in touchedCellsIndexes) {
+          selectedCells.add(diaryCells[index]);
         }
+        add(DiaryListEvent.selectDiaryCells(diaryCells: selectedCells));
       },
     );
   }
@@ -312,22 +432,24 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell,
-          cellRenderBox) async {
-        if (event.textFieldText != selectedCell.content.toString()) {
+      cellsSelected: (diaryList, diaryColumns, diaryCells, firstSelectedCell,
+          selectedCells, cellsKeys, lists) async {
+        //Для редактирования 1 ячейки
+        if (selectedCells.length == 1 &&
+            event.textFieldText != firstSelectedCell.content.toString()) {
           await _diaryCellService.update(
             diaryList: diaryList,
-            diaryCell: selectedCell,
-            dataType: selectedCell.dataType,
+            diaryCell: firstSelectedCell,
+            dataType: firstSelectedCell.dataType,
             content: event.textFieldText,
           );
           final diaryColumn = diaryColumns.firstWhere(
-            ((element) => element.id == selectedCell.columnName),
+            ((element) => element.id == firstSelectedCell.columnName),
           );
           final updatedCell = await _diaryCellService.getDiaryCell(
             diaryList: diaryList,
             diaryColumn: diaryColumn,
-            diaryCell: selectedCell,
+            diaryCell: firstSelectedCell,
           );
           add(UpdateDiaryCellEvent(diaryCell: updatedCell));
         }
@@ -340,23 +462,26 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      cellSelected:
-          (diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys) async {
-        final index = diaryCells.indexOf(selectedCell);
-        List<DiaryCell> newCells = diaryCells.toList();
-        newCells[index] = event.diaryCell;
-        emit(
-          DiaryListState.loaded(
-            diaryList: diaryList,
-            diaryColumns: diaryColumns,
-            diaryCells: newCells,
-            cellsKeys: cellsKeys,
-          ),
-        );
-        final cellKey = GlobalObjectKey(event.diaryCell);
-        add(
-          SelectDiaryCellEvent(cellKey: cellKey, diaryCell: event.diaryCell),
-        );
+      cellsSelected: (diaryList, diaryColumns, diaryCells, firstSelectedCell,
+          selectedCells, cellsKeys, lists) async {
+        //Для редактирования 1 ячейки
+        if (selectedCells.length == 1) {
+          final index = diaryCells.indexOf(firstSelectedCell);
+          List<DiaryCell> newCells = diaryCells.toList();
+          newCells[index] = event.diaryCell;
+          emit(
+            DiaryListState.loaded(
+              diaryList: diaryList,
+              diaryColumns: diaryColumns,
+              diaryCells: newCells,
+              cellsKeys: cellsKeys,
+              lists: lists,
+            ),
+          );
+          add(
+            SelectDiaryCellEvent(diaryCell: event.diaryCell),
+          );
+        }
       },
     );
   }

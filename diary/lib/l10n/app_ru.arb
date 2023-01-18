@@ -11,5 +11,12 @@
     "topCenter": "Центр сверху",
     "topLeft": "Слева сверху",
     "topRight": "Справа сверху",
-    "alignmentHint": "Выравнивание"
+    "alignmentHint": "Выравнивание",
+    "allLists": "Все листы",
+    "rename": "Переименовать",
+    "delete": "Удалить",
+    "newListName": "Новое название листа",
+    "hintListName":"Название листа",
+    "cancel":"Отмена",
+    "ok":"ОК"
 }

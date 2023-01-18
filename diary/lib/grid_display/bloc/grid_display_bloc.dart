@@ -40,7 +40,6 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
       diaryList: diaryList,
       diaryColumns: diaryColumns,
       diaryCells: diaryCells,
-      isScaled: false,
     ));
   }
 
@@ -75,9 +74,9 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
       height += cell.settings.height;
     }
 
-    height = height +
-        WidgetsBinding.instance.window.padding.top +
-        WidgetsBinding.instance.window.padding.bottom;
+    // height = height +
+    //     // WidgetsBinding.instance.window.padding.top +
+    //     WidgetsBinding.instance.window.padding.bottom;
 
     emit(_Loaded(
       scaleFactor: 1,
@@ -86,6 +85,7 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
       transformationController: transformationController,
       translateX: 0,
       translateY: 0,
+      isPanelShown: true,
     ));
   }
 
@@ -95,7 +95,7 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
   ) {
     state.whenOrNull(
       loaded: (scaleFactor, width, height, transformationController, translateX,
-          translateY) {
+          translateY, isPanelShown) {
         final cellBox = event.selectedCellKey.currentContext!.findRenderObject()
             as RenderBox;
         final cellRect = Rect.fromLTWH(
@@ -108,14 +108,17 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
             event.details.position.dx >= cellRect.left &&
             event.details.position.dy <= cellRect.bottom &&
             event.details.position.dy >= cellRect.top) {
-          emit(GridDisplayState.selectedMoving(
-            scaleFactor: scaleFactor,
-            width: width,
-            height: height,
-            transformationController: transformationController,
-            translateX: translateX,
-            translateY: translateY,
-          ));
+          emit(
+            GridDisplayState.selectedMoving(
+              scaleFactor: scaleFactor,
+              width: width,
+              height: height,
+              transformationController: transformationController,
+              translateX: translateX,
+              translateY: translateY,
+              firstSelectedCell: event.firstSelectedCell,
+            ),
+          );
         }
       },
     );
@@ -126,8 +129,13 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
     Emitter<GridDisplayState> emit,
   ) {
     state.whenOrNull(
-      selectedMoving: (scaleFactor, width, height, transformationController,
-          translateX, translateY) {
+      loaded: (scaleFactor, width, height, transformationController, translateX,
+          translateY, isPanelShown) {
+        if (transformationController.value.getTranslation().y < -5) {
+          isPanelShown = false;
+        } else {
+          isPanelShown = true;
+        }
         emit(
           GridDisplayState.loaded(
             scaleFactor: scaleFactor,
@@ -136,6 +144,21 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
             transformationController: transformationController,
             translateX: translateX,
             translateY: translateY,
+            isPanelShown: isPanelShown,
+          ),
+        );
+      },
+      selectedMoving: (scaleFactor, width, height, transformationController,
+          translateX, translateY, firstSelectedCell) {
+        emit(
+          GridDisplayState.loaded(
+            scaleFactor: scaleFactor,
+            width: width,
+            height: height,
+            transformationController: transformationController,
+            translateX: translateX,
+            translateY: translateY,
+            isPanelShown: false,
           ),
         );
       },
@@ -148,23 +171,21 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
   ) {
     state.whenOrNull(
       selectedMoving: (scaleFactor, width, height, transformationController,
-          translateX, translateY) {
-        final screenHeight =
-            MediaQueryData.fromWindow(WidgetsBinding.instance.window)
-                .size
-                .height;
+          translateX, translateY, firstSelectedCell) {
         final screenWidth =
             MediaQueryData.fromWindow(WidgetsBinding.instance.window)
                 .size
                 .width;
         final scaledWidth = screenWidth + width * scaleFactor * -1;
-        final scaledHeight = screenHeight -
+        final scaledHeight = -height * scaleFactor -
             WidgetsBinding.instance.window.padding.bottom +
-            height * scaleFactor * -1;
+            height;
+
         double currentTranslationX =
             transformationController.value.getTranslation().x;
         double currentTranslationY =
             transformationController.value.getTranslation().y;
+
         if (event.details.position.dx >= screenWidth * 0.9 &&
             currentTranslationX > scaledWidth) {
           currentTranslationX -= 10;
@@ -176,25 +197,28 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
           transformationController.value.setTranslation(
               Vector3(currentTranslationX, currentTranslationY, 0));
         }
-        if (event.details.position.dy >= screenHeight * 0.9 &&
+        if (event.details.position.dy >= height * 0.9 &&
             currentTranslationY > scaledHeight) {
           currentTranslationY -= 10;
           transformationController.value.setTranslation(
               Vector3(currentTranslationX, currentTranslationY, 0));
-        } else if (event.details.position.dy <= screenHeight * 0.1 &&
-            currentTranslationY < 0) {
+        } else if (event.details.position.dy <= height * 0.1 &&
+            currentTranslationY < -10) {
           currentTranslationY += 10;
           transformationController.value.setTranslation(
               Vector3(currentTranslationX, currentTranslationY, 0));
         }
-        emit(_SelectedMoving(
-          scaleFactor: scaleFactor,
-          width: width,
-          height: height,
-          transformationController: transformationController,
-          translateX: currentTranslationX,
-          translateY: currentTranslationY,
-        ));
+        emit(
+          _SelectedMoving(
+            scaleFactor: scaleFactor,
+            width: width,
+            height: height,
+            transformationController: transformationController,
+            translateX: currentTranslationX,
+            translateY: currentTranslationY,
+            firstSelectedCell: firstSelectedCell,
+          ),
+        );
       },
     );
   }
@@ -205,15 +229,18 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
   ) {
     state.whenOrNull(
       loaded: (scaleFactor, width, height, transformationController, translateX,
-          translateY) {
-        emit(_Loaded(
-          scaleFactor: transformationController.value.getMaxScaleOnAxis(),
-          width: width,
-          height: height,
-          transformationController: transformationController,
-          translateX: translateX,
-          translateY: translateY,
-        ));
+          translateY, isPanelShown) {
+        emit(
+          _Loaded(
+            scaleFactor: transformationController.value.getMaxScaleOnAxis(),
+            width: width,
+            height: height,
+            transformationController: transformationController,
+            translateX: translateX,
+            translateY: translateY,
+            isPanelShown: isPanelShown,
+          ),
+        );
       },
     );
   }

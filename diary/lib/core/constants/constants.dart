@@ -13,7 +13,7 @@ class Constants {
 
   static const columnsDefaultSettingsDocName = 'defaultColumnSettings';
 
-  static const interactiveViewerMinScale = 0.1;
+  static const interactiveViewerMinScale = 0.9;
 
-  static const interactiveViewerMaxScale = 4;
+  static const interactiveViewerMaxScale = 2.0;
 }

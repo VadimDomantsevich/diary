@@ -17,23 +17,23 @@ class BlocDiaryCellEditPanel extends StatelessWidget {
     return BlocBuilder<DiaryListBloc, DiaryListState>(
         builder: ((context, state) {
       return state.maybeWhen(
-          cellSelected: (diaryList, diaryColumns, diaryCells, selectedCell,
-              cellRenderBox) {
-            controller.text = selectedCell.content.toString();
+          cellsSelected: (diaryList, diaryColumns, diaryCells,
+              firstSelectedCell, selectedCells, cellsKeys, lists,) {
+            controller.text = firstSelectedCell.content.toString();
             controller.selection = TextSelection.fromPosition(
                 TextPosition(offset: controller.text.length));
             return BlocProvider(
               create: (context) => DiaryCellEditBloc(
                 RepositoryProvider.of<DiaryCellService>(context),
-                selectedCell,
+                firstSelectedCell,
                 diaryList,
               ),
               child: DiaryCellEditPanel(
-                diaryCell: selectedCell,
+                diaryCell: firstSelectedCell,
                 controller: controller,
                 onChanged: (p0) => context.read<DiaryListBloc>().add(
                       ChangeDiaryCellEvent(
-                        diaryCell: selectedCell,
+                        diaryCell: firstSelectedCell,
                         textFieldText: p0,
                       ),
                     ),

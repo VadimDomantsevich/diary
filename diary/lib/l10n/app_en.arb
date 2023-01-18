@@ -50,5 +50,33 @@
     "alignmentHint": "Alignment",
     "@alignmentHint": {
         "description": "Alignment hint of the alignment DropdownButton"
+    },
+    "allLists": "All lists",
+    "@allLists": {
+        "description": "Text on the top of the edit list panel when selecting from all the lists"
+    },
+    "rename": "Rename",
+    "@rename": {
+        "description": "Text of the rename button"
+    },
+    "delete": "Delete",
+    "@delete": {
+        "description": "Text of the delete button"
+    },
+    "newListName": "New list name",
+    "@newListName": {
+        "description": "Title of the EditListAlertDialog"
+    },
+    "hintListName": "List name",
+    "@hintListName": {
+        "description": "HintText of the EditListAlertDialog textField"
+    },
+    "cancel": "Cancel",
+    "@cancel": {
+        "description": "Cancel text"
+    },
+    "ok": "OK",
+    "@ok": {
+        "description": "OK text"
     }
 }

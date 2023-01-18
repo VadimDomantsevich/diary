@@ -14,7 +14,7 @@ class BlocDataGridSample extends StatelessWidget {
     return BlocBuilder<DiaryListBloc, DiaryListState>(
       builder: (context, state) {
         return state.maybeWhen(
-          loaded: (diaryList, diaryColumns, diaryCells, cellsKeys) {
+          loaded: (diaryList, diaryColumns, diaryCells, cellsKeys, lists) {
             return BlocProvider(
               create: (context) => GridDisplayBloc(
                 diaryList: diaryList,
@@ -25,8 +25,33 @@ class BlocDataGridSample extends StatelessWidget {
               child: const DataGridSample(),
             );
           },
-          cellSelected:
-              (diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys) {
+          listEditing: (diaryList, diaryColumns, diaryCells, cellsKeys, lists,
+              selectedList) {
+            return BlocProvider(
+              create: (context) => GridDisplayBloc(
+                diaryList: diaryList,
+                diaryColumns: diaryColumns,
+                diaryCells: diaryCells,
+                transformationController: TransformationController(),
+              ),
+              child: const DataGridSample(),
+            );
+          },
+          // cellSelected:
+          //     (diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys) {
+          //       print('CellSelected state');
+          //   return BlocProvider(
+          //     create: (context) => GridDisplayBloc(
+          //       diaryList: diaryList,
+          //       diaryColumns: diaryColumns,
+          //       diaryCells: diaryCells,
+          //       transformationController: TransformationController(),
+          //     ),
+          //     child: const DataGridSample(),
+          //   );
+          // },
+          cellsSelected: (diaryList, diaryColumns, diaryCells,
+              firstSelectedCell, selectedCells, cellsKeys, lists) {
             return BlocProvider(
               create: (context) => GridDisplayBloc(
                 diaryList: diaryList,

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
+import 'package:diary/core/constants/diary_cell_fields.dart';
 import 'package:diary/core/constants/enums.dart';
 import 'package:diary/model/diary_cell_settings.dart';
 
@@ -24,11 +25,11 @@ class DiaryCell {
   });
 
   Map<String, dynamic> toFirestore() => {
-        'columnName': columnName,
-        'columnPosition': columnPosition,
-        'day': day,
-        'dataType': dataType.name,
-        'content': content,
+        DiaryCellFields.columnName: columnName,
+        DiaryCellFields.columnPosition: columnPosition,
+        DiaryCellFields.day: day,
+        DiaryCellFields.dataType: dataType.name,
+        DiaryCellFields.content: content,
       };
 
   factory DiaryCell.fromFirestore({
@@ -37,12 +38,12 @@ class DiaryCell {
   }) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     return DiaryCell(
-      columnName: data['columnName']! as String,
-      columnPosition: data['columnPosition']! as int,
-      day: data['day']! as int,
+      columnName: data[DiaryCellFields.columnName]! as String,
+      columnPosition: data[DiaryCellFields.columnPosition]! as int,
+      day: data[DiaryCellFields.day]! as int,
       dataType: DataTypesEnum.values
-          .firstWhere((element) => element.name == data['dataType']!),
-      content: data['content'],
+          .firstWhere((element) => element.name == data[DiaryCellFields.dataType]!),
+      content: data[DiaryCellFields.content],
       settings: DiaryCellSettings.fromFirestore(
         doc: doc,
         defaultSettings: defaultSettings,

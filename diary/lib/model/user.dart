@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:diary/core/constants/user_fields.dart';
 
 class UserModel {
   final String uid;
@@ -8,13 +9,13 @@ class UserModel {
   });
 
   Map<String, dynamic> toFirestore() => {
-        'uid': uid,
+        UserFields.uid: uid,
       };
 
   factory UserModel.fromFirestore(DocumentSnapshot doc) {
     Map data = doc.data() as Map<dynamic, String>;
     return UserModel(
-      uid: data['uid']!,
+      uid: data[UserFields.uid]!,
     );
   }
 }

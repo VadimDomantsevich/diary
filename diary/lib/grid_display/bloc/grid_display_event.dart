@@ -7,11 +7,12 @@ class GridDisplayEvent with _$GridDisplayEvent {
     required DiaryList diaryList,
     required List<DiaryColumn> diaryColumns,
     required List<DiaryCell> diaryCells,
-    required bool isScaled,
   }) = _GetConstraintsEvent;
 
   const factory GridDisplayEvent.onPointerSelectMove({
     required PointerEvent details,
+    required DiaryCell firstSelectedCell,
+    required List<DiaryCell> selectedCells,
   }) = _OnPointerSelectMoveEvent;
 
   const factory GridDisplayEvent.onInteractionEnd({
@@ -20,6 +21,8 @@ class GridDisplayEvent with _$GridDisplayEvent {
 
   const factory GridDisplayEvent.onPointerDown({
     required PointerDownEvent details,
+    required DiaryCell firstSelectedCell,
+    required List<DiaryCell> selectedCells,
     required GlobalObjectKey selectedCellKey,
   }) = _OnPointerDownEvent;
 

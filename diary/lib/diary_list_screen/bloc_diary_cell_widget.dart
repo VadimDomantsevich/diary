@@ -1,5 +1,6 @@
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
 import 'package:diary/diary_list_screen/diary_cell_widget.dart';
+import 'package:diary/diary_list_screen/wraps.dart';
 import 'package:diary/model/diary_cell.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,14 +22,20 @@ class BlocDiaryCellWidget extends StatelessWidget {
       BlocBuilder<DiaryListBloc, DiaryListState>(
         builder: (context, state) {
           return state.maybeWhen(
-            cellSelected:
-                (diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys) {
+            cellsSelected: (diaryList, diaryColumns, diaryCells,
+                firstSelectedCell, selectedCells, cellsKeys, lists) {
+              bool isFirstSelected = false;
               bool isSelected = false;
-              if (selectedCell == diaryCell) {
+              if (selectedCells.contains(diaryCell)) {
                 isSelected = true;
+              }
+              if (firstSelectedCell == diaryCell) {
+                isFirstSelected = true;
+                isSelected = false;
               }
               return DiaryCellWidget.model(
                 cellKey: cellKey,
+                isFirstSelected: isFirstSelected,
                 isSelected: isSelected,
                 diaryCell: diaryCell,
                 height: diaryCell.settings.height,
@@ -36,45 +43,57 @@ class BlocDiaryCellWidget extends StatelessWidget {
                 onTap: () {
                   context.read<DiaryListBloc>().add(
                         DiaryListEvent.selectDiaryCell(
-                          cellKey: cellKey,
                           diaryCell: diaryCell,
                         ),
                       );
                 },
-                onPanUpdate: isSelected
+                onPanUpdate: isFirstSelected
                     ? (details) {
                         context.read<DiaryListBloc>().add(
                               OnPanUpdateEvent(
                                 diaryCell: diaryCell,
                                 cellKey: cellKey,
                                 details: details,
-                                scaleFactor: scaleFactor
+                                scaleFactor: scaleFactor,
                               ),
                             );
                       }
                     : null,
+                border: isFirstSelected
+                    ? Border.all(width: 3, color: Colors.blueAccent)
+                    : buildBorder(diaryCell.settings),
+                // onPanUpdate: isSelected
+                //     ? (details) {
+                //         context.read<DiaryListBloc>().add(
+                //               OnPanUpdateEvent(
+                //                 diaryCell: diaryCell,
+                //                 cellKey: cellKey,
+                //                 details: details,
+                //                 scaleFactor: scaleFactor,
+                //               ),
+                //             );
+                //       }
+                //     : null,
               );
             },
             orElse: (() {
               GlobalObjectKey cellKey = GlobalObjectKey(diaryCell);
               return DiaryCellWidget.model(
                 cellKey: cellKey,
+                isFirstSelected: false,
                 isSelected: false,
                 diaryCell: diaryCell,
                 height: diaryCell.settings.height,
                 scaleFactor: scaleFactor,
                 onTap: () => context.read<DiaryListBloc>().add(
                       DiaryListEvent.selectDiaryCell(
-                        cellKey: cellKey,
                         diaryCell: diaryCell,
                       ),
                     ),
-                //onPanUpdate: (details) {},
+                border: buildBorder(diaryCell.settings),
               );
             }),
           );
         },
       );
-
-  //How to build selected cell?
 }

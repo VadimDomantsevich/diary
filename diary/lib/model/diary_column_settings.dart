@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:diary/core/constants/constants.dart';
+import 'package:diary/core/constants/diary_column_settings_fields.dart';
 
 part 'diary_column_settings.g.dart';
 
@@ -13,7 +14,7 @@ class DiaryColumnSettings {
   });
 
   Map<String, dynamic> toFirestore() => {
-        'width': width,
+        DiaryColumnSettingsFields.width: width,
       };
 
   factory DiaryColumnSettings.fromFirestore({
@@ -23,12 +24,12 @@ class DiaryColumnSettings {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     if (doc.id == Constants.columnsDefaultSettingsDocName) {
       return DiaryColumnSettings(
-        width: data['width'],
+        width: data[DiaryColumnSettingsFields.width],
       );
     } else {
       double width = defaultSettings!.width;
-      if (data['width'] != null) {
-        width = data['width'];
+      if (data[DiaryColumnSettingsFields.width] != null) {
+        width = data[DiaryColumnSettingsFields.width];
       }
       return DiaryColumnSettings(
         width: width,

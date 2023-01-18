@@ -233,6 +233,14 @@ class DiaryCellService {
   DiaryCellSettings createDefaultSettings() {
     return DiaryCellSettings(
       alignment: AlignmentsEnum.center,
+      topBorderColor: '0x26646464',
+      topBorderWidth: 1,
+      leftBorderColor: '0x26646464',
+      leftBorderWidth: 1,
+      rightBorderColor: '0x26646464',
+      rightBorderWidth: 1,
+      bottomBorderColor: '0x26646464',
+      bottomBorderWidth: 1,
       height: 30,
     );
   }
@@ -258,9 +266,11 @@ class DiaryCellService {
     final cellBox = cellKey.currentContext!.findRenderObject() as RenderBox;
     final cellPosition = cellBox.localToGlobal(Offset.zero);
     final cellLeftPosition = cellPosition.dx;
-    final cellRightPosition = cellPosition.dx + cellBox.size.width*scaleFactor;
+    final cellRightPosition =
+        cellPosition.dx + cellBox.size.width * scaleFactor;
     final cellTopPosition = cellPosition.dy;
-    final cellBottomPosition = cellPosition.dy + cellBox.size.height*scaleFactor;
+    final cellBottomPosition =
+        cellPosition.dy + cellBox.size.height * scaleFactor;
     if (cellRightPosition <= leftPosition ||
         cellLeftPosition >= rightPosition) {
       //     print('Start right');
