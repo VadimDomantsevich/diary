@@ -78,5 +78,45 @@
     "ok": "OK",
     "@ok": {
         "description": "OK text"
+    },
+    "text": "Text",
+    "@text": {
+        "description": "SelectableNameWidget.textEditing text"
+    },
+    "cell": "Cell",
+    "@cell": {
+        "description": "SelectableNameWidget.cellEditing text"
+    },
+    "textColor": "Text color",
+    "@textColor": {
+        "description": "Text color listTile text on the cellsEditPanel"
+    },
+    "fillColor": "Fill color",
+    "@fillColor": {
+        "description": "Fill color listTile text on the cellsEditPanel"
+    },
+    "resetOptions": "Reset options",
+    "@resetOptions": {
+        "description": "Reset options listTile text on the cellsEditPanel"
+    },
+    "clearFormatting": "Clear formatting",
+    "@clearFormatting": {
+        "description": "Clear formatting listTile text on the cellsEditPanel"
+    },
+    "fontSize": "Font size",
+    "@fontSize": {
+        "description": "Font size listTile text on the cellsEditPanel"
+    },
+    "borders": "Borders",
+    "@borders": {
+        "description": "Borders listTile text on the cellsEditPanel"
+    },
+    "bordersStyle": "Borders style",
+    "@bordersStyle": {
+        "description": "Borders style listTile text on the cellsEditPanel"
+    },
+    "bordersColor": "Borders color",
+    "@bordersColor": {
+        "description": "Borders color listTile text on the cellsEditPanel"
     }
 }

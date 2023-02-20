@@ -1,4 +1,4 @@
-import 'package:diary/core/constants/edit_list_constants.dart';
+import 'package:diary/core/constants/edit_panel_constants.dart';
 import 'package:diary/home/edit_panel/edit_list/diary_list_list_tile_widget.dart';
 import 'package:diary/home/edit_panel/edit_panel_bottom_column_widget.dart';
 import 'package:diary/home/edit_panel/edit_panel_name_widget.dart';
@@ -77,15 +77,15 @@ class EditListPanelWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       child: FractionallySizedBox(
-        heightFactor: EditListConstants.editListPanelHeightFactor,
-        widthFactor: EditListConstants.editPanelWidthFactor,
+        heightFactor: EditPanelConstants.editListPanelHeightFactor,
+        widthFactor: EditPanelConstants.editPanelWidthFactor,
         child: Container(
           decoration: const BoxDecoration(
             color: Colors.white,
             border: Border(
               top: BorderSide(
                 color: Colors.black,
-                width: EditListConstants.editPanelBorderSideWidth,
+                width: EditPanelConstants.editPanelBorderSideWidth,
               ),
             ),
           ),

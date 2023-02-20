@@ -21,8 +21,8 @@ class DropdownAlignmentWidget extends StatelessWidget {
     for (var alignment in AlignmentsEnum.values) {
       final menuItem = DropdownMenuItem(
         value: alignment.name,
-        child:
-            Text(converterLocalizationStringFromAlignment(context, alignment)),
+        child: Text('AHAH')
+            // Text(converterLocalizationStringFromAlignment(context, alignment)),
       );
       items.add(menuItem);
     }

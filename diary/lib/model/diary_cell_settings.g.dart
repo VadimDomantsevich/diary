@@ -7,7 +7,7 @@ part of 'diary_cell_settings.dart';
 // **************************************************************************
 
 abstract class _$DiaryCellSettingsCWProxy {
-  DiaryCellSettings alignment(AlignmentsEnum alignment);
+  DiaryCellSettings backgroundColor(String backgroundColor);
 
   DiaryCellSettings bottomBorderColor(String bottomBorderColor);
 
@@ -34,7 +34,7 @@ abstract class _$DiaryCellSettingsCWProxy {
   /// DiaryCellSettings(...).copyWith(id: 12, name: "My name")
   /// ````
   DiaryCellSettings call({
-    AlignmentsEnum? alignment,
+    String? backgroundColor,
     String? bottomBorderColor,
     double? bottomBorderWidth,
     double? height,
@@ -54,8 +54,8 @@ class _$DiaryCellSettingsCWProxyImpl implements _$DiaryCellSettingsCWProxy {
   const _$DiaryCellSettingsCWProxyImpl(this._value);
 
   @override
-  DiaryCellSettings alignment(AlignmentsEnum alignment) =>
-      this(alignment: alignment);
+  DiaryCellSettings backgroundColor(String backgroundColor) =>
+      this(backgroundColor: backgroundColor);
 
   @override
   DiaryCellSettings bottomBorderColor(String bottomBorderColor) =>
@@ -101,7 +101,7 @@ class _$DiaryCellSettingsCWProxyImpl implements _$DiaryCellSettingsCWProxy {
   /// DiaryCellSettings(...).copyWith(id: 12, name: "My name")
   /// ````
   DiaryCellSettings call({
-    Object? alignment = const $CopyWithPlaceholder(),
+    Object? backgroundColor = const $CopyWithPlaceholder(),
     Object? bottomBorderColor = const $CopyWithPlaceholder(),
     Object? bottomBorderWidth = const $CopyWithPlaceholder(),
     Object? height = const $CopyWithPlaceholder(),
@@ -113,10 +113,11 @@ class _$DiaryCellSettingsCWProxyImpl implements _$DiaryCellSettingsCWProxy {
     Object? topBorderWidth = const $CopyWithPlaceholder(),
   }) {
     return DiaryCellSettings(
-      alignment: alignment == const $CopyWithPlaceholder() || alignment == null
-          ? _value.alignment
+      backgroundColor: backgroundColor == const $CopyWithPlaceholder() ||
+              backgroundColor == null
+          ? _value.backgroundColor
           // ignore: cast_nullable_to_non_nullable
-          : alignment as AlignmentsEnum,
+          : backgroundColor as String,
       bottomBorderColor: bottomBorderColor == const $CopyWithPlaceholder() ||
               bottomBorderColor == null
           ? _value.bottomBorderColor

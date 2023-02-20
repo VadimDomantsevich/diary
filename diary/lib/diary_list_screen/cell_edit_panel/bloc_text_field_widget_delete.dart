@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BlocTextFieldWidget extends StatelessWidget {
-  const BlocTextFieldWidget({
+class BlocTextFieldWidgetdelete extends StatelessWidget {
+  const BlocTextFieldWidgetdelete({
     super.key,
     required this.controller,
     required this.diaryCell,
@@ -19,7 +19,7 @@ class BlocTextFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Он от блока вообще не зависит и нахуй не нужен пока
-    return TextFieldWidget.cell(
+    return TextFieldWidgetDelete.cell(
       diaryCell: diaryCell,
       controller: controller,
       onChanged: (p0) => context.read<DiaryListBloc>().add(

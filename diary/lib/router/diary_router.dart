@@ -2,7 +2,6 @@ import 'package:auto_route/annotations.dart';
 import 'package:diary/authentication/forgot_password_screen_widget.dart';
 import 'package:diary/authentication/profile_screen_widget.dart';
 import 'package:diary/authentication/sign_in_screen_widget.dart';
-import 'package:diary/diary_cell_edit_screen/bloc_cell_edit_screen_widget.dart';
 import 'package:diary/home/bloc_datagrid_sample.dart';
 import 'package:diary/home/datagrid_sample.dart';
 import 'package:diary/home/home_screen_widget.dart';
@@ -21,12 +20,6 @@ import 'package:diary/home/home_screen_widget.dart';
     ),
     AutoRoute(
       page: ProfileScreenWidget,
-    ),
-    // AutoRoute(
-    //   page: PlutoGridExamplePage,
-    // ),
-    AutoRoute(
-      page: BlocCellEditScreenWidget,
     ),
     AutoRoute(
       page: DataGridSample,

@@ -19,8 +19,17 @@ class BlocEditListPanelWidget extends StatelessWidget {
             return BlocBuilder<GridDisplayBloc, GridDisplayState>(
               builder: (context, state) {
                 return state.maybeWhen(
-                  loaded: (scaleFactor, width, height, transformationController,
-                      translateX, translateY, isPanelShown) {
+                  loaded: (
+                    scaleFactor,
+                    width,
+                    height,
+                    transformationController,
+                    translateX,
+                    translateY,
+                    isAppBarShown,
+                    isPanelShown,
+                    isEditCellPanelShown,
+                  ) {
                     return isPanelShown
                         ? selectedList != null
                             ? EditListPanelWidget.selectedList(

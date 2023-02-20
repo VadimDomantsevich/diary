@@ -1,24 +1,37 @@
 import 'package:diary/home/edit_panel/icon_button_widget.dart';
 import 'package:flutter/material.dart';
 
-class EditListBottomRowWidget extends StatelessWidget {
-  const EditListBottomRowWidget({
+class BottomRowWidget extends StatelessWidget {
+  const BottomRowWidget({
     super.key,
     required this.listOfWidgets,
     required this.onPressedIconButton,
+    required this.iconButtonWidget,
   });
 
   final VoidCallback onPressedIconButton;
   final List<Widget> listOfWidgets;
+  final Widget iconButtonWidget;
+
+  factory BottomRowWidget.editList({
+    required List<Widget> listOfWidgets,
+    required VoidCallback onPressedIconButton,
+  }) {
+    return BottomRowWidget(
+      listOfWidgets: listOfWidgets,
+      onPressedIconButton: onPressedIconButton,
+      iconButtonWidget: IconButtonWidget.diaryLists(
+        onPressed: onPressedIconButton,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        IconButtonWidget.diaryLists(
-          onPressed: onPressedIconButton,
-        ),
+        iconButtonWidget,
         Expanded(
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,

@@ -1,4 +1,4 @@
-import 'package:diary/core/constants/edit_list_constants.dart';
+import 'package:diary/core/constants/edit_panel_constants.dart';
 import 'package:flutter/material.dart';
 
 class IconButtonWidget extends StatelessWidget {
@@ -32,7 +32,7 @@ class IconButtonWidget extends StatelessWidget {
         border: Border(
           right: BorderSide(
             color: Color.fromARGB(255, 46, 46, 46),
-            width: EditListConstants.editPanelBorderSideWidth,
+            width: EditPanelConstants.editPanelBorderSideWidth,
           ),
         ),
       ),

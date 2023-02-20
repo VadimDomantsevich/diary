@@ -31,6 +31,8 @@ class DiaryListState with _$DiaryListState {
     required List<DiaryCell> selectedCells,
     required List<GlobalObjectKey> cellsKeys,
     required List<DiaryList> lists,
+    required DiaryCellTextSettings defaultTextSettings,
+    required DiaryCellSettings defaultSettings,
   }) = _CellsSelected;
 
   const factory DiaryListState.listEditing({
@@ -41,4 +43,20 @@ class DiaryListState with _$DiaryListState {
     required List<DiaryList> lists,
     DiaryList? selectedList,
   }) = _ListEditing;
+
+  const factory DiaryListState.cellsEditing({
+    required DiaryList diaryList,
+    required List<DiaryColumn> diaryColumns,
+    required List<DiaryCell> diaryCells,
+    required List<GlobalObjectKey> cellsKeys,
+    required DiaryCell firstSelectedCell,
+    required List<DiaryCell> selectedCells,
+    required bool isTextEditing,
+    required bool isColorEditing,
+    required bool isBordersEditing,
+    required bool isBordersStyleEditing,
+    required List<DiaryList> lists,
+    required DiaryCellTextSettings defaultTextSettings,
+    required DiaryCellSettings defaultSettings,
+  }) = _CellsEditing;
 }

@@ -1,6 +1,9 @@
-import 'package:diary/core/constants/edit_list_constants.dart';
+import 'package:diary/core/constants/edit_panel_constants.dart';
+import 'package:diary/home/edit_panel/bottom_icon_and_textfield_widget.dart';
+import 'package:diary/home/edit_panel/edit_cells/bloc_textfield_widget.dart';
 import 'package:diary/home/edit_panel/edit_list/diary_list_card_widget.dart';
-import 'package:diary/home/edit_panel/edit_list/edit_list_bottom_row_widget.dart';
+import 'package:diary/home/edit_panel/bottom_row_widget.dart';
+import 'package:diary/model/diary_cell.dart';
 import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
 
@@ -31,27 +34,37 @@ class EditPanelWidget extends StatelessWidget {
       );
     }
     return EditPanelWidget(
-      bottomRow: EditListBottomRowWidget(
+      bottomRow: BottomRowWidget.editList(
         listOfWidgets: listOfWidgets,
         onPressedIconButton: onPressedIconButton,
       ),
     );
   }
 
-  //factory типа editCell и bottomRow под это запилить
+  factory EditPanelWidget.editCell({
+    required DiaryCell diaryCell,
+    required VoidCallback onPressedIconButton,
+  }) {
+    return EditPanelWidget(
+      bottomRow: BottomIconAndTextFieldWidget.editCell(
+        textFieldWidget: BlocTextFieldWidget(diaryCell: diaryCell),
+        onPressedIconButton: onPressedIconButton,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Positioned(
       child: FractionallySizedBox(
-        heightFactor: EditListConstants.editPanelHeightFactor,
-        widthFactor: EditListConstants.editPanelWidthFactor,
+        heightFactor: EditPanelConstants.editPanelHeightFactor,
+        widthFactor: EditPanelConstants.editPanelWidthFactor,
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(
               color: Colors.black,
-              width: EditListConstants.editPanelBorderSideWidth,
+              width: EditPanelConstants.editPanelBorderSideWidth,
             ),
           ),
           child: bottomRow,

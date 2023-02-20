@@ -22,8 +22,17 @@ class BlocDiaryCellWidget extends StatelessWidget {
       BlocBuilder<DiaryListBloc, DiaryListState>(
         builder: (context, state) {
           return state.maybeWhen(
-            cellsSelected: (diaryList, diaryColumns, diaryCells,
-                firstSelectedCell, selectedCells, cellsKeys, lists) {
+            cellsSelected: (
+              diaryList,
+              diaryColumns,
+              diaryCells,
+              firstSelectedCell,
+              selectedCells,
+              cellsKeys,
+              lists,
+              defaultTextSettings,
+              defaultSettings,
+            ) {
               bool isFirstSelected = false;
               bool isSelected = false;
               if (selectedCells.contains(diaryCell)) {
@@ -60,20 +69,68 @@ class BlocDiaryCellWidget extends StatelessWidget {
                       }
                     : null,
                 border: isFirstSelected
-                    ? Border.all(width: 3, color: Colors.blueAccent)
+                    ? Border.all(
+                        width: 3,
+                        color: Colors.blueAccent) //заменить на константу
                     : buildBorder(diaryCell.settings),
-                // onPanUpdate: isSelected
-                //     ? (details) {
-                //         context.read<DiaryListBloc>().add(
-                //               OnPanUpdateEvent(
-                //                 diaryCell: diaryCell,
-                //                 cellKey: cellKey,
-                //                 details: details,
-                //                 scaleFactor: scaleFactor,
-                //               ),
-                //             );
-                //       }
-                //     : null,
+              );
+            },
+            cellsEditing: (
+              diaryList,
+              diaryColumns,
+              diaryCells,
+              cellsKeys,
+              firstSelectedCell,
+              selectedCells,
+              isTextEditing,
+              isColorEditing,
+              isBordersEditing,
+              isBordersStyleEditing,
+              lists,
+              defaultTextSettings,
+              defaultSettings,
+            ) {
+              bool isFirstSelected = false;
+              bool isSelected = false;
+              if (selectedCells.contains(diaryCell)) {
+                isSelected = true;
+              }
+              if (firstSelectedCell == diaryCell) {
+                isFirstSelected = true;
+                isSelected = false;
+              }
+              return DiaryCellWidget.model(
+                cellKey: cellKey,
+                isFirstSelected: isFirstSelected,
+                isSelected: isSelected,
+                diaryCell: diaryCell,
+                height: diaryCell.settings.height,
+                scaleFactor: scaleFactor,
+                onTap: () {
+                  context.read<DiaryListBloc>().add(
+                        DiaryListEvent.selectDiaryCell(
+                          diaryCell: diaryCell,
+                        ),
+                      );
+                },
+                onPanUpdate: isFirstSelected
+                    ? (details) {
+                        context.read<DiaryListBloc>().add(
+                              OnPanUpdateEvent(
+                                diaryCell: diaryCell,
+                                cellKey: cellKey,
+                                details: details,
+                                scaleFactor: scaleFactor,
+                              ),
+                            );
+                      }
+                    : null,
+                border: isFirstSelected
+                    ? Border.all(
+                        width: 3,
+                        color: Colors.blueAccent,
+                      ) //заменить на константу
+                    : buildBorder(diaryCell.settings),
               );
             },
             orElse: (() {

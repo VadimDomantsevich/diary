@@ -16,7 +16,9 @@ class GridDisplayState with _$GridDisplayState {
     required TransformationController transformationController,
     required double translateX,
     required double translateY,
+    required bool isAppBarShown,
     required bool isPanelShown,
+    required bool isEditCellPanelShown,
   }) = _Loaded;
 
   const factory GridDisplayState.selectedMoving({
@@ -27,5 +29,6 @@ class GridDisplayState with _$GridDisplayState {
     required double translateX,
     required double translateY,
     required DiaryCell firstSelectedCell,
+    required bool isAppBarShown,
   }) = _SelectedMoving;
 }

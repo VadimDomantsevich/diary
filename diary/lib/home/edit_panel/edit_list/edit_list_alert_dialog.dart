@@ -1,4 +1,4 @@
-import 'package:diary/core/constants/edit_list_constants.dart';
+import 'package:diary/core/constants/edit_panel_constants.dart';
 import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -25,10 +25,10 @@ class EditListAlertDialog extends StatelessWidget {
 
     return AlertDialog(
       title: Text(title),
-      elevation: EditListConstants.alertDialogElevation,
+      elevation: EditPanelConstants.alertDialogElevation,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(EditListConstants.alertDialogBorderRadius),
+          Radius.circular(EditPanelConstants.alertDialogBorderRadius),
         ),
       ),
       content: TextField(
@@ -53,7 +53,7 @@ class EditListAlertDialog extends StatelessWidget {
       ],
       actionsAlignment: MainAxisAlignment.end,
       actionsPadding: const EdgeInsets.symmetric(
-        horizontal: EditListConstants.alertDialogActionsPadding,
+        horizontal: EditPanelConstants.alertDialogActionsPadding,
       ),
     );
   }

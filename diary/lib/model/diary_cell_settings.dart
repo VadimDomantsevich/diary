@@ -2,13 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:diary/core/constants/constants.dart';
 import 'package:diary/core/constants/diary_cell_settings_fields.dart';
-import 'package:diary/core/constants/enums.dart';
 
 part 'diary_cell_settings.g.dart';
 
 @CopyWith()
 class DiaryCellSettings {
-  final AlignmentsEnum alignment;
   final String topBorderColor;
   final double topBorderWidth;
   final String leftBorderColor;
@@ -19,8 +17,9 @@ class DiaryCellSettings {
   final double bottomBorderWidth;
   final double height;
 
+  final String backgroundColor;
+
   DiaryCellSettings({
-    required this.alignment,
     required this.topBorderColor,
     required this.topBorderWidth,
     required this.leftBorderColor,
@@ -30,10 +29,10 @@ class DiaryCellSettings {
     required this.bottomBorderColor,
     required this.bottomBorderWidth,
     required this.height,
+    required this.backgroundColor,
   });
 
   Map<String, dynamic> toFirestore() => {
-        DiaryCellSettingsFields.alignment: alignment.name,
         DiaryCellSettingsFields.topBorderColor: topBorderColor,
         DiaryCellSettingsFields.topBorderWidth: topBorderWidth,
         DiaryCellSettingsFields.leftBorderColor: leftBorderColor,
@@ -43,6 +42,7 @@ class DiaryCellSettings {
         DiaryCellSettingsFields.bottomBorderColor: bottomBorderColor,
         DiaryCellSettingsFields.bottomBorderWidth: bottomBorderWidth,
         DiaryCellSettingsFields.height: height,
+        DiaryCellSettingsFields.backgroundColor: backgroundColor,
       };
 
   factory DiaryCellSettings.fromFirestore({
@@ -52,8 +52,6 @@ class DiaryCellSettings {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     if (doc.id == Constants.cellsDefaultSettingsDocName) {
       return DiaryCellSettings(
-        alignment: AlignmentsEnum.values.firstWhere((element) =>
-            element.name == data[DiaryCellSettingsFields.alignment]),
         topBorderColor: data[DiaryCellSettingsFields.topBorderColor] as String,
         topBorderWidth: data[DiaryCellSettingsFields.topBorderWidth] as double,
         leftBorderColor:
@@ -69,10 +67,11 @@ class DiaryCellSettings {
         bottomBorderWidth:
             data[DiaryCellSettingsFields.bottomBorderWidth] as double,
         height: data[DiaryCellSettingsFields.height] as double,
+        backgroundColor:
+            data[DiaryCellSettingsFields.backgroundColor] as String,
       );
     } else {
-      AlignmentsEnum alignment = defaultSettings!.alignment;
-      String topBorderColor = defaultSettings.topBorderColor;
+      String topBorderColor = defaultSettings!.topBorderColor;
       double topBorderWidth = defaultSettings.topBorderWidth;
       String leftBorderColor = defaultSettings.leftBorderColor;
       double leftBorderWidth = defaultSettings.leftBorderWidth;
@@ -81,12 +80,8 @@ class DiaryCellSettings {
       String bottomBorderColor = defaultSettings.bottomBorderColor;
       double bottomBorderWidth = defaultSettings.bottomBorderWidth;
       double height = defaultSettings.height;
-      data[DiaryCellSettingsFields.alignment] != null
-          ? alignment = AlignmentsEnum.values.firstWhere(
-              (element) =>
-                  element.name == data[DiaryCellSettingsFields.alignment],
-            )
-          : alignment;
+      String backgroundColor = defaultSettings.backgroundColor;
+
       data[DiaryCellSettingsFields.topBorderColor] != null
           ? topBorderColor = data[DiaryCellSettingsFields.topBorderColor]
           : topBorderColor;
@@ -114,8 +109,10 @@ class DiaryCellSettings {
       data[DiaryCellSettingsFields.height] != null
           ? height = data[DiaryCellSettingsFields.height]
           : height;
+      data[DiaryCellSettingsFields.backgroundColor] != null
+          ? backgroundColor = data[DiaryCellSettingsFields.backgroundColor]
+          : backgroundColor;
       return DiaryCellSettings(
-        alignment: alignment,
         topBorderColor: topBorderColor,
         topBorderWidth: topBorderWidth,
         leftBorderColor: leftBorderColor,
@@ -125,6 +122,7 @@ class DiaryCellSettings {
         bottomBorderColor: bottomBorderColor,
         bottomBorderWidth: bottomBorderWidth,
         height: height,
+        backgroundColor: backgroundColor,
       );
     }
   }

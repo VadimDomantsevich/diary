@@ -1,6 +1,4 @@
 class DiaryCellSettingsFields {
-  static const alignment = 'alignment';
-
   static const topBorderColor = 'topBorderColor';
 
   static const topBorderWidth = 'topBorderWidth';
@@ -18,4 +16,6 @@ class DiaryCellSettingsFields {
   static const bottomBorderWidth = 'bottomBorderWidth';
 
   static const height = 'height';
+
+  static const backgroundColor = 'backgroundColor';
 }

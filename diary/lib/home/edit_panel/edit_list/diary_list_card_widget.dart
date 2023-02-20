@@ -1,4 +1,4 @@
-import 'package:diary/core/constants/edit_list_constants.dart';
+import 'package:diary/core/constants/edit_panel_constants.dart';
 import 'package:diary/home/edit_panel/edit_panel_text_widget.dart';
 import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +50,7 @@ class ListCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
-      heightFactor: EditListConstants.listCardWidgetHeightFactor,
+      heightFactor: EditPanelConstants.listCardWidgetHeightFactor,
       child: InkWell(
         onTap: onTap,
         child: Container(
@@ -59,13 +59,13 @@ class ListCardWidget extends StatelessWidget {
             border: Border(
               right: BorderSide(
                 color: Color.fromARGB(255, 46, 46, 46),
-                width: EditListConstants.editPanelBorderSideWidth,
+                width: EditPanelConstants.editPanelBorderSideWidth,
               ),
             ),
           ),
           alignment: Alignment.center,
           padding: const EdgeInsets.symmetric(
-            horizontal: EditListConstants.editPanelListTileHorizontalPadding,
+            horizontal: EditPanelConstants.editPanelListTileHorizontalPadding,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

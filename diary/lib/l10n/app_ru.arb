@@ -16,7 +16,17 @@
     "rename": "Переименовать",
     "delete": "Удалить",
     "newListName": "Новое название листа",
-    "hintListName":"Название листа",
-    "cancel":"Отмена",
-    "ok":"ОК"
+    "hintListName": "Название листа",
+    "cancel": "Отмена",
+    "ok": "ОК",
+    "text": "Текст",
+    "cell": "Ячейка",
+    "textColor":"Цвет текста",
+    "fillColor":"Цвет заливки",
+    "resetOptions":"Сбросить параметры",
+    "clearFormatting":"Очистить форматирование",
+    "fontSize":"Размер шрифта",
+    "borders":"Границы",
+    "bordersStyle":"Стиль границ",
+    "bordersColor":"Цвет границ"
 }

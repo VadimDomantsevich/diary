@@ -1,4 +1,5 @@
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
+import 'package:diary/diary_list_screen/diary_cell_edit/diary_cell_edit_bloc.dart';
 import 'package:diary/grid_display/bloc/grid_display_bloc.dart';
 import 'package:diary/home/edit_panel/edit_panel_widget.dart';
 import 'package:flutter/material.dart';
@@ -15,12 +16,21 @@ class BlocEditPanelWidget extends StatelessWidget {
           return BlocBuilder<GridDisplayBloc, GridDisplayState>(
             builder: (context, state) {
               return state.maybeWhen(
-                loaded: (scaleFactor, width, height, transformationController,
-                    translateX, translateY, isPanelShown) {
+                loaded: (
+                  scaleFactor,
+                  width,
+                  height,
+                  transformationController,
+                  translateX,
+                  translateY,
+                  isAppBarShown,
+                  isPanelShown,
+                  isEditCellPanelShown,
+                ) {
                   return isPanelShown
                       ? EditPanelWidget.selectList(
                           selectedList: diaryList,
-                          lists: lists,//Вот это передаются
+                          lists: lists,
                           onTap: (list) => list.listDate == diaryList.listDate
                               ? context.read<DiaryListBloc>().add(
                                     DiaryListEvent.startEditingList(
@@ -44,7 +54,55 @@ class BlocEditPanelWidget extends StatelessWidget {
             },
           );
         },
-        //Сюда для ячеек добавить
+        cellsSelected: (
+          diaryList,
+          diaryColumns,
+          diaryCells,
+          firstSelectedCell,
+          selectedCells,
+          cellsKeys,
+          lists,
+          defaultTextSettings,
+          defaultSettings,
+        ) {
+          return BlocBuilder<GridDisplayBloc, GridDisplayState>(
+            builder: (context, state) => state.maybeWhen(
+              loaded: (
+                scaleFactor,
+                width,
+                height,
+                transformationController,
+                translateX,
+                translateY,
+                isAppBarShown,
+                isPanelShown,
+                isEditCellPanelShown,
+              ) {
+                return EditPanelWidget.editCell(
+                  diaryCell: firstSelectedCell,
+                  onPressedIconButton: () {
+                    context.read<GridDisplayBloc>().add(
+                          const GridDisplayEvent.showEditCellPanel(),
+                        );
+                    context.read<DiaryListBloc>().add(
+                          const DiaryListEvent.startEditingCells(
+                            isTextEditing: true,
+                          ),
+                        );
+                    context.read<DiaryCellEditBloc>().add(
+                          DiaryCellEditEvent.startTextEditing(
+                            firstSelectedCell: firstSelectedCell,
+                            defaultTextSettings: defaultTextSettings,
+                            defaultSettings: defaultSettings,
+                          ),
+                        );
+                  },
+                );
+              },
+              orElse: () => Container(),
+            ),
+          );
+        },
         orElse: () => Container(),
       ),
     );

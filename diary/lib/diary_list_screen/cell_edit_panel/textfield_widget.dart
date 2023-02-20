@@ -2,8 +2,8 @@
 import 'package:diary/model/diary_cell.dart';
 import 'package:flutter/material.dart';
 
-class TextFieldWidget extends StatefulWidget {
-  const TextFieldWidget({
+class TextFieldWidgetDelete extends StatefulWidget {
+  const TextFieldWidgetDelete({
     super.key,
     required this.controller,
     required this.onChanged,
@@ -12,12 +12,12 @@ class TextFieldWidget extends StatefulWidget {
   final TextEditingController controller;
   final Function(String?) onChanged;
 
-  factory TextFieldWidget.cell({
+  factory TextFieldWidgetDelete.cell({
     required DiaryCell diaryCell,
     required TextEditingController controller,
     required Function(String?) onChanged,
   }) {
-    return TextFieldWidget(
+    return TextFieldWidgetDelete(
       controller: controller,
       onChanged: ((value) {
         onChanged(value);
@@ -26,10 +26,10 @@ class TextFieldWidget extends StatefulWidget {
   }
 
   @override
-  State<TextFieldWidget> createState() => _TextFieldWidgetState();
+  State<TextFieldWidgetDelete> createState() => _TextFieldWidgetDeleteState();
 }
 
-class _TextFieldWidgetState extends State<TextFieldWidget> {
+class _TextFieldWidgetDeleteState extends State<TextFieldWidgetDelete> {
   @override
   Widget build(BuildContext context) {
     return TextField(

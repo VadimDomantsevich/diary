@@ -1,4 +1,4 @@
-import 'package:diary/core/constants/edit_list_constants.dart';
+import 'package:diary/core/constants/edit_panel_constants.dart';
 import 'package:diary/home/edit_panel/edit_panel_text_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -16,14 +16,14 @@ class EditPanelNameWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return FractionallySizedBox(
       alignment: Alignment.topLeft,
-      widthFactor: EditListConstants.editPanelWidthFactor,
+      widthFactor: EditPanelConstants.editPanelWidthFactor,
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
               color: bottomBorderColor,
-              width: EditListConstants.editPanelBorderSideWidth,
+              width: EditPanelConstants.editPanelBorderSideWidth,
             ),
           ),
         ),

@@ -1,4 +1,4 @@
-import 'package:diary/core/constants/edit_list_constants.dart';
+import 'package:diary/core/constants/edit_panel_constants.dart';
 import 'package:flutter/material.dart';
 
 class EditPanelTextWidget extends StatelessWidget {
@@ -22,7 +22,7 @@ class EditPanelTextWidget extends StatelessWidget {
       content: content,
       color: Colors.blueAccent,
       align: TextAlign.center,
-      size: EditListConstants.editPanelSelectedTextSize,
+      size: EditPanelConstants.editPanelSelectedTextSize,
     );
   }
 
@@ -33,7 +33,7 @@ class EditPanelTextWidget extends StatelessWidget {
       content: content,
       color: Colors.black,
       align: TextAlign.center,
-      size: EditListConstants.editPanelCommonTextSize,
+      size: EditPanelConstants.editPanelCommonTextSize,
     );
   }
 
@@ -44,7 +44,7 @@ class EditPanelTextWidget extends StatelessWidget {
       content: content,
       color: Colors.black,
       align: TextAlign.center,
-      size: EditListConstants.editPanelNameTextSize,
+      size: EditPanelConstants.editPanelNameTextSize,
     );
   }
 
@@ -55,7 +55,7 @@ class EditPanelTextWidget extends StatelessWidget {
       content: content,
       color: Colors.blueAccent,
       align: TextAlign.center,
-      size: EditListConstants.editPanelListTileSelectedTextSize,
+      size: EditPanelConstants.editPanelListTileSelectedTextSize,
     );
   }
 
@@ -66,7 +66,19 @@ class EditPanelTextWidget extends StatelessWidget {
       content: content,
       color: Colors.black,
       align: TextAlign.center,
-      size: EditListConstants.editPanelListTileCommonTextSize,
+      size: EditPanelConstants.editPanelListTileCommonTextSize,
+    );
+  }
+
+  factory EditPanelTextWidget.selectableName({
+    required String content,
+    required Color textColor,
+  }) {
+    return EditPanelTextWidget(
+      content: content,
+      color: textColor,
+      align: TextAlign.center,
+      size: EditPanelConstants.editPanelNameTextSize,
     );
   }
 

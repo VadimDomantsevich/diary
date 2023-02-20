@@ -2,9 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diary/core/constants/collections.dart';
 import 'package:diary/core/constants/constants.dart';
 import 'package:diary/core/constants/enums.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/core/functions.dart';
 import 'package:diary/model/diary_cell.dart';
 import 'package:diary/model/diary_cell_settings.dart';
+import 'package:diary/model/diary_cell_text_settings.dart';
 import 'package:diary/model/diary_column.dart';
 import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +14,6 @@ import 'package:intl/intl.dart';
 
 class DiaryCellService {
   Future<void> create({
-    required DataTypesEnum dataType,
     required DiaryList diaryList,
     required DiaryColumn diaryColumn,
   }) async {
@@ -29,7 +30,16 @@ class DiaryCellService {
           createDefaultSettings().toFirestore(),
         ); //Оно всегда будет переписывать дефолт сеттинги на прописанные
     //меня это не устраивает
+    // await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).update(
+    //       createDefaultSettings().toFirestore(),
+    //     );
+    //Оно всегда будет переписывать дефолт сеттинги на прописанные
+    //меня это не устраивает
     final defaultSettings = await getDefaultCellSettings(
+      diaryList: diaryList,
+      diaryColumn: diaryColumn,
+    );
+    final defaultTextSettings = await getDefaultCellTextSettings(
       diaryList: diaryList,
       diaryColumn: diaryColumn,
     );
@@ -40,8 +50,8 @@ class DiaryCellService {
           columnName: diaryColumnDoc.id, //It seems to be the right way
           columnPosition: j,
           day: i,
-          dataType: dataType,
           settings: defaultSettings,
+          textSettings: defaultTextSettings,
         );
         await cellsCollection.doc(getDiaryCellName(newCell)).set(
               newCell.toFirestore(),
@@ -53,10 +63,12 @@ class DiaryCellService {
   DiaryCell read({
     required DocumentSnapshot doc,
     required DiaryCellSettings defaultSettings,
+    required DiaryCellTextSettings defaultTextSettings,
   }) =>
       DiaryCell.fromFirestore(
         doc: doc,
         defaultSettings: defaultSettings,
+        defaultTextSettings: defaultTextSettings,
       );
 
   DiaryCellSettings readSettings({
@@ -83,6 +95,30 @@ class DiaryCellService {
     );
   }
 
+  DiaryCellTextSettings readTextSettings({
+    required DocumentSnapshot doc,
+    DiaryCellTextSettings? defaultSettings,
+  }) =>
+      DiaryCellTextSettings.fromFirestore(
+        doc: doc,
+        defaultSettings: defaultSettings,
+      );
+
+  Future<DiaryCellTextSettings> getDefaultCellTextSettings({
+    required DiaryList diaryList,
+    required DiaryColumn diaryColumn,
+  }) async {
+    final cellsCollection = await getDiaryCellsCollection(
+      diaryList: diaryList,
+      diaryColumn: diaryColumn,
+    );
+    return readTextSettings(
+      doc: await cellsCollection
+          .doc(Constants.cellsDefaultSettingsDocName)
+          .get(),
+    );
+  }
+
   Future<List<DiaryCell>> getAll({
     required DiaryList diaryList,
     required DiaryColumn diaryColumn,
@@ -99,6 +135,10 @@ class DiaryCellService {
       diaryList: diaryList,
       diaryColumn: diaryColumn,
     );
+    final defaultTextSettings = await getDefaultCellTextSettings(
+      diaryList: diaryList,
+      diaryColumn: diaryColumn,
+    );
 
     for (var doc in cells.docs) {
       if (doc.id != Constants.cellsDefaultSettingsDocName) {
@@ -106,6 +146,7 @@ class DiaryCellService {
           read(
             doc: doc,
             defaultSettings: defaultSettings,
+            defaultTextSettings: defaultTextSettings,
           ),
         );
       }
@@ -136,7 +177,15 @@ class DiaryCellService {
         diaryList: diaryList,
         diaryColumn: diaryColumn,
       );
-      return read(doc: doc, defaultSettings: defaultSettings);
+      final defaultTextSettings = await getDefaultCellTextSettings(
+        diaryList: diaryList,
+        diaryColumn: diaryColumn,
+      );
+      return read(
+        doc: doc,
+        defaultSettings: defaultSettings,
+        defaultTextSettings: defaultTextSettings,
+      );
     } else {
       return diaryCell;
     }
@@ -145,7 +194,6 @@ class DiaryCellService {
   Future<void> update({
     required DiaryList diaryList,
     required DiaryCell diaryCell,
-    required DataTypesEnum dataType,
     required dynamic content,
   }) async {
     final doc = await getDiaryCellDoc(
@@ -153,7 +201,7 @@ class DiaryCellService {
       diaryCell: diaryCell,
     ).get();
     if (doc.data() != null) {
-      final newCell = diaryCell.copyWith(dataType: dataType, content: content);
+      final newCell = diaryCell.copyWith(content: content);
       await FirebaseFirestore.instance.doc(doc.reference.path).update(
             newCell.toFirestore(),
           );
@@ -177,6 +225,61 @@ class DiaryCellService {
     }
   }
 
+  //Check how it works
+  Future<void> updateDefaultSettings({
+    required DiaryList diaryList,
+    required DiaryColumn diaryColumn,
+    required DiaryCellSettings settings,
+  }) async {
+    final cellsCollection = await getDiaryCellsCollection(
+      diaryList: diaryList,
+      diaryColumn: diaryColumn,
+    );
+    final doc =
+        await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).get();
+    if (doc.data() != null) {
+      await FirebaseFirestore.instance.doc(doc.reference.path).update(
+            settings.toFirestore(),
+          );
+    }
+  }
+
+  Future<void> updateTextSettings({
+    required DiaryList diaryList,
+    required DiaryCell diaryCell,
+    required DiaryCellTextSettings settings,
+  }) async {
+    final doc = await getDiaryCellDoc(
+      diaryList: diaryList,
+      diaryCell: diaryCell,
+    ).get();
+    if (doc.data() != null) {
+      final newCell = diaryCell.copyWith(textSettings: settings);
+      await FirebaseFirestore.instance.doc(doc.reference.path).update(
+            newCell.textSettings.toFirestore(),
+          );
+    }
+  }
+
+  //Check how it works
+  Future<void> updateDefaultTextSettings({
+    required DiaryList diaryList,
+    required DiaryColumn diaryColumn,
+    required DiaryCellTextSettings settings,
+  }) async {
+    final cellsCollection = await getDiaryCellsCollection(
+      diaryList: diaryList,
+      diaryColumn: diaryColumn,
+    );
+    final doc =
+        await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).get();
+    if (doc.data() != null) {
+      await FirebaseFirestore.instance.doc(doc.reference.path).update(
+            settings.toFirestore(),
+          );
+    }
+  }
+
   Future<void> createDateCells({
     //ПЕРЕДЕЛАТЬ
     required DiaryList diaryList,
@@ -189,7 +292,14 @@ class DiaryCellService {
     await cellsCollection
         .doc(Constants.cellsDefaultSettingsDocName)
         .set(createDefaultSettings().toFirestore());
+    await cellsCollection
+        .doc(Constants.cellsDefaultSettingsDocName)
+        .update(createDefaultTextSettings().toFirestore());
     final defaultSettings = await getDefaultCellSettings(
+      diaryList: diaryList,
+      diaryColumn: diaryColumn,
+    );
+    final defaultTextSettings = await getDefaultCellTextSettings(
       diaryList: diaryList,
       diaryColumn: diaryColumn,
     );
@@ -204,9 +314,9 @@ class DiaryCellService {
             columnName: Constants.diaryColumnDateField,
             columnPosition: i,
             day: j,
-            dataType: DataTypesEnum.integerNumber,
             content: j,
             settings: defaultSettings,
+            textSettings: defaultTextSettings,
           );
           await cellsCollection.doc(getDiaryCellName(newCell)).set(
                 newCell.toFirestore(),
@@ -218,9 +328,9 @@ class DiaryCellService {
             columnName: Constants.diaryColumnDateField,
             columnPosition: i,
             day: j,
-            dataType: DataTypesEnum.text,
             content: dayOfTheWeek,
             settings: defaultSettings,
+            textSettings: defaultTextSettings,
           );
           await cellsCollection.doc(getDiaryCellName(newCell)).set(
                 newCell.toFirestore(),
@@ -232,17 +342,59 @@ class DiaryCellService {
 
   DiaryCellSettings createDefaultSettings() {
     return DiaryCellSettings(
-      alignment: AlignmentsEnum.center,
       topBorderColor: '0x26646464',
-      topBorderWidth: 1,
+      topBorderWidth: Constants.defaultBordersStyleEnum.toDoubleWidth(),
       leftBorderColor: '0x26646464',
-      leftBorderWidth: 1,
+      leftBorderWidth: Constants.defaultBordersStyleEnum.toDoubleWidth(),
       rightBorderColor: '0x26646464',
-      rightBorderWidth: 1,
+      rightBorderWidth: Constants.defaultBordersStyleEnum.toDoubleWidth(),
       bottomBorderColor: '0x26646464',
-      bottomBorderWidth: 1,
-      height: 30,
+      bottomBorderWidth: Constants.defaultBordersStyleEnum.toDoubleWidth(),
+      height: 30,//const value
+      backgroundColor: '0xFFFFFFFF',
     );
+  }
+
+  DiaryCellTextSettings createDefaultTextSettings() {
+    return DiaryCellTextSettings(
+      alignment: AlignmentsEnum.center,
+      fontWeight: FontWeightEnum.normal,
+      textDecoration: TextDecorationEnum.none,
+      fontStyle: FontStyleEnum.normal,
+      fontSize: 14,//const value
+      color: '0xFF000000',
+    );
+  }
+
+  AlignmentsEnum convertAlignments({
+    required HorizontalAlignmentsEnum horizontal,
+    required VerticalAlignmentsEnum vertical,
+  }) {
+    String alignment = '';
+    switch (vertical) {
+      case VerticalAlignmentsEnum.top:
+        alignment += 'top';
+        break;
+      case VerticalAlignmentsEnum.center:
+        alignment += 'center';
+        break;
+      case VerticalAlignmentsEnum.bottom:
+        alignment += 'bottom';
+        break;
+    }
+    switch (horizontal) {
+      case HorizontalAlignmentsEnum.left:
+        alignment += 'Left';
+        break;
+      case HorizontalAlignmentsEnum.center:
+        alignment != 'center' ? alignment += 'Center' : alignment;
+        break;
+      case HorizontalAlignmentsEnum.right:
+        alignment += 'Right';
+        break;
+    }
+
+    return alignment.toAlignmentsEnum();
   }
 
   double getSummaryHeight({
@@ -303,5 +455,106 @@ class DiaryCellService {
     }
 
     return true;
+  }
+
+  bool isTopBorderNeedToBeDrawn({
+    required List<DiaryCell> diaryCells,
+    required DiaryCell diaryCell,
+    required int columnsCount,
+    required BordersStyleEnum bordersStyleEnum,
+    required Color color,
+  }) {
+    bool isTopBorderNeedToBeDrawn = true;
+    final index = diaryCells.indexOf(diaryCell);
+    if (index - columnsCount >= 0) {
+      final topCell = diaryCells[index - columnsCount];
+      final topCellBottomBorderWidth = topCell.settings.bottomBorderWidth;
+      final topCellBottomBorderColor =
+          topCell.settings.bottomBorderColor.toColor();
+      topCellBottomBorderWidth == bordersStyleEnum.toDoubleWidth() &&
+              topCellBottomBorderColor == color
+          ? isTopBorderNeedToBeDrawn = false
+          : isTopBorderNeedToBeDrawn = true;
+      // print('after check: $isTopBorderNeedToBeDrawn');
+    }
+    return isTopBorderNeedToBeDrawn;
+  }
+
+  bool isBottomBorderNeedToBeDrawn({
+    required List<DiaryCell> diaryCells,
+    required DiaryCell diaryCell,
+    required int columnsCount,
+    required BordersStyleEnum bordersStyleEnum,
+    required Color color,
+  }) {
+    bool isBottomBorderNeedToBeDrawn = true;
+    final index = diaryCells.indexOf(diaryCell);
+    final cellsLength = diaryCells.length;
+    if (index + columnsCount < cellsLength) {
+      final bottomCell = diaryCells[index + columnsCount];
+      final bottomCellTopBorderWidth = bottomCell.settings.topBorderWidth;
+      final bottomCellTopBorderColor =
+          bottomCell.settings.topBorderColor.toColor();
+      bottomCellTopBorderWidth == bordersStyleEnum.toDoubleWidth() &&
+              bottomCellTopBorderColor == color
+          ? isBottomBorderNeedToBeDrawn = false
+          : isBottomBorderNeedToBeDrawn = true;
+      // print('after check isBtmBrdr: $isBottomBorderNeedToBeDrawn');
+    }
+    return isBottomBorderNeedToBeDrawn;
+  }
+
+  bool isLeftBorderNeedToBeDrawn({
+    required List<DiaryCell> diaryCells,
+    required DiaryCell diaryCell,
+    required int columnsCount,
+    required BordersStyleEnum bordersStyleEnum,
+    required Color color,
+  }) {
+    bool isLeftBorderNeedToBeDrawn = true;
+    final index = diaryCells.indexOf(diaryCell);
+    bool isCellTheMostLeft = false;
+    index % columnsCount == 0
+        ? isCellTheMostLeft = true
+        : isCellTheMostLeft = false;
+    if (!isCellTheMostLeft) {
+      final leftCell = diaryCells[index - 1];
+      final leftCellRightBorderWidth = leftCell.settings.rightBorderWidth;
+      final leftCellRightBorderColor =
+          leftCell.settings.rightBorderColor.toColor();
+      leftCellRightBorderWidth == bordersStyleEnum.toDoubleWidth() &&
+              leftCellRightBorderColor == color
+          ? isLeftBorderNeedToBeDrawn = false
+          : isLeftBorderNeedToBeDrawn = true;
+      // print('after check: $isLeftBorderNeedToBeDrawn');
+    }
+    return isLeftBorderNeedToBeDrawn;
+  }
+
+  bool isRightBorderNeedToBeDrawn({
+    required List<DiaryCell> diaryCells,
+    required DiaryCell diaryCell,
+    required int columnsCount,
+    required BordersStyleEnum bordersStyleEnum,
+    required Color color,
+  }) {
+    bool isRightBorderNeedToBeDrawn = true;
+    final index = diaryCells.indexOf(diaryCell);
+    bool isCellTheMostRight = false;
+    index % columnsCount == columnsCount-1
+        ? isCellTheMostRight = true
+        : isCellTheMostRight = false;
+    if (!isCellTheMostRight) {
+      final rightCell = diaryCells[index + 1];
+      final rightCellLeftBorderWidth = rightCell.settings.leftBorderWidth;
+      final rightCellLeftBorderColor =
+          rightCell.settings.leftBorderColor.toColor();
+      rightCellLeftBorderWidth == bordersStyleEnum.toDoubleWidth() &&
+              rightCellLeftBorderColor == color
+          ? isRightBorderNeedToBeDrawn = false
+          : isRightBorderNeedToBeDrawn = true;
+      // print('after check isRghtBrdr: $isRightBorderNeedToBeDrawn');
+    }
+    return isRightBorderNeedToBeDrawn;
   }
 }

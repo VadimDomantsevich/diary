@@ -1,5 +1,11 @@
 import 'package:bloc/bloc.dart';
+import 'package:diary/core/constants/constants.dart';
+import 'package:diary/core/constants/enums.dart';
+import 'package:diary/core/extentions.dart';
+import 'package:diary/diary_list_screen/diary_cell_content_widget.dart';
 import 'package:diary/model/diary_cell.dart';
+import 'package:diary/model/diary_cell_settings.dart';
+import 'package:diary/model/diary_cell_text_settings.dart';
 import 'package:diary/model/diary_column.dart';
 import 'package:diary/model/diary_list.dart';
 import 'package:diary/services/diary_cell_service.dart';
@@ -34,13 +40,31 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         ((event, emit) => _onStartEditingListEvent(event, emit)));
     on<ReturnToLoadedEvent>(
         ((event, emit) => _onReturnToLoadedEvent(event, emit)));
+    on<ReturnToCellsSelectedEvent>(
+        ((event, emit) => _onReturnToCellsSelectedEvent(event, emit)));
     on<UpdateDiaryListNameEvent>(
         ((event, emit) => _onUpdateDiaryListNameEvent(event, emit)));
     on<ChangeDiaryCellEvent>(
         ((event, emit) => _onChangeDiaryCellEvent(event, emit)));
-    on<UpdateDiaryCellEvent>(
-        ((event, emit) => _onUpdateDiaryCellEvent(event, emit)));
+    on<UpdateDiaryCellInFirebaseEvent>(
+        ((event, emit) => _onUpdateDiaryCellInFirebaseEvent(event, emit)));
     on<OnPanUpdateEvent>(((event, emit) => _onPanUpdateEvent(event, emit)));
+    on<StartEditingCellsEvent>(
+        ((event, emit) => _onStartEditingCellsEvent(event, emit)));
+    on<ChangeDiaryCellsSettingsEvent>(
+        ((event, emit) => _onChangeDiaryCellsSettingsEvent(event, emit)));
+    on<ChangeDiaryCellsBordersSettingsEvent>(((event, emit) =>
+        _onChangeDiaryCellsBordersSettingsEvent(event, emit)));
+    on<UpdateDiaryCellsSettingsInFirebaseEvent>(((event, emit) =>
+        _onUpdateDiaryCellsSettingsInFirebaseEvent(event, emit)));
+    on<StartEditingColorEvent>(
+        ((event, emit) => _onStartEditingColorEvent(event, emit)));
+    on<StartEditingBordersEvent>(
+        ((event, emit) => _onStartEditingBordersEvent(event, emit)));
+    on<StartEditingBordersStyleEvent>(
+        ((event, emit) => _onStartEditingBordersStyleEvent(event, emit)));
+    on<TurnBackEditingEvent>(
+        ((event, emit) => _onTurnBackEditingEvent(event, emit)));
   }
 
   Future<void> _onCreateSampleEvent(
@@ -139,6 +163,14 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     state.whenOrNull(
       loaded: (diaryList, diaryColumns, diaryCells, cellsKeys, lists) async {
         List<DiaryCell> selectedCells = [event.diaryCell];
+        // final diaryColumn = diaryColumns
+        //     .firstWhere((element) => element.id == event.diaryCell.columnName);
+        // var defaultTextSettings =
+        //     await _diaryCellService.getDefaultCellTextSettings(
+        //   diaryList: diaryList,
+        //   diaryColumn: diaryColumn,
+        // );
+
         emit(
           DiaryListState.cellsSelected(
             diaryList: diaryList,
@@ -148,11 +180,22 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             selectedCells: selectedCells,
             cellsKeys: cellsKeys,
             lists: lists,
+            defaultTextSettings: event.diaryCell.textSettings,
+            defaultSettings: event.diaryCell.settings,
           ),
         );
       },
-      cellsSelected: (diaryList, diaryColumns, diaryCells, firstSelectedCell,
-          selectedCells, cellsKeys, lists) {
+      cellsSelected: (
+        diaryList,
+        diaryColumns,
+        diaryCells,
+        firstSelectedCell,
+        selectedCells,
+        cellsKeys,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) {
         List<DiaryCell> selectedCells = [event.diaryCell];
         emit(
           DiaryListState.cellsSelected(
@@ -163,6 +206,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             selectedCells: selectedCells,
             cellsKeys: cellsKeys,
             lists: lists,
+            defaultTextSettings: defaultTextSettings,
+            defaultSettings: defaultSettings,
           ),
         );
       },
@@ -174,8 +219,17 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      cellsSelected: (diaryList, diaryColumns, diaryCells, firstSelectedCell,
-          selectedCells, cellsKeys, lists) {
+      cellsSelected: (
+        diaryList,
+        diaryColumns,
+        diaryCells,
+        firstSelectedCell,
+        selectedCells,
+        cellsKeys,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) {
         emit(
           DiaryListState.cellsSelected(
             diaryList: diaryList,
@@ -185,6 +239,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             selectedCells: event.diaryCells,
             cellsKeys: cellsKeys,
             lists: lists,
+            defaultTextSettings: defaultTextSettings,
+            defaultSettings: defaultSettings,
           ),
         );
       },
@@ -249,6 +305,91 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           );
         }
       },
+      cellsSelected: (
+        diaryList,
+        diaryColumns,
+        diaryCells,
+        firstSelectedCell,
+        selectedCells,
+        cellsKeys,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) {
+        emit(
+          DiaryListState.loaded(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            cellsKeys: cellsKeys,
+            lists: lists,
+          ),
+        );
+      },
+      cellsEditing: (
+        diaryList,
+        diaryColumns,
+        diaryCells,
+        cellsKeys,
+        firstSelectedCell,
+        selectedCells,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) {
+        emit(
+          DiaryListState.loaded(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            cellsKeys: cellsKeys,
+            lists: lists,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _onReturnToCellsSelectedEvent(
+    ReturnToCellsSelectedEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      cellsEditing: (
+        diaryList,
+        diaryColumns,
+        diaryCells,
+        cellsKeys,
+        firstSelectedCell,
+        selectedCells,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) {
+        //Возможно надо будет обновлять ячейки
+        //Даже не возможно, а точно
+        emit(
+          DiaryListState.cellsSelected(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            firstSelectedCell: firstSelectedCell,
+            selectedCells: selectedCells,
+            cellsKeys: cellsKeys,
+            lists: lists,
+            defaultTextSettings: defaultTextSettings,
+            defaultSettings: defaultSettings,
+          ),
+        );
+      },
     );
   }
 
@@ -271,8 +412,17 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      cellsSelected: (diaryList, diaryColumns, diaryCells, firstSelectedCell,
-          selectedCells, cellsKeys, lists) {
+      cellsSelected: (
+        diaryList,
+        diaryColumns,
+        diaryCells,
+        firstSelectedCell,
+        selectedCells,
+        cellsKeys,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) {
         final cellBox =
             event.cellKey.currentContext!.findRenderObject() as RenderBox;
 
@@ -326,6 +476,10 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         // print('End');
         //The corners of the selected rect
 
+        //To fix bug with selecting
+        topPosition += 2;
+        bottomPosition -= 2;
+
         int verticalStep = columnsCount - 1;
         //print('Step: $verticalStep');
         List<int> touchedCellsIndexes = List<int>.empty(growable: true);
@@ -335,11 +489,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         int index = diaryCells.indexOf(firstSelectedCell);
         int checksCount = 0;
         touchedCellsIndexes.add(index);
-        if (index >= 0) {
-          index--;
-        } else {
-          isTouch = false;
-        }
+        index >= 0 ? index-- : isTouch = false;
         do {
           if (index >= 0 &&
               _diaryCellService.isRectTouchTheCell(
@@ -374,11 +524,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         //down direction
         isTouch = true;
         index = diaryCells.indexOf(firstSelectedCell);
-        if (index < cellsKeys.length - 1) {
-          index++;
-        } else {
-          isTouch = false;
-        }
+        index < cellsKeys.length - 1 ? index++ : isTouch = false;
         do {
           if (index < cellsKeys.length &&
               _diaryCellService.isRectTouchTheCell(
@@ -427,62 +573,904 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
   }
 
   Future<void> _onChangeDiaryCellEvent(
-    //И на апдейт контента и сеттингов
     ChangeDiaryCellEvent event,
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      cellsSelected: (diaryList, diaryColumns, diaryCells, firstSelectedCell,
-          selectedCells, cellsKeys, lists) async {
-        //Для редактирования 1 ячейки
-        if (selectedCells.length == 1 &&
-            event.textFieldText != firstSelectedCell.content.toString()) {
-          await _diaryCellService.update(
-            diaryList: diaryList,
-            diaryCell: firstSelectedCell,
-            dataType: firstSelectedCell.dataType,
-            content: event.textFieldText,
+      cellsSelected: (
+        diaryList,
+        diaryColumns,
+        diaryCells,
+        firstSelectedCell,
+        selectedCells,
+        cellsKeys,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) async {
+        if (event.textFieldText != firstSelectedCell.content.toString()) {
+          final index = diaryCells.indexOf(firstSelectedCell);
+          final changedCell =
+              event.diaryCell.copyWith(content: event.textFieldText);
+          List<DiaryCell> newCells = diaryCells.toList();
+          newCells[index] = changedCell;
+          List<DiaryCell> newSelectedCells =
+              List<DiaryCell>.empty(growable: true);
+          for (var cell in selectedCells) {
+            newSelectedCells.add(newCells[diaryCells.indexOf(cell)]);
+          }
+          emit(
+            DiaryListState.cellsSelected(
+              diaryList: diaryList,
+              diaryColumns: diaryColumns,
+              diaryCells: newCells,
+              firstSelectedCell: changedCell,
+              selectedCells: newSelectedCells,
+              cellsKeys: cellsKeys,
+              lists: lists,
+              defaultTextSettings: defaultTextSettings,
+              defaultSettings: defaultSettings,
+            ),
           );
-          final diaryColumn = diaryColumns.firstWhere(
-            ((element) => element.id == firstSelectedCell.columnName),
+          add(
+            UpdateDiaryCellInFirebaseEvent(
+              diaryCell: firstSelectedCell,
+              textFieldText: event.textFieldText,
+            ),
           );
-          final updatedCell = await _diaryCellService.getDiaryCell(
-            diaryList: diaryList,
-            diaryColumn: diaryColumn,
-            diaryCell: firstSelectedCell,
-          );
-          add(UpdateDiaryCellEvent(diaryCell: updatedCell));
         }
       },
     );
   }
 
-  Future<void> _onUpdateDiaryCellEvent(
-    UpdateDiaryCellEvent event,
+  Future<void> _onUpdateDiaryCellInFirebaseEvent(
+    UpdateDiaryCellInFirebaseEvent event,
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      cellsSelected: (diaryList, diaryColumns, diaryCells, firstSelectedCell,
-          selectedCells, cellsKeys, lists) async {
-        //Для редактирования 1 ячейки
-        if (selectedCells.length == 1) {
-          final index = diaryCells.indexOf(firstSelectedCell);
-          List<DiaryCell> newCells = diaryCells.toList();
-          newCells[index] = event.diaryCell;
-          emit(
-            DiaryListState.loaded(
-              diaryList: diaryList,
-              diaryColumns: diaryColumns,
-              diaryCells: newCells,
-              cellsKeys: cellsKeys,
-              lists: lists,
-            ),
-          );
-          add(
-            SelectDiaryCellEvent(diaryCell: event.diaryCell),
-          );
-        }
+      cellsSelected: (
+        diaryList,
+        diaryColumns,
+        diaryCells,
+        firstSelectedCell,
+        selectedCells,
+        cellsKeys,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) async {
+        //Update cell in Firebase after 10 sec delay if there is no more changes
+        Future.delayed(
+          const Duration(seconds: 10),
+          () async {
+            final index = diaryCells.indexOf(firstSelectedCell);
+            final cellKey = cellsKeys[index];
+            final cellWidget = cellKey.currentWidget as Container;
+            final textWidget = cellWidget.child as DiaryCellContentWidget;
+            final currentText = textWidget.content;
+            if (currentText == event.textFieldText) {
+              await _diaryCellService.update(
+                diaryList: diaryList,
+                diaryCell: firstSelectedCell,
+                content: event.textFieldText,
+              );
+            }
+          },
+        );
       },
     );
+  }
+
+  Future<void> _onStartEditingCellsEvent(
+    StartEditingCellsEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      cellsSelected: (
+        diaryList,
+        diaryColumns,
+        diaryCells,
+        firstSelectedCell,
+        selectedCells,
+        cellsKeys,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) async {
+        final isTextEditing = event.isTextEditing;
+        emit(
+          DiaryListState.cellsEditing(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            cellsKeys: cellsKeys,
+            firstSelectedCell: firstSelectedCell,
+            selectedCells: selectedCells,
+            isTextEditing: isTextEditing,
+            isColorEditing: false,
+            isBordersEditing: false,
+            isBordersStyleEditing: false,
+            lists: lists,
+            defaultTextSettings: defaultTextSettings,
+            defaultSettings: defaultSettings,
+          ),
+        );
+      },
+      cellsEditing: (
+        diaryList,
+        diaryColumns,
+        diaryCells,
+        cellsKeys,
+        firstSelectedCell,
+        selectedCells,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) {
+        final isTextEditing = event.isTextEditing;
+        emit(
+          DiaryListState.cellsEditing(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            cellsKeys: cellsKeys,
+            firstSelectedCell: firstSelectedCell,
+            selectedCells: selectedCells,
+            isTextEditing: isTextEditing,
+            isColorEditing: false,
+            isBordersEditing: false,
+            isBordersStyleEditing: false,
+            lists: lists,
+            defaultTextSettings: defaultTextSettings,
+            defaultSettings: defaultSettings,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _onStartEditingColorEvent(
+    StartEditingColorEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      cellsEditing: (
+        diaryList,
+        diaryColumns,
+        diaryCells,
+        cellsKeys,
+        firstSelectedCell,
+        selectedCells,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) {
+        emit(
+          DiaryListState.cellsEditing(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            cellsKeys: cellsKeys,
+            firstSelectedCell: firstSelectedCell,
+            selectedCells: selectedCells,
+            isTextEditing: isTextEditing,
+            isColorEditing: true,
+            isBordersEditing: isBordersEditing,
+            isBordersStyleEditing: false,
+            lists: lists,
+            defaultTextSettings: defaultTextSettings,
+            defaultSettings: defaultSettings,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _onStartEditingBordersEvent(
+    StartEditingBordersEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      cellsEditing: (
+        diaryList,
+        diaryColumns,
+        diaryCells,
+        cellsKeys,
+        firstSelectedCell,
+        selectedCells,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) {
+        emit(
+          DiaryListState.cellsEditing(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            cellsKeys: cellsKeys,
+            firstSelectedCell: firstSelectedCell,
+            selectedCells: selectedCells,
+            isTextEditing: isTextEditing,
+            isColorEditing: false,
+            isBordersEditing: true,
+            isBordersStyleEditing: false,
+            lists: lists,
+            defaultTextSettings: defaultTextSettings,
+            defaultSettings: defaultSettings,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _onStartEditingBordersStyleEvent(
+    StartEditingBordersStyleEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      cellsEditing: (
+        diaryList,
+        diaryColumns,
+        diaryCells,
+        cellsKeys,
+        firstSelectedCell,
+        selectedCells,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) {
+        emit(
+          DiaryListState.cellsEditing(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            cellsKeys: cellsKeys,
+            firstSelectedCell: firstSelectedCell,
+            selectedCells: selectedCells,
+            isTextEditing: isTextEditing,
+            isColorEditing: false,
+            isBordersEditing: true,
+            isBordersStyleEditing: true,
+            lists: lists,
+            defaultTextSettings: defaultTextSettings,
+            defaultSettings: defaultSettings,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _onTurnBackEditingEvent(
+    TurnBackEditingEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      cellsEditing: (
+        diaryList,
+        diaryColumns,
+        diaryCells,
+        cellsKeys,
+        firstSelectedCell,
+        selectedCells,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) {
+        emit(
+          DiaryListState.cellsEditing(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            cellsKeys: cellsKeys,
+            firstSelectedCell: firstSelectedCell,
+            selectedCells: selectedCells,
+            isTextEditing: isTextEditing,
+            isColorEditing: false,
+            isBordersEditing:
+                isColorEditing && isBordersEditing || isBordersStyleEditing
+                    ? true
+                    : false,
+            isBordersStyleEditing: false,
+            lists: lists,
+            defaultTextSettings: defaultTextSettings,
+            defaultSettings: defaultSettings,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _onChangeDiaryCellsSettingsEvent(
+    ChangeDiaryCellsSettingsEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      cellsEditing: (
+        diaryList,
+        diaryColumns,
+        diaryCells,
+        cellsKeys,
+        firstSelectedCell,
+        selectedCells,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) {
+        var newDiaryCells = List<DiaryCell>.empty(growable: true);
+        newDiaryCells.addAll(diaryCells);
+        var newSelectedCells = List<DiaryCell>.empty(growable: true);
+        for (var cell in selectedCells) {
+          final index = diaryCells.indexOf(cell);
+          var newFontSize = event.fontSize ?? cell.textSettings.fontSize;
+          newFontSize < Constants.minFontSize
+              ? newFontSize = Constants.minFontSize
+              : newFontSize;
+          newFontSize > Constants.maxFontSize
+              ? newFontSize = Constants.maxFontSize
+              : newFontSize;
+          final newTextSettings = DiaryCellTextSettings(
+            alignment: _diaryCellService.convertAlignments(
+              horizontal: event.horizontalAlignment ??
+                  cell.textSettings.alignment.toHorizontalAlignmentsEnum(),
+              vertical: event.verticalAlignment ??
+                  cell.textSettings.alignment.toVerticalAlignmentsEnum(),
+            ),
+            fontWeight: event.fontWeight ?? cell.textSettings.fontWeight,
+            textDecoration:
+                event.textDecoration ?? cell.textSettings.textDecoration,
+            fontStyle: event.fontStyle ?? cell.textSettings.fontStyle,
+            fontSize: newFontSize,
+            color: event.color ?? cell.textSettings.color,
+          );
+
+          final newSettings = DiaryCellSettings(
+            //Все эти параметры так же будут изменяться в будущем
+            topBorderWidth: cell.settings.topBorderWidth,
+            topBorderColor: cell.settings.topBorderColor,
+            leftBorderWidth: cell.settings.leftBorderWidth,
+            leftBorderColor: cell.settings.leftBorderColor,
+            rightBorderWidth: cell.settings.rightBorderWidth,
+            rightBorderColor: cell.settings.rightBorderColor,
+            bottomBorderWidth: cell.settings.bottomBorderWidth,
+            bottomBorderColor: cell.settings.bottomBorderColor,
+            height: cell.settings.height, //will change
+            backgroundColor:
+                event.backgroundColor ?? cell.settings.backgroundColor,
+          );
+          newDiaryCells[index] = DiaryCell(
+            columnName: cell.columnName,
+            columnPosition: cell.columnPosition,
+            day: cell.day,
+            settings: newSettings,
+            textSettings: newTextSettings,
+            content: cell.content,
+          );
+          newSelectedCells.add(newDiaryCells[index]);
+        }
+        var newFirstSelectedCell =
+            newDiaryCells[diaryCells.indexOf(firstSelectedCell)];
+
+        emit(
+          DiaryListState.cellsEditing(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: newDiaryCells,
+            cellsKeys: cellsKeys,
+            firstSelectedCell: newFirstSelectedCell,
+            selectedCells: newSelectedCells,
+            isTextEditing: isTextEditing,
+            isColorEditing: isColorEditing,
+            isBordersEditing: isBordersEditing,
+            isBordersStyleEditing: isBordersStyleEditing,
+            lists: lists,
+            defaultTextSettings: defaultTextSettings,
+            defaultSettings: defaultSettings,
+          ),
+        );
+
+        //Uncomment to save changes to base
+
+        // add(
+        //   DiaryListEvent.updateDiaryCellsSettingsInFirebase(
+        //     diaryCells: newSelectedCells,
+        //     fontWeight: event.fontWeight,
+        //     fontStyle: event.fontStyle,
+        //     textDecoration: event.textDecoration,
+        //     fontSize: event.fontSize,
+        //     color: event.color,
+        //     horizontalAlignment: event.horizontalAlignment,
+        //     verticalAlignment: event.verticalAlignment,
+        //   ),
+        // );
+      },
+    );
+  }
+
+  Future<void> _onChangeDiaryCellsBordersSettingsEvent(
+    ChangeDiaryCellsBordersSettingsEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      cellsEditing: (
+        diaryList,
+        diaryColumns,
+        diaryCells,
+        cellsKeys,
+        firstSelectedCell,
+        selectedCells,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) {
+        int columnsCount = 0;
+        for (var column in diaryColumns) {
+          columnsCount += column.columnsCount;
+        }
+        var newDiaryCells = _fillBorders(
+          diaryCells: diaryCells,
+          selectedCells: selectedCells,
+          columnsCount: columnsCount,
+          bordersStyleEnum: event.bordersStyleEnum,
+          bordersColor: event.bordersColor,
+          bordersEditing: event.bordersEditingEnum,
+        );
+        var newSelectedCells = List<DiaryCell>.empty(growable: true);
+
+        for (var cell in selectedCells) {
+          final index = diaryCells.indexOf(cell);
+          newSelectedCells.add(newDiaryCells[index]);
+        }
+        var newFirstSelectedCell =
+            newDiaryCells[diaryCells.indexOf(firstSelectedCell)];
+        emit(
+          DiaryListState.cellsEditing(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: newDiaryCells,
+            cellsKeys: cellsKeys,
+            firstSelectedCell: newFirstSelectedCell,
+            selectedCells: newSelectedCells,
+            isTextEditing: isTextEditing,
+            isColorEditing: isColorEditing,
+            isBordersEditing: isBordersEditing,
+            isBordersStyleEditing: isBordersStyleEditing,
+            lists: lists,
+            defaultTextSettings: defaultTextSettings,
+            defaultSettings: defaultSettings,
+          ),
+        );
+        //Uncomment to save changes to base
+
+        // add(
+        //   DiaryListEvent.updateDiaryCellsSettingsInFirebase(
+        //     diaryCells: newSelectedCells,
+        //   ),
+        // );
+      },
+    );
+  }
+
+  Future<void> _onUpdateDiaryCellsSettingsInFirebaseEvent(
+    UpdateDiaryCellsSettingsInFirebaseEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      cellsEditing: (
+        diaryList,
+        diaryColumns,
+        diaryCells,
+        cellsKeys,
+        firstSelectedCell,
+        selectedCells,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) {
+        //Update cell in Firebase after 10 sec delay if there is no more changes
+        //Uncomment to save changes in base
+
+        // for (var cell in event.diaryCells) {
+        //   Future.delayed(
+        //     const Duration(seconds: 10),
+        //     () async {
+        //       final newFontWeight =
+        //           event.fontWeight ?? cell.textSettings.fontWeight;
+        //       final newFontStyle =
+        //           event.fontStyle ?? cell.textSettings.fontStyle;
+        //       final newTextDecoration =
+        //           event.textDecoration ?? cell.textSettings.textDecoration;
+        //       final newSize = event.fontSize ?? cell.textSettings.fontSize;
+        //       final newColor = event.color ?? cell.textSettings.color;
+
+        //       final newTextSettings = DiaryCellTextSettings(
+        //         alignment: _diaryCellService.convertAlignments(
+        //           horizontal: event.horizontalAlignment ??
+        //               cell.textSettings.alignment.toHorizontalAlignmentsEnum(),
+        //           vertical: event.verticalAlignment ??
+        //               cell.textSettings.alignment.toVerticalAlignmentsEnum(),
+        //         ),
+        //         fontWeight: newFontWeight,
+        //         textDecoration: newTextDecoration,
+        //         fontStyle: newFontStyle,
+        //         fontSize: newSize,
+        //         color: newColor,
+        //       );
+
+        //       final newSettings = DiaryCellSettings(
+        //         topBorderWidth: cell.settings.topBorderWidth,
+        //         topBorderColor: cell.settings.topBorderColor,
+        //         leftBorderWidth: cell.settings.leftBorderWidth,
+        //         leftBorderColor: cell.settings.leftBorderColor,
+        //         rightBorderWidth: cell.settings.rightBorderWidth,
+        //         rightBorderColor: cell.settings.rightBorderColor,
+        //         bottomBorderWidth: cell.settings.bottomBorderWidth,
+        //         bottomBorderColor: cell.settings.bottomBorderColor,
+        //         height: cell.settings.height,
+        //         backgroundColor: cell.settings.backgroundColor,
+        //       );
+
+        //       await _diaryCellService.updateTextSettings(
+        //         diaryList: diaryList,
+        //         diaryCell: cell,
+        //         settings: newTextSettings,
+        //       );
+
+        //       await _diaryCellService.updateSettings(
+        //         diaryList: diaryList,
+        //         diaryCell: cell,
+        //         settings: newSettings,
+        //       );
+        //     },
+        //   );
+        // }
+      },
+    );
+  }
+
+  List<DiaryCell> _fillBorders({
+    required List<DiaryCell> diaryCells,
+    required List<DiaryCell> selectedCells,
+    required int columnsCount,
+    required BordersStyleEnum bordersStyleEnum,
+    required Color bordersColor,
+    required BordersEditingEnum bordersEditing,
+  }) {
+    var sorted = List<DiaryCell>.empty(growable: true);
+    sorted.addAll(selectedCells);
+    sorted.length > 1
+        ? sorted.sort(
+            (a, b) => diaryCells.indexOf(a).compareTo(diaryCells.indexOf(b)))
+        : sorted;
+    var topLeftCell = sorted.first;
+    int topLeftCellIndex = diaryCells.indexOf(topLeftCell);
+    int topRightCellIndex = diaryCells.indexOf(topLeftCell);
+    int bottomLeftCellIndex = diaryCells.indexOf(topLeftCell);
+    int bottomRightCellIndex = diaryCells.indexOf(topLeftCell);
+
+    bool isTopRightIndexFinded = false;
+    if (selectedCells.length > 1) {
+      for (var cell in sorted.skip(1)) {
+        final cellIndex = diaryCells.indexOf(cell);
+        if (cellIndex % columnsCount == topLeftCellIndex % columnsCount) {
+          isTopRightIndexFinded = true;
+        }
+        if (!isTopRightIndexFinded) {
+          topRightCellIndex = cellIndex;
+        }
+        if (cellIndex % columnsCount == topLeftCellIndex % columnsCount) {
+          bottomLeftCellIndex = cellIndex;
+        }
+        if (cellIndex % columnsCount == topRightCellIndex % columnsCount) {
+          bottomRightCellIndex = cellIndex;
+        }
+      }
+    }
+    var newDiaryCells = List<DiaryCell>.empty(growable: true);
+    newDiaryCells.addAll(diaryCells);
+
+    double newBorderWidth = bordersStyleEnum.toDoubleWidth();
+    var newBorderColor = bordersColor;
+    var cellsWithTopBorders = List<DiaryCell>.empty(growable: true);
+    var cellsWithLeftBorders = List<DiaryCell>.empty(growable: true);
+    var cellsWithBottomBorders = List<DiaryCell>.empty(growable: true);
+    var cellsWithRightBorders = List<DiaryCell>.empty(growable: true);
+    for (var cell in selectedCells) {
+      final index = diaryCells.indexOf(cell);
+      switch (bordersEditing) {
+        case BordersEditingEnum.all:
+          cellsWithTopBorders.add(cell);
+          cellsWithLeftBorders.add(cell);
+          cellsWithBottomBorders.add(cell);
+          cellsWithRightBorders.add(cell);
+          break;
+        case BordersEditingEnum.outer:
+          {
+            if (index >= topLeftCellIndex && index <= topRightCellIndex) {
+              cellsWithTopBorders.add(cell);
+            }
+            if (index % columnsCount == topLeftCellIndex % columnsCount) {
+              cellsWithLeftBorders.add(cell);
+            }
+            if (index >= bottomLeftCellIndex && index <= bottomRightCellIndex) {
+              cellsWithBottomBorders.add(cell);
+            }
+            if (index % columnsCount == topRightCellIndex % columnsCount) {
+              cellsWithRightBorders.add(cell);
+            }
+          }
+          break;
+        case BordersEditingEnum.inner:
+          if (selectedCells.length > 1) {
+            if (index % columnsCount >= topLeftCellIndex % columnsCount &&
+                index % columnsCount < topRightCellIndex % columnsCount) {
+              cellsWithRightBorders.add(cell);
+            }
+            if (index % columnsCount >= topLeftCellIndex % columnsCount &&
+                index % columnsCount <= topRightCellIndex % columnsCount &&
+                index < bottomLeftCellIndex) {
+              cellsWithBottomBorders.add(cell);
+            }
+          }
+          break;
+        case BordersEditingEnum.vertical:
+          if (selectedCells.length > 1) {
+            if (index % columnsCount >= topLeftCellIndex % columnsCount &&
+                index % columnsCount < topRightCellIndex % columnsCount) {
+              cellsWithRightBorders.add(cell);
+            }
+          }
+          break;
+        case BordersEditingEnum.horizontal:
+          if (selectedCells.length > 1) {
+            if (index % columnsCount >= topLeftCellIndex % columnsCount &&
+                index % columnsCount <= topRightCellIndex % columnsCount &&
+                index < bottomLeftCellIndex) {
+              cellsWithBottomBorders.add(cell);
+            }
+          }
+          break;
+        case BordersEditingEnum.left:
+          if (index % columnsCount == topLeftCellIndex % columnsCount) {
+            cellsWithLeftBorders.add(cell);
+          }
+          break;
+        case BordersEditingEnum.right:
+          if (index % columnsCount == topRightCellIndex % columnsCount) {
+            cellsWithRightBorders.add(cell);
+          }
+          break;
+        case BordersEditingEnum.top:
+          if (index >= topLeftCellIndex && index <= topRightCellIndex) {
+            cellsWithTopBorders.add(cell);
+          }
+          break;
+        case BordersEditingEnum.bottom:
+          if (index >= bottomLeftCellIndex && index <= bottomRightCellIndex) {
+            cellsWithBottomBorders.add(cell);
+          }
+          break;
+        case BordersEditingEnum.clear:
+          cellsWithTopBorders.add(cell);
+          cellsWithLeftBorders.add(cell);
+          cellsWithBottomBorders.add(cell);
+          cellsWithRightBorders.add(cell);
+          bordersStyleEnum = Constants.defaultBordersStyleEnum;
+          bordersColor = Constants.defaultBordersColor.toColor();
+          newBorderWidth = bordersStyleEnum.toDoubleWidth();
+          newBorderColor = Constants.defaultBordersColor.toColor();
+          // return newDiaryCells; //function
+          break;
+        case BordersEditingEnum.none:
+          break;
+      }
+    }
+    for (var cell in cellsWithTopBorders) {
+      final index = diaryCells.indexOf(cell);
+      final isTopBorderNeedToBeDrawn =
+          _diaryCellService.isTopBorderNeedToBeDrawn(
+        diaryCells: diaryCells,
+        diaryCell: cell,
+        columnsCount: columnsCount,
+        bordersStyleEnum: bordersStyleEnum,
+        color: bordersColor,
+      );
+      if (isTopBorderNeedToBeDrawn && index - columnsCount >= 0 ||
+          bordersEditing == BordersEditingEnum.clear &&
+              index - columnsCount >= 0) {
+        final topCell = newDiaryCells[index - columnsCount];
+        newDiaryCells[index - columnsCount] = DiaryCell(
+          columnName: topCell.columnName,
+          columnPosition: topCell.columnPosition,
+          day: topCell.day,
+          settings: topCell.settings.copyWith(
+            bottomBorderWidth: 0,
+            bottomBorderColor: bordersColor.toColorString(),
+          ),
+          textSettings: topCell.textSettings,
+          content: topCell.content,
+        );
+      }
+      if (isTopBorderNeedToBeDrawn ||
+          bordersEditing == BordersEditingEnum.clear) {
+        final cell = newDiaryCells[index];
+        newDiaryCells[index] = DiaryCell(
+          columnName: cell.columnName,
+          columnPosition: cell.columnPosition,
+          day: cell.day,
+          settings: cell.settings.copyWith(
+            topBorderWidth: newBorderWidth,
+            topBorderColor: newBorderColor.toColorString(),
+          ),
+          textSettings: cell.textSettings,
+          content: cell.content,
+        );
+      }
+    }
+    for (var cell in cellsWithLeftBorders) {
+      final index = diaryCells.indexOf(cell);
+      final isLeftBorderNeedToBeDrawn =
+          _diaryCellService.isLeftBorderNeedToBeDrawn(
+        diaryCells: diaryCells,
+        diaryCell: cell,
+        columnsCount: columnsCount,
+        bordersStyleEnum: bordersStyleEnum,
+        color: bordersColor,
+      );
+      if (isLeftBorderNeedToBeDrawn &&
+              index % columnsCount != 0 &&
+              index != 0 ||
+          bordersEditing == BordersEditingEnum.clear &&
+              index % columnsCount != 0 &&
+              index != 0) {
+        final leftCell = newDiaryCells[index - 1];
+        newDiaryCells[index - 1] = DiaryCell(
+          columnName: leftCell.columnName,
+          columnPosition: leftCell.columnPosition,
+          day: leftCell.day,
+          settings: leftCell.settings.copyWith(
+            rightBorderWidth: 0,
+            rightBorderColor: bordersColor.toColorString(),
+          ),
+          textSettings: leftCell.textSettings,
+          content: leftCell.content,
+        );
+      }
+      if (isLeftBorderNeedToBeDrawn ||
+          bordersEditing == BordersEditingEnum.clear) {
+        final cell = newDiaryCells[index];
+        newDiaryCells[index] = DiaryCell(
+          columnName: cell.columnName,
+          columnPosition: cell.columnPosition,
+          day: cell.day,
+          settings: cell.settings.copyWith(
+            leftBorderWidth: newBorderWidth,
+            leftBorderColor: newBorderColor.toColorString(),
+          ),
+          textSettings: cell.textSettings,
+          content: cell.content,
+        );
+      }
+    }
+    for (var cell in cellsWithBottomBorders) {
+      final index = diaryCells.indexOf(cell);
+      final isBottomBorderNeedToBeDrawn =
+          _diaryCellService.isBottomBorderNeedToBeDrawn(
+        diaryCells: diaryCells,
+        diaryCell: cell,
+        columnsCount: columnsCount,
+        bordersStyleEnum: bordersStyleEnum,
+        color: bordersColor,
+      );
+      if (isBottomBorderNeedToBeDrawn &&
+              index + columnsCount < diaryCells.length ||
+          bordersEditing == BordersEditingEnum.clear &&
+              index + columnsCount < diaryCells.length) {
+        final bottomCell = newDiaryCells[index + columnsCount];
+        newDiaryCells[index + columnsCount] = DiaryCell(
+          columnName: bottomCell.columnName,
+          columnPosition: bottomCell.columnPosition,
+          day: bottomCell.day,
+          settings: bottomCell.settings.copyWith(
+            topBorderWidth: 0,
+            topBorderColor: bordersColor.toColorString(),
+          ),
+          textSettings: bottomCell.textSettings,
+          content: bottomCell.content,
+        );
+      }
+      if (isBottomBorderNeedToBeDrawn ||
+          bordersEditing == BordersEditingEnum.clear) {
+        final cell = newDiaryCells[index];
+        newDiaryCells[index] = DiaryCell(
+          columnName: cell.columnName,
+          columnPosition: cell.columnPosition,
+          day: cell.day,
+          settings: cell.settings.copyWith(
+            bottomBorderWidth: newBorderWidth,
+            bottomBorderColor: newBorderColor.toColorString(),
+          ),
+          textSettings: cell.textSettings,
+          content: cell.content,
+        );
+      }
+    }
+    for (var cell in cellsWithRightBorders) {
+      final index = diaryCells.indexOf(cell);
+      final isRightBorderNeedToBeDrawn =
+          _diaryCellService.isRightBorderNeedToBeDrawn(
+        diaryCells: diaryCells,
+        diaryCell: cell,
+        columnsCount: columnsCount,
+        bordersStyleEnum: bordersStyleEnum,
+        color: bordersColor,
+      );
+      if (isRightBorderNeedToBeDrawn &&
+              index % columnsCount != columnsCount - 1 &&
+              index < diaryCells.length ||
+          bordersEditing == BordersEditingEnum.clear &&
+              index % columnsCount != columnsCount - 1 &&
+              index < diaryCells.length) {
+        final rightCell = newDiaryCells[index + 1];
+        newDiaryCells[index + 1] = DiaryCell(
+          columnName: rightCell.columnName,
+          columnPosition: rightCell.columnPosition,
+          day: rightCell.day,
+          settings: rightCell.settings.copyWith(
+            leftBorderWidth: 0,
+            leftBorderColor: bordersColor.toColorString(),
+          ),
+          textSettings: rightCell.textSettings,
+          content: rightCell.content,
+        );
+      }
+      if (isRightBorderNeedToBeDrawn ||
+          bordersEditing == BordersEditingEnum.clear) {
+        final cell = newDiaryCells[index];
+        newDiaryCells[index] = DiaryCell(
+          columnName: cell.columnName,
+          columnPosition: cell.columnPosition,
+          day: cell.day,
+          settings: cell.settings.copyWith(
+            rightBorderWidth: newBorderWidth,
+            rightBorderColor: newBorderColor.toColorString(),
+          ),
+          textSettings: cell.textSettings,
+          content: cell.content,
+        );
+      }
+    }
+    return newDiaryCells;
   }
 }

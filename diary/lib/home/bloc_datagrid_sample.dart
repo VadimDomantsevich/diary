@@ -1,4 +1,5 @@
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
+import 'package:diary/diary_list_screen/diary_cell_edit/diary_cell_edit_bloc.dart';
 import 'package:diary/grid_display/bloc/grid_display_bloc.dart';
 import 'package:diary/home/datagrid_sample.dart';
 import 'package:flutter/material.dart';
@@ -37,21 +38,21 @@ class BlocDataGridSample extends StatelessWidget {
               child: const DataGridSample(),
             );
           },
-          // cellSelected:
-          //     (diaryList, diaryColumns, diaryCells, selectedCell, cellsKeys) {
-          //       print('CellSelected state');
-          //   return BlocProvider(
-          //     create: (context) => GridDisplayBloc(
-          //       diaryList: diaryList,
-          //       diaryColumns: diaryColumns,
-          //       diaryCells: diaryCells,
-          //       transformationController: TransformationController(),
-          //     ),
-          //     child: const DataGridSample(),
-          //   );
-          // },
-          cellsSelected: (diaryList, diaryColumns, diaryCells,
-              firstSelectedCell, selectedCells, cellsKeys, lists) {
+          cellsEditing: (
+            diaryList,
+            diaryColumns,
+            diaryCells,
+            cellsKeys,
+            firstSelectedCell,
+            selectedCells,
+            isTextEditing,
+            isColorEditing,
+            isBordersEditing,
+            isBordersStyleEditing,
+            lists,
+            defaultTextSettings,
+            defaultSettings,
+          ) {
             return BlocProvider(
               create: (context) => GridDisplayBloc(
                 diaryList: diaryList,
@@ -59,7 +60,34 @@ class BlocDataGridSample extends StatelessWidget {
                 diaryCells: diaryCells,
                 transformationController: TransformationController(),
               ),
-              child: const DataGridSample(),
+              child: BlocProvider(
+                create: (context) => DiaryCellEditBloc(),
+                child: const DataGridSample(),
+              ),
+            );
+          },
+          cellsSelected: (
+            diaryList,
+            diaryColumns,
+            diaryCells,
+            firstSelectedCell,
+            selectedCells,
+            cellsKeys,
+            lists,
+            defaultTextSettings,
+            defaultSettings,
+          ) {
+            return BlocProvider(
+              create: (context) => GridDisplayBloc(
+                diaryList: diaryList,
+                diaryColumns: diaryColumns,
+                diaryCells: diaryCells,
+                transformationController: TransformationController(),
+              ),
+              child: BlocProvider(
+                create: (context) => DiaryCellEditBloc(),
+                child: const DataGridSample(),
+              ),
             );
           },
           orElse: () => Container(),

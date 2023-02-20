@@ -13,11 +13,11 @@ abstract class _$DiaryCellCWProxy {
 
   DiaryCell content(dynamic content);
 
-  DiaryCell dataType(DataTypesEnum dataType);
-
   DiaryCell day(int day);
 
   DiaryCell settings(DiaryCellSettings settings);
+
+  DiaryCell textSettings(DiaryCellTextSettings textSettings);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `DiaryCell(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -29,9 +29,9 @@ abstract class _$DiaryCellCWProxy {
     String? columnName,
     int? columnPosition,
     dynamic? content,
-    DataTypesEnum? dataType,
     int? day,
     DiaryCellSettings? settings,
+    DiaryCellTextSettings? textSettings,
   });
 }
 
@@ -52,13 +52,14 @@ class _$DiaryCellCWProxyImpl implements _$DiaryCellCWProxy {
   DiaryCell content(dynamic content) => this(content: content);
 
   @override
-  DiaryCell dataType(DataTypesEnum dataType) => this(dataType: dataType);
-
-  @override
   DiaryCell day(int day) => this(day: day);
 
   @override
   DiaryCell settings(DiaryCellSettings settings) => this(settings: settings);
+
+  @override
+  DiaryCell textSettings(DiaryCellTextSettings textSettings) =>
+      this(textSettings: textSettings);
 
   @override
 
@@ -72,9 +73,9 @@ class _$DiaryCellCWProxyImpl implements _$DiaryCellCWProxy {
     Object? columnName = const $CopyWithPlaceholder(),
     Object? columnPosition = const $CopyWithPlaceholder(),
     Object? content = const $CopyWithPlaceholder(),
-    Object? dataType = const $CopyWithPlaceholder(),
     Object? day = const $CopyWithPlaceholder(),
     Object? settings = const $CopyWithPlaceholder(),
+    Object? textSettings = const $CopyWithPlaceholder(),
   }) {
     return DiaryCell(
       columnName:
@@ -91,10 +92,6 @@ class _$DiaryCellCWProxyImpl implements _$DiaryCellCWProxy {
           ? _value.content
           // ignore: cast_nullable_to_non_nullable
           : content as dynamic,
-      dataType: dataType == const $CopyWithPlaceholder() || dataType == null
-          ? _value.dataType
-          // ignore: cast_nullable_to_non_nullable
-          : dataType as DataTypesEnum,
       day: day == const $CopyWithPlaceholder() || day == null
           ? _value.day
           // ignore: cast_nullable_to_non_nullable
@@ -103,6 +100,11 @@ class _$DiaryCellCWProxyImpl implements _$DiaryCellCWProxy {
           ? _value.settings
           // ignore: cast_nullable_to_non_nullable
           : settings as DiaryCellSettings,
+      textSettings:
+          textSettings == const $CopyWithPlaceholder() || textSettings == null
+              ? _value.textSettings
+              // ignore: cast_nullable_to_non_nullable
+              : textSettings as DiaryCellTextSettings,
     );
   }
 }

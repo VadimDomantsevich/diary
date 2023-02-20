@@ -17,6 +17,7 @@ class GridDisplayEvent with _$GridDisplayEvent {
 
   const factory GridDisplayEvent.onInteractionEnd({
     required ScaleEndDetails details,
+    required bool isCellSelected,
   }) = _OnInteractionEndEvent;
 
   const factory GridDisplayEvent.onPointerDown({
@@ -29,4 +30,10 @@ class GridDisplayEvent with _$GridDisplayEvent {
   const factory GridDisplayEvent.onPointerUp({
     required PointerUpEvent details,
   }) = _OnPointerUpEvent;
+
+  const factory GridDisplayEvent.showAppBar() = _ShowAppBarEvent;
+
+  const factory GridDisplayEvent.showEditCellPanel() = _ShowEditCellPanelEvent;
+
+  const factory GridDisplayEvent.showBottomPanel() = _ShowBottomPanelEvent;
 }

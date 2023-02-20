@@ -1,9 +1,12 @@
 import 'package:bloc/bloc.dart';
+import 'package:diary/core/constants/colors/black_color_constants.dart';
+import 'package:diary/core/constants/constants.dart';
 import 'package:diary/core/constants/enums.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/model/diary_cell.dart';
 import 'package:diary/model/diary_cell_settings.dart';
-import 'package:diary/model/diary_list.dart';
-import 'package:diary/services/diary_cell_service.dart';
+import 'package:diary/model/diary_cell_text_settings.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'diary_cell_edit_state.dart';
@@ -11,74 +14,401 @@ part 'diary_cell_edit_event.dart';
 part 'diary_cell_edit_bloc.freezed.dart';
 
 class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
-  final DiaryList diaryList;
-  final DiaryCell diaryCell;
-  final DiaryCellService _diaryCellService; //Мб другой сервис здесь
-  DiaryCellEditBloc(
-    this._diaryCellService,
-    this.diaryCell,
-    this.diaryList,
-  ) : super(
-          DiaryCellEditState.cellSelected(
-            diaryCell: diaryCell,
-            diaryList: diaryList,
-          ),
+  DiaryCellEditBloc()
+      : super(
+          const DiaryCellEditState.initial(),
         ) {
-    on<EditCellEvent>((event, emit) => onEditCellEvent(event, emit));
-    on<ChangeCellAlignmentEvent>(
-        (event, emit) => onChangeCellAlignmentEvent(event, emit));
-    on<ConfirmChangesEvent>(
-        (event, emit) => onConfirmChangesEvent(event, emit));
+    on<StartTextEditingEvent>(
+        (event, emit) => _onStartTextEditingEvent(event, emit));
+    on<StartColorEditingEvent>(
+        (event, emit) => _onStartColorEditingEvent(event, emit));
+    on<ChangeCellEvent>((event, emit) => _onChangeCellEvent(event, emit));
+    on<ChangeColorEvent>((event, emit) => _onChangeColorEvent(event, emit));
+    on<ReloadColorEvent>((event, emit) => _onReloadColorEvent(event, emit));
+    on<StartCellEditingEvent>(
+        (event, emit) => _onStartCellEditingEvent(event, emit));
+    on<StartBordersEditingEvent>(
+        (event, emit) => _onStartBordersEditingEvent(event, emit));
+    on<ChangeBordersEvent>((event, emit) => _onChangeBordersEvent(event, emit));
+    // on<ReturnToDefaultSettingsEvent>((event, emit) => _onReturnToDefaultSettingsEvent(event, emit));
+    // on<ReturnToDefaultSettingsEvent>((event, emit) => _onReturnToDefaultColorEvent(event, emit));
   }
 
-  void onEditCellEvent(
-    EditCellEvent event,
+  void _onStartTextEditingEvent(
+    StartTextEditingEvent event,
     Emitter<DiaryCellEditState> emit,
   ) {
+    final isBold =
+        event.firstSelectedCell.textSettings.fontWeight == FontWeightEnum.bold;
+    final isItalic =
+        event.firstSelectedCell.textSettings.fontStyle == FontStyleEnum.italic;
+    final isUnderline = event.firstSelectedCell.textSettings.textDecoration ==
+        TextDecorationEnum.underline;
+    final isLineThrough = event.firstSelectedCell.textSettings.textDecoration ==
+        TextDecorationEnum.lineThrough;
+    final fontSize = event.firstSelectedCell.textSettings.fontSize;
+    var isHorizontalLeft = false;
+    var isHorizontalCenter = false;
+    var isHorizontalRight = false;
+    var isVerticalTop = false;
+    var isVerticalCenter = false;
+    var isVerticalBottom = false;
+    switch (event.firstSelectedCell.textSettings.alignment) {
+      case AlignmentsEnum.bottomCenter:
+        isHorizontalCenter = true;
+        isVerticalBottom = true;
+        break;
+      case AlignmentsEnum.bottomLeft:
+        isHorizontalLeft = true;
+        isVerticalBottom = true;
+        break;
+      case AlignmentsEnum.bottomRight:
+        isHorizontalRight = true;
+        isVerticalBottom = true;
+        break;
+      case AlignmentsEnum.center:
+        isHorizontalCenter = true;
+        isVerticalCenter = true;
+        break;
+      case AlignmentsEnum.centerLeft:
+        isHorizontalLeft = true;
+        isVerticalCenter = true;
+        break;
+      case AlignmentsEnum.centerRight:
+        isHorizontalRight = true;
+        isVerticalCenter = true;
+        break;
+      case AlignmentsEnum.topCenter:
+        isHorizontalCenter = true;
+        isVerticalTop = true;
+        break;
+      case AlignmentsEnum.topLeft:
+        isHorizontalLeft = true;
+        isVerticalTop = true;
+        break;
+      case AlignmentsEnum.topRight:
+        isHorizontalRight = true;
+        isVerticalTop = true;
+        break;
+    }
     emit(
-      DiaryCellEditState.editing(
-        diaryList: event.diaryList,
-        diaryCell: event.diaryCell,
+      DiaryCellEditState.textEditing(
+        isBold: isBold,
+        isItalic: isItalic,
+        isUnderline: isUnderline,
+        isLineThrough: isLineThrough,
+        fontSize: fontSize,
+        color: event.firstSelectedCell.textSettings.color.toColor(),
+        isHorizontalCenter: isHorizontalCenter,
+        isHorizontalLeft: isHorizontalLeft,
+        isHorizontalRight: isHorizontalRight,
+        isVerticalBottom: isVerticalBottom,
+        isVerticalCenter: isVerticalCenter,
+        isVerticalTop: isVerticalTop,
+        defaultTextSettings: event.defaultTextSettings,
+        defaultSettings: event.defaultSettings,
       ),
     );
   }
 
-  void onChangeCellAlignmentEvent(
-    ChangeCellAlignmentEvent event,
+  void _onStartCellEditingEvent(
+    StartCellEditingEvent event,
     Emitter<DiaryCellEditState> emit,
   ) {
-    final alignment = AlignmentsEnum.values
-        .firstWhere((element) => element.name == event.alignment);
-    final newSettings = event.diaryCell.settings.copyWith(alignment: alignment);
-    final newCell = diaryCell.copyWith(settings: newSettings);
+    final fillColor =
+        event.firstSelectedCell.settings.backgroundColor.toColor();
     emit(
-      DiaryCellEditState.cellSelected(
-        diaryList: diaryList,
-        diaryCell: newCell,
-      ),
-    );
-    add(
-      EditCellEvent(
-        diaryList: diaryList,
-        diaryCell: newCell,
+      DiaryCellEditState.cellEditing(
+        fillColor: fillColor,
       ),
     );
   }
 
-  Future<void> onConfirmChangesEvent(
-    ConfirmChangesEvent event,
+  void _onStartColorEditingEvent(
+    StartColorEditingEvent event,
     Emitter<DiaryCellEditState> emit,
-  ) async {
-    _diaryCellService.updateSettings(
-      diaryList: event.diaryList,
-      diaryCell: event.diaryCell,
-      settings: event.diaryCell.settings,
+  ) {
+    state.whenOrNull(
+      cellEditing: (fillColor) {
+        String mainColorString = fillColor.toColorString();
+        final mainColor = mainColorString.toMainColorsEnum();
+        emit(
+          DiaryCellEditState.colorEditing(
+            colorEditingEnum: event.colorEditingEnum,
+            mainColor: mainColor,
+            selectedColor: fillColor,
+            defaultColor: event.defaultColor,
+          ),
+        );
+      },
+      textEditing: (
+        isBold,
+        isItalic,
+        isUnderline,
+        isLineThrough,
+        fontSize,
+        color,
+        isHorizontalLeft,
+        isHorizontalCenter,
+        isHorizontalRight,
+        isVerticalTop,
+        isVerticalCenter,
+        isVerticalBottom,
+        defaultTextSettings,
+        defaultSettings,
+      ) {
+        String mainColorString = color.toColorString();
+        final mainColor = mainColorString.toMainColorsEnum();
+        emit(
+          DiaryCellEditState.colorEditing(
+            colorEditingEnum: event.colorEditingEnum,
+            mainColor: mainColor,
+            selectedColor: color,
+            defaultColor: event.defaultColor,
+          ),
+        );
+      },
+      bordersEditing: (bordersEditingEnum, bordersStyleEnum, bordersColor) {
+        String mainColorString = bordersColor.toColorString();
+        final mainColor = mainColorString.toMainColorsEnum();
+        emit(
+          DiaryCellEditState.colorEditing(
+            colorEditingEnum: event.colorEditingEnum,
+            mainColor: mainColor,
+            selectedColor: bordersColor,
+            defaultColor: event.defaultColor,
+            bordersEditingEnum: bordersEditingEnum,
+            bordersStyleEnum: bordersStyleEnum,
+          ),
+        );
+      },
     );
-    emit(
-      DiaryCellEditState.cellSelected(
-        diaryList: event.diaryList,
-        diaryCell: event.diaryCell,
-      ),
+  }
+
+  void _onChangeCellEvent(
+    ChangeCellEvent event,
+    Emitter<DiaryCellEditState> emit,
+  ) {
+    state.whenOrNull(
+      textEditing: (
+        isBold,
+        isItalic,
+        isUnderline,
+        isLineThrough,
+        fontSize,
+        color,
+        isHorizontalLeft,
+        isHorizontalCenter,
+        isHorizontalRight,
+        isVerticalTop,
+        isVerticalCenter,
+        isVerticalBottom,
+        defaultTextSettings,
+        defaultSettings,
+      ) {
+        var newColor = color;
+        if (event.color != null) {
+          newColor = event.color!.toColor();
+        }
+        final newFontWeightEnum = event.fontWeight ??
+            (isBold ? FontWeightEnum.bold : FontWeightEnum.normal);
+        final newIsBold =
+            newFontWeightEnum == FontWeightEnum.bold ? true : false;
+        final newFontStyleEnum = event.fontStyle ??
+            (isItalic ? FontStyleEnum.italic : FontStyleEnum.normal);
+        final newIsItalic =
+            newFontStyleEnum == FontStyleEnum.italic ? true : false;
+        final newTextDecorationEnum = event.textDecoration ??
+            (isUnderline
+                ? TextDecorationEnum.underline
+                : isLineThrough
+                    ? TextDecorationEnum.lineThrough
+                    : TextDecorationEnum.none);
+        final newIsUnderline =
+            newTextDecorationEnum == TextDecorationEnum.underline
+                ? true
+                : false;
+        final newIsLineThrough =
+            newTextDecorationEnum == TextDecorationEnum.lineThrough
+                ? true
+                : false;
+        var newFontSize = event.fontSize ?? fontSize;
+        newFontSize < Constants.minFontSize
+            ? newFontSize = Constants.minFontSize
+            : newFontSize + 1;
+        newFontSize > Constants.maxFontSize
+            ? newFontSize = Constants.maxFontSize
+            : newFontSize - 1;
+        var newHorizontalLeft = false;
+        var newHorizontalCenter = false;
+        var newHorizontalRight = false;
+        var newVerticalTop = false;
+        var newVerticalCenter = false;
+        var newVerticalBottom = false;
+        switch (event.horizontalAlignment) {
+          case HorizontalAlignmentsEnum.left:
+            newHorizontalLeft = true;
+            break;
+          case HorizontalAlignmentsEnum.center:
+            newHorizontalCenter = true;
+            break;
+          case HorizontalAlignmentsEnum.right:
+            newHorizontalRight = true;
+            break;
+          case null:
+            newHorizontalLeft = isHorizontalLeft;
+            newHorizontalCenter = isHorizontalCenter;
+            newHorizontalRight = isHorizontalRight;
+            break;
+        }
+        switch (event.verticalAlignment) {
+          case VerticalAlignmentsEnum.top:
+            newVerticalTop = true;
+            break;
+          case VerticalAlignmentsEnum.center:
+            newVerticalCenter = true;
+            break;
+          case VerticalAlignmentsEnum.bottom:
+            newVerticalBottom = true;
+            break;
+          case null:
+            newVerticalTop = isVerticalTop;
+            newVerticalCenter = isVerticalCenter;
+            newVerticalBottom = isVerticalBottom;
+            break;
+        }
+        emit(
+          DiaryCellEditState.textEditing(
+            isBold: newIsBold,
+            isItalic: newIsItalic,
+            isUnderline: newIsUnderline,
+            isLineThrough: newIsLineThrough,
+            fontSize: newFontSize,
+            color: newColor,
+            isHorizontalLeft: newHorizontalLeft,
+            isHorizontalCenter: newHorizontalCenter,
+            isHorizontalRight: newHorizontalRight,
+            isVerticalTop: newVerticalTop,
+            isVerticalCenter: newVerticalCenter,
+            isVerticalBottom: newVerticalBottom,
+            defaultTextSettings: defaultTextSettings,
+            defaultSettings: defaultSettings,
+          ),
+        );
+      },
+    );
+  }
+
+  void _onChangeColorEvent(
+    ChangeColorEvent event,
+    Emitter<DiaryCellEditState> emit,
+  ) {
+    state.whenOrNull(
+      colorEditing: (colorEditingEnum, mainColor, selectedColor, defaultColor,
+          bordersEditingEnum, bordersStyleEnum) {
+        if (event.color != null) {
+          final string = event.color!;
+          final newSelectedColor = string.toColor();
+          emit(
+            DiaryCellEditState.colorEditing(
+              colorEditingEnum: colorEditingEnum,
+              mainColor: event.mainColor,
+              selectedColor: newSelectedColor,
+              defaultColor: defaultColor,
+              bordersEditingEnum: bordersEditingEnum,
+              bordersStyleEnum: bordersStyleEnum,
+            ),
+          );
+        } else {
+          final newSelectedColor = event.mainColor.toColor();
+          emit(
+            DiaryCellEditState.colorEditing(
+              colorEditingEnum: colorEditingEnum,
+              mainColor: event.mainColor,
+              selectedColor: newSelectedColor,
+              defaultColor: defaultColor,
+              bordersEditingEnum: bordersEditingEnum,
+              bordersStyleEnum: bordersStyleEnum,
+            ),
+          );
+        }
+      },
+    );
+  }
+
+  void _onReloadColorEvent(
+    ReloadColorEvent event,
+    Emitter<DiaryCellEditState> emit,
+  ) {
+    state.whenOrNull(
+      colorEditing: (colorEditingEnum, mainColor, selectedColor, defaultColor,
+          bordersEditingEnum, bordersStyleEnum) {
+        emit(
+          DiaryCellEditState.colorEditing(
+            colorEditingEnum: colorEditingEnum,
+            mainColor: event.mainColor,
+            selectedColor: event.color,
+            defaultColor: defaultColor,
+            bordersEditingEnum: bordersEditingEnum,
+            bordersStyleEnum: bordersStyleEnum,
+          ),
+        );
+      },
+    );
+  }
+
+  void _onStartBordersEditingEvent(
+    StartBordersEditingEvent event,
+    Emitter<DiaryCellEditState> emit,
+  ) {
+    state.whenOrNull(
+      cellEditing: (fillColor) {
+        Color bordersColor =
+            BlackColorConstants.black1.toColor(); //Depends on defaultSettings
+        const bordersEditingEnum =
+            BordersEditingEnum.none; //Depends on defaultSettings
+        const bordersStyleEnum =
+            BordersStyleEnum.thin; //Depends on defaultSettings
+        emit(
+          DiaryCellEditState.bordersEditing(
+            bordersEditingEnum: bordersEditingEnum,
+            bordersStyleEnum: bordersStyleEnum,
+            bordersColor: bordersColor,
+          ),
+        );
+      },
+      colorEditing: (colorEditingEnum, mainColor, selectedColor, defaultColor,
+          bordersEditingEnum, bordersStyleEnum) {
+        Color bordersColor = selectedColor;
+        emit(
+          DiaryCellEditState.bordersEditing(
+            bordersEditingEnum: bordersEditingEnum ?? BordersEditingEnum.none,
+            bordersStyleEnum: bordersStyleEnum ?? BordersStyleEnum.thin,
+            bordersColor: bordersColor,
+          ),
+        );
+      },
+    );
+  }
+
+  void _onChangeBordersEvent(
+    ChangeBordersEvent event,
+    Emitter<DiaryCellEditState> emit,
+  ) {
+    state.whenOrNull(
+      bordersEditing: (bordersEditingEnum, bordersStyleEnum, bordersColor) {
+        Color newBordersColor = event.color ?? bordersColor;
+        final newBordersEditingEnum =
+            event.bordersEditingEnum ?? bordersEditingEnum;
+        final newBordersStyleEnum = event.bordersStyleEnum ?? bordersStyleEnum;
+        emit(
+          DiaryCellEditState.bordersEditing(
+            bordersEditingEnum: newBordersEditingEnum,
+            bordersStyleEnum: newBordersStyleEnum,
+            bordersColor: newBordersColor,
+          ),
+        );
+      },
     );
   }
 }
