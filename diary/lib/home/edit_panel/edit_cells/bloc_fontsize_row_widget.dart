@@ -59,6 +59,48 @@ class BlocFontSizeRowWidget extends StatelessWidget {
             fontSize: fontSize.toInt(),
           );
         },
+        capitalCellTextEditing: (
+          isBold,
+          isItalic,
+          isUnderline,
+          isLineThrough,
+          fontSize,
+          color,
+          isHorizontalLeft,
+          isHorizontalCenter,
+          isHorizontalRight,
+          isVerticalTop,
+          isVerticalCenter,
+          isVerticalBottom,
+          defaultSettings,
+        ) {
+          return FontSizeEditWidget(
+            textWidget: EditPanelTextWidget.common(
+              content: AppLocalizations.of(context).fontSize,
+            ),
+            onPressedDown: () {
+              context.read<DiaryListBloc>().add(
+                    ChangeCapitalCellSettingsEvent(
+                      fontSize: fontSize - 1,
+                    ),
+                  );
+              context.read<DiaryCellEditBloc>().add(
+                    ChangeCellEvent(fontSize: fontSize - 1),
+                  );
+            },
+            onPressedUp: () {
+              context.read<DiaryListBloc>().add(
+                    ChangeCapitalCellSettingsEvent(
+                      fontSize: fontSize + 1,
+                    ),
+                  );
+              context.read<DiaryCellEditBloc>().add(
+                    ChangeCellEvent(fontSize: fontSize + 1),
+                  );
+            },
+            fontSize: fontSize.toInt(),
+          );
+        },
         orElse: () => Container(),
       );
     });

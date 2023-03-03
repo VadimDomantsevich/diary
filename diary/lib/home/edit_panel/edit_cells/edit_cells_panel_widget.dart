@@ -53,10 +53,10 @@ class EditCellsPanelWidget extends StatelessWidget {
         widthFactor: EditPanelConstants.editPanelWidthFactor,
         child: Container(
           decoration: const BoxDecoration(
-            color: Colors.white,
+            color: Colors.white, //const value
             border: Border(
               top: BorderSide(
-                color: Colors.black,
+                color: Colors.black, //const value
                 width: EditPanelConstants.editPanelBorderSideWidth,
               ),
             ),

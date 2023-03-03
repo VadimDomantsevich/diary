@@ -12,12 +12,14 @@ class DiaryListState with _$DiaryListState {
   const factory DiaryListState.columnsLoaded({
     required DiaryList diaryList,
     required List<DiaryColumn> diaryColumns,
+    required List<CapitalCell> capitalCells,
     required List<DiaryList> lists,
   }) = _ColumnsLoaded;
 
   const factory DiaryListState.loaded({
     required DiaryList diaryList,
     required List<DiaryColumn> diaryColumns,
+    required List<CapitalCell> capitalCells,
     required List<DiaryCell> diaryCells,
     required List<GlobalObjectKey> cellsKeys,
     required List<DiaryList> lists,
@@ -26,6 +28,7 @@ class DiaryListState with _$DiaryListState {
   const factory DiaryListState.cellsSelected({
     required DiaryList diaryList,
     required List<DiaryColumn> diaryColumns,
+    required List<CapitalCell> capitalCells,
     required List<DiaryCell> diaryCells,
     required DiaryCell firstSelectedCell,
     required List<DiaryCell> selectedCells,
@@ -35,18 +38,37 @@ class DiaryListState with _$DiaryListState {
     required DiaryCellSettings defaultSettings,
   }) = _CellsSelected;
 
+  const factory DiaryListState.capitalCellSelected({
+    required DiaryList diaryList,
+    required List<DiaryColumn> diaryColumns,
+    required List<CapitalCell> capitalCells,
+    required List<DiaryCell> diaryCells,
+    required CapitalCell selectedCapitalCell,
+    required bool isEditing,
+    required bool isTextEditing,
+    required bool isColorEditing,
+    required bool isBordersEditing,
+    required bool isBordersStyleEditing,
+    required List<GlobalObjectKey> cellsKeys,
+    required List<DiaryList> lists,
+    required DiaryColumnSettings defaultSettings,
+  }) = _CapitalCellSelected;
+
   const factory DiaryListState.listEditing({
     required DiaryList diaryList,
     required List<DiaryColumn> diaryColumns,
+    required List<CapitalCell> capitalCells,
     required List<DiaryCell> diaryCells,
     required List<GlobalObjectKey> cellsKeys,
     required List<DiaryList> lists,
+    required bool isColumnDeleting,
     DiaryList? selectedList,
   }) = _ListEditing;
 
   const factory DiaryListState.cellsEditing({
     required DiaryList diaryList,
     required List<DiaryColumn> diaryColumns,
+    required List<CapitalCell> capitalCells,
     required List<DiaryCell> diaryCells,
     required List<GlobalObjectKey> cellsKeys,
     required DiaryCell firstSelectedCell,

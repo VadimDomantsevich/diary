@@ -38,6 +38,27 @@ class BlocBordersColorEditWidget extends StatelessWidget {
               color: bordersColor,
             );
           },
+          capitalCellBordersEditing: (bordersStyleEnum, bordersColor) {
+            return ColorEditWidget(
+              textWidget: EditPanelTextWidget.common(
+                content: AppLocalizations.of(context).bordersColor,
+              ),
+              onTap: () {
+                context.read<DiaryListBloc>().add(
+                      const StartEditingColorEvent(),
+                    );
+                context.read<DiaryCellEditBloc>().add(
+                      DiaryCellEditEvent.startColorEditing(
+                        colorEditingEnum: ColorEditingEnum.border,
+                        defaultColor: bordersColor,
+                        bordersEditingEnum: BordersEditingEnum.all,
+                        bordersStyleEnum: bordersStyleEnum,
+                      ),
+                    );
+              },
+              color: bordersColor,
+            );
+          },
           orElse: () => Container(),
         );
       },

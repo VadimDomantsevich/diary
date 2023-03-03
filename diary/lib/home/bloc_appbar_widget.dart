@@ -12,12 +12,14 @@ class BlocAppBarWidget extends StatelessWidget {
     return BlocBuilder<DiaryListBloc, DiaryListState>(
       builder: (context, state) {
         return state.maybeWhen(
-          loaded: (diaryList, diaryColumns, diaryCells, cellsKeys, lists) {
+          loaded: (diaryList, diaryColumns, capitalCells, diaryCells, cellsKeys,
+              lists) {
             return BlocBuilder<GridDisplayBloc, GridDisplayState>(
               builder: (context, state) {
                 return state.maybeWhen(
                   loaded: (
                     scaleFactor,
+                    diaryColumns,
                     width,
                     height,
                     transformationController,
@@ -29,8 +31,8 @@ class BlocAppBarWidget extends StatelessWidget {
                   ) {
                     return isAppBarShown
                         ? AppBarWidget.listLoaded(
-                            backgroundColor: Colors.white24,
-                            foregroundColor: Colors.black,
+                            backgroundColor: Colors.white24, //const value
+                            foregroundColor: Colors.black, //const value
                           )
                         : PreferredSize(
                             preferredSize: const Size(0.0, 0.0),
@@ -48,6 +50,7 @@ class BlocAppBarWidget extends StatelessWidget {
           cellsSelected: (
             diaryList,
             diaryColumns,
+            capitalCells,
             diaryCells,
             firstSelectedCell,
             selectedCells,
@@ -61,6 +64,7 @@ class BlocAppBarWidget extends StatelessWidget {
                 return state.maybeWhen(
                   loaded: (
                     scaleFactor,
+                    diaryColumns,
                     width,
                     height,
                     transformationController,
@@ -76,6 +80,7 @@ class BlocAppBarWidget extends StatelessWidget {
                             foregroundColor: Colors.blueAccent, //const value
                             onPressedLeadingIcon: () {
                               //HERE
+                              print('Height when appBar pressed: $height');
                               context.read<DiaryListBloc>().add(
                                     const ReturnToLoadedEvent(),
                                   );
@@ -88,6 +93,7 @@ class BlocAppBarWidget extends StatelessWidget {
                   },
                   selectedMoving: (
                     scaleFactor,
+                    diaryColumns,
                     width,
                     height,
                     transformationController,
@@ -123,6 +129,7 @@ class BlocAppBarWidget extends StatelessWidget {
           cellsEditing: (
             diaryList,
             diaryColumns,
+            capitalCells,
             diaryCells,
             cellsKeys,
             firstSelectedCell,
@@ -140,6 +147,7 @@ class BlocAppBarWidget extends StatelessWidget {
                 return state.maybeWhen(
                   loaded: (
                     scaleFactor,
+                    diaryColumns,
                     width,
                     height,
                     transformationController,
@@ -155,6 +163,62 @@ class BlocAppBarWidget extends StatelessWidget {
                             foregroundColor: Colors.blueAccent, //const value
                             onPressedLeadingIcon: () {
                               //HERE
+                              // print('Height when appBar pressed: $height');
+                              context.read<DiaryListBloc>().add(
+                                    const ReturnToLoadedEvent(),
+                                  );
+                            },
+                          )
+                        : PreferredSize(
+                            preferredSize: const Size(0.0, 0.0),
+                            child: Container(),
+                          );
+                  },
+                  orElse: () => PreferredSize(
+                    preferredSize: const Size(0.0, 0.0),
+                    child: Container(),
+                  ),
+                );
+              },
+            );
+          },
+          capitalCellSelected: (
+            diaryList,
+            diaryColumns,
+            capitalCells,
+            diaryCells,
+            selectedCapitalCell,
+            isEditing,
+            isTextEditing,
+            isColorEditing,
+            isBorderEditing,
+            isBorderStyleEditing,
+            cellsKeys,
+            lists,
+            defaultSettings,
+          ) {
+            return BlocBuilder<GridDisplayBloc, GridDisplayState>(
+              builder: (context, state) {
+                return state.maybeWhen(
+                  loaded: (
+                    scaleFactor,
+                    diaryColumns,
+                    width,
+                    height,
+                    transformationController,
+                    translateX,
+                    translateY,
+                    isAppBarShown,
+                    isPanelShown,
+                    isEditCellPanelShown,
+                  ) {
+                    return isAppBarShown
+                        ? AppBarWidget.cellsSelected(
+                            backgroundColor: Colors.white24, //const value
+                            foregroundColor: Colors.blueAccent, //const value
+                            onPressedLeadingIcon: () {
+                              //HERE
+                              // print('Height when appBar pressed: $height');
                               context.read<DiaryListBloc>().add(
                                     const ReturnToLoadedEvent(),
                                   );

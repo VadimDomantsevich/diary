@@ -4,6 +4,7 @@ import 'package:diary/authentication/profile_screen_widget.dart';
 import 'package:diary/authentication/sign_in_screen_widget.dart';
 import 'package:diary/home/bloc_datagrid_sample.dart';
 import 'package:diary/home/datagrid_sample.dart';
+import 'package:diary/home/edit_panel/edit_list/add_column_screen_widget.dart';
 import 'package:diary/home/home_screen_widget.dart';
 
 @MaterialAutoRouter(
@@ -26,6 +27,9 @@ import 'package:diary/home/home_screen_widget.dart';
     ),
     AutoRoute(
       page: BlocDataGridSample,
+    ),
+    AutoRoute(
+      page: AddColumnScreenWidget,
     ),
   ],
 )

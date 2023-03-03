@@ -27,6 +27,19 @@ class BlocBordersStyleEditWidget extends StatelessWidget {
             borderLineHeight: bordersStyleEnum.toDoubleWidth(),
           );
         },
+        capitalCellBordersEditing: (bordersStyleEnum, bordersColor) {
+          return BordersStyleEditWidget(
+            textWidget: EditPanelTextWidget.common(
+              content: AppLocalizations.of(context).bordersStyle,
+            ),
+            onTap: () {
+              context.read<DiaryListBloc>().add(
+                    const StartEditingBordersStyleEvent(),
+                  );
+            },
+            borderLineHeight: bordersStyleEnum.toDoubleWidth(),
+          );
+        },
         orElse: () => Container(),
       ),
     );

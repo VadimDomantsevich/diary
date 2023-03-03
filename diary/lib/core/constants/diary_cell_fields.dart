@@ -8,4 +8,6 @@ class DiaryCellFields {
   static const dataType = 'dataType';
 
   static const content = 'content';
+
+  static const capitalColumnPosition = 'capitalColumnPosition';
 }

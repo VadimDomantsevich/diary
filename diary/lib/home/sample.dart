@@ -1,21 +1,27 @@
 import 'package:diary/core/constants/constants.dart';
-import 'package:diary/diary_list_screen/bloc_diary_cell_widget.dart';
+import 'package:diary/diary_list_screen/bloc_capital_cell_widget.dart';
 import 'package:diary/home/bloc_appbar_widget.dart';
+import 'package:diary/home/bloc_capital_cells_row_widget.dart';
+import 'package:diary/home/bloc_diary_cells_grid_widget.dart';
 import 'package:diary/home/edit_panel/edit_cells/bloc_edit_cells_panel_widget.dart';
 import 'package:diary/home/edit_panel/edit_list/bloc_edit_list_panel_widget.dart';
 import 'package:diary/home/edit_panel/bloc_edit_panel_widget.dart';
+import 'package:diary/model/capital_cell.dart';
 import 'package:diary/model/diary_cell.dart';
+import 'package:diary/model/diary_column.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class SampleWidget extends StatelessWidget {
   const SampleWidget({
     super.key,
     required this.transformationController,
+    required this.capitalCellHeight,
     required this.height,
     required this.width,
     required this.diaryCells,
     required this.cellsKeys,
+    required this.capitalCells,
+    required this.diaryColumns,
     required this.crossAxisCount,
     required this.scaleFactor,
     required this.isAppBarShown,
@@ -26,10 +32,13 @@ class SampleWidget extends StatelessWidget {
   });
 
   final TransformationController transformationController;
+  final double capitalCellHeight;
   final double height;
   final double width;
   final List<DiaryCell> diaryCells;
   final List<GlobalObjectKey> cellsKeys;
+  final List<CapitalCell> capitalCells;
+  final List<DiaryColumn> diaryColumns;
   final int crossAxisCount;
   final double scaleFactor;
   final bool isAppBarShown;
@@ -44,6 +53,8 @@ class SampleWidget extends StatelessWidget {
     required double width,
     required List<DiaryCell> diaryCells,
     required List<GlobalObjectKey> cellsKeys,
+    required List<CapitalCell> capitalCells,
+    required List<DiaryColumn> diaryColumns,
     required int crossAxisCount,
     required double scaleFactor,
     required bool isAppBarShown,
@@ -52,10 +63,13 @@ class SampleWidget extends StatelessWidget {
   }) {
     return SampleWidget(
       transformationController: transformationController,
+      capitalCellHeight: capitalCells.first.settings.capitalCellHeight,
       height: height,
       width: width,
       diaryCells: diaryCells,
       cellsKeys: cellsKeys,
+      capitalCells: capitalCells,
+      diaryColumns: diaryColumns,
       crossAxisCount: crossAxisCount,
       scaleFactor: scaleFactor,
       isAppBarShown: isAppBarShown,
@@ -70,6 +84,8 @@ class SampleWidget extends StatelessWidget {
     required double width,
     required List<DiaryCell> diaryCells,
     required List<GlobalObjectKey> cellsKeys,
+    required List<CapitalCell> capitalCells,
+    required List<DiaryColumn> diaryColumns,
     required int crossAxisCount,
     required double scaleFactor,
     required bool isAppBarShown,
@@ -78,9 +94,12 @@ class SampleWidget extends StatelessWidget {
   }) {
     return SampleWidget(
       transformationController: transformationController,
+      capitalCellHeight: capitalCells.first.settings.capitalCellHeight,
       height: height,
       width: width,
       diaryCells: diaryCells,
+      diaryColumns: diaryColumns,
+      capitalCells: capitalCells,
       cellsKeys: cellsKeys,
       crossAxisCount: crossAxisCount,
       scaleFactor: scaleFactor,
@@ -96,6 +115,8 @@ class SampleWidget extends StatelessWidget {
     required double width,
     required List<DiaryCell> diaryCells,
     required List<GlobalObjectKey> cellsKeys,
+    required List<CapitalCell> capitalCells,
+    required List<DiaryColumn> diaryColumns,
     required int crossAxisCount,
     required double scaleFactor,
     required bool isAppBarShown,
@@ -104,10 +125,13 @@ class SampleWidget extends StatelessWidget {
   }) {
     return SampleWidget(
       transformationController: transformationController,
+      capitalCellHeight: capitalCells.first.settings.capitalCellHeight,
       height: height,
       width: width,
       diaryCells: diaryCells,
       cellsKeys: cellsKeys,
+      capitalCells: capitalCells,
+      diaryColumns: diaryColumns,
       crossAxisCount: crossAxisCount,
       scaleFactor: scaleFactor,
       isAppBarShown: isAppBarShown,
@@ -122,19 +146,23 @@ class SampleWidget extends StatelessWidget {
     required double width,
     required List<DiaryCell> diaryCells,
     required List<GlobalObjectKey> cellsKeys,
+    required List<CapitalCell> capitalCells,
+    required List<DiaryColumn> diaryColumns,
     required int crossAxisCount,
     required double scaleFactor,
     required bool isAppBarShown,
     required Function(PointerDownEvent) onPointerDown,
     required Function(ScaleEndDetails) onInteractionEnd,
-    //Ещё параметры для отрисовки границ выделения
   }) {
     return SampleWidget(
       transformationController: transformationController,
+      capitalCellHeight: capitalCells.first.settings.capitalCellHeight,
       height: height,
       width: width,
       diaryCells: diaryCells,
       cellsKeys: cellsKeys,
+      capitalCells: capitalCells,
+      diaryColumns: diaryColumns,
       crossAxisCount: crossAxisCount,
       scaleFactor: scaleFactor,
       isAppBarShown: isAppBarShown,
@@ -149,24 +177,55 @@ class SampleWidget extends StatelessWidget {
     required double width,
     required List<DiaryCell> diaryCells,
     required List<GlobalObjectKey> cellsKeys,
+    required List<CapitalCell> capitalCells,
+    required List<DiaryColumn> diaryColumns,
     required int crossAxisCount,
     required double scaleFactor,
     required bool isAppBarShown,
     required Function(PointerUpEvent) onPointerUp,
     required Function(PointerMoveEvent) onPointerMove,
-    //Ещё параметры для отрисовки границ выделения
   }) {
     return SampleWidget(
       transformationController: transformationController,
+      capitalCellHeight: capitalCells.first.settings.capitalCellHeight,
       height: height,
       width: width,
       diaryCells: diaryCells,
       cellsKeys: cellsKeys,
+      capitalCells: capitalCells,
+      diaryColumns: diaryColumns,
       crossAxisCount: crossAxisCount,
       scaleFactor: scaleFactor,
       isAppBarShown: isAppBarShown,
       onPointerMove: onPointerMove,
       onPointerUp: onPointerUp,
+    );
+  }
+
+  factory SampleWidget.capitalCellSelectedGridLoaded({
+    required TransformationController transformationController,
+    required double height,
+    required double width,
+    required List<DiaryCell> diaryCells,
+    required List<GlobalObjectKey> cellsKeys,
+    required List<CapitalCell> capitalCells,
+    required List<DiaryColumn> diaryColumns,
+    required int crossAxisCount,
+    required double scaleFactor,
+    required bool isAppBarShown,
+  }) {
+    return SampleWidget(
+      transformationController: transformationController,
+      capitalCellHeight: capitalCells.first.settings.capitalCellHeight,
+      height: height,
+      width: width,
+      diaryCells: diaryCells,
+      cellsKeys: cellsKeys,
+      capitalCells: capitalCells,
+      diaryColumns: diaryColumns,
+      crossAxisCount: crossAxisCount,
+      scaleFactor: scaleFactor,
+      isAppBarShown: isAppBarShown,
     );
   }
 
@@ -192,26 +251,29 @@ class SampleWidget extends StatelessWidget {
                 constrained: false,
                 transformationController: transformationController,
                 onInteractionEnd: onInteractionEnd,
-                child: SizedBox(
-                  height: height,
-                  width: width,
-                  child: AlignedGridView.custom(
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: diaryCells.length,
-                    gridDelegate:
-                        SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: crossAxisCount,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: capitalCellHeight,
+                      width: width,
+                      child: BlocCapitalCellsRowWidget.capitalCells(
+                        capitalCells: capitalCells,
+                      ),
                     ),
-                    itemBuilder: ((context, index) => BlocDiaryCellWidget(
-                          diaryCell: diaryCells[index],
-                          cellKey: cellsKeys[index],
-                          scaleFactor: scaleFactor,
-                        )),
-                  ),
+                    SizedBox(
+                      height: height,
+                      width: width,
+                      child: BlocDiaryCellsGridWidget.cells(
+                        diaryCells: diaryCells,
+                        cellsKeys: cellsKeys,
+                        diaryColumns: diaryColumns,
+                        scaleFactor: scaleFactor,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-            //BlocWidget
             const BlocEditCellsPanelWidget(),
             const BlocEditListPanelWidget(),
             const BlocEditPanelWidget(),

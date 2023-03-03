@@ -1,4 +1,5 @@
 import 'package:diary/core/constants/enums.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
 import 'package:diary/diary_list_screen/diary_cell_edit/diary_cell_edit_bloc.dart';
 import 'package:diary/home/edit_panel/edit_cells/color_edit_widget.dart';
@@ -34,6 +35,25 @@ class BlocFillColorEditWidget extends StatelessWidget {
                     );
               },
               color: fillColor,
+            );
+          },
+          capitalCellEditing: (capitalCell) {
+            return ColorEditWidget(
+              textWidget: EditPanelTextWidget.common(
+                content: AppLocalizations.of(context).fillColor,
+              ),
+              onTap: () {
+                context.read<DiaryListBloc>().add(
+                      const StartEditingColorEvent(),
+                    );
+                context.read<DiaryCellEditBloc>().add(
+                      DiaryCellEditEvent.startColorEditing(
+                        colorEditingEnum: ColorEditingEnum.fill,
+                        defaultColor: capitalCell.settings.capitalCellBackgroundColor.toColor(),
+                      ),
+                    );
+              },
+              color: capitalCell.settings.capitalCellBackgroundColor.toColor(),
             );
           },
           orElse: () {

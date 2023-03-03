@@ -16,6 +16,7 @@ class DiaryListEvent with _$DiaryListEvent {
   const factory DiaryListEvent.getDiaryCells({
     required DiaryList diaryList,
     required List<DiaryColumn> diaryColumns,
+    required List<CapitalCell> capitalCells,
     required List<DiaryList> lists,
   }) = GetDiaryCellsEvent;
 
@@ -26,6 +27,10 @@ class DiaryListEvent with _$DiaryListEvent {
   const factory DiaryListEvent.selectDiaryCells({
     required List<DiaryCell> diaryCells,
   }) = SelectDiaryCellsEvent;
+
+  const factory DiaryListEvent.selectCapitalCell({
+    required CapitalCell capitalCell,
+  }) = SelectCapitalCellEvent;
 
   const factory DiaryListEvent.onPanUpdate({
     required DiaryCell diaryCell,
@@ -55,6 +60,11 @@ class DiaryListEvent with _$DiaryListEvent {
     String? textFieldText,
   }) = ChangeDiaryCellEvent;
 
+  const factory DiaryListEvent.changeCapitalCell({
+    required CapitalCell capitalCell,
+    String? textFieldText,
+  }) = ChangeCapitalCellEvent;
+
   const factory DiaryListEvent.updateDiaryCellInFirebase({
     required DiaryCell diaryCell,
     String? textFieldText,
@@ -77,6 +87,19 @@ class DiaryListEvent with _$DiaryListEvent {
     required Color bordersColor,
   }) = ChangeDiaryCellsBordersSettingsEvent;
 
+  const factory DiaryListEvent.changeCapitalCellSettings({
+    FontWeightEnum? fontWeight,
+    TextDecorationEnum? textDecoration,
+    FontStyleEnum? fontStyle,
+    double? fontSize,
+    String? color,
+    HorizontalAlignmentsEnum? horizontalAlignment,
+    VerticalAlignmentsEnum? verticalAlignment,
+    String? backgroundColor,
+    BordersStyleEnum? bordersStyleEnum,
+    Color? bordersColor,
+  }) = ChangeCapitalCellSettingsEvent;
+
   const factory DiaryListEvent.updateDiaryCellsSettingsInFirebase({
     required List<DiaryCell> diaryCells,
     FontWeightEnum? fontWeight,
@@ -87,6 +110,18 @@ class DiaryListEvent with _$DiaryListEvent {
     HorizontalAlignmentsEnum? horizontalAlignment,
     VerticalAlignmentsEnum? verticalAlignment,
   }) = UpdateDiaryCellsSettingsInFirebaseEvent;
+
+  const factory DiaryListEvent.updateCapitalCellSettingsInFirebase({
+    required DiaryColumnSettings newSettings,
+  }) = UpdateCapitalCellSettingsInFirebaseEvent;
+
+  const factory DiaryListEvent.updateCapitalCellWidth({
+    required PointerMoveEvent details,
+  }) = UpdateCapitalCellWidthEvent;
+
+  const factory DiaryListEvent.updateCapitalCellWidthInFirebase({
+    required PointerUpEvent details,
+  }) = UpdateCapitalCellWidthInFirebaseEvent;
 
   const factory DiaryListEvent.updateDefaultCellsSettingsInFirebase({
     FontWeightEnum? fontWeight,
@@ -100,12 +135,26 @@ class DiaryListEvent with _$DiaryListEvent {
     required bool isTextEditing,
   }) = StartEditingCellsEvent;
 
+  const factory DiaryListEvent.createDiaryColumn({
+    required DiaryList diaryList,
+    required String name,
+    required int columnsCount,
+    required List<DiaryColumn> diaryColumns,
+  }) = CreateDiaryColumnEvent;
+
+  const factory DiaryListEvent.deleteDiaryColumn({
+    required DiaryList diaryList,
+    required String columnId,
+  }) = DeleteDiaryColumnEvent;
+
   const factory DiaryListEvent.startEditingColor() = StartEditingColorEvent;
 
   const factory DiaryListEvent.startEditingBorders() = StartEditingBordersEvent;
 
-  const factory DiaryListEvent.startEditingBorderStyle() = StartEditingBordersStyleEvent;
+  const factory DiaryListEvent.startEditingBorderStyle() =
+      StartEditingBordersStyleEvent;
 
-  const factory DiaryListEvent.turnBackEditing() =
-      TurnBackEditingEvent;
+  const factory DiaryListEvent.turnBackEditing() = TurnBackEditingEvent;
+
+  const factory DiaryListEvent.startColumnDeleting() = StartColumnDeletingEvent;
 }

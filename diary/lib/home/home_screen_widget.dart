@@ -1,4 +1,3 @@
-
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
 import 'package:diary/home/bloc_datagrid_sample.dart';
 import 'package:diary/home/button.dart';
@@ -27,7 +26,7 @@ class HomeScreenWidget extends StatelessWidget {
         ),
         child: const Scaffold(
           body: BlocDataGridSample(),
-          floatingActionButton: ButtonWidget(),
+          floatingActionButton: ButtonWidget(), //Should be removed
         ),
       ),
     );

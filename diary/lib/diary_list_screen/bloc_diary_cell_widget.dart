@@ -2,6 +2,7 @@ import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart
 import 'package:diary/diary_list_screen/diary_cell_widget.dart';
 import 'package:diary/diary_list_screen/wraps.dart';
 import 'package:diary/model/diary_cell.dart';
+import 'package:diary/model/diary_column.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,11 +10,13 @@ class BlocDiaryCellWidget extends StatelessWidget {
   const BlocDiaryCellWidget({
     super.key,
     required this.diaryCell,
+    required this.diaryColumns,
     required this.cellKey,
     required this.scaleFactor,
   });
 
   final DiaryCell diaryCell;
+  final List<DiaryColumn> diaryColumns;
   final GlobalObjectKey cellKey;
   final double scaleFactor;
 
@@ -25,6 +28,7 @@ class BlocDiaryCellWidget extends StatelessWidget {
             cellsSelected: (
               diaryList,
               diaryColumns,
+              capitalCells,
               diaryCells,
               firstSelectedCell,
               selectedCells,
@@ -47,6 +51,8 @@ class BlocDiaryCellWidget extends StatelessWidget {
                 isFirstSelected: isFirstSelected,
                 isSelected: isSelected,
                 diaryCell: diaryCell,
+                diaryColumn: diaryColumns.firstWhere(
+                    (element) => element.id == diaryCell.columnName),
                 height: diaryCell.settings.height,
                 scaleFactor: scaleFactor,
                 onTap: () {
@@ -71,13 +77,15 @@ class BlocDiaryCellWidget extends StatelessWidget {
                 border: isFirstSelected
                     ? Border.all(
                         width: 3,
-                        color: Colors.blueAccent) //заменить на константу
+                        color: Colors.blueAccent,
+                      ) //const value
                     : buildBorder(diaryCell.settings),
               );
             },
             cellsEditing: (
               diaryList,
               diaryColumns,
+              capitalCells,
               diaryCells,
               cellsKeys,
               firstSelectedCell,
@@ -104,6 +112,8 @@ class BlocDiaryCellWidget extends StatelessWidget {
                 isFirstSelected: isFirstSelected,
                 isSelected: isSelected,
                 diaryCell: diaryCell,
+                diaryColumn: diaryColumns.firstWhere(
+                    (element) => element.id == diaryCell.columnName),
                 height: diaryCell.settings.height,
                 scaleFactor: scaleFactor,
                 onTap: () {
@@ -129,7 +139,7 @@ class BlocDiaryCellWidget extends StatelessWidget {
                     ? Border.all(
                         width: 3,
                         color: Colors.blueAccent,
-                      ) //заменить на константу
+                      ) //const value
                     : buildBorder(diaryCell.settings),
               );
             },
@@ -140,13 +150,17 @@ class BlocDiaryCellWidget extends StatelessWidget {
                 isFirstSelected: false,
                 isSelected: false,
                 diaryCell: diaryCell,
+                diaryColumn: diaryColumns.firstWhere(
+                    (element) => element.id == diaryCell.columnName),
                 height: diaryCell.settings.height,
                 scaleFactor: scaleFactor,
-                onTap: () => context.read<DiaryListBloc>().add(
-                      DiaryListEvent.selectDiaryCell(
-                        diaryCell: diaryCell,
-                      ),
-                    ),
+                onTap: () {
+                  context.read<DiaryListBloc>().add(
+                        DiaryListEvent.selectDiaryCell(
+                          diaryCell: diaryCell,
+                        ),
+                      );
+                },
                 border: buildBorder(diaryCell.settings),
               );
             }),

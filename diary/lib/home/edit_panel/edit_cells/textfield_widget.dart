@@ -1,3 +1,4 @@
+import 'package:diary/core/constants/edit_panel_constants.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldWidget extends StatelessWidget {
@@ -13,9 +14,12 @@ class TextFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+      padding: const EdgeInsets.symmetric(
+        horizontal: EditPanelConstants.textFieldHorizontalPadding,
+        vertical: EditPanelConstants.textFieldVerticalPadding,
+      ),
       child: FractionallySizedBox(
-        widthFactor: 1,
+        widthFactor: EditPanelConstants.editPanelWidthFactor,
         child: TextField(
           controller: controller,
           decoration: const InputDecoration(

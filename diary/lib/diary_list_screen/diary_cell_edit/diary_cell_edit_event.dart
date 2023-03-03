@@ -39,7 +39,8 @@ class DiaryCellEditEvent with _$DiaryCellEditEvent {
     required Color color,
   }) = ReloadColorEvent;
 
-  const factory DiaryCellEditEvent.startBordersEditing() = StartBordersEditingEvent;
+  const factory DiaryCellEditEvent.startBordersEditing() =
+      StartBordersEditingEvent;
 
   const factory DiaryCellEditEvent.changeBorders({
     BordersEditingEnum? bordersEditingEnum,
@@ -47,9 +48,23 @@ class DiaryCellEditEvent with _$DiaryCellEditEvent {
     Color? color,
   }) = ChangeBordersEvent;
 
-  // const factory DiaryCellEditEvent.returnToDefaultSettings() =
-  //     ReturnToDefaultSettingsEvent;
+  const factory DiaryCellEditEvent.startCapitalCellTextEditing({
+    required CapitalCell selectedCapitalCell,
+    required DiaryColumnSettings defaultSettings,
+  }) = StartCapitalCellTextEditingEvent;
 
-  // const factory DiaryCellEditEvent.returnToDefaultColor() =
-  //     ReturnToDefaultColorEvent;
+  const factory DiaryCellEditEvent.startCapitalCellEditing({
+    required CapitalCell selectedCapitalCell,
+  }) = StartCapitalCellEditingEvent;
+
+  const factory DiaryCellEditEvent.startCapitalCellBordersEditing({
+    required CapitalCell capitalCell,
+  }) = StartCapitalCellBordersEditingEvent;
+
+  const factory DiaryCellEditEvent.startColumnsCountEditing() =
+      StartColumnsCountEditingEvent;
+
+  const factory DiaryCellEditEvent.changeColumnsCount({
+    required int columnsCount,
+  }) = ChangeColumnsCountEvent;
 }

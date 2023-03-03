@@ -35,10 +35,20 @@ class BlocResetOptionsRowWidget extends StatelessWidget {
                             color: defaultColor.toColorString(),
                           ),
                         );
+                    context.read<DiaryListBloc>().add(
+                          ChangeCapitalCellSettingsEvent(
+                            color: defaultColor.toColorString(),
+                          ),
+                        );
                     break;
                   case ColorEditingEnum.fill:
                     context.read<DiaryListBloc>().add(
                           ChangeDiaryCellsSettingsEvent(
+                            backgroundColor: defaultColor.toColorString(),
+                          ),
+                        );
+                    context.read<DiaryListBloc>().add(
+                          ChangeCapitalCellSettingsEvent(
                             backgroundColor: defaultColor.toColorString(),
                           ),
                         );
@@ -50,6 +60,11 @@ class BlocResetOptionsRowWidget extends StatelessWidget {
                                 bordersEditingEnum ?? BordersEditingEnum.none,
                             bordersStyleEnum:
                                 bordersStyleEnum ?? BordersStyleEnum.thin,
+                            bordersColor: defaultColor,
+                          ),
+                        );
+                    context.read<DiaryListBloc>().add(
+                          ChangeCapitalCellSettingsEvent(
                             bordersColor: defaultColor,
                           ),
                         );

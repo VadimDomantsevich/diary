@@ -5,7 +5,6 @@ import 'package:diary/model/diary_cell.dart';
 import 'package:diary/model/diary_column.dart';
 import 'package:diary/model/diary_list.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 String getDiaryListName(DiaryList diaryList) =>
     '${diaryList.listDate.month}.${diaryList.listDate.year}';
@@ -33,9 +32,7 @@ DocumentReference getDiaryColumnDoc({
   required DiaryList diaryList,
   required String diaryColumnId,
 }) =>
-    getDiaryListDoc(diaryList: diaryList)
-        .collection(Collections.diaryColumnsCollection)
-        .doc(diaryColumnId);
+    getDiaryColumnsCollection(diaryList: diaryList).doc(diaryColumnId);
 
 CollectionReference getDiaryColumnsCollection({
   required DiaryList diaryList,

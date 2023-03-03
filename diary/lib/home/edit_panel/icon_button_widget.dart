@@ -31,7 +31,7 @@ class IconButtonWidget extends StatelessWidget {
       decoration: const BoxDecoration(
         border: Border(
           right: BorderSide(
-            color: Color.fromARGB(255, 46, 46, 46),
+            color: Color.fromARGB(255, 46, 46, 46), //const value
             width: EditPanelConstants.editPanelBorderSideWidth,
           ),
         ),

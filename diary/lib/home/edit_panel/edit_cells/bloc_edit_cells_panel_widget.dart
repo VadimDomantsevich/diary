@@ -16,6 +16,7 @@ class BlocEditCellsPanelWidget extends StatelessWidget {
           cellsEditing: (
             diaryList,
             diaryColumns,
+            capitalCells,
             diaryCells,
             cellsKeys,
             firstSelectedCell,
@@ -33,6 +34,7 @@ class BlocEditCellsPanelWidget extends StatelessWidget {
                 return state.maybeWhen(
                   loaded: (
                     scaleFactor,
+                    diaryColumns,
                     width,
                     height,
                     transformationController,
@@ -95,6 +97,98 @@ class BlocEditCellsPanelWidget extends StatelessWidget {
                   orElse: () => Container(),
                 );
               },
+            );
+          },
+          capitalCellSelected: (
+            diaryList,
+            diaryColumns,
+            capitalCells,
+            diaryCells,
+            selectedCapitalCell,
+            isEditing,
+            isTextEditing,
+            isColorEditing,
+            isBordersEditing,
+            isBordersStyleEditing,
+            cellsKeys,
+            lists,
+            defaultSettings,
+          ) {
+            return BlocBuilder<GridDisplayBloc, GridDisplayState>(
+              builder: (context, state) => state.maybeWhen(
+                loaded: (
+                  scaleFactor,
+                  diaryColumns,
+                  width,
+                  height,
+                  transformationController,
+                  translateX,
+                  translateY,
+                  isAppBarShown,
+                  isPanelShown,
+                  isEditCellPanelShown,
+                ) {
+                  return isEditCellPanelShown &&
+                          isEditing &&
+                          isTextEditing &&
+                          !isColorEditing
+                      ? EditCellsPanelWidget.textEditing()
+                      : isEditCellPanelShown &&
+                              isEditing &&
+                              isTextEditing &&
+                              isColorEditing
+                          ? EditCellsPanelWidget(
+                              bottomColumn:
+                                  EditCellsPanelBottomColumnWidget.color(),
+                            )
+                          : isEditCellPanelShown &&
+                                  isEditing &&
+                                  !isTextEditing &&
+                                  !isColorEditing &&
+                                  !isBordersEditing
+                              ? EditCellsPanelWidget.cellEditing()
+                              : isEditCellPanelShown &&
+                                      !isTextEditing &&
+                                      isColorEditing &&
+                                      !isBordersEditing
+                                  ? EditCellsPanelWidget(
+                                      bottomColumn:
+                                          EditCellsPanelBottomColumnWidget
+                                              .color(),
+                                    )
+                                  : isEditCellPanelShown &&
+                                          !isTextEditing &&
+                                          !isColorEditing &&
+                                          isBordersEditing &&
+                                          !isBordersStyleEditing
+                                      ? EditCellsPanelWidget(
+                                          bottomColumn:
+                                              EditCellsPanelBottomColumnWidget
+                                                  .borders(),
+                                        )
+                                      : isEditCellPanelShown &&
+                                              !isTextEditing &&
+                                              isColorEditing &&
+                                              isBordersEditing
+                                          ? EditCellsPanelWidget(
+                                              bottomColumn:
+                                                  EditCellsPanelBottomColumnWidget
+                                                      .color(),
+                                            )
+                                          : isEditCellPanelShown &&
+                                                  !isTextEditing &&
+                                                  !isColorEditing &&
+                                                  isBordersEditing &&
+                                                  isBordersStyleEditing
+                                              ? EditCellsPanelWidget(
+                                                  bottomColumn:
+                                                      EditCellsPanelBottomColumnWidget
+                                                          .bordersStyle(),
+                                                )
+                                              : Container();
+                },
+                orElse: () => Container(),
+              ),
             );
           },
           orElse: () => Container(),

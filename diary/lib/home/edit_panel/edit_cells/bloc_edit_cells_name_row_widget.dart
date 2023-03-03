@@ -17,6 +17,7 @@ class BlocEditCellsNameRowWidget extends StatelessWidget {
           cellsEditing: (
             diaryList,
             diaryColumns,
+            capitalCells,
             diaryCells,
             cellsKeys,
             firstSelectedCell,
@@ -59,6 +60,58 @@ class BlocEditCellsNameRowWidget extends StatelessWidget {
                   context.read<DiaryCellEditBloc>().add(
                         DiaryCellEditEvent.startCellEditing(
                           firstSelectedCell: firstSelectedCell,
+                        ),
+                      );
+                },
+                isTextEditing: isTextEditing,
+                content: AppLocalizations.of(context).cell,
+              ),
+            );
+          },
+          capitalCellSelected: (
+            diaryList,
+            diaryColumns,
+            capitalCells,
+            diaryCells,
+            selectedCapitalCell,
+            isEditing,
+            isTextEditing,
+            isColorEditing,
+            isBordersEditing,
+            isBordersStyleEditing,
+            cellsKeys,
+            lists,
+            defaultSettings,
+          ) {
+            return EditCellsNameRowWidget(
+              isTextEditing: isTextEditing,
+              textEditingWidget: SelectableNameWidget.textEditing(
+                onTap: () {
+                  context.read<DiaryListBloc>().add(
+                        const StartEditingCellsEvent(
+                          isTextEditing: true,
+                        ),
+                      );
+                  context.read<DiaryCellEditBloc>().add(
+                        StartCapitalCellTextEditingEvent(
+                          selectedCapitalCell: selectedCapitalCell,
+                          defaultSettings: defaultSettings,
+                        ),
+                      );
+                },
+                isTextEditing: isTextEditing,
+                content: AppLocalizations.of(context).text,
+              ),
+              cellEditingWidget: SelectableNameWidget.cellEditing(
+                onTap: () {
+                  context.read<DiaryListBloc>().add(
+                        const StartEditingCellsEvent(
+                          isTextEditing: false,
+                        ),
+                      );
+                  context.read<DiaryCellEditBloc>().add(
+                        StartCapitalCellEditingEvent(
+                          selectedCapitalCell: selectedCapitalCell,
                         ),
                       );
                 },

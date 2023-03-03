@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:diary/core/constants/constants.dart';
 import 'package:diary/core/constants/edit_panel_constants.dart';
+import 'package:diary/model/capital_cell.dart';
 import 'package:diary/model/diary_cell.dart';
 import 'package:diary/model/diary_column.dart';
 import 'package:diary/model/diary_list.dart';
@@ -16,11 +17,13 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
   final DiaryList diaryList;
   final List<DiaryColumn> diaryColumns;
   final List<DiaryCell> diaryCells;
+  final List<CapitalCell> capitalCells;
   final TransformationController transformationController;
   GridDisplayBloc({
     required this.diaryList,
     required this.diaryColumns,
     required this.diaryCells,
+    required this.capitalCells,
     required this.transformationController,
   }) : super(_Initial(
           scaleFactor: 1,
@@ -46,6 +49,10 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
       diaryList: diaryList,
       diaryColumns: diaryColumns,
       diaryCells: diaryCells,
+      capitalCells: capitalCells,
+      isAppBarShown: true,
+      isPanelShown: true,
+      isEditCellPanelShown: false,
     ));
   }
 
@@ -56,10 +63,10 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
     double width = 0;
     double height = 0;
     for (var column in event.diaryColumns) {
-      width += column.settings.width *
-          column.columnsCount; //Надо будет переделать под каждую колонку
+      for (var element in column.settings.width) {
+        width += element; //Костыль +2 иногда тож не работает
+      }
     }
-
     List<DiaryCell> cells = List<DiaryCell>.empty(growable: true);
     for (var cell in event.diaryCells) {
       if (cell.columnName == Constants.diaryColumnDateField &&
@@ -67,39 +74,37 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
         cells.add(cell);
       }
     }
-    cells.sort(
-      ((a, b) {
-        int pos = a.columnPosition.compareTo(b.columnPosition);
-        if (pos == 0) {
-          return a.day.compareTo(b.day);
-        }
-        return pos;
-      }),
-    );
+    cells.sort();
     for (var cell in cells) {
       height += cell.settings.height;
     }
-
-    // height = height +
-    //     // WidgetsBinding.instance.window.padding.top +
-    //     WidgetsBinding.instance.window.padding.bottom;
-
-    // height += EditListConstants.editPanelHeightFactor *
-    //     MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.height;
-    final panelHeight =
-        MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.height *
-            EditPanelConstants.editPanelHeightFactor;
-    height += panelHeight;
+    if (event.isPanelShown) {
+      final panelHeight =
+          MediaQueryData.fromWindow(WidgetsBinding.instance.window)
+                  .size
+                  .height *
+              EditPanelConstants.editPanelHeightFactor;
+      height += panelHeight;
+    }
+    if (event.isEditCellPanelShown) {
+      final editCellPanelHeight =
+          MediaQueryData.fromWindow(WidgetsBinding.instance.window)
+                  .size
+                  .height *
+              EditPanelConstants.editListPanelHeightFactor;
+      height += editCellPanelHeight;
+    }
     emit(_Loaded(
-      scaleFactor: 1,
+      scaleFactor: event.scaleFactor,
+      diaryColumns: event.diaryColumns,
       width: width,
       height: height,
       transformationController: transformationController,
       translateX: 0,
       translateY: 0,
-      isAppBarShown: true,
-      isPanelShown: true,
-      isEditCellPanelShown: false,
+      isAppBarShown: event.isAppBarShown,
+      isPanelShown: event.isPanelShown,
+      isEditCellPanelShown: event.isEditCellPanelShown,
     ));
   }
 
@@ -108,8 +113,18 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
     Emitter<GridDisplayState> emit,
   ) {
     state.whenOrNull(
-      loaded: (scaleFactor, width, height, transformationController, translateX,
-          translateY, isAppBarShown, isPanelShown, isEditCellPanelShown) {
+      loaded: (
+        scaleFactor,
+        diaryColumns,
+        width,
+        height,
+        transformationController,
+        translateX,
+        translateY,
+        isAppBarShown,
+        isPanelShown,
+        isEditCellPanelShown,
+      ) {
         final cellBox = event.selectedCellKey.currentContext!.findRenderObject()
             as RenderBox;
         final cellRect = Rect.fromLTWH(
@@ -125,6 +140,7 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
           emit(
             GridDisplayState.selectedMoving(
               scaleFactor: scaleFactor,
+              diaryColumns: diaryColumns,
               width: width,
               height: height,
               transformationController: transformationController,
@@ -144,36 +160,25 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
     Emitter<GridDisplayState> emit,
   ) {
     state.whenOrNull(
-      // loaded: (scaleFactor, width, height, transformationController, translateX,
-      //     translateY, isAppBarShown, isPanelShown, isEditCellPanelShown) {
-      //   // isPanelShown = transformationController.value.getTranslation().y < -5
-      //   //     ? false
-      //   //     : true;
-      //   emit(
-      //     GridDisplayState.loaded(
-      //       scaleFactor: scaleFactor,
-      //       width: width,
-      //       height: height,
-      //       transformationController: transformationController,
-      //       translateX: translateX,
-      //       translateY: translateY,
-      //       isAppBarShown: isAppBarShown,
-      //       isPanelShown: isPanelShown,
-      //       isEditCellPanelShown: isEditCellPanelShown,
-      //     ),
-      //   );
-      // },
-      selectedMoving: (scaleFactor, width, height, transformationController,
-          translateX, translateY, firstSelectedCell, isAppBarShown) {
-        emit(
-          GridDisplayState.loaded(
+      selectedMoving: (
+        scaleFactor,
+        diaryColumns,
+        width,
+        height,
+        transformationController,
+        translateX,
+        translateY,
+        firstSelectedCell,
+        isAppBarShown,
+      ) {
+        add(
+          GridDisplayEvent.getConstraints(
             scaleFactor: scaleFactor,
-            width: width,
-            height: height,
-            transformationController: transformationController,
-            translateX: translateX,
-            translateY: translateY,
-            isAppBarShown: true,
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            capitalCells: capitalCells,
+            isAppBarShown: isAppBarShown,
             isPanelShown: false,
             isEditCellPanelShown: false,
           ),
@@ -187,13 +192,21 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
     Emitter<GridDisplayState> emit,
   ) {
     state.whenOrNull(
-      selectedMoving: (scaleFactor, width, height, transformationController,
-          translateX, translateY, firstSelectedCell, isAppBarShown) {
+      selectedMoving: (
+        scaleFactor,
+        diaryColumns,
+        width,
+        height,
+        transformationController,
+        translateX,
+        translateY,
+        firstSelectedCell,
+        isAppBarShown,
+      ) {
         final screenHeight =
             MediaQueryData.fromWindow(WidgetsBinding.instance.window)
                 .size
                 .height;
-
         final screenWidth =
             MediaQueryData.fromWindow(WidgetsBinding.instance.window)
                 .size
@@ -203,12 +216,11 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
         final scaledHeight = -height * scaleFactor -
             kToolbarHeight -
             WidgetsBinding.instance.window.padding.bottom +
-            height;
+            height - event.capitalCell.settings.capitalCellHeight;
         double currentTranslationX =
             transformationController.value.getTranslation().x;
         double currentTranslationY =
             transformationController.value.getTranslation().y;
-
         if (event.details.position.dx >= screenWidth * 0.9 &&
             currentTranslationX > scaledWidth) {
           currentTranslationX -= 10;
@@ -234,6 +246,7 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
         emit(
           _SelectedMoving(
             scaleFactor: scaleFactor,
+            diaryColumns: diaryColumns,
             width: width,
             height: height,
             transformationController: transformationController,
@@ -252,18 +265,18 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
     Emitter<GridDisplayState> emit,
   ) {
     state.whenOrNull(
-      loaded: (scaleFactor, width, height, transformationController, translateX,
-          translateY, isAppBarShown, isPanelShown, isEditCellPanelShown) {
-        final panelHeight =
-            MediaQueryData.fromWindow(WidgetsBinding.instance.window)
-                    .size
-                    .height *
-                EditPanelConstants.editPanelHeightFactor;
-        final editCellPanelHeight =
-            MediaQueryData.fromWindow(WidgetsBinding.instance.window)
-                    .size
-                    .height *
-                EditPanelConstants.editListPanelHeightFactor;
+      loaded: (
+        scaleFactor,
+        diaryColumns,
+        width,
+        height,
+        transformationController,
+        translateX,
+        translateY,
+        isAppBarShown,
+        isPanelShown,
+        isEditCellPanelShown,
+      ) {
         event.isCellSelected
             ? {
                 isAppBarShown = true,
@@ -272,34 +285,24 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
               }
             : event.details.velocity.pixelsPerSecond.dy < 0
                 ? {
-                    isPanelShown ? height -= panelHeight : height,
-                    isEditCellPanelShown
-                        ? height -= editCellPanelHeight
-                        : height,
                     isAppBarShown = false,
                     isPanelShown = false,
                     isEditCellPanelShown = false,
                   }
                 : {
-                    isPanelShown ? height : height += panelHeight,
-                    // isEditCellPanelShown
-                    //     ? height
-                    //     : height += editCellPanelHeight,
                     isAppBarShown = true,
                     isPanelShown = true,
-                    //isEditCellPanelShown = true,
                   };
-        emit(
-          _Loaded(
+        add(
+          GridDisplayEvent.getConstraints(
             scaleFactor: transformationController.value.getMaxScaleOnAxis(),
-            width: width,
-            height: height,
-            transformationController: transformationController,
-            translateX: translateX,
-            translateY: translateY,
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            capitalCells: capitalCells,
             isAppBarShown: isAppBarShown,
             isPanelShown: isPanelShown,
-            isEditCellPanelShown: isEditCellPanelShown,
+            isEditCellPanelShown: false,
           ),
         );
       },
@@ -311,16 +314,25 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
     Emitter<GridDisplayState> emit,
   ) {
     state.whenOrNull(
-      loaded: (scaleFactor, width, height, transformationController, translateX,
-          translateY, isAppBarShown, isPanelShown, isEditCellPanelShown) {
-        emit(
-          GridDisplayState.loaded(
+      loaded: (
+        scaleFactor,
+        diaryColumns,
+        width,
+        height,
+        transformationController,
+        translateX,
+        translateY,
+        isAppBarShown,
+        isPanelShown,
+        isEditCellPanelShown,
+      ) {
+        add(
+          GridDisplayEvent.getConstraints(
             scaleFactor: scaleFactor,
-            width: width,
-            height: height,
-            transformationController: transformationController,
-            translateX: translateX,
-            translateY: translateY,
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            capitalCells: capitalCells,
             isAppBarShown: true,
             isPanelShown: isPanelShown,
             isEditCellPanelShown: isEditCellPanelShown,
@@ -335,33 +347,30 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
     Emitter<GridDisplayState> emit,
   ) {
     state.whenOrNull(
-      loaded: (scaleFactor, width, height, transformationController, translateX,
-          translateY, isAppBarShown, isPanelShown, isEditCellPanelShown) {
-        // final panelHeight =
-        //     MediaQueryData.fromWindow(WidgetsBinding.instance.window)
-        //             .size
-        //             .height *
-        //         EditPanelConstants.editPanelHeightFactor;
-        // final editCellPanelHeight =
-        //     MediaQueryData.fromWindow(WidgetsBinding.instance.window)
-        //             .size
-        //             .height *
-        //         EditPanelConstants.editListPanelHeightFactor;
-        // isPanelShown ? height -= panelHeight : height;
+      loaded: (
+        scaleFactor,
+        diaryColumns,
+        width,
+        height,
+        transformationController,
+        translateX,
+        translateY,
+        isAppBarShown,
+        isPanelShown,
+        isEditCellPanelShown,
+      ) {
         isPanelShown = false;
-        // isEditCellPanelShown ? height : height += editCellPanelHeight;
         isEditCellPanelShown = true;
-        emit(
-          GridDisplayState.loaded(
+        add(
+          GridDisplayEvent.getConstraints(
             scaleFactor: scaleFactor,
-            width: width,
-            height: height,
-            transformationController: transformationController,
-            translateX: translateX,
-            translateY: translateY,
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            capitalCells: capitalCells,
             isAppBarShown: isAppBarShown,
-            isPanelShown: isPanelShown,
-            isEditCellPanelShown: isEditCellPanelShown,
+            isPanelShown: false,
+            isEditCellPanelShown: true,
           ),
         );
       },
@@ -369,39 +378,32 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
   }
 
   void _onShowBottomPanelEvent(
-    //ЭТИ ДВА ИВЕНТА, КОНЕЧНО, ХОРОШИ, НО НАДО КАК-ТО ОТНИМАТЬ ВЫСОТУ ЕЩЁ
     _ShowBottomPanelEvent event,
     Emitter<GridDisplayState> emit,
   ) {
     state.whenOrNull(
-      loaded: (scaleFactor, width, height, transformationController, translateX,
-          translateY, isAppBarShown, isPanelShown, isEditCellPanelShown) {
-        // isPanelShown
-        //     ? height
-        //     : height +=
-        //         MediaQueryData.fromWindow(WidgetsBinding.instance.window)
-        //                 .size
-        //                 .height *
-        //             EditPanelConstants.editPanelHeightFactor;
-
-        // isEditCellPanelShown
-        //     ? height -=
-        //         MediaQueryData.fromWindow(WidgetsBinding.instance.window)
-        //                 .size
-        //                 .height *
-        //             EditPanelConstants.editListPanelHeightFactor
-        //     : height;
+      loaded: (
+        scaleFactor,
+        diaryColumns,
+        width,
+        height,
+        transformationController,
+        translateX,
+        translateY,
+        isAppBarShown,
+        isPanelShown,
+        isEditCellPanelShown,
+      ) {
         isEditCellPanelShown = true;
-        emit(
-          GridDisplayState.loaded(
+        add(
+          GridDisplayEvent.getConstraints(
             scaleFactor: scaleFactor,
-            width: width,
-            height: height,
-            transformationController: transformationController,
-            translateX: translateX,
-            translateY: translateY,
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            diaryCells: diaryCells,
+            capitalCells: capitalCells,
             isAppBarShown: isAppBarShown,
-            isPanelShown: isPanelShown,
+            isPanelShown: true,
             isEditCellPanelShown: false,
           ),
         );

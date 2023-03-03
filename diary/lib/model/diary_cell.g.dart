@@ -7,6 +7,8 @@ part of 'diary_cell.dart';
 // **************************************************************************
 
 abstract class _$DiaryCellCWProxy {
+  DiaryCell capitalColumnPosition(int capitalColumnPosition);
+
   DiaryCell columnName(String columnName);
 
   DiaryCell columnPosition(int columnPosition);
@@ -26,6 +28,7 @@ abstract class _$DiaryCellCWProxy {
   /// DiaryCell(...).copyWith(id: 12, name: "My name")
   /// ````
   DiaryCell call({
+    int? capitalColumnPosition,
     String? columnName,
     int? columnPosition,
     dynamic? content,
@@ -40,6 +43,10 @@ class _$DiaryCellCWProxyImpl implements _$DiaryCellCWProxy {
   final DiaryCell _value;
 
   const _$DiaryCellCWProxyImpl(this._value);
+
+  @override
+  DiaryCell capitalColumnPosition(int capitalColumnPosition) =>
+      this(capitalColumnPosition: capitalColumnPosition);
 
   @override
   DiaryCell columnName(String columnName) => this(columnName: columnName);
@@ -70,6 +77,7 @@ class _$DiaryCellCWProxyImpl implements _$DiaryCellCWProxy {
   /// DiaryCell(...).copyWith(id: 12, name: "My name")
   /// ````
   DiaryCell call({
+    Object? capitalColumnPosition = const $CopyWithPlaceholder(),
     Object? columnName = const $CopyWithPlaceholder(),
     Object? columnPosition = const $CopyWithPlaceholder(),
     Object? content = const $CopyWithPlaceholder(),
@@ -78,6 +86,12 @@ class _$DiaryCellCWProxyImpl implements _$DiaryCellCWProxy {
     Object? textSettings = const $CopyWithPlaceholder(),
   }) {
     return DiaryCell(
+      capitalColumnPosition:
+          capitalColumnPosition == const $CopyWithPlaceholder() ||
+                  capitalColumnPosition == null
+              ? _value.capitalColumnPosition
+              // ignore: cast_nullable_to_non_nullable
+              : capitalColumnPosition as int,
       columnName:
           columnName == const $CopyWithPlaceholder() || columnName == null
               ? _value.columnName

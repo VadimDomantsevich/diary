@@ -118,5 +118,29 @@
     "bordersColor": "Borders color",
     "@bordersColor": {
         "description": "Borders color listTile text on the cellsEditPanel"
+    },
+    "addColumn": "Add column",
+    "@addColumn": {
+        "description": "Add column listTile text on the edit list panel"
+    },
+    "deleteColumn": "Delete column",
+    "@deleteColumn": {
+        "description": "Delete column listTile text on the edit list panel"
+    },
+    "columnName": "Column name",
+    "@columnName": {
+        "description": "Column name text of the hint of add column textField"
+    },
+    "numberOfSubcolumns": "Number of columns",
+    "@numberOfSubcolumns": {
+        "description": "Number of subcolumns text on the add column alert dialog"
+    },
+    "areYouShure": "Are you shure?",
+    "@areYouShure": {
+        "description": "Are you shure? text on the delete column alert dialog"
+    },
+    "willBeDeleted": "will be deleted",
+    "@willBeDeleted": {
+        "description": "will be deleted text on the delete column alert dialog"
     }
 }

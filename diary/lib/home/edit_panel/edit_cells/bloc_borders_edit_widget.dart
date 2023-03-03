@@ -31,6 +31,23 @@ class BlocBordersEditWidget extends StatelessWidget {
             },
           );
         },
+        capitalCellEditing: (capitalCell) {
+          return BordersEditWidget(
+            textWidget: EditPanelTextWidget.common(
+              content: AppLocalizations.of(context).borders,
+            ),
+            onTap: () {
+              context.read<DiaryListBloc>().add(
+                    const StartEditingBordersEvent(),
+                  );
+              context.read<DiaryCellEditBloc>().add(
+                    DiaryCellEditEvent.startCapitalCellBordersEditing(
+                      capitalCell: capitalCell,
+                    ),
+                  );
+            },
+          );
+        },
         orElse: () => Container(),
       );
     });

@@ -62,4 +62,8 @@ class EditPanelConstants {
   static const bordersStyleRowVerticalPadding = 24.0;
 
   static const bordersStyleRowIconWidth = 30.0;
+
+  static const textFieldHorizontalPadding = 16.0;
+
+  static const textFieldVerticalPadding = 8.0;
 }

@@ -5,6 +5,7 @@ import 'package:diary/core/constants/colors/orange_color_constants.dart';
 import 'package:diary/core/constants/colors/purple_color_constants.dart';
 import 'package:diary/core/constants/colors/red_color_constants.dart';
 import 'package:diary/core/constants/colors/yellow_color_constants.dart';
+import 'package:diary/core/constants/constants.dart';
 import 'package:diary/core/constants/enums.dart';
 import 'package:flutter/material.dart';
 
@@ -319,11 +320,11 @@ extension BordersStyleEnumExtension on BordersStyleEnum {
   toDoubleWidth() {
     switch (this) {
       case BordersStyleEnum.thin:
-        return 1.0;
+        return Constants.thinBordersStyleWidth;
       case BordersStyleEnum.medium:
-        return 2.0;
+        return Constants.mediumBordersStyleWidth;
       case BordersStyleEnum.thick:
-        return 3.0;
+        return Constants.thickBordersStyleWidth;
     }
   }
 }

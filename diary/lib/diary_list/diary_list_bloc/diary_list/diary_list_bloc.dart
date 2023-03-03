@@ -2,11 +2,14 @@ import 'package:bloc/bloc.dart';
 import 'package:diary/core/constants/constants.dart';
 import 'package:diary/core/constants/enums.dart';
 import 'package:diary/core/extentions.dart';
+import 'package:diary/core/functions.dart';
 import 'package:diary/diary_list_screen/diary_cell_content_widget.dart';
+import 'package:diary/model/capital_cell.dart';
 import 'package:diary/model/diary_cell.dart';
 import 'package:diary/model/diary_cell_settings.dart';
 import 'package:diary/model/diary_cell_text_settings.dart';
 import 'package:diary/model/diary_column.dart';
+import 'package:diary/model/diary_column_settings.dart';
 import 'package:diary/model/diary_list.dart';
 import 'package:diary/services/diary_cell_service.dart';
 import 'package:diary/services/diary_column_service.dart';
@@ -36,6 +39,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         ((event, emit) => _onSelectDiaryCellEvent(event, emit)));
     on<SelectDiaryCellsEvent>(
         ((event, emit) => _onSelectDiaryCellsEvent(event, emit)));
+    on<SelectCapitalCellEvent>(
+        ((event, emit) => _onSelectCapitalCellEvent(event, emit)));
     on<StartEditingListEvent>(
         ((event, emit) => _onStartEditingListEvent(event, emit)));
     on<ReturnToLoadedEvent>(
@@ -46,6 +51,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         ((event, emit) => _onUpdateDiaryListNameEvent(event, emit)));
     on<ChangeDiaryCellEvent>(
         ((event, emit) => _onChangeDiaryCellEvent(event, emit)));
+    on<ChangeCapitalCellEvent>(
+        ((event, emit) => _onChangeCapitalCellEvent(event, emit)));
     on<UpdateDiaryCellInFirebaseEvent>(
         ((event, emit) => _onUpdateDiaryCellInFirebaseEvent(event, emit)));
     on<OnPanUpdateEvent>(((event, emit) => _onPanUpdateEvent(event, emit)));
@@ -57,6 +64,14 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         _onChangeDiaryCellsBordersSettingsEvent(event, emit)));
     on<UpdateDiaryCellsSettingsInFirebaseEvent>(((event, emit) =>
         _onUpdateDiaryCellsSettingsInFirebaseEvent(event, emit)));
+    on<ChangeCapitalCellSettingsEvent>(
+        ((event, emit) => _onChangeCapitalCellSettingsEvent(event, emit)));
+    on<UpdateCapitalCellWidthEvent>(
+        ((event, emit) => _onUpdateCapitalCellWidthEvent(event, emit)));
+    on<UpdateCapitalCellWidthInFirebaseEvent>(((event, emit) =>
+        _onUpdateCapitalCellWidthInFirebaseEvent(event, emit)));
+    on<UpdateCapitalCellSettingsInFirebaseEvent>(((event, emit) =>
+        _onUpdateCapitalCellSettingsInFirebaseEvent(event, emit)));
     on<StartEditingColorEvent>(
         ((event, emit) => _onStartEditingColorEvent(event, emit)));
     on<StartEditingBordersEvent>(
@@ -65,6 +80,12 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         ((event, emit) => _onStartEditingBordersStyleEvent(event, emit)));
     on<TurnBackEditingEvent>(
         ((event, emit) => _onTurnBackEditingEvent(event, emit)));
+    on<CreateDiaryColumnEvent>(
+        (event, emit) => _onCreateDiaryColumnEvent(event, emit));
+    on<DeleteDiaryColumnEvent>(
+        (event, emit) => _onDeleteDiaryColumnEvent(event, emit));
+    on<StartColumnDeletingEvent>(
+        ((event, emit) => _onStartColumnDeletingEvent(event, emit)));
   }
 
   Future<void> _onCreateSampleEvent(
@@ -96,24 +117,42 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists: lists,
       ),
     );
-    add(
-      DiaryListEvent.getDiaryColumns(
-        diaryList: diaryList,
-        lists: lists,
-      ),
-    );
+    Future.delayed(
+        Duration(seconds: 1), //2 seconds enough
+        () => add(
+              DiaryListEvent.getDiaryColumns(
+                diaryList: diaryList,
+                lists: lists,
+              ),
+            ));
   }
 
   Future<void> _onGetDiaryColumnsEvent(
     GetDiaryColumnsEvent event,
     Emitter<DiaryListState> emit,
   ) async {
+    // final diaryColumn =
+    //     await _diaryColumnService.getDateColumn(diaryList: event.diaryList);
+    // _diaryColumnService.updateDefaultSettings(
+    //     diaryList: event.diaryList,
+    //     settings: _diaryColumnService.createDefaultSettings(columnsCount: 1));
+    // _diaryColumnService.updateSettings(
+    //   diaryList: event.diaryList,
+    //   diaryColumn: diaryColumn,
+    //   settings: _diaryColumnService.createDefaultSettings(columnsCount: 2),
+    // );
+
     final diaryColumns =
         await _diaryColumnService.getAll(diaryList: event.diaryList);
+    final capitalCells = await _diaryColumnService.getCapitalCells(
+      diaryList: event.diaryList,
+      diaryColumns: diaryColumns,
+    );
     emit(
       DiaryListState.columnsLoaded(
         diaryList: event.diaryList,
         diaryColumns: diaryColumns,
+        capitalCells: capitalCells,
         lists: event.lists,
       ),
     );
@@ -121,6 +160,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       DiaryListEvent.getDiaryCells(
         diaryList: event.diaryList,
         diaryColumns: diaryColumns,
+        capitalCells: capitalCells,
         lists: event.lists,
       ),
     );
@@ -132,14 +172,15 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
   ) async {
     List<DiaryCell> diaryCells = List<DiaryCell>.empty(growable: true);
 
-    for (var column in event.diaryColumns) {
+    for (var column in event.diaryColumns.reversed) {
       final newCells = await _diaryCellService.getAll(
         diaryList: event.diaryList,
         diaryColumn: column,
       );
       diaryCells.addAll(newCells);
     }
-    //List of global cells keys
+    diaryCells.sort();
+
     List<GlobalObjectKey> cellsKeys =
         List<GlobalObjectKey>.empty(growable: true);
     for (var cell in diaryCells) {
@@ -149,6 +190,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       DiaryListState.loaded(
         diaryList: event.diaryList,
         diaryColumns: event.diaryColumns,
+        capitalCells: event.capitalCells,
         diaryCells: diaryCells,
         cellsKeys: cellsKeys,
         lists: event.lists,
@@ -161,20 +203,14 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      loaded: (diaryList, diaryColumns, diaryCells, cellsKeys, lists) async {
+      loaded: (diaryList, diaryColumns, capitalCells, diaryCells, cellsKeys,
+          lists) async {
         List<DiaryCell> selectedCells = [event.diaryCell];
-        // final diaryColumn = diaryColumns
-        //     .firstWhere((element) => element.id == event.diaryCell.columnName);
-        // var defaultTextSettings =
-        //     await _diaryCellService.getDefaultCellTextSettings(
-        //   diaryList: diaryList,
-        //   diaryColumn: diaryColumn,
-        // );
-
         emit(
           DiaryListState.cellsSelected(
             diaryList: diaryList,
             diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
             diaryCells: diaryCells,
             firstSelectedCell: event.diaryCell,
             selectedCells: selectedCells,
@@ -188,6 +224,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       cellsSelected: (
         diaryList,
         diaryColumns,
+        capitalCells,
         diaryCells,
         firstSelectedCell,
         selectedCells,
@@ -201,6 +238,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           DiaryListState.cellsSelected(
             diaryList: diaryList,
             diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
             diaryCells: diaryCells,
             firstSelectedCell: event.diaryCell,
             selectedCells: selectedCells,
@@ -208,6 +246,37 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             lists: lists,
             defaultTextSettings: defaultTextSettings,
             defaultSettings: defaultSettings,
+          ),
+        );
+      },
+      capitalCellSelected: (
+        diaryList,
+        diaryColumns,
+        capitalCells,
+        diaryCells,
+        selectedCapitalCell,
+        isEditing,
+        isTextEditing,
+        isColorEditing,
+        isBorderEditing,
+        isBorderStyleEditing,
+        cellsKeys,
+        lists,
+        defaultSettings,
+      ) {
+        List<DiaryCell> selectedCells = [event.diaryCell];
+        emit(
+          DiaryListState.cellsSelected(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
+            diaryCells: diaryCells,
+            firstSelectedCell: event.diaryCell,
+            selectedCells: selectedCells,
+            cellsKeys: cellsKeys,
+            lists: lists,
+            defaultTextSettings: event.diaryCell.textSettings,
+            defaultSettings: event.diaryCell.settings,
           ),
         );
       },
@@ -222,6 +291,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       cellsSelected: (
         diaryList,
         diaryColumns,
+        capitalCells,
         diaryCells,
         firstSelectedCell,
         selectedCells,
@@ -234,6 +304,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           DiaryListState.cellsSelected(
             diaryList: diaryList,
             diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
             diaryCells: diaryCells,
             firstSelectedCell: firstSelectedCell,
             selectedCells: event.diaryCells,
@@ -247,20 +318,114 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     );
   }
 
+  Future<void> _onSelectCapitalCellEvent(
+    SelectCapitalCellEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      loaded: (diaryList, diaryColumns, capitalCells, diaryCells, cellsKeys,
+          lists) async {
+        emit(
+          DiaryListState.capitalCellSelected(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
+            diaryCells: diaryCells,
+            selectedCapitalCell: event.capitalCell,
+            isEditing: false,
+            isTextEditing: false,
+            isBordersEditing: false,
+            isBordersStyleEditing: false,
+            isColorEditing: false,
+            cellsKeys: cellsKeys,
+            lists: lists,
+            defaultSettings: event.capitalCell.settings,
+          ),
+        );
+      },
+      cellsSelected: (
+        diaryList,
+        diaryColumns,
+        capitalCells,
+        diaryCells,
+        firstSelectedCell,
+        selectedCells,
+        cellsKeys,
+        lists,
+        defaultTextSettings,
+        defaultSettings,
+      ) {
+        emit(
+          DiaryListState.capitalCellSelected(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
+            diaryCells: diaryCells,
+            selectedCapitalCell: event.capitalCell,
+            isEditing: false,
+            isTextEditing: false,
+            isBordersEditing: false,
+            isBordersStyleEditing: false,
+            isColorEditing: false,
+            cellsKeys: cellsKeys,
+            lists: lists,
+            defaultSettings: event.capitalCell.settings,
+          ),
+        );
+      },
+      capitalCellSelected: (
+        diaryList,
+        diaryColumns,
+        capitalCells,
+        diaryCells,
+        selectedCapitalCell,
+        isEditing,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        cellsKeys,
+        lists,
+        defaultSettings,
+      ) {
+        emit(
+          DiaryListState.capitalCellSelected(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
+            diaryCells: diaryCells,
+            selectedCapitalCell: event.capitalCell,
+            isEditing: false,
+            isTextEditing: false,
+            isBordersEditing: false,
+            isBordersStyleEditing: false,
+            isColorEditing: false,
+            cellsKeys: cellsKeys,
+            lists: lists,
+            defaultSettings: event.capitalCell.settings,
+          ),
+        );
+      },
+    );
+  }
+
   Future<void> _onStartEditingListEvent(
     StartEditingListEvent event,
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      loaded: (diaryList, diaryColumns, diaryCells, cellsKeys, lists) {
+      loaded: (diaryList, diaryColumns, capitalCells, diaryCells, cellsKeys,
+          lists) {
         emit(
           DiaryListState.listEditing(
             diaryList: diaryList,
             diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
             diaryCells: diaryCells,
             cellsKeys: cellsKeys,
             lists: lists,
             selectedList: event.selectedList,
+            isColumnDeleting: false,
           ),
         );
       },
@@ -272,8 +437,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      listEditing: (diaryList, diaryColumns, diaryCells, cellsKeys, lists,
-          selectedList) {
+      listEditing: (diaryList, diaryColumns, capitalCells, diaryCells,
+          cellsKeys, lists, selectedList, isColumnDeleting) {
         if (event.newName != null && event.newName!.isNotEmpty) {
           final changedDiaryList = diaryList.copyWith(name: event.newName);
           List<DiaryList> updatedLists = List<DiaryList>.empty(growable: true);
@@ -288,6 +453,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             DiaryListState.loaded(
               diaryList: changedDiaryList,
               diaryColumns: diaryColumns,
+              capitalCells: capitalCells,
               diaryCells: diaryCells,
               cellsKeys: cellsKeys,
               lists: updatedLists,
@@ -298,6 +464,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             DiaryListState.loaded(
               diaryList: diaryList,
               diaryColumns: diaryColumns,
+              capitalCells: capitalCells,
               diaryCells: diaryCells,
               cellsKeys: cellsKeys,
               lists: lists,
@@ -308,6 +475,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       cellsSelected: (
         diaryList,
         diaryColumns,
+        capitalCells,
         diaryCells,
         firstSelectedCell,
         selectedCells,
@@ -320,6 +488,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           DiaryListState.loaded(
             diaryList: diaryList,
             diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
             diaryCells: diaryCells,
             cellsKeys: cellsKeys,
             lists: lists,
@@ -329,6 +498,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       cellsEditing: (
         diaryList,
         diaryColumns,
+        capitalCells,
         diaryCells,
         cellsKeys,
         firstSelectedCell,
@@ -345,6 +515,33 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           DiaryListState.loaded(
             diaryList: diaryList,
             diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
+            diaryCells: diaryCells,
+            cellsKeys: cellsKeys,
+            lists: lists,
+          ),
+        );
+      },
+      capitalCellSelected: (
+        diaryList,
+        diaryColumns,
+        capitalCells,
+        diaryCells,
+        selectedCapitalCell,
+        isEditing,
+        isTextEditing,
+        isColorEditing,
+        isBorderEditing,
+        isBorderStyleEditing,
+        cellsKeys,
+        lists,
+        defaultSettings,
+      ) {
+        emit(
+          DiaryListState.loaded(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
             diaryCells: diaryCells,
             cellsKeys: cellsKeys,
             lists: lists,
@@ -362,6 +559,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       cellsEditing: (
         diaryList,
         diaryColumns,
+        capitalCells,
         diaryCells,
         cellsKeys,
         firstSelectedCell,
@@ -374,12 +572,11 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         defaultTextSettings,
         defaultSettings,
       ) {
-        //Возможно надо будет обновлять ячейки
-        //Даже не возможно, а точно
         emit(
           DiaryListState.cellsSelected(
             diaryList: diaryList,
             diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
             diaryCells: diaryCells,
             firstSelectedCell: firstSelectedCell,
             selectedCells: selectedCells,
@@ -415,6 +612,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       cellsSelected: (
         diaryList,
         diaryColumns,
+        capitalCells,
         diaryCells,
         firstSelectedCell,
         selectedCells,
@@ -476,91 +674,86 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         // print('End');
         //The corners of the selected rect
 
-        //To fix bug with selecting
-        topPosition += 2;
-        bottomPosition -= 2;
-
-        int verticalStep = columnsCount - 1;
-        //print('Step: $verticalStep');
         List<int> touchedCellsIndexes = List<int>.empty(growable: true);
-
         //up direction
         bool isTouch = true;
-        int index = diaryCells.indexOf(firstSelectedCell);
-        int checksCount = 0;
+        int firstIndex = diaryCells.indexOf(firstSelectedCell);
+        int index = firstIndex;
         touchedCellsIndexes.add(index);
         index >= 0 ? index-- : isTouch = false;
         do {
-          if (index >= 0 &&
-              _diaryCellService.isRectTouchTheCell(
-                leftPosition: leftPosition,
-                rightPosition: rightPosition,
-                topPosition: topPosition,
-                bottomPosition: bottomPosition,
-                cellKey: cellsKeys[index],
-                scaleFactor: event.scaleFactor,
-              )) {
-            if (!touchedCellsIndexes.contains(index)) {
+          if (index > 0 && index % columnsCount != firstIndex % columnsCount) {
+            if (!touchedCellsIndexes.contains(index) &&
+                _diaryCellService.isRectTouchTheCell(
+                  leftPosition: leftPosition,
+                  rightPosition: rightPosition,
+                  topPosition: topPosition,
+                  bottomPosition: bottomPosition,
+                  cellKey: cellsKeys[index],
+                  scaleFactor: event.scaleFactor,
+                )) {
               touchedCellsIndexes.add(index);
+              index--;
+            } else {
+              index--;
             }
-            index--;
-            checksCount++;
-          } else if (index - verticalStep >= 0 &&
-              _diaryCellService.isRectTouchTheCell(
-                leftPosition: leftPosition,
-                rightPosition: rightPosition,
-                topPosition: topPosition,
-                bottomPosition: bottomPosition,
-                cellKey: cellsKeys[index - verticalStep],
-                scaleFactor: event.scaleFactor,
-              )) {
-            index -= verticalStep;
-            checksCount++;
           } else {
-            isTouch = false;
-            checksCount++;
+            if (index >= 0 &&
+                !touchedCellsIndexes.contains(index) &&
+                _diaryCellService.isRectTouchTheCell(
+                  leftPosition: leftPosition,
+                  rightPosition: rightPosition,
+                  topPosition: topPosition,
+                  bottomPosition: bottomPosition,
+                  cellKey: cellsKeys[index],
+                  scaleFactor: event.scaleFactor,
+                )) {
+              touchedCellsIndexes.add(index);
+              index--;
+            } else {
+              isTouch = false;
+            }
           }
-        } while (isTouch == true);
+        } while (isTouch);
         //down direction
         isTouch = true;
         index = diaryCells.indexOf(firstSelectedCell);
-        index < cellsKeys.length - 1 ? index++ : isTouch = false;
+        index <= cellsKeys.length ? index++ : isTouch = false;
         do {
           if (index < cellsKeys.length &&
-              _diaryCellService.isRectTouchTheCell(
-                leftPosition: leftPosition,
-                rightPosition: rightPosition,
-                topPosition: topPosition,
-                bottomPosition: bottomPosition,
-                cellKey: cellsKeys[index],
-                scaleFactor: event.scaleFactor,
-              )) {
-            if (!touchedCellsIndexes.contains(index)) {
+              index % columnsCount != firstIndex % columnsCount) {
+            if (!touchedCellsIndexes.contains(index) &&
+                _diaryCellService.isRectTouchTheCell(
+                  leftPosition: leftPosition,
+                  rightPosition: rightPosition,
+                  topPosition: topPosition,
+                  bottomPosition: bottomPosition,
+                  cellKey: cellsKeys[index],
+                  scaleFactor: event.scaleFactor,
+                )) {
               touchedCellsIndexes.add(index);
+              index++;
+            } else {
+              index++;
             }
-            index++;
-            checksCount++;
-          } else if (index + verticalStep < cellsKeys.length &&
-              _diaryCellService.isRectTouchTheCell(
-                leftPosition: leftPosition,
-                rightPosition: rightPosition,
-                topPosition: topPosition,
-                bottomPosition: bottomPosition,
-                cellKey: cellsKeys[index + verticalStep],
-                scaleFactor: event.scaleFactor,
-              )) {
-            index += verticalStep;
           } else {
-            isTouch = false;
-            checksCount++;
+            if (index < cellsKeys.length &&
+                !touchedCellsIndexes.contains(index) &&
+                _diaryCellService.isRectTouchTheCell(
+                  leftPosition: leftPosition,
+                  rightPosition: rightPosition,
+                  topPosition: topPosition,
+                  bottomPosition: bottomPosition,
+                  cellKey: cellsKeys[index],
+                  scaleFactor: event.scaleFactor,
+                )) {
+              touchedCellsIndexes.add(index);
+              index++;
+            } else {
+              isTouch = false;
+            }
           }
-        } while (isTouch == true);
-        // print('ChecksCount: $checksCount');
-        // print(touchedCellsIndexes.length);
-        // for (var i in touchedCellsIndexes) {
-        //   print('Touched Index: $i');
-        // }
-        //Event selectCells
+        } while (isTouch);
         List<DiaryCell> selectedCells = List<DiaryCell>.empty(
           growable: true,
         );
@@ -580,6 +773,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       cellsSelected: (
         diaryList,
         diaryColumns,
+        capitalCells,
         diaryCells,
         firstSelectedCell,
         selectedCells,
@@ -603,6 +797,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             DiaryListState.cellsSelected(
               diaryList: diaryList,
               diaryColumns: diaryColumns,
+              capitalCells: capitalCells,
               diaryCells: newCells,
               firstSelectedCell: changedCell,
               selectedCells: newSelectedCells,
@@ -623,6 +818,63 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     );
   }
 
+  Future<void> _onChangeCapitalCellEvent(
+    ChangeCapitalCellEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      capitalCellSelected: (
+        diaryList,
+        diaryColumns,
+        capitalCells,
+        diaryCells,
+        selectedCapitalCell,
+        isEditing,
+        isTextEditing,
+        isColorEditing,
+        isBorderEditing,
+        isBorderStyleEditing,
+        cellsKeys,
+        lists,
+        defaultSettings,
+      ) {
+        if (event.textFieldText != selectedCapitalCell.name) {
+          final index = capitalCells.indexOf(selectedCapitalCell);
+          final changedCell =
+              event.capitalCell.copyWith(name: event.textFieldText);
+          List<CapitalCell> newCapitalCells = capitalCells.toList();
+          newCapitalCells[index] = changedCell;
+          emit(
+            DiaryListState.capitalCellSelected(
+              diaryList: diaryList,
+              diaryColumns: diaryColumns,
+              capitalCells: newCapitalCells,
+              diaryCells: diaryCells,
+              selectedCapitalCell: changedCell,
+              isEditing: false,
+              isTextEditing: false,
+              isBordersEditing: false,
+              isBordersStyleEditing: false,
+              isColorEditing: false,
+              cellsKeys: cellsKeys,
+              lists: lists,
+              defaultSettings: defaultSettings,
+            ),
+          );
+          final diaryColumn = diaryColumns
+              .where((element) => element.id == selectedCapitalCell.columnId)
+              .first;
+          _diaryColumnService.update(
+            diaryList: diaryList,
+            diaryColumn: diaryColumn,
+            name: changedCell.name,
+            count: diaryColumn.columnsCount,
+          );
+        }
+      },
+    );
+  }
+
   Future<void> _onUpdateDiaryCellInFirebaseEvent(
     UpdateDiaryCellInFirebaseEvent event,
     Emitter<DiaryListState> emit,
@@ -631,6 +883,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       cellsSelected: (
         diaryList,
         diaryColumns,
+        capitalCells,
         diaryCells,
         firstSelectedCell,
         selectedCells,
@@ -669,6 +922,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       cellsSelected: (
         diaryList,
         diaryColumns,
+        capitalCells,
         diaryCells,
         firstSelectedCell,
         selectedCells,
@@ -682,6 +936,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           DiaryListState.cellsEditing(
             diaryList: diaryList,
             diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
             diaryCells: diaryCells,
             cellsKeys: cellsKeys,
             firstSelectedCell: firstSelectedCell,
@@ -699,6 +954,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       cellsEditing: (
         diaryList,
         diaryColumns,
+        capitalCells,
         diaryCells,
         cellsKeys,
         firstSelectedCell,
@@ -716,6 +972,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           DiaryListState.cellsEditing(
             diaryList: diaryList,
             diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
             diaryCells: diaryCells,
             cellsKeys: cellsKeys,
             firstSelectedCell: firstSelectedCell,
@@ -726,6 +983,39 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             isBordersStyleEditing: false,
             lists: lists,
             defaultTextSettings: defaultTextSettings,
+            defaultSettings: defaultSettings,
+          ),
+        );
+      },
+      capitalCellSelected: (
+        diaryList,
+        diaryColumns,
+        capitalCells,
+        diaryCells,
+        selectedCapitalCell,
+        isEditing,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        cellsKeys,
+        lists,
+        defaultSettings,
+      ) {
+        emit(
+          DiaryListState.capitalCellSelected(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
+            diaryCells: diaryCells,
+            selectedCapitalCell: selectedCapitalCell,
+            isEditing: true,
+            isTextEditing: event.isTextEditing,
+            isColorEditing: isColorEditing,
+            isBordersEditing: isBordersEditing,
+            isBordersStyleEditing: isBordersStyleEditing,
+            cellsKeys: cellsKeys,
+            lists: lists,
             defaultSettings: defaultSettings,
           ),
         );
@@ -741,6 +1031,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       cellsEditing: (
         diaryList,
         diaryColumns,
+        capitalCells,
         diaryCells,
         cellsKeys,
         firstSelectedCell,
@@ -757,6 +1048,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           DiaryListState.cellsEditing(
             diaryList: diaryList,
             diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
             diaryCells: diaryCells,
             cellsKeys: cellsKeys,
             firstSelectedCell: firstSelectedCell,
@@ -767,6 +1059,39 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             isBordersStyleEditing: false,
             lists: lists,
             defaultTextSettings: defaultTextSettings,
+            defaultSettings: defaultSettings,
+          ),
+        );
+      },
+      capitalCellSelected: (
+        diaryList,
+        diaryColumns,
+        capitalCells,
+        diaryCells,
+        selectedCapitalCell,
+        isEditing,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        cellsKeys,
+        lists,
+        defaultSettings,
+      ) {
+        emit(
+          DiaryListState.capitalCellSelected(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
+            diaryCells: diaryCells,
+            selectedCapitalCell: selectedCapitalCell,
+            isEditing: isEditing,
+            isTextEditing: isTextEditing,
+            isColorEditing: true,
+            isBordersEditing: isBordersEditing,
+            isBordersStyleEditing: false,
+            cellsKeys: cellsKeys,
+            lists: lists,
             defaultSettings: defaultSettings,
           ),
         );
@@ -782,6 +1107,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       cellsEditing: (
         diaryList,
         diaryColumns,
+        capitalCells,
         diaryCells,
         cellsKeys,
         firstSelectedCell,
@@ -798,6 +1124,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           DiaryListState.cellsEditing(
             diaryList: diaryList,
             diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
             diaryCells: diaryCells,
             cellsKeys: cellsKeys,
             firstSelectedCell: firstSelectedCell,
@@ -808,6 +1135,39 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             isBordersStyleEditing: false,
             lists: lists,
             defaultTextSettings: defaultTextSettings,
+            defaultSettings: defaultSettings,
+          ),
+        );
+      },
+      capitalCellSelected: (
+        diaryList,
+        diaryColumns,
+        capitalCells,
+        diaryCells,
+        selectedCapitalCell,
+        isEditing,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        cellsKeys,
+        lists,
+        defaultSettings,
+      ) {
+        emit(
+          DiaryListState.capitalCellSelected(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
+            diaryCells: diaryCells,
+            selectedCapitalCell: selectedCapitalCell,
+            isEditing: isEditing,
+            isTextEditing: false,
+            isColorEditing: false,
+            isBordersEditing: true,
+            isBordersStyleEditing: false,
+            cellsKeys: cellsKeys,
+            lists: lists,
             defaultSettings: defaultSettings,
           ),
         );
@@ -823,6 +1183,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       cellsEditing: (
         diaryList,
         diaryColumns,
+        capitalCells,
         diaryCells,
         cellsKeys,
         firstSelectedCell,
@@ -839,6 +1200,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           DiaryListState.cellsEditing(
             diaryList: diaryList,
             diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
             diaryCells: diaryCells,
             cellsKeys: cellsKeys,
             firstSelectedCell: firstSelectedCell,
@@ -853,6 +1215,61 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           ),
         );
       },
+      capitalCellSelected: (
+        diaryList,
+        diaryColumns,
+        capitalCells,
+        diaryCells,
+        selectedCapitalCell,
+        isEditing,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        cellsKeys,
+        lists,
+        defaultSettings,
+      ) {
+        emit(
+          DiaryListState.capitalCellSelected(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
+            diaryCells: diaryCells,
+            selectedCapitalCell: selectedCapitalCell,
+            isEditing: isEditing,
+            isTextEditing: isTextEditing,
+            isColorEditing: false,
+            isBordersEditing: true,
+            isBordersStyleEditing: true,
+            cellsKeys: cellsKeys,
+            lists: lists,
+            defaultSettings: defaultSettings,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _onStartColumnDeletingEvent(
+    StartColumnDeletingEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      listEditing: (diaryList, diaryColumns, capitalCells, diaryCells,
+          cellsKeys, lists, isColumnDeleting, selectedList) {
+        emit(
+          DiaryListState.listEditing(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
+            diaryCells: diaryCells,
+            cellsKeys: cellsKeys,
+            lists: lists,
+            isColumnDeleting: true,
+          ),
+        );
+      },
     );
   }
 
@@ -864,6 +1281,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       cellsEditing: (
         diaryList,
         diaryColumns,
+        capitalCells,
         diaryCells,
         cellsKeys,
         firstSelectedCell,
@@ -880,6 +1298,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           DiaryListState.cellsEditing(
             diaryList: diaryList,
             diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
             diaryCells: diaryCells,
             cellsKeys: cellsKeys,
             firstSelectedCell: firstSelectedCell,
@@ -897,6 +1316,42 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           ),
         );
       },
+      capitalCellSelected: (
+        diaryList,
+        diaryColumns,
+        capitalCells,
+        diaryCells,
+        selectedCapitalCell,
+        isEditing,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        cellsKeys,
+        lists,
+        defaultSettings,
+      ) {
+        emit(
+          DiaryListState.capitalCellSelected(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
+            diaryCells: diaryCells,
+            selectedCapitalCell: selectedCapitalCell,
+            isEditing: isEditing,
+            isTextEditing: isTextEditing,
+            isColorEditing: false,
+            isBordersEditing:
+                isColorEditing && isBordersEditing || isBordersStyleEditing
+                    ? true
+                    : false,
+            isBordersStyleEditing: false,
+            cellsKeys: cellsKeys,
+            lists: lists,
+            defaultSettings: defaultSettings,
+          ),
+        );
+      },
     );
   }
 
@@ -908,6 +1363,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       cellsEditing: (
         diaryList,
         diaryColumns,
+        capitalCells,
         diaryCells,
         cellsKeys,
         firstSelectedCell,
@@ -948,7 +1404,6 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           );
 
           final newSettings = DiaryCellSettings(
-            //Все эти параметры так же будут изменяться в будущем
             topBorderWidth: cell.settings.topBorderWidth,
             topBorderColor: cell.settings.topBorderColor,
             leftBorderWidth: cell.settings.leftBorderWidth,
@@ -957,7 +1412,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             rightBorderColor: cell.settings.rightBorderColor,
             bottomBorderWidth: cell.settings.bottomBorderWidth,
             bottomBorderColor: cell.settings.bottomBorderColor,
-            height: cell.settings.height, //will change
+            height: cell.settings.height,
             backgroundColor:
                 event.backgroundColor ?? cell.settings.backgroundColor,
           );
@@ -968,6 +1423,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             settings: newSettings,
             textSettings: newTextSettings,
             content: cell.content,
+            capitalColumnPosition: cell.capitalColumnPosition,
           );
           newSelectedCells.add(newDiaryCells[index]);
         }
@@ -979,6 +1435,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             diaryList: diaryList,
             diaryColumns: diaryColumns,
             diaryCells: newDiaryCells,
+            capitalCells: capitalCells,
             cellsKeys: cellsKeys,
             firstSelectedCell: newFirstSelectedCell,
             selectedCells: newSelectedCells,
@@ -1018,6 +1475,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       cellsEditing: (
         diaryList,
         diaryColumns,
+        capitalCells,
         diaryCells,
         cellsKeys,
         firstSelectedCell,
@@ -1054,6 +1512,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           DiaryListState.cellsEditing(
             diaryList: diaryList,
             diaryColumns: diaryColumns,
+            capitalCells: capitalCells,
             diaryCells: newDiaryCells,
             cellsKeys: cellsKeys,
             firstSelectedCell: newFirstSelectedCell,
@@ -1086,6 +1545,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       cellsEditing: (
         diaryList,
         diaryColumns,
+        capitalCells,
         diaryCells,
         cellsKeys,
         firstSelectedCell,
@@ -1099,7 +1559,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         defaultSettings,
       ) {
         //Update cell in Firebase after 10 sec delay if there is no more changes
-        //Uncomment to save changes in base
+        //Uncomment to save changes to base
 
         // for (var cell in event.diaryCells) {
         //   Future.delayed(
@@ -1157,6 +1617,303 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         // }
       },
     );
+  }
+
+  Future<void> _onUpdateCapitalCellSettingsInFirebaseEvent(
+    UpdateCapitalCellSettingsInFirebaseEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      capitalCellSelected: (
+        diaryList,
+        diaryColumns,
+        capitalCells,
+        diaryCells,
+        selectedCapitalCell,
+        isEditing,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        cellsKeys,
+        lists,
+        defaultSettings,
+      ) {
+        //Update capitalCell in Firebase after 10 sec delay if there is no more changes
+        //Uncomment to save changes in base
+
+        // Future.delayed(
+        //   const Duration(seconds: 10),
+        //   () async {
+        //     await _diaryColumnService.updateSettings(
+        //       diaryList: diaryList,
+        //       diaryColumn: diaryColumns.firstWhere(
+        //           (element) => element.id == selectedCapitalCell.columnId),
+        //       settings: event.newSettings,
+        //     );
+        //   },
+        // );
+      },
+    );
+  }
+
+  Future<void> _onChangeCapitalCellSettingsEvent(
+    ChangeCapitalCellSettingsEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      capitalCellSelected: (
+        diaryList,
+        diaryColumns,
+        capitalCells,
+        diaryCells,
+        selectedCapitalCell,
+        isEditing,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        cellsKeys,
+        lists,
+        defaultSettings,
+      ) {
+        var newCapitalCells = List<CapitalCell>.empty(growable: true);
+        newCapitalCells.addAll(capitalCells);
+        var newFontSize =
+            event.fontSize ?? selectedCapitalCell.settings.capitalCellFontSize;
+        newFontSize < Constants.minFontSize
+            ? newFontSize = Constants.minFontSize
+            : newFontSize;
+        newFontSize > Constants.maxFontSize
+            ? newFontSize = Constants.maxFontSize
+            : newFontSize;
+        var newBorderWidth =
+            selectedCapitalCell.settings.capitalCellBorderWidth;
+        event.bordersStyleEnum != null
+            ? newBorderWidth = event.bordersStyleEnum!.toDoubleWidth()
+            : newBorderWidth;
+        var newBorderColor =
+            selectedCapitalCell.settings.capitalCellBorderColor;
+        event.bordersColor != null
+            ? newBorderColor = event.bordersColor!.toColorString()
+            : newBorderColor;
+        var newAlignment = _diaryCellService.convertAlignments(
+          horizontal: event.horizontalAlignment ??
+              selectedCapitalCell.settings.capitalCellAlignment
+                  .toHorizontalAlignmentsEnum(),
+          vertical: event.verticalAlignment ??
+              selectedCapitalCell.settings.capitalCellAlignment
+                  .toVerticalAlignmentsEnum(),
+        );
+        final newSettings = DiaryColumnSettings(
+          width: selectedCapitalCell.settings.width,
+          capitalCellBorderWidth: newBorderWidth,
+          capitalCellBorderColor: newBorderColor,
+          capitalCellHeight: selectedCapitalCell.settings.capitalCellHeight,
+          capitalCellBackgroundColor: event.backgroundColor ??
+              selectedCapitalCell.settings.capitalCellBackgroundColor,
+          capitalCellAlignment: newAlignment,
+          capitalCellFontWeight: event.fontWeight ??
+              selectedCapitalCell.settings.capitalCellFontWeight,
+          capitalCellTextDecoration: event.textDecoration ??
+              selectedCapitalCell.settings.capitalCellTextDecoration,
+          capitalCellFontStyle: event.fontStyle ??
+              selectedCapitalCell.settings.capitalCellFontStyle,
+          capitalCellFontSize: newFontSize,
+          capitalCellTextColor:
+              event.color ?? selectedCapitalCell.settings.capitalCellTextColor,
+        );
+        final newSelectedCapitalCell = CapitalCell(
+          name: selectedCapitalCell.name,
+          columnId: selectedCapitalCell.columnId,
+          settings: newSettings,
+        );
+        final index = capitalCells.indexOf(selectedCapitalCell);
+        newCapitalCells[index] = newSelectedCapitalCell;
+        emit(
+          DiaryListState.capitalCellSelected(
+            diaryList: diaryList,
+            diaryColumns: diaryColumns,
+            capitalCells: newCapitalCells,
+            diaryCells: diaryCells,
+            selectedCapitalCell: newSelectedCapitalCell,
+            isEditing: isEditing,
+            isTextEditing: isTextEditing,
+            isColorEditing: isColorEditing,
+            isBordersEditing: isBordersEditing,
+            isBordersStyleEditing: isBordersStyleEditing,
+            cellsKeys: cellsKeys,
+            lists: lists,
+            defaultSettings: defaultSettings,
+          ),
+        );
+        //Uncomment to save changes to base
+
+        // add(
+        //   DiaryListEvent.updateCapitalCellSettingsInFirebase(
+        //     newSettings: newSettings,
+        //   ),
+        // );
+      },
+    );
+  }
+
+  Future<void> _onUpdateCapitalCellWidthEvent(
+    UpdateCapitalCellWidthEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      capitalCellSelected: (
+        diaryList,
+        diaryColumns,
+        capitalCells,
+        diaryCells,
+        selectedCapitalCell,
+        isEditing,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        cellsKeys,
+        lists,
+        defaultSettings,
+      ) {
+        final diaryColumn = diaryColumns.firstWhere(
+            (element) => element.id == selectedCapitalCell.columnId);
+        var newWidth = List<double>.empty(growable: true);
+        for (var width in diaryColumn.settings.width) {
+          width + event.details.delta.dx / diaryColumn.columnsCount >
+                  Constants.minColumnWidth
+              ? newWidth.add(
+                  width += event.details.delta.dx / diaryColumn.columnsCount)
+              : newWidth.add(Constants.minColumnWidth);
+        }
+        final newSettings =
+            selectedCapitalCell.settings.copyWith(width: newWidth);
+        final newDiaryColumn = DiaryColumn(
+          id: diaryColumn.id,
+          columnsCount: diaryColumn.columnsCount,
+          name: diaryColumn.name,
+          settings: newSettings,
+        );
+        var newDiaryColumns = List<DiaryColumn>.empty(growable: true);
+        newDiaryColumns.addAll(diaryColumns);
+        newDiaryColumns[diaryColumns.indexOf(diaryColumn)] = newDiaryColumn;
+        var newSelectedCapitalCell = CapitalCell(
+          columnId: selectedCapitalCell.columnId,
+          name: selectedCapitalCell.name,
+          settings: newSettings,
+        );
+        var newCapitalCells = List<CapitalCell>.empty(growable: true);
+        newCapitalCells.addAll(capitalCells);
+        newCapitalCells[capitalCells.indexOf(selectedCapitalCell)] =
+            newSelectedCapitalCell;
+        emit(
+          DiaryListState.capitalCellSelected(
+            diaryList: diaryList,
+            diaryColumns: newDiaryColumns,
+            capitalCells: newCapitalCells,
+            diaryCells: diaryCells,
+            selectedCapitalCell: newSelectedCapitalCell,
+            isEditing: isEditing,
+            isTextEditing: isTextEditing,
+            isColorEditing: isColorEditing,
+            isBordersEditing: isBordersEditing,
+            isBordersStyleEditing: isBordersStyleEditing,
+            cellsKeys: cellsKeys,
+            lists: lists,
+            defaultSettings: defaultSettings,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _onUpdateCapitalCellWidthInFirebaseEvent(
+    UpdateCapitalCellWidthInFirebaseEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    state.whenOrNull(
+      capitalCellSelected: (
+        diaryList,
+        diaryColumns,
+        capitalCells,
+        diaryCells,
+        selectedCapitalCell,
+        isEditing,
+        isTextEditing,
+        isColorEditing,
+        isBordersEditing,
+        isBordersStyleEditing,
+        cellsKeys,
+        lists,
+        defaultSettings,
+      ) {
+        final diaryColumn = diaryColumns.firstWhere(
+            (element) => element.id == selectedCapitalCell.columnId);
+        var newWidth = List<double>.empty(growable: true);
+        for (var width in diaryColumn.settings.width) {
+          newWidth
+              .add(width += event.details.delta.dx / diaryColumn.columnsCount);
+        }
+        final newSettings = DiaryColumnSettings(
+          width: newWidth,
+          capitalCellBorderWidth: diaryColumn.settings.capitalCellBorderWidth,
+          capitalCellBorderColor: diaryColumn.settings.capitalCellBorderColor,
+          capitalCellHeight: diaryColumn.settings.capitalCellHeight,
+          capitalCellBackgroundColor: diaryColumn.settings.capitalCellBackgroundColor,
+          capitalCellAlignment: diaryColumn.settings.capitalCellAlignment,
+          capitalCellFontWeight: diaryColumn.settings.capitalCellFontWeight,
+          capitalCellTextDecoration: diaryColumn.settings.capitalCellTextDecoration,
+          capitalCellFontStyle: diaryColumn.settings.capitalCellFontStyle,
+          capitalCellFontSize: diaryColumn.settings.capitalCellFontSize,
+          capitalCellTextColor: diaryColumn.settings.capitalCellTextColor,
+        );
+        //Uncomment to save changes to base
+
+        // add(
+        //   DiaryListEvent.updateCapitalCellSettingsInFirebase(
+        //     newSettings: newSettings,
+        //   ),
+        // );
+      },
+    );
+  }
+
+  Future<void> _onCreateDiaryColumnEvent(
+    CreateDiaryColumnEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    if (event.name.isNotEmpty) {
+      final name = await _diaryColumnService.create(
+        name: event.name,
+        count: event.columnsCount,
+        diaryList: event.diaryList,
+      );
+      final diaryColumn = await _diaryColumnService.getColumnById(
+        diaryList: event.diaryList,
+        columnId: name,
+      );
+      var newDiaryColumns = List<DiaryColumn>.empty(growable: true);
+      newDiaryColumns.addAll(event.diaryColumns);
+      newDiaryColumns.add(diaryColumn);
+      await _diaryCellService.create(
+        diaryList: event.diaryList,
+        diaryColumn: diaryColumn,
+        diaryColumns: newDiaryColumns,
+      );
+    }
+  }
+
+  Future<void> _onDeleteDiaryColumnEvent(
+    DeleteDiaryColumnEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    final doc = await getDiaryColumnDoc(
+      diaryList: event.diaryList,
+      diaryColumnId: event.columnId,
+    ).get();
+    await _diaryColumnService.delete(doc: doc);
   }
 
   List<DiaryCell> _fillBorders({
@@ -1320,6 +2077,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           ),
           textSettings: topCell.textSettings,
           content: topCell.content,
+          capitalColumnPosition: topCell.capitalColumnPosition,
         );
       }
       if (isTopBorderNeedToBeDrawn ||
@@ -1335,6 +2093,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           ),
           textSettings: cell.textSettings,
           content: cell.content,
+          capitalColumnPosition: cell.capitalColumnPosition,
         );
       }
     }
@@ -1365,6 +2124,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           ),
           textSettings: leftCell.textSettings,
           content: leftCell.content,
+          capitalColumnPosition: leftCell.capitalColumnPosition,
         );
       }
       if (isLeftBorderNeedToBeDrawn ||
@@ -1380,6 +2140,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           ),
           textSettings: cell.textSettings,
           content: cell.content,
+          capitalColumnPosition: cell.capitalColumnPosition,
         );
       }
     }
@@ -1408,6 +2169,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           ),
           textSettings: bottomCell.textSettings,
           content: bottomCell.content,
+          capitalColumnPosition: bottomCell.capitalColumnPosition,
         );
       }
       if (isBottomBorderNeedToBeDrawn ||
@@ -1423,6 +2185,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           ),
           textSettings: cell.textSettings,
           content: cell.content,
+          capitalColumnPosition: cell.capitalColumnPosition,
         );
       }
     }
@@ -1453,6 +2216,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           ),
           textSettings: rightCell.textSettings,
           content: rightCell.content,
+          capitalColumnPosition: rightCell.capitalColumnPosition,
         );
       }
       if (isRightBorderNeedToBeDrawn ||
@@ -1468,6 +2232,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           ),
           textSettings: cell.textSettings,
           content: cell.content,
+          capitalColumnPosition: cell.capitalColumnPosition,
         );
       }
     }

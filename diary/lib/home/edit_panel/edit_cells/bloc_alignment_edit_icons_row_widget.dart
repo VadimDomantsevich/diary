@@ -118,6 +118,108 @@ class BlocAlignmentEditIconsRowWidget extends StatelessWidget {
                 },
               );
             },
+            capitalCellTextEditing: (
+              isBold,
+              isItalic,
+              isUnderline,
+              isLineThrough,
+              fontSize,
+              color,
+              isHorizontalLeft,
+              isHorizontalCenter,
+              isHorizontalRight,
+              isVerticalTop,
+              isVerticalCenter,
+              isVerticalBottom,
+              defaultSettings,
+            ) {
+              return AlignmentEditIconsRowWidget(
+                isHorizontalLeft: isHorizontalLeft ? true : false,
+                onPressedHorizontalLeftIcon: () {
+                  const horizontalAlignment = HorizontalAlignmentsEnum.left;
+                  context.read<DiaryListBloc>().add(
+                        const ChangeCapitalCellSettingsEvent(
+                          horizontalAlignment: horizontalAlignment,
+                        ),
+                      );
+                  context.read<DiaryCellEditBloc>().add(
+                        const ChangeCellEvent(
+                          horizontalAlignment: horizontalAlignment,
+                        ),
+                      );
+                },
+                isHorizontalCenter: isHorizontalCenter ? true : false,
+                onPressedHorizontalCenterIcon: () {
+                  const horizontalAlignment = HorizontalAlignmentsEnum.center;
+                  context.read<DiaryListBloc>().add(
+                        const ChangeCapitalCellSettingsEvent(
+                          horizontalAlignment: horizontalAlignment,
+                        ),
+                      );
+                  context.read<DiaryCellEditBloc>().add(
+                        const ChangeCellEvent(
+                          horizontalAlignment: horizontalAlignment,
+                        ),
+                      );
+                },
+                isHorizontalRight: isHorizontalRight ? true : false,
+                onPressedHorizontalRightIcon: () {
+                  const horizontalAlignment = HorizontalAlignmentsEnum.right;
+                  context.read<DiaryListBloc>().add(
+                        const ChangeCapitalCellSettingsEvent(
+                          horizontalAlignment: horizontalAlignment,
+                        ),
+                      );
+                  context.read<DiaryCellEditBloc>().add(
+                        const ChangeCellEvent(
+                          horizontalAlignment: horizontalAlignment,
+                        ),
+                      );
+                },
+                isVerticalTop: isVerticalTop ? true : false,
+                onPressedVerticalTopIcon: () {
+                  const verticalAlignment = VerticalAlignmentsEnum.top;
+                  context.read<DiaryListBloc>().add(
+                        const ChangeCapitalCellSettingsEvent(
+                          verticalAlignment: verticalAlignment,
+                        ),
+                      );
+                  context.read<DiaryCellEditBloc>().add(
+                        const ChangeCellEvent(
+                          verticalAlignment: verticalAlignment,
+                        ),
+                      );
+                },
+                isVerticalCenter: isVerticalCenter ? true : false,
+                onPressedVerticalCenterIcon: () {
+                  const verticalAlignment = VerticalAlignmentsEnum.center;
+                  context.read<DiaryListBloc>().add(
+                        const ChangeCapitalCellSettingsEvent(
+                          verticalAlignment: verticalAlignment,
+                        ),
+                      );
+                  context.read<DiaryCellEditBloc>().add(
+                        const ChangeCellEvent(
+                          verticalAlignment: verticalAlignment,
+                        ),
+                      );
+                },
+                isVerticalBottom: isVerticalBottom ? true : false,
+                onPressedVerticalBottomIcon: () {
+                  const verticalAlignment = VerticalAlignmentsEnum.bottom;
+                  context.read<DiaryListBloc>().add(
+                        const ChangeCapitalCellSettingsEvent(
+                          verticalAlignment: verticalAlignment,
+                        ),
+                      );
+                  context.read<DiaryCellEditBloc>().add(
+                        const ChangeCellEvent(
+                          verticalAlignment: verticalAlignment,
+                        ),
+                      );
+                },
+              );
+            },
             orElse: () => Container());
       },
     );

@@ -7,12 +7,17 @@ class GridDisplayEvent with _$GridDisplayEvent {
     required DiaryList diaryList,
     required List<DiaryColumn> diaryColumns,
     required List<DiaryCell> diaryCells,
+    required List<CapitalCell> capitalCells,
+    required bool isAppBarShown,
+    required bool isPanelShown,
+    required bool isEditCellPanelShown,
   }) = _GetConstraintsEvent;
 
   const factory GridDisplayEvent.onPointerSelectMove({
     required PointerEvent details,
     required DiaryCell firstSelectedCell,
     required List<DiaryCell> selectedCells,
+    required CapitalCell capitalCell,
   }) = _OnPointerSelectMoveEvent;
 
   const factory GridDisplayEvent.onInteractionEnd({

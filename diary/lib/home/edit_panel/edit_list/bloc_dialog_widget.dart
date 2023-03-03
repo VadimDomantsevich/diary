@@ -15,6 +15,7 @@ class BlocDialogWidget extends StatelessWidget {
   });
 
   final DiaryList diaryList;
+
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(

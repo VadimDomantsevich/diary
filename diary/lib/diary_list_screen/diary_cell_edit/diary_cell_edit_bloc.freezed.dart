@@ -44,9 +44,29 @@ mixin _$DiaryCellEditState {
             BordersStyleEnum? bordersStyleEnum)
         colorEditing,
     required TResult Function(Color fillColor) cellEditing,
+    required TResult Function(CapitalCell capitalCell) capitalCellEditing,
     required TResult Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)
         bordersEditing,
+    required TResult Function(
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        capitalCellBordersEditing,
+    required TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)
+        capitalCellTextEditing,
+    required TResult Function(int columnsCount) columnsCountEditing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,9 +97,28 @@ mixin _$DiaryCellEditState {
             BordersStyleEnum? bordersStyleEnum)?
         colorEditing,
     TResult? Function(Color fillColor)? cellEditing,
+    TResult? Function(CapitalCell capitalCell)? capitalCellEditing,
     TResult? Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)?
         bordersEditing,
+    TResult? Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult? Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult? Function(int columnsCount)? columnsCountEditing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -110,9 +149,28 @@ mixin _$DiaryCellEditState {
             BordersStyleEnum? bordersStyleEnum)?
         colorEditing,
     TResult Function(Color fillColor)? cellEditing,
+    TResult Function(CapitalCell capitalCell)? capitalCellEditing,
     TResult Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)?
         bordersEditing,
+    TResult Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult Function(int columnsCount)? columnsCountEditing,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -122,7 +180,13 @@ mixin _$DiaryCellEditState {
     required TResult Function(TextEditing value) textEditing,
     required TResult Function(ColorEditing value) colorEditing,
     required TResult Function(CellEditing value) cellEditing,
+    required TResult Function(CapitalCellEditing value) capitalCellEditing,
     required TResult Function(BordersEditing value) bordersEditing,
+    required TResult Function(CapitalCellBordersEditing value)
+        capitalCellBordersEditing,
+    required TResult Function(CapitalCellTextEditing value)
+        capitalCellTextEditing,
+    required TResult Function(ColumnsCountEditing value) columnsCountEditing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -131,7 +195,12 @@ mixin _$DiaryCellEditState {
     TResult? Function(TextEditing value)? textEditing,
     TResult? Function(ColorEditing value)? colorEditing,
     TResult? Function(CellEditing value)? cellEditing,
+    TResult? Function(CapitalCellEditing value)? capitalCellEditing,
     TResult? Function(BordersEditing value)? bordersEditing,
+    TResult? Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult? Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult? Function(ColumnsCountEditing value)? columnsCountEditing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -140,7 +209,12 @@ mixin _$DiaryCellEditState {
     TResult Function(TextEditing value)? textEditing,
     TResult Function(ColorEditing value)? colorEditing,
     TResult Function(CellEditing value)? cellEditing,
+    TResult Function(CapitalCellEditing value)? capitalCellEditing,
     TResult Function(BordersEditing value)? bordersEditing,
+    TResult Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult Function(ColumnsCountEditing value)? columnsCountEditing,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -226,9 +300,29 @@ class _$Initial implements Initial {
             BordersStyleEnum? bordersStyleEnum)
         colorEditing,
     required TResult Function(Color fillColor) cellEditing,
+    required TResult Function(CapitalCell capitalCell) capitalCellEditing,
     required TResult Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)
         bordersEditing,
+    required TResult Function(
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        capitalCellBordersEditing,
+    required TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)
+        capitalCellTextEditing,
+    required TResult Function(int columnsCount) columnsCountEditing,
   }) {
     return initial();
   }
@@ -262,9 +356,28 @@ class _$Initial implements Initial {
             BordersStyleEnum? bordersStyleEnum)?
         colorEditing,
     TResult? Function(Color fillColor)? cellEditing,
+    TResult? Function(CapitalCell capitalCell)? capitalCellEditing,
     TResult? Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)?
         bordersEditing,
+    TResult? Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult? Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult? Function(int columnsCount)? columnsCountEditing,
   }) {
     return initial?.call();
   }
@@ -298,9 +411,28 @@ class _$Initial implements Initial {
             BordersStyleEnum? bordersStyleEnum)?
         colorEditing,
     TResult Function(Color fillColor)? cellEditing,
+    TResult Function(CapitalCell capitalCell)? capitalCellEditing,
     TResult Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)?
         bordersEditing,
+    TResult Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult Function(int columnsCount)? columnsCountEditing,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -316,7 +448,13 @@ class _$Initial implements Initial {
     required TResult Function(TextEditing value) textEditing,
     required TResult Function(ColorEditing value) colorEditing,
     required TResult Function(CellEditing value) cellEditing,
+    required TResult Function(CapitalCellEditing value) capitalCellEditing,
     required TResult Function(BordersEditing value) bordersEditing,
+    required TResult Function(CapitalCellBordersEditing value)
+        capitalCellBordersEditing,
+    required TResult Function(CapitalCellTextEditing value)
+        capitalCellTextEditing,
+    required TResult Function(ColumnsCountEditing value) columnsCountEditing,
   }) {
     return initial(this);
   }
@@ -328,7 +466,12 @@ class _$Initial implements Initial {
     TResult? Function(TextEditing value)? textEditing,
     TResult? Function(ColorEditing value)? colorEditing,
     TResult? Function(CellEditing value)? cellEditing,
+    TResult? Function(CapitalCellEditing value)? capitalCellEditing,
     TResult? Function(BordersEditing value)? bordersEditing,
+    TResult? Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult? Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult? Function(ColumnsCountEditing value)? columnsCountEditing,
   }) {
     return initial?.call(this);
   }
@@ -340,7 +483,12 @@ class _$Initial implements Initial {
     TResult Function(TextEditing value)? textEditing,
     TResult Function(ColorEditing value)? colorEditing,
     TResult Function(CellEditing value)? cellEditing,
+    TResult Function(CapitalCellEditing value)? capitalCellEditing,
     TResult Function(BordersEditing value)? bordersEditing,
+    TResult Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult Function(ColumnsCountEditing value)? columnsCountEditing,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -603,9 +751,29 @@ class _$TextEditing implements TextEditing {
             BordersStyleEnum? bordersStyleEnum)
         colorEditing,
     required TResult Function(Color fillColor) cellEditing,
+    required TResult Function(CapitalCell capitalCell) capitalCellEditing,
     required TResult Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)
         bordersEditing,
+    required TResult Function(
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        capitalCellBordersEditing,
+    required TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)
+        capitalCellTextEditing,
+    required TResult Function(int columnsCount) columnsCountEditing,
   }) {
     return textEditing(
         isBold,
@@ -653,9 +821,28 @@ class _$TextEditing implements TextEditing {
             BordersStyleEnum? bordersStyleEnum)?
         colorEditing,
     TResult? Function(Color fillColor)? cellEditing,
+    TResult? Function(CapitalCell capitalCell)? capitalCellEditing,
     TResult? Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)?
         bordersEditing,
+    TResult? Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult? Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult? Function(int columnsCount)? columnsCountEditing,
   }) {
     return textEditing?.call(
         isBold,
@@ -703,9 +890,28 @@ class _$TextEditing implements TextEditing {
             BordersStyleEnum? bordersStyleEnum)?
         colorEditing,
     TResult Function(Color fillColor)? cellEditing,
+    TResult Function(CapitalCell capitalCell)? capitalCellEditing,
     TResult Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)?
         bordersEditing,
+    TResult Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult Function(int columnsCount)? columnsCountEditing,
     required TResult orElse(),
   }) {
     if (textEditing != null) {
@@ -735,7 +941,13 @@ class _$TextEditing implements TextEditing {
     required TResult Function(TextEditing value) textEditing,
     required TResult Function(ColorEditing value) colorEditing,
     required TResult Function(CellEditing value) cellEditing,
+    required TResult Function(CapitalCellEditing value) capitalCellEditing,
     required TResult Function(BordersEditing value) bordersEditing,
+    required TResult Function(CapitalCellBordersEditing value)
+        capitalCellBordersEditing,
+    required TResult Function(CapitalCellTextEditing value)
+        capitalCellTextEditing,
+    required TResult Function(ColumnsCountEditing value) columnsCountEditing,
   }) {
     return textEditing(this);
   }
@@ -747,7 +959,12 @@ class _$TextEditing implements TextEditing {
     TResult? Function(TextEditing value)? textEditing,
     TResult? Function(ColorEditing value)? colorEditing,
     TResult? Function(CellEditing value)? cellEditing,
+    TResult? Function(CapitalCellEditing value)? capitalCellEditing,
     TResult? Function(BordersEditing value)? bordersEditing,
+    TResult? Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult? Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult? Function(ColumnsCountEditing value)? columnsCountEditing,
   }) {
     return textEditing?.call(this);
   }
@@ -759,7 +976,12 @@ class _$TextEditing implements TextEditing {
     TResult Function(TextEditing value)? textEditing,
     TResult Function(ColorEditing value)? colorEditing,
     TResult Function(CellEditing value)? cellEditing,
+    TResult Function(CapitalCellEditing value)? capitalCellEditing,
     TResult Function(BordersEditing value)? bordersEditing,
+    TResult Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult Function(ColumnsCountEditing value)? columnsCountEditing,
     required TResult orElse(),
   }) {
     if (textEditing != null) {
@@ -954,9 +1176,29 @@ class _$ColorEditing implements ColorEditing {
             BordersStyleEnum? bordersStyleEnum)
         colorEditing,
     required TResult Function(Color fillColor) cellEditing,
+    required TResult Function(CapitalCell capitalCell) capitalCellEditing,
     required TResult Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)
         bordersEditing,
+    required TResult Function(
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        capitalCellBordersEditing,
+    required TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)
+        capitalCellTextEditing,
+    required TResult Function(int columnsCount) columnsCountEditing,
   }) {
     return colorEditing(colorEditingEnum, mainColor, selectedColor,
         defaultColor, bordersEditingEnum, bordersStyleEnum);
@@ -991,9 +1233,28 @@ class _$ColorEditing implements ColorEditing {
             BordersStyleEnum? bordersStyleEnum)?
         colorEditing,
     TResult? Function(Color fillColor)? cellEditing,
+    TResult? Function(CapitalCell capitalCell)? capitalCellEditing,
     TResult? Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)?
         bordersEditing,
+    TResult? Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult? Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult? Function(int columnsCount)? columnsCountEditing,
   }) {
     return colorEditing?.call(colorEditingEnum, mainColor, selectedColor,
         defaultColor, bordersEditingEnum, bordersStyleEnum);
@@ -1028,9 +1289,28 @@ class _$ColorEditing implements ColorEditing {
             BordersStyleEnum? bordersStyleEnum)?
         colorEditing,
     TResult Function(Color fillColor)? cellEditing,
+    TResult Function(CapitalCell capitalCell)? capitalCellEditing,
     TResult Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)?
         bordersEditing,
+    TResult Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult Function(int columnsCount)? columnsCountEditing,
     required TResult orElse(),
   }) {
     if (colorEditing != null) {
@@ -1047,7 +1327,13 @@ class _$ColorEditing implements ColorEditing {
     required TResult Function(TextEditing value) textEditing,
     required TResult Function(ColorEditing value) colorEditing,
     required TResult Function(CellEditing value) cellEditing,
+    required TResult Function(CapitalCellEditing value) capitalCellEditing,
     required TResult Function(BordersEditing value) bordersEditing,
+    required TResult Function(CapitalCellBordersEditing value)
+        capitalCellBordersEditing,
+    required TResult Function(CapitalCellTextEditing value)
+        capitalCellTextEditing,
+    required TResult Function(ColumnsCountEditing value) columnsCountEditing,
   }) {
     return colorEditing(this);
   }
@@ -1059,7 +1345,12 @@ class _$ColorEditing implements ColorEditing {
     TResult? Function(TextEditing value)? textEditing,
     TResult? Function(ColorEditing value)? colorEditing,
     TResult? Function(CellEditing value)? cellEditing,
+    TResult? Function(CapitalCellEditing value)? capitalCellEditing,
     TResult? Function(BordersEditing value)? bordersEditing,
+    TResult? Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult? Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult? Function(ColumnsCountEditing value)? columnsCountEditing,
   }) {
     return colorEditing?.call(this);
   }
@@ -1071,7 +1362,12 @@ class _$ColorEditing implements ColorEditing {
     TResult Function(TextEditing value)? textEditing,
     TResult Function(ColorEditing value)? colorEditing,
     TResult Function(CellEditing value)? cellEditing,
+    TResult Function(CapitalCellEditing value)? capitalCellEditing,
     TResult Function(BordersEditing value)? bordersEditing,
+    TResult Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult Function(ColumnsCountEditing value)? columnsCountEditing,
     required TResult orElse(),
   }) {
     if (colorEditing != null) {
@@ -1192,9 +1488,29 @@ class _$CellEditing implements CellEditing {
             BordersStyleEnum? bordersStyleEnum)
         colorEditing,
     required TResult Function(Color fillColor) cellEditing,
+    required TResult Function(CapitalCell capitalCell) capitalCellEditing,
     required TResult Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)
         bordersEditing,
+    required TResult Function(
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        capitalCellBordersEditing,
+    required TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)
+        capitalCellTextEditing,
+    required TResult Function(int columnsCount) columnsCountEditing,
   }) {
     return cellEditing(fillColor);
   }
@@ -1228,9 +1544,28 @@ class _$CellEditing implements CellEditing {
             BordersStyleEnum? bordersStyleEnum)?
         colorEditing,
     TResult? Function(Color fillColor)? cellEditing,
+    TResult? Function(CapitalCell capitalCell)? capitalCellEditing,
     TResult? Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)?
         bordersEditing,
+    TResult? Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult? Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult? Function(int columnsCount)? columnsCountEditing,
   }) {
     return cellEditing?.call(fillColor);
   }
@@ -1264,9 +1599,28 @@ class _$CellEditing implements CellEditing {
             BordersStyleEnum? bordersStyleEnum)?
         colorEditing,
     TResult Function(Color fillColor)? cellEditing,
+    TResult Function(CapitalCell capitalCell)? capitalCellEditing,
     TResult Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)?
         bordersEditing,
+    TResult Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult Function(int columnsCount)? columnsCountEditing,
     required TResult orElse(),
   }) {
     if (cellEditing != null) {
@@ -1282,7 +1636,13 @@ class _$CellEditing implements CellEditing {
     required TResult Function(TextEditing value) textEditing,
     required TResult Function(ColorEditing value) colorEditing,
     required TResult Function(CellEditing value) cellEditing,
+    required TResult Function(CapitalCellEditing value) capitalCellEditing,
     required TResult Function(BordersEditing value) bordersEditing,
+    required TResult Function(CapitalCellBordersEditing value)
+        capitalCellBordersEditing,
+    required TResult Function(CapitalCellTextEditing value)
+        capitalCellTextEditing,
+    required TResult Function(ColumnsCountEditing value) columnsCountEditing,
   }) {
     return cellEditing(this);
   }
@@ -1294,7 +1654,12 @@ class _$CellEditing implements CellEditing {
     TResult? Function(TextEditing value)? textEditing,
     TResult? Function(ColorEditing value)? colorEditing,
     TResult? Function(CellEditing value)? cellEditing,
+    TResult? Function(CapitalCellEditing value)? capitalCellEditing,
     TResult? Function(BordersEditing value)? bordersEditing,
+    TResult? Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult? Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult? Function(ColumnsCountEditing value)? columnsCountEditing,
   }) {
     return cellEditing?.call(this);
   }
@@ -1306,7 +1671,12 @@ class _$CellEditing implements CellEditing {
     TResult Function(TextEditing value)? textEditing,
     TResult Function(ColorEditing value)? colorEditing,
     TResult Function(CellEditing value)? cellEditing,
+    TResult Function(CapitalCellEditing value)? capitalCellEditing,
     TResult Function(BordersEditing value)? bordersEditing,
+    TResult Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult Function(ColumnsCountEditing value)? columnsCountEditing,
     required TResult orElse(),
   }) {
     if (cellEditing != null) {
@@ -1322,6 +1692,306 @@ abstract class CellEditing implements DiaryCellEditState {
   Color get fillColor;
   @JsonKey(ignore: true)
   _$$CellEditingCopyWith<_$CellEditing> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CapitalCellEditingCopyWith<$Res> {
+  factory _$$CapitalCellEditingCopyWith(_$CapitalCellEditing value,
+          $Res Function(_$CapitalCellEditing) then) =
+      __$$CapitalCellEditingCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CapitalCell capitalCell});
+}
+
+/// @nodoc
+class __$$CapitalCellEditingCopyWithImpl<$Res>
+    extends _$DiaryCellEditStateCopyWithImpl<$Res, _$CapitalCellEditing>
+    implements _$$CapitalCellEditingCopyWith<$Res> {
+  __$$CapitalCellEditingCopyWithImpl(
+      _$CapitalCellEditing _value, $Res Function(_$CapitalCellEditing) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? capitalCell = null,
+  }) {
+    return _then(_$CapitalCellEditing(
+      capitalCell: null == capitalCell
+          ? _value.capitalCell
+          : capitalCell // ignore: cast_nullable_to_non_nullable
+              as CapitalCell,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CapitalCellEditing implements CapitalCellEditing {
+  const _$CapitalCellEditing({required this.capitalCell});
+
+  @override
+  final CapitalCell capitalCell;
+
+  @override
+  String toString() {
+    return 'DiaryCellEditState.capitalCellEditing(capitalCell: $capitalCell)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CapitalCellEditing &&
+            (identical(other.capitalCell, capitalCell) ||
+                other.capitalCell == capitalCell));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, capitalCell);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CapitalCellEditingCopyWith<_$CapitalCellEditing> get copyWith =>
+      __$$CapitalCellEditingCopyWithImpl<_$CapitalCellEditing>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)
+        textEditing,
+    required TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            MainColorsEnum mainColor,
+            Color selectedColor,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)
+        colorEditing,
+    required TResult Function(Color fillColor) cellEditing,
+    required TResult Function(CapitalCell capitalCell) capitalCellEditing,
+    required TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        bordersEditing,
+    required TResult Function(
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        capitalCellBordersEditing,
+    required TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)
+        capitalCellTextEditing,
+    required TResult Function(int columnsCount) columnsCountEditing,
+  }) {
+    return capitalCellEditing(capitalCell);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        textEditing,
+    TResult? Function(
+            ColorEditingEnum colorEditingEnum,
+            MainColorsEnum mainColor,
+            Color selectedColor,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        colorEditing,
+    TResult? Function(Color fillColor)? cellEditing,
+    TResult? Function(CapitalCell capitalCell)? capitalCellEditing,
+    TResult? Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        bordersEditing,
+    TResult? Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult? Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult? Function(int columnsCount)? columnsCountEditing,
+  }) {
+    return capitalCellEditing?.call(capitalCell);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        textEditing,
+    TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            MainColorsEnum mainColor,
+            Color selectedColor,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        colorEditing,
+    TResult Function(Color fillColor)? cellEditing,
+    TResult Function(CapitalCell capitalCell)? capitalCellEditing,
+    TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        bordersEditing,
+    TResult Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult Function(int columnsCount)? columnsCountEditing,
+    required TResult orElse(),
+  }) {
+    if (capitalCellEditing != null) {
+      return capitalCellEditing(capitalCell);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(TextEditing value) textEditing,
+    required TResult Function(ColorEditing value) colorEditing,
+    required TResult Function(CellEditing value) cellEditing,
+    required TResult Function(CapitalCellEditing value) capitalCellEditing,
+    required TResult Function(BordersEditing value) bordersEditing,
+    required TResult Function(CapitalCellBordersEditing value)
+        capitalCellBordersEditing,
+    required TResult Function(CapitalCellTextEditing value)
+        capitalCellTextEditing,
+    required TResult Function(ColumnsCountEditing value) columnsCountEditing,
+  }) {
+    return capitalCellEditing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(TextEditing value)? textEditing,
+    TResult? Function(ColorEditing value)? colorEditing,
+    TResult? Function(CellEditing value)? cellEditing,
+    TResult? Function(CapitalCellEditing value)? capitalCellEditing,
+    TResult? Function(BordersEditing value)? bordersEditing,
+    TResult? Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult? Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult? Function(ColumnsCountEditing value)? columnsCountEditing,
+  }) {
+    return capitalCellEditing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(TextEditing value)? textEditing,
+    TResult Function(ColorEditing value)? colorEditing,
+    TResult Function(CellEditing value)? cellEditing,
+    TResult Function(CapitalCellEditing value)? capitalCellEditing,
+    TResult Function(BordersEditing value)? bordersEditing,
+    TResult Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult Function(ColumnsCountEditing value)? columnsCountEditing,
+    required TResult orElse(),
+  }) {
+    if (capitalCellEditing != null) {
+      return capitalCellEditing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CapitalCellEditing implements DiaryCellEditState {
+  const factory CapitalCellEditing({required final CapitalCell capitalCell}) =
+      _$CapitalCellEditing;
+
+  CapitalCell get capitalCell;
+  @JsonKey(ignore: true)
+  _$$CapitalCellEditingCopyWith<_$CapitalCellEditing> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1441,9 +2111,29 @@ class _$BordersEditing implements BordersEditing {
             BordersStyleEnum? bordersStyleEnum)
         colorEditing,
     required TResult Function(Color fillColor) cellEditing,
+    required TResult Function(CapitalCell capitalCell) capitalCellEditing,
     required TResult Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)
         bordersEditing,
+    required TResult Function(
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        capitalCellBordersEditing,
+    required TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)
+        capitalCellTextEditing,
+    required TResult Function(int columnsCount) columnsCountEditing,
   }) {
     return bordersEditing(bordersEditingEnum, bordersStyleEnum, bordersColor);
   }
@@ -1477,9 +2167,28 @@ class _$BordersEditing implements BordersEditing {
             BordersStyleEnum? bordersStyleEnum)?
         colorEditing,
     TResult? Function(Color fillColor)? cellEditing,
+    TResult? Function(CapitalCell capitalCell)? capitalCellEditing,
     TResult? Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)?
         bordersEditing,
+    TResult? Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult? Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult? Function(int columnsCount)? columnsCountEditing,
   }) {
     return bordersEditing?.call(
         bordersEditingEnum, bordersStyleEnum, bordersColor);
@@ -1514,9 +2223,28 @@ class _$BordersEditing implements BordersEditing {
             BordersStyleEnum? bordersStyleEnum)?
         colorEditing,
     TResult Function(Color fillColor)? cellEditing,
+    TResult Function(CapitalCell capitalCell)? capitalCellEditing,
     TResult Function(BordersEditingEnum bordersEditingEnum,
             BordersStyleEnum bordersStyleEnum, Color bordersColor)?
         bordersEditing,
+    TResult Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult Function(int columnsCount)? columnsCountEditing,
     required TResult orElse(),
   }) {
     if (bordersEditing != null) {
@@ -1532,7 +2260,13 @@ class _$BordersEditing implements BordersEditing {
     required TResult Function(TextEditing value) textEditing,
     required TResult Function(ColorEditing value) colorEditing,
     required TResult Function(CellEditing value) cellEditing,
+    required TResult Function(CapitalCellEditing value) capitalCellEditing,
     required TResult Function(BordersEditing value) bordersEditing,
+    required TResult Function(CapitalCellBordersEditing value)
+        capitalCellBordersEditing,
+    required TResult Function(CapitalCellTextEditing value)
+        capitalCellTextEditing,
+    required TResult Function(ColumnsCountEditing value) columnsCountEditing,
   }) {
     return bordersEditing(this);
   }
@@ -1544,7 +2278,12 @@ class _$BordersEditing implements BordersEditing {
     TResult? Function(TextEditing value)? textEditing,
     TResult? Function(ColorEditing value)? colorEditing,
     TResult? Function(CellEditing value)? cellEditing,
+    TResult? Function(CapitalCellEditing value)? capitalCellEditing,
     TResult? Function(BordersEditing value)? bordersEditing,
+    TResult? Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult? Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult? Function(ColumnsCountEditing value)? columnsCountEditing,
   }) {
     return bordersEditing?.call(this);
   }
@@ -1556,7 +2295,12 @@ class _$BordersEditing implements BordersEditing {
     TResult Function(TextEditing value)? textEditing,
     TResult Function(ColorEditing value)? colorEditing,
     TResult Function(CellEditing value)? cellEditing,
+    TResult Function(CapitalCellEditing value)? capitalCellEditing,
     TResult Function(BordersEditing value)? bordersEditing,
+    TResult Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult Function(ColumnsCountEditing value)? columnsCountEditing,
     required TResult orElse(),
   }) {
     if (bordersEditing != null) {
@@ -1577,6 +2321,1129 @@ abstract class BordersEditing implements DiaryCellEditState {
   Color get bordersColor;
   @JsonKey(ignore: true)
   _$$BordersEditingCopyWith<_$BordersEditing> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CapitalCellBordersEditingCopyWith<$Res> {
+  factory _$$CapitalCellBordersEditingCopyWith(
+          _$CapitalCellBordersEditing value,
+          $Res Function(_$CapitalCellBordersEditing) then) =
+      __$$CapitalCellBordersEditingCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BordersStyleEnum bordersStyleEnum, Color bordersColor});
+}
+
+/// @nodoc
+class __$$CapitalCellBordersEditingCopyWithImpl<$Res>
+    extends _$DiaryCellEditStateCopyWithImpl<$Res, _$CapitalCellBordersEditing>
+    implements _$$CapitalCellBordersEditingCopyWith<$Res> {
+  __$$CapitalCellBordersEditingCopyWithImpl(_$CapitalCellBordersEditing _value,
+      $Res Function(_$CapitalCellBordersEditing) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? bordersStyleEnum = null,
+    Object? bordersColor = null,
+  }) {
+    return _then(_$CapitalCellBordersEditing(
+      bordersStyleEnum: null == bordersStyleEnum
+          ? _value.bordersStyleEnum
+          : bordersStyleEnum // ignore: cast_nullable_to_non_nullable
+              as BordersStyleEnum,
+      bordersColor: null == bordersColor
+          ? _value.bordersColor
+          : bordersColor // ignore: cast_nullable_to_non_nullable
+              as Color,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CapitalCellBordersEditing implements CapitalCellBordersEditing {
+  const _$CapitalCellBordersEditing(
+      {required this.bordersStyleEnum, required this.bordersColor});
+
+  @override
+  final BordersStyleEnum bordersStyleEnum;
+  @override
+  final Color bordersColor;
+
+  @override
+  String toString() {
+    return 'DiaryCellEditState.capitalCellBordersEditing(bordersStyleEnum: $bordersStyleEnum, bordersColor: $bordersColor)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CapitalCellBordersEditing &&
+            (identical(other.bordersStyleEnum, bordersStyleEnum) ||
+                other.bordersStyleEnum == bordersStyleEnum) &&
+            (identical(other.bordersColor, bordersColor) ||
+                other.bordersColor == bordersColor));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, bordersStyleEnum, bordersColor);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CapitalCellBordersEditingCopyWith<_$CapitalCellBordersEditing>
+      get copyWith => __$$CapitalCellBordersEditingCopyWithImpl<
+          _$CapitalCellBordersEditing>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)
+        textEditing,
+    required TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            MainColorsEnum mainColor,
+            Color selectedColor,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)
+        colorEditing,
+    required TResult Function(Color fillColor) cellEditing,
+    required TResult Function(CapitalCell capitalCell) capitalCellEditing,
+    required TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        bordersEditing,
+    required TResult Function(
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        capitalCellBordersEditing,
+    required TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)
+        capitalCellTextEditing,
+    required TResult Function(int columnsCount) columnsCountEditing,
+  }) {
+    return capitalCellBordersEditing(bordersStyleEnum, bordersColor);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        textEditing,
+    TResult? Function(
+            ColorEditingEnum colorEditingEnum,
+            MainColorsEnum mainColor,
+            Color selectedColor,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        colorEditing,
+    TResult? Function(Color fillColor)? cellEditing,
+    TResult? Function(CapitalCell capitalCell)? capitalCellEditing,
+    TResult? Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        bordersEditing,
+    TResult? Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult? Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult? Function(int columnsCount)? columnsCountEditing,
+  }) {
+    return capitalCellBordersEditing?.call(bordersStyleEnum, bordersColor);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        textEditing,
+    TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            MainColorsEnum mainColor,
+            Color selectedColor,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        colorEditing,
+    TResult Function(Color fillColor)? cellEditing,
+    TResult Function(CapitalCell capitalCell)? capitalCellEditing,
+    TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        bordersEditing,
+    TResult Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult Function(int columnsCount)? columnsCountEditing,
+    required TResult orElse(),
+  }) {
+    if (capitalCellBordersEditing != null) {
+      return capitalCellBordersEditing(bordersStyleEnum, bordersColor);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(TextEditing value) textEditing,
+    required TResult Function(ColorEditing value) colorEditing,
+    required TResult Function(CellEditing value) cellEditing,
+    required TResult Function(CapitalCellEditing value) capitalCellEditing,
+    required TResult Function(BordersEditing value) bordersEditing,
+    required TResult Function(CapitalCellBordersEditing value)
+        capitalCellBordersEditing,
+    required TResult Function(CapitalCellTextEditing value)
+        capitalCellTextEditing,
+    required TResult Function(ColumnsCountEditing value) columnsCountEditing,
+  }) {
+    return capitalCellBordersEditing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(TextEditing value)? textEditing,
+    TResult? Function(ColorEditing value)? colorEditing,
+    TResult? Function(CellEditing value)? cellEditing,
+    TResult? Function(CapitalCellEditing value)? capitalCellEditing,
+    TResult? Function(BordersEditing value)? bordersEditing,
+    TResult? Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult? Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult? Function(ColumnsCountEditing value)? columnsCountEditing,
+  }) {
+    return capitalCellBordersEditing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(TextEditing value)? textEditing,
+    TResult Function(ColorEditing value)? colorEditing,
+    TResult Function(CellEditing value)? cellEditing,
+    TResult Function(CapitalCellEditing value)? capitalCellEditing,
+    TResult Function(BordersEditing value)? bordersEditing,
+    TResult Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult Function(ColumnsCountEditing value)? columnsCountEditing,
+    required TResult orElse(),
+  }) {
+    if (capitalCellBordersEditing != null) {
+      return capitalCellBordersEditing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CapitalCellBordersEditing implements DiaryCellEditState {
+  const factory CapitalCellBordersEditing(
+      {required final BordersStyleEnum bordersStyleEnum,
+      required final Color bordersColor}) = _$CapitalCellBordersEditing;
+
+  BordersStyleEnum get bordersStyleEnum;
+  Color get bordersColor;
+  @JsonKey(ignore: true)
+  _$$CapitalCellBordersEditingCopyWith<_$CapitalCellBordersEditing>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CapitalCellTextEditingCopyWith<$Res> {
+  factory _$$CapitalCellTextEditingCopyWith(_$CapitalCellTextEditing value,
+          $Res Function(_$CapitalCellTextEditing) then) =
+      __$$CapitalCellTextEditingCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {bool isBold,
+      bool isItalic,
+      bool isUnderline,
+      bool isLineThrough,
+      double fontSize,
+      Color color,
+      bool isHorizontalLeft,
+      bool isHorizontalCenter,
+      bool isHorizontalRight,
+      bool isVerticalTop,
+      bool isVerticalCenter,
+      bool isVerticalBottom,
+      DiaryColumnSettings defaultSettings});
+}
+
+/// @nodoc
+class __$$CapitalCellTextEditingCopyWithImpl<$Res>
+    extends _$DiaryCellEditStateCopyWithImpl<$Res, _$CapitalCellTextEditing>
+    implements _$$CapitalCellTextEditingCopyWith<$Res> {
+  __$$CapitalCellTextEditingCopyWithImpl(_$CapitalCellTextEditing _value,
+      $Res Function(_$CapitalCellTextEditing) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isBold = null,
+    Object? isItalic = null,
+    Object? isUnderline = null,
+    Object? isLineThrough = null,
+    Object? fontSize = null,
+    Object? color = null,
+    Object? isHorizontalLeft = null,
+    Object? isHorizontalCenter = null,
+    Object? isHorizontalRight = null,
+    Object? isVerticalTop = null,
+    Object? isVerticalCenter = null,
+    Object? isVerticalBottom = null,
+    Object? defaultSettings = null,
+  }) {
+    return _then(_$CapitalCellTextEditing(
+      isBold: null == isBold
+          ? _value.isBold
+          : isBold // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isItalic: null == isItalic
+          ? _value.isItalic
+          : isItalic // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUnderline: null == isUnderline
+          ? _value.isUnderline
+          : isUnderline // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLineThrough: null == isLineThrough
+          ? _value.isLineThrough
+          : isLineThrough // ignore: cast_nullable_to_non_nullable
+              as bool,
+      fontSize: null == fontSize
+          ? _value.fontSize
+          : fontSize // ignore: cast_nullable_to_non_nullable
+              as double,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color,
+      isHorizontalLeft: null == isHorizontalLeft
+          ? _value.isHorizontalLeft
+          : isHorizontalLeft // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isHorizontalCenter: null == isHorizontalCenter
+          ? _value.isHorizontalCenter
+          : isHorizontalCenter // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isHorizontalRight: null == isHorizontalRight
+          ? _value.isHorizontalRight
+          : isHorizontalRight // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isVerticalTop: null == isVerticalTop
+          ? _value.isVerticalTop
+          : isVerticalTop // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isVerticalCenter: null == isVerticalCenter
+          ? _value.isVerticalCenter
+          : isVerticalCenter // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isVerticalBottom: null == isVerticalBottom
+          ? _value.isVerticalBottom
+          : isVerticalBottom // ignore: cast_nullable_to_non_nullable
+              as bool,
+      defaultSettings: null == defaultSettings
+          ? _value.defaultSettings
+          : defaultSettings // ignore: cast_nullable_to_non_nullable
+              as DiaryColumnSettings,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CapitalCellTextEditing implements CapitalCellTextEditing {
+  const _$CapitalCellTextEditing(
+      {required this.isBold,
+      required this.isItalic,
+      required this.isUnderline,
+      required this.isLineThrough,
+      required this.fontSize,
+      required this.color,
+      required this.isHorizontalLeft,
+      required this.isHorizontalCenter,
+      required this.isHorizontalRight,
+      required this.isVerticalTop,
+      required this.isVerticalCenter,
+      required this.isVerticalBottom,
+      required this.defaultSettings});
+
+  @override
+  final bool isBold;
+  @override
+  final bool isItalic;
+  @override
+  final bool isUnderline;
+  @override
+  final bool isLineThrough;
+  @override
+  final double fontSize;
+  @override
+  final Color color;
+  @override
+  final bool isHorizontalLeft;
+  @override
+  final bool isHorizontalCenter;
+  @override
+  final bool isHorizontalRight;
+  @override
+  final bool isVerticalTop;
+  @override
+  final bool isVerticalCenter;
+  @override
+  final bool isVerticalBottom;
+  @override
+  final DiaryColumnSettings defaultSettings;
+
+  @override
+  String toString() {
+    return 'DiaryCellEditState.capitalCellTextEditing(isBold: $isBold, isItalic: $isItalic, isUnderline: $isUnderline, isLineThrough: $isLineThrough, fontSize: $fontSize, color: $color, isHorizontalLeft: $isHorizontalLeft, isHorizontalCenter: $isHorizontalCenter, isHorizontalRight: $isHorizontalRight, isVerticalTop: $isVerticalTop, isVerticalCenter: $isVerticalCenter, isVerticalBottom: $isVerticalBottom, defaultSettings: $defaultSettings)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CapitalCellTextEditing &&
+            (identical(other.isBold, isBold) || other.isBold == isBold) &&
+            (identical(other.isItalic, isItalic) ||
+                other.isItalic == isItalic) &&
+            (identical(other.isUnderline, isUnderline) ||
+                other.isUnderline == isUnderline) &&
+            (identical(other.isLineThrough, isLineThrough) ||
+                other.isLineThrough == isLineThrough) &&
+            (identical(other.fontSize, fontSize) ||
+                other.fontSize == fontSize) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.isHorizontalLeft, isHorizontalLeft) ||
+                other.isHorizontalLeft == isHorizontalLeft) &&
+            (identical(other.isHorizontalCenter, isHorizontalCenter) ||
+                other.isHorizontalCenter == isHorizontalCenter) &&
+            (identical(other.isHorizontalRight, isHorizontalRight) ||
+                other.isHorizontalRight == isHorizontalRight) &&
+            (identical(other.isVerticalTop, isVerticalTop) ||
+                other.isVerticalTop == isVerticalTop) &&
+            (identical(other.isVerticalCenter, isVerticalCenter) ||
+                other.isVerticalCenter == isVerticalCenter) &&
+            (identical(other.isVerticalBottom, isVerticalBottom) ||
+                other.isVerticalBottom == isVerticalBottom) &&
+            (identical(other.defaultSettings, defaultSettings) ||
+                other.defaultSettings == defaultSettings));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      isBold,
+      isItalic,
+      isUnderline,
+      isLineThrough,
+      fontSize,
+      color,
+      isHorizontalLeft,
+      isHorizontalCenter,
+      isHorizontalRight,
+      isVerticalTop,
+      isVerticalCenter,
+      isVerticalBottom,
+      defaultSettings);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CapitalCellTextEditingCopyWith<_$CapitalCellTextEditing> get copyWith =>
+      __$$CapitalCellTextEditingCopyWithImpl<_$CapitalCellTextEditing>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)
+        textEditing,
+    required TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            MainColorsEnum mainColor,
+            Color selectedColor,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)
+        colorEditing,
+    required TResult Function(Color fillColor) cellEditing,
+    required TResult Function(CapitalCell capitalCell) capitalCellEditing,
+    required TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        bordersEditing,
+    required TResult Function(
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        capitalCellBordersEditing,
+    required TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)
+        capitalCellTextEditing,
+    required TResult Function(int columnsCount) columnsCountEditing,
+  }) {
+    return capitalCellTextEditing(
+        isBold,
+        isItalic,
+        isUnderline,
+        isLineThrough,
+        fontSize,
+        color,
+        isHorizontalLeft,
+        isHorizontalCenter,
+        isHorizontalRight,
+        isVerticalTop,
+        isVerticalCenter,
+        isVerticalBottom,
+        defaultSettings);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        textEditing,
+    TResult? Function(
+            ColorEditingEnum colorEditingEnum,
+            MainColorsEnum mainColor,
+            Color selectedColor,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        colorEditing,
+    TResult? Function(Color fillColor)? cellEditing,
+    TResult? Function(CapitalCell capitalCell)? capitalCellEditing,
+    TResult? Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        bordersEditing,
+    TResult? Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult? Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult? Function(int columnsCount)? columnsCountEditing,
+  }) {
+    return capitalCellTextEditing?.call(
+        isBold,
+        isItalic,
+        isUnderline,
+        isLineThrough,
+        fontSize,
+        color,
+        isHorizontalLeft,
+        isHorizontalCenter,
+        isHorizontalRight,
+        isVerticalTop,
+        isVerticalCenter,
+        isVerticalBottom,
+        defaultSettings);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        textEditing,
+    TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            MainColorsEnum mainColor,
+            Color selectedColor,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        colorEditing,
+    TResult Function(Color fillColor)? cellEditing,
+    TResult Function(CapitalCell capitalCell)? capitalCellEditing,
+    TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        bordersEditing,
+    TResult Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult Function(int columnsCount)? columnsCountEditing,
+    required TResult orElse(),
+  }) {
+    if (capitalCellTextEditing != null) {
+      return capitalCellTextEditing(
+          isBold,
+          isItalic,
+          isUnderline,
+          isLineThrough,
+          fontSize,
+          color,
+          isHorizontalLeft,
+          isHorizontalCenter,
+          isHorizontalRight,
+          isVerticalTop,
+          isVerticalCenter,
+          isVerticalBottom,
+          defaultSettings);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(TextEditing value) textEditing,
+    required TResult Function(ColorEditing value) colorEditing,
+    required TResult Function(CellEditing value) cellEditing,
+    required TResult Function(CapitalCellEditing value) capitalCellEditing,
+    required TResult Function(BordersEditing value) bordersEditing,
+    required TResult Function(CapitalCellBordersEditing value)
+        capitalCellBordersEditing,
+    required TResult Function(CapitalCellTextEditing value)
+        capitalCellTextEditing,
+    required TResult Function(ColumnsCountEditing value) columnsCountEditing,
+  }) {
+    return capitalCellTextEditing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(TextEditing value)? textEditing,
+    TResult? Function(ColorEditing value)? colorEditing,
+    TResult? Function(CellEditing value)? cellEditing,
+    TResult? Function(CapitalCellEditing value)? capitalCellEditing,
+    TResult? Function(BordersEditing value)? bordersEditing,
+    TResult? Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult? Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult? Function(ColumnsCountEditing value)? columnsCountEditing,
+  }) {
+    return capitalCellTextEditing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(TextEditing value)? textEditing,
+    TResult Function(ColorEditing value)? colorEditing,
+    TResult Function(CellEditing value)? cellEditing,
+    TResult Function(CapitalCellEditing value)? capitalCellEditing,
+    TResult Function(BordersEditing value)? bordersEditing,
+    TResult Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult Function(ColumnsCountEditing value)? columnsCountEditing,
+    required TResult orElse(),
+  }) {
+    if (capitalCellTextEditing != null) {
+      return capitalCellTextEditing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CapitalCellTextEditing implements DiaryCellEditState {
+  const factory CapitalCellTextEditing(
+          {required final bool isBold,
+          required final bool isItalic,
+          required final bool isUnderline,
+          required final bool isLineThrough,
+          required final double fontSize,
+          required final Color color,
+          required final bool isHorizontalLeft,
+          required final bool isHorizontalCenter,
+          required final bool isHorizontalRight,
+          required final bool isVerticalTop,
+          required final bool isVerticalCenter,
+          required final bool isVerticalBottom,
+          required final DiaryColumnSettings defaultSettings}) =
+      _$CapitalCellTextEditing;
+
+  bool get isBold;
+  bool get isItalic;
+  bool get isUnderline;
+  bool get isLineThrough;
+  double get fontSize;
+  Color get color;
+  bool get isHorizontalLeft;
+  bool get isHorizontalCenter;
+  bool get isHorizontalRight;
+  bool get isVerticalTop;
+  bool get isVerticalCenter;
+  bool get isVerticalBottom;
+  DiaryColumnSettings get defaultSettings;
+  @JsonKey(ignore: true)
+  _$$CapitalCellTextEditingCopyWith<_$CapitalCellTextEditing> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ColumnsCountEditingCopyWith<$Res> {
+  factory _$$ColumnsCountEditingCopyWith(_$ColumnsCountEditing value,
+          $Res Function(_$ColumnsCountEditing) then) =
+      __$$ColumnsCountEditingCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int columnsCount});
+}
+
+/// @nodoc
+class __$$ColumnsCountEditingCopyWithImpl<$Res>
+    extends _$DiaryCellEditStateCopyWithImpl<$Res, _$ColumnsCountEditing>
+    implements _$$ColumnsCountEditingCopyWith<$Res> {
+  __$$ColumnsCountEditingCopyWithImpl(
+      _$ColumnsCountEditing _value, $Res Function(_$ColumnsCountEditing) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? columnsCount = null,
+  }) {
+    return _then(_$ColumnsCountEditing(
+      columnsCount: null == columnsCount
+          ? _value.columnsCount
+          : columnsCount // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ColumnsCountEditing implements ColumnsCountEditing {
+  const _$ColumnsCountEditing({required this.columnsCount});
+
+  @override
+  final int columnsCount;
+
+  @override
+  String toString() {
+    return 'DiaryCellEditState.columnsCountEditing(columnsCount: $columnsCount)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ColumnsCountEditing &&
+            (identical(other.columnsCount, columnsCount) ||
+                other.columnsCount == columnsCount));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, columnsCount);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ColumnsCountEditingCopyWith<_$ColumnsCountEditing> get copyWith =>
+      __$$ColumnsCountEditingCopyWithImpl<_$ColumnsCountEditing>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)
+        textEditing,
+    required TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            MainColorsEnum mainColor,
+            Color selectedColor,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)
+        colorEditing,
+    required TResult Function(Color fillColor) cellEditing,
+    required TResult Function(CapitalCell capitalCell) capitalCellEditing,
+    required TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        bordersEditing,
+    required TResult Function(
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        capitalCellBordersEditing,
+    required TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)
+        capitalCellTextEditing,
+    required TResult Function(int columnsCount) columnsCountEditing,
+  }) {
+    return columnsCountEditing(columnsCount);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        textEditing,
+    TResult? Function(
+            ColorEditingEnum colorEditingEnum,
+            MainColorsEnum mainColor,
+            Color selectedColor,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        colorEditing,
+    TResult? Function(Color fillColor)? cellEditing,
+    TResult? Function(CapitalCell capitalCell)? capitalCellEditing,
+    TResult? Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        bordersEditing,
+    TResult? Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult? Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult? Function(int columnsCount)? columnsCountEditing,
+  }) {
+    return columnsCountEditing?.call(columnsCount);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        textEditing,
+    TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            MainColorsEnum mainColor,
+            Color selectedColor,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        colorEditing,
+    TResult Function(Color fillColor)? cellEditing,
+    TResult Function(CapitalCell capitalCell)? capitalCellEditing,
+    TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        bordersEditing,
+    TResult Function(BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        capitalCellBordersEditing,
+    TResult Function(
+            bool isBold,
+            bool isItalic,
+            bool isUnderline,
+            bool isLineThrough,
+            double fontSize,
+            Color color,
+            bool isHorizontalLeft,
+            bool isHorizontalCenter,
+            bool isHorizontalRight,
+            bool isVerticalTop,
+            bool isVerticalCenter,
+            bool isVerticalBottom,
+            DiaryColumnSettings defaultSettings)?
+        capitalCellTextEditing,
+    TResult Function(int columnsCount)? columnsCountEditing,
+    required TResult orElse(),
+  }) {
+    if (columnsCountEditing != null) {
+      return columnsCountEditing(columnsCount);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(TextEditing value) textEditing,
+    required TResult Function(ColorEditing value) colorEditing,
+    required TResult Function(CellEditing value) cellEditing,
+    required TResult Function(CapitalCellEditing value) capitalCellEditing,
+    required TResult Function(BordersEditing value) bordersEditing,
+    required TResult Function(CapitalCellBordersEditing value)
+        capitalCellBordersEditing,
+    required TResult Function(CapitalCellTextEditing value)
+        capitalCellTextEditing,
+    required TResult Function(ColumnsCountEditing value) columnsCountEditing,
+  }) {
+    return columnsCountEditing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(TextEditing value)? textEditing,
+    TResult? Function(ColorEditing value)? colorEditing,
+    TResult? Function(CellEditing value)? cellEditing,
+    TResult? Function(CapitalCellEditing value)? capitalCellEditing,
+    TResult? Function(BordersEditing value)? bordersEditing,
+    TResult? Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult? Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult? Function(ColumnsCountEditing value)? columnsCountEditing,
+  }) {
+    return columnsCountEditing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(TextEditing value)? textEditing,
+    TResult Function(ColorEditing value)? colorEditing,
+    TResult Function(CellEditing value)? cellEditing,
+    TResult Function(CapitalCellEditing value)? capitalCellEditing,
+    TResult Function(BordersEditing value)? bordersEditing,
+    TResult Function(CapitalCellBordersEditing value)?
+        capitalCellBordersEditing,
+    TResult Function(CapitalCellTextEditing value)? capitalCellTextEditing,
+    TResult Function(ColumnsCountEditing value)? columnsCountEditing,
+    required TResult orElse(),
+  }) {
+    if (columnsCountEditing != null) {
+      return columnsCountEditing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ColumnsCountEditing implements DiaryCellEditState {
+  const factory ColumnsCountEditing({required final int columnsCount}) =
+      _$ColumnsCountEditing;
+
+  int get columnsCount;
+  @JsonKey(ignore: true)
+  _$$ColumnsCountEditingCopyWith<_$ColumnsCountEditing> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1613,6 +3480,15 @@ mixin _$DiaryCellEditEvent {
     required TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)
         changeBorders,
+    required TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)
+        startCapitalCellTextEditing,
+    required TResult Function(CapitalCell selectedCapitalCell)
+        startCapitalCellEditing,
+    required TResult Function(CapitalCell capitalCell)
+        startCapitalCellBordersEditing,
+    required TResult Function() startColumnsCountEditing,
+    required TResult Function(int columnsCount) changeColumnsCount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1644,6 +3520,13 @@ mixin _$DiaryCellEditEvent {
     TResult? Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult? Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult? Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult? Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult? Function()? startColumnsCountEditing,
+    TResult? Function(int columnsCount)? changeColumnsCount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1675,6 +3558,13 @@ mixin _$DiaryCellEditEvent {
     TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult Function()? startColumnsCountEditing,
+    TResult Function(int columnsCount)? changeColumnsCount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1689,6 +3579,15 @@ mixin _$DiaryCellEditEvent {
     required TResult Function(StartBordersEditingEvent value)
         startBordersEditing,
     required TResult Function(ChangeBordersEvent value) changeBorders,
+    required TResult Function(StartCapitalCellTextEditingEvent value)
+        startCapitalCellTextEditing,
+    required TResult Function(StartCapitalCellEditingEvent value)
+        startCapitalCellEditing,
+    required TResult Function(StartCapitalCellBordersEditingEvent value)
+        startCapitalCellBordersEditing,
+    required TResult Function(StartColumnsCountEditingEvent value)
+        startColumnsCountEditing,
+    required TResult Function(ChangeColumnsCountEvent value) changeColumnsCount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1701,6 +3600,15 @@ mixin _$DiaryCellEditEvent {
     TResult? Function(ReloadColorEvent value)? reloadColor,
     TResult? Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult? Function(ChangeBordersEvent value)? changeBorders,
+    TResult? Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult? Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult? Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult? Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult? Function(ChangeColumnsCountEvent value)? changeColumnsCount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1713,6 +3621,15 @@ mixin _$DiaryCellEditEvent {
     TResult Function(ReloadColorEvent value)? reloadColor,
     TResult Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult Function(ChangeBordersEvent value)? changeBorders,
+    TResult Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult Function(ChangeColumnsCountEvent value)? changeColumnsCount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1856,6 +3773,15 @@ class _$StartTextEditingEvent implements StartTextEditingEvent {
     required TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)
         changeBorders,
+    required TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)
+        startCapitalCellTextEditing,
+    required TResult Function(CapitalCell selectedCapitalCell)
+        startCapitalCellEditing,
+    required TResult Function(CapitalCell capitalCell)
+        startCapitalCellBordersEditing,
+    required TResult Function() startColumnsCountEditing,
+    required TResult Function(int columnsCount) changeColumnsCount,
   }) {
     return startTextEditing(
         firstSelectedCell, defaultTextSettings, defaultSettings);
@@ -1891,6 +3817,13 @@ class _$StartTextEditingEvent implements StartTextEditingEvent {
     TResult? Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult? Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult? Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult? Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult? Function()? startColumnsCountEditing,
+    TResult? Function(int columnsCount)? changeColumnsCount,
   }) {
     return startTextEditing?.call(
         firstSelectedCell, defaultTextSettings, defaultSettings);
@@ -1926,6 +3859,13 @@ class _$StartTextEditingEvent implements StartTextEditingEvent {
     TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult Function()? startColumnsCountEditing,
+    TResult Function(int columnsCount)? changeColumnsCount,
     required TResult orElse(),
   }) {
     if (startTextEditing != null) {
@@ -1947,6 +3887,15 @@ class _$StartTextEditingEvent implements StartTextEditingEvent {
     required TResult Function(StartBordersEditingEvent value)
         startBordersEditing,
     required TResult Function(ChangeBordersEvent value) changeBorders,
+    required TResult Function(StartCapitalCellTextEditingEvent value)
+        startCapitalCellTextEditing,
+    required TResult Function(StartCapitalCellEditingEvent value)
+        startCapitalCellEditing,
+    required TResult Function(StartCapitalCellBordersEditingEvent value)
+        startCapitalCellBordersEditing,
+    required TResult Function(StartColumnsCountEditingEvent value)
+        startColumnsCountEditing,
+    required TResult Function(ChangeColumnsCountEvent value) changeColumnsCount,
   }) {
     return startTextEditing(this);
   }
@@ -1962,6 +3911,15 @@ class _$StartTextEditingEvent implements StartTextEditingEvent {
     TResult? Function(ReloadColorEvent value)? reloadColor,
     TResult? Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult? Function(ChangeBordersEvent value)? changeBorders,
+    TResult? Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult? Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult? Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult? Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult? Function(ChangeColumnsCountEvent value)? changeColumnsCount,
   }) {
     return startTextEditing?.call(this);
   }
@@ -1977,6 +3935,15 @@ class _$StartTextEditingEvent implements StartTextEditingEvent {
     TResult Function(ReloadColorEvent value)? reloadColor,
     TResult Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult Function(ChangeBordersEvent value)? changeBorders,
+    TResult Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult Function(ChangeColumnsCountEvent value)? changeColumnsCount,
     required TResult orElse(),
   }) {
     if (startTextEditing != null) {
@@ -2096,6 +4063,15 @@ class _$StartCellEditingEvent implements StartCellEditingEvent {
     required TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)
         changeBorders,
+    required TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)
+        startCapitalCellTextEditing,
+    required TResult Function(CapitalCell selectedCapitalCell)
+        startCapitalCellEditing,
+    required TResult Function(CapitalCell capitalCell)
+        startCapitalCellBordersEditing,
+    required TResult Function() startColumnsCountEditing,
+    required TResult Function(int columnsCount) changeColumnsCount,
   }) {
     return startCellEditing(firstSelectedCell);
   }
@@ -2130,6 +4106,13 @@ class _$StartCellEditingEvent implements StartCellEditingEvent {
     TResult? Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult? Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult? Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult? Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult? Function()? startColumnsCountEditing,
+    TResult? Function(int columnsCount)? changeColumnsCount,
   }) {
     return startCellEditing?.call(firstSelectedCell);
   }
@@ -2164,6 +4147,13 @@ class _$StartCellEditingEvent implements StartCellEditingEvent {
     TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult Function()? startColumnsCountEditing,
+    TResult Function(int columnsCount)? changeColumnsCount,
     required TResult orElse(),
   }) {
     if (startCellEditing != null) {
@@ -2184,6 +4174,15 @@ class _$StartCellEditingEvent implements StartCellEditingEvent {
     required TResult Function(StartBordersEditingEvent value)
         startBordersEditing,
     required TResult Function(ChangeBordersEvent value) changeBorders,
+    required TResult Function(StartCapitalCellTextEditingEvent value)
+        startCapitalCellTextEditing,
+    required TResult Function(StartCapitalCellEditingEvent value)
+        startCapitalCellEditing,
+    required TResult Function(StartCapitalCellBordersEditingEvent value)
+        startCapitalCellBordersEditing,
+    required TResult Function(StartColumnsCountEditingEvent value)
+        startColumnsCountEditing,
+    required TResult Function(ChangeColumnsCountEvent value) changeColumnsCount,
   }) {
     return startCellEditing(this);
   }
@@ -2199,6 +4198,15 @@ class _$StartCellEditingEvent implements StartCellEditingEvent {
     TResult? Function(ReloadColorEvent value)? reloadColor,
     TResult? Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult? Function(ChangeBordersEvent value)? changeBorders,
+    TResult? Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult? Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult? Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult? Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult? Function(ChangeColumnsCountEvent value)? changeColumnsCount,
   }) {
     return startCellEditing?.call(this);
   }
@@ -2214,6 +4222,15 @@ class _$StartCellEditingEvent implements StartCellEditingEvent {
     TResult Function(ReloadColorEvent value)? reloadColor,
     TResult Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult Function(ChangeBordersEvent value)? changeBorders,
+    TResult Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult Function(ChangeColumnsCountEvent value)? changeColumnsCount,
     required TResult orElse(),
   }) {
     if (startCellEditing != null) {
@@ -2364,6 +4381,15 @@ class _$StartColorEditingEvent implements StartColorEditingEvent {
     required TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)
         changeBorders,
+    required TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)
+        startCapitalCellTextEditing,
+    required TResult Function(CapitalCell selectedCapitalCell)
+        startCapitalCellEditing,
+    required TResult Function(CapitalCell capitalCell)
+        startCapitalCellBordersEditing,
+    required TResult Function() startColumnsCountEditing,
+    required TResult Function(int columnsCount) changeColumnsCount,
   }) {
     return startColorEditing(
         colorEditingEnum, defaultColor, bordersEditingEnum, bordersStyleEnum);
@@ -2399,6 +4425,13 @@ class _$StartColorEditingEvent implements StartColorEditingEvent {
     TResult? Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult? Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult? Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult? Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult? Function()? startColumnsCountEditing,
+    TResult? Function(int columnsCount)? changeColumnsCount,
   }) {
     return startColorEditing?.call(
         colorEditingEnum, defaultColor, bordersEditingEnum, bordersStyleEnum);
@@ -2434,6 +4467,13 @@ class _$StartColorEditingEvent implements StartColorEditingEvent {
     TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult Function()? startColumnsCountEditing,
+    TResult Function(int columnsCount)? changeColumnsCount,
     required TResult orElse(),
   }) {
     if (startColorEditing != null) {
@@ -2455,6 +4495,15 @@ class _$StartColorEditingEvent implements StartColorEditingEvent {
     required TResult Function(StartBordersEditingEvent value)
         startBordersEditing,
     required TResult Function(ChangeBordersEvent value) changeBorders,
+    required TResult Function(StartCapitalCellTextEditingEvent value)
+        startCapitalCellTextEditing,
+    required TResult Function(StartCapitalCellEditingEvent value)
+        startCapitalCellEditing,
+    required TResult Function(StartCapitalCellBordersEditingEvent value)
+        startCapitalCellBordersEditing,
+    required TResult Function(StartColumnsCountEditingEvent value)
+        startColumnsCountEditing,
+    required TResult Function(ChangeColumnsCountEvent value) changeColumnsCount,
   }) {
     return startColorEditing(this);
   }
@@ -2470,6 +4519,15 @@ class _$StartColorEditingEvent implements StartColorEditingEvent {
     TResult? Function(ReloadColorEvent value)? reloadColor,
     TResult? Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult? Function(ChangeBordersEvent value)? changeBorders,
+    TResult? Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult? Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult? Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult? Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult? Function(ChangeColumnsCountEvent value)? changeColumnsCount,
   }) {
     return startColorEditing?.call(this);
   }
@@ -2485,6 +4543,15 @@ class _$StartColorEditingEvent implements StartColorEditingEvent {
     TResult Function(ReloadColorEvent value)? reloadColor,
     TResult Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult Function(ChangeBordersEvent value)? changeBorders,
+    TResult Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult Function(ChangeColumnsCountEvent value)? changeColumnsCount,
     required TResult orElse(),
   }) {
     if (startColorEditing != null) {
@@ -2672,6 +4739,15 @@ class _$ChangeCellEvent implements ChangeCellEvent {
     required TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)
         changeBorders,
+    required TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)
+        startCapitalCellTextEditing,
+    required TResult Function(CapitalCell selectedCapitalCell)
+        startCapitalCellEditing,
+    required TResult Function(CapitalCell capitalCell)
+        startCapitalCellBordersEditing,
+    required TResult Function() startColumnsCountEditing,
+    required TResult Function(int columnsCount) changeColumnsCount,
   }) {
     return changeCell(fontWeight, textDecoration, fontStyle, fontSize, color,
         horizontalAlignment, verticalAlignment);
@@ -2707,6 +4783,13 @@ class _$ChangeCellEvent implements ChangeCellEvent {
     TResult? Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult? Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult? Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult? Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult? Function()? startColumnsCountEditing,
+    TResult? Function(int columnsCount)? changeColumnsCount,
   }) {
     return changeCell?.call(fontWeight, textDecoration, fontStyle, fontSize,
         color, horizontalAlignment, verticalAlignment);
@@ -2742,6 +4825,13 @@ class _$ChangeCellEvent implements ChangeCellEvent {
     TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult Function()? startColumnsCountEditing,
+    TResult Function(int columnsCount)? changeColumnsCount,
     required TResult orElse(),
   }) {
     if (changeCell != null) {
@@ -2763,6 +4853,15 @@ class _$ChangeCellEvent implements ChangeCellEvent {
     required TResult Function(StartBordersEditingEvent value)
         startBordersEditing,
     required TResult Function(ChangeBordersEvent value) changeBorders,
+    required TResult Function(StartCapitalCellTextEditingEvent value)
+        startCapitalCellTextEditing,
+    required TResult Function(StartCapitalCellEditingEvent value)
+        startCapitalCellEditing,
+    required TResult Function(StartCapitalCellBordersEditingEvent value)
+        startCapitalCellBordersEditing,
+    required TResult Function(StartColumnsCountEditingEvent value)
+        startColumnsCountEditing,
+    required TResult Function(ChangeColumnsCountEvent value) changeColumnsCount,
   }) {
     return changeCell(this);
   }
@@ -2778,6 +4877,15 @@ class _$ChangeCellEvent implements ChangeCellEvent {
     TResult? Function(ReloadColorEvent value)? reloadColor,
     TResult? Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult? Function(ChangeBordersEvent value)? changeBorders,
+    TResult? Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult? Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult? Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult? Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult? Function(ChangeColumnsCountEvent value)? changeColumnsCount,
   }) {
     return changeCell?.call(this);
   }
@@ -2793,6 +4901,15 @@ class _$ChangeCellEvent implements ChangeCellEvent {
     TResult Function(ReloadColorEvent value)? reloadColor,
     TResult Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult Function(ChangeBordersEvent value)? changeBorders,
+    TResult Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult Function(ChangeColumnsCountEvent value)? changeColumnsCount,
     required TResult orElse(),
   }) {
     if (changeCell != null) {
@@ -2926,6 +5043,15 @@ class _$ChangeColorEvent implements ChangeColorEvent {
     required TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)
         changeBorders,
+    required TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)
+        startCapitalCellTextEditing,
+    required TResult Function(CapitalCell selectedCapitalCell)
+        startCapitalCellEditing,
+    required TResult Function(CapitalCell capitalCell)
+        startCapitalCellBordersEditing,
+    required TResult Function() startColumnsCountEditing,
+    required TResult Function(int columnsCount) changeColumnsCount,
   }) {
     return changeColor(mainColor, color);
   }
@@ -2960,6 +5086,13 @@ class _$ChangeColorEvent implements ChangeColorEvent {
     TResult? Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult? Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult? Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult? Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult? Function()? startColumnsCountEditing,
+    TResult? Function(int columnsCount)? changeColumnsCount,
   }) {
     return changeColor?.call(mainColor, color);
   }
@@ -2994,6 +5127,13 @@ class _$ChangeColorEvent implements ChangeColorEvent {
     TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult Function()? startColumnsCountEditing,
+    TResult Function(int columnsCount)? changeColumnsCount,
     required TResult orElse(),
   }) {
     if (changeColor != null) {
@@ -3014,6 +5154,15 @@ class _$ChangeColorEvent implements ChangeColorEvent {
     required TResult Function(StartBordersEditingEvent value)
         startBordersEditing,
     required TResult Function(ChangeBordersEvent value) changeBorders,
+    required TResult Function(StartCapitalCellTextEditingEvent value)
+        startCapitalCellTextEditing,
+    required TResult Function(StartCapitalCellEditingEvent value)
+        startCapitalCellEditing,
+    required TResult Function(StartCapitalCellBordersEditingEvent value)
+        startCapitalCellBordersEditing,
+    required TResult Function(StartColumnsCountEditingEvent value)
+        startColumnsCountEditing,
+    required TResult Function(ChangeColumnsCountEvent value) changeColumnsCount,
   }) {
     return changeColor(this);
   }
@@ -3029,6 +5178,15 @@ class _$ChangeColorEvent implements ChangeColorEvent {
     TResult? Function(ReloadColorEvent value)? reloadColor,
     TResult? Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult? Function(ChangeBordersEvent value)? changeBorders,
+    TResult? Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult? Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult? Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult? Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult? Function(ChangeColumnsCountEvent value)? changeColumnsCount,
   }) {
     return changeColor?.call(this);
   }
@@ -3044,6 +5202,15 @@ class _$ChangeColorEvent implements ChangeColorEvent {
     TResult Function(ReloadColorEvent value)? reloadColor,
     TResult Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult Function(ChangeBordersEvent value)? changeBorders,
+    TResult Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult Function(ChangeColumnsCountEvent value)? changeColumnsCount,
     required TResult orElse(),
   }) {
     if (changeColor != null) {
@@ -3167,6 +5334,15 @@ class _$ReloadColorEvent implements ReloadColorEvent {
     required TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)
         changeBorders,
+    required TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)
+        startCapitalCellTextEditing,
+    required TResult Function(CapitalCell selectedCapitalCell)
+        startCapitalCellEditing,
+    required TResult Function(CapitalCell capitalCell)
+        startCapitalCellBordersEditing,
+    required TResult Function() startColumnsCountEditing,
+    required TResult Function(int columnsCount) changeColumnsCount,
   }) {
     return reloadColor(mainColor, color);
   }
@@ -3201,6 +5377,13 @@ class _$ReloadColorEvent implements ReloadColorEvent {
     TResult? Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult? Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult? Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult? Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult? Function()? startColumnsCountEditing,
+    TResult? Function(int columnsCount)? changeColumnsCount,
   }) {
     return reloadColor?.call(mainColor, color);
   }
@@ -3235,6 +5418,13 @@ class _$ReloadColorEvent implements ReloadColorEvent {
     TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult Function()? startColumnsCountEditing,
+    TResult Function(int columnsCount)? changeColumnsCount,
     required TResult orElse(),
   }) {
     if (reloadColor != null) {
@@ -3255,6 +5445,15 @@ class _$ReloadColorEvent implements ReloadColorEvent {
     required TResult Function(StartBordersEditingEvent value)
         startBordersEditing,
     required TResult Function(ChangeBordersEvent value) changeBorders,
+    required TResult Function(StartCapitalCellTextEditingEvent value)
+        startCapitalCellTextEditing,
+    required TResult Function(StartCapitalCellEditingEvent value)
+        startCapitalCellEditing,
+    required TResult Function(StartCapitalCellBordersEditingEvent value)
+        startCapitalCellBordersEditing,
+    required TResult Function(StartColumnsCountEditingEvent value)
+        startColumnsCountEditing,
+    required TResult Function(ChangeColumnsCountEvent value) changeColumnsCount,
   }) {
     return reloadColor(this);
   }
@@ -3270,6 +5469,15 @@ class _$ReloadColorEvent implements ReloadColorEvent {
     TResult? Function(ReloadColorEvent value)? reloadColor,
     TResult? Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult? Function(ChangeBordersEvent value)? changeBorders,
+    TResult? Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult? Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult? Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult? Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult? Function(ChangeColumnsCountEvent value)? changeColumnsCount,
   }) {
     return reloadColor?.call(this);
   }
@@ -3285,6 +5493,15 @@ class _$ReloadColorEvent implements ReloadColorEvent {
     TResult Function(ReloadColorEvent value)? reloadColor,
     TResult Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult Function(ChangeBordersEvent value)? changeBorders,
+    TResult Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult Function(ChangeColumnsCountEvent value)? changeColumnsCount,
     required TResult orElse(),
   }) {
     if (reloadColor != null) {
@@ -3374,6 +5591,15 @@ class _$StartBordersEditingEvent implements StartBordersEditingEvent {
     required TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)
         changeBorders,
+    required TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)
+        startCapitalCellTextEditing,
+    required TResult Function(CapitalCell selectedCapitalCell)
+        startCapitalCellEditing,
+    required TResult Function(CapitalCell capitalCell)
+        startCapitalCellBordersEditing,
+    required TResult Function() startColumnsCountEditing,
+    required TResult Function(int columnsCount) changeColumnsCount,
   }) {
     return startBordersEditing();
   }
@@ -3408,6 +5634,13 @@ class _$StartBordersEditingEvent implements StartBordersEditingEvent {
     TResult? Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult? Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult? Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult? Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult? Function()? startColumnsCountEditing,
+    TResult? Function(int columnsCount)? changeColumnsCount,
   }) {
     return startBordersEditing?.call();
   }
@@ -3442,6 +5675,13 @@ class _$StartBordersEditingEvent implements StartBordersEditingEvent {
     TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult Function()? startColumnsCountEditing,
+    TResult Function(int columnsCount)? changeColumnsCount,
     required TResult orElse(),
   }) {
     if (startBordersEditing != null) {
@@ -3462,6 +5702,15 @@ class _$StartBordersEditingEvent implements StartBordersEditingEvent {
     required TResult Function(StartBordersEditingEvent value)
         startBordersEditing,
     required TResult Function(ChangeBordersEvent value) changeBorders,
+    required TResult Function(StartCapitalCellTextEditingEvent value)
+        startCapitalCellTextEditing,
+    required TResult Function(StartCapitalCellEditingEvent value)
+        startCapitalCellEditing,
+    required TResult Function(StartCapitalCellBordersEditingEvent value)
+        startCapitalCellBordersEditing,
+    required TResult Function(StartColumnsCountEditingEvent value)
+        startColumnsCountEditing,
+    required TResult Function(ChangeColumnsCountEvent value) changeColumnsCount,
   }) {
     return startBordersEditing(this);
   }
@@ -3477,6 +5726,15 @@ class _$StartBordersEditingEvent implements StartBordersEditingEvent {
     TResult? Function(ReloadColorEvent value)? reloadColor,
     TResult? Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult? Function(ChangeBordersEvent value)? changeBorders,
+    TResult? Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult? Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult? Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult? Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult? Function(ChangeColumnsCountEvent value)? changeColumnsCount,
   }) {
     return startBordersEditing?.call(this);
   }
@@ -3492,6 +5750,15 @@ class _$StartBordersEditingEvent implements StartBordersEditingEvent {
     TResult Function(ReloadColorEvent value)? reloadColor,
     TResult Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult Function(ChangeBordersEvent value)? changeBorders,
+    TResult Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult Function(ChangeColumnsCountEvent value)? changeColumnsCount,
     required TResult orElse(),
   }) {
     if (startBordersEditing != null) {
@@ -3622,6 +5889,15 @@ class _$ChangeBordersEvent implements ChangeBordersEvent {
     required TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)
         changeBorders,
+    required TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)
+        startCapitalCellTextEditing,
+    required TResult Function(CapitalCell selectedCapitalCell)
+        startCapitalCellEditing,
+    required TResult Function(CapitalCell capitalCell)
+        startCapitalCellBordersEditing,
+    required TResult Function() startColumnsCountEditing,
+    required TResult Function(int columnsCount) changeColumnsCount,
   }) {
     return changeBorders(bordersEditingEnum, bordersStyleEnum, color);
   }
@@ -3656,6 +5932,13 @@ class _$ChangeBordersEvent implements ChangeBordersEvent {
     TResult? Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult? Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult? Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult? Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult? Function()? startColumnsCountEditing,
+    TResult? Function(int columnsCount)? changeColumnsCount,
   }) {
     return changeBorders?.call(bordersEditingEnum, bordersStyleEnum, color);
   }
@@ -3690,6 +5973,13 @@ class _$ChangeBordersEvent implements ChangeBordersEvent {
     TResult Function(BordersEditingEnum? bordersEditingEnum,
             BordersStyleEnum? bordersStyleEnum, Color? color)?
         changeBorders,
+    TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult Function()? startColumnsCountEditing,
+    TResult Function(int columnsCount)? changeColumnsCount,
     required TResult orElse(),
   }) {
     if (changeBorders != null) {
@@ -3710,6 +6000,15 @@ class _$ChangeBordersEvent implements ChangeBordersEvent {
     required TResult Function(StartBordersEditingEvent value)
         startBordersEditing,
     required TResult Function(ChangeBordersEvent value) changeBorders,
+    required TResult Function(StartCapitalCellTextEditingEvent value)
+        startCapitalCellTextEditing,
+    required TResult Function(StartCapitalCellEditingEvent value)
+        startCapitalCellEditing,
+    required TResult Function(StartCapitalCellBordersEditingEvent value)
+        startCapitalCellBordersEditing,
+    required TResult Function(StartColumnsCountEditingEvent value)
+        startColumnsCountEditing,
+    required TResult Function(ChangeColumnsCountEvent value) changeColumnsCount,
   }) {
     return changeBorders(this);
   }
@@ -3725,6 +6024,15 @@ class _$ChangeBordersEvent implements ChangeBordersEvent {
     TResult? Function(ReloadColorEvent value)? reloadColor,
     TResult? Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult? Function(ChangeBordersEvent value)? changeBorders,
+    TResult? Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult? Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult? Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult? Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult? Function(ChangeColumnsCountEvent value)? changeColumnsCount,
   }) {
     return changeBorders?.call(this);
   }
@@ -3740,6 +6048,15 @@ class _$ChangeBordersEvent implements ChangeBordersEvent {
     TResult Function(ReloadColorEvent value)? reloadColor,
     TResult Function(StartBordersEditingEvent value)? startBordersEditing,
     TResult Function(ChangeBordersEvent value)? changeBorders,
+    TResult Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult Function(ChangeColumnsCountEvent value)? changeColumnsCount,
     required TResult orElse(),
   }) {
     if (changeBorders != null) {
@@ -3760,5 +6077,1420 @@ abstract class ChangeBordersEvent implements DiaryCellEditEvent {
   Color? get color;
   @JsonKey(ignore: true)
   _$$ChangeBordersEventCopyWith<_$ChangeBordersEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StartCapitalCellTextEditingEventCopyWith<$Res> {
+  factory _$$StartCapitalCellTextEditingEventCopyWith(
+          _$StartCapitalCellTextEditingEvent value,
+          $Res Function(_$StartCapitalCellTextEditingEvent) then) =
+      __$$StartCapitalCellTextEditingEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {CapitalCell selectedCapitalCell, DiaryColumnSettings defaultSettings});
+}
+
+/// @nodoc
+class __$$StartCapitalCellTextEditingEventCopyWithImpl<$Res>
+    extends _$DiaryCellEditEventCopyWithImpl<$Res,
+        _$StartCapitalCellTextEditingEvent>
+    implements _$$StartCapitalCellTextEditingEventCopyWith<$Res> {
+  __$$StartCapitalCellTextEditingEventCopyWithImpl(
+      _$StartCapitalCellTextEditingEvent _value,
+      $Res Function(_$StartCapitalCellTextEditingEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selectedCapitalCell = null,
+    Object? defaultSettings = null,
+  }) {
+    return _then(_$StartCapitalCellTextEditingEvent(
+      selectedCapitalCell: null == selectedCapitalCell
+          ? _value.selectedCapitalCell
+          : selectedCapitalCell // ignore: cast_nullable_to_non_nullable
+              as CapitalCell,
+      defaultSettings: null == defaultSettings
+          ? _value.defaultSettings
+          : defaultSettings // ignore: cast_nullable_to_non_nullable
+              as DiaryColumnSettings,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$StartCapitalCellTextEditingEvent
+    implements StartCapitalCellTextEditingEvent {
+  const _$StartCapitalCellTextEditingEvent(
+      {required this.selectedCapitalCell, required this.defaultSettings});
+
+  @override
+  final CapitalCell selectedCapitalCell;
+  @override
+  final DiaryColumnSettings defaultSettings;
+
+  @override
+  String toString() {
+    return 'DiaryCellEditEvent.startCapitalCellTextEditing(selectedCapitalCell: $selectedCapitalCell, defaultSettings: $defaultSettings)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StartCapitalCellTextEditingEvent &&
+            (identical(other.selectedCapitalCell, selectedCapitalCell) ||
+                other.selectedCapitalCell == selectedCapitalCell) &&
+            (identical(other.defaultSettings, defaultSettings) ||
+                other.defaultSettings == defaultSettings));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, selectedCapitalCell, defaultSettings);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StartCapitalCellTextEditingEventCopyWith<
+          _$StartCapitalCellTextEditingEvent>
+      get copyWith => __$$StartCapitalCellTextEditingEventCopyWithImpl<
+          _$StartCapitalCellTextEditingEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            DiaryCell firstSelectedCell,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)
+        startTextEditing,
+    required TResult Function(DiaryCell firstSelectedCell) startCellEditing,
+    required TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)
+        startColorEditing,
+    required TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment)
+        changeCell,
+    required TResult Function(MainColorsEnum mainColor, String? color)
+        changeColor,
+    required TResult Function(MainColorsEnum mainColor, Color color)
+        reloadColor,
+    required TResult Function() startBordersEditing,
+    required TResult Function(BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum, Color? color)
+        changeBorders,
+    required TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)
+        startCapitalCellTextEditing,
+    required TResult Function(CapitalCell selectedCapitalCell)
+        startCapitalCellEditing,
+    required TResult Function(CapitalCell capitalCell)
+        startCapitalCellBordersEditing,
+    required TResult Function() startColumnsCountEditing,
+    required TResult Function(int columnsCount) changeColumnsCount,
+  }) {
+    return startCapitalCellTextEditing(selectedCapitalCell, defaultSettings);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            DiaryCell firstSelectedCell,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        startTextEditing,
+    TResult? Function(DiaryCell firstSelectedCell)? startCellEditing,
+    TResult? Function(
+            ColorEditingEnum colorEditingEnum,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        startColorEditing,
+    TResult? Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment)?
+        changeCell,
+    TResult? Function(MainColorsEnum mainColor, String? color)? changeColor,
+    TResult? Function(MainColorsEnum mainColor, Color color)? reloadColor,
+    TResult? Function()? startBordersEditing,
+    TResult? Function(BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum, Color? color)?
+        changeBorders,
+    TResult? Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult? Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult? Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult? Function()? startColumnsCountEditing,
+    TResult? Function(int columnsCount)? changeColumnsCount,
+  }) {
+    return startCapitalCellTextEditing?.call(
+        selectedCapitalCell, defaultSettings);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            DiaryCell firstSelectedCell,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        startTextEditing,
+    TResult Function(DiaryCell firstSelectedCell)? startCellEditing,
+    TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        startColorEditing,
+    TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment)?
+        changeCell,
+    TResult Function(MainColorsEnum mainColor, String? color)? changeColor,
+    TResult Function(MainColorsEnum mainColor, Color color)? reloadColor,
+    TResult Function()? startBordersEditing,
+    TResult Function(BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum, Color? color)?
+        changeBorders,
+    TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult Function()? startColumnsCountEditing,
+    TResult Function(int columnsCount)? changeColumnsCount,
+    required TResult orElse(),
+  }) {
+    if (startCapitalCellTextEditing != null) {
+      return startCapitalCellTextEditing(selectedCapitalCell, defaultSettings);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartTextEditingEvent value) startTextEditing,
+    required TResult Function(StartCellEditingEvent value) startCellEditing,
+    required TResult Function(StartColorEditingEvent value) startColorEditing,
+    required TResult Function(ChangeCellEvent value) changeCell,
+    required TResult Function(ChangeColorEvent value) changeColor,
+    required TResult Function(ReloadColorEvent value) reloadColor,
+    required TResult Function(StartBordersEditingEvent value)
+        startBordersEditing,
+    required TResult Function(ChangeBordersEvent value) changeBorders,
+    required TResult Function(StartCapitalCellTextEditingEvent value)
+        startCapitalCellTextEditing,
+    required TResult Function(StartCapitalCellEditingEvent value)
+        startCapitalCellEditing,
+    required TResult Function(StartCapitalCellBordersEditingEvent value)
+        startCapitalCellBordersEditing,
+    required TResult Function(StartColumnsCountEditingEvent value)
+        startColumnsCountEditing,
+    required TResult Function(ChangeColumnsCountEvent value) changeColumnsCount,
+  }) {
+    return startCapitalCellTextEditing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StartTextEditingEvent value)? startTextEditing,
+    TResult? Function(StartCellEditingEvent value)? startCellEditing,
+    TResult? Function(StartColorEditingEvent value)? startColorEditing,
+    TResult? Function(ChangeCellEvent value)? changeCell,
+    TResult? Function(ChangeColorEvent value)? changeColor,
+    TResult? Function(ReloadColorEvent value)? reloadColor,
+    TResult? Function(StartBordersEditingEvent value)? startBordersEditing,
+    TResult? Function(ChangeBordersEvent value)? changeBorders,
+    TResult? Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult? Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult? Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult? Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult? Function(ChangeColumnsCountEvent value)? changeColumnsCount,
+  }) {
+    return startCapitalCellTextEditing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartTextEditingEvent value)? startTextEditing,
+    TResult Function(StartCellEditingEvent value)? startCellEditing,
+    TResult Function(StartColorEditingEvent value)? startColorEditing,
+    TResult Function(ChangeCellEvent value)? changeCell,
+    TResult Function(ChangeColorEvent value)? changeColor,
+    TResult Function(ReloadColorEvent value)? reloadColor,
+    TResult Function(StartBordersEditingEvent value)? startBordersEditing,
+    TResult Function(ChangeBordersEvent value)? changeBorders,
+    TResult Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult Function(ChangeColumnsCountEvent value)? changeColumnsCount,
+    required TResult orElse(),
+  }) {
+    if (startCapitalCellTextEditing != null) {
+      return startCapitalCellTextEditing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StartCapitalCellTextEditingEvent implements DiaryCellEditEvent {
+  const factory StartCapitalCellTextEditingEvent(
+          {required final CapitalCell selectedCapitalCell,
+          required final DiaryColumnSettings defaultSettings}) =
+      _$StartCapitalCellTextEditingEvent;
+
+  CapitalCell get selectedCapitalCell;
+  DiaryColumnSettings get defaultSettings;
+  @JsonKey(ignore: true)
+  _$$StartCapitalCellTextEditingEventCopyWith<
+          _$StartCapitalCellTextEditingEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StartCapitalCellEditingEventCopyWith<$Res> {
+  factory _$$StartCapitalCellEditingEventCopyWith(
+          _$StartCapitalCellEditingEvent value,
+          $Res Function(_$StartCapitalCellEditingEvent) then) =
+      __$$StartCapitalCellEditingEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CapitalCell selectedCapitalCell});
+}
+
+/// @nodoc
+class __$$StartCapitalCellEditingEventCopyWithImpl<$Res>
+    extends _$DiaryCellEditEventCopyWithImpl<$Res,
+        _$StartCapitalCellEditingEvent>
+    implements _$$StartCapitalCellEditingEventCopyWith<$Res> {
+  __$$StartCapitalCellEditingEventCopyWithImpl(
+      _$StartCapitalCellEditingEvent _value,
+      $Res Function(_$StartCapitalCellEditingEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selectedCapitalCell = null,
+  }) {
+    return _then(_$StartCapitalCellEditingEvent(
+      selectedCapitalCell: null == selectedCapitalCell
+          ? _value.selectedCapitalCell
+          : selectedCapitalCell // ignore: cast_nullable_to_non_nullable
+              as CapitalCell,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$StartCapitalCellEditingEvent implements StartCapitalCellEditingEvent {
+  const _$StartCapitalCellEditingEvent({required this.selectedCapitalCell});
+
+  @override
+  final CapitalCell selectedCapitalCell;
+
+  @override
+  String toString() {
+    return 'DiaryCellEditEvent.startCapitalCellEditing(selectedCapitalCell: $selectedCapitalCell)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StartCapitalCellEditingEvent &&
+            (identical(other.selectedCapitalCell, selectedCapitalCell) ||
+                other.selectedCapitalCell == selectedCapitalCell));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, selectedCapitalCell);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StartCapitalCellEditingEventCopyWith<_$StartCapitalCellEditingEvent>
+      get copyWith => __$$StartCapitalCellEditingEventCopyWithImpl<
+          _$StartCapitalCellEditingEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            DiaryCell firstSelectedCell,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)
+        startTextEditing,
+    required TResult Function(DiaryCell firstSelectedCell) startCellEditing,
+    required TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)
+        startColorEditing,
+    required TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment)
+        changeCell,
+    required TResult Function(MainColorsEnum mainColor, String? color)
+        changeColor,
+    required TResult Function(MainColorsEnum mainColor, Color color)
+        reloadColor,
+    required TResult Function() startBordersEditing,
+    required TResult Function(BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum, Color? color)
+        changeBorders,
+    required TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)
+        startCapitalCellTextEditing,
+    required TResult Function(CapitalCell selectedCapitalCell)
+        startCapitalCellEditing,
+    required TResult Function(CapitalCell capitalCell)
+        startCapitalCellBordersEditing,
+    required TResult Function() startColumnsCountEditing,
+    required TResult Function(int columnsCount) changeColumnsCount,
+  }) {
+    return startCapitalCellEditing(selectedCapitalCell);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            DiaryCell firstSelectedCell,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        startTextEditing,
+    TResult? Function(DiaryCell firstSelectedCell)? startCellEditing,
+    TResult? Function(
+            ColorEditingEnum colorEditingEnum,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        startColorEditing,
+    TResult? Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment)?
+        changeCell,
+    TResult? Function(MainColorsEnum mainColor, String? color)? changeColor,
+    TResult? Function(MainColorsEnum mainColor, Color color)? reloadColor,
+    TResult? Function()? startBordersEditing,
+    TResult? Function(BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum, Color? color)?
+        changeBorders,
+    TResult? Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult? Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult? Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult? Function()? startColumnsCountEditing,
+    TResult? Function(int columnsCount)? changeColumnsCount,
+  }) {
+    return startCapitalCellEditing?.call(selectedCapitalCell);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            DiaryCell firstSelectedCell,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        startTextEditing,
+    TResult Function(DiaryCell firstSelectedCell)? startCellEditing,
+    TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        startColorEditing,
+    TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment)?
+        changeCell,
+    TResult Function(MainColorsEnum mainColor, String? color)? changeColor,
+    TResult Function(MainColorsEnum mainColor, Color color)? reloadColor,
+    TResult Function()? startBordersEditing,
+    TResult Function(BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum, Color? color)?
+        changeBorders,
+    TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult Function()? startColumnsCountEditing,
+    TResult Function(int columnsCount)? changeColumnsCount,
+    required TResult orElse(),
+  }) {
+    if (startCapitalCellEditing != null) {
+      return startCapitalCellEditing(selectedCapitalCell);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartTextEditingEvent value) startTextEditing,
+    required TResult Function(StartCellEditingEvent value) startCellEditing,
+    required TResult Function(StartColorEditingEvent value) startColorEditing,
+    required TResult Function(ChangeCellEvent value) changeCell,
+    required TResult Function(ChangeColorEvent value) changeColor,
+    required TResult Function(ReloadColorEvent value) reloadColor,
+    required TResult Function(StartBordersEditingEvent value)
+        startBordersEditing,
+    required TResult Function(ChangeBordersEvent value) changeBorders,
+    required TResult Function(StartCapitalCellTextEditingEvent value)
+        startCapitalCellTextEditing,
+    required TResult Function(StartCapitalCellEditingEvent value)
+        startCapitalCellEditing,
+    required TResult Function(StartCapitalCellBordersEditingEvent value)
+        startCapitalCellBordersEditing,
+    required TResult Function(StartColumnsCountEditingEvent value)
+        startColumnsCountEditing,
+    required TResult Function(ChangeColumnsCountEvent value) changeColumnsCount,
+  }) {
+    return startCapitalCellEditing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StartTextEditingEvent value)? startTextEditing,
+    TResult? Function(StartCellEditingEvent value)? startCellEditing,
+    TResult? Function(StartColorEditingEvent value)? startColorEditing,
+    TResult? Function(ChangeCellEvent value)? changeCell,
+    TResult? Function(ChangeColorEvent value)? changeColor,
+    TResult? Function(ReloadColorEvent value)? reloadColor,
+    TResult? Function(StartBordersEditingEvent value)? startBordersEditing,
+    TResult? Function(ChangeBordersEvent value)? changeBorders,
+    TResult? Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult? Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult? Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult? Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult? Function(ChangeColumnsCountEvent value)? changeColumnsCount,
+  }) {
+    return startCapitalCellEditing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartTextEditingEvent value)? startTextEditing,
+    TResult Function(StartCellEditingEvent value)? startCellEditing,
+    TResult Function(StartColorEditingEvent value)? startColorEditing,
+    TResult Function(ChangeCellEvent value)? changeCell,
+    TResult Function(ChangeColorEvent value)? changeColor,
+    TResult Function(ReloadColorEvent value)? reloadColor,
+    TResult Function(StartBordersEditingEvent value)? startBordersEditing,
+    TResult Function(ChangeBordersEvent value)? changeBorders,
+    TResult Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult Function(ChangeColumnsCountEvent value)? changeColumnsCount,
+    required TResult orElse(),
+  }) {
+    if (startCapitalCellEditing != null) {
+      return startCapitalCellEditing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StartCapitalCellEditingEvent implements DiaryCellEditEvent {
+  const factory StartCapitalCellEditingEvent(
+          {required final CapitalCell selectedCapitalCell}) =
+      _$StartCapitalCellEditingEvent;
+
+  CapitalCell get selectedCapitalCell;
+  @JsonKey(ignore: true)
+  _$$StartCapitalCellEditingEventCopyWith<_$StartCapitalCellEditingEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StartCapitalCellBordersEditingEventCopyWith<$Res> {
+  factory _$$StartCapitalCellBordersEditingEventCopyWith(
+          _$StartCapitalCellBordersEditingEvent value,
+          $Res Function(_$StartCapitalCellBordersEditingEvent) then) =
+      __$$StartCapitalCellBordersEditingEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CapitalCell capitalCell});
+}
+
+/// @nodoc
+class __$$StartCapitalCellBordersEditingEventCopyWithImpl<$Res>
+    extends _$DiaryCellEditEventCopyWithImpl<$Res,
+        _$StartCapitalCellBordersEditingEvent>
+    implements _$$StartCapitalCellBordersEditingEventCopyWith<$Res> {
+  __$$StartCapitalCellBordersEditingEventCopyWithImpl(
+      _$StartCapitalCellBordersEditingEvent _value,
+      $Res Function(_$StartCapitalCellBordersEditingEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? capitalCell = null,
+  }) {
+    return _then(_$StartCapitalCellBordersEditingEvent(
+      capitalCell: null == capitalCell
+          ? _value.capitalCell
+          : capitalCell // ignore: cast_nullable_to_non_nullable
+              as CapitalCell,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$StartCapitalCellBordersEditingEvent
+    implements StartCapitalCellBordersEditingEvent {
+  const _$StartCapitalCellBordersEditingEvent({required this.capitalCell});
+
+  @override
+  final CapitalCell capitalCell;
+
+  @override
+  String toString() {
+    return 'DiaryCellEditEvent.startCapitalCellBordersEditing(capitalCell: $capitalCell)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StartCapitalCellBordersEditingEvent &&
+            (identical(other.capitalCell, capitalCell) ||
+                other.capitalCell == capitalCell));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, capitalCell);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StartCapitalCellBordersEditingEventCopyWith<
+          _$StartCapitalCellBordersEditingEvent>
+      get copyWith => __$$StartCapitalCellBordersEditingEventCopyWithImpl<
+          _$StartCapitalCellBordersEditingEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            DiaryCell firstSelectedCell,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)
+        startTextEditing,
+    required TResult Function(DiaryCell firstSelectedCell) startCellEditing,
+    required TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)
+        startColorEditing,
+    required TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment)
+        changeCell,
+    required TResult Function(MainColorsEnum mainColor, String? color)
+        changeColor,
+    required TResult Function(MainColorsEnum mainColor, Color color)
+        reloadColor,
+    required TResult Function() startBordersEditing,
+    required TResult Function(BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum, Color? color)
+        changeBorders,
+    required TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)
+        startCapitalCellTextEditing,
+    required TResult Function(CapitalCell selectedCapitalCell)
+        startCapitalCellEditing,
+    required TResult Function(CapitalCell capitalCell)
+        startCapitalCellBordersEditing,
+    required TResult Function() startColumnsCountEditing,
+    required TResult Function(int columnsCount) changeColumnsCount,
+  }) {
+    return startCapitalCellBordersEditing(capitalCell);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            DiaryCell firstSelectedCell,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        startTextEditing,
+    TResult? Function(DiaryCell firstSelectedCell)? startCellEditing,
+    TResult? Function(
+            ColorEditingEnum colorEditingEnum,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        startColorEditing,
+    TResult? Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment)?
+        changeCell,
+    TResult? Function(MainColorsEnum mainColor, String? color)? changeColor,
+    TResult? Function(MainColorsEnum mainColor, Color color)? reloadColor,
+    TResult? Function()? startBordersEditing,
+    TResult? Function(BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum, Color? color)?
+        changeBorders,
+    TResult? Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult? Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult? Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult? Function()? startColumnsCountEditing,
+    TResult? Function(int columnsCount)? changeColumnsCount,
+  }) {
+    return startCapitalCellBordersEditing?.call(capitalCell);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            DiaryCell firstSelectedCell,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        startTextEditing,
+    TResult Function(DiaryCell firstSelectedCell)? startCellEditing,
+    TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        startColorEditing,
+    TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment)?
+        changeCell,
+    TResult Function(MainColorsEnum mainColor, String? color)? changeColor,
+    TResult Function(MainColorsEnum mainColor, Color color)? reloadColor,
+    TResult Function()? startBordersEditing,
+    TResult Function(BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum, Color? color)?
+        changeBorders,
+    TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult Function()? startColumnsCountEditing,
+    TResult Function(int columnsCount)? changeColumnsCount,
+    required TResult orElse(),
+  }) {
+    if (startCapitalCellBordersEditing != null) {
+      return startCapitalCellBordersEditing(capitalCell);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartTextEditingEvent value) startTextEditing,
+    required TResult Function(StartCellEditingEvent value) startCellEditing,
+    required TResult Function(StartColorEditingEvent value) startColorEditing,
+    required TResult Function(ChangeCellEvent value) changeCell,
+    required TResult Function(ChangeColorEvent value) changeColor,
+    required TResult Function(ReloadColorEvent value) reloadColor,
+    required TResult Function(StartBordersEditingEvent value)
+        startBordersEditing,
+    required TResult Function(ChangeBordersEvent value) changeBorders,
+    required TResult Function(StartCapitalCellTextEditingEvent value)
+        startCapitalCellTextEditing,
+    required TResult Function(StartCapitalCellEditingEvent value)
+        startCapitalCellEditing,
+    required TResult Function(StartCapitalCellBordersEditingEvent value)
+        startCapitalCellBordersEditing,
+    required TResult Function(StartColumnsCountEditingEvent value)
+        startColumnsCountEditing,
+    required TResult Function(ChangeColumnsCountEvent value) changeColumnsCount,
+  }) {
+    return startCapitalCellBordersEditing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StartTextEditingEvent value)? startTextEditing,
+    TResult? Function(StartCellEditingEvent value)? startCellEditing,
+    TResult? Function(StartColorEditingEvent value)? startColorEditing,
+    TResult? Function(ChangeCellEvent value)? changeCell,
+    TResult? Function(ChangeColorEvent value)? changeColor,
+    TResult? Function(ReloadColorEvent value)? reloadColor,
+    TResult? Function(StartBordersEditingEvent value)? startBordersEditing,
+    TResult? Function(ChangeBordersEvent value)? changeBorders,
+    TResult? Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult? Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult? Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult? Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult? Function(ChangeColumnsCountEvent value)? changeColumnsCount,
+  }) {
+    return startCapitalCellBordersEditing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartTextEditingEvent value)? startTextEditing,
+    TResult Function(StartCellEditingEvent value)? startCellEditing,
+    TResult Function(StartColorEditingEvent value)? startColorEditing,
+    TResult Function(ChangeCellEvent value)? changeCell,
+    TResult Function(ChangeColorEvent value)? changeColor,
+    TResult Function(ReloadColorEvent value)? reloadColor,
+    TResult Function(StartBordersEditingEvent value)? startBordersEditing,
+    TResult Function(ChangeBordersEvent value)? changeBorders,
+    TResult Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult Function(ChangeColumnsCountEvent value)? changeColumnsCount,
+    required TResult orElse(),
+  }) {
+    if (startCapitalCellBordersEditing != null) {
+      return startCapitalCellBordersEditing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StartCapitalCellBordersEditingEvent
+    implements DiaryCellEditEvent {
+  const factory StartCapitalCellBordersEditingEvent(
+          {required final CapitalCell capitalCell}) =
+      _$StartCapitalCellBordersEditingEvent;
+
+  CapitalCell get capitalCell;
+  @JsonKey(ignore: true)
+  _$$StartCapitalCellBordersEditingEventCopyWith<
+          _$StartCapitalCellBordersEditingEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StartColumnsCountEditingEventCopyWith<$Res> {
+  factory _$$StartColumnsCountEditingEventCopyWith(
+          _$StartColumnsCountEditingEvent value,
+          $Res Function(_$StartColumnsCountEditingEvent) then) =
+      __$$StartColumnsCountEditingEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$StartColumnsCountEditingEventCopyWithImpl<$Res>
+    extends _$DiaryCellEditEventCopyWithImpl<$Res,
+        _$StartColumnsCountEditingEvent>
+    implements _$$StartColumnsCountEditingEventCopyWith<$Res> {
+  __$$StartColumnsCountEditingEventCopyWithImpl(
+      _$StartColumnsCountEditingEvent _value,
+      $Res Function(_$StartColumnsCountEditingEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$StartColumnsCountEditingEvent implements StartColumnsCountEditingEvent {
+  const _$StartColumnsCountEditingEvent();
+
+  @override
+  String toString() {
+    return 'DiaryCellEditEvent.startColumnsCountEditing()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StartColumnsCountEditingEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            DiaryCell firstSelectedCell,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)
+        startTextEditing,
+    required TResult Function(DiaryCell firstSelectedCell) startCellEditing,
+    required TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)
+        startColorEditing,
+    required TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment)
+        changeCell,
+    required TResult Function(MainColorsEnum mainColor, String? color)
+        changeColor,
+    required TResult Function(MainColorsEnum mainColor, Color color)
+        reloadColor,
+    required TResult Function() startBordersEditing,
+    required TResult Function(BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum, Color? color)
+        changeBorders,
+    required TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)
+        startCapitalCellTextEditing,
+    required TResult Function(CapitalCell selectedCapitalCell)
+        startCapitalCellEditing,
+    required TResult Function(CapitalCell capitalCell)
+        startCapitalCellBordersEditing,
+    required TResult Function() startColumnsCountEditing,
+    required TResult Function(int columnsCount) changeColumnsCount,
+  }) {
+    return startColumnsCountEditing();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            DiaryCell firstSelectedCell,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        startTextEditing,
+    TResult? Function(DiaryCell firstSelectedCell)? startCellEditing,
+    TResult? Function(
+            ColorEditingEnum colorEditingEnum,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        startColorEditing,
+    TResult? Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment)?
+        changeCell,
+    TResult? Function(MainColorsEnum mainColor, String? color)? changeColor,
+    TResult? Function(MainColorsEnum mainColor, Color color)? reloadColor,
+    TResult? Function()? startBordersEditing,
+    TResult? Function(BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum, Color? color)?
+        changeBorders,
+    TResult? Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult? Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult? Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult? Function()? startColumnsCountEditing,
+    TResult? Function(int columnsCount)? changeColumnsCount,
+  }) {
+    return startColumnsCountEditing?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            DiaryCell firstSelectedCell,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        startTextEditing,
+    TResult Function(DiaryCell firstSelectedCell)? startCellEditing,
+    TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        startColorEditing,
+    TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment)?
+        changeCell,
+    TResult Function(MainColorsEnum mainColor, String? color)? changeColor,
+    TResult Function(MainColorsEnum mainColor, Color color)? reloadColor,
+    TResult Function()? startBordersEditing,
+    TResult Function(BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum, Color? color)?
+        changeBorders,
+    TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult Function()? startColumnsCountEditing,
+    TResult Function(int columnsCount)? changeColumnsCount,
+    required TResult orElse(),
+  }) {
+    if (startColumnsCountEditing != null) {
+      return startColumnsCountEditing();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartTextEditingEvent value) startTextEditing,
+    required TResult Function(StartCellEditingEvent value) startCellEditing,
+    required TResult Function(StartColorEditingEvent value) startColorEditing,
+    required TResult Function(ChangeCellEvent value) changeCell,
+    required TResult Function(ChangeColorEvent value) changeColor,
+    required TResult Function(ReloadColorEvent value) reloadColor,
+    required TResult Function(StartBordersEditingEvent value)
+        startBordersEditing,
+    required TResult Function(ChangeBordersEvent value) changeBorders,
+    required TResult Function(StartCapitalCellTextEditingEvent value)
+        startCapitalCellTextEditing,
+    required TResult Function(StartCapitalCellEditingEvent value)
+        startCapitalCellEditing,
+    required TResult Function(StartCapitalCellBordersEditingEvent value)
+        startCapitalCellBordersEditing,
+    required TResult Function(StartColumnsCountEditingEvent value)
+        startColumnsCountEditing,
+    required TResult Function(ChangeColumnsCountEvent value) changeColumnsCount,
+  }) {
+    return startColumnsCountEditing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StartTextEditingEvent value)? startTextEditing,
+    TResult? Function(StartCellEditingEvent value)? startCellEditing,
+    TResult? Function(StartColorEditingEvent value)? startColorEditing,
+    TResult? Function(ChangeCellEvent value)? changeCell,
+    TResult? Function(ChangeColorEvent value)? changeColor,
+    TResult? Function(ReloadColorEvent value)? reloadColor,
+    TResult? Function(StartBordersEditingEvent value)? startBordersEditing,
+    TResult? Function(ChangeBordersEvent value)? changeBorders,
+    TResult? Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult? Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult? Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult? Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult? Function(ChangeColumnsCountEvent value)? changeColumnsCount,
+  }) {
+    return startColumnsCountEditing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartTextEditingEvent value)? startTextEditing,
+    TResult Function(StartCellEditingEvent value)? startCellEditing,
+    TResult Function(StartColorEditingEvent value)? startColorEditing,
+    TResult Function(ChangeCellEvent value)? changeCell,
+    TResult Function(ChangeColorEvent value)? changeColor,
+    TResult Function(ReloadColorEvent value)? reloadColor,
+    TResult Function(StartBordersEditingEvent value)? startBordersEditing,
+    TResult Function(ChangeBordersEvent value)? changeBorders,
+    TResult Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult Function(ChangeColumnsCountEvent value)? changeColumnsCount,
+    required TResult orElse(),
+  }) {
+    if (startColumnsCountEditing != null) {
+      return startColumnsCountEditing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StartColumnsCountEditingEvent implements DiaryCellEditEvent {
+  const factory StartColumnsCountEditingEvent() =
+      _$StartColumnsCountEditingEvent;
+}
+
+/// @nodoc
+abstract class _$$ChangeColumnsCountEventCopyWith<$Res> {
+  factory _$$ChangeColumnsCountEventCopyWith(_$ChangeColumnsCountEvent value,
+          $Res Function(_$ChangeColumnsCountEvent) then) =
+      __$$ChangeColumnsCountEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int columnsCount});
+}
+
+/// @nodoc
+class __$$ChangeColumnsCountEventCopyWithImpl<$Res>
+    extends _$DiaryCellEditEventCopyWithImpl<$Res, _$ChangeColumnsCountEvent>
+    implements _$$ChangeColumnsCountEventCopyWith<$Res> {
+  __$$ChangeColumnsCountEventCopyWithImpl(_$ChangeColumnsCountEvent _value,
+      $Res Function(_$ChangeColumnsCountEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? columnsCount = null,
+  }) {
+    return _then(_$ChangeColumnsCountEvent(
+      columnsCount: null == columnsCount
+          ? _value.columnsCount
+          : columnsCount // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeColumnsCountEvent implements ChangeColumnsCountEvent {
+  const _$ChangeColumnsCountEvent({required this.columnsCount});
+
+  @override
+  final int columnsCount;
+
+  @override
+  String toString() {
+    return 'DiaryCellEditEvent.changeColumnsCount(columnsCount: $columnsCount)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeColumnsCountEvent &&
+            (identical(other.columnsCount, columnsCount) ||
+                other.columnsCount == columnsCount));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, columnsCount);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeColumnsCountEventCopyWith<_$ChangeColumnsCountEvent> get copyWith =>
+      __$$ChangeColumnsCountEventCopyWithImpl<_$ChangeColumnsCountEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            DiaryCell firstSelectedCell,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)
+        startTextEditing,
+    required TResult Function(DiaryCell firstSelectedCell) startCellEditing,
+    required TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)
+        startColorEditing,
+    required TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment)
+        changeCell,
+    required TResult Function(MainColorsEnum mainColor, String? color)
+        changeColor,
+    required TResult Function(MainColorsEnum mainColor, Color color)
+        reloadColor,
+    required TResult Function() startBordersEditing,
+    required TResult Function(BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum, Color? color)
+        changeBorders,
+    required TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)
+        startCapitalCellTextEditing,
+    required TResult Function(CapitalCell selectedCapitalCell)
+        startCapitalCellEditing,
+    required TResult Function(CapitalCell capitalCell)
+        startCapitalCellBordersEditing,
+    required TResult Function() startColumnsCountEditing,
+    required TResult Function(int columnsCount) changeColumnsCount,
+  }) {
+    return changeColumnsCount(columnsCount);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            DiaryCell firstSelectedCell,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        startTextEditing,
+    TResult? Function(DiaryCell firstSelectedCell)? startCellEditing,
+    TResult? Function(
+            ColorEditingEnum colorEditingEnum,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        startColorEditing,
+    TResult? Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment)?
+        changeCell,
+    TResult? Function(MainColorsEnum mainColor, String? color)? changeColor,
+    TResult? Function(MainColorsEnum mainColor, Color color)? reloadColor,
+    TResult? Function()? startBordersEditing,
+    TResult? Function(BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum, Color? color)?
+        changeBorders,
+    TResult? Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult? Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult? Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult? Function()? startColumnsCountEditing,
+    TResult? Function(int columnsCount)? changeColumnsCount,
+  }) {
+    return changeColumnsCount?.call(columnsCount);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            DiaryCell firstSelectedCell,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings)?
+        startTextEditing,
+    TResult Function(DiaryCell firstSelectedCell)? startCellEditing,
+    TResult Function(
+            ColorEditingEnum colorEditingEnum,
+            Color defaultColor,
+            BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum)?
+        startColorEditing,
+    TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment)?
+        changeCell,
+    TResult Function(MainColorsEnum mainColor, String? color)? changeColor,
+    TResult Function(MainColorsEnum mainColor, Color color)? reloadColor,
+    TResult Function()? startBordersEditing,
+    TResult Function(BordersEditingEnum? bordersEditingEnum,
+            BordersStyleEnum? bordersStyleEnum, Color? color)?
+        changeBorders,
+    TResult Function(CapitalCell selectedCapitalCell,
+            DiaryColumnSettings defaultSettings)?
+        startCapitalCellTextEditing,
+    TResult Function(CapitalCell selectedCapitalCell)? startCapitalCellEditing,
+    TResult Function(CapitalCell capitalCell)? startCapitalCellBordersEditing,
+    TResult Function()? startColumnsCountEditing,
+    TResult Function(int columnsCount)? changeColumnsCount,
+    required TResult orElse(),
+  }) {
+    if (changeColumnsCount != null) {
+      return changeColumnsCount(columnsCount);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartTextEditingEvent value) startTextEditing,
+    required TResult Function(StartCellEditingEvent value) startCellEditing,
+    required TResult Function(StartColorEditingEvent value) startColorEditing,
+    required TResult Function(ChangeCellEvent value) changeCell,
+    required TResult Function(ChangeColorEvent value) changeColor,
+    required TResult Function(ReloadColorEvent value) reloadColor,
+    required TResult Function(StartBordersEditingEvent value)
+        startBordersEditing,
+    required TResult Function(ChangeBordersEvent value) changeBorders,
+    required TResult Function(StartCapitalCellTextEditingEvent value)
+        startCapitalCellTextEditing,
+    required TResult Function(StartCapitalCellEditingEvent value)
+        startCapitalCellEditing,
+    required TResult Function(StartCapitalCellBordersEditingEvent value)
+        startCapitalCellBordersEditing,
+    required TResult Function(StartColumnsCountEditingEvent value)
+        startColumnsCountEditing,
+    required TResult Function(ChangeColumnsCountEvent value) changeColumnsCount,
+  }) {
+    return changeColumnsCount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StartTextEditingEvent value)? startTextEditing,
+    TResult? Function(StartCellEditingEvent value)? startCellEditing,
+    TResult? Function(StartColorEditingEvent value)? startColorEditing,
+    TResult? Function(ChangeCellEvent value)? changeCell,
+    TResult? Function(ChangeColorEvent value)? changeColor,
+    TResult? Function(ReloadColorEvent value)? reloadColor,
+    TResult? Function(StartBordersEditingEvent value)? startBordersEditing,
+    TResult? Function(ChangeBordersEvent value)? changeBorders,
+    TResult? Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult? Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult? Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult? Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult? Function(ChangeColumnsCountEvent value)? changeColumnsCount,
+  }) {
+    return changeColumnsCount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartTextEditingEvent value)? startTextEditing,
+    TResult Function(StartCellEditingEvent value)? startCellEditing,
+    TResult Function(StartColorEditingEvent value)? startColorEditing,
+    TResult Function(ChangeCellEvent value)? changeCell,
+    TResult Function(ChangeColorEvent value)? changeColor,
+    TResult Function(ReloadColorEvent value)? reloadColor,
+    TResult Function(StartBordersEditingEvent value)? startBordersEditing,
+    TResult Function(ChangeBordersEvent value)? changeBorders,
+    TResult Function(StartCapitalCellTextEditingEvent value)?
+        startCapitalCellTextEditing,
+    TResult Function(StartCapitalCellEditingEvent value)?
+        startCapitalCellEditing,
+    TResult Function(StartCapitalCellBordersEditingEvent value)?
+        startCapitalCellBordersEditing,
+    TResult Function(StartColumnsCountEditingEvent value)?
+        startColumnsCountEditing,
+    TResult Function(ChangeColumnsCountEvent value)? changeColumnsCount,
+    required TResult orElse(),
+  }) {
+    if (changeColumnsCount != null) {
+      return changeColumnsCount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeColumnsCountEvent implements DiaryCellEditEvent {
+  const factory ChangeColumnsCountEvent({required final int columnsCount}) =
+      _$ChangeColumnsCountEvent;
+
+  int get columnsCount;
+  @JsonKey(ignore: true)
+  _$$ChangeColumnsCountEventCopyWith<_$ChangeColumnsCountEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }

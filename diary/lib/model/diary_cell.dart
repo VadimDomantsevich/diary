@@ -7,13 +7,14 @@ import 'package:diary/model/diary_cell_text_settings.dart';
 part 'diary_cell.g.dart';
 
 @CopyWith()
-class DiaryCell {
+class DiaryCell extends Comparable {
   final String columnName;
   final int columnPosition;
   final int day;
   final dynamic content;
   final DiaryCellSettings settings;
   final DiaryCellTextSettings textSettings;
+  final int capitalColumnPosition;
 
   DiaryCell({
     required this.columnName,
@@ -21,14 +22,38 @@ class DiaryCell {
     required this.day,
     required this.settings,
     required this.textSettings,
+    required this.capitalColumnPosition,
     this.content,
   });
+
+  @override
+  int compareTo(other) {
+    if (day < other.day ||
+        day == other.day &&
+            columnPosition < other.columnPosition &&
+            capitalColumnPosition == other.capitalColumnPosition ||
+        day == other.day &&
+            capitalColumnPosition < other.capitalColumnPosition) {
+      return -1;
+    }
+    if (day > other.day ||
+        day == other.day &&
+            columnPosition > other.columnPosition &&
+            capitalColumnPosition == other.capitalColumnPosition ||
+        day == other.day &&
+            capitalColumnPosition > other.capitalColumnPosition) {
+      return 1;
+    }
+
+    return 0;
+  }
 
   Map<String, dynamic> toFirestore() => {
         DiaryCellFields.columnName: columnName,
         DiaryCellFields.columnPosition: columnPosition,
         DiaryCellFields.day: day,
         DiaryCellFields.content: content,
+        DiaryCellFields.capitalColumnPosition: capitalColumnPosition,
       };
 
   factory DiaryCell.fromFirestore({
@@ -50,6 +75,8 @@ class DiaryCell {
         doc: doc,
         defaultSettings: defaultTextSettings,
       ),
+      capitalColumnPosition:
+          data[DiaryCellFields.capitalColumnPosition]! as int,
     );
   }
 }

@@ -15,24 +15,27 @@ class BlocDataGridSample extends StatelessWidget {
     return BlocBuilder<DiaryListBloc, DiaryListState>(
       builder: (context, state) {
         return state.maybeWhen(
-          loaded: (diaryList, diaryColumns, diaryCells, cellsKeys, lists) {
+          loaded: (diaryList, diaryColumns, capitalCells, diaryCells, cellsKeys,
+              lists) {
             return BlocProvider(
               create: (context) => GridDisplayBloc(
                 diaryList: diaryList,
                 diaryColumns: diaryColumns,
                 diaryCells: diaryCells,
+                capitalCells: capitalCells,
                 transformationController: TransformationController(),
               ),
               child: const DataGridSample(),
             );
           },
-          listEditing: (diaryList, diaryColumns, diaryCells, cellsKeys, lists,
-              selectedList) {
+          listEditing: (diaryList, diaryColumns, capitalCells, diaryCells,
+              cellsKeys, lists, isColumnDeleting, selectedList) {
             return BlocProvider(
               create: (context) => GridDisplayBloc(
                 diaryList: diaryList,
                 diaryColumns: diaryColumns,
                 diaryCells: diaryCells,
+                capitalCells: capitalCells,
                 transformationController: TransformationController(),
               ),
               child: const DataGridSample(),
@@ -41,6 +44,7 @@ class BlocDataGridSample extends StatelessWidget {
           cellsEditing: (
             diaryList,
             diaryColumns,
+            capitalCells,
             diaryCells,
             cellsKeys,
             firstSelectedCell,
@@ -58,6 +62,7 @@ class BlocDataGridSample extends StatelessWidget {
                 diaryList: diaryList,
                 diaryColumns: diaryColumns,
                 diaryCells: diaryCells,
+                capitalCells: capitalCells,
                 transformationController: TransformationController(),
               ),
               child: BlocProvider(
@@ -69,6 +74,7 @@ class BlocDataGridSample extends StatelessWidget {
           cellsSelected: (
             diaryList,
             diaryColumns,
+            capitalCells,
             diaryCells,
             firstSelectedCell,
             selectedCells,
@@ -82,6 +88,7 @@ class BlocDataGridSample extends StatelessWidget {
                 diaryList: diaryList,
                 diaryColumns: diaryColumns,
                 diaryCells: diaryCells,
+                capitalCells: capitalCells,
                 transformationController: TransformationController(),
               ),
               child: BlocProvider(
@@ -90,7 +97,36 @@ class BlocDataGridSample extends StatelessWidget {
               ),
             );
           },
-          orElse: () => Container(),
+          capitalCellSelected: (
+            diaryList,
+            diaryColumns,
+            capitalCells,
+            diaryCells,
+            selectedCapitalCell,
+            isEditing,
+            isTextEditing,
+            isColorEditing,
+            isBorderEditing,
+            isBorderStyleEditing,
+            cellsKeys,
+            lists,
+            defaultSettings,
+          ) {
+            return BlocProvider(
+              create: (context) => GridDisplayBloc(
+                diaryList: diaryList,
+                diaryColumns: diaryColumns,
+                diaryCells: diaryCells,
+                capitalCells: capitalCells,
+                transformationController: TransformationController(),
+              ),
+              child: BlocProvider(
+                create: (context) => DiaryCellEditBloc(),
+                child: const DataGridSample(),
+              ),
+            );
+          },
+          orElse: () => const Center(child: CircularProgressIndicator()),
         );
       },
     );

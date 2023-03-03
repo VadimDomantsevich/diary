@@ -1,4 +1,5 @@
 import 'package:diary/core/extentions.dart';
+import 'package:diary/model/capital_cell.dart';
 import 'package:diary/model/diary_cell.dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +31,20 @@ class DiaryCellContentWidget extends StatelessWidget {
       fontStyle: diaryCell.textSettings.fontStyle.toFontStyle(),
       fontSize: diaryCell.textSettings.fontSize,
       color: diaryCell.textSettings.color.toColor(),
+    );
+  }
+
+  factory DiaryCellContentWidget.capitalCell({
+    required CapitalCell capitalCell,
+  }) {
+    return DiaryCellContentWidget(
+      content: capitalCell.name,
+      fontWeight: capitalCell.settings.capitalCellFontWeight.toFontWeight(),
+      textDecoration:
+          capitalCell.settings.capitalCellTextDecoration.toTextDecoration(),
+      fontStyle: capitalCell.settings.capitalCellFontStyle.toFontStyle(),
+      fontSize: capitalCell.settings.capitalCellFontSize,
+      color: capitalCell.settings.capitalCellTextColor.toColor(),
     );
   }
 

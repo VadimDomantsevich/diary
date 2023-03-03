@@ -1,0 +1,80 @@
+import 'package:diary/core/constants/edit_panel_constants.dart';
+import 'package:diary/home/edit_panel/edit_list/columns_count_edit_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+class AddColumnScreenWidget extends StatelessWidget {
+  const AddColumnScreenWidget({
+    super.key,
+    required this.title,
+    required this.hintText,
+    required this.onPressedSubmitButton,
+    required this.onPressedUp,
+    required this.onPressedDown,
+    required this.textWidget,
+    required this.columnsCount,
+  });
+
+  final String title;
+  final String hintText;
+  final Widget textWidget;
+  final VoidCallback onPressedUp;
+  final VoidCallback onPressedDown;
+  final Function(String, int) onPressedSubmitButton;
+  final int columnsCount;
+
+  @override
+  Widget build(BuildContext context) {
+    TextEditingController controller = TextEditingController();
+
+    return AlertDialog(
+      title: Text(title),
+      elevation: EditPanelConstants.alertDialogElevation,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(EditPanelConstants.alertDialogBorderRadius),
+        ),
+      ),
+      content: SizedBox(
+        height: 100, //const value
+        child: Column(
+          children: [
+            TextField(
+              controller: controller,
+              autofocus: true,
+              decoration: InputDecoration(
+                hintText: hintText,
+              ),
+            ),
+            ColumnsCountEditWidget(
+              textWidget: textWidget,
+              onPressedUp: onPressedUp,
+              onPressedDown: onPressedDown,
+              columnsCount: columnsCount,
+            ),
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text(AppLocalizations.of(context).cancel),
+        ),
+        TextButton(
+          onPressed: () {
+            onPressedSubmitButton(
+              controller.text,
+              columnsCount,
+            );
+            Navigator.of(context).pop(controller.text);
+          },
+          child: Text(AppLocalizations.of(context).ok),
+        ),
+      ],
+      actionsAlignment: MainAxisAlignment.end,
+      actionsPadding: const EdgeInsets.symmetric(
+        horizontal: EditPanelConstants.alertDialogActionsPadding,
+      ),
+    );
+  }
+}

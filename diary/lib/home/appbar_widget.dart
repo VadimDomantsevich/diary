@@ -17,12 +17,11 @@ class AppBarWidget extends StatelessWidget {
   factory AppBarWidget.listLoaded({
     required Color backgroundColor,
     required Color foregroundColor,
-    // required VoidCallback onPressedLeadingIcon,
   }) {
     return AppBarWidget(
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor,
-      leadingIcon: Container(), // const Icon(Icons.arrow_back),
+      leadingIcon: Container(),
       onPressedLeadingIcon: (){},
     );
   }

@@ -52,6 +52,40 @@ class BlocTextColorEditWidget extends StatelessWidget {
               color: color,
             );
           },
+          capitalCellTextEditing: (
+            isBold,
+            isItalic,
+            isUnderline,
+            isLineThrough,
+            fontSize,
+            color,
+            isHorizontalLeft,
+            isHorizontalCenter,
+            isHorizontalRight,
+            isVerticalTop,
+            isVerticalCenter,
+            isVerticalBottom,
+            defaultSettings,
+          ) {
+            return ColorEditWidget(
+              textWidget: EditPanelTextWidget.common(
+                content: AppLocalizations.of(context).textColor,
+              ),
+              onTap: () {
+                context.read<DiaryListBloc>().add(
+                      const StartEditingColorEvent(),
+                    );
+                context.read<DiaryCellEditBloc>().add(
+                      DiaryCellEditEvent.startColorEditing(
+                        colorEditingEnum: ColorEditingEnum.text,
+                        defaultColor:
+                            defaultSettings.capitalCellTextColor.toColor(),
+                      ),
+                    );
+              },
+              color: color,
+            );
+          },
           orElse: () => Container(),
         );
       },

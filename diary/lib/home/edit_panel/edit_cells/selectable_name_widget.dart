@@ -24,10 +24,11 @@ class SelectableNameWidget extends StatelessWidget {
     return SelectableNameWidget(
       textWidget: EditPanelTextWidget.selectableName(
         content: content,
-        textColor: isTextEditing ? Colors.black : Colors.grey,
+        textColor: isTextEditing ? Colors.black : Colors.grey, //const value
       ),
       borderWidth: EditPanelConstants.editPanelBorderSideWidth,
-      borderColor: isTextEditing ? Colors.blueAccent : Colors.grey,
+      borderColor:
+          isTextEditing ? Colors.blueAccent : Colors.grey, //const value
       onTap: onTap,
     );
   }
@@ -40,10 +41,11 @@ class SelectableNameWidget extends StatelessWidget {
     return SelectableNameWidget(
       textWidget: EditPanelTextWidget.selectableName(
         content: content,
-        textColor: isTextEditing ? Colors.grey : Colors.black,
+        textColor: isTextEditing ? Colors.grey : Colors.black, //const value
       ),
       borderWidth: EditPanelConstants.editPanelBorderSideWidth,
-      borderColor: isTextEditing ? Colors.grey : Colors.blueAccent,
+      borderColor:
+          isTextEditing ? Colors.grey : Colors.blueAccent, //const value
       onTap: onTap,
     );
   }

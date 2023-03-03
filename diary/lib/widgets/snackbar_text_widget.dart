@@ -9,6 +9,6 @@ class SnackBarTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => AutoSizeText(
         text,
-        style: Theme.of(context).copyWith().textTheme.subtitle1,
+        // style: Theme.of(context).copyWith().textTheme.labelMedium,
       );
 }

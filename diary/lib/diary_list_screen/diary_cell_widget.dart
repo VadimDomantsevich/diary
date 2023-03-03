@@ -1,6 +1,7 @@
 import 'package:diary/core/extentions.dart';
 import 'package:diary/diary_list_screen/diary_cell_content_widget.dart';
 import 'package:diary/model/diary_cell.dart';
+import 'package:diary/model/diary_column.dart';
 import 'package:flutter/material.dart';
 
 class DiaryCellWidget extends StatelessWidget {
@@ -16,6 +17,7 @@ class DiaryCellWidget extends StatelessWidget {
     required this.scaleFactor,
     required this.border,
     required this.shadowColor,
+    required this.width,
   });
 
   final Widget contentWidget;
@@ -28,12 +30,14 @@ class DiaryCellWidget extends StatelessWidget {
   final double scaleFactor;
   final Border border;
   final Color shadowColor;
+  final double width;
 
   factory DiaryCellWidget.common({
     required Alignment alignment,
     required VoidCallback onTap,
     required GlobalObjectKey cellKey,
     required double height,
+    required double width,
     required double scaleFactor,
     required Border border,
     required Widget contentWidget,
@@ -44,8 +48,9 @@ class DiaryCellWidget extends StatelessWidget {
         alignment: alignment,
         contentWidget: contentWidget,
         onTap: onTap,
-        backgroundColor: backgroundColor, //Цвет будет где-то храниться
+        backgroundColor: backgroundColor,
         height: height,
+        width: width,
         scaleFactor: scaleFactor,
         border: border,
         shadowColor: Colors.transparent,
@@ -53,6 +58,7 @@ class DiaryCellWidget extends StatelessWidget {
 
   factory DiaryCellWidget.model({
     required DiaryCell diaryCell,
+    required DiaryColumn diaryColumn,
     required VoidCallback onTap,
     required bool isFirstSelected,
     required bool isSelected,
@@ -62,6 +68,8 @@ class DiaryCellWidget extends StatelessWidget {
     required double scaleFactor,
     required Border border,
   }) {
+    final width =
+        diaryColumn.settings.width[diaryCell.columnPosition - 1];
     return isFirstSelected
         ? DiaryCellWidget.firstSelected(
             alignment: diaryCell.textSettings.alignment.toAlignment(),
@@ -69,6 +77,7 @@ class DiaryCellWidget extends StatelessWidget {
             cellKey: cellKey,
             onPanUpdate: onPanUpdate!,
             height: height,
+            width: width,
             scaleFactor: scaleFactor,
             border: border,
             contentWidget: DiaryCellContentWidget.model(diaryCell: diaryCell),
@@ -80,6 +89,7 @@ class DiaryCellWidget extends StatelessWidget {
                 alignment: diaryCell.textSettings.alignment.toAlignment(),
                 onTap: onTap,
                 height: height,
+                width: width,
                 scaleFactor: scaleFactor,
                 border: border,
                 contentWidget:
@@ -91,6 +101,7 @@ class DiaryCellWidget extends StatelessWidget {
                 alignment: diaryCell.textSettings.alignment.toAlignment(),
                 onTap: onTap,
                 height: height,
+                width: width,
                 scaleFactor: scaleFactor,
                 border: border,
                 contentWidget:
@@ -104,6 +115,7 @@ class DiaryCellWidget extends StatelessWidget {
     required VoidCallback onTap,
     required GlobalObjectKey cellKey,
     required double height,
+    required double width,
     required double scaleFactor,
     required Border border,
     required Widget contentWidget,
@@ -114,11 +126,12 @@ class DiaryCellWidget extends StatelessWidget {
         alignment: alignment,
         contentWidget: contentWidget,
         onTap: onTap,
-        backgroundColor: backgroundColor, //Цвет будет где-то храниться
+        backgroundColor: backgroundColor,
         height: height,
+        width: width,
         scaleFactor: scaleFactor,
         border: border,
-        shadowColor: const Color.fromARGB(70, 68, 137, 255),//от темы зависит
+        shadowColor: const Color.fromARGB(70, 68, 137, 255), //const value
       );
 
   factory DiaryCellWidget.firstSelected({
@@ -127,6 +140,7 @@ class DiaryCellWidget extends StatelessWidget {
     required GlobalObjectKey cellKey,
     required Function(DragUpdateDetails) onPanUpdate,
     required double height,
+    required double width,
     required double scaleFactor,
     required Border border,
     required Widget contentWidget,
@@ -140,14 +154,14 @@ class DiaryCellWidget extends StatelessWidget {
         alignment: alignment,
         cellKey: cellKey,
         height: height,
+        width: width,
         scaleFactor: scaleFactor,
         border: border,
-        shadowColor: Color.fromARGB(70, 68, 137, 255),//от темы зависит
+        shadowColor: Color.fromARGB(70, 68, 137, 255), //const value
       );
 
   @override
   Widget build(BuildContext context) {
-    //По-хорошему нужны все параметры, которые будут редактироваться
     return GestureDetector(
       onTap: onTap,
       onPanUpdate: onPanUpdate,
@@ -156,18 +170,18 @@ class DiaryCellWidget extends StatelessWidget {
           Container(
             key: cellKey,
             height: height,
+            width: width,
             alignment: alignment,
             decoration: BoxDecoration(
               border: border,
               color: backgroundColor,
-              //borderRadius: const BorderRadius.all(Radius.circular(2)),
             ),
             child: contentWidget,
           ),
           Positioned(
             child: Container(
               height: height,
-              width: 300, //need to be in settings
+              width: width,
               color: shadowColor,
             ),
           ),

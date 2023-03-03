@@ -1,4 +1,3 @@
-import 'package:diary/model/diary_cell.dart';
 import 'package:diary/model/diary_cell_settings.dart';
 import 'package:flutter/material.dart';
 

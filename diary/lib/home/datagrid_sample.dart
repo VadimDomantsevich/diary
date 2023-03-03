@@ -13,7 +13,8 @@ class DataGridSample extends StatelessWidget {
     return Scaffold(
       body: BlocBuilder<DiaryListBloc, DiaryListState>(
         builder: (context, state) => state.maybeWhen(
-            loaded: (diaryList, diaryColumns, diaryCells, cellsKeys, lists) {
+            loaded: (diaryList, diaryColumns, capitalCells, diaryCells,
+                cellsKeys, lists) {
               int crossAxisCount = 0;
               for (var column in diaryColumns) {
                 crossAxisCount += column.columnsCount;
@@ -23,6 +24,7 @@ class DataGridSample extends StatelessWidget {
                   return state.maybeWhen(
                     loaded: (
                       scaleFactor,
+                      diaryColumns,
                       width,
                       height,
                       transformationController,
@@ -39,6 +41,8 @@ class DataGridSample extends StatelessWidget {
                         width: width,
                         diaryCells: diaryCells,
                         cellsKeys: cellsKeys,
+                        capitalCells: capitalCells,
+                        diaryColumns: diaryColumns,
                         crossAxisCount: crossAxisCount,
                         isAppBarShown: isAppBarShown,
                         onPointerUp: (details) => context
@@ -65,6 +69,7 @@ class DataGridSample extends StatelessWidget {
             cellsSelected: (
               diaryList,
               diaryColumns,
+              capitalCells,
               diaryCells,
               firstSelectedCell,
               selectedCells,
@@ -82,6 +87,7 @@ class DataGridSample extends StatelessWidget {
                   return state.maybeWhen(
                     loaded: (
                       scaleFactor,
+                      diaryColumns,
                       width,
                       height,
                       transformationController,
@@ -97,6 +103,8 @@ class DataGridSample extends StatelessWidget {
                         width: width,
                         diaryCells: diaryCells,
                         cellsKeys: cellsKeys,
+                        capitalCells: capitalCells,
+                        diaryColumns: diaryColumns,
                         crossAxisCount: crossAxisCount,
                         scaleFactor: scaleFactor,
                         isAppBarShown: isAppBarShown,
@@ -122,6 +130,7 @@ class DataGridSample extends StatelessWidget {
                     },
                     selectedMoving: (
                       scaleFactor,
+                      diaryColumns,
                       width,
                       height,
                       transformationController,
@@ -136,6 +145,8 @@ class DataGridSample extends StatelessWidget {
                         width: width,
                         diaryCells: diaryCells,
                         cellsKeys: cellsKeys,
+                        diaryColumns: diaryColumns,
+                        capitalCells: capitalCells,
                         crossAxisCount: crossAxisCount,
                         scaleFactor: scaleFactor,
                         isAppBarShown: isAppBarShown,
@@ -150,6 +161,7 @@ class DataGridSample extends StatelessWidget {
                                     details: details,
                                     firstSelectedCell: firstSelectedCell,
                                     selectedCells: selectedCells,
+                                    capitalCell: capitalCells.first,
                                   ),
                                 ),
                       );
@@ -159,8 +171,8 @@ class DataGridSample extends StatelessWidget {
                 }),
               );
             },
-            listEditing: (diaryList, diaryColumns, diaryCells, cellsKeys, lists,
-                selectedList) {
+            listEditing: (diaryList, diaryColumns, capitalCells, diaryCells,
+                cellsKeys, lists, isColumnDeleting, selectedList) {
               int crossAxisCount = 0;
               for (var column in diaryColumns) {
                 crossAxisCount += column.columnsCount;
@@ -170,6 +182,7 @@ class DataGridSample extends StatelessWidget {
                   return state.maybeWhen(
                     loaded: (
                       scaleFactor,
+                      diaryColumns,
                       width,
                       height,
                       transformationController,
@@ -186,6 +199,8 @@ class DataGridSample extends StatelessWidget {
                         width: width,
                         diaryCells: diaryCells,
                         cellsKeys: cellsKeys,
+                        capitalCells: capitalCells,
+                        diaryColumns: diaryColumns,
                         crossAxisCount: crossAxisCount,
                         isAppBarShown: isAppBarShown,
                         onPointerDown: (details) =>
@@ -209,6 +224,7 @@ class DataGridSample extends StatelessWidget {
             cellsEditing: (
               diaryList,
               diaryColumns,
+              capitalCells,
               diaryCells,
               cellsKeys,
               firstSelectedCell,
@@ -230,6 +246,7 @@ class DataGridSample extends StatelessWidget {
                   return state.maybeWhen(
                       loaded: (
                         scaleFactor,
+                        diaryColumns,
                         width,
                         height,
                         transformationController,
@@ -245,6 +262,8 @@ class DataGridSample extends StatelessWidget {
                           width: width,
                           diaryCells: diaryCells,
                           cellsKeys: cellsKeys,
+                          capitalCells: capitalCells,
+                          diaryColumns: diaryColumns,
                           crossAxisCount: crossAxisCount,
                           scaleFactor: scaleFactor,
                           isAppBarShown: isAppBarShown,
@@ -252,9 +271,6 @@ class DataGridSample extends StatelessWidget {
                             context.read<DiaryListBloc>().add(
                                   const DiaryListEvent.returnToCellsSelected(),
                                 );
-                            // context.read<GridDisplayBloc>().add(
-                            //       const GridDisplayEvent.showBottomPanel(),
-                            //     );
                           },
                           onPointerUp: (details) => context
                               .read<GridDisplayBloc>()
@@ -266,6 +282,57 @@ class DataGridSample extends StatelessWidget {
                       orElse: () => Container());
                 },
               );
+            },
+            capitalCellSelected: (
+              diaryList,
+              diaryColumns,
+              capitalCells,
+              diaryCells,
+              selectedCapitalCell,
+              isEditing,
+              isTextEditing,
+              isColorEditing,
+              isBorderEditing,
+              isBorderStyleEditing,
+              cellsKeys,
+              lists,
+              defaultSettings,
+            ) {
+              int crossAxisCount = 0;
+              for (var column in diaryColumns) {
+                crossAxisCount += column.columnsCount;
+              }
+              return BlocBuilder<GridDisplayBloc, GridDisplayState>(
+                  builder: (context, state) {
+                return state.maybeWhen(
+                  loaded: (
+                    scaleFactor,
+                    diaryColumns,
+                    width,
+                    height,
+                    transformationController,
+                    translateX,
+                    translateY,
+                    isAppBarShown,
+                    isPanelShown,
+                    isEditCellPanelShown,
+                  ) {
+                    return SampleWidget.capitalCellSelectedGridLoaded(
+                      transformationController: transformationController,
+                      height: height,
+                      width: width,
+                      diaryCells: diaryCells,
+                      cellsKeys: cellsKeys,
+                      capitalCells: capitalCells,
+                      diaryColumns: diaryColumns,
+                      crossAxisCount: crossAxisCount,
+                      scaleFactor: scaleFactor,
+                      isAppBarShown: isAppBarShown,
+                    );
+                  },
+                  orElse: () => const CircularProgressIndicator(),
+                );
+              });
             },
             orElse: () => const CircularProgressIndicator()),
       ),

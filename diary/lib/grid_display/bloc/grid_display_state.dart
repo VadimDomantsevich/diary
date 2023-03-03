@@ -11,6 +11,7 @@ class GridDisplayState with _$GridDisplayState {
 
   const factory GridDisplayState.loaded({
     required double scaleFactor,
+    required List<DiaryColumn> diaryColumns,
     required double width,
     required double height,
     required TransformationController transformationController,
@@ -23,6 +24,7 @@ class GridDisplayState with _$GridDisplayState {
 
   const factory GridDisplayState.selectedMoving({
     required double scaleFactor,
+    required List<DiaryColumn> diaryColumns,
     required double width,
     required double height,
     required TransformationController transformationController,

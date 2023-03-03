@@ -76,6 +76,64 @@ class BlocClearFormattingRowWidget extends StatelessWidget {
               ),
             );
           },
+          capitalCellTextEditing: (
+            isBold,
+            isItalic,
+            isUnderline,
+            isLineThrough,
+            fontSize,
+            color,
+            isHorizontalLeft,
+            isHorizontalCenter,
+            isHorizontalRight,
+            isVerticalTop,
+            isVerticalCenter,
+            isVerticalBottom,
+            defaultSettings,
+          ) {
+            return ListTileRowWidget.clearFormatting(
+              onTap: () {
+                context.read<DiaryCellEditBloc>().add(
+                      ChangeCellEvent(
+                        color: defaultSettings.capitalCellTextColor,
+                        fontWeight: defaultSettings.capitalCellFontWeight,
+                        textDecoration:
+                            defaultSettings.capitalCellTextDecoration,
+                        fontStyle: defaultSettings.capitalCellFontStyle,
+                        fontSize: defaultSettings.capitalCellFontSize,
+                        horizontalAlignment: defaultSettings
+                            .capitalCellAlignment
+                            .toHorizontalAlignmentsEnum(),
+                        verticalAlignment: defaultSettings.capitalCellAlignment
+                            .toVerticalAlignmentsEnum(),
+                      ),
+                    );
+                context.read<DiaryListBloc>().add(
+                      DiaryListEvent.changeCapitalCellSettings(
+                        fontWeight: defaultSettings.capitalCellFontWeight,
+                        textDecoration:
+                            defaultSettings.capitalCellTextDecoration,
+                        fontStyle: defaultSettings.capitalCellFontStyle,
+                        fontSize: defaultSettings.capitalCellFontSize,
+                        horizontalAlignment: defaultSettings
+                            .capitalCellAlignment
+                            .toHorizontalAlignmentsEnum(),
+                        verticalAlignment: defaultSettings.capitalCellAlignment
+                            .toVerticalAlignmentsEnum(),
+                        color: defaultSettings.capitalCellTextColor,
+                        backgroundColor:
+                            defaultSettings.capitalCellBackgroundColor,
+                        bordersStyleEnum: BordersStyleEnum.thick,
+                        bordersColor:
+                            defaultSettings.capitalCellBorderColor.toColor(),
+                      ),
+                    );
+              },
+              textWidget: EditPanelTextWidget.common(
+                content: AppLocalizations.of(context).clearFormatting,
+              ),
+            );
+          },
           orElse: () => Container(),
         );
       },

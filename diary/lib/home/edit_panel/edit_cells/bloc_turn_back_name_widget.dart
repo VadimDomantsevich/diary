@@ -16,6 +16,7 @@ class BlocTurnBackNameWidget extends StatelessWidget {
           cellsEditing: (
             diaryList,
             diaryColumns,
+            capitalCells,
             diaryCells,
             cellsKeys,
             firstSelectedCell,
@@ -86,6 +87,93 @@ class BlocTurnBackNameWidget extends StatelessWidget {
                                   context.read<DiaryCellEditBloc>().add(
                                         const DiaryCellEditEvent
                                             .startBordersEditing(),
+                                      );
+                                },
+                              )
+                            : TurnBackNameWidget(
+                                content:
+                                    AppLocalizations.of(context).bordersStyle,
+                                onPressed: () {
+                                  context
+                                      .read<DiaryListBloc>()
+                                      .add(const TurnBackEditingEvent());
+                                },
+                              );
+          },
+          capitalCellSelected: (
+            diaryList,
+            diaryColumns,
+            capitalCells,
+            diaryCells,
+            selectedCapitalCell,
+            isEditing,
+            isTextEditing,
+            isColorEditing,
+            isBordersEditing,
+            isBordersStyleEditing,
+            cellsKeys,
+            lists,
+            defaultSettings,
+          ) {
+            return isTextEditing && isColorEditing
+                ? TurnBackNameWidget(
+                    content: AppLocalizations.of(context).textColor,
+                    onPressed: () {
+                      context.read<DiaryListBloc>().add(
+                            const TurnBackEditingEvent(),
+                          );
+                      context.read<DiaryCellEditBloc>().add(
+                            StartCapitalCellTextEditingEvent(
+                              selectedCapitalCell: selectedCapitalCell,
+                              defaultSettings: defaultSettings,
+                            ),
+                          );
+                    },
+                  )
+                : !isTextEditing && isColorEditing && !isBordersEditing
+                    ? TurnBackNameWidget(
+                        content: AppLocalizations.of(context).fillColor,
+                        onPressed: () {
+                          context.read<DiaryListBloc>().add(
+                                const TurnBackEditingEvent(),
+                              );
+                          context.read<DiaryCellEditBloc>().add(
+                                StartCapitalCellEditingEvent(
+                                  selectedCapitalCell: selectedCapitalCell,
+                                ),
+                              );
+                        },
+                      )
+                    : !isTextEditing &&
+                            !isColorEditing &&
+                            isBordersEditing &&
+                            !isBordersStyleEditing
+                        ? TurnBackNameWidget(
+                            content: AppLocalizations.of(context).borders,
+                            onPressed: () {
+                              context.read<DiaryListBloc>().add(
+                                    const TurnBackEditingEvent(),
+                                  );
+                              context.read<DiaryCellEditBloc>().add(
+                                    StartCapitalCellEditingEvent(
+                                      selectedCapitalCell: selectedCapitalCell,
+                                    ),
+                                  );
+                            },
+                          )
+                        : !isTextEditing && isColorEditing && isBordersEditing
+                            ? TurnBackNameWidget(
+                                content:
+                                    AppLocalizations.of(context).bordersColor,
+                                onPressed: () {
+                                  context
+                                      .read<DiaryListBloc>()
+                                      .add(const TurnBackEditingEvent());
+                                  context.read<DiaryCellEditBloc>().add(
+                                        DiaryCellEditEvent
+                                            .startCapitalCellBordersEditing(
+                                          capitalCell: selectedCapitalCell,
+                                        ),
                                       );
                                 },
                               )

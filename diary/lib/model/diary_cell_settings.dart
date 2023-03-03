@@ -16,7 +16,6 @@ class DiaryCellSettings {
   final String bottomBorderColor;
   final double bottomBorderWidth;
   final double height;
-
   final String backgroundColor;
 
   DiaryCellSettings({

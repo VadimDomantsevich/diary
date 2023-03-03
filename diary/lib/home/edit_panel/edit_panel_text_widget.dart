@@ -20,7 +20,7 @@ class EditPanelTextWidget extends StatelessWidget {
   }) {
     return EditPanelTextWidget(
       content: content,
-      color: Colors.blueAccent,
+      color: Colors.blueAccent,//const value
       align: TextAlign.center,
       size: EditPanelConstants.editPanelSelectedTextSize,
     );
@@ -31,7 +31,7 @@ class EditPanelTextWidget extends StatelessWidget {
   }) {
     return EditPanelTextWidget(
       content: content,
-      color: Colors.black,
+      color: Colors.black,//const value
       align: TextAlign.center,
       size: EditPanelConstants.editPanelCommonTextSize,
     );
@@ -42,7 +42,7 @@ class EditPanelTextWidget extends StatelessWidget {
   }) {
     return EditPanelTextWidget(
       content: content,
-      color: Colors.black,
+      color: Colors.black,//const value
       align: TextAlign.center,
       size: EditPanelConstants.editPanelNameTextSize,
     );
@@ -53,7 +53,7 @@ class EditPanelTextWidget extends StatelessWidget {
   }) {
     return EditPanelTextWidget(
       content: content,
-      color: Colors.blueAccent,
+      color: Colors.blueAccent,//const value
       align: TextAlign.center,
       size: EditPanelConstants.editPanelListTileSelectedTextSize,
     );
@@ -64,7 +64,7 @@ class EditPanelTextWidget extends StatelessWidget {
   }) {
     return EditPanelTextWidget(
       content: content,
-      color: Colors.black,
+      color: Colors.black,//const value
       align: TextAlign.center,
       size: EditPanelConstants.editPanelListTileCommonTextSize,
     );

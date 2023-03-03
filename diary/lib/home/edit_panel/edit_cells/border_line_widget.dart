@@ -19,7 +19,7 @@ class BorderLineWidget extends StatelessWidget {
         ),
         child: Container(
           height: height,
-          color: Colors.black,
+          color: Colors.black,//const value
         ),
       ),
     );

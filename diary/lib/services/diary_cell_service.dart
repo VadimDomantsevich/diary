@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diary/core/constants/collections.dart';
+import 'package:diary/core/constants/colors/black_color_constants.dart';
 import 'package:diary/core/constants/constants.dart';
 import 'package:diary/core/constants/enums.dart';
 import 'package:diary/core/extentions.dart';
@@ -16,6 +17,7 @@ class DiaryCellService {
   Future<void> create({
     required DiaryList diaryList,
     required DiaryColumn diaryColumn,
+    required List<DiaryColumn> diaryColumns,
   }) async {
     final daysInMonth = DateUtils.getDaysInMonth(
         diaryList.listDate.year, diaryList.listDate.month);
@@ -28,13 +30,13 @@ class DiaryCellService {
     );
     await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).set(
           createDefaultSettings().toFirestore(),
-        ); //Оно всегда будет переписывать дефолт сеттинги на прописанные
-    //меня это не устраивает
-    // await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).update(
-    //       createDefaultSettings().toFirestore(),
-    //     );
-    //Оно всегда будет переписывать дефолт сеттинги на прописанные
-    //меня это не устраивает
+        );
+    await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).update(
+          createDefaultTextSettings().toFirestore(),
+        );
+
+    //I need to store defaultSettings somewhere and grab them from database
+
     final defaultSettings = await getDefaultCellSettings(
       diaryList: diaryList,
       diaryColumn: diaryColumn,
@@ -43,15 +45,19 @@ class DiaryCellService {
       diaryList: diaryList,
       diaryColumn: diaryColumn,
     );
-
     for (var i = 1; i < diaryColumn.columnsCount + 1; i++) {
       for (var j = 1; j <= daysInMonth; j++) {
         final newCell = DiaryCell(
-          columnName: diaryColumnDoc.id, //It seems to be the right way
-          columnPosition: j,
-          day: i,
+          columnName: diaryColumnDoc.id,
+          columnPosition: i,
+          day: j,
           settings: defaultSettings,
           textSettings: defaultTextSettings,
+          content: '',
+          capitalColumnPosition: diaryColumns.indexOf(
+            diaryColumns
+                .firstWhere((element) => element.id == diaryColumnDoc.id),
+          ),
         );
         await cellsCollection.doc(getDiaryCellName(newCell)).set(
               newCell.toFirestore(),
@@ -151,15 +157,6 @@ class DiaryCellService {
         );
       }
     }
-    diaryCells.sort(
-      ((a, b) {
-        int day = a.day.compareTo(b.day);
-        if (day == 0) {
-          return a.columnPosition.compareTo(b.columnPosition);
-        }
-        return day;
-      }),
-    );
     return diaryCells;
   }
 
@@ -225,7 +222,6 @@ class DiaryCellService {
     }
   }
 
-  //Check how it works
   Future<void> updateDefaultSettings({
     required DiaryList diaryList,
     required DiaryColumn diaryColumn,
@@ -261,7 +257,6 @@ class DiaryCellService {
     }
   }
 
-  //Check how it works
   Future<void> updateDefaultTextSettings({
     required DiaryList diaryList,
     required DiaryColumn diaryColumn,
@@ -281,7 +276,6 @@ class DiaryCellService {
   }
 
   Future<void> createDateCells({
-    //ПЕРЕДЕЛАТЬ
     required DiaryList diaryList,
     required DiaryColumn diaryColumn,
   }) async {
@@ -317,6 +311,7 @@ class DiaryCellService {
             content: j,
             settings: defaultSettings,
             textSettings: defaultTextSettings,
+            capitalColumnPosition: 0,
           );
           await cellsCollection.doc(getDiaryCellName(newCell)).set(
                 newCell.toFirestore(),
@@ -331,6 +326,7 @@ class DiaryCellService {
             content: dayOfTheWeek,
             settings: defaultSettings,
             textSettings: defaultTextSettings,
+            capitalColumnPosition: 0,
           );
           await cellsCollection.doc(getDiaryCellName(newCell)).set(
                 newCell.toFirestore(),
@@ -350,7 +346,7 @@ class DiaryCellService {
       rightBorderWidth: Constants.defaultBordersStyleEnum.toDoubleWidth(),
       bottomBorderColor: '0x26646464',
       bottomBorderWidth: Constants.defaultBordersStyleEnum.toDoubleWidth(),
-      height: 30,//const value
+      height: 30, //const value
       backgroundColor: '0xFFFFFFFF',
     );
   }
@@ -361,8 +357,8 @@ class DiaryCellService {
       fontWeight: FontWeightEnum.normal,
       textDecoration: TextDecorationEnum.none,
       fontStyle: FontStyleEnum.normal,
-      fontSize: 14,//const value
-      color: '0xFF000000',
+      fontSize: 14, //const value
+      color: BlackColorConstants.black1,
     );
   }
 
@@ -397,16 +393,6 @@ class DiaryCellService {
     return alignment.toAlignmentsEnum();
   }
 
-  double getSummaryHeight({
-    required List<DiaryCell> cells,
-  }) {
-    double height = 0;
-    for (var cell in cells) {
-      height += cell.settings.height;
-    }
-    return height;
-  }
-
   bool isRectTouchTheCell({
     required double leftPosition,
     required double rightPosition,
@@ -425,32 +411,10 @@ class DiaryCellService {
         cellPosition.dy + cellBox.size.height * scaleFactor;
     if (cellRightPosition <= leftPosition ||
         cellLeftPosition >= rightPosition) {
-      //     print('Start right');
-      // print('cellTop: ${cellTopPosition}');
-      // print('cellBottom: ${cellBottomPosition}');
-      // print('cellLeft: ${cellLeftPosition}');
-      // print('cellRight: ${cellRightPosition}');
-      // print('----');
-      // print('TopPosition: ${topPosition}');
-      // print('BottomPosition: ${bottomPosition}');
-      // print('LeftPosition: ${leftPosition}');
-      // print('RightPosition: ${rightPosition}');
-      // print('END');
       return false;
     }
     if (cellTopPosition >= bottomPosition ||
         cellBottomPosition <= topPosition) {
-      // print('Start top');
-      // print('cellTop: ${cellTopPosition}');
-      // print('cellBottom: ${cellBottomPosition}');
-      // print('cellLeft: ${cellLeftPosition}');
-      // print('cellRight: ${cellRightPosition}');
-      // print('----');
-      // print('TopPosition: ${topPosition}');
-      // print('BottomPosition: ${bottomPosition}');
-      // print('LeftPosition: ${leftPosition}');
-      // print('RightPosition: ${rightPosition}');
-      // print('END');
       return false;
     }
 
@@ -475,7 +439,6 @@ class DiaryCellService {
               topCellBottomBorderColor == color
           ? isTopBorderNeedToBeDrawn = false
           : isTopBorderNeedToBeDrawn = true;
-      // print('after check: $isTopBorderNeedToBeDrawn');
     }
     return isTopBorderNeedToBeDrawn;
   }
@@ -499,7 +462,6 @@ class DiaryCellService {
               bottomCellTopBorderColor == color
           ? isBottomBorderNeedToBeDrawn = false
           : isBottomBorderNeedToBeDrawn = true;
-      // print('after check isBtmBrdr: $isBottomBorderNeedToBeDrawn');
     }
     return isBottomBorderNeedToBeDrawn;
   }
@@ -526,7 +488,6 @@ class DiaryCellService {
               leftCellRightBorderColor == color
           ? isLeftBorderNeedToBeDrawn = false
           : isLeftBorderNeedToBeDrawn = true;
-      // print('after check: $isLeftBorderNeedToBeDrawn');
     }
     return isLeftBorderNeedToBeDrawn;
   }
@@ -541,7 +502,7 @@ class DiaryCellService {
     bool isRightBorderNeedToBeDrawn = true;
     final index = diaryCells.indexOf(diaryCell);
     bool isCellTheMostRight = false;
-    index % columnsCount == columnsCount-1
+    index % columnsCount == columnsCount - 1
         ? isCellTheMostRight = true
         : isCellTheMostRight = false;
     if (!isCellTheMostRight) {
@@ -553,7 +514,6 @@ class DiaryCellService {
               rightCellLeftBorderColor == color
           ? isRightBorderNeedToBeDrawn = false
           : isRightBorderNeedToBeDrawn = true;
-      // print('after check isRghtBrdr: $isRightBorderNeedToBeDrawn');
     }
     return isRightBorderNeedToBeDrawn;
   }

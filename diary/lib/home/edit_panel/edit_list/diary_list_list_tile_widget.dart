@@ -30,9 +30,9 @@ class DiaryListListTileWidget extends StatelessWidget {
             onTap: onTap,
             iconWidget: const Icon(
               Icons.check,
-              color: Colors.blueAccent,
+              color: Colors.blueAccent, //const value
             ),
-            textColor: Colors.blueAccent,
+            textColor: Colors.blueAccent, //const value
           )
         : DiaryListListTileWidget(
             textWidget: EditPanelTextWidget.listTileCommon(
@@ -40,7 +40,7 @@ class DiaryListListTileWidget extends StatelessWidget {
             ),
             onTap: onTap,
             iconWidget: const Icon(Icons.check_box_outline_blank),
-            textColor: Colors.black,
+            textColor: Colors.black, //const value
           );
   }
 
@@ -54,7 +54,7 @@ class DiaryListListTileWidget extends StatelessWidget {
       ),
       onTap: onTap,
       iconWidget: const Icon(Icons.edit),
-      textColor: Colors.black,
+      textColor: Colors.black, //const value
     );
   }
 
@@ -68,7 +68,35 @@ class DiaryListListTileWidget extends StatelessWidget {
       ),
       onTap: onTap,
       iconWidget: const Icon(Icons.delete),
-      textColor: Colors.black,
+      textColor: Colors.black, //const value
+    );
+  }
+
+  factory DiaryListListTileWidget.addColumn({
+    required String content,
+    required VoidCallback onTap,
+  }) {
+    return DiaryListListTileWidget(
+      textWidget: EditPanelTextWidget.listTileCommon(
+        content: content,
+      ),
+      onTap: onTap,
+      iconWidget: const Icon(Icons.view_column),
+      textColor: Colors.black, //const value
+    );
+  }
+
+  factory DiaryListListTileWidget.deleteColumn({
+    required String content,
+    required VoidCallback onTap,
+  }) {
+    return DiaryListListTileWidget(
+      textWidget: EditPanelTextWidget.listTileCommon(
+        content: content,
+      ),
+      onTap: onTap,
+      iconWidget: const Icon(Icons.delete_sweep),
+      textColor: Colors.black, //const value
     );
   }
 

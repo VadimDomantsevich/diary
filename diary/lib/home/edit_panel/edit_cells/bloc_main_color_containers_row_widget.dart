@@ -24,11 +24,21 @@ class BlocMainColorContainersRowWidget extends StatelessWidget {
                       color: color.toColorString(),
                     ),
                   );
+              context.read<DiaryListBloc>().add(
+                    ChangeCapitalCellSettingsEvent(
+                      color: color.toColorString(),
+                    ),
+                  );
             }
 
             fillColorEditing(Color color) {
               context.read<DiaryListBloc>().add(
                     ChangeDiaryCellsSettingsEvent(
+                      backgroundColor: color.toColorString(),
+                    ),
+                  );
+              context.read<DiaryListBloc>().add(
+                    ChangeCapitalCellSettingsEvent(
                       backgroundColor: color.toColorString(),
                     ),
                   );
@@ -39,6 +49,13 @@ class BlocMainColorContainersRowWidget extends StatelessWidget {
                     ChangeDiaryCellsBordersSettingsEvent(
                       bordersEditingEnum:
                           bordersEditingEnum ?? BordersEditingEnum.none,
+                      bordersStyleEnum:
+                          bordersStyleEnum ?? BordersStyleEnum.thin,
+                      bordersColor: color,
+                    ),
+                  );
+              context.read<DiaryListBloc>().add(
+                    ChangeCapitalCellSettingsEvent(
                       bordersStyleEnum:
                           bordersStyleEnum ?? BordersStyleEnum.thin,
                       bordersColor: color,
