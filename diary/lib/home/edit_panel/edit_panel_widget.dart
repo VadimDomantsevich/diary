@@ -1,4 +1,5 @@
 import 'package:diary/core/constants/edit_panel_constants.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/home/edit_panel/bottom_icon_and_textfield_widget.dart';
 import 'package:diary/home/edit_panel/edit_cells/bloc_textfield_capital_cell_widget.dart';
 import 'package:diary/home/edit_panel/edit_cells/bloc_textfield_widget.dart';
@@ -13,9 +14,13 @@ class EditPanelWidget extends StatelessWidget {
   const EditPanelWidget({
     super.key,
     required this.bottomRow,
+    required this.themeBorderColor,
+    required this.themePanelBackgroundColor,
   });
 
   final Widget bottomRow;
+  final Color themeBorderColor;
+  final Color themePanelBackgroundColor;
 
   factory EditPanelWidget.selectList({
     required List<DiaryList> lists,
@@ -32,42 +37,65 @@ class EditPanelWidget extends StatelessWidget {
       isSelected = diaryList.listDate == selectedList.listDate;
       listOfWidgets.add(
         ListCardWidget.model(
-          list: diaryList,
+          diaryList: diaryList,
+          currentDiaryList: selectedList,
           isSelected: isSelected,
           onTap: () => onTap(diaryList),
         ),
       );
     }
     return EditPanelWidget(
+      themeBorderColor: selectedList.settings.themeBorderColor.toColor(),
+      themePanelBackgroundColor:
+          selectedList.settings.themePanelBackgroundColor.toColor(),
       bottomRow: BottomRowWidget.editList(
         listOfWidgets: listOfWidgets,
         onPressedIconButton: onPressedIconButton,
+        themeBorderColor: selectedList.settings.themeBorderColor.toColor(),
       ),
     );
   }
 
   factory EditPanelWidget.editCell({
+    required DiaryList diaryList,
     required DiaryCell diaryCell,
     required VoidCallback onPressedIconButton,
   }) {
     return EditPanelWidget(
+      themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
+      themePanelBackgroundColor:
+          diaryList.settings.themePanelBackgroundColor.toColor(),
       bottomRow: BottomIconAndTextFieldWidget.editCell(
-        textFieldWidget: BlocTextFieldWidget(diaryCell: diaryCell),
+        textFieldWidget: BlocTextFieldWidget(
+          diaryCell: diaryCell,
+          themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
+          themePanelBackgroundColor:
+              diaryList.settings.themePanelBackgroundColor.toColor(),
+        ),
         onPressedIconButton: onPressedIconButton,
+        themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
       ),
     );
   }
 
   factory EditPanelWidget.editCapitalCell({
+    required DiaryList diaryList,
     required CapitalCell capitalCell,
     required VoidCallback onPressedIconButton,
   }) {
     return EditPanelWidget(
+      themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
+      themePanelBackgroundColor:
+          diaryList.settings.themePanelBackgroundColor.toColor(),
       bottomRow: BottomIconAndTextFieldWidget.editCell(
         textFieldWidget: BlocTextFieldCapitalCellWidget(
           capitalCell: capitalCell,
+          themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
+          themePanelBackgroundColor:
+              diaryList.settings.themePanelBackgroundColor.toColor(),
         ),
         onPressedIconButton: onPressedIconButton,
+        themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
       ),
     );
   }
@@ -80,9 +108,9 @@ class EditPanelWidget extends StatelessWidget {
         widthFactor: EditPanelConstants.editPanelWidthFactor,
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white, //const value
+            color: themePanelBackgroundColor,
             border: Border.all(
-              color: Colors.black, //const value
+              color: themeBorderColor,
               width: EditPanelConstants.editPanelBorderSideWidth,
             ),
           ),

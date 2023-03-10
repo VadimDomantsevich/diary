@@ -5,8 +5,10 @@ class BorderLineWidget extends StatelessWidget {
     super.key,
     required this.height,
     required this.horizontalPadding,
+    required this.themeBorderColor,
   });
 
+  final Color themeBorderColor;
   final double height;
   final double horizontalPadding;
 
@@ -19,7 +21,7 @@ class BorderLineWidget extends StatelessWidget {
         ),
         child: Container(
           height: height,
-          color: Colors.black,//const value
+          color: themeBorderColor,
         ),
       ),
     );

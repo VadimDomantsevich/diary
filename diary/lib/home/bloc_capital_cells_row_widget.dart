@@ -12,12 +12,14 @@ class BlocCapitalCellsRowWidget extends StatelessWidget {
 
   factory BlocCapitalCellsRowWidget.capitalCells({
     required List<CapitalCell> capitalCells,
+    required Color themeColor,
   }) {
     List<Widget> capitalCellsWidgets = List.empty(growable: true);
     for (var cell in capitalCells) {
       capitalCellsWidgets.add(
         BlocCapitalCellWidget(
           capitalCell: cell,
+          themeColor: themeColor,
         ),
       );
     }

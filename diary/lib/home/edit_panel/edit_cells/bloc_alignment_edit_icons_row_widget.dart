@@ -1,14 +1,19 @@
 import 'package:diary/core/constants/enums.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
 import 'package:diary/diary_list_screen/diary_cell_edit/diary_cell_edit_bloc.dart';
 import 'package:diary/home/edit_panel/edit_cells/alignment_edit_icons_row_widget.dart';
+import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BlocAlignmentEditIconsRowWidget extends StatelessWidget {
   const BlocAlignmentEditIconsRowWidget({
     super.key,
+    required this.diaryList,
   });
+
+  final DiaryList diaryList;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +37,8 @@ class BlocAlignmentEditIconsRowWidget extends StatelessWidget {
               defaultSettings,
             ) {
               return AlignmentEditIconsRowWidget(
+                themeColor: diaryList.settings.themeColor.toColor(),
+                themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
                 isHorizontalLeft: isHorizontalLeft ? true : false,
                 onPressedHorizontalLeftIcon: () {
                   const horizontalAlignment = HorizontalAlignmentsEnum.left;
@@ -134,6 +141,8 @@ class BlocAlignmentEditIconsRowWidget extends StatelessWidget {
               defaultSettings,
             ) {
               return AlignmentEditIconsRowWidget(
+                themeColor: diaryList.settings.themeColor.toColor(),
+                themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
                 isHorizontalLeft: isHorizontalLeft ? true : false,
                 onPressedHorizontalLeftIcon: () {
                   const horizontalAlignment = HorizontalAlignmentsEnum.left;

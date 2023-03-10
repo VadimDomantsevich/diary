@@ -1,5 +1,7 @@
 import 'package:diary/core/constants/edit_panel_constants.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/home/edit_panel/edit_panel_text_widget.dart';
+import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
 
 class ColumnsCountEditWidget extends StatelessWidget {
@@ -9,8 +11,10 @@ class ColumnsCountEditWidget extends StatelessWidget {
     required this.onPressedUp,
     required this.onPressedDown,
     required this.columnsCount,
+    required this.diaryList,
   });
 
+  final DiaryList diaryList;
   final Widget textWidget;
   final VoidCallback onPressedUp;
   final VoidCallback onPressedDown;
@@ -31,7 +35,10 @@ class ColumnsCountEditWidget extends StatelessWidget {
                 onPressed: onPressedDown,
                 icon: const Icon(Icons.keyboard_arrow_down),
               ),
-              EditPanelTextWidget.common(content: columnsCount.toString()),
+              EditPanelTextWidget.common(
+                content: columnsCount.toString(),
+                color: diaryList.settings.themeBorderColor.toColor(),
+              ),
               IconButton(
                 onPressed: onPressedUp,
                 icon: const Icon(Icons.keyboard_arrow_up),

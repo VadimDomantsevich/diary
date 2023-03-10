@@ -1,3 +1,4 @@
+import 'package:diary/core/extentions.dart';
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
 import 'package:diary/diary_list_screen/capital_cell_widget.dart';
 import 'package:diary/model/capital_cell.dart';
@@ -8,9 +9,11 @@ class BlocCapitalCellWidget extends StatelessWidget {
   const BlocCapitalCellWidget({
     super.key,
     required this.capitalCell,
+    required this.themeColor,
   });
 
   final CapitalCell capitalCell;
+  final Color themeColor;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +42,7 @@ class BlocCapitalCellWidget extends StatelessWidget {
                   ),
                 ),
             isSelected: capitalCell == selectedCapitalCell,
+            themeColor: diaryList.settings.themeColor.toColor(),
           );
         },
         orElse: () => CapitalCellWidget.model(
@@ -49,6 +53,7 @@ class BlocCapitalCellWidget extends StatelessWidget {
                 ),
               ),
           isSelected: false,
+          themeColor: themeColor,
         ),
       ),
     );

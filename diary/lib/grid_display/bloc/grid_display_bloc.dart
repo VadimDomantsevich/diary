@@ -64,7 +64,7 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
     double height = 0;
     for (var column in event.diaryColumns) {
       for (var element in column.settings.width) {
-        width += element; //Костыль +2 иногда тож не работает
+        width += element + 2;
       }
     }
     List<DiaryCell> cells = List<DiaryCell>.empty(growable: true);

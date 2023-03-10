@@ -16,12 +16,14 @@ class BottomIconAndTextFieldWidget extends StatelessWidget {
   factory BottomIconAndTextFieldWidget.editCell({
     required VoidCallback onPressedIconButton,
     required Widget textFieldWidget,
+    required Color themeBorderColor,
   }) {
     return BottomIconAndTextFieldWidget(
       onPressedIconButton: onPressedIconButton,
       textFieldWidget: textFieldWidget,
       iconButtonWidget: IconButtonWidget.editCells(
         onPressed: onPressedIconButton,
+        themeBorderColor: themeBorderColor,
       ),
     );
   }

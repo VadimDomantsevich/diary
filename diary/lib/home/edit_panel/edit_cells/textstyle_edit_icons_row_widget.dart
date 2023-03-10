@@ -12,6 +12,8 @@ class TextStyleEditIconsRowWidget extends StatelessWidget {
     required this.onPressedUnderlineIcon,
     required this.isLineThroughSelected,
     required this.onPressedLineThroughIcon,
+    required this.themeColor,
+    required this.themeBorderColor,
   });
 
   final bool isBoldSelected;
@@ -22,6 +24,8 @@ class TextStyleEditIconsRowWidget extends StatelessWidget {
   final VoidCallback onPressedUnderlineIcon;
   final bool isLineThroughSelected;
   final VoidCallback onPressedLineThroughIcon;
+  final Color themeColor;
+  final Color themeBorderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -32,24 +36,32 @@ class TextStyleEditIconsRowWidget extends StatelessWidget {
           child: EditCellsIconButtonWidget.bold(
             isSelected: isBoldSelected,
             onPressed: onPressedBoldIcon,
+            themeColor: themeColor,
+            themeBorderColor: themeBorderColor,
           ),
         ),
         Expanded(
           child: EditCellsIconButtonWidget.italic(
             isSelected: isItalicSelected,
             onPressed: onPressedItalicIcon,
+            themeColor: themeColor,
+            themeBorderColor: themeBorderColor,
           ),
         ),
         Expanded(
           child: EditCellsIconButtonWidget.underline(
             isSelected: isUnderlineSelected,
             onPressed: onPressedUnderlineIcon,
+            themeColor: themeColor,
+            themeBorderColor: themeBorderColor,
           ),
         ),
         Expanded(
           child: EditCellsIconButtonWidget.lineThrough(
             isSelected: isLineThroughSelected,
             onPressed: onPressedLineThroughIcon,
+            themeColor: themeColor,
+            themeBorderColor: themeBorderColor,
           ),
         ),
       ],

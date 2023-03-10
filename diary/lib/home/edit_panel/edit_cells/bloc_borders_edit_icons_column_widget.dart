@@ -1,14 +1,19 @@
 import 'package:diary/core/constants/enums.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
 import 'package:diary/diary_list_screen/diary_cell_edit/diary_cell_edit_bloc.dart';
 import 'package:diary/home/edit_panel/edit_cells/borders_edit_icons_column_widget.dart';
+import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BlocBordersEditIconsColumnWidget extends StatelessWidget {
   const BlocBordersEditIconsColumnWidget({
     super.key,
+    required this.diaryList,
   });
+
+  final DiaryList diaryList;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +22,8 @@ class BlocBordersEditIconsColumnWidget extends StatelessWidget {
         return state.maybeWhen(
           bordersEditing: (bordersEditingEnum, bordersStyleEnum, bordersColor) {
             return BordersEditIconsColumnWidget(
+              themeColor: diaryList.settings.themeColor.toColor(),
+              themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
               isBorderAllSelected:
                   bordersEditingEnum == BordersEditingEnum.all ? true : false,
               isBorderOuterSelected:

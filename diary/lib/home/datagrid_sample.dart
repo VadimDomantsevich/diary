@@ -39,6 +39,7 @@ class DataGridSample extends StatelessWidget {
                         transformationController: transformationController,
                         height: height,
                         width: width,
+                        diaryList: diaryList,
                         diaryCells: diaryCells,
                         cellsKeys: cellsKeys,
                         capitalCells: capitalCells,
@@ -101,6 +102,7 @@ class DataGridSample extends StatelessWidget {
                         transformationController: transformationController,
                         height: height,
                         width: width,
+                        diaryList: diaryList,
                         diaryCells: diaryCells,
                         cellsKeys: cellsKeys,
                         capitalCells: capitalCells,
@@ -143,6 +145,7 @@ class DataGridSample extends StatelessWidget {
                         transformationController: transformationController,
                         height: height,
                         width: width,
+                        diaryList: diaryList,
                         diaryCells: diaryCells,
                         cellsKeys: cellsKeys,
                         diaryColumns: diaryColumns,
@@ -171,8 +174,17 @@ class DataGridSample extends StatelessWidget {
                 }),
               );
             },
-            listEditing: (diaryList, diaryColumns, capitalCells, diaryCells,
-                cellsKeys, lists, isColumnDeleting, selectedList) {
+            listEditing: (
+              diaryList,
+              diaryColumns,
+              capitalCells,
+              diaryCells,
+              cellsKeys,
+              lists,
+              isColumnDeleting,
+              isColorThemeEditing,
+              selectedList,
+            ) {
               int crossAxisCount = 0;
               for (var column in diaryColumns) {
                 crossAxisCount += column.columnsCount;
@@ -197,6 +209,7 @@ class DataGridSample extends StatelessWidget {
                         transformationController: transformationController,
                         height: height,
                         width: width,
+                        diaryList: diaryList,
                         diaryCells: diaryCells,
                         cellsKeys: cellsKeys,
                         capitalCells: capitalCells,
@@ -260,6 +273,7 @@ class DataGridSample extends StatelessWidget {
                           transformationController: transformationController,
                           height: height,
                           width: width,
+                          diaryList: diaryList,
                           diaryCells: diaryCells,
                           cellsKeys: cellsKeys,
                           capitalCells: capitalCells,
@@ -321,6 +335,7 @@ class DataGridSample extends StatelessWidget {
                       transformationController: transformationController,
                       height: height,
                       width: width,
+                      diaryList: diaryList,
                       diaryCells: diaryCells,
                       cellsKeys: cellsKeys,
                       capitalCells: capitalCells,

@@ -4,6 +4,8 @@ part of 'diary_list_bloc.dart';
 class DiaryListEvent with _$DiaryListEvent {
   const factory DiaryListEvent.createSample() = CreateSampleEvent;
 
+  const factory DiaryListEvent.initialLoad() = InitialLoadEvent;
+
   const factory DiaryListEvent.getDiaryList({
     required DateTime date,
   }) = GetDiaryListEvent;
@@ -147,6 +149,13 @@ class DiaryListEvent with _$DiaryListEvent {
     required String columnId,
   }) = DeleteDiaryColumnEvent;
 
+  const factory DiaryListEvent.updateDiaryListSettings({
+    required DiaryList diaryList,
+    String? themeColor,
+    String? themeBorderColor,
+    String? themePanelBackgroundColor,
+  }) = UpdateDiaryListSettingsEvent;
+
   const factory DiaryListEvent.startEditingColor() = StartEditingColorEvent;
 
   const factory DiaryListEvent.startEditingBorders() = StartEditingBordersEvent;
@@ -157,4 +166,6 @@ class DiaryListEvent with _$DiaryListEvent {
   const factory DiaryListEvent.turnBackEditing() = TurnBackEditingEvent;
 
   const factory DiaryListEvent.startColumnDeleting() = StartColumnDeletingEvent;
+
+  const factory DiaryListEvent.startColorThemeEditing() = StartColorThemeEditingEvent;
 }

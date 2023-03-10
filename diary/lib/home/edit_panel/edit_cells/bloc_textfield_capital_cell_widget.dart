@@ -8,9 +8,13 @@ class BlocTextFieldCapitalCellWidget extends StatelessWidget {
   const BlocTextFieldCapitalCellWidget({
     super.key,
     required this.capitalCell,
+    required this.themeBorderColor,
+    required this.themePanelBackgroundColor,
   });
 
   final CapitalCell capitalCell;
+  final Color themeBorderColor;
+  final Color themePanelBackgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +33,8 @@ class BlocTextFieldCapitalCellWidget extends StatelessWidget {
               textFieldText: value,
             ),
           ),
+      themeBorderColor: themeBorderColor,
+      themePanelBackgroundColor: themePanelBackgroundColor,
     );
   }
 }

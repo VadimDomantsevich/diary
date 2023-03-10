@@ -35,8 +35,6 @@ class DiaryCellService {
           createDefaultTextSettings().toFirestore(),
         );
 
-    //I need to store defaultSettings somewhere and grab them from database
-
     final defaultSettings = await getDefaultCellSettings(
       diaryList: diaryList,
       diaryColumn: diaryColumn,
@@ -338,16 +336,16 @@ class DiaryCellService {
 
   DiaryCellSettings createDefaultSettings() {
     return DiaryCellSettings(
-      topBorderColor: '0x26646464',
+      topBorderColor: Constants.defaultDiaryCellBorderColor,
       topBorderWidth: Constants.defaultBordersStyleEnum.toDoubleWidth(),
-      leftBorderColor: '0x26646464',
+      leftBorderColor: Constants.defaultDiaryCellBorderColor,
       leftBorderWidth: Constants.defaultBordersStyleEnum.toDoubleWidth(),
-      rightBorderColor: '0x26646464',
+      rightBorderColor: Constants.defaultDiaryCellBorderColor,
       rightBorderWidth: Constants.defaultBordersStyleEnum.toDoubleWidth(),
-      bottomBorderColor: '0x26646464',
+      bottomBorderColor: Constants.defaultDiaryCellBorderColor,
       bottomBorderWidth: Constants.defaultBordersStyleEnum.toDoubleWidth(),
-      height: 30, //const value
-      backgroundColor: '0xFFFFFFFF',
+      height: Constants.defaultCellHeight,
+      backgroundColor: Constants.defaultDiaryCellBackgroundColor,
     );
   }
 
@@ -357,7 +355,7 @@ class DiaryCellService {
       fontWeight: FontWeightEnum.normal,
       textDecoration: TextDecorationEnum.none,
       fontStyle: FontStyleEnum.normal,
-      fontSize: 14, //const value
+      fontSize: Constants.defaultTextFontSize,
       color: BlackColorConstants.black1,
     );
   }

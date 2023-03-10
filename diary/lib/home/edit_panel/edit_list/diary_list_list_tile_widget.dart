@@ -1,4 +1,5 @@
 import 'package:diary/core/constants/edit_panel_constants.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/home/edit_panel/edit_panel_text_widget.dart';
 import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
@@ -26,77 +27,121 @@ class DiaryListListTileWidget extends StatelessWidget {
         ? DiaryListListTileWidget(
             textWidget: EditPanelTextWidget.listTileSelected(
               content: diaryList.name,
+              color: diaryList.settings.themeColor.toColor(),
             ),
             onTap: onTap,
-            iconWidget: const Icon(
+            iconWidget: Icon(
               Icons.check,
-              color: Colors.blueAccent, //const value
+              color: diaryList.settings.themeColor.toColor(),
             ),
-            textColor: Colors.blueAccent, //const value
+            textColor: diaryList.settings.themeColor.toColor(),
           )
         : DiaryListListTileWidget(
             textWidget: EditPanelTextWidget.listTileCommon(
               content: diaryList.name,
+              color: diaryList.settings.themeBorderColor.toColor(),
             ),
             onTap: onTap,
-            iconWidget: const Icon(Icons.check_box_outline_blank),
-            textColor: Colors.black, //const value
+            iconWidget: Icon(
+              Icons.check_box_outline_blank,
+              color: diaryList.settings.themeBorderColor.toColor(),
+            ),
+            textColor: diaryList.settings.themeBorderColor.toColor(),
           );
   }
 
   factory DiaryListListTileWidget.rename({
+    required DiaryList diaryList,
     required String content,
     required VoidCallback onTap,
   }) {
     return DiaryListListTileWidget(
       textWidget: EditPanelTextWidget.listTileCommon(
         content: content,
+        color: diaryList.settings.themeBorderColor.toColor(),
       ),
       onTap: onTap,
-      iconWidget: const Icon(Icons.edit),
-      textColor: Colors.black, //const value
+      iconWidget: Icon(
+        Icons.edit,
+        color: diaryList.settings.themeBorderColor.toColor(),
+      ),
+      textColor: diaryList.settings.themeBorderColor.toColor(),
     );
   }
 
   factory DiaryListListTileWidget.delete({
+    required DiaryList diaryList,
     required String content,
     required VoidCallback onTap,
   }) {
     return DiaryListListTileWidget(
       textWidget: EditPanelTextWidget.listTileCommon(
         content: content,
+        color: diaryList.settings.themeBorderColor.toColor(),
       ),
       onTap: onTap,
-      iconWidget: const Icon(Icons.delete),
-      textColor: Colors.black, //const value
+      iconWidget: Icon(
+        Icons.delete,
+        color: diaryList.settings.themeBorderColor.toColor(),
+      ),
+      textColor: diaryList.settings.themeBorderColor.toColor(),
     );
   }
 
   factory DiaryListListTileWidget.addColumn({
+    required DiaryList diaryList,
     required String content,
     required VoidCallback onTap,
   }) {
     return DiaryListListTileWidget(
       textWidget: EditPanelTextWidget.listTileCommon(
         content: content,
+        color: diaryList.settings.themeBorderColor.toColor(),
       ),
       onTap: onTap,
-      iconWidget: const Icon(Icons.view_column),
-      textColor: Colors.black, //const value
+      iconWidget: Icon(
+        Icons.view_column,
+        color: diaryList.settings.themeBorderColor.toColor(),
+      ),
+      textColor: diaryList.settings.themeBorderColor.toColor(),
     );
   }
 
   factory DiaryListListTileWidget.deleteColumn({
+    required DiaryList diaryList,
     required String content,
     required VoidCallback onTap,
   }) {
     return DiaryListListTileWidget(
       textWidget: EditPanelTextWidget.listTileCommon(
         content: content,
+        color: diaryList.settings.themeBorderColor.toColor(),
       ),
       onTap: onTap,
-      iconWidget: const Icon(Icons.delete_sweep),
-      textColor: Colors.black, //const value
+      iconWidget: Icon(
+        Icons.delete_sweep,
+        color: diaryList.settings.themeBorderColor.toColor(),
+      ),
+      textColor: diaryList.settings.themeBorderColor.toColor(),
+    );
+  }
+
+  factory DiaryListListTileWidget.themeColor({
+    required DiaryList diaryList,
+    required String content,
+    required VoidCallback onTap,
+  }) {
+    return DiaryListListTileWidget(
+      textWidget: EditPanelTextWidget.listTileCommon(
+        content: content,
+        color: diaryList.settings.themeBorderColor.toColor(),
+      ),
+      onTap: onTap,
+      iconWidget: Icon(
+        Icons.color_lens,
+        color: diaryList.settings.themeBorderColor.toColor(),
+      ),
+      textColor: diaryList.settings.themeBorderColor.toColor(),
     );
   }
 

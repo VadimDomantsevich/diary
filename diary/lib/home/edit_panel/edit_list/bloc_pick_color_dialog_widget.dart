@@ -1,13 +1,26 @@
+import 'package:diary/core/constants/enums.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
-import 'package:diary/home/bloc_datagrid_sample.dart';
+import 'package:diary/home/edit_panel/edit_list/bloc_pick_theme_color_alert_dialog.dart';
+import 'package:diary/model/diary_list.dart';
 import 'package:diary/services/diary_cell_service.dart';
 import 'package:diary/services/diary_column_service.dart';
 import 'package:diary/services/diary_list_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class HomeScreenWidget extends StatelessWidget {
-  const HomeScreenWidget({super.key});
+class BlocPickColorDialogWidget extends StatelessWidget {
+  const BlocPickColorDialogWidget({
+    super.key,
+    required this.diaryList,
+    required this.themeColor,
+    required this.color,
+  });
+
+  final DiaryList diaryList;
+  final ThemeColorsEnum themeColor;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +36,11 @@ class HomeScreenWidget extends StatelessWidget {
           RepositoryProvider.of<DiaryColumnService>(context),
           RepositoryProvider.of<DiaryCellService>(context),
         ),
-        child: const Scaffold(
-          body: BlocDataGridSample(),
+        child: BlocPickThemeColorAlertDialog(
+          diaryList: diaryList,
+          themeColor: themeColor,
+          title: AppLocalizations.of(context).pickColor,
+          color: color,
         ),
       ),
     );

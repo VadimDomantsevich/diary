@@ -17,10 +17,11 @@ class EditPanelTextWidget extends StatelessWidget {
 
   factory EditPanelTextWidget.selected({
     required String content,
+    required Color color,
   }) {
     return EditPanelTextWidget(
       content: content,
-      color: Colors.blueAccent,//const value
+      color: color,
       align: TextAlign.center,
       size: EditPanelConstants.editPanelSelectedTextSize,
     );
@@ -28,10 +29,11 @@ class EditPanelTextWidget extends StatelessWidget {
 
   factory EditPanelTextWidget.common({
     required String content,
+    required Color color,
   }) {
     return EditPanelTextWidget(
       content: content,
-      color: Colors.black,//const value
+      color: color,
       align: TextAlign.center,
       size: EditPanelConstants.editPanelCommonTextSize,
     );
@@ -39,10 +41,11 @@ class EditPanelTextWidget extends StatelessWidget {
 
   factory EditPanelTextWidget.panelName({
     required String content,
+    required Color color,
   }) {
     return EditPanelTextWidget(
       content: content,
-      color: Colors.black,//const value
+      color: color,
       align: TextAlign.center,
       size: EditPanelConstants.editPanelNameTextSize,
     );
@@ -50,10 +53,11 @@ class EditPanelTextWidget extends StatelessWidget {
 
   factory EditPanelTextWidget.listTileSelected({
     required String content,
+    required Color color,
   }) {
     return EditPanelTextWidget(
       content: content,
-      color: Colors.blueAccent,//const value
+      color: color,
       align: TextAlign.center,
       size: EditPanelConstants.editPanelListTileSelectedTextSize,
     );
@@ -61,10 +65,11 @@ class EditPanelTextWidget extends StatelessWidget {
 
   factory EditPanelTextWidget.listTileCommon({
     required String content,
+    required Color color,
   }) {
     return EditPanelTextWidget(
       content: content,
-      color: Colors.black,//const value
+      color: color,
       align: TextAlign.center,
       size: EditPanelConstants.editPanelListTileCommonTextSize,
     );

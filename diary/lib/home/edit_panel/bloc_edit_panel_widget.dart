@@ -12,8 +12,14 @@ class BlocEditPanelWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DiaryListBloc, DiaryListState>(
       builder: (context, state) => state.maybeWhen(
-        loaded: (diaryList, diaryColumns, capitalCells, diaryCells, cellsKeys,
-            lists) {
+        loaded: (
+          diaryList,
+          diaryColumns,
+          capitalCells,
+          diaryCells,
+          cellsKeys,
+          lists,
+        ) {
           return BlocBuilder<GridDisplayBloc, GridDisplayState>(
             builder: (context, state) {
               return state.maybeWhen(
@@ -83,6 +89,7 @@ class BlocEditPanelWidget extends StatelessWidget {
                 isEditCellPanelShown,
               ) {
                 return EditPanelWidget.editCell(
+                  diaryList: diaryList,
                   diaryCell: firstSelectedCell,
                   onPressedIconButton: () {
                     context.read<GridDisplayBloc>().add(
@@ -138,6 +145,7 @@ class BlocEditPanelWidget extends StatelessWidget {
               ) {
                 return !isEditing
                     ? EditPanelWidget.editCapitalCell(
+                        diaryList: diaryList,
                         capitalCell: selectedCapitalCell,
                         onPressedIconButton: () {
                           context.read<GridDisplayBloc>().add(

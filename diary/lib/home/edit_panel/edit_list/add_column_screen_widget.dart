@@ -1,5 +1,7 @@
+import 'package:diary/core/constants/constants.dart';
 import 'package:diary/core/constants/edit_panel_constants.dart';
 import 'package:diary/home/edit_panel/edit_list/columns_count_edit_widget.dart';
+import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -13,8 +15,10 @@ class AddColumnScreenWidget extends StatelessWidget {
     required this.onPressedDown,
     required this.textWidget,
     required this.columnsCount,
+    required this.diaryList,
   });
 
+  final DiaryList diaryList;
   final String title;
   final String hintText;
   final Widget textWidget;
@@ -36,7 +40,7 @@ class AddColumnScreenWidget extends StatelessWidget {
         ),
       ),
       content: SizedBox(
-        height: 100, //const value
+        height: Constants.addColumnAlertDialogHeight,
         child: Column(
           children: [
             TextField(
@@ -47,6 +51,7 @@ class AddColumnScreenWidget extends StatelessWidget {
               ),
             ),
             ColumnsCountEditWidget(
+              diaryList: diaryList,
               textWidget: textWidget,
               onPressedUp: onPressedUp,
               onPressedDown: onPressedDown,

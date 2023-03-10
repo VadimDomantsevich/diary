@@ -532,11 +532,11 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
     state.whenOrNull(
       cellEditing: (fillColor) {
         Color bordersColor =
-            BlackColorConstants.black1.toColor(); //Depends on defaultSettings
+            BlackColorConstants.black1.toColor();
         const bordersEditingEnum =
-            BordersEditingEnum.none; //Depends on defaultSettings
+            BordersEditingEnum.none;
         const bordersStyleEnum =
-            BordersStyleEnum.thin; //Depends on defaultSettings
+            BordersStyleEnum.thin;
         emit(
           DiaryCellEditState.bordersEditing(
             bordersEditingEnum: bordersEditingEnum,

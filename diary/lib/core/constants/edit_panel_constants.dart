@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class EditPanelConstants {
   static const editPanelBorderSideWidth = 2.0;
 
@@ -66,4 +68,8 @@ class EditPanelConstants {
   static const textFieldHorizontalPadding = 16.0;
 
   static const textFieldVerticalPadding = 8.0;
+
+  static const selectedMainColorBorderColor = Colors.grey;
+
+  static const checkContainerBackgroundColor = Colors.white;
 }

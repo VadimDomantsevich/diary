@@ -11,6 +11,8 @@ abstract class _$DiaryListCWProxy {
 
   DiaryList name(String name);
 
+  DiaryList settings(DiaryListSettings settings);
+
   DiaryList uid(String uid);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `DiaryList(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -22,6 +24,7 @@ abstract class _$DiaryListCWProxy {
   DiaryList call({
     DateTime? listDate,
     String? name,
+    DiaryListSettings? settings,
     String? uid,
   });
 }
@@ -39,6 +42,9 @@ class _$DiaryListCWProxyImpl implements _$DiaryListCWProxy {
   DiaryList name(String name) => this(name: name);
 
   @override
+  DiaryList settings(DiaryListSettings settings) => this(settings: settings);
+
+  @override
   DiaryList uid(String uid) => this(uid: uid);
 
   @override
@@ -52,6 +58,7 @@ class _$DiaryListCWProxyImpl implements _$DiaryListCWProxy {
   DiaryList call({
     Object? listDate = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
+    Object? settings = const $CopyWithPlaceholder(),
     Object? uid = const $CopyWithPlaceholder(),
   }) {
     return DiaryList(
@@ -63,6 +70,10 @@ class _$DiaryListCWProxyImpl implements _$DiaryListCWProxy {
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
           : name as String,
+      settings: settings == const $CopyWithPlaceholder() || settings == null
+          ? _value.settings
+          // ignore: cast_nullable_to_non_nullable
+          : settings as DiaryListSettings,
       uid: uid == const $CopyWithPlaceholder() || uid == null
           ? _value.uid
           // ignore: cast_nullable_to_non_nullable

@@ -1,5 +1,5 @@
 import 'package:diary/core/constants/constants.dart';
-import 'package:diary/diary_list_screen/bloc_capital_cell_widget.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/home/bloc_appbar_widget.dart';
 import 'package:diary/home/bloc_capital_cells_row_widget.dart';
 import 'package:diary/home/bloc_diary_cells_grid_widget.dart';
@@ -9,6 +9,7 @@ import 'package:diary/home/edit_panel/bloc_edit_panel_widget.dart';
 import 'package:diary/model/capital_cell.dart';
 import 'package:diary/model/diary_cell.dart';
 import 'package:diary/model/diary_column.dart';
+import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
 
 class SampleWidget extends StatelessWidget {
@@ -18,6 +19,7 @@ class SampleWidget extends StatelessWidget {
     required this.capitalCellHeight,
     required this.height,
     required this.width,
+    required this.diaryList,
     required this.diaryCells,
     required this.cellsKeys,
     required this.capitalCells,
@@ -35,6 +37,7 @@ class SampleWidget extends StatelessWidget {
   final double capitalCellHeight;
   final double height;
   final double width;
+  final DiaryList diaryList;
   final List<DiaryCell> diaryCells;
   final List<GlobalObjectKey> cellsKeys;
   final List<CapitalCell> capitalCells;
@@ -51,6 +54,7 @@ class SampleWidget extends StatelessWidget {
     required TransformationController transformationController,
     required double height,
     required double width,
+    required DiaryList diaryList,
     required List<DiaryCell> diaryCells,
     required List<GlobalObjectKey> cellsKeys,
     required List<CapitalCell> capitalCells,
@@ -66,6 +70,7 @@ class SampleWidget extends StatelessWidget {
       capitalCellHeight: capitalCells.first.settings.capitalCellHeight,
       height: height,
       width: width,
+      diaryList: diaryList,
       diaryCells: diaryCells,
       cellsKeys: cellsKeys,
       capitalCells: capitalCells,
@@ -82,6 +87,7 @@ class SampleWidget extends StatelessWidget {
     required TransformationController transformationController,
     required double height,
     required double width,
+    required DiaryList diaryList,
     required List<DiaryCell> diaryCells,
     required List<GlobalObjectKey> cellsKeys,
     required List<CapitalCell> capitalCells,
@@ -97,6 +103,7 @@ class SampleWidget extends StatelessWidget {
       capitalCellHeight: capitalCells.first.settings.capitalCellHeight,
       height: height,
       width: width,
+      diaryList: diaryList,
       diaryCells: diaryCells,
       diaryColumns: diaryColumns,
       capitalCells: capitalCells,
@@ -113,6 +120,7 @@ class SampleWidget extends StatelessWidget {
     required TransformationController transformationController,
     required double height,
     required double width,
+    required DiaryList diaryList,
     required List<DiaryCell> diaryCells,
     required List<GlobalObjectKey> cellsKeys,
     required List<CapitalCell> capitalCells,
@@ -128,6 +136,7 @@ class SampleWidget extends StatelessWidget {
       capitalCellHeight: capitalCells.first.settings.capitalCellHeight,
       height: height,
       width: width,
+      diaryList: diaryList,
       diaryCells: diaryCells,
       cellsKeys: cellsKeys,
       capitalCells: capitalCells,
@@ -144,6 +153,7 @@ class SampleWidget extends StatelessWidget {
     required TransformationController transformationController,
     required double height,
     required double width,
+    required DiaryList diaryList,
     required List<DiaryCell> diaryCells,
     required List<GlobalObjectKey> cellsKeys,
     required List<CapitalCell> capitalCells,
@@ -159,6 +169,7 @@ class SampleWidget extends StatelessWidget {
       capitalCellHeight: capitalCells.first.settings.capitalCellHeight,
       height: height,
       width: width,
+      diaryList: diaryList,
       diaryCells: diaryCells,
       cellsKeys: cellsKeys,
       capitalCells: capitalCells,
@@ -175,6 +186,7 @@ class SampleWidget extends StatelessWidget {
     required TransformationController transformationController,
     required double height,
     required double width,
+    required DiaryList diaryList,
     required List<DiaryCell> diaryCells,
     required List<GlobalObjectKey> cellsKeys,
     required List<CapitalCell> capitalCells,
@@ -190,6 +202,7 @@ class SampleWidget extends StatelessWidget {
       capitalCellHeight: capitalCells.first.settings.capitalCellHeight,
       height: height,
       width: width,
+      diaryList: diaryList,
       diaryCells: diaryCells,
       cellsKeys: cellsKeys,
       capitalCells: capitalCells,
@@ -206,6 +219,7 @@ class SampleWidget extends StatelessWidget {
     required TransformationController transformationController,
     required double height,
     required double width,
+    required DiaryList diaryList,
     required List<DiaryCell> diaryCells,
     required List<GlobalObjectKey> cellsKeys,
     required List<CapitalCell> capitalCells,
@@ -219,6 +233,7 @@ class SampleWidget extends StatelessWidget {
       capitalCellHeight: capitalCells.first.settings.capitalCellHeight,
       height: height,
       width: width,
+      diaryList: diaryList,
       diaryCells: diaryCells,
       cellsKeys: cellsKeys,
       capitalCells: capitalCells,
@@ -258,12 +273,14 @@ class SampleWidget extends StatelessWidget {
                       width: width,
                       child: BlocCapitalCellsRowWidget.capitalCells(
                         capitalCells: capitalCells,
+                        themeColor: diaryList.settings.themeColor.toColor(),
                       ),
                     ),
                     SizedBox(
                       height: height,
                       width: width,
                       child: BlocDiaryCellsGridWidget.cells(
+                        diaryList: diaryList,
                         diaryCells: diaryCells,
                         cellsKeys: cellsKeys,
                         diaryColumns: diaryColumns,

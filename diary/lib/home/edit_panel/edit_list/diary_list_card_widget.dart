@@ -1,4 +1,5 @@
 import 'package:diary/core/constants/edit_panel_constants.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/home/edit_panel/edit_panel_text_widget.dart';
 import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
@@ -10,15 +11,20 @@ class ListCardWidget extends StatelessWidget {
     required this.onTap,
     required this.textWidget,
     required this.iconWidget,
+    required this.themeBorderColor,
+    required this.themePanelBackgroundColor,
   });
 
   final bool isSelected;
   final VoidCallback onTap;
   final Widget textWidget;
   final Widget iconWidget;
+  final Color themeBorderColor;
+  final Color themePanelBackgroundColor;
 
   factory ListCardWidget.model({
-    required DiaryList list,
+    required DiaryList diaryList,
+    required DiaryList currentDiaryList,
     required bool isSelected,
     required VoidCallback onTap,
   }) {
@@ -27,23 +33,31 @@ class ListCardWidget extends StatelessWidget {
             isSelected: isSelected,
             onTap: onTap,
             textWidget: EditPanelTextWidget.selected(
-              content: list.name,
+              content: diaryList.name,
+              color: diaryList.settings.themeColor.toColor(),
             ),
-            iconWidget: const Icon(
+            iconWidget: Icon(
               Icons.arrow_drop_down,
-              color: Colors.blueAccent,
+              color: diaryList.settings.themeColor.toColor(),
             ),
+            themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
+            themePanelBackgroundColor:
+                diaryList.settings.themePanelBackgroundColor.toColor(),
           )
         : ListCardWidget(
             isSelected: isSelected,
             onTap: onTap,
             textWidget: EditPanelTextWidget.common(
-              content: list.name,
+              content: diaryList.name,
+              color: currentDiaryList.settings.themeBorderColor.toColor(),
             ),
-            iconWidget: const Icon(
+            iconWidget: Icon(
               Icons.arrow_drop_up,
-              color: Colors.black,
+              color: currentDiaryList.settings.themeBorderColor.toColor(),
             ),
+            themeBorderColor: currentDiaryList.settings.themeBorderColor.toColor(),
+            themePanelBackgroundColor:
+                currentDiaryList.settings.themePanelBackgroundColor.toColor(),
           );
   }
 
@@ -54,11 +68,11 @@ class ListCardWidget extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Container(
-          decoration: const BoxDecoration(
-            color: Colors.white, //const value
+          decoration: BoxDecoration(
+            color: themePanelBackgroundColor,
             border: Border(
               right: BorderSide(
-                color: Color.fromARGB(255, 46, 46, 46), //const value
+                color: themeBorderColor,
                 width: EditPanelConstants.editPanelBorderSideWidth,
               ),
             ),

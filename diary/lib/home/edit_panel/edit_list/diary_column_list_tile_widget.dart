@@ -1,6 +1,8 @@
 import 'package:diary/core/constants/edit_panel_constants.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/home/edit_panel/edit_panel_text_widget.dart';
 import 'package:diary/model/diary_column.dart';
+import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
 
 class DiaryColumnListTileWidget extends StatelessWidget {
@@ -14,6 +16,7 @@ class DiaryColumnListTileWidget extends StatelessWidget {
   final Widget textWidget;
 
   factory DiaryColumnListTileWidget.model({
+    required DiaryList diaryList,
     required DiaryColumn diaryColumn,
     required VoidCallback onTap,
   }) {
@@ -21,6 +24,7 @@ class DiaryColumnListTileWidget extends StatelessWidget {
       onTap: onTap,
       textWidget: EditPanelTextWidget.listTileCommon(
         content: diaryColumn.name,
+        color: diaryList.settings.themeBorderColor.toColor(),
       ),
     );
   }

@@ -6,10 +6,14 @@ class TextFieldWidget extends StatelessWidget {
     super.key,
     required this.controller,
     required this.onChanged,
+    required this.themeBorderColor,
+    required this.themePanelBackgroundColor,
   });
 
   final TextEditingController controller;
   final Function(String?) onChanged;
+  final Color themeBorderColor;
+  final Color themePanelBackgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +29,9 @@ class TextFieldWidget extends StatelessWidget {
           decoration: const InputDecoration(
             border: InputBorder.none,
           ),
+          style: TextStyle(
+              color: themeBorderColor,
+              backgroundColor: themePanelBackgroundColor),
           onChanged: (value) => onChanged(value),
         ),
       ),

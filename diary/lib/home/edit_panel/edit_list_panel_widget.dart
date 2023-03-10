@@ -1,9 +1,13 @@
 import 'package:diary/core/constants/constants.dart';
 import 'package:diary/core/constants/edit_panel_constants.dart';
+import 'package:diary/core/extentions.dart';
+import 'package:diary/home/edit_panel/edit_cells/bloc_turn_back_name_widget.dart';
+import 'package:diary/home/edit_panel/edit_cells/color_edit_widget.dart';
 import 'package:diary/home/edit_panel/edit_list/diary_column_list_tile_widget.dart';
 import 'package:diary/home/edit_panel/edit_list/diary_list_list_tile_widget.dart';
 import 'package:diary/home/edit_panel/edit_panel_bottom_column_widget.dart';
 import 'package:diary/home/edit_panel/edit_panel_name_widget.dart';
+import 'package:diary/home/edit_panel/edit_panel_text_widget.dart';
 import 'package:diary/model/diary_column.dart';
 import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +16,13 @@ class EditListPanelWidget extends StatelessWidget {
   const EditListPanelWidget({
     super.key,
     required this.bottomColumn,
+    required this.themeBorderColor,
+    required this.themePanelBackgroundColor,
   });
 
   final Widget bottomColumn;
+  final Color themeBorderColor;
+  final Color themePanelBackgroundColor;
 
   factory EditListPanelWidget.allLists({
     required List<DiaryList> lists,
@@ -24,7 +32,10 @@ class EditListPanelWidget extends StatelessWidget {
   }) {
     var listOfWidgets = List<Widget>.empty(growable: true);
     bool isSelected = false;
-    for (var diaryList in lists) {
+    var sortedList = List<DiaryList>.empty(growable: true);
+    sortedList.addAll(lists);
+    sortedList.sort((a, b) => b.listDate.compareTo(a.listDate));
+    for (var diaryList in sortedList) {
       isSelected = diaryList.listDate == selectedList.listDate;
       listOfWidgets.add(
         DiaryListListTileWidget.model(
@@ -35,11 +46,15 @@ class EditListPanelWidget extends StatelessWidget {
       );
     }
     return EditListPanelWidget(
+      themeBorderColor: selectedList.settings.themeBorderColor.toColor(),
+      themePanelBackgroundColor:
+          selectedList.settings.themePanelBackgroundColor.toColor(),
       bottomColumn: EditPanelBottomColumnWidget(
         listOfWidgets: listOfWidgets,
         nameWidget: EditPanelNameWidget(
+          diaryList: selectedList,
           text: text,
-          bottomBorderColor: Colors.black, //const value
+          bottomBorderColor: selectedList.settings.themeBorderColor.toColor(),
         ),
       ),
     );
@@ -49,6 +64,8 @@ class EditListPanelWidget extends StatelessWidget {
     required DiaryList diaryList,
     required String contentRename,
     required VoidCallback onTapRename,
+    required String contentThemeColor,
+    required VoidCallback onTapThemeColor,
     required String contentDelete,
     required VoidCallback onTapDelete,
     required String contentAddColumn,
@@ -59,41 +76,110 @@ class EditListPanelWidget extends StatelessWidget {
     var listOfWidgets = List<Widget>.empty(growable: true);
     listOfWidgets.add(
       DiaryListListTileWidget.rename(
+        diaryList: diaryList,
         content: contentRename,
         onTap: onTapRename,
       ),
     );
-
+    listOfWidgets.add(
+      DiaryListListTileWidget.themeColor(
+        diaryList: diaryList,
+        content: contentThemeColor,
+        onTap: onTapThemeColor,
+      ),
+    );
     listOfWidgets.add(
       DiaryListListTileWidget.addColumn(
+        diaryList: diaryList,
         content: contentAddColumn,
         onTap: onTapAddColumn,
       ),
     );
     listOfWidgets.add(
       DiaryListListTileWidget.deleteColumn(
+        diaryList: diaryList,
         content: contentDeleteColumn,
         onTap: onTapDeleteColumn,
       ),
     );
     listOfWidgets.add(
       DiaryListListTileWidget.delete(
+        diaryList: diaryList,
         content: contentDelete,
         onTap: onTapDelete,
       ),
     );
     return EditListPanelWidget(
+      themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
+      themePanelBackgroundColor:
+          diaryList.settings.themePanelBackgroundColor.toColor(),
       bottomColumn: EditPanelBottomColumnWidget(
         listOfWidgets: listOfWidgets,
         nameWidget: EditPanelNameWidget(
+          diaryList: diaryList,
           text: diaryList.name,
-          bottomBorderColor: Colors.black, //const value
+          bottomBorderColor: diaryList.settings.themeBorderColor.toColor(),
         ),
       ),
     );
   }
 
+  factory EditListPanelWidget.themeColorEditing({
+    required DiaryList diaryList,
+    required String contentMainColor,
+    required VoidCallback onTapMainColor,
+    required String contentBorderColor,
+    required VoidCallback onTapBorderColor,
+    required String contentBackgroundColor,
+    required VoidCallback onTapBackgroundColor,
+  }) {
+    var listOfWidgets = List<Widget>.empty(growable: true);
+    listOfWidgets.add(
+      ColorEditWidget(
+        textWidget: EditPanelTextWidget.common(
+          content: contentMainColor,
+          color: diaryList.settings.themeBorderColor.toColor(),
+        ),
+        onTap: onTapMainColor,
+        color: diaryList.settings.themeColor.toColor(),
+        themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
+      ),
+    );
+    listOfWidgets.add(
+      ColorEditWidget(
+        textWidget: EditPanelTextWidget.common(
+          content: contentBorderColor,
+          color: diaryList.settings.themeBorderColor.toColor(),
+        ),
+        onTap: onTapBorderColor,
+        color: diaryList.settings.themeBorderColor.toColor(),
+        themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
+      ),
+    );
+    listOfWidgets.add(
+      ColorEditWidget(
+        textWidget: EditPanelTextWidget.common(
+          content: contentBackgroundColor,
+          color: diaryList.settings.themeBorderColor.toColor(),
+        ),
+        onTap: onTapBackgroundColor,
+        color: diaryList.settings.themePanelBackgroundColor.toColor(),
+        themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
+      ),
+    );
+    return EditListPanelWidget(
+      themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
+      themePanelBackgroundColor:
+          diaryList.settings.themePanelBackgroundColor.toColor(),
+      bottomColumn: EditPanelBottomColumnWidget(
+        listOfWidgets: listOfWidgets,
+        nameWidget: const BlocTurnBackNameWidget(),
+      ),
+    );
+  }
+
   factory EditListPanelWidget.allColumns({
+    required DiaryList diaryList,
     required List<DiaryColumn> columns,
     required String text,
     required Function(DiaryColumn) onTap,
@@ -103,6 +189,7 @@ class EditListPanelWidget extends StatelessWidget {
       if (column.id != Constants.diaryColumnDateField) {
         listOfWidgets.add(
           DiaryColumnListTileWidget.model(
+            diaryList: diaryList,
             diaryColumn: column,
             onTap: () => onTap(column),
           ),
@@ -110,11 +197,15 @@ class EditListPanelWidget extends StatelessWidget {
       }
     }
     return EditListPanelWidget(
+      themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
+      themePanelBackgroundColor:
+          diaryList.settings.themePanelBackgroundColor.toColor(),
       bottomColumn: EditPanelBottomColumnWidget(
         listOfWidgets: listOfWidgets,
         nameWidget: EditPanelNameWidget(
+          diaryList: diaryList,
           text: text,
-          bottomBorderColor: Colors.black, //const value
+          bottomBorderColor: diaryList.settings.themeBorderColor.toColor(),
         ),
       ),
     );
@@ -127,11 +218,11 @@ class EditListPanelWidget extends StatelessWidget {
         heightFactor: EditPanelConstants.editListPanelHeightFactor,
         widthFactor: EditPanelConstants.editPanelWidthFactor,
         child: Container(
-          decoration: const BoxDecoration(
-            color: Colors.white, //const value
+          decoration: BoxDecoration(
+            color: themePanelBackgroundColor,
             border: Border(
               top: BorderSide(
-                color: Colors.black, //const value
+                color: themeBorderColor,
                 width: EditPanelConstants.editPanelBorderSideWidth,
               ),
             ),

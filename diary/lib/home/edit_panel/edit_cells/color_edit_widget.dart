@@ -7,11 +7,13 @@ class ColorEditWidget extends StatelessWidget {
     required this.textWidget,
     required this.onTap,
     required this.color,
+    required this.themeBorderColor,
   });
 
   final Widget textWidget;
   final VoidCallback onTap;
   final Color color;
+  final Color themeBorderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +23,10 @@ class ColorEditWidget extends StatelessWidget {
         onTap: onTap,
         child: Container(
           alignment: Alignment.centerLeft,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               bottom: BorderSide(
-                color: Colors.black, //const value
+                color: themeBorderColor,
                 width: EditPanelConstants.editCellsPanelBottomBorderSideWidth,
               ),
             ),
@@ -45,7 +47,7 @@ class ColorEditWidget extends StatelessWidget {
                     height: EditPanelConstants.colorCircleContainerSize,
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: Colors.black, //const value
+                        color: themeBorderColor,
                         width:
                             EditPanelConstants.colorCircleContainerBorderWidth,
                       ),
@@ -53,7 +55,10 @@ class ColorEditWidget extends StatelessWidget {
                       color: color,
                     ),
                   ),
-                  const Icon(Icons.arrow_forward_ios),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: themeBorderColor,
+                  ),
                 ],
               ),
             ],

@@ -67,9 +67,9 @@ class DiaryCellWidget extends StatelessWidget {
     required double height,
     required double scaleFactor,
     required Border border,
+    required Color themeColor,
   }) {
-    final width =
-        diaryColumn.settings.width[diaryCell.columnPosition - 1];
+    final width = diaryColumn.settings.width[diaryCell.columnPosition - 1];
     return isFirstSelected
         ? DiaryCellWidget.firstSelected(
             alignment: diaryCell.textSettings.alignment.toAlignment(),
@@ -82,6 +82,7 @@ class DiaryCellWidget extends StatelessWidget {
             border: border,
             contentWidget: DiaryCellContentWidget.model(diaryCell: diaryCell),
             backgroundColor: diaryCell.settings.backgroundColor.toColor(),
+            themeColor: themeColor,
           )
         : isSelected
             ? DiaryCellWidget.selected(
@@ -95,6 +96,7 @@ class DiaryCellWidget extends StatelessWidget {
                 contentWidget:
                     DiaryCellContentWidget.model(diaryCell: diaryCell),
                 backgroundColor: diaryCell.settings.backgroundColor.toColor(),
+                themeColor: themeColor,
               )
             : DiaryCellWidget.common(
                 cellKey: cellKey,
@@ -120,6 +122,7 @@ class DiaryCellWidget extends StatelessWidget {
     required Border border,
     required Widget contentWidget,
     required Color backgroundColor,
+    required Color themeColor,
   }) =>
       DiaryCellWidget(
         cellKey: cellKey,
@@ -131,7 +134,8 @@ class DiaryCellWidget extends StatelessWidget {
         width: width,
         scaleFactor: scaleFactor,
         border: border,
-        shadowColor: const Color.fromARGB(70, 68, 137, 255), //const value
+        shadowColor: themeColor
+            .toShadowColor(),
       );
 
   factory DiaryCellWidget.firstSelected({
@@ -145,20 +149,23 @@ class DiaryCellWidget extends StatelessWidget {
     required Border border,
     required Widget contentWidget,
     required Color backgroundColor,
-  }) =>
-      DiaryCellWidget(
-        contentWidget: contentWidget,
-        onTap: onTap,
-        onPanUpdate: onPanUpdate,
-        backgroundColor: backgroundColor,
-        alignment: alignment,
-        cellKey: cellKey,
-        height: height,
-        width: width,
-        scaleFactor: scaleFactor,
-        border: border,
-        shadowColor: Color.fromARGB(70, 68, 137, 255), //const value
-      );
+    required Color themeColor,
+  }) {
+    return DiaryCellWidget(
+      contentWidget: contentWidget,
+      onTap: onTap,
+      onPanUpdate: onPanUpdate,
+      backgroundColor: backgroundColor,
+      alignment: alignment,
+      cellKey: cellKey,
+      height: height,
+      width: width,
+      scaleFactor: scaleFactor,
+      border: border,
+      shadowColor: themeColor
+          .toShadowColor(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

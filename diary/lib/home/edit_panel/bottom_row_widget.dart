@@ -16,12 +16,14 @@ class BottomRowWidget extends StatelessWidget {
   factory BottomRowWidget.editList({
     required List<Widget> listOfWidgets,
     required VoidCallback onPressedIconButton,
+    required Color themeBorderColor,
   }) {
     return BottomRowWidget(
       listOfWidgets: listOfWidgets,
       onPressedIconButton: onPressedIconButton,
       iconButtonWidget: IconButtonWidget.diaryLists(
         onPressed: onPressedIconButton,
+        themeBorderColor: themeBorderColor,
       ),
     );
   }

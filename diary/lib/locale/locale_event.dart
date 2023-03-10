@@ -6,4 +6,6 @@ class LocaleEvent with _$LocaleEvent {
     required Locale locale,
     required LocaleType localeType,
   }) = ChooseLocaleEvent;
+  
+  const factory LocaleEvent.changeLocale() = ChangeLocaleEvent;
 }

@@ -1,3 +1,4 @@
+import 'package:diary/core/extentions.dart';
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
 import 'package:diary/diary_list_screen/diary_cell_edit/diary_cell_edit_bloc.dart';
 import 'package:diary/home/edit_panel/edit_cells/edit_cells_name_row_widget.dart';
@@ -33,6 +34,8 @@ class BlocEditCellsNameRowWidget extends StatelessWidget {
             return EditCellsNameRowWidget(
               isTextEditing: isTextEditing,
               textEditingWidget: SelectableNameWidget.textEditing(
+                themeColor: diaryList.settings.themeColor.toColor(),
+                themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
                 onTap: () {
                   context.read<DiaryListBloc>().add(
                         const StartEditingCellsEvent(
@@ -51,6 +54,8 @@ class BlocEditCellsNameRowWidget extends StatelessWidget {
                 content: AppLocalizations.of(context).text,
               ),
               cellEditingWidget: SelectableNameWidget.cellEditing(
+                themeColor: diaryList.settings.themeColor.toColor(),
+                themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
                 onTap: () {
                   context.read<DiaryListBloc>().add(
                         const StartEditingCellsEvent(
@@ -86,6 +91,8 @@ class BlocEditCellsNameRowWidget extends StatelessWidget {
             return EditCellsNameRowWidget(
               isTextEditing: isTextEditing,
               textEditingWidget: SelectableNameWidget.textEditing(
+                themeColor: diaryList.settings.themeColor.toColor(),
+                themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
                 onTap: () {
                   context.read<DiaryListBloc>().add(
                         const StartEditingCellsEvent(
@@ -103,6 +110,8 @@ class BlocEditCellsNameRowWidget extends StatelessWidget {
                 content: AppLocalizations.of(context).text,
               ),
               cellEditingWidget: SelectableNameWidget.cellEditing(
+                themeColor: diaryList.settings.themeColor.toColor(),
+                themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
                 onTap: () {
                   context.read<DiaryListBloc>().add(
                         const StartEditingCellsEvent(

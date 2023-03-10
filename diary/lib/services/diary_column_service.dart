@@ -34,7 +34,7 @@ class DiaryColumnService {
     List<double> width = List.empty(growable: true);
     int i = 0;
     while (i < count) {
-      width.add(300); //const value
+      width.add(Constants.defaultColumnWidth);
       i++;
     }
     DiaryColumnSettings columnSettings = DiaryColumnSettings(
@@ -52,7 +52,6 @@ class DiaryColumnService {
       capitalCellFontSize: defaultColumnSettings.capitalCellFontSize,
       capitalCellTextColor: defaultColumnSettings.capitalCellTextColor,
     );
-    // columnSettings.copyWith(width: width); //const value
     if (col.docs.isEmpty) {
       final newColumn = DiaryColumn(
         id: name,
@@ -61,17 +60,6 @@ class DiaryColumnService {
         settings: columnSettings,
       );
       await columnsCollection.doc(name).set(newColumn.toFirestore());
-
-      // await columnsCollection.add(
-      //   newColumn.toFirestore(),
-      // );
-      // if (count != 1) {
-      //   await updateSettings(
-      //     diaryList: diaryList,
-      //     diaryColumn: newColumn,
-      //     settings: columnSettings,
-      //   );
-      // }
 
       await updateSettings(
         diaryList: diaryList,
@@ -89,9 +77,6 @@ class DiaryColumnService {
         settings: columnSettings,
       );
       await columnsCollection.doc(id).set(newColumn.toFirestore());
-      // await columnsCollection.add(
-      //   newColumn.toFirestore(),
-      // );
 
       await updateSettings(
         diaryList: diaryList,
@@ -157,24 +142,6 @@ class DiaryColumnService {
     return diaryColumns;
   }
 
-  // Future<DiaryColumn> getCreatedColumnById({
-  //   required DiaryList diaryList,
-  //   required String columnId,
-  // }) async {
-  //   final columnsCollection =
-  //       await getDiaryColumnsCollection(diaryList: diaryList).get();
-  //   for (var doc in columnsCollection.docs) {
-
-  //   }
-  //   final defaultSettings = await getDefaultColumnSettings(
-  //     diaryList: diaryList,
-  //   );
-  //   return read(
-  //     doc: columnDoc,
-  //     defaultSettings: defaultSettings,
-  //   );
-  // }
-
   Future<DiaryColumn> getColumnById({
     required DiaryList diaryList,
     required String columnId,
@@ -209,7 +176,6 @@ class DiaryColumnService {
   }
 
   Future<void> update({
-    //При изменении count надо будет запускать create or delete cells
     required DiaryList diaryList,
     required DiaryColumn diaryColumn,
     required String name,
@@ -232,38 +198,33 @@ class DiaryColumnService {
   }
 
   Future<void> delete({required DocumentSnapshot doc}) async {
-    //Возможно это не удалит все ячейки внутри, check
     await FirebaseFirestore.instance.doc(doc.reference.path).delete();
   }
 
-  //Const values
   DiaryColumnSettings createSettings({
     required int columnsCount,
   }) {
-    //По хорошему нужно чекать, если ли дефолт сеттинги в прошлом месяце и брать их если есть
-    //Сделаю это потом
     List<double> width = List.empty(growable: true);
     int i = 0;
     while (i < columnsCount) {
-      width.add(300); //const value
+      width.add(Constants.defaultColumnWidth);
       i++;
     }
     return DiaryColumnSettings(
       width: width,
       capitalCellBorderWidth: BordersStyleEnum.thick.toDoubleWidth(),
       capitalCellBorderColor: BlackColorConstants.black1,
-      capitalCellHeight: 60,
+      capitalCellHeight: Constants.defaultCapitalCellHeight,
       capitalCellBackgroundColor: BlackColorConstants.black6,
       capitalCellAlignment: AlignmentsEnum.center,
       capitalCellFontWeight: FontWeightEnum.bold,
       capitalCellTextDecoration: TextDecorationEnum.none,
       capitalCellFontStyle: FontStyleEnum.normal,
-      capitalCellFontSize: 14,
+      capitalCellFontSize: Constants.defaultCapitalCellFontSize,
       capitalCellTextColor: BlackColorConstants.black1,
     );
   }
 
-  //Check how it works
   Future<void> updateSettings({
     required DiaryList diaryList,
     required DiaryColumn diaryColumn,
@@ -280,7 +241,6 @@ class DiaryColumnService {
     }
   }
 
-  //Check how it works
   Future<void> updateDefaultSettings({
     required DiaryList diaryList,
     required DiaryColumnSettings settings,
@@ -331,9 +291,6 @@ class DiaryColumnService {
     await columnsCollection.doc(Constants.columnsDefaultSettingsDocName).set(
           createSettings(columnsCount: 1).toFirestore(),
         );
-    // final defaultSettings = await getDefaultColumnSettings(
-    //   diaryList: diaryList,
-    // );
     final dateSettings = createSettings(columnsCount: 2);
     final dateColumn = DiaryColumn(
       id: Constants.diaryColumnDateField,

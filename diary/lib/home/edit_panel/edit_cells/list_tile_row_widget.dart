@@ -16,9 +16,13 @@ class ListTileRowWidget extends StatelessWidget {
   factory ListTileRowWidget.resetOptions({
     required VoidCallback onTap,
     required Widget textWidget,
+    required Color themeBorderColor,
   }) {
     return ListTileRowWidget(
-      iconWidget: const Icon(Icons.format_color_reset),
+      iconWidget: Icon(
+        Icons.format_color_reset,
+        color: themeBorderColor,
+      ),
       onTap: onTap,
       textWidget: textWidget,
     );
@@ -27,9 +31,13 @@ class ListTileRowWidget extends StatelessWidget {
   factory ListTileRowWidget.clearFormatting({
     required VoidCallback onTap,
     required Widget textWidget,
+    required Color themeBorderColor,
   }) {
     return ListTileRowWidget(
-      iconWidget: const Icon(Icons.clear_all),
+      iconWidget: Icon(
+        Icons.clear_all,
+        color: themeBorderColor,
+      ),
       onTap: onTap,
       textWidget: textWidget,
     );

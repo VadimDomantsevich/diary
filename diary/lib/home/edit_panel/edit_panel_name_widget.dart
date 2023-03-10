@@ -1,5 +1,7 @@
 import 'package:diary/core/constants/edit_panel_constants.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/home/edit_panel/edit_panel_text_widget.dart';
+import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
 
 class EditPanelNameWidget extends StatelessWidget {
@@ -7,8 +9,10 @@ class EditPanelNameWidget extends StatelessWidget {
     super.key,
     required this.text,
     required this.bottomBorderColor,
+    required this.diaryList,
   });
 
+  final DiaryList diaryList;
   final String text;
   final Color bottomBorderColor;
 
@@ -29,6 +33,7 @@ class EditPanelNameWidget extends StatelessWidget {
         ),
         child: EditPanelTextWidget.panelName(
           content: text,
+          color: diaryList.settings.themeBorderColor.toColor(),
         ),
       ),
     );

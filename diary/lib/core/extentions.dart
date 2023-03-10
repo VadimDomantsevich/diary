@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 
 extension ColorExtension on String {
   toColor() {
-    var hexColor = replaceAll("#", "").toLowerCase(); //toLowerCase
+    var hexColor = replaceAll("#", "").toLowerCase();
     return Color(int.parse(hexColor));
   }
 
@@ -72,7 +72,7 @@ extension MainColorExtension on MainColorsEnum {
         return const Color(0xff000000);
       case MainColorsEnum.red:
         return const Color(
-            0xffFF0000); //Я бы переделал на самом деле под стандартные цвета как в material
+            0xffFF0000);
       case MainColorsEnum.orange:
         return const Color(0xffFF8000);
       case MainColorsEnum.yellow:
@@ -187,6 +187,13 @@ extension ColorStringExtension on Color {
   toColorString() {
     var colorString = toString();
     return colorString.substring(6, colorString.length - 1);
+  }
+
+  toShadowColor() {
+    var colorString = toString();
+    colorString = colorString.substring(6, colorString.length - 1);
+    colorString = colorString.replaceRange(2, 4, '55');
+    return colorString.toColor();
   }
 }
 

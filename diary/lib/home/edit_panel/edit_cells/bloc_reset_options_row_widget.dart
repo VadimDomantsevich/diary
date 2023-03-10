@@ -4,6 +4,7 @@ import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart
 import 'package:diary/diary_list_screen/diary_cell_edit/diary_cell_edit_bloc.dart';
 import 'package:diary/home/edit_panel/edit_cells/list_tile_row_widget.dart';
 import 'package:diary/home/edit_panel/edit_panel_text_widget.dart';
+import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -11,7 +12,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class BlocResetOptionsRowWidget extends StatelessWidget {
   const BlocResetOptionsRowWidget({
     super.key,
+    required this.diaryList,
   });
+
+  final DiaryList diaryList;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +25,7 @@ class BlocResetOptionsRowWidget extends StatelessWidget {
           colorEditing: (colorEditingEnum, mainColor, selectedColor,
               defaultColor, bordersEditingEnum, bordersStyleEnum) {
             return ListTileRowWidget.resetOptions(
+              themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
               onTap: () {
                 context.read<DiaryCellEditBloc>().add(
                       ReloadColorEvent(
@@ -73,6 +78,7 @@ class BlocResetOptionsRowWidget extends StatelessWidget {
               },
               textWidget: EditPanelTextWidget.common(
                 content: AppLocalizations.of(context).resetOptions,
+                color: diaryList.settings.themeBorderColor.toColor(),
               ),
             );
           },

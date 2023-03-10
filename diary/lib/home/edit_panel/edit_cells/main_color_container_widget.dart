@@ -122,7 +122,7 @@ class MainColorContainerWidget extends StatelessWidget {
         height: EditPanelConstants.mainColorContainerSize,
         decoration: BoxDecoration(
           border: Border.all(
-            color: Colors.grey, //Const value
+            color: EditPanelConstants.selectedMainColorBorderColor,
             width: borderWidth,
           ),
           color: color,

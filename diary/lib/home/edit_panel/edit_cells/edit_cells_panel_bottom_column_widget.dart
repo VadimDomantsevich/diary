@@ -6,6 +6,7 @@ import 'package:diary/home/edit_panel/edit_cells/bloc_const_color_containers_col
 import 'package:diary/home/edit_panel/edit_cells/bloc_main_color_containers_row_widget.dart';
 import 'package:diary/home/edit_panel/edit_cells/bloc_reset_options_row_widget.dart';
 import 'package:diary/home/edit_panel/edit_cells/bloc_turn_back_name_widget.dart';
+import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
 
 class EditCellsPanelBottomColumnWidget extends StatelessWidget {
@@ -18,33 +19,49 @@ class EditCellsPanelBottomColumnWidget extends StatelessWidget {
   final Widget nameRowWidget;
   final List<Widget> listOfWidgets;
 
-  factory EditCellsPanelBottomColumnWidget.color() {
-    return const EditCellsPanelBottomColumnWidget(
-      nameRowWidget: BlocTurnBackNameWidget(),
+  factory EditCellsPanelBottomColumnWidget.color({
+    required DiaryList diaryList,
+  }) {
+    return EditCellsPanelBottomColumnWidget(
+      nameRowWidget: const BlocTurnBackNameWidget(),
       listOfWidgets: [
-        BlocResetOptionsRowWidget(),
-        BlocMainColorContainersRowWidget(),
-        BlocConstColorContainersColumnWidget(),
+        BlocResetOptionsRowWidget(
+          diaryList: diaryList,
+        ),
+        const BlocMainColorContainersRowWidget(),
+        const BlocConstColorContainersColumnWidget(),
       ],
     );
   }
 
-  factory EditCellsPanelBottomColumnWidget.borders() {
-    return const EditCellsPanelBottomColumnWidget(
-      nameRowWidget: BlocTurnBackNameWidget(),
+  factory EditCellsPanelBottomColumnWidget.borders({
+    required DiaryList diaryList,
+  }) {
+    return EditCellsPanelBottomColumnWidget(
+      nameRowWidget: const BlocTurnBackNameWidget(),
       listOfWidgets: [
-        BlocBordersEditIconsColumnWidget(),
-        BlocBordersStyleEditWidget(),
-        BlocBordersColorEditWidget(),
+        BlocBordersEditIconsColumnWidget(
+          diaryList: diaryList,
+        ),
+        BlocBordersStyleEditWidget(
+          diaryList: diaryList,
+        ),
+        BlocBordersColorEditWidget(
+          diaryList: diaryList,
+        ),
       ],
     );
   }
 
-  factory EditCellsPanelBottomColumnWidget.bordersStyle() {
-    return const EditCellsPanelBottomColumnWidget(
-      nameRowWidget: BlocTurnBackNameWidget(),
+  factory EditCellsPanelBottomColumnWidget.bordersStyle({
+    required DiaryList diaryList,
+  }) {
+    return EditCellsPanelBottomColumnWidget(
+      nameRowWidget: const BlocTurnBackNameWidget(),
       listOfWidgets: [
-        BlocBordersStyleColumnWidget(),
+        BlocBordersStyleColumnWidget(
+          diaryList: diaryList,
+        ),
       ],
     );
   }

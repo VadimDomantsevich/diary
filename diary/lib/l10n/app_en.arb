@@ -142,5 +142,25 @@
     "willBeDeleted": "will be deleted",
     "@willBeDeleted": {
         "description": "will be deleted text on the delete column alert dialog"
+    },
+    "themeColor": "Theme color",
+    "@themeColor": {
+        "description": "Theme color listTile text on the edit list panel"
+    },
+    "mainColor": "Main color",
+    "@mainColor": {
+        "description": "Main color listTile text on the edit list panel"
+    },
+    "borderColor": "Border color",
+    "@borderColor": {
+        "description": "Border color listTile text on the edit list panel"
+    },
+    "backgroundColor": "Background color",
+    "@backgroundColor": {
+        "description": "Bacground color listTile text on the edit list panel"
+    },
+    "pickColor": "Pick a color",
+    "@pickColor": {
+        "description": "Pick a color title text on the pick color alert dialog"
     }
 }

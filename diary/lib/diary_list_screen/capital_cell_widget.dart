@@ -58,6 +58,7 @@ class CapitalCellWidget extends StatelessWidget {
     required CapitalCell capitalCell,
     required VoidCallback onTap,
     required bool isSelected,
+    required Color themeColor,
   }) {
     final alignment = capitalCell.settings.capitalCellAlignment.toAlignment();
     final border = Border(
@@ -96,6 +97,7 @@ class CapitalCellWidget extends StatelessWidget {
                 DiaryCellContentWidget.capitalCell(capitalCell: capitalCell),
             backgroundColor: backgroundColor,
             dividerIconAlignment: dividerIconAlignment,
+            themeColor: themeColor,
           )
         : CapitalCellWidget.common(
             alignment: alignment,
@@ -119,6 +121,7 @@ class CapitalCellWidget extends StatelessWidget {
     required Widget contentWidget,
     required Color backgroundColor,
     required Alignment dividerIconAlignment,
+    required Color themeColor,
   }) {
     return CapitalCellWidget(
       contentWidget: contentWidget,
@@ -127,7 +130,8 @@ class CapitalCellWidget extends StatelessWidget {
       backgroundColor: backgroundColor,
       alignment: alignment,
       border: border,
-      shadowColor: const Color.fromARGB(70, 68, 137, 255),//const value
+      shadowColor: themeColor
+          .toShadowColor(),
       onTap: onTap,
       dividerIconAlignment: dividerIconAlignment,
       isSelected: true,

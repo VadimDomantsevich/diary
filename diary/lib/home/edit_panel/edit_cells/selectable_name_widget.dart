@@ -20,15 +20,16 @@ class SelectableNameWidget extends StatelessWidget {
     required bool isTextEditing,
     required String content,
     required VoidCallback onTap,
+    required Color themeColor,
+    required Color themeBorderColor,
   }) {
     return SelectableNameWidget(
       textWidget: EditPanelTextWidget.selectableName(
         content: content,
-        textColor: isTextEditing ? Colors.black : Colors.grey, //const value
+        textColor: isTextEditing ? themeColor : themeBorderColor,
       ),
       borderWidth: EditPanelConstants.editPanelBorderSideWidth,
-      borderColor:
-          isTextEditing ? Colors.blueAccent : Colors.grey, //const value
+      borderColor: isTextEditing ? themeColor : themeBorderColor,
       onTap: onTap,
     );
   }
@@ -37,15 +38,16 @@ class SelectableNameWidget extends StatelessWidget {
     required bool isTextEditing,
     required String content,
     required VoidCallback onTap,
+    required Color themeColor,
+    required Color themeBorderColor,
   }) {
     return SelectableNameWidget(
       textWidget: EditPanelTextWidget.selectableName(
         content: content,
-        textColor: isTextEditing ? Colors.grey : Colors.black, //const value
+        textColor: isTextEditing ? themeBorderColor : themeColor,
       ),
       borderWidth: EditPanelConstants.editPanelBorderSideWidth,
-      borderColor:
-          isTextEditing ? Colors.grey : Colors.blueAccent, //const value
+      borderColor: isTextEditing ? themeBorderColor : themeColor,
       onTap: onTap,
     );
   }

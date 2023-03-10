@@ -8,8 +8,10 @@ class BordersStyleEditWidget extends StatelessWidget {
     required this.textWidget,
     required this.onTap,
     required this.borderLineHeight,
+    required this.themeBorderColor,
   });
 
+  final Color themeBorderColor;
   final Widget textWidget;
   final VoidCallback onTap;
   final double borderLineHeight;
@@ -22,10 +24,10 @@ class BordersStyleEditWidget extends StatelessWidget {
         onTap: onTap,
         child: Container(
           alignment: Alignment.centerLeft,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               bottom: BorderSide(
-                color: Colors.black, //const value
+                color: themeBorderColor,
                 width: EditPanelConstants.editCellsPanelBottomBorderSideWidth,
               ),
             ),
@@ -39,11 +41,15 @@ class BordersStyleEditWidget extends StatelessWidget {
             children: [
               textWidget,
               BorderLineWidget(
+                themeBorderColor: themeBorderColor,
                 height: borderLineHeight,
                 horizontalPadding:
                     EditPanelConstants.editPanelListTileHorizontalPadding,
               ),
-              const Icon(Icons.arrow_forward_ios),
+              Icon(
+                Icons.arrow_forward_ios,
+                color: themeBorderColor,
+              ),
             ],
           ),
         ),

@@ -8,9 +8,13 @@ class BlocTextFieldWidget extends StatelessWidget {
   const BlocTextFieldWidget({
     super.key,
     required this.diaryCell,
+    required this.themeBorderColor,
+    required this.themePanelBackgroundColor,
   });
 
   final DiaryCell diaryCell;
+  final Color themeBorderColor;
+  final Color themePanelBackgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +26,15 @@ class BlocTextFieldWidget extends StatelessWidget {
       ),
     );
     return TextFieldWidget(
-        controller: controller,
-        onChanged: (value) => context.read<DiaryListBloc>().add(
-              DiaryListEvent.changeDiaryCell(
-                diaryCell: diaryCell,
-                textFieldText: value,
-              ),
+      controller: controller,
+      onChanged: (value) => context.read<DiaryListBloc>().add(
+            DiaryListEvent.changeDiaryCell(
+              diaryCell: diaryCell,
+              textFieldText: value,
             ),
-        );
+          ),
+          themeBorderColor: themeBorderColor,
+          themePanelBackgroundColor: themePanelBackgroundColor,
+    );
   }
 }

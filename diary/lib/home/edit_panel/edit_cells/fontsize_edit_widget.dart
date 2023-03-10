@@ -1,5 +1,7 @@
 import 'package:diary/core/constants/edit_panel_constants.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/home/edit_panel/edit_panel_text_widget.dart';
+import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
 
 class FontSizeEditWidget extends StatelessWidget {
@@ -9,8 +11,10 @@ class FontSizeEditWidget extends StatelessWidget {
     required this.onPressedUp,
     required this.onPressedDown,
     required this.fontSize,
+    required this.diaryList,
   });
 
+  final DiaryList diaryList;
   final Widget textWidget;
   final VoidCallback onPressedUp;
   final VoidCallback onPressedDown;
@@ -22,10 +26,10 @@ class FontSizeEditWidget extends StatelessWidget {
       widthFactor: EditPanelConstants.editPanelWidthFactor,
       child: Container(
         alignment: Alignment.centerLeft,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: Colors.black, //const value
+              color: diaryList.settings.themeBorderColor.toColor(),
               width: EditPanelConstants.editCellsPanelBottomBorderSideWidth,
             ),
           ),
@@ -42,15 +46,24 @@ class FontSizeEditWidget extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: onPressedDown,
-                  icon: const Icon(Icons.keyboard_arrow_down),
+                  icon: Icon(
+                    Icons.keyboard_arrow_down,
+                    color: diaryList.settings.themeBorderColor.toColor(),
+                  ),
                 ),
-                EditPanelTextWidget.common(content: fontSize.toString()),
+                EditPanelTextWidget.common(
+                  content: fontSize.toString(),
+                  color: diaryList.settings.themeBorderColor.toColor(),
+                ),
                 IconButton(
                   onPressed: onPressedUp,
-                  icon: const Icon(Icons.keyboard_arrow_up),
+                  icon: Icon(
+                    Icons.keyboard_arrow_up,
+                    color: diaryList.settings.themeBorderColor.toColor(),
+                  ),
                 ),
               ],
-            ), //можно вынести отдельно
+            ),
           ],
         ),
       ),

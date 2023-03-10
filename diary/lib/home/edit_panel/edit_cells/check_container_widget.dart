@@ -12,7 +12,7 @@ class CheckContainerWidget extends StatelessWidget {
         width: EditPanelConstants.checkContainerSize,
         height: EditPanelConstants.checkContainerSize,
         decoration: const BoxDecoration(
-          color: Colors.white,//const value
+          color: EditPanelConstants.checkContainerBackgroundColor,
           shape: BoxShape.circle,
         ),
         child: const Icon(

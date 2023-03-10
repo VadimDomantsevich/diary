@@ -4,6 +4,7 @@ import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart
 import 'package:diary/diary_list_screen/diary_cell_edit/diary_cell_edit_bloc.dart';
 import 'package:diary/home/edit_panel/edit_cells/color_edit_widget.dart';
 import 'package:diary/home/edit_panel/edit_panel_text_widget.dart';
+import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -11,7 +12,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class BlocFillColorEditWidget extends StatelessWidget {
   const BlocFillColorEditWidget({
     super.key,
+    required this.diaryList,
   });
+
+  final DiaryList diaryList;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +26,7 @@ class BlocFillColorEditWidget extends StatelessWidget {
             return ColorEditWidget(
               textWidget: EditPanelTextWidget.common(
                 content: AppLocalizations.of(context).fillColor,
+                color: diaryList.settings.themeBorderColor.toColor(),
               ),
               onTap: () {
                 context.read<DiaryListBloc>().add(
@@ -35,12 +40,14 @@ class BlocFillColorEditWidget extends StatelessWidget {
                     );
               },
               color: fillColor,
+              themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
             );
           },
           capitalCellEditing: (capitalCell) {
             return ColorEditWidget(
               textWidget: EditPanelTextWidget.common(
                 content: AppLocalizations.of(context).fillColor,
+                color: diaryList.settings.themeBorderColor.toColor(),
               ),
               onTap: () {
                 context.read<DiaryListBloc>().add(
@@ -49,11 +56,14 @@ class BlocFillColorEditWidget extends StatelessWidget {
                 context.read<DiaryCellEditBloc>().add(
                       DiaryCellEditEvent.startColorEditing(
                         colorEditingEnum: ColorEditingEnum.fill,
-                        defaultColor: capitalCell.settings.capitalCellBackgroundColor.toColor(),
+                        defaultColor: capitalCell
+                            .settings.capitalCellBackgroundColor
+                            .toColor(),
                       ),
                     );
               },
               color: capitalCell.settings.capitalCellBackgroundColor.toColor(),
+              themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
             );
           },
           orElse: () {

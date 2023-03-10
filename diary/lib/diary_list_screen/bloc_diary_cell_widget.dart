@@ -1,20 +1,25 @@
+import 'package:diary/core/constants/constants.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
 import 'package:diary/diary_list_screen/diary_cell_widget.dart';
 import 'package:diary/diary_list_screen/wraps.dart';
 import 'package:diary/model/diary_cell.dart';
 import 'package:diary/model/diary_column.dart';
+import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BlocDiaryCellWidget extends StatelessWidget {
   const BlocDiaryCellWidget({
     super.key,
+    required this.diaryList,
     required this.diaryCell,
     required this.diaryColumns,
     required this.cellKey,
     required this.scaleFactor,
   });
 
+  final DiaryList diaryList;
   final DiaryCell diaryCell;
   final List<DiaryColumn> diaryColumns;
   final GlobalObjectKey cellKey;
@@ -76,10 +81,11 @@ class BlocDiaryCellWidget extends StatelessWidget {
                     : null,
                 border: isFirstSelected
                     ? Border.all(
-                        width: 3,
-                        color: Colors.blueAccent,
-                      ) //const value
+                        width: Constants.thickBordersStyleWidth,
+                        color: diaryList.settings.themeColor.toColor(),
+                      )
                     : buildBorder(diaryCell.settings),
+                themeColor: diaryList.settings.themeColor.toColor(),
               );
             },
             cellsEditing: (
@@ -137,10 +143,11 @@ class BlocDiaryCellWidget extends StatelessWidget {
                     : null,
                 border: isFirstSelected
                     ? Border.all(
-                        width: 3,
-                        color: Colors.blueAccent,
-                      ) //const value
+                        width: Constants.thickBordersStyleWidth,
+                        color: diaryList.settings.themeColor.toColor(),
+                      )
                     : buildBorder(diaryCell.settings),
+                themeColor: diaryList.settings.themeColor.toColor(),
               );
             },
             orElse: (() {
@@ -162,6 +169,7 @@ class BlocDiaryCellWidget extends StatelessWidget {
                       );
                 },
                 border: buildBorder(diaryCell.settings),
+                themeColor: diaryList.settings.themeColor.toColor(),
               );
             }),
           );

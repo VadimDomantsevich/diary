@@ -20,6 +20,7 @@ class BlocDeleteColumnAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DeleteColumnAlertDialog(
+      diaryList: diaryList,
       name: diaryColumn.name,
       title: title,
       onPressedSubmitButton: () {

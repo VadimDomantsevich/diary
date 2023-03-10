@@ -1,12 +1,19 @@
 import 'package:diary/core/constants/enums.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
 import 'package:diary/diary_list_screen/diary_cell_edit/diary_cell_edit_bloc.dart';
 import 'package:diary/home/edit_panel/edit_cells/borders_style_row_widget.dart';
+import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BlocBordersStyleColumnWidget extends StatelessWidget {
-  const BlocBordersStyleColumnWidget({super.key});
+  const BlocBordersStyleColumnWidget({
+    super.key,
+    required this.diaryList,
+  });
+
+  final DiaryList diaryList;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +31,8 @@ class BlocBordersStyleColumnWidget extends StatelessWidget {
                         ),
                       );
                 },
+                themeColor: diaryList.settings.themeColor.toColor(),
+                themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
               ),
               BordersStyleRowWidget.medium(
                 selectedStyle: bordersStyleEnum,
@@ -34,6 +43,8 @@ class BlocBordersStyleColumnWidget extends StatelessWidget {
                         ),
                       );
                 },
+                themeColor: diaryList.settings.themeColor.toColor(),
+                themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
               ),
               BordersStyleRowWidget.thick(
                 selectedStyle: bordersStyleEnum,
@@ -44,6 +55,8 @@ class BlocBordersStyleColumnWidget extends StatelessWidget {
                         ),
                       );
                 },
+                themeColor: diaryList.settings.themeColor.toColor(),
+                themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
               ),
             ],
           );
@@ -66,6 +79,8 @@ class BlocBordersStyleColumnWidget extends StatelessWidget {
                         ),
                       );
                 },
+                themeColor: diaryList.settings.themeColor.toColor(),
+                themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
               ),
               BordersStyleRowWidget.medium(
                 selectedStyle: bordersStyleEnum,
@@ -82,6 +97,8 @@ class BlocBordersStyleColumnWidget extends StatelessWidget {
                         ),
                       );
                 },
+                themeColor: diaryList.settings.themeColor.toColor(),
+                themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
               ),
               BordersStyleRowWidget.thick(
                 selectedStyle: bordersStyleEnum,
@@ -98,6 +115,8 @@ class BlocBordersStyleColumnWidget extends StatelessWidget {
                         ),
                       );
                 },
+                themeColor: diaryList.settings.themeColor.toColor(),
+                themeBorderColor: diaryList.settings.themeBorderColor.toColor(),
               ),
             ],
           );

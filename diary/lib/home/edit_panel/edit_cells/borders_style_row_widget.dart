@@ -10,8 +10,10 @@ class BordersStyleRowWidget extends StatelessWidget {
     required this.iconWidget,
     required this.onTap,
     required this.borderLineHeight,
+    required this.themeBorderColor,
   });
 
+  final Color themeBorderColor;
   final Widget iconWidget;
   final VoidCallback onTap;
   final double borderLineHeight;
@@ -19,12 +21,15 @@ class BordersStyleRowWidget extends StatelessWidget {
   factory BordersStyleRowWidget.thin({
     required BordersStyleEnum selectedStyle,
     required VoidCallback onTap,
+    required Color themeColor,
+    required Color themeBorderColor,
   }) {
     return BordersStyleRowWidget(
+      themeBorderColor: themeBorderColor,
       iconWidget: selectedStyle == BordersStyleEnum.thin
-          ? const Icon(
+          ? Icon(
               Icons.check,
-              color: Colors.blueAccent, //const value
+              color: themeColor,
             )
           : Container(),
       onTap: onTap,
@@ -35,12 +40,15 @@ class BordersStyleRowWidget extends StatelessWidget {
   factory BordersStyleRowWidget.medium({
     required BordersStyleEnum selectedStyle,
     required VoidCallback onTap,
+    required Color themeColor,
+    required Color themeBorderColor,
   }) {
     return BordersStyleRowWidget(
+      themeBorderColor: themeBorderColor,
       iconWidget: selectedStyle == BordersStyleEnum.medium
-          ? const Icon(
+          ? Icon(
               Icons.check,
-              color: Colors.blueAccent, //const value
+              color: themeColor,
             )
           : Container(),
       onTap: onTap,
@@ -51,12 +59,15 @@ class BordersStyleRowWidget extends StatelessWidget {
   factory BordersStyleRowWidget.thick({
     required BordersStyleEnum selectedStyle,
     required VoidCallback onTap,
+    required Color themeColor,
+    required Color themeBorderColor,
   }) {
     return BordersStyleRowWidget(
+      themeBorderColor: themeBorderColor,
       iconWidget: selectedStyle == BordersStyleEnum.thick
-          ? const Icon(
+          ? Icon(
               Icons.check,
-              color: Colors.blueAccent, //const value
+              color: themeColor,
             )
           : Container(),
       onTap: onTap,
@@ -83,6 +94,7 @@ class BordersStyleRowWidget extends StatelessWidget {
                 child: iconWidget,
               ),
               BorderLineWidget(
+                themeBorderColor: themeBorderColor,
                 height: borderLineHeight,
                 horizontalPadding: EditPanelConstants.bordersLinePadding,
               ),

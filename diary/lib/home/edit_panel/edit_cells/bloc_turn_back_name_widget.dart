@@ -31,6 +31,7 @@ class BlocTurnBackNameWidget extends StatelessWidget {
           ) {
             return isTextEditing && isColorEditing
                 ? TurnBackNameWidget(
+                    diaryList: diaryList,
                     content: AppLocalizations.of(context).textColor,
                     onPressed: () {
                       context
@@ -47,6 +48,7 @@ class BlocTurnBackNameWidget extends StatelessWidget {
                   )
                 : !isTextEditing && isColorEditing && !isBordersEditing
                     ? TurnBackNameWidget(
+                        diaryList: diaryList,
                         content: AppLocalizations.of(context).fillColor,
                         onPressed: () {
                           context.read<DiaryListBloc>().add(
@@ -64,6 +66,7 @@ class BlocTurnBackNameWidget extends StatelessWidget {
                             isBordersEditing &&
                             !isBordersStyleEditing
                         ? TurnBackNameWidget(
+                            diaryList: diaryList,
                             content: AppLocalizations.of(context).borders,
                             onPressed: () {
                               context.read<DiaryListBloc>().add(
@@ -78,6 +81,7 @@ class BlocTurnBackNameWidget extends StatelessWidget {
                           )
                         : !isTextEditing && isColorEditing && isBordersEditing
                             ? TurnBackNameWidget(
+                                diaryList: diaryList,
                                 content:
                                     AppLocalizations.of(context).bordersColor,
                                 onPressed: () {
@@ -91,6 +95,7 @@ class BlocTurnBackNameWidget extends StatelessWidget {
                                 },
                               )
                             : TurnBackNameWidget(
+                                diaryList: diaryList,
                                 content:
                                     AppLocalizations.of(context).bordersStyle,
                                 onPressed: () {
@@ -117,6 +122,7 @@ class BlocTurnBackNameWidget extends StatelessWidget {
           ) {
             return isTextEditing && isColorEditing
                 ? TurnBackNameWidget(
+                    diaryList: diaryList,
                     content: AppLocalizations.of(context).textColor,
                     onPressed: () {
                       context.read<DiaryListBloc>().add(
@@ -132,6 +138,7 @@ class BlocTurnBackNameWidget extends StatelessWidget {
                   )
                 : !isTextEditing && isColorEditing && !isBordersEditing
                     ? TurnBackNameWidget(
+                        diaryList: diaryList,
                         content: AppLocalizations.of(context).fillColor,
                         onPressed: () {
                           context.read<DiaryListBloc>().add(
@@ -149,6 +156,7 @@ class BlocTurnBackNameWidget extends StatelessWidget {
                             isBordersEditing &&
                             !isBordersStyleEditing
                         ? TurnBackNameWidget(
+                            diaryList: diaryList,
                             content: AppLocalizations.of(context).borders,
                             onPressed: () {
                               context.read<DiaryListBloc>().add(
@@ -163,6 +171,7 @@ class BlocTurnBackNameWidget extends StatelessWidget {
                           )
                         : !isTextEditing && isColorEditing && isBordersEditing
                             ? TurnBackNameWidget(
+                                diaryList: diaryList,
                                 content:
                                     AppLocalizations.of(context).bordersColor,
                                 onPressed: () {
@@ -178,6 +187,7 @@ class BlocTurnBackNameWidget extends StatelessWidget {
                                 },
                               )
                             : TurnBackNameWidget(
+                                diaryList: diaryList,
                                 content:
                                     AppLocalizations.of(context).bordersStyle,
                                 onPressed: () {
@@ -186,6 +196,27 @@ class BlocTurnBackNameWidget extends StatelessWidget {
                                       .add(const TurnBackEditingEvent());
                                 },
                               );
+          },
+          listEditing: (
+            diaryList,
+            diaryColumns,
+            capitalCells,
+            diaryCells,
+            cellsKeys,
+            lists,
+            isColumnDeleting,
+            isColorThemeEditing,
+            selectedList,
+          ) {
+            return TurnBackNameWidget(
+              diaryList: diaryList,
+              content: AppLocalizations.of(context).themeColor,
+              onPressed: () {
+                context.read<DiaryListBloc>().add(
+                      const TurnBackEditingEvent(),
+                    );
+              },
+            );
           },
           orElse: () => Container(),
         );

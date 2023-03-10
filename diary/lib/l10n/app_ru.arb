@@ -34,5 +34,10 @@
     "columnName": "Имя столбца",
     "numberOfSubcolumns": "Количество столбцов",
     "areYouShure": "Вы уверены?",
-    "willBeDeleted":"будет удалена"
+    "willBeDeleted":"будет удалена",
+    "themeColor":"Цветовая тема",
+    "mainColor":"Основной цвет",
+    "borderColor":"Цвет границ",
+    "backgroundColor":"Фоновый цвет",
+    "pickColor":"Выберите цвет"
 }

@@ -6,32 +6,59 @@ class IconButtonWidget extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.icon,
+    required this.themeBorderColor,
   });
 
   final VoidCallback onPressed;
   final Widget icon;
+  final Color themeBorderColor;
 
   factory IconButtonWidget.diaryLists({
     required VoidCallback onPressed,
+    required Color themeBorderColor,
   }) =>
       IconButtonWidget(
         onPressed: onPressed,
-        icon: const Icon(Icons.menu),
+        icon: Icon(
+          Icons.menu,
+          color: themeBorderColor,
+        ),
+        themeBorderColor: themeBorderColor,
       );
 
-  factory IconButtonWidget.editCells({required VoidCallback onPressed}) =>
+  factory IconButtonWidget.editCells({
+    required VoidCallback onPressed,
+    required Color themeBorderColor,
+  }) =>
       IconButtonWidget(
         onPressed: onPressed,
-        icon: const Icon(Icons.edit_note),
+        icon: Icon(
+          Icons.edit_note,
+          color: themeBorderColor,
+        ),
+        themeBorderColor: themeBorderColor,
+      );
+
+  factory IconButtonWidget.changeLocale({
+    required VoidCallback onPressed,
+    required Color themeBorderColor,
+  }) =>
+      IconButtonWidget(
+        onPressed: onPressed,
+        icon: Icon(
+          Icons.language,
+          color: themeBorderColor,
+        ),
+        themeBorderColor: themeBorderColor,
       );
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         border: Border(
           right: BorderSide(
-            color: Color.fromARGB(255, 46, 46, 46), //const value
+            color: themeBorderColor,
             width: EditPanelConstants.editPanelBorderSideWidth,
           ),
         ),

@@ -62,6 +62,7 @@ class DiaryListState with _$DiaryListState {
     required List<GlobalObjectKey> cellsKeys,
     required List<DiaryList> lists,
     required bool isColumnDeleting,
+    required bool isColorThemeEditing,
     DiaryList? selectedList,
   }) = _ListEditing;
 

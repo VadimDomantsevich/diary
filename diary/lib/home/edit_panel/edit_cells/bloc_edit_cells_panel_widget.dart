@@ -1,3 +1,4 @@
+import 'package:diary/core/extentions.dart';
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
 import 'package:diary/grid_display/bloc/grid_display_bloc.dart';
 import 'package:diary/home/edit_panel/edit_cells/edit_cells_panel_bottom_column_widget.dart';
@@ -47,19 +48,31 @@ class BlocEditCellsPanelWidget extends StatelessWidget {
                     return isEditCellPanelShown &&
                             isTextEditing &&
                             !isColorEditing
-                        ? EditCellsPanelWidget.textEditing()
+                        ? EditCellsPanelWidget.textEditing(
+                            diaryList: diaryList,
+                          )
                         : isEditCellPanelShown &&
                                 isTextEditing &&
                                 isColorEditing
                             ? EditCellsPanelWidget(
                                 bottomColumn:
-                                    EditCellsPanelBottomColumnWidget.color(),
+                                    EditCellsPanelBottomColumnWidget.color(
+                                  diaryList: diaryList,
+                                ),
+                                themeBorderColor: diaryList
+                                    .settings.themeBorderColor
+                                    .toColor(),
+                                themePanelBackgroundColor: diaryList
+                                    .settings.themePanelBackgroundColor
+                                    .toColor(),
                               )
                             : isEditCellPanelShown &&
                                     !isTextEditing &&
                                     !isColorEditing &&
                                     !isBordersEditing
-                                ? EditCellsPanelWidget.cellEditing()
+                                ? EditCellsPanelWidget.cellEditing(
+                                    diaryList: diaryList,
+                                  )
                                 : isEditCellPanelShown &&
                                         !isTextEditing &&
                                         isColorEditing &&
@@ -67,7 +80,15 @@ class BlocEditCellsPanelWidget extends StatelessWidget {
                                     ? EditCellsPanelWidget(
                                         bottomColumn:
                                             EditCellsPanelBottomColumnWidget
-                                                .color(),
+                                                .color(
+                                          diaryList: diaryList,
+                                        ),
+                                        themeBorderColor: diaryList
+                                            .settings.themeBorderColor
+                                            .toColor(),
+                                        themePanelBackgroundColor: diaryList
+                                            .settings.themePanelBackgroundColor
+                                            .toColor(),
                                       )
                                     : isEditCellPanelShown &&
                                             !isTextEditing &&
@@ -77,7 +98,16 @@ class BlocEditCellsPanelWidget extends StatelessWidget {
                                         ? EditCellsPanelWidget(
                                             bottomColumn:
                                                 EditCellsPanelBottomColumnWidget
-                                                    .borders(),
+                                                    .borders(
+                                              diaryList: diaryList,
+                                            ),
+                                            themeBorderColor: diaryList
+                                                .settings.themeBorderColor
+                                                .toColor(),
+                                            themePanelBackgroundColor: diaryList
+                                                .settings
+                                                .themePanelBackgroundColor
+                                                .toColor(),
                                           )
                                         : isEditCellPanelShown &&
                                                 !isTextEditing &&
@@ -86,12 +116,30 @@ class BlocEditCellsPanelWidget extends StatelessWidget {
                                             ? EditCellsPanelWidget(
                                                 bottomColumn:
                                                     EditCellsPanelBottomColumnWidget
-                                                        .color(),
+                                                        .color(
+                                                  diaryList: diaryList,
+                                                ),
+                                                themeBorderColor: diaryList
+                                                    .settings.themeBorderColor
+                                                    .toColor(),
+                                                themePanelBackgroundColor:
+                                                    diaryList.settings
+                                                        .themePanelBackgroundColor
+                                                        .toColor(),
                                               )
                                             : EditCellsPanelWidget(
                                                 bottomColumn:
                                                     EditCellsPanelBottomColumnWidget
-                                                        .bordersStyle(),
+                                                        .bordersStyle(
+                                                  diaryList: diaryList,
+                                                ),
+                                                themeBorderColor: diaryList
+                                                    .settings.themeBorderColor
+                                                    .toColor(),
+                                                themePanelBackgroundColor:
+                                                    diaryList.settings
+                                                        .themePanelBackgroundColor
+                                                        .toColor(),
                                               );
                   },
                   orElse: () => Container(),
@@ -132,21 +180,32 @@ class BlocEditCellsPanelWidget extends StatelessWidget {
                           isEditing &&
                           isTextEditing &&
                           !isColorEditing
-                      ? EditCellsPanelWidget.textEditing()
+                      ? EditCellsPanelWidget.textEditing(
+                          diaryList: diaryList,
+                        )
                       : isEditCellPanelShown &&
                               isEditing &&
                               isTextEditing &&
                               isColorEditing
                           ? EditCellsPanelWidget(
                               bottomColumn:
-                                  EditCellsPanelBottomColumnWidget.color(),
+                                  EditCellsPanelBottomColumnWidget.color(
+                                diaryList: diaryList,
+                              ),
+                              themeBorderColor:
+                                  diaryList.settings.themeBorderColor.toColor(),
+                              themePanelBackgroundColor: diaryList
+                                  .settings.themePanelBackgroundColor
+                                  .toColor(),
                             )
                           : isEditCellPanelShown &&
                                   isEditing &&
                                   !isTextEditing &&
                                   !isColorEditing &&
                                   !isBordersEditing
-                              ? EditCellsPanelWidget.cellEditing()
+                              ? EditCellsPanelWidget.cellEditing(
+                                  diaryList: diaryList,
+                                )
                               : isEditCellPanelShown &&
                                       !isTextEditing &&
                                       isColorEditing &&
@@ -154,7 +213,15 @@ class BlocEditCellsPanelWidget extends StatelessWidget {
                                   ? EditCellsPanelWidget(
                                       bottomColumn:
                                           EditCellsPanelBottomColumnWidget
-                                              .color(),
+                                              .color(
+                                        diaryList: diaryList,
+                                      ),
+                                      themeBorderColor: diaryList
+                                          .settings.themeBorderColor
+                                          .toColor(),
+                                      themePanelBackgroundColor: diaryList
+                                          .settings.themePanelBackgroundColor
+                                          .toColor(),
                                     )
                                   : isEditCellPanelShown &&
                                           !isTextEditing &&
@@ -164,7 +231,16 @@ class BlocEditCellsPanelWidget extends StatelessWidget {
                                       ? EditCellsPanelWidget(
                                           bottomColumn:
                                               EditCellsPanelBottomColumnWidget
-                                                  .borders(),
+                                                  .borders(
+                                            diaryList: diaryList,
+                                          ),
+                                          themeBorderColor: diaryList
+                                              .settings.themeBorderColor
+                                              .toColor(),
+                                          themePanelBackgroundColor: diaryList
+                                              .settings
+                                              .themePanelBackgroundColor
+                                              .toColor(),
                                         )
                                       : isEditCellPanelShown &&
                                               !isTextEditing &&
@@ -173,7 +249,16 @@ class BlocEditCellsPanelWidget extends StatelessWidget {
                                           ? EditCellsPanelWidget(
                                               bottomColumn:
                                                   EditCellsPanelBottomColumnWidget
-                                                      .color(),
+                                                      .color(
+                                                diaryList: diaryList,
+                                              ),
+                                              themeBorderColor: diaryList
+                                                  .settings.themeBorderColor
+                                                  .toColor(),
+                                              themePanelBackgroundColor:
+                                                  diaryList.settings
+                                                      .themePanelBackgroundColor
+                                                      .toColor(),
                                             )
                                           : isEditCellPanelShown &&
                                                   !isTextEditing &&
@@ -183,7 +268,16 @@ class BlocEditCellsPanelWidget extends StatelessWidget {
                                               ? EditCellsPanelWidget(
                                                   bottomColumn:
                                                       EditCellsPanelBottomColumnWidget
-                                                          .bordersStyle(),
+                                                          .bordersStyle(
+                                                    diaryList: diaryList,
+                                                  ),
+                                                  themeBorderColor: diaryList
+                                                      .settings.themeBorderColor
+                                                      .toColor(),
+                                                  themePanelBackgroundColor:
+                                                      diaryList.settings
+                                                          .themePanelBackgroundColor
+                                                          .toColor(),
                                                 )
                                               : Container();
                 },

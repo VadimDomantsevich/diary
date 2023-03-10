@@ -1,5 +1,7 @@
 import 'package:diary/core/constants/edit_panel_constants.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/home/edit_panel/edit_panel_text_widget.dart';
+import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
 
 class TurnBackNameWidget extends StatelessWidget {
@@ -7,18 +9,20 @@ class TurnBackNameWidget extends StatelessWidget {
     super.key,
     required this.content,
     required this.onPressed,
+    required this.diaryList,
   });
 
+  final DiaryList diaryList;
   final String content;
   final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: Colors.black, //const value
+            color: diaryList.settings.themeBorderColor.toColor(),
             width: EditPanelConstants.editCellsPanelBottomBorderSideWidth,
           ),
         ),
@@ -32,11 +36,15 @@ class TurnBackNameWidget extends StatelessWidget {
             ),
             child: IconButton(
               onPressed: onPressed,
-              icon: const Icon(Icons.arrow_back),
+              icon: Icon(
+                Icons.arrow_back,
+                color: diaryList.settings.themeBorderColor.toColor(),
+              ),
             ),
           ),
           EditPanelTextWidget.panelName(
             content: content,
+            color: diaryList.settings.themeBorderColor.toColor(),
           ),
         ],
       ),

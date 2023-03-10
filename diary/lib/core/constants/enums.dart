@@ -73,3 +73,9 @@ enum BordersStyleEnum {
   medium,
   thick,
 }
+
+enum ThemeColorsEnum {
+  themeColor,
+  themeBorderColor,
+  themePanelBackgroundColor,
+}

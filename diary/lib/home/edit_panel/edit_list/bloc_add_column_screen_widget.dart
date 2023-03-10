@@ -1,3 +1,4 @@
+import 'package:diary/core/extentions.dart';
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
 import 'package:diary/diary_list_screen/diary_cell_edit/diary_cell_edit_bloc.dart';
 import 'package:diary/home/edit_panel/edit_list/add_column_screen_widget.dart';
@@ -25,6 +26,7 @@ class BlocAddColumnScreenWidget extends StatelessWidget {
         return state.maybeWhen(
           columnsCountEditing: (columnsCount) {
             return AddColumnScreenWidget(
+              diaryList: diaryList,
               title: AppLocalizations.of(context).addColumn,
               hintText: AppLocalizations.of(context).columnName,
               onPressedSubmitButton: (name, columnsCount) {
@@ -53,11 +55,13 @@ class BlocAddColumnScreenWidget extends StatelessWidget {
               },
               textWidget: EditPanelTextWidget.common(
                 content: AppLocalizations.of(context).numberOfSubcolumns,
+                color: diaryList.settings.themeBorderColor.toColor(),
               ),
               columnsCount: columnsCount,
             );
           },
           orElse: () => AddColumnScreenWidget(
+            diaryList: diaryList,
             title: AppLocalizations.of(context).addColumn,
             hintText: AppLocalizations.of(context).columnName,
             onPressedSubmitButton: (name, columnsCount) {
@@ -92,6 +96,7 @@ class BlocAddColumnScreenWidget extends StatelessWidget {
             },
             textWidget: EditPanelTextWidget.common(
               content: AppLocalizations.of(context).numberOfSubcolumns,
+              color: diaryList.settings.themeBorderColor.toColor(),
             ),
             columnsCount: 1,
           ),

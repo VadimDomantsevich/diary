@@ -1,8 +1,11 @@
+import 'package:diary/core/constants/enums.dart';
+import 'package:diary/core/extentions.dart';
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
 import 'package:diary/grid_display/bloc/grid_display_bloc.dart';
 import 'package:diary/home/edit_panel/edit_list/bloc_add_column_dialog_widget.dart';
 import 'package:diary/home/edit_panel/edit_list/bloc_delete_column_dialog_widget.dart';
 import 'package:diary/home/edit_panel/edit_list/bloc_dialog_widget.dart';
+import 'package:diary/home/edit_panel/edit_list/bloc_pick_color_dialog_widget.dart';
 import 'package:diary/home/edit_panel/edit_list_panel_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,8 +19,17 @@ class BlocEditListPanelWidget extends StatelessWidget {
     return BlocBuilder<DiaryListBloc, DiaryListState>(
       builder: (context, state) {
         return state.maybeWhen(
-          listEditing: (diaryList, diaryColumns, capitalCells, diaryCells,
-              cellsKeys, lists, isColumnDeleting, selectedList) {
+          listEditing: (
+            diaryList,
+            diaryColumns,
+            capitalCells,
+            diaryCells,
+            cellsKeys,
+            lists,
+            isColumnDeleting,
+            isColorThemeEditing,
+            selectedList,
+          ) {
             return BlocBuilder<GridDisplayBloc, GridDisplayState>(
               builder: (context, state) {
                 return state.maybeWhen(
@@ -33,11 +45,15 @@ class BlocEditListPanelWidget extends StatelessWidget {
                     isPanelShown,
                     isEditCellPanelShown,
                   ) {
-                    return isPanelShown && selectedList != null
+                    return isPanelShown &&
+                            selectedList != null &&
+                            !isColorThemeEditing
                         ? EditListPanelWidget.selectedList(
                             diaryList: selectedList,
                             contentRename: AppLocalizations.of(context).rename,
                             contentDelete: AppLocalizations.of(context).delete,
+                            contentThemeColor:
+                                AppLocalizations.of(context).themeColor,
                             contentAddColumn:
                                 AppLocalizations.of(context).addColumn,
                             contentDeleteColumn:
@@ -55,6 +71,12 @@ class BlocEditListPanelWidget extends StatelessWidget {
                                       ReturnToLoadedEvent(newName: value),
                                     ),
                               );
+                            },
+                            onTapThemeColor: () {
+                              context.read<DiaryListBloc>().add(
+                                    const DiaryListEvent
+                                        .startColorThemeEditing(),
+                                  );
                             },
                             onTapDelete: () {
                               //I don't want to delete anything now
@@ -82,7 +104,7 @@ class BlocEditListPanelWidget extends StatelessWidget {
                                   .add(const StartColumnDeletingEvent());
                             },
                           )
-                        : !isColumnDeleting
+                        : !isColumnDeleting && !isColorThemeEditing
                             ? EditListPanelWidget.allLists(
                                 lists: lists,
                                 selectedList: diaryList,
@@ -98,27 +120,107 @@ class BlocEditListPanelWidget extends StatelessWidget {
                                           ),
                                         ),
                               )
-                            : EditListPanelWidget.allColumns(
-                                columns: diaryColumns,
-                                text: AppLocalizations.of(context).deleteColumn,
-                                onTap: (column) {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return BlocDeleteColumnDialogWidget(
-                                        diaryList: diaryList,
-                                        diaryColumn: column,
+                            : !isColorThemeEditing
+                                ? EditListPanelWidget.allColumns(
+                                    diaryList: diaryList,
+                                    columns: diaryColumns,
+                                    text: AppLocalizations.of(context)
+                                        .deleteColumn,
+                                    onTap: (column) {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return BlocDeleteColumnDialogWidget(
+                                            diaryList: diaryList,
+                                            diaryColumn: column,
+                                          );
+                                        },
+                                      ).whenComplete(
+                                        () => context.read<DiaryListBloc>().add(
+                                              DiaryListEvent.getDiaryList(
+                                                date: diaryList.listDate,
+                                              ),
+                                            ),
                                       );
                                     },
-                                  ).whenComplete(
-                                    () => context.read<DiaryListBloc>().add(
-                                          DiaryListEvent.getDiaryList(
-                                            date: diaryList.listDate,
-                                          ),
-                                        ),
+                                  )
+                                : EditListPanelWidget.themeColorEditing(
+                                    diaryList: diaryList,
+                                    contentMainColor:
+                                        AppLocalizations.of(context).mainColor,
+                                    onTapMainColor: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext conttext) {
+                                          return BlocPickColorDialogWidget(
+                                            diaryList: diaryList,
+                                            themeColor:
+                                                ThemeColorsEnum.themeColor,
+                                            color: diaryList.settings.themeColor
+                                                .toColor(),
+                                          );
+                                        },
+                                      ).whenComplete(
+                                        () {
+                                          context.read<DiaryListBloc>().add(
+                                                DiaryListEvent.getDiaryList(
+                                                  date: diaryList.listDate,
+                                                ),
+                                              );
+                                        },
+                                      );
+                                    },
+                                    contentBorderColor:
+                                        AppLocalizations.of(context).borderColor,
+                                    onTapBorderColor: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext conttext) {
+                                          return BlocPickColorDialogWidget(
+                                            diaryList: diaryList,
+                                            themeColor: ThemeColorsEnum
+                                                .themeBorderColor,
+                                            color: diaryList
+                                                .settings.themeBorderColor
+                                                .toColor(),
+                                          );
+                                        },
+                                      ).whenComplete(
+                                        () {
+                                          context.read<DiaryListBloc>().add(
+                                                DiaryListEvent.getDiaryList(
+                                                  date: diaryList.listDate,
+                                                ),
+                                              );
+                                        },
+                                      );
+                                    },
+                                    contentBackgroundColor:
+                                        AppLocalizations.of(context).backgroundColor,
+                                    onTapBackgroundColor: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext conttext) {
+                                          return BlocPickColorDialogWidget(
+                                            diaryList: diaryList,
+                                            themeColor: ThemeColorsEnum
+                                                .themePanelBackgroundColor,
+                                            color: diaryList.settings
+                                                .themePanelBackgroundColor
+                                                .toColor(),
+                                          );
+                                        },
+                                      ).whenComplete(
+                                        () {
+                                          context.read<DiaryListBloc>().add(
+                                                DiaryListEvent.getDiaryList(
+                                                  date: diaryList.listDate,
+                                                ),
+                                              );
+                                        },
+                                      );
+                                    },
                                   );
-                                },
-                              );
                   },
                   orElse: () => Container(),
                 );

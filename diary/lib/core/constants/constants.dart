@@ -15,6 +15,8 @@ class Constants {
 
   static const columnsDefaultSettingsDocName = 'defaultColumnSettings';
 
+  static const listsDefaultSettingsDocName = 'defaultListSettings';
+
   static const capitalCellDocName = 'capitalCell';
 
   static const interactiveViewerMinScale = 0.9;
@@ -40,4 +42,26 @@ class Constants {
   static const dividerIconWidgetPadding = 3.0;
 
   static const dividerIconSize = 20.0;
+
+  static const defaultCellHeight = 30.0;
+
+  static const defaultTextFontSize = 14.0;
+
+  static const addColumnAlertDialogHeight = 100.0;
+
+  static const defaultColumnWidth = 300.0;
+
+  static const defaultCapitalCellHeight = 60.0;
+
+  static const defaultCapitalCellFontSize = 14.0;
+
+  static const defaultDiaryListThemeColor = '0xFF448AFF';
+
+  static const defaultDiaryListThemeBorderColor = '0xFF000000';
+
+  static const defaultDiaryListThemePanelBackgroundColor = '0xFFFFFFFF';
+
+  static const defaultDiaryCellBorderColor = '0x26646464';
+
+  static const defaultDiaryCellBackgroundColor = '0xFFFFFFFF';
 }

@@ -1,4 +1,6 @@
+import 'package:diary/home/edit_panel/icon_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class AppBarWidget extends StatelessWidget {
   const AppBarWidget({
@@ -7,22 +9,30 @@ class AppBarWidget extends StatelessWidget {
     required this.onPressedLeadingIcon,
     required this.backgroundColor,
     required this.foregroundColor,
+    required this.languageIcon,
   });
 
   final Widget leadingIcon;
   final VoidCallback onPressedLeadingIcon;
   final Color backgroundColor;
   final Color foregroundColor;
+  final Widget languageIcon;
 
   factory AppBarWidget.listLoaded({
     required Color backgroundColor,
     required Color foregroundColor,
+    required VoidCallback onPressedLanguageIcon,
+    required Color themeBorderColor,
   }) {
     return AppBarWidget(
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor,
       leadingIcon: Container(),
-      onPressedLeadingIcon: (){},
+      onPressedLeadingIcon: () {},
+      languageIcon: IconButtonWidget.changeLocale(
+        onPressed: onPressedLanguageIcon,
+        themeBorderColor: themeBorderColor,
+      ),
     );
   }
 
@@ -30,12 +40,18 @@ class AppBarWidget extends StatelessWidget {
     required Color backgroundColor,
     required Color foregroundColor,
     required VoidCallback onPressedLeadingIcon,
+    required VoidCallback onPressedLanguageIcon,
+    required Color themeBorderColor,
   }) {
     return AppBarWidget(
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor,
       leadingIcon: const Icon(Icons.check),
       onPressedLeadingIcon: onPressedLeadingIcon,
+      languageIcon: IconButtonWidget.changeLocale(
+        onPressed: onPressedLanguageIcon,
+        themeBorderColor: themeBorderColor,
+      ),
     );
   }
 
@@ -48,6 +64,9 @@ class AppBarWidget extends StatelessWidget {
         icon: leadingIcon,
         onPressed: onPressedLeadingIcon,
       ),
+      actions: [
+        languageIcon,
+      ],
     );
   }
 }

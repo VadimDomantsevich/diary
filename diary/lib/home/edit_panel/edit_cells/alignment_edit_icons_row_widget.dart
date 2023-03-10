@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class AlignmentEditIconsRowWidget extends StatelessWidget {
   const AlignmentEditIconsRowWidget({
     super.key,
+    required this.themeColor,
     required this.isHorizontalLeft,
     required this.onPressedHorizontalLeftIcon,
     required this.isHorizontalCenter,
@@ -17,8 +18,11 @@ class AlignmentEditIconsRowWidget extends StatelessWidget {
     required this.onPressedVerticalCenterIcon,
     required this.isVerticalBottom,
     required this.onPressedVerticalBottomIcon,
+    required this.themeBorderColor,
   });
 
+  final Color themeBorderColor;
+  final Color themeColor;
   final bool isHorizontalLeft;
   final VoidCallback onPressedHorizontalLeftIcon;
   final bool isHorizontalCenter;
@@ -40,41 +44,53 @@ class AlignmentEditIconsRowWidget extends StatelessWidget {
         children: [
           Expanded(
             child: EditCellsIconButtonWidget.horizontalLeft(
+              themeColor: themeColor,
+              themeBorderColor: themeBorderColor,
               isSelected: isHorizontalLeft,
               onPressed: onPressedHorizontalLeftIcon,
             ),
           ),
           Expanded(
             child: EditCellsIconButtonWidget.horizontalCenter(
+              themeColor: themeColor,
+              themeBorderColor: themeBorderColor,
               isSelected: isHorizontalCenter,
               onPressed: onPressedHorizontalCenterIcon,
             ),
           ),
           Expanded(
             child: EditCellsIconButtonWidget.horizontalRight(
+              themeColor: themeColor,
+              themeBorderColor: themeBorderColor,
               isSelected: isHorizontalRight,
               onPressed: onPressedHorizontalRightIcon,
             ),
           ),
-          const VerticalDivider(
+          VerticalDivider(
             width: EditPanelConstants.editPanelBorderSideWidth,
             thickness: EditPanelConstants.editCellsPanelBottomBorderSideWidth,
-            color: Colors.black,//const value
+            color: themeBorderColor,
           ),
           Expanded(
             child: EditCellsIconButtonWidget.verticalTop(
+              themeColor: themeColor,
+              themeBorderColor: themeBorderColor,
               isSelected: isVerticalTop,
               onPressed: onPressedVerticalTopIcon,
             ),
           ),
           Expanded(
             child: EditCellsIconButtonWidget.verticalCenter(
+              themeColor: themeColor,
+              themeBorderColor: themeBorderColor,
               isSelected: isVerticalCenter,
               onPressed: onPressedVerticalCenterIcon,
             ),
           ),
           Expanded(
             child: EditCellsIconButtonWidget.verticalBottom(
+              themeColor: themeColor,
+              themeBorderColor: themeBorderColor,
               isSelected: isVerticalBottom,
               onPressed: onPressedVerticalBottomIcon,
             ),

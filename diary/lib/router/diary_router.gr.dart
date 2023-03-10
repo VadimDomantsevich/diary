@@ -21,6 +21,7 @@ import '../home/bloc_datagrid_sample.dart' as _i6;
 import '../home/datagrid_sample.dart' as _i5;
 import '../home/edit_panel/edit_list/add_column_screen_widget.dart' as _i7;
 import '../home/home_screen_widget.dart' as _i3;
+import '../model/diary_list.dart' as _i10;
 
 class DiaryRouter extends _i8.RootStackRouter {
   DiaryRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
@@ -81,6 +82,7 @@ class DiaryRouter extends _i8.RootStackRouter {
           onPressedDown: args.onPressedDown,
           textWidget: args.textWidget,
           columnsCount: args.columnsCount,
+          diaryList: args.diaryList,
         ),
       );
     },
@@ -231,6 +233,7 @@ class AddColumnScreenWidgetRoute
     required void Function() onPressedDown,
     required _i9.Widget textWidget,
     required int columnsCount,
+    required _i10.DiaryList diaryList,
   }) : super(
           AddColumnScreenWidgetRoute.name,
           path: '/add-column-screen-widget',
@@ -243,6 +246,7 @@ class AddColumnScreenWidgetRoute
             onPressedDown: onPressedDown,
             textWidget: textWidget,
             columnsCount: columnsCount,
+            diaryList: diaryList,
           ),
         );
 
@@ -259,6 +263,7 @@ class AddColumnScreenWidgetRouteArgs {
     required this.onPressedDown,
     required this.textWidget,
     required this.columnsCount,
+    required this.diaryList,
   });
 
   final _i9.Key? key;
@@ -280,8 +285,10 @@ class AddColumnScreenWidgetRouteArgs {
 
   final int columnsCount;
 
+  final _i10.DiaryList diaryList;
+
   @override
   String toString() {
-    return 'AddColumnScreenWidgetRouteArgs{key: $key, title: $title, hintText: $hintText, onPressedSubmitButton: $onPressedSubmitButton, onPressedUp: $onPressedUp, onPressedDown: $onPressedDown, textWidget: $textWidget, columnsCount: $columnsCount}';
+    return 'AddColumnScreenWidgetRouteArgs{key: $key, title: $title, hintText: $hintText, onPressedSubmitButton: $onPressedSubmitButton, onPressedUp: $onPressedUp, onPressedDown: $onPressedDown, textWidget: $textWidget, columnsCount: $columnsCount, diaryList: $diaryList}';
   }
 }

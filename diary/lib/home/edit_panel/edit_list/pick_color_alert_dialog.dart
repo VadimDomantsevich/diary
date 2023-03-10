@@ -3,24 +3,27 @@ import 'package:diary/core/extentions.dart';
 import 'package:diary/home/edit_panel/edit_panel_text_widget.dart';
 import 'package:diary/model/diary_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class DeleteColumnAlertDialog extends StatelessWidget {
-  const DeleteColumnAlertDialog({
+class PickColorAlertDialog extends StatelessWidget {
+  const PickColorAlertDialog({
     super.key,
     required this.title,
+    required this.color,
     required this.onPressedSubmitButton,
-    required this.name,
     required this.diaryList,
   });
 
   final DiaryList diaryList;
   final String title;
-  final String name;
-  final VoidCallback onPressedSubmitButton;
+  final Color color;
+  final Function(Color) onPressedSubmitButton;
 
   @override
   Widget build(BuildContext context) {
+    var selectedColor = Color(color.value);
+
     return AlertDialog(
       title: EditPanelTextWidget.common(
         content: title,
@@ -32,10 +35,13 @@ class DeleteColumnAlertDialog extends StatelessWidget {
           Radius.circular(EditPanelConstants.alertDialogBorderRadius),
         ),
       ),
-      content: EditPanelTextWidget.common(
-        content:
-            '${AppLocalizations.of(context).areYouShure}\n$name ${AppLocalizations.of(context).willBeDeleted}',
-        color: diaryList.settings.themeBorderColor.toColor(),
+      content: SingleChildScrollView(
+        child: MaterialPicker(
+          pickerColor: color,
+          onColorChanged: (newColor) {
+            selectedColor = newColor;
+          },
+        ),
       ),
       actions: [
         TextButton(
@@ -44,7 +50,7 @@ class DeleteColumnAlertDialog extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            onPressedSubmitButton();
+            onPressedSubmitButton(selectedColor);
             Navigator.of(context).pop();
           },
           child: Text(AppLocalizations.of(context).ok),

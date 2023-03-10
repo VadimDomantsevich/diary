@@ -18,6 +18,9 @@ DocumentReference getUserDoc() => FirebaseFirestore.instance
     .collection(Collections.usersCollection)
     .doc(FirebaseAuth.instance.currentUser!.uid);
 
+CollectionReference getDiaryListCollection() =>
+    getUserDoc().collection(Collections.diaryListsCollection);
+
 DocumentReference getDiaryListDoc({required DiaryList diaryList}) =>
     getUserDoc()
         .collection(Collections.diaryListsCollection)

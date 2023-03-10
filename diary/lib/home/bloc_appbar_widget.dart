@@ -1,6 +1,8 @@
+import 'package:diary/core/extentions.dart';
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
 import 'package:diary/grid_display/bloc/grid_display_bloc.dart';
 import 'package:diary/home/appbar_widget.dart';
+import 'package:diary/locale/locale_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,8 +33,16 @@ class BlocAppBarWidget extends StatelessWidget {
                   ) {
                     return isAppBarShown
                         ? AppBarWidget.listLoaded(
-                            backgroundColor: Colors.white24, //const value
-                            foregroundColor: Colors.black, //const value
+                            backgroundColor: diaryList
+                                .settings.themePanelBackgroundColor
+                                .toColor(),
+                            foregroundColor:
+                                diaryList.settings.themeBorderColor.toColor(),
+                            themeBorderColor:
+                                diaryList.settings.themeBorderColor.toColor(),
+                            onPressedLanguageIcon: () => context
+                                .read<LocaleBloc>()
+                                .add(const LocaleEvent.changeLocale()),
                           )
                         : PreferredSize(
                             preferredSize: const Size(0.0, 0.0),
@@ -76,15 +86,22 @@ class BlocAppBarWidget extends StatelessWidget {
                   ) {
                     return isAppBarShown
                         ? AppBarWidget.cellsSelected(
-                            backgroundColor: Colors.white24, //const value
-                            foregroundColor: Colors.blueAccent, //const value
+                            backgroundColor: diaryList
+                                .settings.themePanelBackgroundColor
+                                .toColor(),
+                            foregroundColor:
+                                diaryList.settings.themeColor.toColor(),
+                            themeBorderColor:
+                                diaryList.settings.themeBorderColor.toColor(),
                             onPressedLeadingIcon: () {
-                              //HERE
-                              print('Height when appBar pressed: $height');
                               context.read<DiaryListBloc>().add(
                                     const ReturnToLoadedEvent(),
                                   );
                             },
+                            onPressedLanguageIcon: () =>
+                                context.read<LocaleBloc>().add(
+                                      const LocaleEvent.changeLocale(),
+                                    ),
                           )
                         : PreferredSize(
                             preferredSize: const Size(0.0, 0.0),
@@ -104,14 +121,22 @@ class BlocAppBarWidget extends StatelessWidget {
                   ) {
                     return isAppBarShown
                         ? AppBarWidget.cellsSelected(
-                            backgroundColor: Colors.white24, //const value
-                            foregroundColor: Colors.blueAccent, //const value
+                            backgroundColor: diaryList
+                                .settings.themePanelBackgroundColor
+                                .toColor(),
+                            foregroundColor:
+                                diaryList.settings.themeColor.toColor(),
+                            themeBorderColor:
+                                diaryList.settings.themeBorderColor.toColor(),
                             onPressedLeadingIcon: () {
-                              //HERE
                               context.read<DiaryListBloc>().add(
                                     const ReturnToLoadedEvent(),
                                   );
                             },
+                            onPressedLanguageIcon: () =>
+                                context.read<LocaleBloc>().add(
+                                      const LocaleEvent.changeLocale(),
+                                    ),
                           )
                         : PreferredSize(
                             preferredSize: const Size(0.0, 0.0),
@@ -159,15 +184,22 @@ class BlocAppBarWidget extends StatelessWidget {
                   ) {
                     return isAppBarShown
                         ? AppBarWidget.cellsSelected(
-                            backgroundColor: Colors.white24, //const value
-                            foregroundColor: Colors.blueAccent, //const value
+                            backgroundColor: diaryList
+                                .settings.themePanelBackgroundColor
+                                .toColor(),
+                            foregroundColor:
+                                diaryList.settings.themeColor.toColor(),
+                            themeBorderColor:
+                                diaryList.settings.themeBorderColor.toColor(),
                             onPressedLeadingIcon: () {
-                              //HERE
-                              // print('Height when appBar pressed: $height');
                               context.read<DiaryListBloc>().add(
                                     const ReturnToLoadedEvent(),
                                   );
                             },
+                            onPressedLanguageIcon: () =>
+                                context.read<LocaleBloc>().add(
+                                      const LocaleEvent.changeLocale(),
+                                    ),
                           )
                         : PreferredSize(
                             preferredSize: const Size(0.0, 0.0),
@@ -214,15 +246,22 @@ class BlocAppBarWidget extends StatelessWidget {
                   ) {
                     return isAppBarShown
                         ? AppBarWidget.cellsSelected(
-                            backgroundColor: Colors.white24, //const value
-                            foregroundColor: Colors.blueAccent, //const value
+                            backgroundColor: diaryList
+                                .settings.themePanelBackgroundColor
+                                .toColor(),
+                            foregroundColor:
+                                diaryList.settings.themeColor.toColor(),
+                            themeBorderColor:
+                                diaryList.settings.themeBorderColor.toColor(),
                             onPressedLeadingIcon: () {
-                              //HERE
-                              // print('Height when appBar pressed: $height');
                               context.read<DiaryListBloc>().add(
                                     const ReturnToLoadedEvent(),
                                   );
                             },
+                            onPressedLanguageIcon: () =>
+                                context.read<LocaleBloc>().add(
+                                      const LocaleEvent.changeLocale(),
+                                    ),
                           )
                         : PreferredSize(
                             preferredSize: const Size(0.0, 0.0),
