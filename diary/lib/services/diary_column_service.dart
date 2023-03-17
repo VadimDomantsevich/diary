@@ -8,6 +8,7 @@ import 'package:diary/model/capital_cell.dart';
 import 'package:diary/model/diary_column.dart';
 import 'package:diary/model/diary_column_settings.dart';
 import 'package:diary/model/diary_list.dart';
+import 'package:diary/model/list_theme.dart';
 
 class DiaryColumnService {
   Future<String> create({
@@ -16,7 +17,7 @@ class DiaryColumnService {
     required DiaryList diaryList,
   }) async {
     final columnsCollection = getDiaryColumnsCollection(diaryList: diaryList);
-    final col = await columnsCollection
+    final column = await columnsCollection
         .where(Constants.diaryColumnIdField, isEqualTo: name)
         .get();
     final columnsDefaultSettingsDoc = await columnsCollection
@@ -52,11 +53,12 @@ class DiaryColumnService {
       capitalCellFontSize: defaultColumnSettings.capitalCellFontSize,
       capitalCellTextColor: defaultColumnSettings.capitalCellTextColor,
     );
-    if (col.docs.isEmpty) {
+    if (column.docs.isEmpty) {
       final newColumn = DiaryColumn(
         id: name,
         name: name,
         columnsCount: count,
+        creationTime: DateTime.now(),
         settings: columnSettings,
       );
       await columnsCollection.doc(name).set(newColumn.toFirestore());
@@ -74,6 +76,7 @@ class DiaryColumnService {
         id: id,
         name: name,
         columnsCount: count,
+        creationTime: DateTime.now(),
         settings: columnSettings,
       );
       await columnsCollection.doc(id).set(newColumn.toFirestore());
@@ -86,6 +89,44 @@ class DiaryColumnService {
 
       return id;
     }
+  }
+
+  Future<DiaryColumn> getColumn({
+    required String name,
+    required int count,
+    required DiaryList diaryList,
+  }) async {
+    DiaryColumnSettings defaultColumnSettings = await getDefaultColumnSettings(
+      diaryList: diaryList,
+    );
+    List<double> width = List.empty(growable: true);
+    int i = 0;
+    while (i < count) {
+      width.add(Constants.defaultColumnWidth);
+      i++;
+    }
+    DiaryColumnSettings columnSettings = DiaryColumnSettings(
+      width: width,
+      capitalCellBorderWidth: defaultColumnSettings.capitalCellBorderWidth,
+      capitalCellBorderColor: defaultColumnSettings.capitalCellBorderColor,
+      capitalCellHeight: defaultColumnSettings.capitalCellHeight,
+      capitalCellBackgroundColor:
+          defaultColumnSettings.capitalCellBackgroundColor,
+      capitalCellAlignment: defaultColumnSettings.capitalCellAlignment,
+      capitalCellFontWeight: defaultColumnSettings.capitalCellFontWeight,
+      capitalCellTextDecoration:
+          defaultColumnSettings.capitalCellTextDecoration,
+      capitalCellFontStyle: defaultColumnSettings.capitalCellFontStyle,
+      capitalCellFontSize: defaultColumnSettings.capitalCellFontSize,
+      capitalCellTextColor: defaultColumnSettings.capitalCellTextColor,
+    );
+    return DiaryColumn(
+      id: name,
+      name: name,
+      columnsCount: count,
+      creationTime: DateTime.now(),
+      settings: columnSettings,
+    );
   }
 
   DiaryColumn read({
@@ -139,6 +180,7 @@ class DiaryColumnService {
         );
       }
     }
+    diaryColumns.sort((a, b) => a.creationTime.compareTo(b.creationTime));
     return diaryColumns;
   }
 
@@ -281,6 +323,37 @@ class DiaryColumnService {
     return capitalCells;
   }
 
+  Future<void> createFromTheme({
+    required ListTheme listTheme,
+  }) async {
+    final columnsCollection =
+        getDiaryColumnsCollection(diaryList: listTheme.diaryList);
+    final columnsDefaultSettingsDoc = await columnsCollection
+        .doc(Constants.columnsDefaultSettingsDocName)
+        .get();
+    if (columnsDefaultSettingsDoc.data() == null) {
+      await columnsCollection.doc(Constants.columnsDefaultSettingsDocName).set(
+            createSettings(columnsCount: 1).toFirestore(),
+          );
+    }
+    for (var diaryColumn in listTheme.diaryColumns) {
+      final newColumn = DiaryColumn(
+        id: diaryColumn.id,
+        name: diaryColumn.name,
+        columnsCount: diaryColumn.columnsCount,
+        creationTime: diaryColumn.creationTime,
+        settings: diaryColumn.settings,
+      );
+      await columnsCollection.doc(diaryColumn.id).set(newColumn.toFirestore());
+
+      await updateSettings(
+        diaryList: listTheme.diaryList,
+        diaryColumn: newColumn,
+        settings: diaryColumn.settings,
+      );
+    }
+  }
+
   Future<void> createDateColumn({
     required DiaryList diaryList,
   }) async {
@@ -296,6 +369,7 @@ class DiaryColumnService {
       id: Constants.diaryColumnDateField,
       name: Constants.diaryColumnDateField,
       columnsCount: 2,
+      creationTime: DateTime.now(),
       settings: dateSettings,
     );
     await doc.set(

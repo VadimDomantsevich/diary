@@ -28,6 +28,8 @@ class BlocTurnBackNameWidget extends StatelessWidget {
             lists,
             defaultTextSettings,
             defaultSettings,
+            isListThemeViewMode,
+            listTheme,
           ) {
             return isTextEditing && isColorEditing
                 ? TurnBackNameWidget(
@@ -119,6 +121,8 @@ class BlocTurnBackNameWidget extends StatelessWidget {
             cellsKeys,
             lists,
             defaultSettings,
+            isListThemeViewMode,
+            listTheme,
           ) {
             return isTextEditing && isColorEditing
                 ? TurnBackNameWidget(

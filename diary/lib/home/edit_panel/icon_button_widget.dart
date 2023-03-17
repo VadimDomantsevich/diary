@@ -52,6 +52,32 @@ class IconButtonWidget extends StatelessWidget {
         themeBorderColor: themeBorderColor,
       );
 
+  factory IconButtonWidget.themesCollection({
+    required VoidCallback onPressed,
+    required Color themeBorderColor,
+  }) =>
+      IconButtonWidget(
+        onPressed: onPressed,
+        icon: Icon(
+          Icons.collections,
+          color: themeBorderColor,
+        ),
+        themeBorderColor: themeBorderColor,
+      );
+
+  factory IconButtonWidget.takeTheme({
+    required VoidCallback onPressed,
+    required Color themeBorderColor,
+  }) =>
+      IconButtonWidget(
+        onPressed: onPressed,
+        icon: Icon(
+          Icons.add_photo_alternate,
+          color: themeBorderColor,
+        ),
+        themeBorderColor: themeBorderColor,
+      );
+
   @override
   Widget build(BuildContext context) {
     return Container(

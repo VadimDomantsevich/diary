@@ -23,6 +23,8 @@ class DiaryListState with _$DiaryListState {
     required List<DiaryCell> diaryCells,
     required List<GlobalObjectKey> cellsKeys,
     required List<DiaryList> lists,
+    required bool isListThemeViewMode,
+    ListTheme? listTheme,
   }) = _Loaded;
 
   const factory DiaryListState.cellsSelected({
@@ -36,6 +38,8 @@ class DiaryListState with _$DiaryListState {
     required List<DiaryList> lists,
     required DiaryCellTextSettings defaultTextSettings,
     required DiaryCellSettings defaultSettings,
+    required bool isListThemeViewMode,
+    ListTheme? listTheme,
   }) = _CellsSelected;
 
   const factory DiaryListState.capitalCellSelected({
@@ -52,6 +56,8 @@ class DiaryListState with _$DiaryListState {
     required List<GlobalObjectKey> cellsKeys,
     required List<DiaryList> lists,
     required DiaryColumnSettings defaultSettings,
+    required bool isListThemeViewMode,
+    ListTheme? listTheme,
   }) = _CapitalCellSelected;
 
   const factory DiaryListState.listEditing({
@@ -81,5 +87,11 @@ class DiaryListState with _$DiaryListState {
     required List<DiaryList> lists,
     required DiaryCellTextSettings defaultTextSettings,
     required DiaryCellSettings defaultSettings,
+    required bool isListThemeViewMode,
+    ListTheme? listTheme,
   }) = _CellsEditing;
+
+  const factory DiaryListState.themesLoaded({
+    required List<ListTheme> listThemes,
+  }) = _ThemesLoaded;
 }

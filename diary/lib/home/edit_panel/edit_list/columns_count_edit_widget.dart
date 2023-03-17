@@ -22,31 +22,23 @@ class ColumnsCountEditWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FractionallySizedBox(
-      widthFactor: EditPanelConstants.editPanelWidthFactor,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          textWidget,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconButton(
-                onPressed: onPressedDown,
-                icon: const Icon(Icons.keyboard_arrow_down),
-              ),
-              EditPanelTextWidget.common(
-                content: columnsCount.toString(),
-                color: diaryList.settings.themeBorderColor.toColor(),
-              ),
-              IconButton(
-                onPressed: onPressedUp,
-                icon: const Icon(Icons.keyboard_arrow_up),
-              ),
-            ],
-          ),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        textWidget,
+        IconButton(
+          onPressed: onPressedDown,
+          icon: const Icon(Icons.keyboard_arrow_down),
+        ),
+        EditPanelTextWidget.common(
+          content: columnsCount.toString(),
+          color: diaryList.settings.themeBorderColor.toColor(),
+        ),
+        IconButton(
+          onPressed: onPressedUp,
+          icon: const Icon(Icons.keyboard_arrow_up),
+        ),
+      ],
     );
   }
 }

@@ -145,6 +145,25 @@ class DiaryListListTileWidget extends StatelessWidget {
     );
   }
 
+  factory DiaryListListTileWidget.shareTheme({
+    required DiaryList diaryList,
+    required String content,
+    required VoidCallback onTap,
+  }) {
+    return DiaryListListTileWidget(
+      textWidget: EditPanelTextWidget.listTileCommon(
+        content: content,
+        color: diaryList.settings.themeBorderColor.toColor(),
+      ),
+      onTap: onTap,
+      iconWidget: Icon(
+        Icons.share,
+        color: diaryList.settings.themeBorderColor.toColor(),
+      ),
+      textColor: diaryList.settings.themeBorderColor.toColor(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(

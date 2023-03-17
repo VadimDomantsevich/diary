@@ -39,5 +39,12 @@
     "mainColor":"Основной цвет",
     "borderColor":"Цвет границ",
     "backgroundColor":"Фоновый цвет",
-    "pickColor":"Выберите цвет"
+    "pickColor":"Выберите цвет",
+    "shareTheme":"Поделиться темой",
+    "themeName":"Название темы",
+    "description":"Описание",
+    "setThemeToYourselfAsDefault":"Установить тему как стандартную",
+    "oldDataWillBeLost":"Старые данные будут утеряны",
+    "emptyThemesNameText":"Похоже, что никто пока не поделился темой",
+    "emptyThemesDescriptionText":"Почему бы вам тогда не поделиться своей?"
 }

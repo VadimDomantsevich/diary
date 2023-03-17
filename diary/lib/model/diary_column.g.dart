@@ -9,6 +9,8 @@ part of 'diary_column.dart';
 abstract class _$DiaryColumnCWProxy {
   DiaryColumn columnsCount(int columnsCount);
 
+  DiaryColumn creationTime(DateTime creationTime);
+
   DiaryColumn id(String id);
 
   DiaryColumn name(String name);
@@ -23,6 +25,7 @@ abstract class _$DiaryColumnCWProxy {
   /// ````
   DiaryColumn call({
     int? columnsCount,
+    DateTime? creationTime,
     String? id,
     String? name,
     DiaryColumnSettings? settings,
@@ -38,6 +41,10 @@ class _$DiaryColumnCWProxyImpl implements _$DiaryColumnCWProxy {
   @override
   DiaryColumn columnsCount(int columnsCount) =>
       this(columnsCount: columnsCount);
+
+  @override
+  DiaryColumn creationTime(DateTime creationTime) =>
+      this(creationTime: creationTime);
 
   @override
   DiaryColumn id(String id) => this(id: id);
@@ -59,6 +66,7 @@ class _$DiaryColumnCWProxyImpl implements _$DiaryColumnCWProxy {
   /// ````
   DiaryColumn call({
     Object? columnsCount = const $CopyWithPlaceholder(),
+    Object? creationTime = const $CopyWithPlaceholder(),
     Object? id = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
     Object? settings = const $CopyWithPlaceholder(),
@@ -69,6 +77,11 @@ class _$DiaryColumnCWProxyImpl implements _$DiaryColumnCWProxy {
               ? _value.columnsCount
               // ignore: cast_nullable_to_non_nullable
               : columnsCount as int,
+      creationTime:
+          creationTime == const $CopyWithPlaceholder() || creationTime == null
+              ? _value.creationTime
+              // ignore: cast_nullable_to_non_nullable
+              : creationTime as DateTime,
       id: id == const $CopyWithPlaceholder() || id == null
           ? _value.id
           // ignore: cast_nullable_to_non_nullable

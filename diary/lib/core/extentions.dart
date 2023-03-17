@@ -71,8 +71,7 @@ extension MainColorExtension on MainColorsEnum {
       case MainColorsEnum.black:
         return const Color(0xff000000);
       case MainColorsEnum.red:
-        return const Color(
-            0xffFF0000);
+        return const Color(0xffFF0000);
       case MainColorsEnum.orange:
         return const Color(0xffFF8000);
       case MainColorsEnum.yellow:

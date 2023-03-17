@@ -4,4 +4,6 @@ class DiaryColumnFields {
   static const name = 'name';
 
   static const columnsCount = 'columnsCount';
+
+  static const creationTime = 'creationTime';
 }

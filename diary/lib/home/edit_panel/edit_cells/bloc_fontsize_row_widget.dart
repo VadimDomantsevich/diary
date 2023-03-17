@@ -19,99 +19,100 @@ class BlocFontSizeRowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DiaryCellEditBloc, DiaryCellEditState>(
-        builder: (context, state) {
-      return state.maybeWhen(
-        textEditing: (
-          isBold,
-          isItalic,
-          isUnderline,
-          isLineThrough,
-          fontSize,
-          color,
-          isHorizontalLeft,
-          isHorizontalCenter,
-          isHorizontalRight,
-          isVerticalTop,
-          isVerticalCenter,
-          isVerticalBottom,
-          defaultTextSettings,
-          defaultSettings,
-        ) {
-          return FontSizeEditWidget(
-            diaryList: diaryList,
-            textWidget: EditPanelTextWidget.common(
-              content: AppLocalizations.of(context).fontSize,
-              color: diaryList.settings.themeBorderColor.toColor(),
-            ),
-            onPressedDown: () {
-              context.read<DiaryListBloc>().add(
-                    ChangeDiaryCellsSettingsEvent(
-                      fontSize: fontSize - 1,
-                    ),
-                  );
-              context.read<DiaryCellEditBloc>().add(
-                    ChangeCellEvent(fontSize: fontSize - 1),
-                  );
-            },
-            onPressedUp: () {
-              context.read<DiaryListBloc>().add(
-                    ChangeDiaryCellsSettingsEvent(
-                      fontSize: fontSize + 1,
-                    ),
-                  );
-              context.read<DiaryCellEditBloc>().add(
-                    ChangeCellEvent(fontSize: fontSize + 1),
-                  );
-            },
-            fontSize: fontSize.toInt(),
-          );
-        },
-        capitalCellTextEditing: (
-          isBold,
-          isItalic,
-          isUnderline,
-          isLineThrough,
-          fontSize,
-          color,
-          isHorizontalLeft,
-          isHorizontalCenter,
-          isHorizontalRight,
-          isVerticalTop,
-          isVerticalCenter,
-          isVerticalBottom,
-          defaultSettings,
-        ) {
-          return FontSizeEditWidget(
-            diaryList: diaryList,
-            textWidget: EditPanelTextWidget.common(
-              content: AppLocalizations.of(context).fontSize,
-              color: diaryList.settings.themeBorderColor.toColor(),
-            ),
-            onPressedDown: () {
-              context.read<DiaryListBloc>().add(
-                    ChangeCapitalCellSettingsEvent(
-                      fontSize: fontSize - 1,
-                    ),
-                  );
-              context.read<DiaryCellEditBloc>().add(
-                    ChangeCellEvent(fontSize: fontSize - 1),
-                  );
-            },
-            onPressedUp: () {
-              context.read<DiaryListBloc>().add(
-                    ChangeCapitalCellSettingsEvent(
-                      fontSize: fontSize + 1,
-                    ),
-                  );
-              context.read<DiaryCellEditBloc>().add(
-                    ChangeCellEvent(fontSize: fontSize + 1),
-                  );
-            },
-            fontSize: fontSize.toInt(),
-          );
-        },
-        orElse: () => Container(),
-      );
-    });
+      builder: (context, state) {
+        return state.maybeWhen(
+          textEditing: (
+            isBold,
+            isItalic,
+            isUnderline,
+            isLineThrough,
+            fontSize,
+            color,
+            isHorizontalLeft,
+            isHorizontalCenter,
+            isHorizontalRight,
+            isVerticalTop,
+            isVerticalCenter,
+            isVerticalBottom,
+            defaultTextSettings,
+            defaultSettings,
+          ) {
+            return FontSizeEditWidget(
+              diaryList: diaryList,
+              textWidget: EditPanelTextWidget.common(
+                content: AppLocalizations.of(context).fontSize,
+                color: diaryList.settings.themeBorderColor.toColor(),
+              ),
+              onPressedDown: () {
+                context.read<DiaryListBloc>().add(
+                      ChangeDiaryCellsSettingsEvent(
+                        fontSize: fontSize - 1,
+                      ),
+                    );
+                context.read<DiaryCellEditBloc>().add(
+                      ChangeCellEvent(fontSize: fontSize - 1),
+                    );
+              },
+              onPressedUp: () {
+                context.read<DiaryListBloc>().add(
+                      ChangeDiaryCellsSettingsEvent(
+                        fontSize: fontSize + 1,
+                      ),
+                    );
+                context.read<DiaryCellEditBloc>().add(
+                      ChangeCellEvent(fontSize: fontSize + 1),
+                    );
+              },
+              fontSize: fontSize.toInt(),
+            );
+          },
+          capitalCellTextEditing: (
+            isBold,
+            isItalic,
+            isUnderline,
+            isLineThrough,
+            fontSize,
+            color,
+            isHorizontalLeft,
+            isHorizontalCenter,
+            isHorizontalRight,
+            isVerticalTop,
+            isVerticalCenter,
+            isVerticalBottom,
+            defaultSettings,
+          ) {
+            return FontSizeEditWidget(
+              diaryList: diaryList,
+              textWidget: EditPanelTextWidget.common(
+                content: AppLocalizations.of(context).fontSize,
+                color: diaryList.settings.themeBorderColor.toColor(),
+              ),
+              onPressedDown: () {
+                context.read<DiaryListBloc>().add(
+                      ChangeCapitalCellSettingsEvent(
+                        fontSize: fontSize - 1,
+                      ),
+                    );
+                context.read<DiaryCellEditBloc>().add(
+                      ChangeCellEvent(fontSize: fontSize - 1),
+                    );
+              },
+              onPressedUp: () {
+                context.read<DiaryListBloc>().add(
+                      ChangeCapitalCellSettingsEvent(
+                        fontSize: fontSize + 1,
+                      ),
+                    );
+                context.read<DiaryCellEditBloc>().add(
+                      ChangeCellEvent(fontSize: fontSize + 1),
+                    );
+              },
+              fontSize: fontSize.toInt(),
+            );
+          },
+          orElse: () => Container(),
+        );
+      },
+    );
   }
 }

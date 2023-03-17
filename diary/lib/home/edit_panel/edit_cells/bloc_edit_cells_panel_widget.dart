@@ -29,6 +29,8 @@ class BlocEditCellsPanelWidget extends StatelessWidget {
             lists,
             defaultTextSettings,
             defaultSettings,
+            isListThemeViewMode,
+            listTheme,
           ) {
             return BlocBuilder<GridDisplayBloc, GridDisplayState>(
               builder: (context, state) {
@@ -161,6 +163,8 @@ class BlocEditCellsPanelWidget extends StatelessWidget {
             cellsKeys,
             lists,
             defaultSettings,
+            isListThemeViewMode,
+            listTheme,
           ) {
             return BlocBuilder<GridDisplayBloc, GridDisplayState>(
               builder: (context, state) => state.maybeWhen(

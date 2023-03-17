@@ -3,9 +3,12 @@ import 'package:diary/authentication/forgot_password_screen_widget.dart';
 import 'package:diary/authentication/profile_screen_widget.dart';
 import 'package:diary/authentication/sign_in_screen_widget.dart';
 import 'package:diary/home/bloc_datagrid_sample.dart';
+import 'package:diary/home/bloc_list_themes_widget.dart';
+import 'package:diary/home/bloc_provider_datagrid_view_mode.dart';
 import 'package:diary/home/datagrid_sample.dart';
 import 'package:diary/home/edit_panel/edit_list/add_column_screen_widget.dart';
-import 'package:diary/home/home_screen_widget.dart';
+import 'package:diary/home/bloc_home_widget.dart';
+import 'package:diary/home/take_theme_alert_dialog_widget.dart';
 
 @MaterialAutoRouter(
   routes: <AutoRoute>[
@@ -17,7 +20,7 @@ import 'package:diary/home/home_screen_widget.dart';
       page: ForgotPasswordScreenWidget,
     ),
     AutoRoute(
-      page: HomeScreenWidget,
+      page: BlocHomeWidget,
     ),
     AutoRoute(
       page: ProfileScreenWidget,
@@ -30,6 +33,15 @@ import 'package:diary/home/home_screen_widget.dart';
     ),
     AutoRoute(
       page: AddColumnScreenWidget,
+    ),
+    AutoRoute(
+      page: BlocListThemesWidget,
+    ),
+    AutoRoute(
+      page: BlocProviderDataGridViewMode,
+    ),
+    AutoRoute(
+      page: TakeThemeAlertDialogWidget,
     ),
   ],
 )

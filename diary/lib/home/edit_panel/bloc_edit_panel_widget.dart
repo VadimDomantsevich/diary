@@ -1,3 +1,4 @@
+import 'package:diary/core/constants/constants.dart';
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
 import 'package:diary/diary_list_screen/diary_cell_edit/diary_cell_edit_bloc.dart';
 import 'package:diary/grid_display/bloc/grid_display_bloc.dart';
@@ -19,6 +20,8 @@ class BlocEditPanelWidget extends StatelessWidget {
           diaryCells,
           cellsKeys,
           lists,
+          isListThemeViewMode,
+          listTheme,
         ) {
           return BlocBuilder<GridDisplayBloc, GridDisplayState>(
             builder: (context, state) {
@@ -48,6 +51,7 @@ class BlocEditPanelWidget extends StatelessWidget {
                               : context.read<DiaryListBloc>().add(
                                     DiaryListEvent.getDiaryList(
                                       date: list.listDate,
+                                      delay: Constants.getListDelay,
                                     ),
                                   ),
                           onPressedIconButton: () =>
@@ -73,6 +77,8 @@ class BlocEditPanelWidget extends StatelessWidget {
           lists,
           defaultTextSettings,
           defaultSettings,
+          isListThemeViewMode,
+          listTheme,
         ) {
           return BlocBuilder<GridDisplayBloc, GridDisplayState>(
             builder: (context, state) => state.maybeWhen(
@@ -128,6 +134,8 @@ class BlocEditPanelWidget extends StatelessWidget {
           cellsKeys,
           lists,
           defaultSettings,
+          isListThemeViewMode,
+          listTheme,
         ) {
           return BlocBuilder<GridDisplayBloc, GridDisplayState>(
             builder: (context, state) => state.maybeWhen(

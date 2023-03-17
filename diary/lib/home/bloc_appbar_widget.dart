@@ -1,8 +1,12 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:diary/core/constants/constants.dart';
 import 'package:diary/core/extentions.dart';
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
 import 'package:diary/grid_display/bloc/grid_display_bloc.dart';
 import 'package:diary/home/appbar_widget.dart';
+import 'package:diary/home/bloc_provider_take_theme_alert_dialog.dart';
 import 'package:diary/locale/locale_bloc.dart';
+import 'package:diary/router/diary_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,8 +18,16 @@ class BlocAppBarWidget extends StatelessWidget {
     return BlocBuilder<DiaryListBloc, DiaryListState>(
       builder: (context, state) {
         return state.maybeWhen(
-          loaded: (diaryList, diaryColumns, capitalCells, diaryCells, cellsKeys,
-              lists) {
+          loaded: (
+            diaryList,
+            diaryColumns,
+            capitalCells,
+            diaryCells,
+            cellsKeys,
+            lists,
+            isListThemeViewMode,
+            listTheme,
+          ) {
             return BlocBuilder<GridDisplayBloc, GridDisplayState>(
               builder: (context, state) {
                 return state.maybeWhen(
@@ -31,7 +43,7 @@ class BlocAppBarWidget extends StatelessWidget {
                     isPanelShown,
                     isEditCellPanelShown,
                   ) {
-                    return isAppBarShown
+                    return isAppBarShown && !isListThemeViewMode
                         ? AppBarWidget.listLoaded(
                             backgroundColor: diaryList
                                 .settings.themePanelBackgroundColor
@@ -43,11 +55,31 @@ class BlocAppBarWidget extends StatelessWidget {
                             onPressedLanguageIcon: () => context
                                 .read<LocaleBloc>()
                                 .add(const LocaleEvent.changeLocale()),
+                            onPressedThemesIcon: () {
+                              context.router.push(
+                                const BlocListThemesWidgetRoute(),
+                              );
+                            },
                           )
-                        : PreferredSize(
-                            preferredSize: const Size(0.0, 0.0),
-                            child: Container(),
-                          );
+                        : isListThemeViewMode
+                            ? AppBarWidget.themeViewMode(
+                                onPressedLeadingIcon: () =>
+                                    context.router.pop(),
+                                onPressedTakeTheme: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext conttext) {
+                                      return BlocProviderTakeThemeAlertDialog(
+                                        listTheme: listTheme!,
+                                      );
+                                    },
+                                  );
+                                },
+                              )
+                            : PreferredSize(
+                                preferredSize: const Size(0.0, 0.0),
+                                child: Container(),
+                              );
                   },
                   orElse: () => PreferredSize(
                     preferredSize: const Size(0.0, 0.0),
@@ -68,6 +100,8 @@ class BlocAppBarWidget extends StatelessWidget {
             lists,
             defaultTextSettings,
             defaultSettings,
+            isListThemeViewMode,
+            listTheme,
           ) {
             return BlocBuilder<GridDisplayBloc, GridDisplayState>(
               builder: (context, state) {
@@ -84,7 +118,7 @@ class BlocAppBarWidget extends StatelessWidget {
                     isPanelShown,
                     isEditCellPanelShown,
                   ) {
-                    return isAppBarShown
+                    return isAppBarShown && !isListThemeViewMode
                         ? AppBarWidget.cellsSelected(
                             backgroundColor: diaryList
                                 .settings.themePanelBackgroundColor
@@ -102,11 +136,30 @@ class BlocAppBarWidget extends StatelessWidget {
                                 context.read<LocaleBloc>().add(
                                       const LocaleEvent.changeLocale(),
                                     ),
+                            onPressedThemesIcon: () {
+                              context.router
+                                  .push(const BlocListThemesWidgetRoute());
+                            },
                           )
-                        : PreferredSize(
-                            preferredSize: const Size(0.0, 0.0),
-                            child: Container(),
-                          );
+                        : isListThemeViewMode
+                            ? AppBarWidget.themeViewMode(
+                                onPressedLeadingIcon: () =>
+                                    context.router.pop(),
+                                onPressedTakeTheme: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext conttext) {
+                                      return BlocProviderTakeThemeAlertDialog(
+                                        listTheme: listTheme!,
+                                      );
+                                    },
+                                  );
+                                },
+                              )
+                            : PreferredSize(
+                                preferredSize: const Size(0.0, 0.0),
+                                child: Container(),
+                              );
                   },
                   selectedMoving: (
                     scaleFactor,
@@ -119,7 +172,7 @@ class BlocAppBarWidget extends StatelessWidget {
                     firstSelectedCell,
                     isAppBarShown,
                   ) {
-                    return isAppBarShown
+                    return isAppBarShown && !isListThemeViewMode
                         ? AppBarWidget.cellsSelected(
                             backgroundColor: diaryList
                                 .settings.themePanelBackgroundColor
@@ -137,11 +190,30 @@ class BlocAppBarWidget extends StatelessWidget {
                                 context.read<LocaleBloc>().add(
                                       const LocaleEvent.changeLocale(),
                                     ),
+                            onPressedThemesIcon: () {
+                              context.router
+                                  .push(const BlocListThemesWidgetRoute());
+                            },
                           )
-                        : PreferredSize(
-                            preferredSize: const Size(0.0, 0.0),
-                            child: Container(),
-                          );
+                        : isListThemeViewMode
+                            ? AppBarWidget.themeViewMode(
+                                onPressedLeadingIcon: () =>
+                                    context.router.pop(),
+                                onPressedTakeTheme: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext conttext) {
+                                      return BlocProviderTakeThemeAlertDialog(
+                                        listTheme: listTheme!,
+                                      );
+                                    },
+                                  );
+                                },
+                              )
+                            : PreferredSize(
+                                preferredSize: const Size(0.0, 0.0),
+                                child: Container(),
+                              );
                   },
                   orElse: () => PreferredSize(
                     preferredSize: const Size(0.0, 0.0),
@@ -166,6 +238,8 @@ class BlocAppBarWidget extends StatelessWidget {
             lists,
             defaultTextSettings,
             defaultSettings,
+            isListThemeViewMode,
+            listTheme,
           ) {
             return BlocBuilder<GridDisplayBloc, GridDisplayState>(
               builder: (context, state) {
@@ -182,7 +256,7 @@ class BlocAppBarWidget extends StatelessWidget {
                     isPanelShown,
                     isEditCellPanelShown,
                   ) {
-                    return isAppBarShown
+                    return isAppBarShown && !isListThemeViewMode
                         ? AppBarWidget.cellsSelected(
                             backgroundColor: diaryList
                                 .settings.themePanelBackgroundColor
@@ -200,11 +274,30 @@ class BlocAppBarWidget extends StatelessWidget {
                                 context.read<LocaleBloc>().add(
                                       const LocaleEvent.changeLocale(),
                                     ),
+                            onPressedThemesIcon: () {
+                              context.router
+                                  .push(const BlocListThemesWidgetRoute());
+                            },
                           )
-                        : PreferredSize(
-                            preferredSize: const Size(0.0, 0.0),
-                            child: Container(),
-                          );
+                        : isListThemeViewMode
+                            ? AppBarWidget.themeViewMode(
+                                onPressedLeadingIcon: () =>
+                                    context.router.pop(),
+                                onPressedTakeTheme: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext conttext) {
+                                      return BlocProviderTakeThemeAlertDialog(
+                                        listTheme: listTheme!,
+                                      );
+                                    },
+                                  );
+                                },
+                              )
+                            : PreferredSize(
+                                preferredSize: const Size(0.0, 0.0),
+                                child: Container(),
+                              );
                   },
                   orElse: () => PreferredSize(
                     preferredSize: const Size(0.0, 0.0),
@@ -228,6 +321,8 @@ class BlocAppBarWidget extends StatelessWidget {
             cellsKeys,
             lists,
             defaultSettings,
+            isListThemeViewMode,
+            listTheme,
           ) {
             return BlocBuilder<GridDisplayBloc, GridDisplayState>(
               builder: (context, state) {
@@ -244,7 +339,7 @@ class BlocAppBarWidget extends StatelessWidget {
                     isPanelShown,
                     isEditCellPanelShown,
                   ) {
-                    return isAppBarShown
+                    return isAppBarShown && !isListThemeViewMode
                         ? AppBarWidget.cellsSelected(
                             backgroundColor: diaryList
                                 .settings.themePanelBackgroundColor
@@ -262,11 +357,30 @@ class BlocAppBarWidget extends StatelessWidget {
                                 context.read<LocaleBloc>().add(
                                       const LocaleEvent.changeLocale(),
                                     ),
+                            onPressedThemesIcon: () {
+                              context.router
+                                  .push(const BlocListThemesWidgetRoute());
+                            },
                           )
-                        : PreferredSize(
-                            preferredSize: const Size(0.0, 0.0),
-                            child: Container(),
-                          );
+                        : isListThemeViewMode
+                            ? AppBarWidget.themeViewMode(
+                                onPressedLeadingIcon: () =>
+                                    context.router.pop(),
+                                onPressedTakeTheme: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext conttext) {
+                                      return BlocProviderTakeThemeAlertDialog(
+                                        listTheme: listTheme!,
+                                      );
+                                    },
+                                  );
+                                },
+                              )
+                            : PreferredSize(
+                                preferredSize: const Size(0.0, 0.0),
+                                child: Container(),
+                              );
                   },
                   orElse: () => PreferredSize(
                     preferredSize: const Size(0.0, 0.0),
@@ -274,6 +388,17 @@ class BlocAppBarWidget extends StatelessWidget {
                   ),
                 );
               },
+            );
+          },
+          themesLoaded: (listThemes) {
+            return AppBarWidget.themesLoaded(
+              backgroundColor:
+                  Constants.themesLoadedAppBarWidgetBackgroundColor.toColor(),
+              foregroundColor:
+                  Constants.themesLoadedAppBarWidgetForegroundColor.toColor(),
+              onPressedLeadingIcon: () => context.router.pop(),
+              themeBorderColor:
+                  Constants.themesLoadedAppBarWidgetForegroundColor.toColor(),
             );
           },
           orElse: () => PreferredSize(

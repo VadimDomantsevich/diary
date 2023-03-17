@@ -12,6 +12,7 @@ import 'package:diary/model/diary_column.dart';
 import 'package:diary/model/diary_column_settings.dart';
 import 'package:diary/model/diary_list.dart';
 import 'package:diary/model/diary_list_settings.dart';
+import 'package:diary/model/list_theme.dart';
 import 'package:diary/services/diary_cell_service.dart';
 import 'package:diary/services/diary_column_service.dart';
 import 'package:diary/services/diary_list_service.dart';
@@ -64,8 +65,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         ((event, emit) => _onChangeDiaryCellsSettingsEvent(event, emit)));
     on<ChangeDiaryCellsBordersSettingsEvent>(((event, emit) =>
         _onChangeDiaryCellsBordersSettingsEvent(event, emit)));
-    on<UpdateDiaryCellsSettingsInFirebaseEvent>(((event, emit) =>
-        _onUpdateDiaryCellsSettingsInFirebaseEvent(event, emit)));
+    on<UpdateDiaryCellSettingsInFirebaseEvent>(((event, emit) =>
+        _onUpdateDiaryCellSettingsInFirebaseEvent(event, emit)));
     on<ChangeCapitalCellSettingsEvent>(
         ((event, emit) => _onChangeCapitalCellSettingsEvent(event, emit)));
     on<UpdateCapitalCellWidthEvent>(
@@ -78,6 +79,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         ((event, emit) => _onUpdateDiaryListSettingsEvent(event, emit)));
     on<StartEditingColorEvent>(
         ((event, emit) => _onStartEditingColorEvent(event, emit)));
+    on<ShareThemeEvent>((event, emit) => _onShareThemeEvent(event, emit));
     on<StartEditingBordersEvent>(
         ((event, emit) => _onStartEditingBordersEvent(event, emit)));
     on<StartEditingBordersStyleEvent>(
@@ -88,10 +90,15 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         (event, emit) => _onCreateDiaryColumnEvent(event, emit));
     on<DeleteDiaryColumnEvent>(
         (event, emit) => _onDeleteDiaryColumnEvent(event, emit));
+    on<DeleteColumnsEvent>((event, emit) => _onDeleteColumnsEvent(event, emit));
     on<StartColumnDeletingEvent>(
         ((event, emit) => _onStartColumnDeletingEvent(event, emit)));
     on<StartColorThemeEditingEvent>(
         ((event, emit) => _onStartColorThemeEditingEvent(event, emit)));
+    on<LoadThemesEvent>(((event, emit) => _onLoadThemesEvent(event, emit)));
+    on<LoadFromThemeEvent>(
+        ((event, emit) => _onLoadFromThemeEvent(event, emit)));
+    on<TakeThemeEvent>(((event, emit) => _onTakeThemeEvent(event, emit)));
   }
 
   Future<void> _onInitialLoadEvent(
@@ -100,19 +107,25 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
   ) async {
     state.whenOrNull(
       initial: () async {
-        final lists = await _diaryListService.getAll();
-        if (lists.any((element) =>
-            element.listDate.month == DateTime.now().month &&
-            element.listDate.year == DateTime.now().year)) {
-          add(
-            DiaryListEvent.getDiaryList(
-              date: DateTime.now(),
-            ),
-          );
+        final isNewUser = await _diaryListService.isNewUser();
+        if (isNewUser) {
+          add(const DiaryListEvent.createSample());
         } else {
-          add(
-            const DiaryListEvent.createSample(),
-          );
+          final lists = await _diaryListService.getAll();
+          if (lists.any((element) =>
+              element.listDate.month == DateTime.now().month &&
+              element.listDate.year == DateTime.now().year)) {
+            add(
+              DiaryListEvent.getDiaryList(
+                date: DateTime.now(),
+                delay: 200,
+              ),
+            );
+          } else {
+            add(
+              const DiaryListEvent.createSample(),
+            );
+          }
         }
       },
     );
@@ -122,16 +135,21 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     CreateSampleEvent event,
     Emitter<DiaryListState> emit,
   ) async {
-    _diaryListService.create(date: DateTime.now());
+    await _diaryListService.create(date: DateTime.now());
     final diaryList = await _diaryListService.getByDate(date: DateTime.now());
-    _diaryColumnService.createDateColumn(diaryList: diaryList);
+    await _diaryColumnService.createDateColumn(diaryList: diaryList);
     final dateColumn =
         await _diaryColumnService.getDateColumn(diaryList: diaryList);
-    _diaryCellService.createDateCells(
+    await _diaryCellService.createDateCells(
       diaryList: diaryList,
       diaryColumn: dateColumn,
     );
-    add(DiaryListEvent.getDiaryList(date: DateTime.now()));
+    add(
+      DiaryListEvent.getDiaryList(
+        date: DateTime.now(),
+        delay: Constants.createSampleDelay,
+      ),
+    );
   }
 
   Future<void> _onGetDiaryListEvent(
@@ -140,7 +158,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
   ) async {
     emit(const DiaryListState.initial());
     Future.delayed(
-      const Duration(milliseconds: 300),
+      Duration(milliseconds: event.delay),
       () async {
         final lists = await _diaryListService.getAll();
         final diaryList = await _diaryListService.getByDate(date: event.date);
@@ -210,6 +228,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         diaryCells: diaryCells,
         cellsKeys: cellsKeys,
         lists: event.lists,
+        isListThemeViewMode: false,
+        listTheme: null,
       ),
     );
   }
@@ -219,8 +239,16 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      loaded: (diaryList, diaryColumns, capitalCells, diaryCells, cellsKeys,
-          lists) async {
+      loaded: (
+        diaryList,
+        diaryColumns,
+        capitalCells,
+        diaryCells,
+        cellsKeys,
+        lists,
+        isListThemeViewMode,
+        listTheme,
+      ) async {
         List<DiaryCell> selectedCells = [event.diaryCell];
         emit(
           DiaryListState.cellsSelected(
@@ -234,6 +262,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             lists: lists,
             defaultTextSettings: event.diaryCell.textSettings,
             defaultSettings: event.diaryCell.settings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -248,6 +278,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         List<DiaryCell> selectedCells = [event.diaryCell];
         emit(
@@ -262,6 +294,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             lists: lists,
             defaultTextSettings: defaultTextSettings,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -279,6 +313,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         cellsKeys,
         lists,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         List<DiaryCell> selectedCells = [event.diaryCell];
         emit(
@@ -293,6 +329,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             lists: lists,
             defaultTextSettings: event.diaryCell.textSettings,
             defaultSettings: event.diaryCell.settings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -315,6 +353,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         emit(
           DiaryListState.cellsSelected(
@@ -328,6 +368,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             lists: lists,
             defaultTextSettings: defaultTextSettings,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -339,8 +381,16 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      loaded: (diaryList, diaryColumns, capitalCells, diaryCells, cellsKeys,
-          lists) async {
+      loaded: (
+        diaryList,
+        diaryColumns,
+        capitalCells,
+        diaryCells,
+        cellsKeys,
+        lists,
+        isListThemeViewMode,
+        listTheme,
+      ) async {
         emit(
           DiaryListState.capitalCellSelected(
             diaryList: diaryList,
@@ -356,6 +406,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             cellsKeys: cellsKeys,
             lists: lists,
             defaultSettings: event.capitalCell.settings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -370,6 +422,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         emit(
           DiaryListState.capitalCellSelected(
@@ -386,6 +440,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             cellsKeys: cellsKeys,
             lists: lists,
             defaultSettings: event.capitalCell.settings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -403,6 +459,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         cellsKeys,
         lists,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         emit(
           DiaryListState.capitalCellSelected(
@@ -419,6 +477,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             cellsKeys: cellsKeys,
             lists: lists,
             defaultSettings: event.capitalCell.settings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -430,21 +490,31 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
-      loaded: (diaryList, diaryColumns, capitalCells, diaryCells, cellsKeys,
-          lists) {
-        emit(
-          DiaryListState.listEditing(
-            diaryList: diaryList,
-            diaryColumns: diaryColumns,
-            capitalCells: capitalCells,
-            diaryCells: diaryCells,
-            cellsKeys: cellsKeys,
-            lists: lists,
-            selectedList: event.selectedList,
-            isColumnDeleting: false,
-            isColorThemeEditing: false,
-          ),
-        );
+      loaded: (
+        diaryList,
+        diaryColumns,
+        capitalCells,
+        diaryCells,
+        cellsKeys,
+        lists,
+        isListThemeViewMode,
+        listTheme,
+      ) {
+        if (!isListThemeViewMode) {
+          emit(
+            DiaryListState.listEditing(
+              diaryList: diaryList,
+              diaryColumns: diaryColumns,
+              capitalCells: capitalCells,
+              diaryCells: diaryCells,
+              cellsKeys: cellsKeys,
+              lists: lists,
+              selectedList: event.selectedList,
+              isColumnDeleting: false,
+              isColorThemeEditing: false,
+            ),
+          );
+        }
       },
     );
   }
@@ -464,7 +534,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         selectedList,
         isColumnDeleting,
         isColorThemeEditing,
-      ) {
+      ) async {
         if (event.newName != null && event.newName!.isNotEmpty) {
           final changedDiaryList = diaryList.copyWith(name: event.newName);
           List<DiaryList> updatedLists = List<DiaryList>.empty(growable: true);
@@ -483,6 +553,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
               diaryCells: diaryCells,
               cellsKeys: cellsKeys,
               lists: updatedLists,
+              isListThemeViewMode: false,
+              listTheme: null,
             ),
           );
         } else {
@@ -494,6 +566,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
               diaryCells: diaryCells,
               cellsKeys: cellsKeys,
               lists: lists,
+              isListThemeViewMode: false,
+              listTheme: null,
             ),
           );
         }
@@ -509,6 +583,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         emit(
           DiaryListState.loaded(
@@ -518,6 +594,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             diaryCells: diaryCells,
             cellsKeys: cellsKeys,
             lists: lists,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -536,6 +614,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         emit(
           DiaryListState.loaded(
@@ -545,6 +625,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             diaryCells: diaryCells,
             cellsKeys: cellsKeys,
             lists: lists,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -562,6 +644,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         cellsKeys,
         lists,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         emit(
           DiaryListState.loaded(
@@ -571,6 +655,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             diaryCells: diaryCells,
             cellsKeys: cellsKeys,
             lists: lists,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -597,6 +683,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         emit(
           DiaryListState.cellsSelected(
@@ -610,6 +698,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             lists: lists,
             defaultTextSettings: defaultTextSettings,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -624,7 +714,9 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       initial: () {
         if (event.newName.isNotEmpty) {
           _diaryListService.update(
-              diaryList: event.diaryList, newName: event.newName);
+            diaryList: event.diaryList,
+            newName: event.newName,
+          );
         }
       },
     );
@@ -646,6 +738,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         final cellBox =
             event.cellKey.currentContext!.findRenderObject() as RenderBox;
@@ -788,6 +882,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) async {
         if (event.textFieldText != firstSelectedCell.content.toString()) {
           final index = diaryCells.indexOf(firstSelectedCell);
@@ -812,14 +908,18 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
               lists: lists,
               defaultTextSettings: defaultTextSettings,
               defaultSettings: defaultSettings,
+              isListThemeViewMode: isListThemeViewMode,
+              listTheme: listTheme,
             ),
           );
-          add(
-            UpdateDiaryCellInFirebaseEvent(
-              diaryCell: firstSelectedCell,
-              textFieldText: event.textFieldText,
-            ),
-          );
+          if (!isListThemeViewMode) {
+            add(
+              UpdateDiaryCellInFirebaseEvent(
+                diaryCell: firstSelectedCell,
+                textFieldText: event.textFieldText,
+              ),
+            );
+          }
         }
       },
     );
@@ -844,6 +944,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         cellsKeys,
         lists,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         if (event.textFieldText != selectedCapitalCell.name) {
           final index = capitalCells.indexOf(selectedCapitalCell);
@@ -866,17 +968,21 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
               cellsKeys: cellsKeys,
               lists: lists,
               defaultSettings: defaultSettings,
+              isListThemeViewMode: isListThemeViewMode,
+              listTheme: listTheme,
             ),
           );
-          final diaryColumn = diaryColumns
-              .where((element) => element.id == selectedCapitalCell.columnId)
-              .first;
-          _diaryColumnService.update(
-            diaryList: diaryList,
-            diaryColumn: diaryColumn,
-            name: changedCell.name,
-            count: diaryColumn.columnsCount,
-          );
+          if (!isListThemeViewMode) {
+            final diaryColumn = diaryColumns
+                .where((element) => element.id == selectedCapitalCell.columnId)
+                .first;
+            _diaryColumnService.update(
+              diaryList: diaryList,
+              diaryColumn: diaryColumn,
+              name: changedCell.name,
+              count: diaryColumn.columnsCount,
+            );
+          }
         }
       },
     );
@@ -898,6 +1004,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) async {
         //Update cell in Firebase after 10 sec delay if there is no more changes
         Future.delayed(
@@ -937,6 +1045,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) async {
         final isTextEditing = event.isTextEditing;
         emit(
@@ -955,6 +1065,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             lists: lists,
             defaultTextSettings: defaultTextSettings,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -973,6 +1085,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         final isTextEditing = event.isTextEditing;
         emit(
@@ -991,6 +1105,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             lists: lists,
             defaultTextSettings: defaultTextSettings,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -1008,6 +1124,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         cellsKeys,
         lists,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         emit(
           DiaryListState.capitalCellSelected(
@@ -1024,6 +1142,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             cellsKeys: cellsKeys,
             lists: lists,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -1050,6 +1170,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         emit(
           DiaryListState.cellsEditing(
@@ -1067,6 +1189,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             lists: lists,
             defaultTextSettings: defaultTextSettings,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -1084,6 +1208,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         cellsKeys,
         lists,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         emit(
           DiaryListState.capitalCellSelected(
@@ -1100,6 +1226,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             cellsKeys: cellsKeys,
             lists: lists,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -1126,6 +1254,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         emit(
           DiaryListState.cellsEditing(
@@ -1143,6 +1273,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             lists: lists,
             defaultTextSettings: defaultTextSettings,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -1160,6 +1292,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         cellsKeys,
         lists,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         emit(
           DiaryListState.capitalCellSelected(
@@ -1176,6 +1310,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             cellsKeys: cellsKeys,
             lists: lists,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -1202,6 +1338,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         emit(
           DiaryListState.cellsEditing(
@@ -1219,6 +1357,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             lists: lists,
             defaultTextSettings: defaultTextSettings,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -1236,6 +1376,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         cellsKeys,
         lists,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         emit(
           DiaryListState.capitalCellSelected(
@@ -1252,6 +1394,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             cellsKeys: cellsKeys,
             lists: lists,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -1343,6 +1487,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         emit(
           DiaryListState.cellsEditing(
@@ -1363,6 +1509,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             lists: lists,
             defaultTextSettings: defaultTextSettings,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -1380,6 +1528,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         cellsKeys,
         lists,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         emit(
           DiaryListState.capitalCellSelected(
@@ -1399,6 +1549,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             cellsKeys: cellsKeys,
             lists: lists,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -1450,6 +1602,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         var newDiaryCells = List<DiaryCell>.empty(growable: true);
         newDiaryCells.addAll(diaryCells);
@@ -1463,6 +1617,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           newFontSize > Constants.maxFontSize
               ? newFontSize = Constants.maxFontSize
               : newFontSize;
+
           final newTextSettings = DiaryCellTextSettings(
             alignment: _diaryCellService.convertAlignments(
               horizontal: event.horizontalAlignment ??
@@ -1501,6 +1656,21 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             capitalColumnPosition: cell.capitalColumnPosition,
           );
           newSelectedCells.add(newDiaryCells[index]);
+          if (!isListThemeViewMode) {
+            Future.delayed(
+              const Duration(seconds: 10),
+              () {
+                add(
+                  DiaryListEvent.updateDiaryCellSettingsInFirebase(
+                    diaryCell: newDiaryCells[index],
+                    index: index,
+                    newTextSettings: newTextSettings,
+                    newSettings: newSettings,
+                  ),
+                );
+              },
+            );
+          }
         }
         var newFirstSelectedCell =
             newDiaryCells[diaryCells.indexOf(firstSelectedCell)];
@@ -1521,23 +1691,10 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             lists: lists,
             defaultTextSettings: defaultTextSettings,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
-
-        //Uncomment to save changes to base
-
-        // add(
-        //   DiaryListEvent.updateDiaryCellsSettingsInFirebase(
-        //     diaryCells: newSelectedCells,
-        //     fontWeight: event.fontWeight,
-        //     fontStyle: event.fontStyle,
-        //     textDecoration: event.textDecoration,
-        //     fontSize: event.fontSize,
-        //     color: event.color,
-        //     horizontalAlignment: event.horizontalAlignment,
-        //     verticalAlignment: event.verticalAlignment,
-        //   ),
-        // );
       },
     );
   }
@@ -1562,6 +1719,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         int columnsCount = 0;
         for (var column in diaryColumns) {
@@ -1580,6 +1739,20 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         for (var cell in selectedCells) {
           final index = diaryCells.indexOf(cell);
           newSelectedCells.add(newDiaryCells[index]);
+          if (!isListThemeViewMode) {
+            Future.delayed(
+              const Duration(seconds: 10),
+              () {
+                add(
+                  DiaryListEvent.updateDiaryCellSettingsInFirebase(
+                    diaryCell: newDiaryCells[index],
+                    index: index,
+                    newSettings: newDiaryCells[index].settings,
+                  ),
+                );
+              },
+            );
+          }
         }
         var newFirstSelectedCell =
             newDiaryCells[diaryCells.indexOf(firstSelectedCell)];
@@ -1599,21 +1772,16 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             lists: lists,
             defaultTextSettings: defaultTextSettings,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
-        //Uncomment to save changes to base
-
-        // add(
-        //   DiaryListEvent.updateDiaryCellsSettingsInFirebase(
-        //     diaryCells: newSelectedCells,
-        //   ),
-        // );
       },
     );
   }
 
-  Future<void> _onUpdateDiaryCellsSettingsInFirebaseEvent(
-    UpdateDiaryCellsSettingsInFirebaseEvent event,
+  Future<void> _onUpdateDiaryCellSettingsInFirebaseEvent(
+    UpdateDiaryCellSettingsInFirebaseEvent event,
     Emitter<DiaryListState> emit,
   ) async {
     state.whenOrNull(
@@ -1632,64 +1800,31 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         lists,
         defaultTextSettings,
         defaultSettings,
-      ) {
-        //Update cell in Firebase after 10 sec delay if there is no more changes
-        //Uncomment to save changes to base
-
-        // for (var cell in event.diaryCells) {
-        //   Future.delayed(
-        //     const Duration(seconds: 10),
-        //     () async {
-        //       final newFontWeight =
-        //           event.fontWeight ?? cell.textSettings.fontWeight;
-        //       final newFontStyle =
-        //           event.fontStyle ?? cell.textSettings.fontStyle;
-        //       final newTextDecoration =
-        //           event.textDecoration ?? cell.textSettings.textDecoration;
-        //       final newSize = event.fontSize ?? cell.textSettings.fontSize;
-        //       final newColor = event.color ?? cell.textSettings.color;
-
-        //       final newTextSettings = DiaryCellTextSettings(
-        //         alignment: _diaryCellService.convertAlignments(
-        //           horizontal: event.horizontalAlignment ??
-        //               cell.textSettings.alignment.toHorizontalAlignmentsEnum(),
-        //           vertical: event.verticalAlignment ??
-        //               cell.textSettings.alignment.toVerticalAlignmentsEnum(),
-        //         ),
-        //         fontWeight: newFontWeight,
-        //         textDecoration: newTextDecoration,
-        //         fontStyle: newFontStyle,
-        //         fontSize: newSize,
-        //         color: newColor,
-        //       );
-
-        //       final newSettings = DiaryCellSettings(
-        //         topBorderWidth: cell.settings.topBorderWidth,
-        //         topBorderColor: cell.settings.topBorderColor,
-        //         leftBorderWidth: cell.settings.leftBorderWidth,
-        //         leftBorderColor: cell.settings.leftBorderColor,
-        //         rightBorderWidth: cell.settings.rightBorderWidth,
-        //         rightBorderColor: cell.settings.rightBorderColor,
-        //         bottomBorderWidth: cell.settings.bottomBorderWidth,
-        //         bottomBorderColor: cell.settings.bottomBorderColor,
-        //         height: cell.settings.height,
-        //         backgroundColor: cell.settings.backgroundColor,
-        //       );
-
-        //       await _diaryCellService.updateTextSettings(
-        //         diaryList: diaryList,
-        //         diaryCell: cell,
-        //         settings: newTextSettings,
-        //       );
-
-        //       await _diaryCellService.updateSettings(
-        //         diaryList: diaryList,
-        //         diaryCell: cell,
-        //         settings: newSettings,
-        //       );
-        //     },
-        //   );
-        // }
+        isListThemeViewMode,
+        listTheme,
+      ) async {
+        final cellInStateSettings = diaryCells[event.index].settings;
+        final cellInStateTextSettings = diaryCells[event.index].textSettings;
+        final newSettings = event.newSettings ?? event.diaryCell.settings;
+        final newTextSettings =
+            event.newTextSettings ?? event.diaryCell.textSettings;
+        if (cellInStateSettings == newSettings &&
+            cellInStateTextSettings == newTextSettings) {
+          if (event.newTextSettings != null) {
+            await _diaryCellService.updateTextSettings(
+              diaryList: diaryList,
+              diaryCell: event.diaryCell,
+              settings: event.newTextSettings!,
+            );
+          }
+          if (event.newSettings != null) {
+            await _diaryCellService.updateSettings(
+              diaryList: diaryList,
+              diaryCell: event.diaryCell,
+              settings: event.newSettings!,
+            );
+          }
+        }
       },
     );
   }
@@ -1713,21 +1848,20 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         cellsKeys,
         lists,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
-        //Update capitalCell in Firebase after 10 sec delay if there is no more changes
-        //Uncomment to save changes in base
-
-        // Future.delayed(
-        //   const Duration(seconds: 10),
-        //   () async {
-        //     await _diaryColumnService.updateSettings(
-        //       diaryList: diaryList,
-        //       diaryColumn: diaryColumns.firstWhere(
-        //           (element) => element.id == selectedCapitalCell.columnId),
-        //       settings: event.newSettings,
-        //     );
-        //   },
-        // );
+        Future.delayed(
+          const Duration(seconds: 5),
+          () async {
+            await _diaryColumnService.updateSettings(
+              diaryList: diaryList,
+              diaryColumn: diaryColumns.firstWhere(
+                  (element) => element.id == selectedCapitalCell.columnId),
+              settings: event.newSettings,
+            );
+          },
+        );
       },
     );
   }
@@ -1747,6 +1881,12 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       diaryList: event.diaryList,
       settings: newSettings,
     );
+    if (event.diaryList.listDate.month == DateTime.now().month &&
+        event.diaryList.listDate.year == DateTime.now().year) {
+      _diaryListService.updateDefaultSettings(
+        settings: newSettings,
+      );
+    }
   }
 
   Future<void> _onChangeCapitalCellSettingsEvent(
@@ -1768,6 +1908,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         cellsKeys,
         lists,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         var newCapitalCells = List<CapitalCell>.empty(growable: true);
         newCapitalCells.addAll(capitalCells);
@@ -1837,15 +1979,18 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             cellsKeys: cellsKeys,
             lists: lists,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
-        //Uncomment to save changes to base
 
-        // add(
-        //   DiaryListEvent.updateCapitalCellSettingsInFirebase(
-        //     newSettings: newSettings,
-        //   ),
-        // );
+        if (!isListThemeViewMode) {
+          add(
+            DiaryListEvent.updateCapitalCellSettingsInFirebase(
+              newSettings: newSettings,
+            ),
+          );
+        }
       },
     );
   }
@@ -1869,6 +2014,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         cellsKeys,
         lists,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         final diaryColumn = diaryColumns.firstWhere(
             (element) => element.id == selectedCapitalCell.columnId);
@@ -1886,6 +2033,7 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           id: diaryColumn.id,
           columnsCount: diaryColumn.columnsCount,
           name: diaryColumn.name,
+          creationTime: diaryColumn.creationTime,
           settings: newSettings,
         );
         var newDiaryColumns = List<DiaryColumn>.empty(growable: true);
@@ -1915,6 +2063,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
             cellsKeys: cellsKeys,
             lists: lists,
             defaultSettings: defaultSettings,
+            isListThemeViewMode: isListThemeViewMode,
+            listTheme: listTheme,
           ),
         );
       },
@@ -1940,6 +2090,8 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
         cellsKeys,
         lists,
         defaultSettings,
+        isListThemeViewMode,
+        listTheme,
       ) {
         final diaryColumn = diaryColumns.firstWhere(
             (element) => element.id == selectedCapitalCell.columnId);
@@ -1963,13 +2115,14 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
           capitalCellFontSize: diaryColumn.settings.capitalCellFontSize,
           capitalCellTextColor: diaryColumn.settings.capitalCellTextColor,
         );
-        //Uncomment to save changes to base
 
-        // add(
-        //   DiaryListEvent.updateCapitalCellSettingsInFirebase(
-        //     newSettings: newSettings,
-        //   ),
-        // );
+        if (!isListThemeViewMode) {
+          add(
+            DiaryListEvent.updateCapitalCellSettingsInFirebase(
+              newSettings: newSettings,
+            ),
+          );
+        }
       },
     );
   }
@@ -1999,6 +2152,27 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
     }
   }
 
+  Future<void> _onShareThemeEvent(
+    ShareThemeEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    if (event.themeName.isNotEmpty) {
+      final listTheme = _diaryListService.createListTheme(
+        diaryList: event.diaryList,
+        diaryColumns: event.diaryColumns,
+        diaryCells: event.diaryCells,
+        capitalCells: event.capitalCells,
+        cellSettings: _diaryCellService.createDefaultSettings(),
+        cellTextSettings: _diaryCellService.createDefaultTextSettings(),
+        name: event.themeName,
+        description: event.description,
+      );
+      _diaryListService.saveListThemeToFirestore(
+        listTheme: listTheme,
+      );
+    }
+  }
+
   Future<void> _onDeleteDiaryColumnEvent(
     DeleteDiaryColumnEvent event,
     Emitter<DiaryListState> emit,
@@ -2008,6 +2182,70 @@ class DiaryListBloc extends Bloc<DiaryListEvent, DiaryListState> {
       diaryColumnId: event.columnId,
     ).get();
     await _diaryColumnService.delete(doc: doc);
+  }
+
+  Future<void> _onDeleteColumnsEvent(
+    DeleteColumnsEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    final diaryList = await _diaryListService.getByDate(
+      date: DateTime.now(),
+    );
+    final diaryColumns = await _diaryColumnService.getAll(diaryList: diaryList);
+    for (var diaryColumn in diaryColumns) {
+      if (diaryColumn.id != Constants.diaryColumnDateField) {
+        final doc = await getDiaryColumnDoc(
+          diaryList: diaryList,
+          diaryColumnId: diaryColumn.id,
+        ).get();
+        await _diaryColumnService.delete(doc: doc);
+      }
+    }
+  }
+
+  Future<void> _onLoadThemesEvent(
+    LoadThemesEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    final listThemes = await _diaryListService.getListThemesFromFirestore();
+    emit(
+      DiaryListState.themesLoaded(
+        listThemes: listThemes,
+      ),
+    );
+  }
+
+  Future<void> _onLoadFromThemeEvent(
+    LoadFromThemeEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    List<GlobalObjectKey> cellsKeys =
+        List<GlobalObjectKey>.empty(growable: true);
+    for (var cell in event.listTheme.diaryCells) {
+      cellsKeys.add(GlobalObjectKey(cell));
+    }
+    emit(
+      DiaryListState.loaded(
+        diaryList: event.listTheme.diaryList,
+        diaryColumns: event.listTheme.diaryColumns,
+        capitalCells: event.listTheme.capitalCells,
+        diaryCells: event.listTheme.diaryCells,
+        cellsKeys: cellsKeys,
+        lists: [],
+        isListThemeViewMode: true,
+        listTheme: event.listTheme,
+      ),
+    );
+  }
+
+  Future<void> _onTakeThemeEvent(
+    TakeThemeEvent event,
+    Emitter<DiaryListState> emit,
+  ) async {
+    add(const DiaryListEvent.deleteColumns());
+    await _diaryListService.createFromTheme(listTheme: event.listTheme);
+    await _diaryColumnService.createFromTheme(listTheme: event.listTheme);
+    await _diaryCellService.createFromTheme(listTheme: event.listTheme);
   }
 
   List<DiaryCell> _fillBorders({

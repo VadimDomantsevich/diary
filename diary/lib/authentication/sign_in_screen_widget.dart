@@ -22,33 +22,35 @@ class SignInScreenWidget extends StatelessWidget {
             );
           }),
         ),
-        AuthStateChangeAction(((context, state) {
-          if (state is SignedIn || state is UserCreated) {
-            var user = (state is SignedIn)
-                ? state.user
-                : (state as UserCreated).credential.user;
-            if (user == null) {
-              return;
-            }
-            if (state is UserCreated) {
-              addNewUserToFirestore();
-              
-              user.updateDisplayName(user.email!.split('@')[0]);
-            }
-            if (!user.emailVerified) {
-              user.sendEmailVerification();
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                      AppLocalizations.of(context).verifyEmailSnackBarText),
-                ),
+        AuthStateChangeAction(
+          ((context, state) {
+            if (state is SignedIn || state is UserCreated) {
+              var user = (state is SignedIn)
+                  ? state.user
+                  : (state as UserCreated).credential.user;
+              if (user == null) {
+                return;
+              }
+              if (state is UserCreated) {
+                addNewUserToFirestore();
+
+                user.updateDisplayName(user.email!.split('@')[0]);
+              }
+              if (!user.emailVerified) {
+                user.sendEmailVerification();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                        AppLocalizations.of(context).verifyEmailSnackBarText),
+                  ),
+                );
+              }
+              context.router.push(
+                const BlocHomeWidgetRoute(),
               );
             }
-            context.router.push(
-              const HomeScreenWidgetRoute(),
-            );
-          }
-        })),
+          }),
+        ),
       ],
     );
   }

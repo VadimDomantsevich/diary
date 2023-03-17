@@ -162,5 +162,33 @@
     "pickColor": "Pick a color",
     "@pickColor": {
         "description": "Pick a color title text on the pick color alert dialog"
+    },
+    "shareTheme": "Share theme",
+    "@shareTheme": {
+        "description": "Shate theme text on the edit list panel"
+    },
+    "themeName": "Theme name",
+    "@themeName": {
+        "description": "Theme name text on the share theme alert dialog"
+    },
+    "description": "Description",
+    "@description": {
+        "description": "Description text on the share theme alert dialog"
+    },
+    "setThemeToYourselfAsDefault": "Set theme to yourself as default",
+    "@setThemeToYourselfAsDefault": {
+        "description": "Set theme to yourself as default title text on the take theme alert dialog"
+    },
+    "oldDataWillBeLost": "Old data will be lost",
+    "@oldDataWillBeLost": {
+        "description": "Old data will be lost content text on the take theme alert dialog"
+    },
+    "emptyThemesNameText": "Looks like no one has shared a theme yet",
+    "@emptyThemesNameText": {
+        "description": "Empty theme text on the themesLoadedScreen if there is no themes"
+    },
+    "emptyThemesDescriptionText": "Why don't you share yours then?",
+    "@emptyThemesDescriptionText": {
+        "description": "Empty theme text on the themesLoadedScreen if there is no themes"
     }
 }

@@ -31,6 +31,8 @@ class BlocDividerIconWidget extends StatelessWidget {
             cellsKeys,
             lists,
             defaultSettings,
+            isListThemeViewMode,
+            listTheme,
           ) {
             return BlocBuilder<GridDisplayBloc, GridDisplayState>(
               builder: (context, state) {

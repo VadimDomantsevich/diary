@@ -10,6 +10,7 @@ import 'package:diary/model/diary_cell_settings.dart';
 import 'package:diary/model/diary_cell_text_settings.dart';
 import 'package:diary/model/diary_column.dart';
 import 'package:diary/model/diary_list.dart';
+import 'package:diary/model/list_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -62,6 +63,56 @@ class DiaryCellService {
             );
       }
     }
+  }
+
+  Future<List<DiaryCell>> getColumnCells({
+    required DiaryList diaryList,
+    required DiaryColumn diaryColumn,
+    required List<DiaryColumn> diaryColumns,
+  }) async {
+    final daysInMonth = DateUtils.getDaysInMonth(
+        diaryList.listDate.year, diaryList.listDate.month);
+    final diaryColumnDoc = getDiaryColumnDoc(
+      diaryList: diaryList,
+      diaryColumnId: diaryColumn.id,
+    );
+    final cellsCollection = diaryColumnDoc.collection(
+      Collections.diaryCellsCollection,
+    );
+    await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).set(
+          createDefaultSettings().toFirestore(),
+        );
+    await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).update(
+          createDefaultTextSettings().toFirestore(),
+        );
+
+    final defaultSettings = await getDefaultCellSettings(
+      diaryList: diaryList,
+      diaryColumn: diaryColumn,
+    );
+    final defaultTextSettings = await getDefaultCellTextSettings(
+      diaryList: diaryList,
+      diaryColumn: diaryColumn,
+    );
+    List<DiaryCell> diaryCells = List<DiaryCell>.empty(growable: true);
+    for (var i = 1; i < diaryColumn.columnsCount + 1; i++) {
+      for (var j = 1; j <= daysInMonth; j++) {
+        final newCell = DiaryCell(
+          columnName: diaryColumnDoc.id,
+          columnPosition: i,
+          day: j,
+          settings: defaultSettings,
+          textSettings: defaultTextSettings,
+          content: '',
+          capitalColumnPosition: diaryColumns.indexOf(
+            diaryColumns
+                .firstWhere((element) => element.id == diaryColumnDoc.id),
+          ),
+        );
+        diaryCells.add(newCell);
+      }
+    }
+    return diaryCells;
   }
 
   DiaryCell read({
@@ -358,6 +409,54 @@ class DiaryCellService {
       fontSize: Constants.defaultTextFontSize,
       color: BlackColorConstants.black1,
     );
+  }
+
+  Future<void> createFromTheme({
+    required ListTheme listTheme,
+  }) async {
+    final daysInMonth = DateUtils.getDaysInMonth(
+        listTheme.diaryList.listDate.year, listTheme.diaryList.listDate.month);
+    for (var diaryColumn in listTheme.diaryColumns) {
+      if (diaryColumn.id == Constants.diaryColumnDateField) {
+        createDateCells(
+          diaryList: listTheme.diaryList,
+          diaryColumn: diaryColumn,
+        );
+      } else {
+        final diaryColumnDoc = getDiaryColumnDoc(
+          diaryList: listTheme.diaryList,
+          diaryColumnId: diaryColumn.id,
+        );
+        final cellsCollection = diaryColumnDoc.collection(
+          Collections.diaryCellsCollection,
+        );
+        await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).set(
+              listTheme.cellSettings.toFirestore(),
+            );
+        await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).update(
+              listTheme.cellTextSettings.toFirestore(),
+            );
+        for (var i = 1; i < diaryColumn.columnsCount + 1; i++) {
+          for (var j = 1; j <= daysInMonth; j++) {
+            final newCell = DiaryCell(
+              columnName: diaryColumnDoc.id,
+              columnPosition: i,
+              day: j,
+              settings: listTheme.cellSettings,
+              textSettings: listTheme.cellTextSettings,
+              content: '',
+              capitalColumnPosition: listTheme.diaryColumns.indexOf(
+                listTheme.diaryColumns
+                    .firstWhere((element) => element.id == diaryColumnDoc.id),
+              ),
+            );
+            await cellsCollection.doc(getDiaryCellName(newCell)).set(
+                  newCell.toFirestore(),
+                );
+          }
+        }
+      }
+    }
   }
 
   AlignmentsEnum convertAlignments({

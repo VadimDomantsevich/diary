@@ -1,3 +1,4 @@
+import 'package:diary/core/constants/constants.dart';
 import 'package:diary/core/constants/enums.dart';
 import 'package:diary/core/extentions.dart';
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
@@ -6,6 +7,7 @@ import 'package:diary/home/edit_panel/edit_list/bloc_add_column_dialog_widget.da
 import 'package:diary/home/edit_panel/edit_list/bloc_delete_column_dialog_widget.dart';
 import 'package:diary/home/edit_panel/edit_list/bloc_dialog_widget.dart';
 import 'package:diary/home/edit_panel/edit_list/bloc_pick_color_dialog_widget.dart';
+import 'package:diary/home/edit_panel/edit_list/bloc_share_theme_dialog_widget.dart';
 import 'package:diary/home/edit_panel/edit_list_panel_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,6 +60,8 @@ class BlocEditListPanelWidget extends StatelessWidget {
                                 AppLocalizations.of(context).addColumn,
                             contentDeleteColumn:
                                 AppLocalizations.of(context).deleteColumn,
+                            contentShareTheme:
+                                AppLocalizations.of(context).shareTheme,
                             onTapRename: () {
                               showDialog(
                                 context: context,
@@ -94,6 +98,7 @@ class BlocEditListPanelWidget extends StatelessWidget {
                                 () => context.read<DiaryListBloc>().add(
                                       DiaryListEvent.getDiaryList(
                                         date: diaryList.listDate,
+                                        delay: Constants.addColumnDelay,
                                       ),
                                     ),
                               );
@@ -102,6 +107,19 @@ class BlocEditListPanelWidget extends StatelessWidget {
                               context
                                   .read<DiaryListBloc>()
                                   .add(const StartColumnDeletingEvent());
+                            },
+                            onTapShareTheme: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return BlocShareThemeDialogWidget(
+                                    diaryList: diaryList,
+                                    diaryColumns: diaryColumns,
+                                    diaryCells: diaryCells,
+                                    capitalCells: capitalCells,
+                                  );
+                                },
+                              );
                             },
                           )
                         : !isColumnDeleting && !isColorThemeEditing
@@ -117,6 +135,7 @@ class BlocEditListPanelWidget extends StatelessWidget {
                                     : context.read<DiaryListBloc>().add(
                                           DiaryListEvent.getDiaryList(
                                             date: list.listDate,
+                                            delay: Constants.getListDelay,
                                           ),
                                         ),
                               )
@@ -139,6 +158,8 @@ class BlocEditListPanelWidget extends StatelessWidget {
                                         () => context.read<DiaryListBloc>().add(
                                               DiaryListEvent.getDiaryList(
                                                 date: diaryList.listDate,
+                                                delay:
+                                                    Constants.deleteColumnDelay,
                                               ),
                                             ),
                                       );
@@ -165,13 +186,16 @@ class BlocEditListPanelWidget extends StatelessWidget {
                                           context.read<DiaryListBloc>().add(
                                                 DiaryListEvent.getDiaryList(
                                                   date: diaryList.listDate,
+                                                  delay: Constants
+                                                      .updateColorDelay,
                                                 ),
                                               );
                                         },
                                       );
                                     },
                                     contentBorderColor:
-                                        AppLocalizations.of(context).borderColor,
+                                        AppLocalizations.of(context)
+                                            .borderColor,
                                     onTapBorderColor: () {
                                       showDialog(
                                         context: context,
@@ -190,13 +214,16 @@ class BlocEditListPanelWidget extends StatelessWidget {
                                           context.read<DiaryListBloc>().add(
                                                 DiaryListEvent.getDiaryList(
                                                   date: diaryList.listDate,
+                                                  delay: Constants
+                                                      .updateColorDelay,
                                                 ),
                                               );
                                         },
                                       );
                                     },
                                     contentBackgroundColor:
-                                        AppLocalizations.of(context).backgroundColor,
+                                        AppLocalizations.of(context)
+                                            .backgroundColor,
                                     onTapBackgroundColor: () {
                                       showDialog(
                                         context: context,
@@ -215,6 +242,8 @@ class BlocEditListPanelWidget extends StatelessWidget {
                                           context.read<DiaryListBloc>().add(
                                                 DiaryListEvent.getDiaryList(
                                                   date: diaryList.listDate,
+                                                  delay: Constants
+                                                      .updateColorDelay,
                                                 ),
                                               );
                                         },

@@ -9,7 +9,7 @@ class EditPanelConstants {
 
   static const editPanelSelectedTextSize = 24.0;
 
-  static const editPanelCommonTextSize = 20.0;
+  static const editPanelCommonTextSize = 18.0;
 
   static const editPanelNameTextSize = 24.0;
 

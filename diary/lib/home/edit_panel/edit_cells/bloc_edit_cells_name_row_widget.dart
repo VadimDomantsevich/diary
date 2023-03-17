@@ -30,6 +30,8 @@ class BlocEditCellsNameRowWidget extends StatelessWidget {
             lists,
             defaultTextSettings,
             defaultSettings,
+            isListThemeViewMode,
+            listTheme,
           ) {
             return EditCellsNameRowWidget(
               isTextEditing: isTextEditing,
@@ -87,6 +89,8 @@ class BlocEditCellsNameRowWidget extends StatelessWidget {
             cellsKeys,
             lists,
             defaultSettings,
+            isListThemeViewMode,
+            listTheme,
           ) {
             return EditCellsNameRowWidget(
               isTextEditing: isTextEditing,

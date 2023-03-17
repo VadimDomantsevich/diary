@@ -61,4 +61,17 @@ class DiaryListSettings {
       );
     }
   }
+
+  factory DiaryListSettings.fromFirestoreToTheme({
+    required DocumentSnapshot doc,
+  }) {
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+    return DiaryListSettings(
+      themeColor: data[DiaryListSettingsFields.themeColor]! as String,
+      themeBorderColor:
+          data[DiaryListSettingsFields.themeBorderColor]! as String,
+      themePanelBackgroundColor:
+          data[DiaryListSettingsFields.themePanelBackgroundColor]! as String,
+    );
+  }
 }

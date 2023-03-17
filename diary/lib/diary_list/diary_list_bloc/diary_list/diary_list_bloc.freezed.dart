@@ -33,7 +33,9 @@ mixin _$DiaryListState {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         loaded,
     required TResult Function(
             DiaryList diaryList,
@@ -45,7 +47,9 @@ mixin _$DiaryListState {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -60,7 +64,9 @@ mixin _$DiaryListState {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         capitalCellSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -87,8 +93,11 @@ mixin _$DiaryListState {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsEditing,
+    required TResult Function(List<ListTheme> listThemes) themesLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -104,7 +113,9 @@ mixin _$DiaryListState {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult? Function(
             DiaryList diaryList,
@@ -116,7 +127,9 @@ mixin _$DiaryListState {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -131,7 +144,9 @@ mixin _$DiaryListState {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -158,8 +173,11 @@ mixin _$DiaryListState {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult? Function(List<ListTheme> listThemes)? themesLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -175,7 +193,9 @@ mixin _$DiaryListState {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult Function(
             DiaryList diaryList,
@@ -187,7 +207,9 @@ mixin _$DiaryListState {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult Function(
             DiaryList diaryList,
@@ -202,7 +224,9 @@ mixin _$DiaryListState {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult Function(
             DiaryList diaryList,
@@ -229,8 +253,11 @@ mixin _$DiaryListState {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult Function(List<ListTheme> listThemes)? themesLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -244,6 +271,7 @@ mixin _$DiaryListState {
     required TResult Function(_CapitalCellSelected value) capitalCellSelected,
     required TResult Function(_ListEditing value) listEditing,
     required TResult Function(_CellsEditing value) cellsEditing,
+    required TResult Function(_ThemesLoaded value) themesLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -256,6 +284,7 @@ mixin _$DiaryListState {
     TResult? Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult? Function(_ListEditing value)? listEditing,
     TResult? Function(_CellsEditing value)? cellsEditing,
+    TResult? Function(_ThemesLoaded value)? themesLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -268,6 +297,7 @@ mixin _$DiaryListState {
     TResult Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult Function(_ListEditing value)? listEditing,
     TResult Function(_CellsEditing value)? cellsEditing,
+    TResult Function(_ThemesLoaded value)? themesLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -343,7 +373,9 @@ class _$_Initial implements _Initial {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         loaded,
     required TResult Function(
             DiaryList diaryList,
@@ -355,7 +387,9 @@ class _$_Initial implements _Initial {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -370,7 +404,9 @@ class _$_Initial implements _Initial {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         capitalCellSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -397,8 +433,11 @@ class _$_Initial implements _Initial {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsEditing,
+    required TResult Function(List<ListTheme> listThemes) themesLoaded,
   }) {
     return initial();
   }
@@ -417,7 +456,9 @@ class _$_Initial implements _Initial {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult? Function(
             DiaryList diaryList,
@@ -429,7 +470,9 @@ class _$_Initial implements _Initial {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -444,7 +487,9 @@ class _$_Initial implements _Initial {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -471,8 +516,11 @@ class _$_Initial implements _Initial {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult? Function(List<ListTheme> listThemes)? themesLoaded,
   }) {
     return initial?.call();
   }
@@ -491,7 +539,9 @@ class _$_Initial implements _Initial {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult Function(
             DiaryList diaryList,
@@ -503,7 +553,9 @@ class _$_Initial implements _Initial {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult Function(
             DiaryList diaryList,
@@ -518,7 +570,9 @@ class _$_Initial implements _Initial {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult Function(
             DiaryList diaryList,
@@ -545,8 +599,11 @@ class _$_Initial implements _Initial {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult Function(List<ListTheme> listThemes)? themesLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -566,6 +623,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_CapitalCellSelected value) capitalCellSelected,
     required TResult Function(_ListEditing value) listEditing,
     required TResult Function(_CellsEditing value) cellsEditing,
+    required TResult Function(_ThemesLoaded value) themesLoaded,
   }) {
     return initial(this);
   }
@@ -581,6 +639,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult? Function(_ListEditing value)? listEditing,
     TResult? Function(_CellsEditing value)? cellsEditing,
+    TResult? Function(_ThemesLoaded value)? themesLoaded,
   }) {
     return initial?.call(this);
   }
@@ -596,6 +655,7 @@ class _$_Initial implements _Initial {
     TResult Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult Function(_ListEditing value)? listEditing,
     TResult Function(_CellsEditing value)? cellsEditing,
+    TResult Function(_ThemesLoaded value)? themesLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -705,7 +765,9 @@ class _$_ListLoaded implements _ListLoaded {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         loaded,
     required TResult Function(
             DiaryList diaryList,
@@ -717,7 +779,9 @@ class _$_ListLoaded implements _ListLoaded {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -732,7 +796,9 @@ class _$_ListLoaded implements _ListLoaded {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         capitalCellSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -759,8 +825,11 @@ class _$_ListLoaded implements _ListLoaded {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsEditing,
+    required TResult Function(List<ListTheme> listThemes) themesLoaded,
   }) {
     return listLoaded(diaryList, lists);
   }
@@ -779,7 +848,9 @@ class _$_ListLoaded implements _ListLoaded {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult? Function(
             DiaryList diaryList,
@@ -791,7 +862,9 @@ class _$_ListLoaded implements _ListLoaded {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -806,7 +879,9 @@ class _$_ListLoaded implements _ListLoaded {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -833,8 +908,11 @@ class _$_ListLoaded implements _ListLoaded {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult? Function(List<ListTheme> listThemes)? themesLoaded,
   }) {
     return listLoaded?.call(diaryList, lists);
   }
@@ -853,7 +931,9 @@ class _$_ListLoaded implements _ListLoaded {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult Function(
             DiaryList diaryList,
@@ -865,7 +945,9 @@ class _$_ListLoaded implements _ListLoaded {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult Function(
             DiaryList diaryList,
@@ -880,7 +962,9 @@ class _$_ListLoaded implements _ListLoaded {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult Function(
             DiaryList diaryList,
@@ -907,8 +991,11 @@ class _$_ListLoaded implements _ListLoaded {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult Function(List<ListTheme> listThemes)? themesLoaded,
     required TResult orElse(),
   }) {
     if (listLoaded != null) {
@@ -928,6 +1015,7 @@ class _$_ListLoaded implements _ListLoaded {
     required TResult Function(_CapitalCellSelected value) capitalCellSelected,
     required TResult Function(_ListEditing value) listEditing,
     required TResult Function(_CellsEditing value) cellsEditing,
+    required TResult Function(_ThemesLoaded value) themesLoaded,
   }) {
     return listLoaded(this);
   }
@@ -943,6 +1031,7 @@ class _$_ListLoaded implements _ListLoaded {
     TResult? Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult? Function(_ListEditing value)? listEditing,
     TResult? Function(_CellsEditing value)? cellsEditing,
+    TResult? Function(_ThemesLoaded value)? themesLoaded,
   }) {
     return listLoaded?.call(this);
   }
@@ -958,6 +1047,7 @@ class _$_ListLoaded implements _ListLoaded {
     TResult Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult Function(_ListEditing value)? listEditing,
     TResult Function(_CellsEditing value)? cellsEditing,
+    TResult Function(_ThemesLoaded value)? themesLoaded,
     required TResult orElse(),
   }) {
     if (listLoaded != null) {
@@ -1118,7 +1208,9 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         loaded,
     required TResult Function(
             DiaryList diaryList,
@@ -1130,7 +1222,9 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -1145,7 +1239,9 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         capitalCellSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -1172,8 +1268,11 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsEditing,
+    required TResult Function(List<ListTheme> listThemes) themesLoaded,
   }) {
     return columnsLoaded(diaryList, diaryColumns, capitalCells, lists);
   }
@@ -1192,7 +1291,9 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult? Function(
             DiaryList diaryList,
@@ -1204,7 +1305,9 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -1219,7 +1322,9 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -1246,8 +1351,11 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult? Function(List<ListTheme> listThemes)? themesLoaded,
   }) {
     return columnsLoaded?.call(diaryList, diaryColumns, capitalCells, lists);
   }
@@ -1266,7 +1374,9 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult Function(
             DiaryList diaryList,
@@ -1278,7 +1388,9 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult Function(
             DiaryList diaryList,
@@ -1293,7 +1405,9 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult Function(
             DiaryList diaryList,
@@ -1320,8 +1434,11 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult Function(List<ListTheme> listThemes)? themesLoaded,
     required TResult orElse(),
   }) {
     if (columnsLoaded != null) {
@@ -1341,6 +1458,7 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     required TResult Function(_CapitalCellSelected value) capitalCellSelected,
     required TResult Function(_ListEditing value) listEditing,
     required TResult Function(_CellsEditing value) cellsEditing,
+    required TResult Function(_ThemesLoaded value) themesLoaded,
   }) {
     return columnsLoaded(this);
   }
@@ -1356,6 +1474,7 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     TResult? Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult? Function(_ListEditing value)? listEditing,
     TResult? Function(_CellsEditing value)? cellsEditing,
+    TResult? Function(_ThemesLoaded value)? themesLoaded,
   }) {
     return columnsLoaded?.call(this);
   }
@@ -1371,6 +1490,7 @@ class _$_ColumnsLoaded implements _ColumnsLoaded {
     TResult Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult Function(_ListEditing value)? listEditing,
     TResult Function(_CellsEditing value)? cellsEditing,
+    TResult Function(_ThemesLoaded value)? themesLoaded,
     required TResult orElse(),
   }) {
     if (columnsLoaded != null) {
@@ -1407,7 +1527,9 @@ abstract class _$$_LoadedCopyWith<$Res> {
       List<CapitalCell> capitalCells,
       List<DiaryCell> diaryCells,
       List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-      List<DiaryList> lists});
+      List<DiaryList> lists,
+      bool isListThemeViewMode,
+      ListTheme? listTheme});
 }
 
 /// @nodoc
@@ -1426,6 +1548,8 @@ class __$$_LoadedCopyWithImpl<$Res>
     Object? diaryCells = null,
     Object? cellsKeys = null,
     Object? lists = null,
+    Object? isListThemeViewMode = null,
+    Object? listTheme = freezed,
   }) {
     return _then(_$_Loaded(
       diaryList: null == diaryList
@@ -1452,6 +1576,14 @@ class __$$_LoadedCopyWithImpl<$Res>
           ? _value._lists
           : lists // ignore: cast_nullable_to_non_nullable
               as List<DiaryList>,
+      isListThemeViewMode: null == isListThemeViewMode
+          ? _value.isListThemeViewMode
+          : isListThemeViewMode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      listTheme: freezed == listTheme
+          ? _value.listTheme
+          : listTheme // ignore: cast_nullable_to_non_nullable
+              as ListTheme?,
     ));
   }
 }
@@ -1465,7 +1597,9 @@ class _$_Loaded implements _Loaded {
       required final List<CapitalCell> capitalCells,
       required final List<DiaryCell> diaryCells,
       required final List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-      required final List<DiaryList> lists})
+      required final List<DiaryList> lists,
+      required this.isListThemeViewMode,
+      this.listTheme})
       : _diaryColumns = diaryColumns,
         _capitalCells = capitalCells,
         _diaryCells = diaryCells,
@@ -1515,8 +1649,13 @@ class _$_Loaded implements _Loaded {
   }
 
   @override
+  final bool isListThemeViewMode;
+  @override
+  final ListTheme? listTheme;
+
+  @override
   String toString() {
-    return 'DiaryListState.loaded(diaryList: $diaryList, diaryColumns: $diaryColumns, capitalCells: $capitalCells, diaryCells: $diaryCells, cellsKeys: $cellsKeys, lists: $lists)';
+    return 'DiaryListState.loaded(diaryList: $diaryList, diaryColumns: $diaryColumns, capitalCells: $capitalCells, diaryCells: $diaryCells, cellsKeys: $cellsKeys, lists: $lists, isListThemeViewMode: $isListThemeViewMode, listTheme: $listTheme)';
   }
 
   @override
@@ -1534,7 +1673,11 @@ class _$_Loaded implements _Loaded {
                 .equals(other._diaryCells, _diaryCells) &&
             const DeepCollectionEquality()
                 .equals(other._cellsKeys, _cellsKeys) &&
-            const DeepCollectionEquality().equals(other._lists, _lists));
+            const DeepCollectionEquality().equals(other._lists, _lists) &&
+            (identical(other.isListThemeViewMode, isListThemeViewMode) ||
+                other.isListThemeViewMode == isListThemeViewMode) &&
+            (identical(other.listTheme, listTheme) ||
+                other.listTheme == listTheme));
   }
 
   @override
@@ -1545,7 +1688,9 @@ class _$_Loaded implements _Loaded {
       const DeepCollectionEquality().hash(_capitalCells),
       const DeepCollectionEquality().hash(_diaryCells),
       const DeepCollectionEquality().hash(_cellsKeys),
-      const DeepCollectionEquality().hash(_lists));
+      const DeepCollectionEquality().hash(_lists),
+      isListThemeViewMode,
+      listTheme);
 
   @JsonKey(ignore: true)
   @override
@@ -1571,7 +1716,9 @@ class _$_Loaded implements _Loaded {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         loaded,
     required TResult Function(
             DiaryList diaryList,
@@ -1583,7 +1730,9 @@ class _$_Loaded implements _Loaded {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -1598,7 +1747,9 @@ class _$_Loaded implements _Loaded {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         capitalCellSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -1625,11 +1776,14 @@ class _$_Loaded implements _Loaded {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsEditing,
+    required TResult Function(List<ListTheme> listThemes) themesLoaded,
   }) {
-    return loaded(
-        diaryList, diaryColumns, capitalCells, diaryCells, cellsKeys, lists);
+    return loaded(diaryList, diaryColumns, capitalCells, diaryCells, cellsKeys,
+        lists, isListThemeViewMode, listTheme);
   }
 
   @override
@@ -1646,7 +1800,9 @@ class _$_Loaded implements _Loaded {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult? Function(
             DiaryList diaryList,
@@ -1658,7 +1814,9 @@ class _$_Loaded implements _Loaded {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -1673,7 +1831,9 @@ class _$_Loaded implements _Loaded {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -1700,11 +1860,14 @@ class _$_Loaded implements _Loaded {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult? Function(List<ListTheme> listThemes)? themesLoaded,
   }) {
-    return loaded?.call(
-        diaryList, diaryColumns, capitalCells, diaryCells, cellsKeys, lists);
+    return loaded?.call(diaryList, diaryColumns, capitalCells, diaryCells,
+        cellsKeys, lists, isListThemeViewMode, listTheme);
   }
 
   @override
@@ -1721,7 +1884,9 @@ class _$_Loaded implements _Loaded {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult Function(
             DiaryList diaryList,
@@ -1733,7 +1898,9 @@ class _$_Loaded implements _Loaded {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult Function(
             DiaryList diaryList,
@@ -1748,7 +1915,9 @@ class _$_Loaded implements _Loaded {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult Function(
             DiaryList diaryList,
@@ -1775,13 +1944,16 @@ class _$_Loaded implements _Loaded {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult Function(List<ListTheme> listThemes)? themesLoaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(
-          diaryList, diaryColumns, capitalCells, diaryCells, cellsKeys, lists);
+      return loaded(diaryList, diaryColumns, capitalCells, diaryCells,
+          cellsKeys, lists, isListThemeViewMode, listTheme);
     }
     return orElse();
   }
@@ -1797,6 +1969,7 @@ class _$_Loaded implements _Loaded {
     required TResult Function(_CapitalCellSelected value) capitalCellSelected,
     required TResult Function(_ListEditing value) listEditing,
     required TResult Function(_CellsEditing value) cellsEditing,
+    required TResult Function(_ThemesLoaded value) themesLoaded,
   }) {
     return loaded(this);
   }
@@ -1812,6 +1985,7 @@ class _$_Loaded implements _Loaded {
     TResult? Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult? Function(_ListEditing value)? listEditing,
     TResult? Function(_CellsEditing value)? cellsEditing,
+    TResult? Function(_ThemesLoaded value)? themesLoaded,
   }) {
     return loaded?.call(this);
   }
@@ -1827,6 +2001,7 @@ class _$_Loaded implements _Loaded {
     TResult Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult Function(_ListEditing value)? listEditing,
     TResult Function(_CellsEditing value)? cellsEditing,
+    TResult Function(_ThemesLoaded value)? themesLoaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1843,7 +2018,9 @@ abstract class _Loaded implements DiaryListState {
       required final List<CapitalCell> capitalCells,
       required final List<DiaryCell> diaryCells,
       required final List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-      required final List<DiaryList> lists}) = _$_Loaded;
+      required final List<DiaryList> lists,
+      required final bool isListThemeViewMode,
+      final ListTheme? listTheme}) = _$_Loaded;
 
   DiaryList get diaryList;
   List<DiaryColumn> get diaryColumns;
@@ -1851,6 +2028,8 @@ abstract class _Loaded implements DiaryListState {
   List<DiaryCell> get diaryCells;
   List<GlobalObjectKey<State<StatefulWidget>>> get cellsKeys;
   List<DiaryList> get lists;
+  bool get isListThemeViewMode;
+  ListTheme? get listTheme;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1872,7 +2051,9 @@ abstract class _$$_CellsSelectedCopyWith<$Res> {
       List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
       List<DiaryList> lists,
       DiaryCellTextSettings defaultTextSettings,
-      DiaryCellSettings defaultSettings});
+      DiaryCellSettings defaultSettings,
+      bool isListThemeViewMode,
+      ListTheme? listTheme});
 }
 
 /// @nodoc
@@ -1896,6 +2077,8 @@ class __$$_CellsSelectedCopyWithImpl<$Res>
     Object? lists = null,
     Object? defaultTextSettings = null,
     Object? defaultSettings = null,
+    Object? isListThemeViewMode = null,
+    Object? listTheme = freezed,
   }) {
     return _then(_$_CellsSelected(
       diaryList: null == diaryList
@@ -1938,6 +2121,14 @@ class __$$_CellsSelectedCopyWithImpl<$Res>
           ? _value.defaultSettings
           : defaultSettings // ignore: cast_nullable_to_non_nullable
               as DiaryCellSettings,
+      isListThemeViewMode: null == isListThemeViewMode
+          ? _value.isListThemeViewMode
+          : isListThemeViewMode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      listTheme: freezed == listTheme
+          ? _value.listTheme
+          : listTheme // ignore: cast_nullable_to_non_nullable
+              as ListTheme?,
     ));
   }
 }
@@ -1955,7 +2146,9 @@ class _$_CellsSelected implements _CellsSelected {
       required final List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
       required final List<DiaryList> lists,
       required this.defaultTextSettings,
-      required this.defaultSettings})
+      required this.defaultSettings,
+      required this.isListThemeViewMode,
+      this.listTheme})
       : _diaryColumns = diaryColumns,
         _capitalCells = capitalCells,
         _diaryCells = diaryCells,
@@ -2019,10 +2212,14 @@ class _$_CellsSelected implements _CellsSelected {
   final DiaryCellTextSettings defaultTextSettings;
   @override
   final DiaryCellSettings defaultSettings;
+  @override
+  final bool isListThemeViewMode;
+  @override
+  final ListTheme? listTheme;
 
   @override
   String toString() {
-    return 'DiaryListState.cellsSelected(diaryList: $diaryList, diaryColumns: $diaryColumns, capitalCells: $capitalCells, diaryCells: $diaryCells, firstSelectedCell: $firstSelectedCell, selectedCells: $selectedCells, cellsKeys: $cellsKeys, lists: $lists, defaultTextSettings: $defaultTextSettings, defaultSettings: $defaultSettings)';
+    return 'DiaryListState.cellsSelected(diaryList: $diaryList, diaryColumns: $diaryColumns, capitalCells: $capitalCells, diaryCells: $diaryCells, firstSelectedCell: $firstSelectedCell, selectedCells: $selectedCells, cellsKeys: $cellsKeys, lists: $lists, defaultTextSettings: $defaultTextSettings, defaultSettings: $defaultSettings, isListThemeViewMode: $isListThemeViewMode, listTheme: $listTheme)';
   }
 
   @override
@@ -2048,7 +2245,11 @@ class _$_CellsSelected implements _CellsSelected {
             (identical(other.defaultTextSettings, defaultTextSettings) ||
                 other.defaultTextSettings == defaultTextSettings) &&
             (identical(other.defaultSettings, defaultSettings) ||
-                other.defaultSettings == defaultSettings));
+                other.defaultSettings == defaultSettings) &&
+            (identical(other.isListThemeViewMode, isListThemeViewMode) ||
+                other.isListThemeViewMode == isListThemeViewMode) &&
+            (identical(other.listTheme, listTheme) ||
+                other.listTheme == listTheme));
   }
 
   @override
@@ -2063,7 +2264,9 @@ class _$_CellsSelected implements _CellsSelected {
       const DeepCollectionEquality().hash(_cellsKeys),
       const DeepCollectionEquality().hash(_lists),
       defaultTextSettings,
-      defaultSettings);
+      defaultSettings,
+      isListThemeViewMode,
+      listTheme);
 
   @JsonKey(ignore: true)
   @override
@@ -2089,7 +2292,9 @@ class _$_CellsSelected implements _CellsSelected {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         loaded,
     required TResult Function(
             DiaryList diaryList,
@@ -2101,7 +2306,9 @@ class _$_CellsSelected implements _CellsSelected {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -2116,7 +2323,9 @@ class _$_CellsSelected implements _CellsSelected {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         capitalCellSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -2143,8 +2352,11 @@ class _$_CellsSelected implements _CellsSelected {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsEditing,
+    required TResult Function(List<ListTheme> listThemes) themesLoaded,
   }) {
     return cellsSelected(
         diaryList,
@@ -2156,7 +2368,9 @@ class _$_CellsSelected implements _CellsSelected {
         cellsKeys,
         lists,
         defaultTextSettings,
-        defaultSettings);
+        defaultSettings,
+        isListThemeViewMode,
+        listTheme);
   }
 
   @override
@@ -2173,7 +2387,9 @@ class _$_CellsSelected implements _CellsSelected {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult? Function(
             DiaryList diaryList,
@@ -2185,7 +2401,9 @@ class _$_CellsSelected implements _CellsSelected {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -2200,7 +2418,9 @@ class _$_CellsSelected implements _CellsSelected {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -2227,8 +2447,11 @@ class _$_CellsSelected implements _CellsSelected {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult? Function(List<ListTheme> listThemes)? themesLoaded,
   }) {
     return cellsSelected?.call(
         diaryList,
@@ -2240,7 +2463,9 @@ class _$_CellsSelected implements _CellsSelected {
         cellsKeys,
         lists,
         defaultTextSettings,
-        defaultSettings);
+        defaultSettings,
+        isListThemeViewMode,
+        listTheme);
   }
 
   @override
@@ -2257,7 +2482,9 @@ class _$_CellsSelected implements _CellsSelected {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult Function(
             DiaryList diaryList,
@@ -2269,7 +2496,9 @@ class _$_CellsSelected implements _CellsSelected {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult Function(
             DiaryList diaryList,
@@ -2284,7 +2513,9 @@ class _$_CellsSelected implements _CellsSelected {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult Function(
             DiaryList diaryList,
@@ -2311,8 +2542,11 @@ class _$_CellsSelected implements _CellsSelected {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult Function(List<ListTheme> listThemes)? themesLoaded,
     required TResult orElse(),
   }) {
     if (cellsSelected != null) {
@@ -2326,7 +2560,9 @@ class _$_CellsSelected implements _CellsSelected {
           cellsKeys,
           lists,
           defaultTextSettings,
-          defaultSettings);
+          defaultSettings,
+          isListThemeViewMode,
+          listTheme);
     }
     return orElse();
   }
@@ -2342,6 +2578,7 @@ class _$_CellsSelected implements _CellsSelected {
     required TResult Function(_CapitalCellSelected value) capitalCellSelected,
     required TResult Function(_ListEditing value) listEditing,
     required TResult Function(_CellsEditing value) cellsEditing,
+    required TResult Function(_ThemesLoaded value) themesLoaded,
   }) {
     return cellsSelected(this);
   }
@@ -2357,6 +2594,7 @@ class _$_CellsSelected implements _CellsSelected {
     TResult? Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult? Function(_ListEditing value)? listEditing,
     TResult? Function(_CellsEditing value)? cellsEditing,
+    TResult? Function(_ThemesLoaded value)? themesLoaded,
   }) {
     return cellsSelected?.call(this);
   }
@@ -2372,6 +2610,7 @@ class _$_CellsSelected implements _CellsSelected {
     TResult Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult Function(_ListEditing value)? listEditing,
     TResult Function(_CellsEditing value)? cellsEditing,
+    TResult Function(_ThemesLoaded value)? themesLoaded,
     required TResult orElse(),
   }) {
     if (cellsSelected != null) {
@@ -2392,7 +2631,9 @@ abstract class _CellsSelected implements DiaryListState {
       required final List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
       required final List<DiaryList> lists,
       required final DiaryCellTextSettings defaultTextSettings,
-      required final DiaryCellSettings defaultSettings}) = _$_CellsSelected;
+      required final DiaryCellSettings defaultSettings,
+      required final bool isListThemeViewMode,
+      final ListTheme? listTheme}) = _$_CellsSelected;
 
   DiaryList get diaryList;
   List<DiaryColumn> get diaryColumns;
@@ -2404,6 +2645,8 @@ abstract class _CellsSelected implements DiaryListState {
   List<DiaryList> get lists;
   DiaryCellTextSettings get defaultTextSettings;
   DiaryCellSettings get defaultSettings;
+  bool get isListThemeViewMode;
+  ListTheme? get listTheme;
   @JsonKey(ignore: true)
   _$$_CellsSelectedCopyWith<_$_CellsSelected> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2428,7 +2671,9 @@ abstract class _$$_CapitalCellSelectedCopyWith<$Res> {
       bool isBordersStyleEditing,
       List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
       List<DiaryList> lists,
-      DiaryColumnSettings defaultSettings});
+      DiaryColumnSettings defaultSettings,
+      bool isListThemeViewMode,
+      ListTheme? listTheme});
 }
 
 /// @nodoc
@@ -2455,6 +2700,8 @@ class __$$_CapitalCellSelectedCopyWithImpl<$Res>
     Object? cellsKeys = null,
     Object? lists = null,
     Object? defaultSettings = null,
+    Object? isListThemeViewMode = null,
+    Object? listTheme = freezed,
   }) {
     return _then(_$_CapitalCellSelected(
       diaryList: null == diaryList
@@ -2509,6 +2756,14 @@ class __$$_CapitalCellSelectedCopyWithImpl<$Res>
           ? _value.defaultSettings
           : defaultSettings // ignore: cast_nullable_to_non_nullable
               as DiaryColumnSettings,
+      isListThemeViewMode: null == isListThemeViewMode
+          ? _value.isListThemeViewMode
+          : isListThemeViewMode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      listTheme: freezed == listTheme
+          ? _value.listTheme
+          : listTheme // ignore: cast_nullable_to_non_nullable
+              as ListTheme?,
     ));
   }
 }
@@ -2529,7 +2784,9 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
       required this.isBordersStyleEditing,
       required final List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
       required final List<DiaryList> lists,
-      required this.defaultSettings})
+      required this.defaultSettings,
+      required this.isListThemeViewMode,
+      this.listTheme})
       : _diaryColumns = diaryColumns,
         _capitalCells = capitalCells,
         _diaryCells = diaryCells,
@@ -2592,10 +2849,14 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
 
   @override
   final DiaryColumnSettings defaultSettings;
+  @override
+  final bool isListThemeViewMode;
+  @override
+  final ListTheme? listTheme;
 
   @override
   String toString() {
-    return 'DiaryListState.capitalCellSelected(diaryList: $diaryList, diaryColumns: $diaryColumns, capitalCells: $capitalCells, diaryCells: $diaryCells, selectedCapitalCell: $selectedCapitalCell, isEditing: $isEditing, isTextEditing: $isTextEditing, isColorEditing: $isColorEditing, isBordersEditing: $isBordersEditing, isBordersStyleEditing: $isBordersStyleEditing, cellsKeys: $cellsKeys, lists: $lists, defaultSettings: $defaultSettings)';
+    return 'DiaryListState.capitalCellSelected(diaryList: $diaryList, diaryColumns: $diaryColumns, capitalCells: $capitalCells, diaryCells: $diaryCells, selectedCapitalCell: $selectedCapitalCell, isEditing: $isEditing, isTextEditing: $isTextEditing, isColorEditing: $isColorEditing, isBordersEditing: $isBordersEditing, isBordersStyleEditing: $isBordersStyleEditing, cellsKeys: $cellsKeys, lists: $lists, defaultSettings: $defaultSettings, isListThemeViewMode: $isListThemeViewMode, listTheme: $listTheme)';
   }
 
   @override
@@ -2627,7 +2888,11 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
                 .equals(other._cellsKeys, _cellsKeys) &&
             const DeepCollectionEquality().equals(other._lists, _lists) &&
             (identical(other.defaultSettings, defaultSettings) ||
-                other.defaultSettings == defaultSettings));
+                other.defaultSettings == defaultSettings) &&
+            (identical(other.isListThemeViewMode, isListThemeViewMode) ||
+                other.isListThemeViewMode == isListThemeViewMode) &&
+            (identical(other.listTheme, listTheme) ||
+                other.listTheme == listTheme));
   }
 
   @override
@@ -2645,7 +2910,9 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
       isBordersStyleEditing,
       const DeepCollectionEquality().hash(_cellsKeys),
       const DeepCollectionEquality().hash(_lists),
-      defaultSettings);
+      defaultSettings,
+      isListThemeViewMode,
+      listTheme);
 
   @JsonKey(ignore: true)
   @override
@@ -2672,7 +2939,9 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         loaded,
     required TResult Function(
             DiaryList diaryList,
@@ -2684,7 +2953,9 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -2699,7 +2970,9 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         capitalCellSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -2726,8 +2999,11 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsEditing,
+    required TResult Function(List<ListTheme> listThemes) themesLoaded,
   }) {
     return capitalCellSelected(
         diaryList,
@@ -2742,7 +3018,9 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
         isBordersStyleEditing,
         cellsKeys,
         lists,
-        defaultSettings);
+        defaultSettings,
+        isListThemeViewMode,
+        listTheme);
   }
 
   @override
@@ -2759,7 +3037,9 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult? Function(
             DiaryList diaryList,
@@ -2771,7 +3051,9 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -2786,7 +3068,9 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -2813,8 +3097,11 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult? Function(List<ListTheme> listThemes)? themesLoaded,
   }) {
     return capitalCellSelected?.call(
         diaryList,
@@ -2829,7 +3116,9 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
         isBordersStyleEditing,
         cellsKeys,
         lists,
-        defaultSettings);
+        defaultSettings,
+        isListThemeViewMode,
+        listTheme);
   }
 
   @override
@@ -2846,7 +3135,9 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult Function(
             DiaryList diaryList,
@@ -2858,7 +3149,9 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult Function(
             DiaryList diaryList,
@@ -2873,7 +3166,9 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult Function(
             DiaryList diaryList,
@@ -2900,8 +3195,11 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult Function(List<ListTheme> listThemes)? themesLoaded,
     required TResult orElse(),
   }) {
     if (capitalCellSelected != null) {
@@ -2918,7 +3216,9 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
           isBordersStyleEditing,
           cellsKeys,
           lists,
-          defaultSettings);
+          defaultSettings,
+          isListThemeViewMode,
+          listTheme);
     }
     return orElse();
   }
@@ -2934,6 +3234,7 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
     required TResult Function(_CapitalCellSelected value) capitalCellSelected,
     required TResult Function(_ListEditing value) listEditing,
     required TResult Function(_CellsEditing value) cellsEditing,
+    required TResult Function(_ThemesLoaded value) themesLoaded,
   }) {
     return capitalCellSelected(this);
   }
@@ -2949,6 +3250,7 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
     TResult? Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult? Function(_ListEditing value)? listEditing,
     TResult? Function(_CellsEditing value)? cellsEditing,
+    TResult? Function(_ThemesLoaded value)? themesLoaded,
   }) {
     return capitalCellSelected?.call(this);
   }
@@ -2964,6 +3266,7 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
     TResult Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult Function(_ListEditing value)? listEditing,
     TResult Function(_CellsEditing value)? cellsEditing,
+    TResult Function(_ThemesLoaded value)? themesLoaded,
     required TResult orElse(),
   }) {
     if (capitalCellSelected != null) {
@@ -2975,20 +3278,21 @@ class _$_CapitalCellSelected implements _CapitalCellSelected {
 
 abstract class _CapitalCellSelected implements DiaryListState {
   const factory _CapitalCellSelected(
-          {required final DiaryList diaryList,
-          required final List<DiaryColumn> diaryColumns,
-          required final List<CapitalCell> capitalCells,
-          required final List<DiaryCell> diaryCells,
-          required final CapitalCell selectedCapitalCell,
-          required final bool isEditing,
-          required final bool isTextEditing,
-          required final bool isColorEditing,
-          required final bool isBordersEditing,
-          required final bool isBordersStyleEditing,
-          required final List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-          required final List<DiaryList> lists,
-          required final DiaryColumnSettings defaultSettings}) =
-      _$_CapitalCellSelected;
+      {required final DiaryList diaryList,
+      required final List<DiaryColumn> diaryColumns,
+      required final List<CapitalCell> capitalCells,
+      required final List<DiaryCell> diaryCells,
+      required final CapitalCell selectedCapitalCell,
+      required final bool isEditing,
+      required final bool isTextEditing,
+      required final bool isColorEditing,
+      required final bool isBordersEditing,
+      required final bool isBordersStyleEditing,
+      required final List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
+      required final List<DiaryList> lists,
+      required final DiaryColumnSettings defaultSettings,
+      required final bool isListThemeViewMode,
+      final ListTheme? listTheme}) = _$_CapitalCellSelected;
 
   DiaryList get diaryList;
   List<DiaryColumn> get diaryColumns;
@@ -3003,6 +3307,8 @@ abstract class _CapitalCellSelected implements DiaryListState {
   List<GlobalObjectKey<State<StatefulWidget>>> get cellsKeys;
   List<DiaryList> get lists;
   DiaryColumnSettings get defaultSettings;
+  bool get isListThemeViewMode;
+  ListTheme? get listTheme;
   @JsonKey(ignore: true)
   _$$_CapitalCellSelectedCopyWith<_$_CapitalCellSelected> get copyWith =>
       throw _privateConstructorUsedError;
@@ -3222,7 +3528,9 @@ class _$_ListEditing implements _ListEditing {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         loaded,
     required TResult Function(
             DiaryList diaryList,
@@ -3234,7 +3542,9 @@ class _$_ListEditing implements _ListEditing {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -3249,7 +3559,9 @@ class _$_ListEditing implements _ListEditing {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         capitalCellSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -3276,8 +3588,11 @@ class _$_ListEditing implements _ListEditing {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsEditing,
+    required TResult Function(List<ListTheme> listThemes) themesLoaded,
   }) {
     return listEditing(diaryList, diaryColumns, capitalCells, diaryCells,
         cellsKeys, lists, isColumnDeleting, isColorThemeEditing, selectedList);
@@ -3297,7 +3612,9 @@ class _$_ListEditing implements _ListEditing {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult? Function(
             DiaryList diaryList,
@@ -3309,7 +3626,9 @@ class _$_ListEditing implements _ListEditing {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -3324,7 +3643,9 @@ class _$_ListEditing implements _ListEditing {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -3351,8 +3672,11 @@ class _$_ListEditing implements _ListEditing {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult? Function(List<ListTheme> listThemes)? themesLoaded,
   }) {
     return listEditing?.call(diaryList, diaryColumns, capitalCells, diaryCells,
         cellsKeys, lists, isColumnDeleting, isColorThemeEditing, selectedList);
@@ -3372,7 +3696,9 @@ class _$_ListEditing implements _ListEditing {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult Function(
             DiaryList diaryList,
@@ -3384,7 +3710,9 @@ class _$_ListEditing implements _ListEditing {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult Function(
             DiaryList diaryList,
@@ -3399,7 +3727,9 @@ class _$_ListEditing implements _ListEditing {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult Function(
             DiaryList diaryList,
@@ -3426,8 +3756,11 @@ class _$_ListEditing implements _ListEditing {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult Function(List<ListTheme> listThemes)? themesLoaded,
     required TResult orElse(),
   }) {
     if (listEditing != null) {
@@ -3456,6 +3789,7 @@ class _$_ListEditing implements _ListEditing {
     required TResult Function(_CapitalCellSelected value) capitalCellSelected,
     required TResult Function(_ListEditing value) listEditing,
     required TResult Function(_CellsEditing value) cellsEditing,
+    required TResult Function(_ThemesLoaded value) themesLoaded,
   }) {
     return listEditing(this);
   }
@@ -3471,6 +3805,7 @@ class _$_ListEditing implements _ListEditing {
     TResult? Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult? Function(_ListEditing value)? listEditing,
     TResult? Function(_CellsEditing value)? cellsEditing,
+    TResult? Function(_ThemesLoaded value)? themesLoaded,
   }) {
     return listEditing?.call(this);
   }
@@ -3486,6 +3821,7 @@ class _$_ListEditing implements _ListEditing {
     TResult Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult Function(_ListEditing value)? listEditing,
     TResult Function(_CellsEditing value)? cellsEditing,
+    TResult Function(_ThemesLoaded value)? themesLoaded,
     required TResult orElse(),
   }) {
     if (listEditing != null) {
@@ -3541,7 +3877,9 @@ abstract class _$$_CellsEditingCopyWith<$Res> {
       bool isBordersStyleEditing,
       List<DiaryList> lists,
       DiaryCellTextSettings defaultTextSettings,
-      DiaryCellSettings defaultSettings});
+      DiaryCellSettings defaultSettings,
+      bool isListThemeViewMode,
+      ListTheme? listTheme});
 }
 
 /// @nodoc
@@ -3569,6 +3907,8 @@ class __$$_CellsEditingCopyWithImpl<$Res>
     Object? lists = null,
     Object? defaultTextSettings = null,
     Object? defaultSettings = null,
+    Object? isListThemeViewMode = null,
+    Object? listTheme = freezed,
   }) {
     return _then(_$_CellsEditing(
       diaryList: null == diaryList
@@ -3627,6 +3967,14 @@ class __$$_CellsEditingCopyWithImpl<$Res>
           ? _value.defaultSettings
           : defaultSettings // ignore: cast_nullable_to_non_nullable
               as DiaryCellSettings,
+      isListThemeViewMode: null == isListThemeViewMode
+          ? _value.isListThemeViewMode
+          : isListThemeViewMode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      listTheme: freezed == listTheme
+          ? _value.listTheme
+          : listTheme // ignore: cast_nullable_to_non_nullable
+              as ListTheme?,
     ));
   }
 }
@@ -3648,7 +3996,9 @@ class _$_CellsEditing implements _CellsEditing {
       required this.isBordersStyleEditing,
       required final List<DiaryList> lists,
       required this.defaultTextSettings,
-      required this.defaultSettings})
+      required this.defaultSettings,
+      required this.isListThemeViewMode,
+      this.listTheme})
       : _diaryColumns = diaryColumns,
         _capitalCells = capitalCells,
         _diaryCells = diaryCells,
@@ -3720,10 +4070,14 @@ class _$_CellsEditing implements _CellsEditing {
   final DiaryCellTextSettings defaultTextSettings;
   @override
   final DiaryCellSettings defaultSettings;
+  @override
+  final bool isListThemeViewMode;
+  @override
+  final ListTheme? listTheme;
 
   @override
   String toString() {
-    return 'DiaryListState.cellsEditing(diaryList: $diaryList, diaryColumns: $diaryColumns, capitalCells: $capitalCells, diaryCells: $diaryCells, cellsKeys: $cellsKeys, firstSelectedCell: $firstSelectedCell, selectedCells: $selectedCells, isTextEditing: $isTextEditing, isColorEditing: $isColorEditing, isBordersEditing: $isBordersEditing, isBordersStyleEditing: $isBordersStyleEditing, lists: $lists, defaultTextSettings: $defaultTextSettings, defaultSettings: $defaultSettings)';
+    return 'DiaryListState.cellsEditing(diaryList: $diaryList, diaryColumns: $diaryColumns, capitalCells: $capitalCells, diaryCells: $diaryCells, cellsKeys: $cellsKeys, firstSelectedCell: $firstSelectedCell, selectedCells: $selectedCells, isTextEditing: $isTextEditing, isColorEditing: $isColorEditing, isBordersEditing: $isBordersEditing, isBordersStyleEditing: $isBordersStyleEditing, lists: $lists, defaultTextSettings: $defaultTextSettings, defaultSettings: $defaultSettings, isListThemeViewMode: $isListThemeViewMode, listTheme: $listTheme)';
   }
 
   @override
@@ -3757,7 +4111,11 @@ class _$_CellsEditing implements _CellsEditing {
             (identical(other.defaultTextSettings, defaultTextSettings) ||
                 other.defaultTextSettings == defaultTextSettings) &&
             (identical(other.defaultSettings, defaultSettings) ||
-                other.defaultSettings == defaultSettings));
+                other.defaultSettings == defaultSettings) &&
+            (identical(other.isListThemeViewMode, isListThemeViewMode) ||
+                other.isListThemeViewMode == isListThemeViewMode) &&
+            (identical(other.listTheme, listTheme) ||
+                other.listTheme == listTheme));
   }
 
   @override
@@ -3776,7 +4134,9 @@ class _$_CellsEditing implements _CellsEditing {
       isBordersStyleEditing,
       const DeepCollectionEquality().hash(_lists),
       defaultTextSettings,
-      defaultSettings);
+      defaultSettings,
+      isListThemeViewMode,
+      listTheme);
 
   @JsonKey(ignore: true)
   @override
@@ -3802,7 +4162,9 @@ class _$_CellsEditing implements _CellsEditing {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         loaded,
     required TResult Function(
             DiaryList diaryList,
@@ -3814,7 +4176,9 @@ class _$_CellsEditing implements _CellsEditing {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -3829,7 +4193,9 @@ class _$_CellsEditing implements _CellsEditing {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         capitalCellSelected,
     required TResult Function(
             DiaryList diaryList,
@@ -3856,8 +4222,11 @@ class _$_CellsEditing implements _CellsEditing {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
         cellsEditing,
+    required TResult Function(List<ListTheme> listThemes) themesLoaded,
   }) {
     return cellsEditing(
         diaryList,
@@ -3873,7 +4242,9 @@ class _$_CellsEditing implements _CellsEditing {
         isBordersStyleEditing,
         lists,
         defaultTextSettings,
-        defaultSettings);
+        defaultSettings,
+        isListThemeViewMode,
+        listTheme);
   }
 
   @override
@@ -3890,7 +4261,9 @@ class _$_CellsEditing implements _CellsEditing {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult? Function(
             DiaryList diaryList,
@@ -3902,7 +4275,9 @@ class _$_CellsEditing implements _CellsEditing {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -3917,7 +4292,9 @@ class _$_CellsEditing implements _CellsEditing {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult? Function(
             DiaryList diaryList,
@@ -3944,8 +4321,11 @@ class _$_CellsEditing implements _CellsEditing {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult? Function(List<ListTheme> listThemes)? themesLoaded,
   }) {
     return cellsEditing?.call(
         diaryList,
@@ -3961,7 +4341,9 @@ class _$_CellsEditing implements _CellsEditing {
         isBordersStyleEditing,
         lists,
         defaultTextSettings,
-        defaultSettings);
+        defaultSettings,
+        isListThemeViewMode,
+        listTheme);
   }
 
   @override
@@ -3978,7 +4360,9 @@ class _$_CellsEditing implements _CellsEditing {
             List<CapitalCell> capitalCells,
             List<DiaryCell> diaryCells,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
-            List<DiaryList> lists)?
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         loaded,
     TResult Function(
             DiaryList diaryList,
@@ -3990,7 +4374,9 @@ class _$_CellsEditing implements _CellsEditing {
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsSelected,
     TResult Function(
             DiaryList diaryList,
@@ -4005,7 +4391,9 @@ class _$_CellsEditing implements _CellsEditing {
             bool isBordersStyleEditing,
             List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
             List<DiaryList> lists,
-            DiaryColumnSettings defaultSettings)?
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         capitalCellSelected,
     TResult Function(
             DiaryList diaryList,
@@ -4032,8 +4420,11 @@ class _$_CellsEditing implements _CellsEditing {
             bool isBordersStyleEditing,
             List<DiaryList> lists,
             DiaryCellTextSettings defaultTextSettings,
-            DiaryCellSettings defaultSettings)?
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
         cellsEditing,
+    TResult Function(List<ListTheme> listThemes)? themesLoaded,
     required TResult orElse(),
   }) {
     if (cellsEditing != null) {
@@ -4051,7 +4442,9 @@ class _$_CellsEditing implements _CellsEditing {
           isBordersStyleEditing,
           lists,
           defaultTextSettings,
-          defaultSettings);
+          defaultSettings,
+          isListThemeViewMode,
+          listTheme);
     }
     return orElse();
   }
@@ -4067,6 +4460,7 @@ class _$_CellsEditing implements _CellsEditing {
     required TResult Function(_CapitalCellSelected value) capitalCellSelected,
     required TResult Function(_ListEditing value) listEditing,
     required TResult Function(_CellsEditing value) cellsEditing,
+    required TResult Function(_ThemesLoaded value) themesLoaded,
   }) {
     return cellsEditing(this);
   }
@@ -4082,6 +4476,7 @@ class _$_CellsEditing implements _CellsEditing {
     TResult? Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult? Function(_ListEditing value)? listEditing,
     TResult? Function(_CellsEditing value)? cellsEditing,
+    TResult? Function(_ThemesLoaded value)? themesLoaded,
   }) {
     return cellsEditing?.call(this);
   }
@@ -4097,6 +4492,7 @@ class _$_CellsEditing implements _CellsEditing {
     TResult Function(_CapitalCellSelected value)? capitalCellSelected,
     TResult Function(_ListEditing value)? listEditing,
     TResult Function(_CellsEditing value)? cellsEditing,
+    TResult Function(_ThemesLoaded value)? themesLoaded,
     required TResult orElse(),
   }) {
     if (cellsEditing != null) {
@@ -4121,7 +4517,9 @@ abstract class _CellsEditing implements DiaryListState {
       required final bool isBordersStyleEditing,
       required final List<DiaryList> lists,
       required final DiaryCellTextSettings defaultTextSettings,
-      required final DiaryCellSettings defaultSettings}) = _$_CellsEditing;
+      required final DiaryCellSettings defaultSettings,
+      required final bool isListThemeViewMode,
+      final ListTheme? listTheme}) = _$_CellsEditing;
 
   DiaryList get diaryList;
   List<DiaryColumn> get diaryColumns;
@@ -4137,8 +4535,399 @@ abstract class _CellsEditing implements DiaryListState {
   List<DiaryList> get lists;
   DiaryCellTextSettings get defaultTextSettings;
   DiaryCellSettings get defaultSettings;
+  bool get isListThemeViewMode;
+  ListTheme? get listTheme;
   @JsonKey(ignore: true)
   _$$_CellsEditingCopyWith<_$_CellsEditing> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ThemesLoadedCopyWith<$Res> {
+  factory _$$_ThemesLoadedCopyWith(
+          _$_ThemesLoaded value, $Res Function(_$_ThemesLoaded) then) =
+      __$$_ThemesLoadedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<ListTheme> listThemes});
+}
+
+/// @nodoc
+class __$$_ThemesLoadedCopyWithImpl<$Res>
+    extends _$DiaryListStateCopyWithImpl<$Res, _$_ThemesLoaded>
+    implements _$$_ThemesLoadedCopyWith<$Res> {
+  __$$_ThemesLoadedCopyWithImpl(
+      _$_ThemesLoaded _value, $Res Function(_$_ThemesLoaded) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? listThemes = null,
+  }) {
+    return _then(_$_ThemesLoaded(
+      listThemes: null == listThemes
+          ? _value._listThemes
+          : listThemes // ignore: cast_nullable_to_non_nullable
+              as List<ListTheme>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ThemesLoaded implements _ThemesLoaded {
+  const _$_ThemesLoaded({required final List<ListTheme> listThemes})
+      : _listThemes = listThemes;
+
+  final List<ListTheme> _listThemes;
+  @override
+  List<ListTheme> get listThemes {
+    if (_listThemes is EqualUnmodifiableListView) return _listThemes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listThemes);
+  }
+
+  @override
+  String toString() {
+    return 'DiaryListState.themesLoaded(listThemes: $listThemes)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ThemesLoaded &&
+            const DeepCollectionEquality()
+                .equals(other._listThemes, _listThemes));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_listThemes));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ThemesLoadedCopyWith<_$_ThemesLoaded> get copyWith =>
+      __$$_ThemesLoadedCopyWithImpl<_$_ThemesLoaded>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(DiaryList diaryList, List<DiaryList> lists)
+        listLoaded,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryList> lists)
+        columnsLoaded,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
+        loaded,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
+            List<DiaryList> lists,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
+        cellsSelected,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryCell> diaryCells,
+            CapitalCell selectedCapitalCell,
+            bool isEditing,
+            bool isTextEditing,
+            bool isColorEditing,
+            bool isBordersEditing,
+            bool isBordersStyleEditing,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
+            List<DiaryList> lists,
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
+        capitalCellSelected,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
+            List<DiaryList> lists,
+            bool isColumnDeleting,
+            bool isColorThemeEditing,
+            DiaryList? selectedList)
+        listEditing,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            bool isTextEditing,
+            bool isColorEditing,
+            bool isBordersEditing,
+            bool isBordersStyleEditing,
+            List<DiaryList> lists,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)
+        cellsEditing,
+    required TResult Function(List<ListTheme> listThemes) themesLoaded,
+  }) {
+    return themesLoaded(listThemes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(DiaryList diaryList, List<DiaryList> lists)? listLoaded,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells, List<DiaryList> lists)?
+        columnsLoaded,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
+        loaded,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
+            List<DiaryList> lists,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
+        cellsSelected,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryCell> diaryCells,
+            CapitalCell selectedCapitalCell,
+            bool isEditing,
+            bool isTextEditing,
+            bool isColorEditing,
+            bool isBordersEditing,
+            bool isBordersStyleEditing,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
+            List<DiaryList> lists,
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
+        capitalCellSelected,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
+            List<DiaryList> lists,
+            bool isColumnDeleting,
+            bool isColorThemeEditing,
+            DiaryList? selectedList)?
+        listEditing,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            bool isTextEditing,
+            bool isColorEditing,
+            bool isBordersEditing,
+            bool isBordersStyleEditing,
+            List<DiaryList> lists,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
+        cellsEditing,
+    TResult? Function(List<ListTheme> listThemes)? themesLoaded,
+  }) {
+    return themesLoaded?.call(listThemes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(DiaryList diaryList, List<DiaryList> lists)? listLoaded,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells, List<DiaryList> lists)?
+        columnsLoaded,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
+            List<DiaryList> lists,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
+        loaded,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryCell> diaryCells,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
+            List<DiaryList> lists,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
+        cellsSelected,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryCell> diaryCells,
+            CapitalCell selectedCapitalCell,
+            bool isEditing,
+            bool isTextEditing,
+            bool isColorEditing,
+            bool isBordersEditing,
+            bool isBordersStyleEditing,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
+            List<DiaryList> lists,
+            DiaryColumnSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
+        capitalCellSelected,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
+            List<DiaryList> lists,
+            bool isColumnDeleting,
+            bool isColorThemeEditing,
+            DiaryList? selectedList)?
+        listEditing,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryCell> diaryCells,
+            List<GlobalObjectKey<State<StatefulWidget>>> cellsKeys,
+            DiaryCell firstSelectedCell,
+            List<DiaryCell> selectedCells,
+            bool isTextEditing,
+            bool isColorEditing,
+            bool isBordersEditing,
+            bool isBordersStyleEditing,
+            List<DiaryList> lists,
+            DiaryCellTextSettings defaultTextSettings,
+            DiaryCellSettings defaultSettings,
+            bool isListThemeViewMode,
+            ListTheme? listTheme)?
+        cellsEditing,
+    TResult Function(List<ListTheme> listThemes)? themesLoaded,
+    required TResult orElse(),
+  }) {
+    if (themesLoaded != null) {
+      return themesLoaded(listThemes);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ListLoaded value) listLoaded,
+    required TResult Function(_ColumnsLoaded value) columnsLoaded,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_CellsSelected value) cellsSelected,
+    required TResult Function(_CapitalCellSelected value) capitalCellSelected,
+    required TResult Function(_ListEditing value) listEditing,
+    required TResult Function(_CellsEditing value) cellsEditing,
+    required TResult Function(_ThemesLoaded value) themesLoaded,
+  }) {
+    return themesLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ListLoaded value)? listLoaded,
+    TResult? Function(_ColumnsLoaded value)? columnsLoaded,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_CellsSelected value)? cellsSelected,
+    TResult? Function(_CapitalCellSelected value)? capitalCellSelected,
+    TResult? Function(_ListEditing value)? listEditing,
+    TResult? Function(_CellsEditing value)? cellsEditing,
+    TResult? Function(_ThemesLoaded value)? themesLoaded,
+  }) {
+    return themesLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ListLoaded value)? listLoaded,
+    TResult Function(_ColumnsLoaded value)? columnsLoaded,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_CellsSelected value)? cellsSelected,
+    TResult Function(_CapitalCellSelected value)? capitalCellSelected,
+    TResult Function(_ListEditing value)? listEditing,
+    TResult Function(_CellsEditing value)? cellsEditing,
+    TResult Function(_ThemesLoaded value)? themesLoaded,
+    required TResult orElse(),
+  }) {
+    if (themesLoaded != null) {
+      return themesLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ThemesLoaded implements DiaryListState {
+  const factory _ThemesLoaded({required final List<ListTheme> listThemes}) =
+      _$_ThemesLoaded;
+
+  List<ListTheme> get listThemes;
+  @JsonKey(ignore: true)
+  _$$_ThemesLoadedCopyWith<_$_ThemesLoaded> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -4148,7 +4937,7 @@ mixin _$DiaryListEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -4167,7 +4956,9 @@ mixin _$DiaryListEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -4203,27 +4994,16 @@ mixin _$DiaryListEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -4233,19 +5013,31 @@ mixin _$DiaryListEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -4261,7 +5053,9 @@ mixin _$DiaryListEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -4296,26 +5090,15 @@ mixin _$DiaryListEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -4324,19 +5107,31 @@ mixin _$DiaryListEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -4352,7 +5147,9 @@ mixin _$DiaryListEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -4387,26 +5184,15 @@ mixin _$DiaryListEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -4415,12 +5201,24 @@ mixin _$DiaryListEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -4451,21 +5249,20 @@ mixin _$DiaryListEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -4476,6 +5273,10 @@ mixin _$DiaryListEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -4503,21 +5304,20 @@ mixin _$DiaryListEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -4526,6 +5326,10 @@ mixin _$DiaryListEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -4553,20 +5357,19 @@ mixin _$DiaryListEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -4574,6 +5377,10 @@ mixin _$DiaryListEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -4637,7 +5444,7 @@ class _$CreateSampleEvent implements CreateSampleEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -4656,7 +5463,9 @@ class _$CreateSampleEvent implements CreateSampleEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -4692,27 +5501,16 @@ class _$CreateSampleEvent implements CreateSampleEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -4722,12 +5520,24 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return createSample();
   }
@@ -4737,7 +5547,7 @@ class _$CreateSampleEvent implements CreateSampleEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -4753,7 +5563,9 @@ class _$CreateSampleEvent implements CreateSampleEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -4788,26 +5600,15 @@ class _$CreateSampleEvent implements CreateSampleEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -4816,12 +5617,24 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return createSample?.call();
   }
@@ -4831,7 +5644,7 @@ class _$CreateSampleEvent implements CreateSampleEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -4847,7 +5660,9 @@ class _$CreateSampleEvent implements CreateSampleEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -4882,26 +5697,15 @@ class _$CreateSampleEvent implements CreateSampleEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -4910,12 +5714,24 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (createSample != null) {
@@ -4952,21 +5768,20 @@ class _$CreateSampleEvent implements CreateSampleEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -4977,6 +5792,10 @@ class _$CreateSampleEvent implements CreateSampleEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return createSample(this);
   }
@@ -5007,21 +5826,20 @@ class _$CreateSampleEvent implements CreateSampleEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -5030,6 +5848,10 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return createSample?.call(this);
   }
@@ -5060,20 +5882,19 @@ class _$CreateSampleEvent implements CreateSampleEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -5081,6 +5902,10 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (createSample != null) {
@@ -5134,7 +5959,7 @@ class _$InitialLoadEvent implements InitialLoadEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -5153,7 +5978,9 @@ class _$InitialLoadEvent implements InitialLoadEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -5189,27 +6016,16 @@ class _$InitialLoadEvent implements InitialLoadEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -5219,12 +6035,24 @@ class _$InitialLoadEvent implements InitialLoadEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return initialLoad();
   }
@@ -5234,7 +6062,7 @@ class _$InitialLoadEvent implements InitialLoadEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -5250,7 +6078,9 @@ class _$InitialLoadEvent implements InitialLoadEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -5285,26 +6115,15 @@ class _$InitialLoadEvent implements InitialLoadEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -5313,12 +6132,24 @@ class _$InitialLoadEvent implements InitialLoadEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return initialLoad?.call();
   }
@@ -5328,7 +6159,7 @@ class _$InitialLoadEvent implements InitialLoadEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -5344,7 +6175,9 @@ class _$InitialLoadEvent implements InitialLoadEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -5379,26 +6212,15 @@ class _$InitialLoadEvent implements InitialLoadEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -5407,12 +6229,24 @@ class _$InitialLoadEvent implements InitialLoadEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (initialLoad != null) {
@@ -5449,21 +6283,20 @@ class _$InitialLoadEvent implements InitialLoadEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -5474,6 +6307,10 @@ class _$InitialLoadEvent implements InitialLoadEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return initialLoad(this);
   }
@@ -5504,21 +6341,20 @@ class _$InitialLoadEvent implements InitialLoadEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -5527,6 +6363,10 @@ class _$InitialLoadEvent implements InitialLoadEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return initialLoad?.call(this);
   }
@@ -5557,20 +6397,19 @@ class _$InitialLoadEvent implements InitialLoadEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -5578,6 +6417,10 @@ class _$InitialLoadEvent implements InitialLoadEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (initialLoad != null) {
@@ -5597,7 +6440,7 @@ abstract class _$$GetDiaryListEventCopyWith<$Res> {
           _$GetDiaryListEvent value, $Res Function(_$GetDiaryListEvent) then) =
       __$$GetDiaryListEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({DateTime date});
+  $Res call({DateTime date, int delay});
 }
 
 /// @nodoc
@@ -5612,12 +6455,17 @@ class __$$GetDiaryListEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? date = null,
+    Object? delay = null,
   }) {
     return _then(_$GetDiaryListEvent(
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      delay: null == delay
+          ? _value.delay
+          : delay // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -5625,14 +6473,16 @@ class __$$GetDiaryListEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetDiaryListEvent implements GetDiaryListEvent {
-  const _$GetDiaryListEvent({required this.date});
+  const _$GetDiaryListEvent({required this.date, required this.delay});
 
   @override
   final DateTime date;
+  @override
+  final int delay;
 
   @override
   String toString() {
-    return 'DiaryListEvent.getDiaryList(date: $date)';
+    return 'DiaryListEvent.getDiaryList(date: $date, delay: $delay)';
   }
 
   @override
@@ -5640,11 +6490,12 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetDiaryListEvent &&
-            (identical(other.date, date) || other.date == date));
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.delay, delay) || other.delay == delay));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, date);
+  int get hashCode => Object.hash(runtimeType, date, delay);
 
   @JsonKey(ignore: true)
   @override
@@ -5657,7 +6508,7 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -5676,7 +6527,9 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -5712,27 +6565,16 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -5742,14 +6584,26 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
-    return getDiaryList(date);
+    return getDiaryList(date, delay);
   }
 
   @override
@@ -5757,7 +6611,7 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -5773,7 +6627,9 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -5808,26 +6664,15 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -5836,14 +6681,26 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
-    return getDiaryList?.call(date);
+    return getDiaryList?.call(date, delay);
   }
 
   @override
@@ -5851,7 +6708,7 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -5867,7 +6724,9 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -5902,26 +6761,15 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -5930,16 +6778,28 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (getDiaryList != null) {
-      return getDiaryList(date);
+      return getDiaryList(date, delay);
     }
     return orElse();
   }
@@ -5972,21 +6832,20 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -5997,6 +6856,10 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return getDiaryList(this);
   }
@@ -6027,21 +6890,20 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -6050,6 +6912,10 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return getDiaryList?.call(this);
   }
@@ -6080,20 +6946,19 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -6101,6 +6966,10 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (getDiaryList != null) {
@@ -6111,10 +6980,12 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
 }
 
 abstract class GetDiaryListEvent implements DiaryListEvent {
-  const factory GetDiaryListEvent({required final DateTime date}) =
-      _$GetDiaryListEvent;
+  const factory GetDiaryListEvent(
+      {required final DateTime date,
+      required final int delay}) = _$GetDiaryListEvent;
 
   DateTime get date;
+  int get delay;
   @JsonKey(ignore: true)
   _$$GetDiaryListEventCopyWith<_$GetDiaryListEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -6204,7 +7075,7 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -6223,7 +7094,9 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -6259,27 +7132,16 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -6289,12 +7151,24 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return getDiaryColumns(diaryList, lists);
   }
@@ -6304,7 +7178,7 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -6320,7 +7194,9 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -6355,26 +7231,15 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -6383,12 +7248,24 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return getDiaryColumns?.call(diaryList, lists);
   }
@@ -6398,7 +7275,7 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -6414,7 +7291,9 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -6449,26 +7328,15 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -6477,12 +7345,24 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (getDiaryColumns != null) {
@@ -6519,21 +7399,20 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -6544,6 +7423,10 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return getDiaryColumns(this);
   }
@@ -6574,21 +7457,20 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -6597,6 +7479,10 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return getDiaryColumns?.call(this);
   }
@@ -6627,20 +7513,19 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -6648,6 +7533,10 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (getDiaryColumns != null) {
@@ -6796,7 +7685,7 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -6815,7 +7704,9 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -6851,27 +7742,16 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -6881,12 +7761,24 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return getDiaryCells(diaryList, diaryColumns, capitalCells, lists);
   }
@@ -6896,7 +7788,7 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -6912,7 +7804,9 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -6947,26 +7841,15 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -6975,12 +7858,24 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return getDiaryCells?.call(diaryList, diaryColumns, capitalCells, lists);
   }
@@ -6990,7 +7885,7 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -7006,7 +7901,9 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -7041,26 +7938,15 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -7069,12 +7955,24 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (getDiaryCells != null) {
@@ -7111,21 +8009,20 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -7136,6 +8033,10 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return getDiaryCells(this);
   }
@@ -7166,21 +8067,20 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -7189,6 +8089,10 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return getDiaryCells?.call(this);
   }
@@ -7219,20 +8123,19 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -7240,6 +8143,10 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (getDiaryCells != null) {
@@ -7333,7 +8240,7 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -7352,7 +8259,9 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -7388,27 +8297,16 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -7418,12 +8316,24 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return selectDiaryCell(diaryCell);
   }
@@ -7433,7 +8343,7 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -7449,7 +8359,9 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -7484,26 +8396,15 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -7512,12 +8413,24 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return selectDiaryCell?.call(diaryCell);
   }
@@ -7527,7 +8440,7 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -7543,7 +8456,9 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -7578,26 +8493,15 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -7606,12 +8510,24 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (selectDiaryCell != null) {
@@ -7648,21 +8564,20 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -7673,6 +8588,10 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return selectDiaryCell(this);
   }
@@ -7703,21 +8622,20 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -7726,6 +8644,10 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return selectDiaryCell?.call(this);
   }
@@ -7756,20 +8678,19 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -7777,6 +8698,10 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (selectDiaryCell != null) {
@@ -7871,7 +8796,7 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -7890,7 +8815,9 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -7926,27 +8853,16 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -7956,12 +8872,24 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return selectDiaryCells(diaryCells);
   }
@@ -7971,7 +8899,7 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -7987,7 +8915,9 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -8022,26 +8952,15 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -8050,12 +8969,24 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return selectDiaryCells?.call(diaryCells);
   }
@@ -8065,7 +8996,7 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -8081,7 +9012,9 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -8116,26 +9049,15 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -8144,12 +9066,24 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (selectDiaryCells != null) {
@@ -8186,21 +9120,20 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -8211,6 +9144,10 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return selectDiaryCells(this);
   }
@@ -8241,21 +9178,20 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -8264,6 +9200,10 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return selectDiaryCells?.call(this);
   }
@@ -8294,20 +9234,19 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -8315,6 +9254,10 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (selectDiaryCells != null) {
@@ -8402,7 +9345,7 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -8421,7 +9364,9 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -8457,27 +9402,16 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -8487,12 +9421,24 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return selectCapitalCell(capitalCell);
   }
@@ -8502,7 +9448,7 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -8518,7 +9464,9 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -8553,26 +9501,15 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -8581,12 +9518,24 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return selectCapitalCell?.call(capitalCell);
   }
@@ -8596,7 +9545,7 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -8612,7 +9561,9 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -8647,26 +9598,15 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -8675,12 +9615,24 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (selectCapitalCell != null) {
@@ -8717,21 +9669,20 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -8742,6 +9693,10 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return selectCapitalCell(this);
   }
@@ -8772,21 +9727,20 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -8795,6 +9749,10 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return selectCapitalCell?.call(this);
   }
@@ -8825,20 +9783,19 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -8846,6 +9803,10 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (selectCapitalCell != null) {
@@ -8966,7 +9927,7 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -8985,7 +9946,9 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -9021,27 +9984,16 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -9051,12 +10003,24 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return onPanUpdate(diaryCell, cellKey, details, scaleFactor);
   }
@@ -9066,7 +10030,7 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -9082,7 +10046,9 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -9117,26 +10083,15 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -9145,12 +10100,24 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return onPanUpdate?.call(diaryCell, cellKey, details, scaleFactor);
   }
@@ -9160,7 +10127,7 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -9176,7 +10143,9 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -9211,26 +10180,15 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -9239,12 +10197,24 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (onPanUpdate != null) {
@@ -9281,21 +10251,20 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -9306,6 +10275,10 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return onPanUpdate(this);
   }
@@ -9336,21 +10309,20 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -9359,6 +10331,10 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return onPanUpdate?.call(this);
   }
@@ -9389,20 +10365,19 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -9410,6 +10385,10 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (onPanUpdate != null) {
@@ -9503,7 +10482,7 @@ class _$StartEditingListEvent implements StartEditingListEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -9522,7 +10501,9 @@ class _$StartEditingListEvent implements StartEditingListEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -9558,27 +10539,16 @@ class _$StartEditingListEvent implements StartEditingListEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -9588,12 +10558,24 @@ class _$StartEditingListEvent implements StartEditingListEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return startEditingList(selectedList);
   }
@@ -9603,7 +10585,7 @@ class _$StartEditingListEvent implements StartEditingListEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -9619,7 +10601,9 @@ class _$StartEditingListEvent implements StartEditingListEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -9654,26 +10638,15 @@ class _$StartEditingListEvent implements StartEditingListEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -9682,12 +10655,24 @@ class _$StartEditingListEvent implements StartEditingListEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return startEditingList?.call(selectedList);
   }
@@ -9697,7 +10682,7 @@ class _$StartEditingListEvent implements StartEditingListEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -9713,7 +10698,9 @@ class _$StartEditingListEvent implements StartEditingListEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -9748,26 +10735,15 @@ class _$StartEditingListEvent implements StartEditingListEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -9776,12 +10752,24 @@ class _$StartEditingListEvent implements StartEditingListEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (startEditingList != null) {
@@ -9818,21 +10806,20 @@ class _$StartEditingListEvent implements StartEditingListEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -9843,6 +10830,10 @@ class _$StartEditingListEvent implements StartEditingListEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return startEditingList(this);
   }
@@ -9873,21 +10864,20 @@ class _$StartEditingListEvent implements StartEditingListEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -9896,6 +10886,10 @@ class _$StartEditingListEvent implements StartEditingListEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return startEditingList?.call(this);
   }
@@ -9926,20 +10920,19 @@ class _$StartEditingListEvent implements StartEditingListEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -9947,6 +10940,10 @@ class _$StartEditingListEvent implements StartEditingListEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (startEditingList != null) {
@@ -9972,7 +10969,7 @@ abstract class _$$ReturnToLoadedEventCopyWith<$Res> {
           $Res Function(_$ReturnToLoadedEvent) then) =
       __$$ReturnToLoadedEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? newName});
+  $Res call({String? newName, String? addedColumnName, int? addedColumnCount});
 }
 
 /// @nodoc
@@ -9987,12 +10984,22 @@ class __$$ReturnToLoadedEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? newName = freezed,
+    Object? addedColumnName = freezed,
+    Object? addedColumnCount = freezed,
   }) {
     return _then(_$ReturnToLoadedEvent(
       newName: freezed == newName
           ? _value.newName
           : newName // ignore: cast_nullable_to_non_nullable
               as String?,
+      addedColumnName: freezed == addedColumnName
+          ? _value.addedColumnName
+          : addedColumnName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      addedColumnCount: freezed == addedColumnCount
+          ? _value.addedColumnCount
+          : addedColumnCount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -10000,14 +11007,19 @@ class __$$ReturnToLoadedEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
-  const _$ReturnToLoadedEvent({this.newName});
+  const _$ReturnToLoadedEvent(
+      {this.newName, this.addedColumnName, this.addedColumnCount});
 
   @override
   final String? newName;
+  @override
+  final String? addedColumnName;
+  @override
+  final int? addedColumnCount;
 
   @override
   String toString() {
-    return 'DiaryListEvent.returnToLoaded(newName: $newName)';
+    return 'DiaryListEvent.returnToLoaded(newName: $newName, addedColumnName: $addedColumnName, addedColumnCount: $addedColumnCount)';
   }
 
   @override
@@ -10015,11 +11027,16 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReturnToLoadedEvent &&
-            (identical(other.newName, newName) || other.newName == newName));
+            (identical(other.newName, newName) || other.newName == newName) &&
+            (identical(other.addedColumnName, addedColumnName) ||
+                other.addedColumnName == addedColumnName) &&
+            (identical(other.addedColumnCount, addedColumnCount) ||
+                other.addedColumnCount == addedColumnCount));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, newName);
+  int get hashCode =>
+      Object.hash(runtimeType, newName, addedColumnName, addedColumnCount);
 
   @JsonKey(ignore: true)
   @override
@@ -10033,7 +11050,7 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -10052,7 +11069,9 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -10088,27 +11107,16 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -10118,14 +11126,26 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
-    return returnToLoaded(newName);
+    return returnToLoaded(newName, addedColumnName, addedColumnCount);
   }
 
   @override
@@ -10133,7 +11153,7 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -10149,7 +11169,9 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -10184,26 +11206,15 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -10212,14 +11223,26 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
-    return returnToLoaded?.call(newName);
+    return returnToLoaded?.call(newName, addedColumnName, addedColumnCount);
   }
 
   @override
@@ -10227,7 +11250,7 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -10243,7 +11266,9 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -10278,26 +11303,15 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -10306,16 +11320,28 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (returnToLoaded != null) {
-      return returnToLoaded(newName);
+      return returnToLoaded(newName, addedColumnName, addedColumnCount);
     }
     return orElse();
   }
@@ -10348,21 +11374,20 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -10373,6 +11398,10 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return returnToLoaded(this);
   }
@@ -10403,21 +11432,20 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -10426,6 +11454,10 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return returnToLoaded?.call(this);
   }
@@ -10456,20 +11488,19 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -10477,6 +11508,10 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (returnToLoaded != null) {
@@ -10487,10 +11522,14 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
 }
 
 abstract class ReturnToLoadedEvent implements DiaryListEvent {
-  const factory ReturnToLoadedEvent({final String? newName}) =
-      _$ReturnToLoadedEvent;
+  const factory ReturnToLoadedEvent(
+      {final String? newName,
+      final String? addedColumnName,
+      final int? addedColumnCount}) = _$ReturnToLoadedEvent;
 
   String? get newName;
+  String? get addedColumnName;
+  int? get addedColumnCount;
   @JsonKey(ignore: true)
   _$$ReturnToLoadedEventCopyWith<_$ReturnToLoadedEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -10539,7 +11578,7 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -10558,7 +11597,9 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -10594,27 +11635,16 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -10624,12 +11654,24 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return returnToCellsSelected();
   }
@@ -10639,7 +11681,7 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -10655,7 +11697,9 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -10690,26 +11734,15 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -10718,12 +11751,24 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return returnToCellsSelected?.call();
   }
@@ -10733,7 +11778,7 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -10749,7 +11794,9 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -10784,26 +11831,15 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -10812,12 +11848,24 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (returnToCellsSelected != null) {
@@ -10854,21 +11902,20 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -10879,6 +11926,10 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return returnToCellsSelected(this);
   }
@@ -10909,21 +11960,20 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -10932,6 +11982,10 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return returnToCellsSelected?.call(this);
   }
@@ -10962,20 +12016,19 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -10983,6 +12036,10 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (returnToCellsSelected != null) {
@@ -11074,7 +12131,7 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -11093,7 +12150,9 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -11129,27 +12188,16 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -11159,12 +12207,24 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return updateDiaryListName(diaryList, newName);
   }
@@ -11174,7 +12234,7 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -11190,7 +12250,9 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -11225,26 +12287,15 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -11253,12 +12304,24 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return updateDiaryListName?.call(diaryList, newName);
   }
@@ -11268,7 +12331,7 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -11284,7 +12347,9 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -11319,26 +12384,15 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -11347,12 +12401,24 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (updateDiaryListName != null) {
@@ -11389,21 +12455,20 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -11414,6 +12479,10 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return updateDiaryListName(this);
   }
@@ -11444,21 +12513,20 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -11467,6 +12535,10 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return updateDiaryListName?.call(this);
   }
@@ -11497,20 +12569,19 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -11518,6 +12589,10 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (updateDiaryListName != null) {
@@ -11616,7 +12691,7 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -11635,7 +12710,9 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -11671,27 +12748,16 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -11701,12 +12767,24 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return changeDiaryCell(diaryCell, textFieldText);
   }
@@ -11716,7 +12794,7 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -11732,7 +12810,9 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -11767,26 +12847,15 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -11795,12 +12864,24 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return changeDiaryCell?.call(diaryCell, textFieldText);
   }
@@ -11810,7 +12891,7 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -11826,7 +12907,9 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -11861,26 +12944,15 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -11889,12 +12961,24 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (changeDiaryCell != null) {
@@ -11931,21 +13015,20 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -11956,6 +13039,10 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return changeDiaryCell(this);
   }
@@ -11986,21 +13073,20 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -12009,6 +13095,10 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return changeDiaryCell?.call(this);
   }
@@ -12039,20 +13129,19 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -12060,6 +13149,10 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (changeDiaryCell != null) {
@@ -12159,7 +13252,7 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -12178,7 +13271,9 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -12214,27 +13309,16 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -12244,12 +13328,24 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return changeCapitalCell(capitalCell, textFieldText);
   }
@@ -12259,7 +13355,7 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -12275,7 +13371,9 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -12310,26 +13408,15 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -12338,12 +13425,24 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return changeCapitalCell?.call(capitalCell, textFieldText);
   }
@@ -12353,7 +13452,7 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -12369,7 +13468,9 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -12404,26 +13505,15 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -12432,12 +13522,24 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (changeCapitalCell != null) {
@@ -12474,21 +13576,20 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -12499,6 +13600,10 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return changeCapitalCell(this);
   }
@@ -12529,21 +13634,20 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -12552,6 +13656,10 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return changeCapitalCell?.call(this);
   }
@@ -12582,20 +13690,19 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -12603,6 +13710,10 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (changeCapitalCell != null) {
@@ -12705,7 +13816,7 @@ class _$UpdateDiaryCellInFirebaseEvent
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -12724,7 +13835,9 @@ class _$UpdateDiaryCellInFirebaseEvent
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -12760,27 +13873,16 @@ class _$UpdateDiaryCellInFirebaseEvent
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -12790,12 +13892,24 @@ class _$UpdateDiaryCellInFirebaseEvent
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return updateDiaryCellInFirebase(diaryCell, textFieldText);
   }
@@ -12805,7 +13919,7 @@ class _$UpdateDiaryCellInFirebaseEvent
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -12821,7 +13935,9 @@ class _$UpdateDiaryCellInFirebaseEvent
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -12856,26 +13972,15 @@ class _$UpdateDiaryCellInFirebaseEvent
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -12884,12 +13989,24 @@ class _$UpdateDiaryCellInFirebaseEvent
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return updateDiaryCellInFirebase?.call(diaryCell, textFieldText);
   }
@@ -12899,7 +14016,7 @@ class _$UpdateDiaryCellInFirebaseEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -12915,7 +14032,9 @@ class _$UpdateDiaryCellInFirebaseEvent
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -12950,26 +14069,15 @@ class _$UpdateDiaryCellInFirebaseEvent
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -12978,12 +14086,24 @@ class _$UpdateDiaryCellInFirebaseEvent
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (updateDiaryCellInFirebase != null) {
@@ -13020,21 +14140,20 @@ class _$UpdateDiaryCellInFirebaseEvent
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -13045,6 +14164,10 @@ class _$UpdateDiaryCellInFirebaseEvent
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return updateDiaryCellInFirebase(this);
   }
@@ -13075,21 +14198,20 @@ class _$UpdateDiaryCellInFirebaseEvent
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -13098,6 +14220,10 @@ class _$UpdateDiaryCellInFirebaseEvent
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return updateDiaryCellInFirebase?.call(this);
   }
@@ -13128,20 +14254,19 @@ class _$UpdateDiaryCellInFirebaseEvent
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -13149,6 +14274,10 @@ class _$UpdateDiaryCellInFirebaseEvent
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (updateDiaryCellInFirebase != null) {
@@ -13327,7 +14456,7 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -13346,7 +14475,9 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -13382,27 +14513,16 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -13412,12 +14532,24 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return changeDiaryCellsSettings(
         fontWeight,
@@ -13435,7 +14567,7 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -13451,7 +14583,9 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -13486,26 +14620,15 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -13514,12 +14637,24 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return changeDiaryCellsSettings?.call(
         fontWeight,
@@ -13537,7 +14672,7 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -13553,7 +14688,9 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -13588,26 +14725,15 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -13616,12 +14742,24 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (changeDiaryCellsSettings != null) {
@@ -13666,21 +14804,20 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -13691,6 +14828,10 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return changeDiaryCellsSettings(this);
   }
@@ -13721,21 +14862,20 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -13744,6 +14884,10 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return changeDiaryCellsSettings?.call(this);
   }
@@ -13774,20 +14918,19 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -13795,6 +14938,10 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (changeDiaryCellsSettings != null) {
@@ -13926,7 +15073,7 @@ class _$ChangeDiaryCellsBordersSettingsEvent
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -13945,7 +15092,9 @@ class _$ChangeDiaryCellsBordersSettingsEvent
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -13981,27 +15130,16 @@ class _$ChangeDiaryCellsBordersSettingsEvent
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -14011,12 +15149,24 @@ class _$ChangeDiaryCellsBordersSettingsEvent
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return changeDiaryCellsBordersSettings(
         bordersEditingEnum, bordersStyleEnum, bordersColor);
@@ -14027,7 +15177,7 @@ class _$ChangeDiaryCellsBordersSettingsEvent
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -14043,7 +15193,9 @@ class _$ChangeDiaryCellsBordersSettingsEvent
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -14078,26 +15230,15 @@ class _$ChangeDiaryCellsBordersSettingsEvent
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -14106,12 +15247,24 @@ class _$ChangeDiaryCellsBordersSettingsEvent
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return changeDiaryCellsBordersSettings?.call(
         bordersEditingEnum, bordersStyleEnum, bordersColor);
@@ -14122,7 +15275,7 @@ class _$ChangeDiaryCellsBordersSettingsEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -14138,7 +15291,9 @@ class _$ChangeDiaryCellsBordersSettingsEvent
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -14173,26 +15328,15 @@ class _$ChangeDiaryCellsBordersSettingsEvent
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -14201,12 +15345,24 @@ class _$ChangeDiaryCellsBordersSettingsEvent
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (changeDiaryCellsBordersSettings != null) {
@@ -14244,21 +15400,20 @@ class _$ChangeDiaryCellsBordersSettingsEvent
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -14269,6 +15424,10 @@ class _$ChangeDiaryCellsBordersSettingsEvent
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return changeDiaryCellsBordersSettings(this);
   }
@@ -14299,21 +15458,20 @@ class _$ChangeDiaryCellsBordersSettingsEvent
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -14322,6 +15480,10 @@ class _$ChangeDiaryCellsBordersSettingsEvent
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return changeDiaryCellsBordersSettings?.call(this);
   }
@@ -14352,20 +15514,19 @@ class _$ChangeDiaryCellsBordersSettingsEvent
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -14373,6 +15534,10 @@ class _$ChangeDiaryCellsBordersSettingsEvent
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (changeDiaryCellsBordersSettings != null) {
@@ -14580,7 +15745,7 @@ class _$ChangeCapitalCellSettingsEvent
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -14599,7 +15764,9 @@ class _$ChangeCapitalCellSettingsEvent
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -14635,27 +15802,16 @@ class _$ChangeCapitalCellSettingsEvent
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -14665,12 +15821,24 @@ class _$ChangeCapitalCellSettingsEvent
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return changeCapitalCellSettings(
         fontWeight,
@@ -14690,7 +15858,7 @@ class _$ChangeCapitalCellSettingsEvent
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -14706,7 +15874,9 @@ class _$ChangeCapitalCellSettingsEvent
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -14741,26 +15911,15 @@ class _$ChangeCapitalCellSettingsEvent
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -14769,12 +15928,24 @@ class _$ChangeCapitalCellSettingsEvent
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return changeCapitalCellSettings?.call(
         fontWeight,
@@ -14794,7 +15965,7 @@ class _$ChangeCapitalCellSettingsEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -14810,7 +15981,9 @@ class _$ChangeCapitalCellSettingsEvent
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -14845,26 +16018,15 @@ class _$ChangeCapitalCellSettingsEvent
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -14873,12 +16035,24 @@ class _$ChangeCapitalCellSettingsEvent
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (changeCapitalCellSettings != null) {
@@ -14925,21 +16099,20 @@ class _$ChangeCapitalCellSettingsEvent
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -14950,6 +16123,10 @@ class _$ChangeCapitalCellSettingsEvent
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return changeCapitalCellSettings(this);
   }
@@ -14980,21 +16157,20 @@ class _$ChangeCapitalCellSettingsEvent
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -15003,6 +16179,10 @@ class _$ChangeCapitalCellSettingsEvent
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return changeCapitalCellSettings?.call(this);
   }
@@ -15033,20 +16213,19 @@ class _$ChangeCapitalCellSettingsEvent
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -15054,6 +16233,10 @@ class _$ChangeCapitalCellSettingsEvent
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (changeCapitalCellSettings != null) {
@@ -15092,173 +16275,114 @@ abstract class ChangeCapitalCellSettingsEvent implements DiaryListEvent {
 }
 
 /// @nodoc
-abstract class _$$UpdateDiaryCellsSettingsInFirebaseEventCopyWith<$Res> {
-  factory _$$UpdateDiaryCellsSettingsInFirebaseEventCopyWith(
-          _$UpdateDiaryCellsSettingsInFirebaseEvent value,
-          $Res Function(_$UpdateDiaryCellsSettingsInFirebaseEvent) then) =
-      __$$UpdateDiaryCellsSettingsInFirebaseEventCopyWithImpl<$Res>;
+abstract class _$$UpdateDiaryCellSettingsInFirebaseEventCopyWith<$Res> {
+  factory _$$UpdateDiaryCellSettingsInFirebaseEventCopyWith(
+          _$UpdateDiaryCellSettingsInFirebaseEvent value,
+          $Res Function(_$UpdateDiaryCellSettingsInFirebaseEvent) then) =
+      __$$UpdateDiaryCellSettingsInFirebaseEventCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {List<DiaryCell> diaryCells,
-      FontWeightEnum? fontWeight,
-      TextDecorationEnum? textDecoration,
-      FontStyleEnum? fontStyle,
-      double? fontSize,
-      String? color,
-      HorizontalAlignmentsEnum? horizontalAlignment,
-      VerticalAlignmentsEnum? verticalAlignment});
+      {DiaryCell diaryCell,
+      int index,
+      DiaryCellTextSettings? newTextSettings,
+      DiaryCellSettings? newSettings});
 }
 
 /// @nodoc
-class __$$UpdateDiaryCellsSettingsInFirebaseEventCopyWithImpl<$Res>
+class __$$UpdateDiaryCellSettingsInFirebaseEventCopyWithImpl<$Res>
     extends _$DiaryListEventCopyWithImpl<$Res,
-        _$UpdateDiaryCellsSettingsInFirebaseEvent>
-    implements _$$UpdateDiaryCellsSettingsInFirebaseEventCopyWith<$Res> {
-  __$$UpdateDiaryCellsSettingsInFirebaseEventCopyWithImpl(
-      _$UpdateDiaryCellsSettingsInFirebaseEvent _value,
-      $Res Function(_$UpdateDiaryCellsSettingsInFirebaseEvent) _then)
+        _$UpdateDiaryCellSettingsInFirebaseEvent>
+    implements _$$UpdateDiaryCellSettingsInFirebaseEventCopyWith<$Res> {
+  __$$UpdateDiaryCellSettingsInFirebaseEventCopyWithImpl(
+      _$UpdateDiaryCellSettingsInFirebaseEvent _value,
+      $Res Function(_$UpdateDiaryCellSettingsInFirebaseEvent) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? diaryCells = null,
-    Object? fontWeight = freezed,
-    Object? textDecoration = freezed,
-    Object? fontStyle = freezed,
-    Object? fontSize = freezed,
-    Object? color = freezed,
-    Object? horizontalAlignment = freezed,
-    Object? verticalAlignment = freezed,
+    Object? diaryCell = null,
+    Object? index = null,
+    Object? newTextSettings = freezed,
+    Object? newSettings = freezed,
   }) {
-    return _then(_$UpdateDiaryCellsSettingsInFirebaseEvent(
-      diaryCells: null == diaryCells
-          ? _value._diaryCells
-          : diaryCells // ignore: cast_nullable_to_non_nullable
-              as List<DiaryCell>,
-      fontWeight: freezed == fontWeight
-          ? _value.fontWeight
-          : fontWeight // ignore: cast_nullable_to_non_nullable
-              as FontWeightEnum?,
-      textDecoration: freezed == textDecoration
-          ? _value.textDecoration
-          : textDecoration // ignore: cast_nullable_to_non_nullable
-              as TextDecorationEnum?,
-      fontStyle: freezed == fontStyle
-          ? _value.fontStyle
-          : fontStyle // ignore: cast_nullable_to_non_nullable
-              as FontStyleEnum?,
-      fontSize: freezed == fontSize
-          ? _value.fontSize
-          : fontSize // ignore: cast_nullable_to_non_nullable
-              as double?,
-      color: freezed == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as String?,
-      horizontalAlignment: freezed == horizontalAlignment
-          ? _value.horizontalAlignment
-          : horizontalAlignment // ignore: cast_nullable_to_non_nullable
-              as HorizontalAlignmentsEnum?,
-      verticalAlignment: freezed == verticalAlignment
-          ? _value.verticalAlignment
-          : verticalAlignment // ignore: cast_nullable_to_non_nullable
-              as VerticalAlignmentsEnum?,
+    return _then(_$UpdateDiaryCellSettingsInFirebaseEvent(
+      diaryCell: null == diaryCell
+          ? _value.diaryCell
+          : diaryCell // ignore: cast_nullable_to_non_nullable
+              as DiaryCell,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      newTextSettings: freezed == newTextSettings
+          ? _value.newTextSettings
+          : newTextSettings // ignore: cast_nullable_to_non_nullable
+              as DiaryCellTextSettings?,
+      newSettings: freezed == newSettings
+          ? _value.newSettings
+          : newSettings // ignore: cast_nullable_to_non_nullable
+              as DiaryCellSettings?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$UpdateDiaryCellsSettingsInFirebaseEvent
-    implements UpdateDiaryCellsSettingsInFirebaseEvent {
-  const _$UpdateDiaryCellsSettingsInFirebaseEvent(
-      {required final List<DiaryCell> diaryCells,
-      this.fontWeight,
-      this.textDecoration,
-      this.fontStyle,
-      this.fontSize,
-      this.color,
-      this.horizontalAlignment,
-      this.verticalAlignment})
-      : _diaryCells = diaryCells;
-
-  final List<DiaryCell> _diaryCells;
-  @override
-  List<DiaryCell> get diaryCells {
-    if (_diaryCells is EqualUnmodifiableListView) return _diaryCells;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_diaryCells);
-  }
+class _$UpdateDiaryCellSettingsInFirebaseEvent
+    implements UpdateDiaryCellSettingsInFirebaseEvent {
+  const _$UpdateDiaryCellSettingsInFirebaseEvent(
+      {required this.diaryCell,
+      required this.index,
+      this.newTextSettings,
+      this.newSettings});
 
   @override
-  final FontWeightEnum? fontWeight;
+  final DiaryCell diaryCell;
   @override
-  final TextDecorationEnum? textDecoration;
+  final int index;
   @override
-  final FontStyleEnum? fontStyle;
+  final DiaryCellTextSettings? newTextSettings;
   @override
-  final double? fontSize;
-  @override
-  final String? color;
-  @override
-  final HorizontalAlignmentsEnum? horizontalAlignment;
-  @override
-  final VerticalAlignmentsEnum? verticalAlignment;
+  final DiaryCellSettings? newSettings;
 
   @override
   String toString() {
-    return 'DiaryListEvent.updateDiaryCellsSettingsInFirebase(diaryCells: $diaryCells, fontWeight: $fontWeight, textDecoration: $textDecoration, fontStyle: $fontStyle, fontSize: $fontSize, color: $color, horizontalAlignment: $horizontalAlignment, verticalAlignment: $verticalAlignment)';
+    return 'DiaryListEvent.updateDiaryCellSettingsInFirebase(diaryCell: $diaryCell, index: $index, newTextSettings: $newTextSettings, newSettings: $newSettings)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UpdateDiaryCellsSettingsInFirebaseEvent &&
-            const DeepCollectionEquality()
-                .equals(other._diaryCells, _diaryCells) &&
-            (identical(other.fontWeight, fontWeight) ||
-                other.fontWeight == fontWeight) &&
-            (identical(other.textDecoration, textDecoration) ||
-                other.textDecoration == textDecoration) &&
-            (identical(other.fontStyle, fontStyle) ||
-                other.fontStyle == fontStyle) &&
-            (identical(other.fontSize, fontSize) ||
-                other.fontSize == fontSize) &&
-            (identical(other.color, color) || other.color == color) &&
-            (identical(other.horizontalAlignment, horizontalAlignment) ||
-                other.horizontalAlignment == horizontalAlignment) &&
-            (identical(other.verticalAlignment, verticalAlignment) ||
-                other.verticalAlignment == verticalAlignment));
+            other is _$UpdateDiaryCellSettingsInFirebaseEvent &&
+            (identical(other.diaryCell, diaryCell) ||
+                other.diaryCell == diaryCell) &&
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.newTextSettings, newTextSettings) ||
+                other.newTextSettings == newTextSettings) &&
+            (identical(other.newSettings, newSettings) ||
+                other.newSettings == newSettings));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_diaryCells),
-      fontWeight,
-      textDecoration,
-      fontStyle,
-      fontSize,
-      color,
-      horizontalAlignment,
-      verticalAlignment);
+  int get hashCode =>
+      Object.hash(runtimeType, diaryCell, index, newTextSettings, newSettings);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UpdateDiaryCellsSettingsInFirebaseEventCopyWith<
-          _$UpdateDiaryCellsSettingsInFirebaseEvent>
-      get copyWith => __$$UpdateDiaryCellsSettingsInFirebaseEventCopyWithImpl<
-          _$UpdateDiaryCellsSettingsInFirebaseEvent>(this, _$identity);
+  _$$UpdateDiaryCellSettingsInFirebaseEventCopyWith<
+          _$UpdateDiaryCellSettingsInFirebaseEvent>
+      get copyWith => __$$UpdateDiaryCellSettingsInFirebaseEventCopyWithImpl<
+          _$UpdateDiaryCellSettingsInFirebaseEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -15277,7 +16401,9 @@ class _$UpdateDiaryCellsSettingsInFirebaseEvent
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -15313,27 +16439,16 @@ class _$UpdateDiaryCellsSettingsInFirebaseEvent
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -15343,22 +16458,27 @@ class _$UpdateDiaryCellsSettingsInFirebaseEvent
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
-    return updateDiaryCellsSettingsInFirebase(
-        diaryCells,
-        fontWeight,
-        textDecoration,
-        fontStyle,
-        fontSize,
-        color,
-        horizontalAlignment,
-        verticalAlignment);
+    return updateDiaryCellSettingsInFirebase(
+        diaryCell, index, newTextSettings, newSettings);
   }
 
   @override
@@ -15366,7 +16486,7 @@ class _$UpdateDiaryCellsSettingsInFirebaseEvent
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -15382,7 +16502,9 @@ class _$UpdateDiaryCellsSettingsInFirebaseEvent
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -15417,26 +16539,15 @@ class _$UpdateDiaryCellsSettingsInFirebaseEvent
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -15445,22 +16556,27 @@ class _$UpdateDiaryCellsSettingsInFirebaseEvent
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
-    return updateDiaryCellsSettingsInFirebase?.call(
-        diaryCells,
-        fontWeight,
-        textDecoration,
-        fontStyle,
-        fontSize,
-        color,
-        horizontalAlignment,
-        verticalAlignment);
+    return updateDiaryCellSettingsInFirebase?.call(
+        diaryCell, index, newTextSettings, newSettings);
   }
 
   @override
@@ -15468,7 +16584,7 @@ class _$UpdateDiaryCellsSettingsInFirebaseEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -15484,7 +16600,9 @@ class _$UpdateDiaryCellsSettingsInFirebaseEvent
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -15519,26 +16637,15 @@ class _$UpdateDiaryCellsSettingsInFirebaseEvent
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -15547,24 +16654,29 @@ class _$UpdateDiaryCellsSettingsInFirebaseEvent
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
-    if (updateDiaryCellsSettingsInFirebase != null) {
-      return updateDiaryCellsSettingsInFirebase(
-          diaryCells,
-          fontWeight,
-          textDecoration,
-          fontStyle,
-          fontSize,
-          color,
-          horizontalAlignment,
-          verticalAlignment);
+    if (updateDiaryCellSettingsInFirebase != null) {
+      return updateDiaryCellSettingsInFirebase(
+          diaryCell, index, newTextSettings, newSettings);
     }
     return orElse();
   }
@@ -15597,21 +16709,20 @@ class _$UpdateDiaryCellsSettingsInFirebaseEvent
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -15622,8 +16733,12 @@ class _$UpdateDiaryCellsSettingsInFirebaseEvent
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
-    return updateDiaryCellsSettingsInFirebase(this);
+    return updateDiaryCellSettingsInFirebase(this);
   }
 
   @override
@@ -15652,21 +16767,20 @@ class _$UpdateDiaryCellsSettingsInFirebaseEvent
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -15675,8 +16789,12 @@ class _$UpdateDiaryCellsSettingsInFirebaseEvent
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
-    return updateDiaryCellsSettingsInFirebase?.call(this);
+    return updateDiaryCellSettingsInFirebase?.call(this);
   }
 
   @override
@@ -15705,20 +16823,19 @@ class _$UpdateDiaryCellsSettingsInFirebaseEvent
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -15726,39 +16843,35 @@ class _$UpdateDiaryCellsSettingsInFirebaseEvent
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
-    if (updateDiaryCellsSettingsInFirebase != null) {
-      return updateDiaryCellsSettingsInFirebase(this);
+    if (updateDiaryCellSettingsInFirebase != null) {
+      return updateDiaryCellSettingsInFirebase(this);
     }
     return orElse();
   }
 }
 
-abstract class UpdateDiaryCellsSettingsInFirebaseEvent
+abstract class UpdateDiaryCellSettingsInFirebaseEvent
     implements DiaryListEvent {
-  const factory UpdateDiaryCellsSettingsInFirebaseEvent(
-          {required final List<DiaryCell> diaryCells,
-          final FontWeightEnum? fontWeight,
-          final TextDecorationEnum? textDecoration,
-          final FontStyleEnum? fontStyle,
-          final double? fontSize,
-          final String? color,
-          final HorizontalAlignmentsEnum? horizontalAlignment,
-          final VerticalAlignmentsEnum? verticalAlignment}) =
-      _$UpdateDiaryCellsSettingsInFirebaseEvent;
+  const factory UpdateDiaryCellSettingsInFirebaseEvent(
+          {required final DiaryCell diaryCell,
+          required final int index,
+          final DiaryCellTextSettings? newTextSettings,
+          final DiaryCellSettings? newSettings}) =
+      _$UpdateDiaryCellSettingsInFirebaseEvent;
 
-  List<DiaryCell> get diaryCells;
-  FontWeightEnum? get fontWeight;
-  TextDecorationEnum? get textDecoration;
-  FontStyleEnum? get fontStyle;
-  double? get fontSize;
-  String? get color;
-  HorizontalAlignmentsEnum? get horizontalAlignment;
-  VerticalAlignmentsEnum? get verticalAlignment;
+  DiaryCell get diaryCell;
+  int get index;
+  DiaryCellTextSettings? get newTextSettings;
+  DiaryCellSettings? get newSettings;
   @JsonKey(ignore: true)
-  _$$UpdateDiaryCellsSettingsInFirebaseEventCopyWith<
-          _$UpdateDiaryCellsSettingsInFirebaseEvent>
+  _$$UpdateDiaryCellSettingsInFirebaseEventCopyWith<
+          _$UpdateDiaryCellSettingsInFirebaseEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -15835,7 +16948,7 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -15854,7 +16967,9 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -15890,27 +17005,16 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -15920,12 +17024,24 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return updateCapitalCellSettingsInFirebase(newSettings);
   }
@@ -15935,7 +17051,7 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -15951,7 +17067,9 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -15986,26 +17104,15 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -16014,12 +17121,24 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return updateCapitalCellSettingsInFirebase?.call(newSettings);
   }
@@ -16029,7 +17148,7 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -16045,7 +17164,9 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -16080,26 +17201,15 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -16108,12 +17218,24 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (updateCapitalCellSettingsInFirebase != null) {
@@ -16150,21 +17272,20 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -16175,6 +17296,10 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return updateCapitalCellSettingsInFirebase(this);
   }
@@ -16205,21 +17330,20 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -16228,6 +17352,10 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return updateCapitalCellSettingsInFirebase?.call(this);
   }
@@ -16258,20 +17386,19 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -16279,6 +17406,10 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (updateCapitalCellSettingsInFirebase != null) {
@@ -16370,7 +17501,7 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -16389,7 +17520,9 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -16425,27 +17558,16 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -16455,12 +17577,24 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return updateCapitalCellWidth(details);
   }
@@ -16470,7 +17604,7 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -16486,7 +17620,9 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -16521,26 +17657,15 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -16549,12 +17674,24 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return updateCapitalCellWidth?.call(details);
   }
@@ -16564,7 +17701,7 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -16580,7 +17717,9 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -16615,26 +17754,15 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -16643,12 +17771,24 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (updateCapitalCellWidth != null) {
@@ -16685,21 +17825,20 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -16710,6 +17849,10 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return updateCapitalCellWidth(this);
   }
@@ -16740,21 +17883,20 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -16763,6 +17905,10 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return updateCapitalCellWidth?.call(this);
   }
@@ -16793,20 +17939,19 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -16814,6 +17959,10 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (updateCapitalCellWidth != null) {
@@ -16906,7 +18055,7 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -16925,7 +18074,9 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -16961,27 +18112,16 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -16991,12 +18131,24 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return updateCapitalCellWidthInFirebase(details);
   }
@@ -17006,7 +18158,7 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -17022,7 +18174,9 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -17057,26 +18211,15 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -17085,12 +18228,24 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return updateCapitalCellWidthInFirebase?.call(details);
   }
@@ -17100,7 +18255,7 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -17116,7 +18271,9 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -17151,26 +18308,15 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -17179,12 +18325,24 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (updateCapitalCellWidthInFirebase != null) {
@@ -17221,21 +18379,20 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -17246,6 +18403,10 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return updateCapitalCellWidthInFirebase(this);
   }
@@ -17276,21 +18437,20 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -17299,6 +18459,10 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return updateCapitalCellWidthInFirebase?.call(this);
   }
@@ -17329,20 +18493,19 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -17350,6 +18513,10 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (updateCapitalCellWidthInFirebase != null) {
@@ -17368,601 +18535,6 @@ abstract class UpdateCapitalCellWidthInFirebaseEvent implements DiaryListEvent {
   @JsonKey(ignore: true)
   _$$UpdateCapitalCellWidthInFirebaseEventCopyWith<
           _$UpdateCapitalCellWidthInFirebaseEvent>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$UpdateDefaultCellsSettingsInFirebaseEventCopyWith<$Res> {
-  factory _$$UpdateDefaultCellsSettingsInFirebaseEventCopyWith(
-          _$UpdateDefaultCellsSettingsInFirebaseEvent value,
-          $Res Function(_$UpdateDefaultCellsSettingsInFirebaseEvent) then) =
-      __$$UpdateDefaultCellsSettingsInFirebaseEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call(
-      {FontWeightEnum? fontWeight,
-      TextDecorationEnum? textDecoration,
-      FontStyleEnum? fontStyle,
-      double? fontSize,
-      String? color});
-}
-
-/// @nodoc
-class __$$UpdateDefaultCellsSettingsInFirebaseEventCopyWithImpl<$Res>
-    extends _$DiaryListEventCopyWithImpl<$Res,
-        _$UpdateDefaultCellsSettingsInFirebaseEvent>
-    implements _$$UpdateDefaultCellsSettingsInFirebaseEventCopyWith<$Res> {
-  __$$UpdateDefaultCellsSettingsInFirebaseEventCopyWithImpl(
-      _$UpdateDefaultCellsSettingsInFirebaseEvent _value,
-      $Res Function(_$UpdateDefaultCellsSettingsInFirebaseEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? fontWeight = freezed,
-    Object? textDecoration = freezed,
-    Object? fontStyle = freezed,
-    Object? fontSize = freezed,
-    Object? color = freezed,
-  }) {
-    return _then(_$UpdateDefaultCellsSettingsInFirebaseEvent(
-      fontWeight: freezed == fontWeight
-          ? _value.fontWeight
-          : fontWeight // ignore: cast_nullable_to_non_nullable
-              as FontWeightEnum?,
-      textDecoration: freezed == textDecoration
-          ? _value.textDecoration
-          : textDecoration // ignore: cast_nullable_to_non_nullable
-              as TextDecorationEnum?,
-      fontStyle: freezed == fontStyle
-          ? _value.fontStyle
-          : fontStyle // ignore: cast_nullable_to_non_nullable
-              as FontStyleEnum?,
-      fontSize: freezed == fontSize
-          ? _value.fontSize
-          : fontSize // ignore: cast_nullable_to_non_nullable
-              as double?,
-      color: freezed == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$UpdateDefaultCellsSettingsInFirebaseEvent
-    implements UpdateDefaultCellsSettingsInFirebaseEvent {
-  const _$UpdateDefaultCellsSettingsInFirebaseEvent(
-      {this.fontWeight,
-      this.textDecoration,
-      this.fontStyle,
-      this.fontSize,
-      this.color});
-
-  @override
-  final FontWeightEnum? fontWeight;
-  @override
-  final TextDecorationEnum? textDecoration;
-  @override
-  final FontStyleEnum? fontStyle;
-  @override
-  final double? fontSize;
-  @override
-  final String? color;
-
-  @override
-  String toString() {
-    return 'DiaryListEvent.updateDefaultCellsSettingsInFirebase(fontWeight: $fontWeight, textDecoration: $textDecoration, fontStyle: $fontStyle, fontSize: $fontSize, color: $color)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateDefaultCellsSettingsInFirebaseEvent &&
-            (identical(other.fontWeight, fontWeight) ||
-                other.fontWeight == fontWeight) &&
-            (identical(other.textDecoration, textDecoration) ||
-                other.textDecoration == textDecoration) &&
-            (identical(other.fontStyle, fontStyle) ||
-                other.fontStyle == fontStyle) &&
-            (identical(other.fontSize, fontSize) ||
-                other.fontSize == fontSize) &&
-            (identical(other.color, color) || other.color == color));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, fontWeight, textDecoration, fontStyle, fontSize, color);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateDefaultCellsSettingsInFirebaseEventCopyWith<
-          _$UpdateDefaultCellsSettingsInFirebaseEvent>
-      get copyWith => __$$UpdateDefaultCellsSettingsInFirebaseEventCopyWithImpl<
-          _$UpdateDefaultCellsSettingsInFirebaseEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() createSample,
-    required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
-    required TResult Function(DiaryList diaryList, List<DiaryList> lists)
-        getDiaryColumns,
-    required TResult Function(
-            DiaryList diaryList,
-            List<DiaryColumn> diaryColumns,
-            List<CapitalCell> capitalCells,
-            List<DiaryList> lists)
-        getDiaryCells,
-    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
-    required TResult Function(List<DiaryCell> diaryCells) selectDiaryCells,
-    required TResult Function(CapitalCell capitalCell) selectCapitalCell,
-    required TResult Function(
-            DiaryCell diaryCell,
-            GlobalObjectKey<State<StatefulWidget>> cellKey,
-            DragUpdateDetails details,
-            double scaleFactor)
-        onPanUpdate,
-    required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
-    required TResult Function() returnToCellsSelected,
-    required TResult Function(DiaryList diaryList, String newName)
-        updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
-        changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
-        changeCapitalCell,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
-        updateDiaryCellInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment,
-            String? backgroundColor)
-        changeDiaryCellsSettings,
-    required TResult Function(BordersEditingEnum bordersEditingEnum,
-            BordersStyleEnum bordersStyleEnum, Color bordersColor)
-        changeDiaryCellsBordersSettings,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment,
-            String? backgroundColor,
-            BordersStyleEnum? bordersStyleEnum,
-            Color? bordersColor)
-        changeCapitalCellSettings,
-    required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
-    required TResult Function(DiaryColumnSettings newSettings)
-        updateCapitalCellSettingsInFirebase,
-    required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
-    required TResult Function(PointerUpEvent details)
-        updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
-    required TResult Function(bool isTextEditing) startEditingCells,
-    required TResult Function(DiaryList diaryList, String name,
-            int columnsCount, List<DiaryColumn> diaryColumns)
-        createDiaryColumn,
-    required TResult Function(DiaryList diaryList, String columnId)
-        deleteDiaryColumn,
-    required TResult Function(DiaryList diaryList, String? themeColor,
-            String? themeBorderColor, String? themePanelBackgroundColor)
-        updateDiaryListSettings,
-    required TResult Function() startEditingColor,
-    required TResult Function() startEditingBorders,
-    required TResult Function() startEditingBorderStyle,
-    required TResult Function() turnBackEditing,
-    required TResult Function() startColumnDeleting,
-    required TResult Function() startColorThemeEditing,
-  }) {
-    return updateDefaultCellsSettingsInFirebase(
-        fontWeight, textDecoration, fontStyle, fontSize, color);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
-    TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
-        getDiaryColumns,
-    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<CapitalCell> capitalCells, List<DiaryList> lists)?
-        getDiaryCells,
-    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
-    TResult? Function(List<DiaryCell> diaryCells)? selectDiaryCells,
-    TResult? Function(CapitalCell capitalCell)? selectCapitalCell,
-    TResult? Function(
-            DiaryCell diaryCell,
-            GlobalObjectKey<State<StatefulWidget>> cellKey,
-            DragUpdateDetails details,
-            double scaleFactor)?
-        onPanUpdate,
-    TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
-    TResult? Function()? returnToCellsSelected,
-    TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
-        changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
-        changeCapitalCell,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
-        updateDiaryCellInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment,
-            String? backgroundColor)?
-        changeDiaryCellsSettings,
-    TResult? Function(BordersEditingEnum bordersEditingEnum,
-            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
-        changeDiaryCellsBordersSettings,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment,
-            String? backgroundColor,
-            BordersStyleEnum? bordersStyleEnum,
-            Color? bordersColor)?
-        changeCapitalCellSettings,
-    TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
-    TResult? Function(DiaryColumnSettings newSettings)?
-        updateCapitalCellSettingsInFirebase,
-    TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
-    TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
-    TResult? Function(bool isTextEditing)? startEditingCells,
-    TResult? Function(DiaryList diaryList, String name, int columnsCount,
-            List<DiaryColumn> diaryColumns)?
-        createDiaryColumn,
-    TResult? Function(DiaryList diaryList, String columnId)? deleteDiaryColumn,
-    TResult? Function(DiaryList diaryList, String? themeColor,
-            String? themeBorderColor, String? themePanelBackgroundColor)?
-        updateDiaryListSettings,
-    TResult? Function()? startEditingColor,
-    TResult? Function()? startEditingBorders,
-    TResult? Function()? startEditingBorderStyle,
-    TResult? Function()? turnBackEditing,
-    TResult? Function()? startColumnDeleting,
-    TResult? Function()? startColorThemeEditing,
-  }) {
-    return updateDefaultCellsSettingsInFirebase?.call(
-        fontWeight, textDecoration, fontStyle, fontSize, color);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? createSample,
-    TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
-    TResult Function(DiaryList diaryList, List<DiaryList> lists)?
-        getDiaryColumns,
-    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
-            List<CapitalCell> capitalCells, List<DiaryList> lists)?
-        getDiaryCells,
-    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
-    TResult Function(List<DiaryCell> diaryCells)? selectDiaryCells,
-    TResult Function(CapitalCell capitalCell)? selectCapitalCell,
-    TResult Function(
-            DiaryCell diaryCell,
-            GlobalObjectKey<State<StatefulWidget>> cellKey,
-            DragUpdateDetails details,
-            double scaleFactor)?
-        onPanUpdate,
-    TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
-    TResult Function()? returnToCellsSelected,
-    TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
-        changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
-        changeCapitalCell,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
-        updateDiaryCellInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment,
-            String? backgroundColor)?
-        changeDiaryCellsSettings,
-    TResult Function(BordersEditingEnum bordersEditingEnum,
-            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
-        changeDiaryCellsBordersSettings,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment,
-            String? backgroundColor,
-            BordersStyleEnum? bordersStyleEnum,
-            Color? bordersColor)?
-        changeCapitalCellSettings,
-    TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
-    TResult Function(DiaryColumnSettings newSettings)?
-        updateCapitalCellSettingsInFirebase,
-    TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
-    TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
-    TResult Function(bool isTextEditing)? startEditingCells,
-    TResult Function(DiaryList diaryList, String name, int columnsCount,
-            List<DiaryColumn> diaryColumns)?
-        createDiaryColumn,
-    TResult Function(DiaryList diaryList, String columnId)? deleteDiaryColumn,
-    TResult Function(DiaryList diaryList, String? themeColor,
-            String? themeBorderColor, String? themePanelBackgroundColor)?
-        updateDiaryListSettings,
-    TResult Function()? startEditingColor,
-    TResult Function()? startEditingBorders,
-    TResult Function()? startEditingBorderStyle,
-    TResult Function()? turnBackEditing,
-    TResult Function()? startColumnDeleting,
-    TResult Function()? startColorThemeEditing,
-    required TResult orElse(),
-  }) {
-    if (updateDefaultCellsSettingsInFirebase != null) {
-      return updateDefaultCellsSettingsInFirebase(
-          fontWeight, textDecoration, fontStyle, fontSize, color);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CreateSampleEvent value) createSample,
-    required TResult Function(InitialLoadEvent value) initialLoad,
-    required TResult Function(GetDiaryListEvent value) getDiaryList,
-    required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
-    required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
-    required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
-    required TResult Function(SelectDiaryCellsEvent value) selectDiaryCells,
-    required TResult Function(SelectCapitalCellEvent value) selectCapitalCell,
-    required TResult Function(OnPanUpdateEvent value) onPanUpdate,
-    required TResult Function(StartEditingListEvent value) startEditingList,
-    required TResult Function(ReturnToLoadedEvent value) returnToLoaded,
-    required TResult Function(ReturnToCellsSelectedEvent value)
-        returnToCellsSelected,
-    required TResult Function(UpdateDiaryListNameEvent value)
-        updateDiaryListName,
-    required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
-    required TResult Function(ChangeCapitalCellEvent value) changeCapitalCell,
-    required TResult Function(UpdateDiaryCellInFirebaseEvent value)
-        updateDiaryCellInFirebase,
-    required TResult Function(ChangeDiaryCellsSettingsEvent value)
-        changeDiaryCellsSettings,
-    required TResult Function(ChangeDiaryCellsBordersSettingsEvent value)
-        changeDiaryCellsBordersSettings,
-    required TResult Function(ChangeCapitalCellSettingsEvent value)
-        changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
-    required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
-        updateCapitalCellSettingsInFirebase,
-    required TResult Function(UpdateCapitalCellWidthEvent value)
-        updateCapitalCellWidth,
-    required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
-        updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
-    required TResult Function(StartEditingCellsEvent value) startEditingCells,
-    required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
-    required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
-    required TResult Function(UpdateDiaryListSettingsEvent value)
-        updateDiaryListSettings,
-    required TResult Function(StartEditingColorEvent value) startEditingColor,
-    required TResult Function(StartEditingBordersEvent value)
-        startEditingBorders,
-    required TResult Function(StartEditingBordersStyleEvent value)
-        startEditingBorderStyle,
-    required TResult Function(TurnBackEditingEvent value) turnBackEditing,
-    required TResult Function(StartColumnDeletingEvent value)
-        startColumnDeleting,
-    required TResult Function(StartColorThemeEditingEvent value)
-        startColorThemeEditing,
-  }) {
-    return updateDefaultCellsSettingsInFirebase(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CreateSampleEvent value)? createSample,
-    TResult? Function(InitialLoadEvent value)? initialLoad,
-    TResult? Function(GetDiaryListEvent value)? getDiaryList,
-    TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
-    TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
-    TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
-    TResult? Function(SelectDiaryCellsEvent value)? selectDiaryCells,
-    TResult? Function(SelectCapitalCellEvent value)? selectCapitalCell,
-    TResult? Function(OnPanUpdateEvent value)? onPanUpdate,
-    TResult? Function(StartEditingListEvent value)? startEditingList,
-    TResult? Function(ReturnToLoadedEvent value)? returnToLoaded,
-    TResult? Function(ReturnToCellsSelectedEvent value)? returnToCellsSelected,
-    TResult? Function(UpdateDiaryListNameEvent value)? updateDiaryListName,
-    TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
-    TResult? Function(ChangeCapitalCellEvent value)? changeCapitalCell,
-    TResult? Function(UpdateDiaryCellInFirebaseEvent value)?
-        updateDiaryCellInFirebase,
-    TResult? Function(ChangeDiaryCellsSettingsEvent value)?
-        changeDiaryCellsSettings,
-    TResult? Function(ChangeDiaryCellsBordersSettingsEvent value)?
-        changeDiaryCellsBordersSettings,
-    TResult? Function(ChangeCapitalCellSettingsEvent value)?
-        changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
-    TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
-        updateCapitalCellSettingsInFirebase,
-    TResult? Function(UpdateCapitalCellWidthEvent value)?
-        updateCapitalCellWidth,
-    TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
-        updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
-    TResult? Function(StartEditingCellsEvent value)? startEditingCells,
-    TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
-    TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
-    TResult? Function(UpdateDiaryListSettingsEvent value)?
-        updateDiaryListSettings,
-    TResult? Function(StartEditingColorEvent value)? startEditingColor,
-    TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
-    TResult? Function(StartEditingBordersStyleEvent value)?
-        startEditingBorderStyle,
-    TResult? Function(TurnBackEditingEvent value)? turnBackEditing,
-    TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
-    TResult? Function(StartColorThemeEditingEvent value)?
-        startColorThemeEditing,
-  }) {
-    return updateDefaultCellsSettingsInFirebase?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CreateSampleEvent value)? createSample,
-    TResult Function(InitialLoadEvent value)? initialLoad,
-    TResult Function(GetDiaryListEvent value)? getDiaryList,
-    TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
-    TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
-    TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
-    TResult Function(SelectDiaryCellsEvent value)? selectDiaryCells,
-    TResult Function(SelectCapitalCellEvent value)? selectCapitalCell,
-    TResult Function(OnPanUpdateEvent value)? onPanUpdate,
-    TResult Function(StartEditingListEvent value)? startEditingList,
-    TResult Function(ReturnToLoadedEvent value)? returnToLoaded,
-    TResult Function(ReturnToCellsSelectedEvent value)? returnToCellsSelected,
-    TResult Function(UpdateDiaryListNameEvent value)? updateDiaryListName,
-    TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
-    TResult Function(ChangeCapitalCellEvent value)? changeCapitalCell,
-    TResult Function(UpdateDiaryCellInFirebaseEvent value)?
-        updateDiaryCellInFirebase,
-    TResult Function(ChangeDiaryCellsSettingsEvent value)?
-        changeDiaryCellsSettings,
-    TResult Function(ChangeDiaryCellsBordersSettingsEvent value)?
-        changeDiaryCellsBordersSettings,
-    TResult Function(ChangeCapitalCellSettingsEvent value)?
-        changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
-    TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
-        updateCapitalCellSettingsInFirebase,
-    TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
-    TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
-        updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
-    TResult Function(StartEditingCellsEvent value)? startEditingCells,
-    TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
-    TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
-    TResult Function(UpdateDiaryListSettingsEvent value)?
-        updateDiaryListSettings,
-    TResult Function(StartEditingColorEvent value)? startEditingColor,
-    TResult Function(StartEditingBordersEvent value)? startEditingBorders,
-    TResult Function(StartEditingBordersStyleEvent value)?
-        startEditingBorderStyle,
-    TResult Function(TurnBackEditingEvent value)? turnBackEditing,
-    TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
-    TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
-    required TResult orElse(),
-  }) {
-    if (updateDefaultCellsSettingsInFirebase != null) {
-      return updateDefaultCellsSettingsInFirebase(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class UpdateDefaultCellsSettingsInFirebaseEvent
-    implements DiaryListEvent {
-  const factory UpdateDefaultCellsSettingsInFirebaseEvent(
-      {final FontWeightEnum? fontWeight,
-      final TextDecorationEnum? textDecoration,
-      final FontStyleEnum? fontStyle,
-      final double? fontSize,
-      final String? color}) = _$UpdateDefaultCellsSettingsInFirebaseEvent;
-
-  FontWeightEnum? get fontWeight;
-  TextDecorationEnum? get textDecoration;
-  FontStyleEnum? get fontStyle;
-  double? get fontSize;
-  String? get color;
-  @JsonKey(ignore: true)
-  _$$UpdateDefaultCellsSettingsInFirebaseEventCopyWith<
-          _$UpdateDefaultCellsSettingsInFirebaseEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -18034,7 +18606,7 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -18053,7 +18625,9 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -18089,27 +18663,16 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -18119,12 +18682,24 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return startEditingCells(isTextEditing);
   }
@@ -18134,7 +18709,7 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -18150,7 +18725,9 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -18185,26 +18762,15 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -18213,12 +18779,24 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return startEditingCells?.call(isTextEditing);
   }
@@ -18228,7 +18806,7 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -18244,7 +18822,9 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -18279,26 +18859,15 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -18307,12 +18876,24 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (startEditingCells != null) {
@@ -18349,21 +18930,20 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -18374,6 +18954,10 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return startEditingCells(this);
   }
@@ -18404,21 +18988,20 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -18427,6 +19010,10 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return startEditingCells?.call(this);
   }
@@ -18457,20 +19044,19 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -18478,6 +19064,10 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (startEditingCells != null) {
@@ -18606,7 +19196,7 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -18625,7 +19215,9 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -18661,27 +19253,16 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -18691,12 +19272,24 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return createDiaryColumn(diaryList, name, columnsCount, diaryColumns);
   }
@@ -18706,7 +19299,7 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -18722,7 +19315,9 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -18757,26 +19352,15 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -18785,12 +19369,24 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return createDiaryColumn?.call(diaryList, name, columnsCount, diaryColumns);
   }
@@ -18800,7 +19396,7 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -18816,7 +19412,9 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -18851,26 +19449,15 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -18879,12 +19466,24 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (createDiaryColumn != null) {
@@ -18921,21 +19520,20 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -18946,6 +19544,10 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return createDiaryColumn(this);
   }
@@ -18976,21 +19578,20 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -18999,6 +19600,10 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return createDiaryColumn?.call(this);
   }
@@ -19029,20 +19634,19 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -19050,6 +19654,10 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (createDiaryColumn != null) {
@@ -19154,7 +19762,7 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -19173,7 +19781,9 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -19209,27 +19819,16 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -19239,12 +19838,24 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return deleteDiaryColumn(diaryList, columnId);
   }
@@ -19254,7 +19865,7 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -19270,7 +19881,9 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -19305,26 +19918,15 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -19333,12 +19935,24 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return deleteDiaryColumn?.call(diaryList, columnId);
   }
@@ -19348,7 +19962,7 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -19364,7 +19978,9 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -19399,26 +20015,15 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -19427,12 +20032,24 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (deleteDiaryColumn != null) {
@@ -19469,21 +20086,20 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -19494,6 +20110,10 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return deleteDiaryColumn(this);
   }
@@ -19524,21 +20144,20 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -19547,6 +20166,10 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return deleteDiaryColumn?.call(this);
   }
@@ -19577,20 +20200,19 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -19598,6 +20220,10 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (deleteDiaryColumn != null) {
@@ -19726,7 +20352,7 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -19745,7 +20371,9 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -19781,27 +20409,16 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -19811,12 +20428,24 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return updateDiaryListSettings(
         diaryList, themeColor, themeBorderColor, themePanelBackgroundColor);
@@ -19827,7 +20456,7 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -19843,7 +20472,9 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -19878,26 +20509,15 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -19906,12 +20526,24 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return updateDiaryListSettings?.call(
         diaryList, themeColor, themeBorderColor, themePanelBackgroundColor);
@@ -19922,7 +20554,7 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -19938,7 +20570,9 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -19973,26 +20607,15 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -20001,12 +20624,24 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (updateDiaryListSettings != null) {
@@ -20044,21 +20679,20 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -20069,6 +20703,10 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return updateDiaryListSettings(this);
   }
@@ -20099,21 +20737,20 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -20122,6 +20759,10 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return updateDiaryListSettings?.call(this);
   }
@@ -20152,20 +20793,19 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -20173,6 +20813,10 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (updateDiaryListSettings != null) {
@@ -20197,6 +20841,652 @@ abstract class UpdateDiaryListSettingsEvent implements DiaryListEvent {
   @JsonKey(ignore: true)
   _$$UpdateDiaryListSettingsEventCopyWith<_$UpdateDiaryListSettingsEvent>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ShareThemeEventCopyWith<$Res> {
+  factory _$$ShareThemeEventCopyWith(
+          _$ShareThemeEvent value, $Res Function(_$ShareThemeEvent) then) =
+      __$$ShareThemeEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {DiaryList diaryList,
+      List<DiaryColumn> diaryColumns,
+      List<DiaryCell> diaryCells,
+      List<CapitalCell> capitalCells,
+      String themeName,
+      String description});
+}
+
+/// @nodoc
+class __$$ShareThemeEventCopyWithImpl<$Res>
+    extends _$DiaryListEventCopyWithImpl<$Res, _$ShareThemeEvent>
+    implements _$$ShareThemeEventCopyWith<$Res> {
+  __$$ShareThemeEventCopyWithImpl(
+      _$ShareThemeEvent _value, $Res Function(_$ShareThemeEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? diaryList = null,
+    Object? diaryColumns = null,
+    Object? diaryCells = null,
+    Object? capitalCells = null,
+    Object? themeName = null,
+    Object? description = null,
+  }) {
+    return _then(_$ShareThemeEvent(
+      diaryList: null == diaryList
+          ? _value.diaryList
+          : diaryList // ignore: cast_nullable_to_non_nullable
+              as DiaryList,
+      diaryColumns: null == diaryColumns
+          ? _value._diaryColumns
+          : diaryColumns // ignore: cast_nullable_to_non_nullable
+              as List<DiaryColumn>,
+      diaryCells: null == diaryCells
+          ? _value._diaryCells
+          : diaryCells // ignore: cast_nullable_to_non_nullable
+              as List<DiaryCell>,
+      capitalCells: null == capitalCells
+          ? _value._capitalCells
+          : capitalCells // ignore: cast_nullable_to_non_nullable
+              as List<CapitalCell>,
+      themeName: null == themeName
+          ? _value.themeName
+          : themeName // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ShareThemeEvent implements ShareThemeEvent {
+  const _$ShareThemeEvent(
+      {required this.diaryList,
+      required final List<DiaryColumn> diaryColumns,
+      required final List<DiaryCell> diaryCells,
+      required final List<CapitalCell> capitalCells,
+      required this.themeName,
+      required this.description})
+      : _diaryColumns = diaryColumns,
+        _diaryCells = diaryCells,
+        _capitalCells = capitalCells;
+
+  @override
+  final DiaryList diaryList;
+  final List<DiaryColumn> _diaryColumns;
+  @override
+  List<DiaryColumn> get diaryColumns {
+    if (_diaryColumns is EqualUnmodifiableListView) return _diaryColumns;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_diaryColumns);
+  }
+
+  final List<DiaryCell> _diaryCells;
+  @override
+  List<DiaryCell> get diaryCells {
+    if (_diaryCells is EqualUnmodifiableListView) return _diaryCells;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_diaryCells);
+  }
+
+  final List<CapitalCell> _capitalCells;
+  @override
+  List<CapitalCell> get capitalCells {
+    if (_capitalCells is EqualUnmodifiableListView) return _capitalCells;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_capitalCells);
+  }
+
+  @override
+  final String themeName;
+  @override
+  final String description;
+
+  @override
+  String toString() {
+    return 'DiaryListEvent.shareTheme(diaryList: $diaryList, diaryColumns: $diaryColumns, diaryCells: $diaryCells, capitalCells: $capitalCells, themeName: $themeName, description: $description)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ShareThemeEvent &&
+            (identical(other.diaryList, diaryList) ||
+                other.diaryList == diaryList) &&
+            const DeepCollectionEquality()
+                .equals(other._diaryColumns, _diaryColumns) &&
+            const DeepCollectionEquality()
+                .equals(other._diaryCells, _diaryCells) &&
+            const DeepCollectionEquality()
+                .equals(other._capitalCells, _capitalCells) &&
+            (identical(other.themeName, themeName) ||
+                other.themeName == themeName) &&
+            (identical(other.description, description) ||
+                other.description == description));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      diaryList,
+      const DeepCollectionEquality().hash(_diaryColumns),
+      const DeepCollectionEquality().hash(_diaryCells),
+      const DeepCollectionEquality().hash(_capitalCells),
+      themeName,
+      description);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ShareThemeEventCopyWith<_$ShareThemeEvent> get copyWith =>
+      __$$ShareThemeEventCopyWithImpl<_$ShareThemeEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() createSample,
+    required TResult Function() initialLoad,
+    required TResult Function(DateTime date, int delay) getDiaryList,
+    required TResult Function(DiaryList diaryList, List<DiaryList> lists)
+        getDiaryColumns,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryList> lists)
+        getDiaryCells,
+    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(List<DiaryCell> diaryCells) selectDiaryCells,
+    required TResult Function(CapitalCell capitalCell) selectCapitalCell,
+    required TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            DragUpdateDetails details,
+            double scaleFactor)
+        onPanUpdate,
+    required TResult Function(DiaryList? selectedList) startEditingList,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
+    required TResult Function() returnToCellsSelected,
+    required TResult Function(DiaryList diaryList, String newName)
+        updateDiaryListName,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        changeDiaryCell,
+    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+        changeCapitalCell,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        updateDiaryCellInFirebase,
+    required TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor)
+        changeDiaryCellsSettings,
+    required TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        changeDiaryCellsBordersSettings,
+    required TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor,
+            BordersStyleEnum? bordersStyleEnum,
+            Color? bordersColor)
+        changeCapitalCellSettings,
+    required TResult Function(
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
+    required TResult Function(DiaryColumnSettings newSettings)
+        updateCapitalCellSettingsInFirebase,
+    required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
+    required TResult Function(PointerUpEvent details)
+        updateCapitalCellWidthInFirebase,
+    required TResult Function(bool isTextEditing) startEditingCells,
+    required TResult Function(DiaryList diaryList, String name,
+            int columnsCount, List<DiaryColumn> diaryColumns)
+        createDiaryColumn,
+    required TResult Function(DiaryList diaryList, String columnId)
+        deleteDiaryColumn,
+    required TResult Function(DiaryList diaryList, String? themeColor,
+            String? themeBorderColor, String? themePanelBackgroundColor)
+        updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
+    required TResult Function() startEditingColor,
+    required TResult Function() startEditingBorders,
+    required TResult Function() startEditingBorderStyle,
+    required TResult Function() turnBackEditing,
+    required TResult Function() startColumnDeleting,
+    required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
+  }) {
+    return shareTheme(diaryList, diaryColumns, diaryCells, capitalCells,
+        themeName, description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? createSample,
+    TResult? Function()? initialLoad,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
+    TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
+        getDiaryColumns,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells, List<DiaryList> lists)?
+        getDiaryCells,
+    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(List<DiaryCell> diaryCells)? selectDiaryCells,
+    TResult? Function(CapitalCell capitalCell)? selectCapitalCell,
+    TResult? Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            DragUpdateDetails details,
+            double scaleFactor)?
+        onPanUpdate,
+    TResult? Function(DiaryList? selectedList)? startEditingList,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
+    TResult? Function()? returnToCellsSelected,
+    TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
+    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+        changeCapitalCell,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        updateDiaryCellInFirebase,
+    TResult? Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor)?
+        changeDiaryCellsSettings,
+    TResult? Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        changeDiaryCellsBordersSettings,
+    TResult? Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor,
+            BordersStyleEnum? bordersStyleEnum,
+            Color? bordersColor)?
+        changeCapitalCellSettings,
+    TResult? Function(
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
+    TResult? Function(DiaryColumnSettings newSettings)?
+        updateCapitalCellSettingsInFirebase,
+    TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
+    TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
+    TResult? Function(bool isTextEditing)? startEditingCells,
+    TResult? Function(DiaryList diaryList, String name, int columnsCount,
+            List<DiaryColumn> diaryColumns)?
+        createDiaryColumn,
+    TResult? Function(DiaryList diaryList, String columnId)? deleteDiaryColumn,
+    TResult? Function(DiaryList diaryList, String? themeColor,
+            String? themeBorderColor, String? themePanelBackgroundColor)?
+        updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
+    TResult? Function()? startEditingColor,
+    TResult? Function()? startEditingBorders,
+    TResult? Function()? startEditingBorderStyle,
+    TResult? Function()? turnBackEditing,
+    TResult? Function()? startColumnDeleting,
+    TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
+  }) {
+    return shareTheme?.call(diaryList, diaryColumns, diaryCells, capitalCells,
+        themeName, description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? createSample,
+    TResult Function()? initialLoad,
+    TResult Function(DateTime date, int delay)? getDiaryList,
+    TResult Function(DiaryList diaryList, List<DiaryList> lists)?
+        getDiaryColumns,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells, List<DiaryList> lists)?
+        getDiaryCells,
+    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(List<DiaryCell> diaryCells)? selectDiaryCells,
+    TResult Function(CapitalCell capitalCell)? selectCapitalCell,
+    TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            DragUpdateDetails details,
+            double scaleFactor)?
+        onPanUpdate,
+    TResult Function(DiaryList? selectedList)? startEditingList,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
+    TResult Function()? returnToCellsSelected,
+    TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
+    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+        changeCapitalCell,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        updateDiaryCellInFirebase,
+    TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor)?
+        changeDiaryCellsSettings,
+    TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        changeDiaryCellsBordersSettings,
+    TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor,
+            BordersStyleEnum? bordersStyleEnum,
+            Color? bordersColor)?
+        changeCapitalCellSettings,
+    TResult Function(
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
+    TResult Function(DiaryColumnSettings newSettings)?
+        updateCapitalCellSettingsInFirebase,
+    TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
+    TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
+    TResult Function(bool isTextEditing)? startEditingCells,
+    TResult Function(DiaryList diaryList, String name, int columnsCount,
+            List<DiaryColumn> diaryColumns)?
+        createDiaryColumn,
+    TResult Function(DiaryList diaryList, String columnId)? deleteDiaryColumn,
+    TResult Function(DiaryList diaryList, String? themeColor,
+            String? themeBorderColor, String? themePanelBackgroundColor)?
+        updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
+    TResult Function()? startEditingColor,
+    TResult Function()? startEditingBorders,
+    TResult Function()? startEditingBorderStyle,
+    TResult Function()? turnBackEditing,
+    TResult Function()? startColumnDeleting,
+    TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
+    required TResult orElse(),
+  }) {
+    if (shareTheme != null) {
+      return shareTheme(diaryList, diaryColumns, diaryCells, capitalCells,
+          themeName, description);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CreateSampleEvent value) createSample,
+    required TResult Function(InitialLoadEvent value) initialLoad,
+    required TResult Function(GetDiaryListEvent value) getDiaryList,
+    required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
+    required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
+    required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(SelectDiaryCellsEvent value) selectDiaryCells,
+    required TResult Function(SelectCapitalCellEvent value) selectCapitalCell,
+    required TResult Function(OnPanUpdateEvent value) onPanUpdate,
+    required TResult Function(StartEditingListEvent value) startEditingList,
+    required TResult Function(ReturnToLoadedEvent value) returnToLoaded,
+    required TResult Function(ReturnToCellsSelectedEvent value)
+        returnToCellsSelected,
+    required TResult Function(UpdateDiaryListNameEvent value)
+        updateDiaryListName,
+    required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
+    required TResult Function(ChangeCapitalCellEvent value) changeCapitalCell,
+    required TResult Function(UpdateDiaryCellInFirebaseEvent value)
+        updateDiaryCellInFirebase,
+    required TResult Function(ChangeDiaryCellsSettingsEvent value)
+        changeDiaryCellsSettings,
+    required TResult Function(ChangeDiaryCellsBordersSettingsEvent value)
+        changeDiaryCellsBordersSettings,
+    required TResult Function(ChangeCapitalCellSettingsEvent value)
+        changeCapitalCellSettings,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
+    required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
+        updateCapitalCellSettingsInFirebase,
+    required TResult Function(UpdateCapitalCellWidthEvent value)
+        updateCapitalCellWidth,
+    required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
+        updateCapitalCellWidthInFirebase,
+    required TResult Function(StartEditingCellsEvent value) startEditingCells,
+    required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
+    required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
+    required TResult Function(UpdateDiaryListSettingsEvent value)
+        updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
+    required TResult Function(StartEditingColorEvent value) startEditingColor,
+    required TResult Function(StartEditingBordersEvent value)
+        startEditingBorders,
+    required TResult Function(StartEditingBordersStyleEvent value)
+        startEditingBorderStyle,
+    required TResult Function(TurnBackEditingEvent value) turnBackEditing,
+    required TResult Function(StartColumnDeletingEvent value)
+        startColumnDeleting,
+    required TResult Function(StartColorThemeEditingEvent value)
+        startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
+  }) {
+    return shareTheme(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CreateSampleEvent value)? createSample,
+    TResult? Function(InitialLoadEvent value)? initialLoad,
+    TResult? Function(GetDiaryListEvent value)? getDiaryList,
+    TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
+    TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(SelectDiaryCellsEvent value)? selectDiaryCells,
+    TResult? Function(SelectCapitalCellEvent value)? selectCapitalCell,
+    TResult? Function(OnPanUpdateEvent value)? onPanUpdate,
+    TResult? Function(StartEditingListEvent value)? startEditingList,
+    TResult? Function(ReturnToLoadedEvent value)? returnToLoaded,
+    TResult? Function(ReturnToCellsSelectedEvent value)? returnToCellsSelected,
+    TResult? Function(UpdateDiaryListNameEvent value)? updateDiaryListName,
+    TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
+    TResult? Function(ChangeCapitalCellEvent value)? changeCapitalCell,
+    TResult? Function(UpdateDiaryCellInFirebaseEvent value)?
+        updateDiaryCellInFirebase,
+    TResult? Function(ChangeDiaryCellsSettingsEvent value)?
+        changeDiaryCellsSettings,
+    TResult? Function(ChangeDiaryCellsBordersSettingsEvent value)?
+        changeDiaryCellsBordersSettings,
+    TResult? Function(ChangeCapitalCellSettingsEvent value)?
+        changeCapitalCellSettings,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
+    TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
+        updateCapitalCellSettingsInFirebase,
+    TResult? Function(UpdateCapitalCellWidthEvent value)?
+        updateCapitalCellWidth,
+    TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
+        updateCapitalCellWidthInFirebase,
+    TResult? Function(StartEditingCellsEvent value)? startEditingCells,
+    TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
+    TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
+    TResult? Function(UpdateDiaryListSettingsEvent value)?
+        updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
+    TResult? Function(StartEditingColorEvent value)? startEditingColor,
+    TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
+    TResult? Function(StartEditingBordersStyleEvent value)?
+        startEditingBorderStyle,
+    TResult? Function(TurnBackEditingEvent value)? turnBackEditing,
+    TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
+    TResult? Function(StartColorThemeEditingEvent value)?
+        startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
+  }) {
+    return shareTheme?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CreateSampleEvent value)? createSample,
+    TResult Function(InitialLoadEvent value)? initialLoad,
+    TResult Function(GetDiaryListEvent value)? getDiaryList,
+    TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
+    TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(SelectDiaryCellsEvent value)? selectDiaryCells,
+    TResult Function(SelectCapitalCellEvent value)? selectCapitalCell,
+    TResult Function(OnPanUpdateEvent value)? onPanUpdate,
+    TResult Function(StartEditingListEvent value)? startEditingList,
+    TResult Function(ReturnToLoadedEvent value)? returnToLoaded,
+    TResult Function(ReturnToCellsSelectedEvent value)? returnToCellsSelected,
+    TResult Function(UpdateDiaryListNameEvent value)? updateDiaryListName,
+    TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
+    TResult Function(ChangeCapitalCellEvent value)? changeCapitalCell,
+    TResult Function(UpdateDiaryCellInFirebaseEvent value)?
+        updateDiaryCellInFirebase,
+    TResult Function(ChangeDiaryCellsSettingsEvent value)?
+        changeDiaryCellsSettings,
+    TResult Function(ChangeDiaryCellsBordersSettingsEvent value)?
+        changeDiaryCellsBordersSettings,
+    TResult Function(ChangeCapitalCellSettingsEvent value)?
+        changeCapitalCellSettings,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
+    TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
+        updateCapitalCellSettingsInFirebase,
+    TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
+    TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
+        updateCapitalCellWidthInFirebase,
+    TResult Function(StartEditingCellsEvent value)? startEditingCells,
+    TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
+    TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
+    TResult Function(UpdateDiaryListSettingsEvent value)?
+        updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
+    TResult Function(StartEditingColorEvent value)? startEditingColor,
+    TResult Function(StartEditingBordersEvent value)? startEditingBorders,
+    TResult Function(StartEditingBordersStyleEvent value)?
+        startEditingBorderStyle,
+    TResult Function(TurnBackEditingEvent value)? turnBackEditing,
+    TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
+    TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
+    required TResult orElse(),
+  }) {
+    if (shareTheme != null) {
+      return shareTheme(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShareThemeEvent implements DiaryListEvent {
+  const factory ShareThemeEvent(
+      {required final DiaryList diaryList,
+      required final List<DiaryColumn> diaryColumns,
+      required final List<DiaryCell> diaryCells,
+      required final List<CapitalCell> capitalCells,
+      required final String themeName,
+      required final String description}) = _$ShareThemeEvent;
+
+  DiaryList get diaryList;
+  List<DiaryColumn> get diaryColumns;
+  List<DiaryCell> get diaryCells;
+  List<CapitalCell> get capitalCells;
+  String get themeName;
+  String get description;
+  @JsonKey(ignore: true)
+  _$$ShareThemeEventCopyWith<_$ShareThemeEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -20239,7 +21529,7 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -20258,7 +21548,9 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -20294,27 +21586,16 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -20324,12 +21605,24 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return startEditingColor();
   }
@@ -20339,7 +21632,7 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -20355,7 +21648,9 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -20390,26 +21685,15 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -20418,12 +21702,24 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return startEditingColor?.call();
   }
@@ -20433,7 +21729,7 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -20449,7 +21745,9 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -20484,26 +21782,15 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -20512,12 +21799,24 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (startEditingColor != null) {
@@ -20554,21 +21853,20 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -20579,6 +21877,10 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return startEditingColor(this);
   }
@@ -20609,21 +21911,20 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -20632,6 +21933,10 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return startEditingColor?.call(this);
   }
@@ -20662,20 +21967,19 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -20683,6 +21987,10 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (startEditingColor != null) {
@@ -20737,7 +22045,7 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -20756,7 +22064,9 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -20792,27 +22102,16 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -20822,12 +22121,24 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return startEditingBorders();
   }
@@ -20837,7 +22148,7 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -20853,7 +22164,9 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -20888,26 +22201,15 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -20916,12 +22218,24 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return startEditingBorders?.call();
   }
@@ -20931,7 +22245,7 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -20947,7 +22261,9 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -20982,26 +22298,15 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -21010,12 +22315,24 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (startEditingBorders != null) {
@@ -21052,21 +22369,20 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -21077,6 +22393,10 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return startEditingBorders(this);
   }
@@ -21107,21 +22427,20 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -21130,6 +22449,10 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return startEditingBorders?.call(this);
   }
@@ -21160,20 +22483,19 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -21181,6 +22503,10 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (startEditingBorders != null) {
@@ -21237,7 +22563,7 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -21256,7 +22582,9 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -21292,27 +22620,16 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -21322,12 +22639,24 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return startEditingBorderStyle();
   }
@@ -21337,7 +22666,7 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -21353,7 +22682,9 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -21388,26 +22719,15 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -21416,12 +22736,24 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return startEditingBorderStyle?.call();
   }
@@ -21431,7 +22763,7 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -21447,7 +22779,9 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -21482,26 +22816,15 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -21510,12 +22833,24 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (startEditingBorderStyle != null) {
@@ -21552,21 +22887,20 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -21577,6 +22911,10 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return startEditingBorderStyle(this);
   }
@@ -21607,21 +22945,20 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -21630,6 +22967,10 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return startEditingBorderStyle?.call(this);
   }
@@ -21660,20 +23001,19 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -21681,6 +23021,10 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (startEditingBorderStyle != null) {
@@ -21735,7 +23079,7 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -21754,7 +23098,9 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -21790,27 +23136,16 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -21820,12 +23155,24 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return turnBackEditing();
   }
@@ -21835,7 +23182,7 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -21851,7 +23198,9 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -21886,26 +23235,15 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -21914,12 +23252,24 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return turnBackEditing?.call();
   }
@@ -21929,7 +23279,7 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -21945,7 +23295,9 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -21980,26 +23332,15 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -22008,12 +23349,24 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (turnBackEditing != null) {
@@ -22050,21 +23403,20 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -22075,6 +23427,10 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return turnBackEditing(this);
   }
@@ -22105,21 +23461,20 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -22128,6 +23483,10 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return turnBackEditing?.call(this);
   }
@@ -22158,20 +23517,19 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -22179,6 +23537,10 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (turnBackEditing != null) {
@@ -22233,7 +23595,7 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -22252,7 +23614,9 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -22288,27 +23652,16 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -22318,12 +23671,24 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return startColumnDeleting();
   }
@@ -22333,7 +23698,7 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -22349,7 +23714,9 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -22384,26 +23751,15 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -22412,12 +23768,24 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return startColumnDeleting?.call();
   }
@@ -22427,7 +23795,7 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -22443,7 +23811,9 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -22478,26 +23848,15 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -22506,12 +23865,24 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (startColumnDeleting != null) {
@@ -22548,21 +23919,20 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -22573,6 +23943,10 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return startColumnDeleting(this);
   }
@@ -22603,21 +23977,20 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -22626,6 +23999,10 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return startColumnDeleting?.call(this);
   }
@@ -22656,20 +24033,19 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -22677,6 +24053,10 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (startColumnDeleting != null) {
@@ -22733,7 +24113,7 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
     required TResult Function() initialLoad,
-    required TResult Function(DateTime date) getDiaryList,
+    required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
     required TResult Function(
@@ -22752,7 +24132,9 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
             double scaleFactor)
         onPanUpdate,
     required TResult Function(DiaryList? selectedList) startEditingList,
-    required TResult Function(String? newName) returnToLoaded,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
@@ -22788,27 +24170,16 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
             Color? bordersColor)
         changeCapitalCellSettings,
     required TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(DiaryColumnSettings newSettings)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
     required TResult Function(PointerUpEvent details)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(bool isTextEditing) startEditingCells,
     required TResult Function(DiaryList diaryList, String name,
             int columnsCount, List<DiaryColumn> diaryColumns)
@@ -22818,12 +24189,24 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
     required TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)
         updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
     required TResult Function() startEditingColor,
     required TResult Function() startEditingBorders,
     required TResult Function() startEditingBorderStyle,
     required TResult Function() turnBackEditing,
     required TResult Function() startColumnDeleting,
     required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
   }) {
     return startColorThemeEditing();
   }
@@ -22833,7 +24216,7 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
     TResult? Function()? initialLoad,
-    TResult? Function(DateTime date)? getDiaryList,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -22849,7 +24232,9 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult? Function(DiaryList? selectedList)? startEditingList,
-    TResult? Function(String? newName)? returnToLoaded,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
@@ -22884,26 +24269,15 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult? Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult? Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(bool isTextEditing)? startEditingCells,
     TResult? Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -22912,12 +24286,24 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
     TResult? Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult? Function()? startEditingColor,
     TResult? Function()? startEditingBorders,
     TResult? Function()? startEditingBorderStyle,
     TResult? Function()? turnBackEditing,
     TResult? Function()? startColumnDeleting,
     TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
     return startColorThemeEditing?.call();
   }
@@ -22927,7 +24313,7 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
     TResult Function()? initialLoad,
-    TResult Function(DateTime date)? getDiaryList,
+    TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
     TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
@@ -22943,7 +24329,9 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
             double scaleFactor)?
         onPanUpdate,
     TResult Function(DiaryList? selectedList)? startEditingList,
-    TResult Function(String? newName)? returnToLoaded,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
@@ -22978,26 +24366,15 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
             Color? bordersColor)?
         changeCapitalCellSettings,
     TResult Function(
-            List<DiaryCell> diaryCells,
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color,
-            HorizontalAlignmentsEnum? horizontalAlignment,
-            VerticalAlignmentsEnum? verticalAlignment)?
-        updateDiaryCellsSettingsInFirebase,
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(DiaryColumnSettings newSettings)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
     TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
-    TResult Function(
-            FontWeightEnum? fontWeight,
-            TextDecorationEnum? textDecoration,
-            FontStyleEnum? fontStyle,
-            double? fontSize,
-            String? color)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(bool isTextEditing)? startEditingCells,
     TResult Function(DiaryList diaryList, String name, int columnsCount,
             List<DiaryColumn> diaryColumns)?
@@ -23006,12 +24383,24 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
     TResult Function(DiaryList diaryList, String? themeColor,
             String? themeBorderColor, String? themePanelBackgroundColor)?
         updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
     TResult Function()? startEditingColor,
     TResult Function()? startEditingBorders,
     TResult Function()? startEditingBorderStyle,
     TResult Function()? turnBackEditing,
     TResult Function()? startColumnDeleting,
     TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
     required TResult orElse(),
   }) {
     if (startColorThemeEditing != null) {
@@ -23048,21 +24437,20 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
         changeDiaryCellsBordersSettings,
     required TResult Function(ChangeCapitalCellSettingsEvent value)
         changeCapitalCellSettings,
-    required TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)
-        updateDiaryCellsSettingsInFirebase,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
         updateCapitalCellSettingsInFirebase,
     required TResult Function(UpdateCapitalCellWidthEvent value)
         updateCapitalCellWidth,
     required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
         updateCapitalCellWidthInFirebase,
-    required TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)
-        updateDefaultCellsSettingsInFirebase,
     required TResult Function(StartEditingCellsEvent value) startEditingCells,
     required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
     required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
     required TResult Function(UpdateDiaryListSettingsEvent value)
         updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
     required TResult Function(StartEditingColorEvent value) startEditingColor,
     required TResult Function(StartEditingBordersEvent value)
         startEditingBorders,
@@ -23073,6 +24461,10 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
         startColumnDeleting,
     required TResult Function(StartColorThemeEditingEvent value)
         startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
   }) {
     return startColorThemeEditing(this);
   }
@@ -23103,21 +24495,20 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
         changeDiaryCellsBordersSettings,
     TResult? Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult? Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult? Function(UpdateCapitalCellWidthEvent value)?
         updateCapitalCellWidth,
     TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult? Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult? Function(StartEditingCellsEvent value)? startEditingCells,
     TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult? Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
     TResult? Function(StartEditingColorEvent value)? startEditingColor,
     TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult? Function(StartEditingBordersStyleEvent value)?
@@ -23126,6 +24517,10 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
     TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult? Function(StartColorThemeEditingEvent value)?
         startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
   }) {
     return startColorThemeEditing?.call(this);
   }
@@ -23156,20 +24551,19 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
         changeDiaryCellsBordersSettings,
     TResult Function(ChangeCapitalCellSettingsEvent value)?
         changeCapitalCellSettings,
-    TResult Function(UpdateDiaryCellsSettingsInFirebaseEvent value)?
-        updateDiaryCellsSettingsInFirebase,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
         updateCapitalCellSettingsInFirebase,
     TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
     TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
         updateCapitalCellWidthInFirebase,
-    TResult Function(UpdateDefaultCellsSettingsInFirebaseEvent value)?
-        updateDefaultCellsSettingsInFirebase,
     TResult Function(StartEditingCellsEvent value)? startEditingCells,
     TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
     TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
     TResult Function(UpdateDiaryListSettingsEvent value)?
         updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
     TResult Function(StartEditingColorEvent value)? startEditingColor,
     TResult Function(StartEditingBordersEvent value)? startEditingBorders,
     TResult Function(StartEditingBordersStyleEvent value)?
@@ -23177,6 +24571,10 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
     TResult Function(TurnBackEditingEvent value)? turnBackEditing,
     TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
     TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
     required TResult orElse(),
   }) {
     if (startColorThemeEditing != null) {
@@ -23188,4 +24586,2131 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
 
 abstract class StartColorThemeEditingEvent implements DiaryListEvent {
   const factory StartColorThemeEditingEvent() = _$StartColorThemeEditingEvent;
+}
+
+/// @nodoc
+abstract class _$$DeleteColumnsEventCopyWith<$Res> {
+  factory _$$DeleteColumnsEventCopyWith(_$DeleteColumnsEvent value,
+          $Res Function(_$DeleteColumnsEvent) then) =
+      __$$DeleteColumnsEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteColumnsEventCopyWithImpl<$Res>
+    extends _$DiaryListEventCopyWithImpl<$Res, _$DeleteColumnsEvent>
+    implements _$$DeleteColumnsEventCopyWith<$Res> {
+  __$$DeleteColumnsEventCopyWithImpl(
+      _$DeleteColumnsEvent _value, $Res Function(_$DeleteColumnsEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DeleteColumnsEvent implements DeleteColumnsEvent {
+  const _$DeleteColumnsEvent();
+
+  @override
+  String toString() {
+    return 'DiaryListEvent.deleteColumns()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DeleteColumnsEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() createSample,
+    required TResult Function() initialLoad,
+    required TResult Function(DateTime date, int delay) getDiaryList,
+    required TResult Function(DiaryList diaryList, List<DiaryList> lists)
+        getDiaryColumns,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryList> lists)
+        getDiaryCells,
+    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(List<DiaryCell> diaryCells) selectDiaryCells,
+    required TResult Function(CapitalCell capitalCell) selectCapitalCell,
+    required TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            DragUpdateDetails details,
+            double scaleFactor)
+        onPanUpdate,
+    required TResult Function(DiaryList? selectedList) startEditingList,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
+    required TResult Function() returnToCellsSelected,
+    required TResult Function(DiaryList diaryList, String newName)
+        updateDiaryListName,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        changeDiaryCell,
+    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+        changeCapitalCell,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        updateDiaryCellInFirebase,
+    required TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor)
+        changeDiaryCellsSettings,
+    required TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        changeDiaryCellsBordersSettings,
+    required TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor,
+            BordersStyleEnum? bordersStyleEnum,
+            Color? bordersColor)
+        changeCapitalCellSettings,
+    required TResult Function(
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
+    required TResult Function(DiaryColumnSettings newSettings)
+        updateCapitalCellSettingsInFirebase,
+    required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
+    required TResult Function(PointerUpEvent details)
+        updateCapitalCellWidthInFirebase,
+    required TResult Function(bool isTextEditing) startEditingCells,
+    required TResult Function(DiaryList diaryList, String name,
+            int columnsCount, List<DiaryColumn> diaryColumns)
+        createDiaryColumn,
+    required TResult Function(DiaryList diaryList, String columnId)
+        deleteDiaryColumn,
+    required TResult Function(DiaryList diaryList, String? themeColor,
+            String? themeBorderColor, String? themePanelBackgroundColor)
+        updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
+    required TResult Function() startEditingColor,
+    required TResult Function() startEditingBorders,
+    required TResult Function() startEditingBorderStyle,
+    required TResult Function() turnBackEditing,
+    required TResult Function() startColumnDeleting,
+    required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
+  }) {
+    return deleteColumns();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? createSample,
+    TResult? Function()? initialLoad,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
+    TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
+        getDiaryColumns,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells, List<DiaryList> lists)?
+        getDiaryCells,
+    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(List<DiaryCell> diaryCells)? selectDiaryCells,
+    TResult? Function(CapitalCell capitalCell)? selectCapitalCell,
+    TResult? Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            DragUpdateDetails details,
+            double scaleFactor)?
+        onPanUpdate,
+    TResult? Function(DiaryList? selectedList)? startEditingList,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
+    TResult? Function()? returnToCellsSelected,
+    TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
+    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+        changeCapitalCell,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        updateDiaryCellInFirebase,
+    TResult? Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor)?
+        changeDiaryCellsSettings,
+    TResult? Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        changeDiaryCellsBordersSettings,
+    TResult? Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor,
+            BordersStyleEnum? bordersStyleEnum,
+            Color? bordersColor)?
+        changeCapitalCellSettings,
+    TResult? Function(
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
+    TResult? Function(DiaryColumnSettings newSettings)?
+        updateCapitalCellSettingsInFirebase,
+    TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
+    TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
+    TResult? Function(bool isTextEditing)? startEditingCells,
+    TResult? Function(DiaryList diaryList, String name, int columnsCount,
+            List<DiaryColumn> diaryColumns)?
+        createDiaryColumn,
+    TResult? Function(DiaryList diaryList, String columnId)? deleteDiaryColumn,
+    TResult? Function(DiaryList diaryList, String? themeColor,
+            String? themeBorderColor, String? themePanelBackgroundColor)?
+        updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
+    TResult? Function()? startEditingColor,
+    TResult? Function()? startEditingBorders,
+    TResult? Function()? startEditingBorderStyle,
+    TResult? Function()? turnBackEditing,
+    TResult? Function()? startColumnDeleting,
+    TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
+  }) {
+    return deleteColumns?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? createSample,
+    TResult Function()? initialLoad,
+    TResult Function(DateTime date, int delay)? getDiaryList,
+    TResult Function(DiaryList diaryList, List<DiaryList> lists)?
+        getDiaryColumns,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells, List<DiaryList> lists)?
+        getDiaryCells,
+    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(List<DiaryCell> diaryCells)? selectDiaryCells,
+    TResult Function(CapitalCell capitalCell)? selectCapitalCell,
+    TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            DragUpdateDetails details,
+            double scaleFactor)?
+        onPanUpdate,
+    TResult Function(DiaryList? selectedList)? startEditingList,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
+    TResult Function()? returnToCellsSelected,
+    TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
+    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+        changeCapitalCell,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        updateDiaryCellInFirebase,
+    TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor)?
+        changeDiaryCellsSettings,
+    TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        changeDiaryCellsBordersSettings,
+    TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor,
+            BordersStyleEnum? bordersStyleEnum,
+            Color? bordersColor)?
+        changeCapitalCellSettings,
+    TResult Function(
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
+    TResult Function(DiaryColumnSettings newSettings)?
+        updateCapitalCellSettingsInFirebase,
+    TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
+    TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
+    TResult Function(bool isTextEditing)? startEditingCells,
+    TResult Function(DiaryList diaryList, String name, int columnsCount,
+            List<DiaryColumn> diaryColumns)?
+        createDiaryColumn,
+    TResult Function(DiaryList diaryList, String columnId)? deleteDiaryColumn,
+    TResult Function(DiaryList diaryList, String? themeColor,
+            String? themeBorderColor, String? themePanelBackgroundColor)?
+        updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
+    TResult Function()? startEditingColor,
+    TResult Function()? startEditingBorders,
+    TResult Function()? startEditingBorderStyle,
+    TResult Function()? turnBackEditing,
+    TResult Function()? startColumnDeleting,
+    TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
+    required TResult orElse(),
+  }) {
+    if (deleteColumns != null) {
+      return deleteColumns();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CreateSampleEvent value) createSample,
+    required TResult Function(InitialLoadEvent value) initialLoad,
+    required TResult Function(GetDiaryListEvent value) getDiaryList,
+    required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
+    required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
+    required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(SelectDiaryCellsEvent value) selectDiaryCells,
+    required TResult Function(SelectCapitalCellEvent value) selectCapitalCell,
+    required TResult Function(OnPanUpdateEvent value) onPanUpdate,
+    required TResult Function(StartEditingListEvent value) startEditingList,
+    required TResult Function(ReturnToLoadedEvent value) returnToLoaded,
+    required TResult Function(ReturnToCellsSelectedEvent value)
+        returnToCellsSelected,
+    required TResult Function(UpdateDiaryListNameEvent value)
+        updateDiaryListName,
+    required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
+    required TResult Function(ChangeCapitalCellEvent value) changeCapitalCell,
+    required TResult Function(UpdateDiaryCellInFirebaseEvent value)
+        updateDiaryCellInFirebase,
+    required TResult Function(ChangeDiaryCellsSettingsEvent value)
+        changeDiaryCellsSettings,
+    required TResult Function(ChangeDiaryCellsBordersSettingsEvent value)
+        changeDiaryCellsBordersSettings,
+    required TResult Function(ChangeCapitalCellSettingsEvent value)
+        changeCapitalCellSettings,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
+    required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
+        updateCapitalCellSettingsInFirebase,
+    required TResult Function(UpdateCapitalCellWidthEvent value)
+        updateCapitalCellWidth,
+    required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
+        updateCapitalCellWidthInFirebase,
+    required TResult Function(StartEditingCellsEvent value) startEditingCells,
+    required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
+    required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
+    required TResult Function(UpdateDiaryListSettingsEvent value)
+        updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
+    required TResult Function(StartEditingColorEvent value) startEditingColor,
+    required TResult Function(StartEditingBordersEvent value)
+        startEditingBorders,
+    required TResult Function(StartEditingBordersStyleEvent value)
+        startEditingBorderStyle,
+    required TResult Function(TurnBackEditingEvent value) turnBackEditing,
+    required TResult Function(StartColumnDeletingEvent value)
+        startColumnDeleting,
+    required TResult Function(StartColorThemeEditingEvent value)
+        startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
+  }) {
+    return deleteColumns(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CreateSampleEvent value)? createSample,
+    TResult? Function(InitialLoadEvent value)? initialLoad,
+    TResult? Function(GetDiaryListEvent value)? getDiaryList,
+    TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
+    TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(SelectDiaryCellsEvent value)? selectDiaryCells,
+    TResult? Function(SelectCapitalCellEvent value)? selectCapitalCell,
+    TResult? Function(OnPanUpdateEvent value)? onPanUpdate,
+    TResult? Function(StartEditingListEvent value)? startEditingList,
+    TResult? Function(ReturnToLoadedEvent value)? returnToLoaded,
+    TResult? Function(ReturnToCellsSelectedEvent value)? returnToCellsSelected,
+    TResult? Function(UpdateDiaryListNameEvent value)? updateDiaryListName,
+    TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
+    TResult? Function(ChangeCapitalCellEvent value)? changeCapitalCell,
+    TResult? Function(UpdateDiaryCellInFirebaseEvent value)?
+        updateDiaryCellInFirebase,
+    TResult? Function(ChangeDiaryCellsSettingsEvent value)?
+        changeDiaryCellsSettings,
+    TResult? Function(ChangeDiaryCellsBordersSettingsEvent value)?
+        changeDiaryCellsBordersSettings,
+    TResult? Function(ChangeCapitalCellSettingsEvent value)?
+        changeCapitalCellSettings,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
+    TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
+        updateCapitalCellSettingsInFirebase,
+    TResult? Function(UpdateCapitalCellWidthEvent value)?
+        updateCapitalCellWidth,
+    TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
+        updateCapitalCellWidthInFirebase,
+    TResult? Function(StartEditingCellsEvent value)? startEditingCells,
+    TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
+    TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
+    TResult? Function(UpdateDiaryListSettingsEvent value)?
+        updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
+    TResult? Function(StartEditingColorEvent value)? startEditingColor,
+    TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
+    TResult? Function(StartEditingBordersStyleEvent value)?
+        startEditingBorderStyle,
+    TResult? Function(TurnBackEditingEvent value)? turnBackEditing,
+    TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
+    TResult? Function(StartColorThemeEditingEvent value)?
+        startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
+  }) {
+    return deleteColumns?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CreateSampleEvent value)? createSample,
+    TResult Function(InitialLoadEvent value)? initialLoad,
+    TResult Function(GetDiaryListEvent value)? getDiaryList,
+    TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
+    TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(SelectDiaryCellsEvent value)? selectDiaryCells,
+    TResult Function(SelectCapitalCellEvent value)? selectCapitalCell,
+    TResult Function(OnPanUpdateEvent value)? onPanUpdate,
+    TResult Function(StartEditingListEvent value)? startEditingList,
+    TResult Function(ReturnToLoadedEvent value)? returnToLoaded,
+    TResult Function(ReturnToCellsSelectedEvent value)? returnToCellsSelected,
+    TResult Function(UpdateDiaryListNameEvent value)? updateDiaryListName,
+    TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
+    TResult Function(ChangeCapitalCellEvent value)? changeCapitalCell,
+    TResult Function(UpdateDiaryCellInFirebaseEvent value)?
+        updateDiaryCellInFirebase,
+    TResult Function(ChangeDiaryCellsSettingsEvent value)?
+        changeDiaryCellsSettings,
+    TResult Function(ChangeDiaryCellsBordersSettingsEvent value)?
+        changeDiaryCellsBordersSettings,
+    TResult Function(ChangeCapitalCellSettingsEvent value)?
+        changeCapitalCellSettings,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
+    TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
+        updateCapitalCellSettingsInFirebase,
+    TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
+    TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
+        updateCapitalCellWidthInFirebase,
+    TResult Function(StartEditingCellsEvent value)? startEditingCells,
+    TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
+    TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
+    TResult Function(UpdateDiaryListSettingsEvent value)?
+        updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
+    TResult Function(StartEditingColorEvent value)? startEditingColor,
+    TResult Function(StartEditingBordersEvent value)? startEditingBorders,
+    TResult Function(StartEditingBordersStyleEvent value)?
+        startEditingBorderStyle,
+    TResult Function(TurnBackEditingEvent value)? turnBackEditing,
+    TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
+    TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
+    required TResult orElse(),
+  }) {
+    if (deleteColumns != null) {
+      return deleteColumns(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteColumnsEvent implements DiaryListEvent {
+  const factory DeleteColumnsEvent() = _$DeleteColumnsEvent;
+}
+
+/// @nodoc
+abstract class _$$LoadThemesEventCopyWith<$Res> {
+  factory _$$LoadThemesEventCopyWith(
+          _$LoadThemesEvent value, $Res Function(_$LoadThemesEvent) then) =
+      __$$LoadThemesEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadThemesEventCopyWithImpl<$Res>
+    extends _$DiaryListEventCopyWithImpl<$Res, _$LoadThemesEvent>
+    implements _$$LoadThemesEventCopyWith<$Res> {
+  __$$LoadThemesEventCopyWithImpl(
+      _$LoadThemesEvent _value, $Res Function(_$LoadThemesEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadThemesEvent implements LoadThemesEvent {
+  const _$LoadThemesEvent();
+
+  @override
+  String toString() {
+    return 'DiaryListEvent.loadThemes()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadThemesEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() createSample,
+    required TResult Function() initialLoad,
+    required TResult Function(DateTime date, int delay) getDiaryList,
+    required TResult Function(DiaryList diaryList, List<DiaryList> lists)
+        getDiaryColumns,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryList> lists)
+        getDiaryCells,
+    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(List<DiaryCell> diaryCells) selectDiaryCells,
+    required TResult Function(CapitalCell capitalCell) selectCapitalCell,
+    required TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            DragUpdateDetails details,
+            double scaleFactor)
+        onPanUpdate,
+    required TResult Function(DiaryList? selectedList) startEditingList,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
+    required TResult Function() returnToCellsSelected,
+    required TResult Function(DiaryList diaryList, String newName)
+        updateDiaryListName,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        changeDiaryCell,
+    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+        changeCapitalCell,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        updateDiaryCellInFirebase,
+    required TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor)
+        changeDiaryCellsSettings,
+    required TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        changeDiaryCellsBordersSettings,
+    required TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor,
+            BordersStyleEnum? bordersStyleEnum,
+            Color? bordersColor)
+        changeCapitalCellSettings,
+    required TResult Function(
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
+    required TResult Function(DiaryColumnSettings newSettings)
+        updateCapitalCellSettingsInFirebase,
+    required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
+    required TResult Function(PointerUpEvent details)
+        updateCapitalCellWidthInFirebase,
+    required TResult Function(bool isTextEditing) startEditingCells,
+    required TResult Function(DiaryList diaryList, String name,
+            int columnsCount, List<DiaryColumn> diaryColumns)
+        createDiaryColumn,
+    required TResult Function(DiaryList diaryList, String columnId)
+        deleteDiaryColumn,
+    required TResult Function(DiaryList diaryList, String? themeColor,
+            String? themeBorderColor, String? themePanelBackgroundColor)
+        updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
+    required TResult Function() startEditingColor,
+    required TResult Function() startEditingBorders,
+    required TResult Function() startEditingBorderStyle,
+    required TResult Function() turnBackEditing,
+    required TResult Function() startColumnDeleting,
+    required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
+  }) {
+    return loadThemes();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? createSample,
+    TResult? Function()? initialLoad,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
+    TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
+        getDiaryColumns,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells, List<DiaryList> lists)?
+        getDiaryCells,
+    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(List<DiaryCell> diaryCells)? selectDiaryCells,
+    TResult? Function(CapitalCell capitalCell)? selectCapitalCell,
+    TResult? Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            DragUpdateDetails details,
+            double scaleFactor)?
+        onPanUpdate,
+    TResult? Function(DiaryList? selectedList)? startEditingList,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
+    TResult? Function()? returnToCellsSelected,
+    TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
+    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+        changeCapitalCell,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        updateDiaryCellInFirebase,
+    TResult? Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor)?
+        changeDiaryCellsSettings,
+    TResult? Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        changeDiaryCellsBordersSettings,
+    TResult? Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor,
+            BordersStyleEnum? bordersStyleEnum,
+            Color? bordersColor)?
+        changeCapitalCellSettings,
+    TResult? Function(
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
+    TResult? Function(DiaryColumnSettings newSettings)?
+        updateCapitalCellSettingsInFirebase,
+    TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
+    TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
+    TResult? Function(bool isTextEditing)? startEditingCells,
+    TResult? Function(DiaryList diaryList, String name, int columnsCount,
+            List<DiaryColumn> diaryColumns)?
+        createDiaryColumn,
+    TResult? Function(DiaryList diaryList, String columnId)? deleteDiaryColumn,
+    TResult? Function(DiaryList diaryList, String? themeColor,
+            String? themeBorderColor, String? themePanelBackgroundColor)?
+        updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
+    TResult? Function()? startEditingColor,
+    TResult? Function()? startEditingBorders,
+    TResult? Function()? startEditingBorderStyle,
+    TResult? Function()? turnBackEditing,
+    TResult? Function()? startColumnDeleting,
+    TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
+  }) {
+    return loadThemes?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? createSample,
+    TResult Function()? initialLoad,
+    TResult Function(DateTime date, int delay)? getDiaryList,
+    TResult Function(DiaryList diaryList, List<DiaryList> lists)?
+        getDiaryColumns,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells, List<DiaryList> lists)?
+        getDiaryCells,
+    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(List<DiaryCell> diaryCells)? selectDiaryCells,
+    TResult Function(CapitalCell capitalCell)? selectCapitalCell,
+    TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            DragUpdateDetails details,
+            double scaleFactor)?
+        onPanUpdate,
+    TResult Function(DiaryList? selectedList)? startEditingList,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
+    TResult Function()? returnToCellsSelected,
+    TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
+    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+        changeCapitalCell,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        updateDiaryCellInFirebase,
+    TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor)?
+        changeDiaryCellsSettings,
+    TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        changeDiaryCellsBordersSettings,
+    TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor,
+            BordersStyleEnum? bordersStyleEnum,
+            Color? bordersColor)?
+        changeCapitalCellSettings,
+    TResult Function(
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
+    TResult Function(DiaryColumnSettings newSettings)?
+        updateCapitalCellSettingsInFirebase,
+    TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
+    TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
+    TResult Function(bool isTextEditing)? startEditingCells,
+    TResult Function(DiaryList diaryList, String name, int columnsCount,
+            List<DiaryColumn> diaryColumns)?
+        createDiaryColumn,
+    TResult Function(DiaryList diaryList, String columnId)? deleteDiaryColumn,
+    TResult Function(DiaryList diaryList, String? themeColor,
+            String? themeBorderColor, String? themePanelBackgroundColor)?
+        updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
+    TResult Function()? startEditingColor,
+    TResult Function()? startEditingBorders,
+    TResult Function()? startEditingBorderStyle,
+    TResult Function()? turnBackEditing,
+    TResult Function()? startColumnDeleting,
+    TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
+    required TResult orElse(),
+  }) {
+    if (loadThemes != null) {
+      return loadThemes();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CreateSampleEvent value) createSample,
+    required TResult Function(InitialLoadEvent value) initialLoad,
+    required TResult Function(GetDiaryListEvent value) getDiaryList,
+    required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
+    required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
+    required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(SelectDiaryCellsEvent value) selectDiaryCells,
+    required TResult Function(SelectCapitalCellEvent value) selectCapitalCell,
+    required TResult Function(OnPanUpdateEvent value) onPanUpdate,
+    required TResult Function(StartEditingListEvent value) startEditingList,
+    required TResult Function(ReturnToLoadedEvent value) returnToLoaded,
+    required TResult Function(ReturnToCellsSelectedEvent value)
+        returnToCellsSelected,
+    required TResult Function(UpdateDiaryListNameEvent value)
+        updateDiaryListName,
+    required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
+    required TResult Function(ChangeCapitalCellEvent value) changeCapitalCell,
+    required TResult Function(UpdateDiaryCellInFirebaseEvent value)
+        updateDiaryCellInFirebase,
+    required TResult Function(ChangeDiaryCellsSettingsEvent value)
+        changeDiaryCellsSettings,
+    required TResult Function(ChangeDiaryCellsBordersSettingsEvent value)
+        changeDiaryCellsBordersSettings,
+    required TResult Function(ChangeCapitalCellSettingsEvent value)
+        changeCapitalCellSettings,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
+    required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
+        updateCapitalCellSettingsInFirebase,
+    required TResult Function(UpdateCapitalCellWidthEvent value)
+        updateCapitalCellWidth,
+    required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
+        updateCapitalCellWidthInFirebase,
+    required TResult Function(StartEditingCellsEvent value) startEditingCells,
+    required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
+    required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
+    required TResult Function(UpdateDiaryListSettingsEvent value)
+        updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
+    required TResult Function(StartEditingColorEvent value) startEditingColor,
+    required TResult Function(StartEditingBordersEvent value)
+        startEditingBorders,
+    required TResult Function(StartEditingBordersStyleEvent value)
+        startEditingBorderStyle,
+    required TResult Function(TurnBackEditingEvent value) turnBackEditing,
+    required TResult Function(StartColumnDeletingEvent value)
+        startColumnDeleting,
+    required TResult Function(StartColorThemeEditingEvent value)
+        startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
+  }) {
+    return loadThemes(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CreateSampleEvent value)? createSample,
+    TResult? Function(InitialLoadEvent value)? initialLoad,
+    TResult? Function(GetDiaryListEvent value)? getDiaryList,
+    TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
+    TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(SelectDiaryCellsEvent value)? selectDiaryCells,
+    TResult? Function(SelectCapitalCellEvent value)? selectCapitalCell,
+    TResult? Function(OnPanUpdateEvent value)? onPanUpdate,
+    TResult? Function(StartEditingListEvent value)? startEditingList,
+    TResult? Function(ReturnToLoadedEvent value)? returnToLoaded,
+    TResult? Function(ReturnToCellsSelectedEvent value)? returnToCellsSelected,
+    TResult? Function(UpdateDiaryListNameEvent value)? updateDiaryListName,
+    TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
+    TResult? Function(ChangeCapitalCellEvent value)? changeCapitalCell,
+    TResult? Function(UpdateDiaryCellInFirebaseEvent value)?
+        updateDiaryCellInFirebase,
+    TResult? Function(ChangeDiaryCellsSettingsEvent value)?
+        changeDiaryCellsSettings,
+    TResult? Function(ChangeDiaryCellsBordersSettingsEvent value)?
+        changeDiaryCellsBordersSettings,
+    TResult? Function(ChangeCapitalCellSettingsEvent value)?
+        changeCapitalCellSettings,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
+    TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
+        updateCapitalCellSettingsInFirebase,
+    TResult? Function(UpdateCapitalCellWidthEvent value)?
+        updateCapitalCellWidth,
+    TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
+        updateCapitalCellWidthInFirebase,
+    TResult? Function(StartEditingCellsEvent value)? startEditingCells,
+    TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
+    TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
+    TResult? Function(UpdateDiaryListSettingsEvent value)?
+        updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
+    TResult? Function(StartEditingColorEvent value)? startEditingColor,
+    TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
+    TResult? Function(StartEditingBordersStyleEvent value)?
+        startEditingBorderStyle,
+    TResult? Function(TurnBackEditingEvent value)? turnBackEditing,
+    TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
+    TResult? Function(StartColorThemeEditingEvent value)?
+        startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
+  }) {
+    return loadThemes?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CreateSampleEvent value)? createSample,
+    TResult Function(InitialLoadEvent value)? initialLoad,
+    TResult Function(GetDiaryListEvent value)? getDiaryList,
+    TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
+    TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(SelectDiaryCellsEvent value)? selectDiaryCells,
+    TResult Function(SelectCapitalCellEvent value)? selectCapitalCell,
+    TResult Function(OnPanUpdateEvent value)? onPanUpdate,
+    TResult Function(StartEditingListEvent value)? startEditingList,
+    TResult Function(ReturnToLoadedEvent value)? returnToLoaded,
+    TResult Function(ReturnToCellsSelectedEvent value)? returnToCellsSelected,
+    TResult Function(UpdateDiaryListNameEvent value)? updateDiaryListName,
+    TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
+    TResult Function(ChangeCapitalCellEvent value)? changeCapitalCell,
+    TResult Function(UpdateDiaryCellInFirebaseEvent value)?
+        updateDiaryCellInFirebase,
+    TResult Function(ChangeDiaryCellsSettingsEvent value)?
+        changeDiaryCellsSettings,
+    TResult Function(ChangeDiaryCellsBordersSettingsEvent value)?
+        changeDiaryCellsBordersSettings,
+    TResult Function(ChangeCapitalCellSettingsEvent value)?
+        changeCapitalCellSettings,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
+    TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
+        updateCapitalCellSettingsInFirebase,
+    TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
+    TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
+        updateCapitalCellWidthInFirebase,
+    TResult Function(StartEditingCellsEvent value)? startEditingCells,
+    TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
+    TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
+    TResult Function(UpdateDiaryListSettingsEvent value)?
+        updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
+    TResult Function(StartEditingColorEvent value)? startEditingColor,
+    TResult Function(StartEditingBordersEvent value)? startEditingBorders,
+    TResult Function(StartEditingBordersStyleEvent value)?
+        startEditingBorderStyle,
+    TResult Function(TurnBackEditingEvent value)? turnBackEditing,
+    TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
+    TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
+    required TResult orElse(),
+  }) {
+    if (loadThemes != null) {
+      return loadThemes(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadThemesEvent implements DiaryListEvent {
+  const factory LoadThemesEvent() = _$LoadThemesEvent;
+}
+
+/// @nodoc
+abstract class _$$LoadFromThemeEventCopyWith<$Res> {
+  factory _$$LoadFromThemeEventCopyWith(_$LoadFromThemeEvent value,
+          $Res Function(_$LoadFromThemeEvent) then) =
+      __$$LoadFromThemeEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ListTheme listTheme});
+}
+
+/// @nodoc
+class __$$LoadFromThemeEventCopyWithImpl<$Res>
+    extends _$DiaryListEventCopyWithImpl<$Res, _$LoadFromThemeEvent>
+    implements _$$LoadFromThemeEventCopyWith<$Res> {
+  __$$LoadFromThemeEventCopyWithImpl(
+      _$LoadFromThemeEvent _value, $Res Function(_$LoadFromThemeEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? listTheme = null,
+  }) {
+    return _then(_$LoadFromThemeEvent(
+      listTheme: null == listTheme
+          ? _value.listTheme
+          : listTheme // ignore: cast_nullable_to_non_nullable
+              as ListTheme,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadFromThemeEvent implements LoadFromThemeEvent {
+  const _$LoadFromThemeEvent({required this.listTheme});
+
+  @override
+  final ListTheme listTheme;
+
+  @override
+  String toString() {
+    return 'DiaryListEvent.loadFromTheme(listTheme: $listTheme)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadFromThemeEvent &&
+            (identical(other.listTheme, listTheme) ||
+                other.listTheme == listTheme));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, listTheme);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadFromThemeEventCopyWith<_$LoadFromThemeEvent> get copyWith =>
+      __$$LoadFromThemeEventCopyWithImpl<_$LoadFromThemeEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() createSample,
+    required TResult Function() initialLoad,
+    required TResult Function(DateTime date, int delay) getDiaryList,
+    required TResult Function(DiaryList diaryList, List<DiaryList> lists)
+        getDiaryColumns,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryList> lists)
+        getDiaryCells,
+    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(List<DiaryCell> diaryCells) selectDiaryCells,
+    required TResult Function(CapitalCell capitalCell) selectCapitalCell,
+    required TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            DragUpdateDetails details,
+            double scaleFactor)
+        onPanUpdate,
+    required TResult Function(DiaryList? selectedList) startEditingList,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
+    required TResult Function() returnToCellsSelected,
+    required TResult Function(DiaryList diaryList, String newName)
+        updateDiaryListName,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        changeDiaryCell,
+    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+        changeCapitalCell,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        updateDiaryCellInFirebase,
+    required TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor)
+        changeDiaryCellsSettings,
+    required TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        changeDiaryCellsBordersSettings,
+    required TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor,
+            BordersStyleEnum? bordersStyleEnum,
+            Color? bordersColor)
+        changeCapitalCellSettings,
+    required TResult Function(
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
+    required TResult Function(DiaryColumnSettings newSettings)
+        updateCapitalCellSettingsInFirebase,
+    required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
+    required TResult Function(PointerUpEvent details)
+        updateCapitalCellWidthInFirebase,
+    required TResult Function(bool isTextEditing) startEditingCells,
+    required TResult Function(DiaryList diaryList, String name,
+            int columnsCount, List<DiaryColumn> diaryColumns)
+        createDiaryColumn,
+    required TResult Function(DiaryList diaryList, String columnId)
+        deleteDiaryColumn,
+    required TResult Function(DiaryList diaryList, String? themeColor,
+            String? themeBorderColor, String? themePanelBackgroundColor)
+        updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
+    required TResult Function() startEditingColor,
+    required TResult Function() startEditingBorders,
+    required TResult Function() startEditingBorderStyle,
+    required TResult Function() turnBackEditing,
+    required TResult Function() startColumnDeleting,
+    required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
+  }) {
+    return loadFromTheme(listTheme);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? createSample,
+    TResult? Function()? initialLoad,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
+    TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
+        getDiaryColumns,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells, List<DiaryList> lists)?
+        getDiaryCells,
+    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(List<DiaryCell> diaryCells)? selectDiaryCells,
+    TResult? Function(CapitalCell capitalCell)? selectCapitalCell,
+    TResult? Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            DragUpdateDetails details,
+            double scaleFactor)?
+        onPanUpdate,
+    TResult? Function(DiaryList? selectedList)? startEditingList,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
+    TResult? Function()? returnToCellsSelected,
+    TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
+    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+        changeCapitalCell,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        updateDiaryCellInFirebase,
+    TResult? Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor)?
+        changeDiaryCellsSettings,
+    TResult? Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        changeDiaryCellsBordersSettings,
+    TResult? Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor,
+            BordersStyleEnum? bordersStyleEnum,
+            Color? bordersColor)?
+        changeCapitalCellSettings,
+    TResult? Function(
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
+    TResult? Function(DiaryColumnSettings newSettings)?
+        updateCapitalCellSettingsInFirebase,
+    TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
+    TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
+    TResult? Function(bool isTextEditing)? startEditingCells,
+    TResult? Function(DiaryList diaryList, String name, int columnsCount,
+            List<DiaryColumn> diaryColumns)?
+        createDiaryColumn,
+    TResult? Function(DiaryList diaryList, String columnId)? deleteDiaryColumn,
+    TResult? Function(DiaryList diaryList, String? themeColor,
+            String? themeBorderColor, String? themePanelBackgroundColor)?
+        updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
+    TResult? Function()? startEditingColor,
+    TResult? Function()? startEditingBorders,
+    TResult? Function()? startEditingBorderStyle,
+    TResult? Function()? turnBackEditing,
+    TResult? Function()? startColumnDeleting,
+    TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
+  }) {
+    return loadFromTheme?.call(listTheme);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? createSample,
+    TResult Function()? initialLoad,
+    TResult Function(DateTime date, int delay)? getDiaryList,
+    TResult Function(DiaryList diaryList, List<DiaryList> lists)?
+        getDiaryColumns,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells, List<DiaryList> lists)?
+        getDiaryCells,
+    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(List<DiaryCell> diaryCells)? selectDiaryCells,
+    TResult Function(CapitalCell capitalCell)? selectCapitalCell,
+    TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            DragUpdateDetails details,
+            double scaleFactor)?
+        onPanUpdate,
+    TResult Function(DiaryList? selectedList)? startEditingList,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
+    TResult Function()? returnToCellsSelected,
+    TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
+    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+        changeCapitalCell,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        updateDiaryCellInFirebase,
+    TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor)?
+        changeDiaryCellsSettings,
+    TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        changeDiaryCellsBordersSettings,
+    TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor,
+            BordersStyleEnum? bordersStyleEnum,
+            Color? bordersColor)?
+        changeCapitalCellSettings,
+    TResult Function(
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
+    TResult Function(DiaryColumnSettings newSettings)?
+        updateCapitalCellSettingsInFirebase,
+    TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
+    TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
+    TResult Function(bool isTextEditing)? startEditingCells,
+    TResult Function(DiaryList diaryList, String name, int columnsCount,
+            List<DiaryColumn> diaryColumns)?
+        createDiaryColumn,
+    TResult Function(DiaryList diaryList, String columnId)? deleteDiaryColumn,
+    TResult Function(DiaryList diaryList, String? themeColor,
+            String? themeBorderColor, String? themePanelBackgroundColor)?
+        updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
+    TResult Function()? startEditingColor,
+    TResult Function()? startEditingBorders,
+    TResult Function()? startEditingBorderStyle,
+    TResult Function()? turnBackEditing,
+    TResult Function()? startColumnDeleting,
+    TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
+    required TResult orElse(),
+  }) {
+    if (loadFromTheme != null) {
+      return loadFromTheme(listTheme);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CreateSampleEvent value) createSample,
+    required TResult Function(InitialLoadEvent value) initialLoad,
+    required TResult Function(GetDiaryListEvent value) getDiaryList,
+    required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
+    required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
+    required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(SelectDiaryCellsEvent value) selectDiaryCells,
+    required TResult Function(SelectCapitalCellEvent value) selectCapitalCell,
+    required TResult Function(OnPanUpdateEvent value) onPanUpdate,
+    required TResult Function(StartEditingListEvent value) startEditingList,
+    required TResult Function(ReturnToLoadedEvent value) returnToLoaded,
+    required TResult Function(ReturnToCellsSelectedEvent value)
+        returnToCellsSelected,
+    required TResult Function(UpdateDiaryListNameEvent value)
+        updateDiaryListName,
+    required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
+    required TResult Function(ChangeCapitalCellEvent value) changeCapitalCell,
+    required TResult Function(UpdateDiaryCellInFirebaseEvent value)
+        updateDiaryCellInFirebase,
+    required TResult Function(ChangeDiaryCellsSettingsEvent value)
+        changeDiaryCellsSettings,
+    required TResult Function(ChangeDiaryCellsBordersSettingsEvent value)
+        changeDiaryCellsBordersSettings,
+    required TResult Function(ChangeCapitalCellSettingsEvent value)
+        changeCapitalCellSettings,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
+    required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
+        updateCapitalCellSettingsInFirebase,
+    required TResult Function(UpdateCapitalCellWidthEvent value)
+        updateCapitalCellWidth,
+    required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
+        updateCapitalCellWidthInFirebase,
+    required TResult Function(StartEditingCellsEvent value) startEditingCells,
+    required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
+    required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
+    required TResult Function(UpdateDiaryListSettingsEvent value)
+        updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
+    required TResult Function(StartEditingColorEvent value) startEditingColor,
+    required TResult Function(StartEditingBordersEvent value)
+        startEditingBorders,
+    required TResult Function(StartEditingBordersStyleEvent value)
+        startEditingBorderStyle,
+    required TResult Function(TurnBackEditingEvent value) turnBackEditing,
+    required TResult Function(StartColumnDeletingEvent value)
+        startColumnDeleting,
+    required TResult Function(StartColorThemeEditingEvent value)
+        startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
+  }) {
+    return loadFromTheme(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CreateSampleEvent value)? createSample,
+    TResult? Function(InitialLoadEvent value)? initialLoad,
+    TResult? Function(GetDiaryListEvent value)? getDiaryList,
+    TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
+    TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(SelectDiaryCellsEvent value)? selectDiaryCells,
+    TResult? Function(SelectCapitalCellEvent value)? selectCapitalCell,
+    TResult? Function(OnPanUpdateEvent value)? onPanUpdate,
+    TResult? Function(StartEditingListEvent value)? startEditingList,
+    TResult? Function(ReturnToLoadedEvent value)? returnToLoaded,
+    TResult? Function(ReturnToCellsSelectedEvent value)? returnToCellsSelected,
+    TResult? Function(UpdateDiaryListNameEvent value)? updateDiaryListName,
+    TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
+    TResult? Function(ChangeCapitalCellEvent value)? changeCapitalCell,
+    TResult? Function(UpdateDiaryCellInFirebaseEvent value)?
+        updateDiaryCellInFirebase,
+    TResult? Function(ChangeDiaryCellsSettingsEvent value)?
+        changeDiaryCellsSettings,
+    TResult? Function(ChangeDiaryCellsBordersSettingsEvent value)?
+        changeDiaryCellsBordersSettings,
+    TResult? Function(ChangeCapitalCellSettingsEvent value)?
+        changeCapitalCellSettings,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
+    TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
+        updateCapitalCellSettingsInFirebase,
+    TResult? Function(UpdateCapitalCellWidthEvent value)?
+        updateCapitalCellWidth,
+    TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
+        updateCapitalCellWidthInFirebase,
+    TResult? Function(StartEditingCellsEvent value)? startEditingCells,
+    TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
+    TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
+    TResult? Function(UpdateDiaryListSettingsEvent value)?
+        updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
+    TResult? Function(StartEditingColorEvent value)? startEditingColor,
+    TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
+    TResult? Function(StartEditingBordersStyleEvent value)?
+        startEditingBorderStyle,
+    TResult? Function(TurnBackEditingEvent value)? turnBackEditing,
+    TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
+    TResult? Function(StartColorThemeEditingEvent value)?
+        startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
+  }) {
+    return loadFromTheme?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CreateSampleEvent value)? createSample,
+    TResult Function(InitialLoadEvent value)? initialLoad,
+    TResult Function(GetDiaryListEvent value)? getDiaryList,
+    TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
+    TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(SelectDiaryCellsEvent value)? selectDiaryCells,
+    TResult Function(SelectCapitalCellEvent value)? selectCapitalCell,
+    TResult Function(OnPanUpdateEvent value)? onPanUpdate,
+    TResult Function(StartEditingListEvent value)? startEditingList,
+    TResult Function(ReturnToLoadedEvent value)? returnToLoaded,
+    TResult Function(ReturnToCellsSelectedEvent value)? returnToCellsSelected,
+    TResult Function(UpdateDiaryListNameEvent value)? updateDiaryListName,
+    TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
+    TResult Function(ChangeCapitalCellEvent value)? changeCapitalCell,
+    TResult Function(UpdateDiaryCellInFirebaseEvent value)?
+        updateDiaryCellInFirebase,
+    TResult Function(ChangeDiaryCellsSettingsEvent value)?
+        changeDiaryCellsSettings,
+    TResult Function(ChangeDiaryCellsBordersSettingsEvent value)?
+        changeDiaryCellsBordersSettings,
+    TResult Function(ChangeCapitalCellSettingsEvent value)?
+        changeCapitalCellSettings,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
+    TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
+        updateCapitalCellSettingsInFirebase,
+    TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
+    TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
+        updateCapitalCellWidthInFirebase,
+    TResult Function(StartEditingCellsEvent value)? startEditingCells,
+    TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
+    TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
+    TResult Function(UpdateDiaryListSettingsEvent value)?
+        updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
+    TResult Function(StartEditingColorEvent value)? startEditingColor,
+    TResult Function(StartEditingBordersEvent value)? startEditingBorders,
+    TResult Function(StartEditingBordersStyleEvent value)?
+        startEditingBorderStyle,
+    TResult Function(TurnBackEditingEvent value)? turnBackEditing,
+    TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
+    TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
+    required TResult orElse(),
+  }) {
+    if (loadFromTheme != null) {
+      return loadFromTheme(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadFromThemeEvent implements DiaryListEvent {
+  const factory LoadFromThemeEvent({required final ListTheme listTheme}) =
+      _$LoadFromThemeEvent;
+
+  ListTheme get listTheme;
+  @JsonKey(ignore: true)
+  _$$LoadFromThemeEventCopyWith<_$LoadFromThemeEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$TakeThemeEventCopyWith<$Res> {
+  factory _$$TakeThemeEventCopyWith(
+          _$TakeThemeEvent value, $Res Function(_$TakeThemeEvent) then) =
+      __$$TakeThemeEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ListTheme listTheme});
+}
+
+/// @nodoc
+class __$$TakeThemeEventCopyWithImpl<$Res>
+    extends _$DiaryListEventCopyWithImpl<$Res, _$TakeThemeEvent>
+    implements _$$TakeThemeEventCopyWith<$Res> {
+  __$$TakeThemeEventCopyWithImpl(
+      _$TakeThemeEvent _value, $Res Function(_$TakeThemeEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? listTheme = null,
+  }) {
+    return _then(_$TakeThemeEvent(
+      listTheme: null == listTheme
+          ? _value.listTheme
+          : listTheme // ignore: cast_nullable_to_non_nullable
+              as ListTheme,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TakeThemeEvent implements TakeThemeEvent {
+  const _$TakeThemeEvent({required this.listTheme});
+
+  @override
+  final ListTheme listTheme;
+
+  @override
+  String toString() {
+    return 'DiaryListEvent.takeTheme(listTheme: $listTheme)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TakeThemeEvent &&
+            (identical(other.listTheme, listTheme) ||
+                other.listTheme == listTheme));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, listTheme);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TakeThemeEventCopyWith<_$TakeThemeEvent> get copyWith =>
+      __$$TakeThemeEventCopyWithImpl<_$TakeThemeEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() createSample,
+    required TResult Function() initialLoad,
+    required TResult Function(DateTime date, int delay) getDiaryList,
+    required TResult Function(DiaryList diaryList, List<DiaryList> lists)
+        getDiaryColumns,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells,
+            List<DiaryList> lists)
+        getDiaryCells,
+    required TResult Function(DiaryCell diaryCell) selectDiaryCell,
+    required TResult Function(List<DiaryCell> diaryCells) selectDiaryCells,
+    required TResult Function(CapitalCell capitalCell) selectCapitalCell,
+    required TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            DragUpdateDetails details,
+            double scaleFactor)
+        onPanUpdate,
+    required TResult Function(DiaryList? selectedList) startEditingList,
+    required TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)
+        returnToLoaded,
+    required TResult Function() returnToCellsSelected,
+    required TResult Function(DiaryList diaryList, String newName)
+        updateDiaryListName,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        changeDiaryCell,
+    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+        changeCapitalCell,
+    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+        updateDiaryCellInFirebase,
+    required TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor)
+        changeDiaryCellsSettings,
+    required TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)
+        changeDiaryCellsBordersSettings,
+    required TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor,
+            BordersStyleEnum? bordersStyleEnum,
+            Color? bordersColor)
+        changeCapitalCellSettings,
+    required TResult Function(
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)
+        updateDiaryCellSettingsInFirebase,
+    required TResult Function(DiaryColumnSettings newSettings)
+        updateCapitalCellSettingsInFirebase,
+    required TResult Function(PointerMoveEvent details) updateCapitalCellWidth,
+    required TResult Function(PointerUpEvent details)
+        updateCapitalCellWidthInFirebase,
+    required TResult Function(bool isTextEditing) startEditingCells,
+    required TResult Function(DiaryList diaryList, String name,
+            int columnsCount, List<DiaryColumn> diaryColumns)
+        createDiaryColumn,
+    required TResult Function(DiaryList diaryList, String columnId)
+        deleteDiaryColumn,
+    required TResult Function(DiaryList diaryList, String? themeColor,
+            String? themeBorderColor, String? themePanelBackgroundColor)
+        updateDiaryListSettings,
+    required TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)
+        shareTheme,
+    required TResult Function() startEditingColor,
+    required TResult Function() startEditingBorders,
+    required TResult Function() startEditingBorderStyle,
+    required TResult Function() turnBackEditing,
+    required TResult Function() startColumnDeleting,
+    required TResult Function() startColorThemeEditing,
+    required TResult Function() deleteColumns,
+    required TResult Function() loadThemes,
+    required TResult Function(ListTheme listTheme) loadFromTheme,
+    required TResult Function(ListTheme listTheme) takeTheme,
+  }) {
+    return takeTheme(listTheme);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? createSample,
+    TResult? Function()? initialLoad,
+    TResult? Function(DateTime date, int delay)? getDiaryList,
+    TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
+        getDiaryColumns,
+    TResult? Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells, List<DiaryList> lists)?
+        getDiaryCells,
+    TResult? Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult? Function(List<DiaryCell> diaryCells)? selectDiaryCells,
+    TResult? Function(CapitalCell capitalCell)? selectCapitalCell,
+    TResult? Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            DragUpdateDetails details,
+            double scaleFactor)?
+        onPanUpdate,
+    TResult? Function(DiaryList? selectedList)? startEditingList,
+    TResult? Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
+    TResult? Function()? returnToCellsSelected,
+    TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
+    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+        changeCapitalCell,
+    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+        updateDiaryCellInFirebase,
+    TResult? Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor)?
+        changeDiaryCellsSettings,
+    TResult? Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        changeDiaryCellsBordersSettings,
+    TResult? Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor,
+            BordersStyleEnum? bordersStyleEnum,
+            Color? bordersColor)?
+        changeCapitalCellSettings,
+    TResult? Function(
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
+    TResult? Function(DiaryColumnSettings newSettings)?
+        updateCapitalCellSettingsInFirebase,
+    TResult? Function(PointerMoveEvent details)? updateCapitalCellWidth,
+    TResult? Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
+    TResult? Function(bool isTextEditing)? startEditingCells,
+    TResult? Function(DiaryList diaryList, String name, int columnsCount,
+            List<DiaryColumn> diaryColumns)?
+        createDiaryColumn,
+    TResult? Function(DiaryList diaryList, String columnId)? deleteDiaryColumn,
+    TResult? Function(DiaryList diaryList, String? themeColor,
+            String? themeBorderColor, String? themePanelBackgroundColor)?
+        updateDiaryListSettings,
+    TResult? Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
+    TResult? Function()? startEditingColor,
+    TResult? Function()? startEditingBorders,
+    TResult? Function()? startEditingBorderStyle,
+    TResult? Function()? turnBackEditing,
+    TResult? Function()? startColumnDeleting,
+    TResult? Function()? startColorThemeEditing,
+    TResult? Function()? deleteColumns,
+    TResult? Function()? loadThemes,
+    TResult? Function(ListTheme listTheme)? loadFromTheme,
+    TResult? Function(ListTheme listTheme)? takeTheme,
+  }) {
+    return takeTheme?.call(listTheme);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? createSample,
+    TResult Function()? initialLoad,
+    TResult Function(DateTime date, int delay)? getDiaryList,
+    TResult Function(DiaryList diaryList, List<DiaryList> lists)?
+        getDiaryColumns,
+    TResult Function(DiaryList diaryList, List<DiaryColumn> diaryColumns,
+            List<CapitalCell> capitalCells, List<DiaryList> lists)?
+        getDiaryCells,
+    TResult Function(DiaryCell diaryCell)? selectDiaryCell,
+    TResult Function(List<DiaryCell> diaryCells)? selectDiaryCells,
+    TResult Function(CapitalCell capitalCell)? selectCapitalCell,
+    TResult Function(
+            DiaryCell diaryCell,
+            GlobalObjectKey<State<StatefulWidget>> cellKey,
+            DragUpdateDetails details,
+            double scaleFactor)?
+        onPanUpdate,
+    TResult Function(DiaryList? selectedList)? startEditingList,
+    TResult Function(
+            String? newName, String? addedColumnName, int? addedColumnCount)?
+        returnToLoaded,
+    TResult Function()? returnToCellsSelected,
+    TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        changeDiaryCell,
+    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+        changeCapitalCell,
+    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+        updateDiaryCellInFirebase,
+    TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor)?
+        changeDiaryCellsSettings,
+    TResult Function(BordersEditingEnum bordersEditingEnum,
+            BordersStyleEnum bordersStyleEnum, Color bordersColor)?
+        changeDiaryCellsBordersSettings,
+    TResult Function(
+            FontWeightEnum? fontWeight,
+            TextDecorationEnum? textDecoration,
+            FontStyleEnum? fontStyle,
+            double? fontSize,
+            String? color,
+            HorizontalAlignmentsEnum? horizontalAlignment,
+            VerticalAlignmentsEnum? verticalAlignment,
+            String? backgroundColor,
+            BordersStyleEnum? bordersStyleEnum,
+            Color? bordersColor)?
+        changeCapitalCellSettings,
+    TResult Function(
+            DiaryCell diaryCell,
+            int index,
+            DiaryCellTextSettings? newTextSettings,
+            DiaryCellSettings? newSettings)?
+        updateDiaryCellSettingsInFirebase,
+    TResult Function(DiaryColumnSettings newSettings)?
+        updateCapitalCellSettingsInFirebase,
+    TResult Function(PointerMoveEvent details)? updateCapitalCellWidth,
+    TResult Function(PointerUpEvent details)? updateCapitalCellWidthInFirebase,
+    TResult Function(bool isTextEditing)? startEditingCells,
+    TResult Function(DiaryList diaryList, String name, int columnsCount,
+            List<DiaryColumn> diaryColumns)?
+        createDiaryColumn,
+    TResult Function(DiaryList diaryList, String columnId)? deleteDiaryColumn,
+    TResult Function(DiaryList diaryList, String? themeColor,
+            String? themeBorderColor, String? themePanelBackgroundColor)?
+        updateDiaryListSettings,
+    TResult Function(
+            DiaryList diaryList,
+            List<DiaryColumn> diaryColumns,
+            List<DiaryCell> diaryCells,
+            List<CapitalCell> capitalCells,
+            String themeName,
+            String description)?
+        shareTheme,
+    TResult Function()? startEditingColor,
+    TResult Function()? startEditingBorders,
+    TResult Function()? startEditingBorderStyle,
+    TResult Function()? turnBackEditing,
+    TResult Function()? startColumnDeleting,
+    TResult Function()? startColorThemeEditing,
+    TResult Function()? deleteColumns,
+    TResult Function()? loadThemes,
+    TResult Function(ListTheme listTheme)? loadFromTheme,
+    TResult Function(ListTheme listTheme)? takeTheme,
+    required TResult orElse(),
+  }) {
+    if (takeTheme != null) {
+      return takeTheme(listTheme);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CreateSampleEvent value) createSample,
+    required TResult Function(InitialLoadEvent value) initialLoad,
+    required TResult Function(GetDiaryListEvent value) getDiaryList,
+    required TResult Function(GetDiaryColumnsEvent value) getDiaryColumns,
+    required TResult Function(GetDiaryCellsEvent value) getDiaryCells,
+    required TResult Function(SelectDiaryCellEvent value) selectDiaryCell,
+    required TResult Function(SelectDiaryCellsEvent value) selectDiaryCells,
+    required TResult Function(SelectCapitalCellEvent value) selectCapitalCell,
+    required TResult Function(OnPanUpdateEvent value) onPanUpdate,
+    required TResult Function(StartEditingListEvent value) startEditingList,
+    required TResult Function(ReturnToLoadedEvent value) returnToLoaded,
+    required TResult Function(ReturnToCellsSelectedEvent value)
+        returnToCellsSelected,
+    required TResult Function(UpdateDiaryListNameEvent value)
+        updateDiaryListName,
+    required TResult Function(ChangeDiaryCellEvent value) changeDiaryCell,
+    required TResult Function(ChangeCapitalCellEvent value) changeCapitalCell,
+    required TResult Function(UpdateDiaryCellInFirebaseEvent value)
+        updateDiaryCellInFirebase,
+    required TResult Function(ChangeDiaryCellsSettingsEvent value)
+        changeDiaryCellsSettings,
+    required TResult Function(ChangeDiaryCellsBordersSettingsEvent value)
+        changeDiaryCellsBordersSettings,
+    required TResult Function(ChangeCapitalCellSettingsEvent value)
+        changeCapitalCellSettings,
+    required TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)
+        updateDiaryCellSettingsInFirebase,
+    required TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)
+        updateCapitalCellSettingsInFirebase,
+    required TResult Function(UpdateCapitalCellWidthEvent value)
+        updateCapitalCellWidth,
+    required TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)
+        updateCapitalCellWidthInFirebase,
+    required TResult Function(StartEditingCellsEvent value) startEditingCells,
+    required TResult Function(CreateDiaryColumnEvent value) createDiaryColumn,
+    required TResult Function(DeleteDiaryColumnEvent value) deleteDiaryColumn,
+    required TResult Function(UpdateDiaryListSettingsEvent value)
+        updateDiaryListSettings,
+    required TResult Function(ShareThemeEvent value) shareTheme,
+    required TResult Function(StartEditingColorEvent value) startEditingColor,
+    required TResult Function(StartEditingBordersEvent value)
+        startEditingBorders,
+    required TResult Function(StartEditingBordersStyleEvent value)
+        startEditingBorderStyle,
+    required TResult Function(TurnBackEditingEvent value) turnBackEditing,
+    required TResult Function(StartColumnDeletingEvent value)
+        startColumnDeleting,
+    required TResult Function(StartColorThemeEditingEvent value)
+        startColorThemeEditing,
+    required TResult Function(DeleteColumnsEvent value) deleteColumns,
+    required TResult Function(LoadThemesEvent value) loadThemes,
+    required TResult Function(LoadFromThemeEvent value) loadFromTheme,
+    required TResult Function(TakeThemeEvent value) takeTheme,
+  }) {
+    return takeTheme(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CreateSampleEvent value)? createSample,
+    TResult? Function(InitialLoadEvent value)? initialLoad,
+    TResult? Function(GetDiaryListEvent value)? getDiaryList,
+    TResult? Function(GetDiaryColumnsEvent value)? getDiaryColumns,
+    TResult? Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult? Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult? Function(SelectDiaryCellsEvent value)? selectDiaryCells,
+    TResult? Function(SelectCapitalCellEvent value)? selectCapitalCell,
+    TResult? Function(OnPanUpdateEvent value)? onPanUpdate,
+    TResult? Function(StartEditingListEvent value)? startEditingList,
+    TResult? Function(ReturnToLoadedEvent value)? returnToLoaded,
+    TResult? Function(ReturnToCellsSelectedEvent value)? returnToCellsSelected,
+    TResult? Function(UpdateDiaryListNameEvent value)? updateDiaryListName,
+    TResult? Function(ChangeDiaryCellEvent value)? changeDiaryCell,
+    TResult? Function(ChangeCapitalCellEvent value)? changeCapitalCell,
+    TResult? Function(UpdateDiaryCellInFirebaseEvent value)?
+        updateDiaryCellInFirebase,
+    TResult? Function(ChangeDiaryCellsSettingsEvent value)?
+        changeDiaryCellsSettings,
+    TResult? Function(ChangeDiaryCellsBordersSettingsEvent value)?
+        changeDiaryCellsBordersSettings,
+    TResult? Function(ChangeCapitalCellSettingsEvent value)?
+        changeCapitalCellSettings,
+    TResult? Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
+    TResult? Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
+        updateCapitalCellSettingsInFirebase,
+    TResult? Function(UpdateCapitalCellWidthEvent value)?
+        updateCapitalCellWidth,
+    TResult? Function(UpdateCapitalCellWidthInFirebaseEvent value)?
+        updateCapitalCellWidthInFirebase,
+    TResult? Function(StartEditingCellsEvent value)? startEditingCells,
+    TResult? Function(CreateDiaryColumnEvent value)? createDiaryColumn,
+    TResult? Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
+    TResult? Function(UpdateDiaryListSettingsEvent value)?
+        updateDiaryListSettings,
+    TResult? Function(ShareThemeEvent value)? shareTheme,
+    TResult? Function(StartEditingColorEvent value)? startEditingColor,
+    TResult? Function(StartEditingBordersEvent value)? startEditingBorders,
+    TResult? Function(StartEditingBordersStyleEvent value)?
+        startEditingBorderStyle,
+    TResult? Function(TurnBackEditingEvent value)? turnBackEditing,
+    TResult? Function(StartColumnDeletingEvent value)? startColumnDeleting,
+    TResult? Function(StartColorThemeEditingEvent value)?
+        startColorThemeEditing,
+    TResult? Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult? Function(LoadThemesEvent value)? loadThemes,
+    TResult? Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult? Function(TakeThemeEvent value)? takeTheme,
+  }) {
+    return takeTheme?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CreateSampleEvent value)? createSample,
+    TResult Function(InitialLoadEvent value)? initialLoad,
+    TResult Function(GetDiaryListEvent value)? getDiaryList,
+    TResult Function(GetDiaryColumnsEvent value)? getDiaryColumns,
+    TResult Function(GetDiaryCellsEvent value)? getDiaryCells,
+    TResult Function(SelectDiaryCellEvent value)? selectDiaryCell,
+    TResult Function(SelectDiaryCellsEvent value)? selectDiaryCells,
+    TResult Function(SelectCapitalCellEvent value)? selectCapitalCell,
+    TResult Function(OnPanUpdateEvent value)? onPanUpdate,
+    TResult Function(StartEditingListEvent value)? startEditingList,
+    TResult Function(ReturnToLoadedEvent value)? returnToLoaded,
+    TResult Function(ReturnToCellsSelectedEvent value)? returnToCellsSelected,
+    TResult Function(UpdateDiaryListNameEvent value)? updateDiaryListName,
+    TResult Function(ChangeDiaryCellEvent value)? changeDiaryCell,
+    TResult Function(ChangeCapitalCellEvent value)? changeCapitalCell,
+    TResult Function(UpdateDiaryCellInFirebaseEvent value)?
+        updateDiaryCellInFirebase,
+    TResult Function(ChangeDiaryCellsSettingsEvent value)?
+        changeDiaryCellsSettings,
+    TResult Function(ChangeDiaryCellsBordersSettingsEvent value)?
+        changeDiaryCellsBordersSettings,
+    TResult Function(ChangeCapitalCellSettingsEvent value)?
+        changeCapitalCellSettings,
+    TResult Function(UpdateDiaryCellSettingsInFirebaseEvent value)?
+        updateDiaryCellSettingsInFirebase,
+    TResult Function(UpdateCapitalCellSettingsInFirebaseEvent value)?
+        updateCapitalCellSettingsInFirebase,
+    TResult Function(UpdateCapitalCellWidthEvent value)? updateCapitalCellWidth,
+    TResult Function(UpdateCapitalCellWidthInFirebaseEvent value)?
+        updateCapitalCellWidthInFirebase,
+    TResult Function(StartEditingCellsEvent value)? startEditingCells,
+    TResult Function(CreateDiaryColumnEvent value)? createDiaryColumn,
+    TResult Function(DeleteDiaryColumnEvent value)? deleteDiaryColumn,
+    TResult Function(UpdateDiaryListSettingsEvent value)?
+        updateDiaryListSettings,
+    TResult Function(ShareThemeEvent value)? shareTheme,
+    TResult Function(StartEditingColorEvent value)? startEditingColor,
+    TResult Function(StartEditingBordersEvent value)? startEditingBorders,
+    TResult Function(StartEditingBordersStyleEvent value)?
+        startEditingBorderStyle,
+    TResult Function(TurnBackEditingEvent value)? turnBackEditing,
+    TResult Function(StartColumnDeletingEvent value)? startColumnDeleting,
+    TResult Function(StartColorThemeEditingEvent value)? startColorThemeEditing,
+    TResult Function(DeleteColumnsEvent value)? deleteColumns,
+    TResult Function(LoadThemesEvent value)? loadThemes,
+    TResult Function(LoadFromThemeEvent value)? loadFromTheme,
+    TResult Function(TakeThemeEvent value)? takeTheme,
+    required TResult orElse(),
+  }) {
+    if (takeTheme != null) {
+      return takeTheme(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TakeThemeEvent implements DiaryListEvent {
+  const factory TakeThemeEvent({required final ListTheme listTheme}) =
+      _$TakeThemeEvent;
+
+  ListTheme get listTheme;
+  @JsonKey(ignore: true)
+  _$$TakeThemeEventCopyWith<_$TakeThemeEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }

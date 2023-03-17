@@ -72,6 +72,8 @@ class EditListPanelWidget extends StatelessWidget {
     required VoidCallback onTapAddColumn,
     required String contentDeleteColumn,
     required VoidCallback onTapDeleteColumn,
+    required String contentShareTheme,
+    required VoidCallback onTapShareTheme,
   }) {
     var listOfWidgets = List<Widget>.empty(growable: true);
     listOfWidgets.add(
@@ -100,6 +102,13 @@ class EditListPanelWidget extends StatelessWidget {
         diaryList: diaryList,
         content: contentDeleteColumn,
         onTap: onTapDeleteColumn,
+      ),
+    );
+    listOfWidgets.add(
+      DiaryListListTileWidget.shareTheme(
+        diaryList: diaryList,
+        content: contentShareTheme,
+        onTap: onTapShareTheme,
       ),
     );
     listOfWidgets.add(

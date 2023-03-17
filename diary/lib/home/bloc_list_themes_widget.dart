@@ -1,13 +1,13 @@
 import 'package:diary/diary_list/diary_list_bloc/diary_list/diary_list_bloc.dart';
-import 'package:diary/home/bloc_datagrid_sample.dart';
+import 'package:diary/home/bloc_list_themes_screen_widget.dart';
 import 'package:diary/services/diary_cell_service.dart';
 import 'package:diary/services/diary_column_service.dart';
 import 'package:diary/services/diary_list_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeScreenWidget extends StatelessWidget {
-  const HomeScreenWidget({super.key});
+class BlocListThemesWidget extends StatelessWidget {
+  const BlocListThemesWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class HomeScreenWidget extends StatelessWidget {
           RepositoryProvider.of<DiaryCellService>(context),
         ),
         child: const Scaffold(
-          body: BlocDataGridSample(),
+          body: BlocListThemesScreenWidget(),
         ),
       ),
     );

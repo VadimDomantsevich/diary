@@ -33,6 +33,8 @@ class BlocCapitalCellWidget extends StatelessWidget {
           cellsKeys,
           lists,
           defaultSettings,
+          isListThemeViewMode,
+          listTheme,
         ) {
           return CapitalCellWidget.model(
             capitalCell: capitalCell,

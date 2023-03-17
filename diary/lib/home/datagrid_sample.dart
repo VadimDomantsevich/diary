@@ -13,8 +13,16 @@ class DataGridSample extends StatelessWidget {
     return Scaffold(
       body: BlocBuilder<DiaryListBloc, DiaryListState>(
         builder: (context, state) => state.maybeWhen(
-            loaded: (diaryList, diaryColumns, capitalCells, diaryCells,
-                cellsKeys, lists) {
+            loaded: (
+              diaryList,
+              diaryColumns,
+              capitalCells,
+              diaryCells,
+              cellsKeys,
+              lists,
+              isListThemeViewMode,
+              listTheme,
+            ) {
               int crossAxisCount = 0;
               for (var column in diaryColumns) {
                 crossAxisCount += column.columnsCount;
@@ -78,6 +86,8 @@ class DataGridSample extends StatelessWidget {
               lists,
               defaultTextSettings,
               defaultSettings,
+              isListThemeViewMode,
+              listTheme,
             ) {
               int crossAxisCount = 0;
               for (var column in diaryColumns) {
@@ -249,6 +259,8 @@ class DataGridSample extends StatelessWidget {
               lists,
               defaultTextSettings,
               defaultSettings,
+              isListThemeViewMode,
+              listTheme,
             ) {
               int crossAxisCount = 0;
               for (var column in diaryColumns) {
@@ -311,6 +323,8 @@ class DataGridSample extends StatelessWidget {
               cellsKeys,
               lists,
               defaultSettings,
+              isListThemeViewMode,
+              listTheme,
             ) {
               int crossAxisCount = 0;
               for (var column in diaryColumns) {

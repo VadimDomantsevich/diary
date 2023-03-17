@@ -10,12 +10,14 @@ class DiaryColumn {
   final String id;
   final String name;
   final int columnsCount;
+  final DateTime creationTime;
   final DiaryColumnSettings settings;
 
   DiaryColumn({
     required this.id,
     required this.name,
     required this.columnsCount,
+    required this.creationTime,
     required this.settings,
   });
 
@@ -23,6 +25,7 @@ class DiaryColumn {
         DiaryColumnFields.id: id,
         DiaryColumnFields.name: name,
         DiaryColumnFields.columnsCount: columnsCount,
+        DiaryColumnFields.creationTime: creationTime,
       };
 
   factory DiaryColumn.fromFirestore({
@@ -34,6 +37,8 @@ class DiaryColumn {
       id: data[DiaryColumnFields.id]! as String,
       name: data[DiaryColumnFields.name]! as String,
       columnsCount: data[DiaryColumnFields.columnsCount]! as int,
+      creationTime:
+          (data[DiaryColumnFields.creationTime]! as Timestamp).toDate(),
       settings: DiaryColumnSettings.fromFirestore(
         doc: doc,
         defaultSettings: defaultSettings,

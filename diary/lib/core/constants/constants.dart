@@ -33,7 +33,7 @@ class Constants {
 
   static const thickBordersStyleWidth = 3.0;
 
-  static const defaultBordersStyleEnum = BordersStyleEnum.thick;
+  static const defaultBordersStyleEnum = BordersStyleEnum.thin;
 
   static const defaultBordersColor = '0x26646464';
 
@@ -48,6 +48,12 @@ class Constants {
   static const defaultTextFontSize = 14.0;
 
   static const addColumnAlertDialogHeight = 100.0;
+
+  static const shareThemeAlertDialogHeight = 200.0;
+
+  static const shareThemeAlertDialogTextFieldTopPadding = 20.0;
+
+  static const shareThemeAlertDialogDescriptionMaxLines = 5;
 
   static const defaultColumnWidth = 300.0;
 
@@ -64,4 +70,30 @@ class Constants {
   static const defaultDiaryCellBorderColor = '0x26646464';
 
   static const defaultDiaryCellBackgroundColor = '0xFFFFFFFF';
+
+  static const listThemeTextWidgetNameColor = '0xFF000000';
+
+  static const listThemeTextWidgetNameFontSize = 18.0;
+
+  static const listThemeTextWidgetDescriptionColor = '0xFF9E9E9E';
+
+  static const listThemeTextWidgetDescriptionFontSize = 14.0;
+
+  static const listThemeViewWidgetVerticalPadding = 20.0;
+
+  static const listThemeViewWidgetHorizontalPadding = 10.0;
+
+  static const themesLoadedAppBarWidgetBackgroundColor = '0xFFFFFFFF';
+
+  static const themesLoadedAppBarWidgetForegroundColor = '0xFF000000';
+
+  static const createSampleDelay = 2000;
+
+  static const addColumnDelay = 5000;
+
+  static const getListDelay = 200;
+
+  static const deleteColumnDelay = 200;
+
+  static const updateColorDelay = 200;
 }

@@ -30,7 +30,7 @@ class DiaryApp extends StatelessWidget {
             return BlocBuilder<LocaleBloc, LocaleState>(
               builder: (context, state) {
                 return MaterialApp.router(
-                  // debugShowCheckedModeBanner: false,
+                  debugShowCheckedModeBanner: false,
                   supportedLocales: AllLocale.all,
                   locale: state.locale,
                   localizationsDelegates: const [

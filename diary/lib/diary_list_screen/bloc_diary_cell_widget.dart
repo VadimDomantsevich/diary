@@ -41,6 +41,8 @@ class BlocDiaryCellWidget extends StatelessWidget {
               lists,
               defaultTextSettings,
               defaultSettings,
+              isListThemeViewMode,
+              listTheme,
             ) {
               bool isFirstSelected = false;
               bool isSelected = false;
@@ -103,6 +105,8 @@ class BlocDiaryCellWidget extends StatelessWidget {
               lists,
               defaultTextSettings,
               defaultSettings,
+              isListThemeViewMode,
+              listTheme,
             ) {
               bool isFirstSelected = false;
               bool isSelected = false;

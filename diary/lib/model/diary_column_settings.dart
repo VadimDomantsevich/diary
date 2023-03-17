@@ -170,4 +170,36 @@ class DiaryColumnSettings {
       );
     }
   }
+
+  factory DiaryColumnSettings.fromFirestoreToTheme({
+    required DocumentSnapshot doc,
+  }) {
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+    return DiaryColumnSettings(
+      width: List.from(data[DiaryColumnSettingsFields.width]),
+      capitalCellBorderWidth:
+          data[DiaryColumnSettingsFields.capitalCellBorderWidth] as double,
+      capitalCellBorderColor:
+          data[DiaryColumnSettingsFields.capitalCellBorderColor] as String,
+      capitalCellHeight:
+          data[DiaryColumnSettingsFields.capitalCellHeight] as double,
+      capitalCellBackgroundColor:
+          data[DiaryColumnSettingsFields.capitalCellBackgroundColor] as String,
+      capitalCellAlignment: AlignmentsEnum.values.firstWhere((element) =>
+          element.name == data[DiaryColumnSettingsFields.capitalCellAlignment]),
+      capitalCellFontWeight: FontWeightEnum.values.firstWhere((element) =>
+          element.name ==
+          data[DiaryColumnSettingsFields.capitalCellFontWeight]),
+      capitalCellTextDecoration: TextDecorationEnum.values.firstWhere(
+          (element) =>
+              element.name ==
+              data[DiaryColumnSettingsFields.capitalCellTextDecoration]),
+      capitalCellFontStyle: FontStyleEnum.values.firstWhere((element) =>
+          element.name == data[DiaryColumnSettingsFields.capitalCellFontStyle]),
+      capitalCellFontSize:
+          data[DiaryColumnSettingsFields.capitalCellFontSize] as double,
+      capitalCellTextColor:
+          data[DiaryColumnSettingsFields.capitalCellTextColor] as String,
+    );
+  }
 }
