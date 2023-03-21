@@ -1,0 +1,194 @@
+{
+    "verifyEmailSnackBarText": "Please check your email to verify your email address",
+    "@verifyEmailSnackBarText": {
+        "description": "Text asking the user to verify email"
+    },
+    "discardButtonText": "discard",
+    "@discardButtonText": {
+        "description": "Text of the discard button"
+    },
+    "confirmButtonText": "confirm",
+    "@confirmButtonText": {
+        "description": "Text of the confirm button"
+    },
+    "bottomCenter": "Bottom center",
+    "@bottomCenter": {
+        "description": "Bottom center text of the alignment DropdownMenuItem"
+    },
+    "bottomLeft": "Bottom left",
+    "@bottomLeft": {
+        "description": "Bottom left text of the alignment DropdownMenuItem"
+    },
+    "bottomRight": "Bottom right",
+    "@bottomRight": {
+        "description": "Bottom right text of the alignment DropdownMenuItem"
+    },
+    "center": "Center",
+    "@center": {
+        "description": "Center text of the alignment DropdownMenuItem"
+    },
+    "centerLeft": "Center left",
+    "@centerLeft": {
+        "description": "Center left text of the alignment DropdownMenuItem"
+    },
+    "centerRight": "Center right",
+    "@centerRight": {
+        "description": "Center right text of the alignment DropdownMenuItem"
+    },
+    "topCenter": "Top center",
+    "@topCenter": {
+        "description": "Top center text of the alignment DropdownMenuItem"
+    },
+    "topLeft": "Top left",
+    "@topLeft": {
+        "description": "Top left text of the alignment DropdownMenuItem"
+    },
+    "topRight": "Top right",
+    "@topRight": {
+        "description": "Top right text of the alignment DropdownMenuItem"
+    },
+    "alignmentHint": "Alignment",
+    "@alignmentHint": {
+        "description": "Alignment hint of the alignment DropdownButton"
+    },
+    "allLists": "All lists",
+    "@allLists": {
+        "description": "Text on the top of the edit list panel when selecting from all the lists"
+    },
+    "rename": "Rename",
+    "@rename": {
+        "description": "Text of the rename button"
+    },
+    "delete": "Delete",
+    "@delete": {
+        "description": "Text of the delete button"
+    },
+    "newListName": "New list name",
+    "@newListName": {
+        "description": "Title of the EditListAlertDialog"
+    },
+    "hintListName": "List name",
+    "@hintListName": {
+        "description": "HintText of the EditListAlertDialog textField"
+    },
+    "cancel": "Cancel",
+    "@cancel": {
+        "description": "Cancel text"
+    },
+    "ok": "OK",
+    "@ok": {
+        "description": "OK text"
+    },
+    "text": "Text",
+    "@text": {
+        "description": "SelectableNameWidget.textEditing text"
+    },
+    "cell": "Cell",
+    "@cell": {
+        "description": "SelectableNameWidget.cellEditing text"
+    },
+    "textColor": "Text color",
+    "@textColor": {
+        "description": "Text color listTile text on the cellsEditPanel"
+    },
+    "fillColor": "Fill color",
+    "@fillColor": {
+        "description": "Fill color listTile text on the cellsEditPanel"
+    },
+    "resetOptions": "Reset options",
+    "@resetOptions": {
+        "description": "Reset options listTile text on the cellsEditPanel"
+    },
+    "clearFormatting": "Clear formatting",
+    "@clearFormatting": {
+        "description": "Clear formatting listTile text on the cellsEditPanel"
+    },
+    "fontSize": "Font size",
+    "@fontSize": {
+        "description": "Font size listTile text on the cellsEditPanel"
+    },
+    "borders": "Borders",
+    "@borders": {
+        "description": "Borders listTile text on the cellsEditPanel"
+    },
+    "bordersStyle": "Borders style",
+    "@bordersStyle": {
+        "description": "Borders style listTile text on the cellsEditPanel"
+    },
+    "bordersColor": "Borders color",
+    "@bordersColor": {
+        "description": "Borders color listTile text on the cellsEditPanel"
+    },
+    "addColumn": "Add column",
+    "@addColumn": {
+        "description": "Add column listTile text on the edit list panel"
+    },
+    "deleteColumn": "Delete column",
+    "@deleteColumn": {
+        "description": "Delete column listTile text on the edit list panel"
+    },
+    "columnName": "Column name",
+    "@columnName": {
+        "description": "Column name text of the hint of add column textField"
+    },
+    "numberOfSubcolumns": "Number of columns",
+    "@numberOfSubcolumns": {
+        "description": "Number of subcolumns text on the add column alert dialog"
+    },
+    "areYouShure": "Are you shure?",
+    "@areYouShure": {
+        "description": "Are you shure? text on the delete column alert dialog"
+    },
+    "willBeDeleted": "will be deleted",
+    "@willBeDeleted": {
+        "description": "will be deleted text on the delete column alert dialog"
+    },
+    "themeColor": "Theme color",
+    "@themeColor": {
+        "description": "Theme color listTile text on the edit list panel"
+    },
+    "mainColor": "Main color",
+    "@mainColor": {
+        "description": "Main color listTile text on the edit list panel"
+    },
+    "borderColor": "Border color",
+    "@borderColor": {
+        "description": "Border color listTile text on the edit list panel"
+    },
+    "backgroundColor": "Background color",
+    "@backgroundColor": {
+        "description": "Bacground color listTile text on the edit list panel"
+    },
+    "pickColor": "Pick a color",
+    "@pickColor": {
+        "description": "Pick a color title text on the pick color alert dialog"
+    },
+    "shareTheme": "Share theme",
+    "@shareTheme": {
+        "description": "Shate theme text on the edit list panel"
+    },
+    "themeName": "Theme name",
+    "@themeName": {
+        "description": "Theme name text on the share theme alert dialog"
+    },
+    "description": "Description",
+    "@description": {
+        "description": "Description text on the share theme alert dialog"
+    },
+    "setThemeToYourselfAsDefault": "Set theme to yourself as default",
+    "@setThemeToYourselfAsDefault": {
+        "description": "Set theme to yourself as default title text on the take theme alert dialog"
+    },
+    "oldDataWillBeLost": "Old data will be lost",
+    "@oldDataWillBeLost": {
+        "description": "Old data will be lost content text on the take theme alert dialog"
+    },
+    "emptyThemesNameText": "Looks like no one has shared a theme yet",
+    "@emptyThemesNameText": {
+        "description": "Empty theme text on the themesLoadedScreen if there is no themes"
+    },
+    "emptyThemesDescriptionText": "Why don't you share yours then?",
+    "@emptyThemesDescriptionText": {
+        "description": "Empty theme text on the themesLoadedScreen if there is no themes"
+    }
+}
