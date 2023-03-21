@@ -3,172 +3,34 @@
 part of 'diary_cell_settings.dart';
 
 // **************************************************************************
-// CopyWithGenerator
+// JsonSerializableGenerator
 // **************************************************************************
 
-abstract class _$DiaryCellSettingsCWProxy {
-  DiaryCellSettings backgroundColor(String backgroundColor);
-
-  DiaryCellSettings bottomBorderColor(String bottomBorderColor);
-
-  DiaryCellSettings bottomBorderWidth(double bottomBorderWidth);
-
-  DiaryCellSettings height(double height);
-
-  DiaryCellSettings leftBorderColor(String leftBorderColor);
-
-  DiaryCellSettings leftBorderWidth(double leftBorderWidth);
-
-  DiaryCellSettings rightBorderColor(String rightBorderColor);
-
-  DiaryCellSettings rightBorderWidth(double rightBorderWidth);
-
-  DiaryCellSettings topBorderColor(String topBorderColor);
-
-  DiaryCellSettings topBorderWidth(double topBorderWidth);
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `DiaryCellSettings(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// DiaryCellSettings(...).copyWith(id: 12, name: "My name")
-  /// ````
-  DiaryCellSettings call({
-    String? backgroundColor,
-    String? bottomBorderColor,
-    double? bottomBorderWidth,
-    double? height,
-    String? leftBorderColor,
-    double? leftBorderWidth,
-    String? rightBorderColor,
-    double? rightBorderWidth,
-    String? topBorderColor,
-    double? topBorderWidth,
-  });
-}
-
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfDiaryCellSettings.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfDiaryCellSettings.copyWith.fieldName(...)`
-class _$DiaryCellSettingsCWProxyImpl implements _$DiaryCellSettingsCWProxy {
-  final DiaryCellSettings _value;
-
-  const _$DiaryCellSettingsCWProxyImpl(this._value);
-
-  @override
-  DiaryCellSettings backgroundColor(String backgroundColor) =>
-      this(backgroundColor: backgroundColor);
-
-  @override
-  DiaryCellSettings bottomBorderColor(String bottomBorderColor) =>
-      this(bottomBorderColor: bottomBorderColor);
-
-  @override
-  DiaryCellSettings bottomBorderWidth(double bottomBorderWidth) =>
-      this(bottomBorderWidth: bottomBorderWidth);
-
-  @override
-  DiaryCellSettings height(double height) => this(height: height);
-
-  @override
-  DiaryCellSettings leftBorderColor(String leftBorderColor) =>
-      this(leftBorderColor: leftBorderColor);
-
-  @override
-  DiaryCellSettings leftBorderWidth(double leftBorderWidth) =>
-      this(leftBorderWidth: leftBorderWidth);
-
-  @override
-  DiaryCellSettings rightBorderColor(String rightBorderColor) =>
-      this(rightBorderColor: rightBorderColor);
-
-  @override
-  DiaryCellSettings rightBorderWidth(double rightBorderWidth) =>
-      this(rightBorderWidth: rightBorderWidth);
-
-  @override
-  DiaryCellSettings topBorderColor(String topBorderColor) =>
-      this(topBorderColor: topBorderColor);
-
-  @override
-  DiaryCellSettings topBorderWidth(double topBorderWidth) =>
-      this(topBorderWidth: topBorderWidth);
-
-  @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `DiaryCellSettings(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// DiaryCellSettings(...).copyWith(id: 12, name: "My name")
-  /// ````
-  DiaryCellSettings call({
-    Object? backgroundColor = const $CopyWithPlaceholder(),
-    Object? bottomBorderColor = const $CopyWithPlaceholder(),
-    Object? bottomBorderWidth = const $CopyWithPlaceholder(),
-    Object? height = const $CopyWithPlaceholder(),
-    Object? leftBorderColor = const $CopyWithPlaceholder(),
-    Object? leftBorderWidth = const $CopyWithPlaceholder(),
-    Object? rightBorderColor = const $CopyWithPlaceholder(),
-    Object? rightBorderWidth = const $CopyWithPlaceholder(),
-    Object? topBorderColor = const $CopyWithPlaceholder(),
-    Object? topBorderWidth = const $CopyWithPlaceholder(),
-  }) {
-    return DiaryCellSettings(
-      backgroundColor: backgroundColor == const $CopyWithPlaceholder() ||
-              backgroundColor == null
-          ? _value.backgroundColor
-          // ignore: cast_nullable_to_non_nullable
-          : backgroundColor as String,
-      bottomBorderColor: bottomBorderColor == const $CopyWithPlaceholder() ||
-              bottomBorderColor == null
-          ? _value.bottomBorderColor
-          // ignore: cast_nullable_to_non_nullable
-          : bottomBorderColor as String,
-      bottomBorderWidth: bottomBorderWidth == const $CopyWithPlaceholder() ||
-              bottomBorderWidth == null
-          ? _value.bottomBorderWidth
-          // ignore: cast_nullable_to_non_nullable
-          : bottomBorderWidth as double,
-      height: height == const $CopyWithPlaceholder() || height == null
-          ? _value.height
-          // ignore: cast_nullable_to_non_nullable
-          : height as double,
-      leftBorderColor: leftBorderColor == const $CopyWithPlaceholder() ||
-              leftBorderColor == null
-          ? _value.leftBorderColor
-          // ignore: cast_nullable_to_non_nullable
-          : leftBorderColor as String,
-      leftBorderWidth: leftBorderWidth == const $CopyWithPlaceholder() ||
-              leftBorderWidth == null
-          ? _value.leftBorderWidth
-          // ignore: cast_nullable_to_non_nullable
-          : leftBorderWidth as double,
-      rightBorderColor: rightBorderColor == const $CopyWithPlaceholder() ||
-              rightBorderColor == null
-          ? _value.rightBorderColor
-          // ignore: cast_nullable_to_non_nullable
-          : rightBorderColor as String,
-      rightBorderWidth: rightBorderWidth == const $CopyWithPlaceholder() ||
-              rightBorderWidth == null
-          ? _value.rightBorderWidth
-          // ignore: cast_nullable_to_non_nullable
-          : rightBorderWidth as double,
-      topBorderColor: topBorderColor == const $CopyWithPlaceholder() ||
-              topBorderColor == null
-          ? _value.topBorderColor
-          // ignore: cast_nullable_to_non_nullable
-          : topBorderColor as String,
-      topBorderWidth: topBorderWidth == const $CopyWithPlaceholder() ||
-              topBorderWidth == null
-          ? _value.topBorderWidth
-          // ignore: cast_nullable_to_non_nullable
-          : topBorderWidth as double,
+_$_DiaryCellSettings _$$_DiaryCellSettingsFromJson(Map<String, dynamic> json) =>
+    _$_DiaryCellSettings(
+      topBorderColor: json['topBorderColor'] as String,
+      topBorderWidth: (json['topBorderWidth'] as num).toDouble(),
+      leftBorderColor: json['leftBorderColor'] as String,
+      leftBorderWidth: (json['leftBorderWidth'] as num).toDouble(),
+      rightBorderColor: json['rightBorderColor'] as String,
+      rightBorderWidth: (json['rightBorderWidth'] as num).toDouble(),
+      bottomBorderColor: json['bottomBorderColor'] as String,
+      bottomBorderWidth: (json['bottomBorderWidth'] as num).toDouble(),
+      height: (json['height'] as num).toDouble(),
+      backgroundColor: json['backgroundColor'] as String,
     );
-  }
-}
 
-extension $DiaryCellSettingsCopyWith on DiaryCellSettings {
-  /// Returns a callable class that can be used as follows: `instanceOfDiaryCellSettings.copyWith(...)` or like so:`instanceOfDiaryCellSettings.copyWith.fieldName(...)`.
-  // ignore: library_private_types_in_public_api
-  _$DiaryCellSettingsCWProxy get copyWith =>
-      _$DiaryCellSettingsCWProxyImpl(this);
-}
+Map<String, dynamic> _$$_DiaryCellSettingsToJson(
+        _$_DiaryCellSettings instance) =>
+    <String, dynamic>{
+      'topBorderColor': instance.topBorderColor,
+      'topBorderWidth': instance.topBorderWidth,
+      'leftBorderColor': instance.leftBorderColor,
+      'leftBorderWidth': instance.leftBorderWidth,
+      'rightBorderColor': instance.rightBorderColor,
+      'rightBorderWidth': instance.rightBorderWidth,
+      'bottomBorderColor': instance.bottomBorderColor,
+      'bottomBorderWidth': instance.bottomBorderWidth,
+      'height': instance.height,
+      'backgroundColor': instance.backgroundColor,
+    };

@@ -7,7 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BlocHomeWidget extends StatelessWidget {
-  const BlocHomeWidget({super.key});
+  const BlocHomeWidget({
+    super.key,
+    required this.isThemeTaken,
+  });
+
+  final bool isThemeTaken;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +28,10 @@ class BlocHomeWidget extends StatelessWidget {
           RepositoryProvider.of<DiaryColumnService>(context),
           RepositoryProvider.of<DiaryCellService>(context),
         ),
-        child: const Scaffold(
-          body: BlocDataGridSample(),
+        child: Scaffold(
+          body: BlocDataGridSample(
+            isThemeTaken: isThemeTaken,
+          ),
         ),
       ),
     );

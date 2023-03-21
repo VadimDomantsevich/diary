@@ -25,7 +25,7 @@ class DiaryColumnService {
         .get();
     if (columnsDefaultSettingsDoc.data() == null) {
       await columnsCollection.doc(Constants.columnsDefaultSettingsDocName).set(
-            createSettings(columnsCount: 1).toFirestore(),
+            createSettings(columnsCount: 1).toJson(),
           );
     }
 
@@ -61,7 +61,9 @@ class DiaryColumnService {
         creationTime: DateTime.now(),
         settings: columnSettings,
       );
-      await columnsCollection.doc(name).set(newColumn.toFirestore());
+      await columnsCollection.doc(name).set(
+            newColumn.toJson(),
+          );
 
       await updateSettings(
         diaryList: diaryList,
@@ -79,7 +81,9 @@ class DiaryColumnService {
         creationTime: DateTime.now(),
         settings: columnSettings,
       );
-      await columnsCollection.doc(id).set(newColumn.toFirestore());
+      await columnsCollection.doc(id).set(
+            newColumn.toJson(),
+          );
 
       await updateSettings(
         diaryList: diaryList,
@@ -234,7 +238,7 @@ class DiaryColumnService {
     if (doc.data() != null) {
       final newColumn = diaryColumn.copyWith(name: name, columnsCount: count);
       await FirebaseFirestore.instance.doc(doc.reference.path).update(
-            newColumn.toFirestore(),
+            newColumn.toJson(),
           );
     }
   }
@@ -278,7 +282,7 @@ class DiaryColumnService {
     ).get();
     if (doc.data() != null) {
       await FirebaseFirestore.instance.doc(doc.reference.path).update(
-            settings.toFirestore(),
+            settings.toJson(),
           );
     }
   }
@@ -295,7 +299,7 @@ class DiaryColumnService {
         .get();
     if (doc.data() != null) {
       await FirebaseFirestore.instance.doc(doc.reference.path).update(
-            settings.toFirestore(),
+            settings.toJson(),
           );
     }
   }
@@ -333,7 +337,7 @@ class DiaryColumnService {
         .get();
     if (columnsDefaultSettingsDoc.data() == null) {
       await columnsCollection.doc(Constants.columnsDefaultSettingsDocName).set(
-            createSettings(columnsCount: 1).toFirestore(),
+            createSettings(columnsCount: 1).toJson(),
           );
     }
     for (var diaryColumn in listTheme.diaryColumns) {
@@ -344,7 +348,7 @@ class DiaryColumnService {
         creationTime: diaryColumn.creationTime,
         settings: diaryColumn.settings,
       );
-      await columnsCollection.doc(diaryColumn.id).set(newColumn.toFirestore());
+      await columnsCollection.doc(diaryColumn.id).set(newColumn.toJson());
 
       await updateSettings(
         diaryList: listTheme.diaryList,
@@ -362,7 +366,7 @@ class DiaryColumnService {
 
     final columnsCollection = getDiaryColumnsCollection(diaryList: diaryList);
     await columnsCollection.doc(Constants.columnsDefaultSettingsDocName).set(
-          createSettings(columnsCount: 1).toFirestore(),
+          createSettings(columnsCount: 1).toJson(),
         );
     final dateSettings = createSettings(columnsCount: 2);
     final dateColumn = DiaryColumn(
@@ -373,7 +377,7 @@ class DiaryColumnService {
       settings: dateSettings,
     );
     await doc.set(
-      dateColumn.toFirestore(),
+      dateColumn.toJson(),
     );
     await updateSettings(
       diaryList: diaryList,

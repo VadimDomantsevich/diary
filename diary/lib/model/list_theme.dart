@@ -6,32 +6,32 @@ import 'package:diary/model/diary_cell_settings.dart';
 import 'package:diary/model/diary_cell_text_settings.dart';
 import 'package:diary/model/diary_column.dart';
 import 'package:diary/model/diary_list.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class ListTheme {
-  final DiaryList diaryList;
-  final List<DiaryColumn> diaryColumns;
-  final List<DiaryCell> diaryCells;
-  final List<CapitalCell> capitalCells;
-  final DiaryCellSettings cellSettings;
-  final DiaryCellTextSettings cellTextSettings;
-  final String listThemeName;
-  final String description;
+part 'list_theme.freezed.dart';
+part 'list_theme.g.dart';
 
-  ListTheme({
-    required this.diaryList,
-    required this.diaryColumns,
-    required this.diaryCells,
-    required this.capitalCells,
-    required this.cellSettings,
-    required this.cellTextSettings,
-    required this.listThemeName,
-    required this.description,
-  });
-
-  Map<String, dynamic> toFirestore() => {
-        ListThemeFields.listThemeName: listThemeName,
-        ListThemeFields.description: description,
-      };
+@Freezed(
+  copyWith: true,
+  toJson: true,
+)
+class ListTheme with _$ListTheme {
+  const factory ListTheme({
+    @JsonKey(includeToJson: false, includeFromJson: false)
+        required DiaryList diaryList,
+    @JsonKey(includeToJson: false, includeFromJson: false)
+        required List<DiaryColumn> diaryColumns,
+    @JsonKey(includeToJson: false, includeFromJson: false)
+        required List<DiaryCell> diaryCells,
+    @JsonKey(includeToJson: false, includeFromJson: false)
+        required List<CapitalCell> capitalCells,
+    @JsonKey(includeToJson: false, includeFromJson: false)
+        required DiaryCellSettings cellSettings,
+    @JsonKey(includeToJson: false, includeFromJson: false)
+        required DiaryCellTextSettings cellTextSettings,
+    required String listThemeName,
+    required String description,
+  }) = _ListTheme;
 
   factory ListTheme.fromFirestore({
     required DocumentSnapshot doc,

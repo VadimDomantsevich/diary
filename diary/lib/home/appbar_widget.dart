@@ -2,6 +2,7 @@ import 'package:diary/core/constants/constants.dart';
 import 'package:diary/core/extentions.dart';
 import 'package:diary/home/edit_panel/icon_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class AppBarWidget extends StatelessWidget {
   const AppBarWidget({

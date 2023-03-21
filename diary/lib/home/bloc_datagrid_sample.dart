@@ -8,7 +8,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class BlocDataGridSample extends StatelessWidget {
   const BlocDataGridSample({
     super.key,
+    required this.isThemeTaken,
   });
+
+  final bool isThemeTaken;
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +153,9 @@ class BlocDataGridSample extends StatelessWidget {
             );
           },
           orElse: () {
-            context.read<DiaryListBloc>().add(const InitialLoadEvent());
+            context.read<DiaryListBloc>().add(InitialLoadEvent(
+                  isThemeTaken: isThemeTaken,
+                ));
             return const Center(
               child: CircularProgressIndicator(),
             );

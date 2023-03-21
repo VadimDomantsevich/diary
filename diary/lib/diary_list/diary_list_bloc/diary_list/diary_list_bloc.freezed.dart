@@ -676,6 +676,8 @@ abstract class _$$_ListLoadedCopyWith<$Res> {
       __$$_ListLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({DiaryList diaryList, List<DiaryList> lists});
+
+  $DiaryListCopyWith<$Res> get diaryList;
 }
 
 /// @nodoc
@@ -702,6 +704,14 @@ class __$$_ListLoadedCopyWithImpl<$Res>
           : lists // ignore: cast_nullable_to_non_nullable
               as List<DiaryList>,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryListCopyWith<$Res> get diaryList {
+    return $DiaryListCopyWith<$Res>(_value.diaryList, (value) {
+      return _then(_value.copyWith(diaryList: value));
+    });
   }
 }
 
@@ -1080,6 +1090,8 @@ abstract class _$$_ColumnsLoadedCopyWith<$Res> {
       List<DiaryColumn> diaryColumns,
       List<CapitalCell> capitalCells,
       List<DiaryList> lists});
+
+  $DiaryListCopyWith<$Res> get diaryList;
 }
 
 /// @nodoc
@@ -1116,6 +1128,14 @@ class __$$_ColumnsLoadedCopyWithImpl<$Res>
           : lists // ignore: cast_nullable_to_non_nullable
               as List<DiaryList>,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryListCopyWith<$Res> get diaryList {
+    return $DiaryListCopyWith<$Res>(_value.diaryList, (value) {
+      return _then(_value.copyWith(diaryList: value));
+    });
   }
 }
 
@@ -1530,6 +1550,9 @@ abstract class _$$_LoadedCopyWith<$Res> {
       List<DiaryList> lists,
       bool isListThemeViewMode,
       ListTheme? listTheme});
+
+  $DiaryListCopyWith<$Res> get diaryList;
+  $ListThemeCopyWith<$Res>? get listTheme;
 }
 
 /// @nodoc
@@ -1585,6 +1608,26 @@ class __$$_LoadedCopyWithImpl<$Res>
           : listTheme // ignore: cast_nullable_to_non_nullable
               as ListTheme?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryListCopyWith<$Res> get diaryList {
+    return $DiaryListCopyWith<$Res>(_value.diaryList, (value) {
+      return _then(_value.copyWith(diaryList: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ListThemeCopyWith<$Res>? get listTheme {
+    if (_value.listTheme == null) {
+      return null;
+    }
+
+    return $ListThemeCopyWith<$Res>(_value.listTheme!, (value) {
+      return _then(_value.copyWith(listTheme: value));
+    });
   }
 }
 
@@ -2054,6 +2097,12 @@ abstract class _$$_CellsSelectedCopyWith<$Res> {
       DiaryCellSettings defaultSettings,
       bool isListThemeViewMode,
       ListTheme? listTheme});
+
+  $DiaryListCopyWith<$Res> get diaryList;
+  $DiaryCellCopyWith<$Res> get firstSelectedCell;
+  $DiaryCellTextSettingsCopyWith<$Res> get defaultTextSettings;
+  $DiaryCellSettingsCopyWith<$Res> get defaultSettings;
+  $ListThemeCopyWith<$Res>? get listTheme;
 }
 
 /// @nodoc
@@ -2130,6 +2179,51 @@ class __$$_CellsSelectedCopyWithImpl<$Res>
           : listTheme // ignore: cast_nullable_to_non_nullable
               as ListTheme?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryListCopyWith<$Res> get diaryList {
+    return $DiaryListCopyWith<$Res>(_value.diaryList, (value) {
+      return _then(_value.copyWith(diaryList: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellCopyWith<$Res> get firstSelectedCell {
+    return $DiaryCellCopyWith<$Res>(_value.firstSelectedCell, (value) {
+      return _then(_value.copyWith(firstSelectedCell: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellTextSettingsCopyWith<$Res> get defaultTextSettings {
+    return $DiaryCellTextSettingsCopyWith<$Res>(_value.defaultTextSettings,
+        (value) {
+      return _then(_value.copyWith(defaultTextSettings: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellSettingsCopyWith<$Res> get defaultSettings {
+    return $DiaryCellSettingsCopyWith<$Res>(_value.defaultSettings, (value) {
+      return _then(_value.copyWith(defaultSettings: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ListThemeCopyWith<$Res>? get listTheme {
+    if (_value.listTheme == null) {
+      return null;
+    }
+
+    return $ListThemeCopyWith<$Res>(_value.listTheme!, (value) {
+      return _then(_value.copyWith(listTheme: value));
+    });
   }
 }
 
@@ -2674,6 +2768,11 @@ abstract class _$$_CapitalCellSelectedCopyWith<$Res> {
       DiaryColumnSettings defaultSettings,
       bool isListThemeViewMode,
       ListTheme? listTheme});
+
+  $DiaryListCopyWith<$Res> get diaryList;
+  $CapitalCellCopyWith<$Res> get selectedCapitalCell;
+  $DiaryColumnSettingsCopyWith<$Res> get defaultSettings;
+  $ListThemeCopyWith<$Res>? get listTheme;
 }
 
 /// @nodoc
@@ -2765,6 +2864,42 @@ class __$$_CapitalCellSelectedCopyWithImpl<$Res>
           : listTheme // ignore: cast_nullable_to_non_nullable
               as ListTheme?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryListCopyWith<$Res> get diaryList {
+    return $DiaryListCopyWith<$Res>(_value.diaryList, (value) {
+      return _then(_value.copyWith(diaryList: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CapitalCellCopyWith<$Res> get selectedCapitalCell {
+    return $CapitalCellCopyWith<$Res>(_value.selectedCapitalCell, (value) {
+      return _then(_value.copyWith(selectedCapitalCell: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryColumnSettingsCopyWith<$Res> get defaultSettings {
+    return $DiaryColumnSettingsCopyWith<$Res>(_value.defaultSettings, (value) {
+      return _then(_value.copyWith(defaultSettings: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ListThemeCopyWith<$Res>? get listTheme {
+    if (_value.listTheme == null) {
+      return null;
+    }
+
+    return $ListThemeCopyWith<$Res>(_value.listTheme!, (value) {
+      return _then(_value.copyWith(listTheme: value));
+    });
   }
 }
 
@@ -3330,6 +3465,9 @@ abstract class _$$_ListEditingCopyWith<$Res> {
       bool isColumnDeleting,
       bool isColorThemeEditing,
       DiaryList? selectedList});
+
+  $DiaryListCopyWith<$Res> get diaryList;
+  $DiaryListCopyWith<$Res>? get selectedList;
 }
 
 /// @nodoc
@@ -3391,6 +3529,26 @@ class __$$_ListEditingCopyWithImpl<$Res>
           : selectedList // ignore: cast_nullable_to_non_nullable
               as DiaryList?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryListCopyWith<$Res> get diaryList {
+    return $DiaryListCopyWith<$Res>(_value.diaryList, (value) {
+      return _then(_value.copyWith(diaryList: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryListCopyWith<$Res>? get selectedList {
+    if (_value.selectedList == null) {
+      return null;
+    }
+
+    return $DiaryListCopyWith<$Res>(_value.selectedList!, (value) {
+      return _then(_value.copyWith(selectedList: value));
+    });
   }
 }
 
@@ -3880,6 +4038,12 @@ abstract class _$$_CellsEditingCopyWith<$Res> {
       DiaryCellSettings defaultSettings,
       bool isListThemeViewMode,
       ListTheme? listTheme});
+
+  $DiaryListCopyWith<$Res> get diaryList;
+  $DiaryCellCopyWith<$Res> get firstSelectedCell;
+  $DiaryCellTextSettingsCopyWith<$Res> get defaultTextSettings;
+  $DiaryCellSettingsCopyWith<$Res> get defaultSettings;
+  $ListThemeCopyWith<$Res>? get listTheme;
 }
 
 /// @nodoc
@@ -3976,6 +4140,51 @@ class __$$_CellsEditingCopyWithImpl<$Res>
           : listTheme // ignore: cast_nullable_to_non_nullable
               as ListTheme?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryListCopyWith<$Res> get diaryList {
+    return $DiaryListCopyWith<$Res>(_value.diaryList, (value) {
+      return _then(_value.copyWith(diaryList: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellCopyWith<$Res> get firstSelectedCell {
+    return $DiaryCellCopyWith<$Res>(_value.firstSelectedCell, (value) {
+      return _then(_value.copyWith(firstSelectedCell: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellTextSettingsCopyWith<$Res> get defaultTextSettings {
+    return $DiaryCellTextSettingsCopyWith<$Res>(_value.defaultTextSettings,
+        (value) {
+      return _then(_value.copyWith(defaultTextSettings: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellSettingsCopyWith<$Res> get defaultSettings {
+    return $DiaryCellSettingsCopyWith<$Res>(_value.defaultSettings, (value) {
+      return _then(_value.copyWith(defaultSettings: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ListThemeCopyWith<$Res>? get listTheme {
+    if (_value.listTheme == null) {
+      return null;
+    }
+
+    return $ListThemeCopyWith<$Res>(_value.listTheme!, (value) {
+      return _then(_value.copyWith(listTheme: value));
+    });
   }
 }
 
@@ -4936,7 +5145,7 @@ mixin _$DiaryListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -4962,9 +5171,9 @@ mixin _$DiaryListEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -5036,7 +5245,7 @@ mixin _$DiaryListEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -5058,9 +5267,9 @@ mixin _$DiaryListEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -5130,7 +5339,7 @@ mixin _$DiaryListEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -5152,9 +5361,9 @@ mixin _$DiaryListEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -5443,7 +5652,7 @@ class _$CreateSampleEvent implements CreateSampleEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -5469,9 +5678,9 @@ class _$CreateSampleEvent implements CreateSampleEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -5546,7 +5755,7 @@ class _$CreateSampleEvent implements CreateSampleEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -5568,9 +5777,9 @@ class _$CreateSampleEvent implements CreateSampleEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -5643,7 +5852,7 @@ class _$CreateSampleEvent implements CreateSampleEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -5665,9 +5874,9 @@ class _$CreateSampleEvent implements CreateSampleEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -5924,6 +6133,8 @@ abstract class _$$InitialLoadEventCopyWith<$Res> {
   factory _$$InitialLoadEventCopyWith(
           _$InitialLoadEvent value, $Res Function(_$InitialLoadEvent) then) =
       __$$InitialLoadEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isThemeTaken});
 }
 
 /// @nodoc
@@ -5933,32 +6144,57 @@ class __$$InitialLoadEventCopyWithImpl<$Res>
   __$$InitialLoadEventCopyWithImpl(
       _$InitialLoadEvent _value, $Res Function(_$InitialLoadEvent) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isThemeTaken = null,
+  }) {
+    return _then(_$InitialLoadEvent(
+      isThemeTaken: null == isThemeTaken
+          ? _value.isThemeTaken
+          : isThemeTaken // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$InitialLoadEvent implements InitialLoadEvent {
-  const _$InitialLoadEvent();
+  const _$InitialLoadEvent({required this.isThemeTaken});
+
+  @override
+  final bool isThemeTaken;
 
   @override
   String toString() {
-    return 'DiaryListEvent.initialLoad()';
+    return 'DiaryListEvent.initialLoad(isThemeTaken: $isThemeTaken)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialLoadEvent);
+        (other.runtimeType == runtimeType &&
+            other is _$InitialLoadEvent &&
+            (identical(other.isThemeTaken, isThemeTaken) ||
+                other.isThemeTaken == isThemeTaken));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isThemeTaken);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitialLoadEventCopyWith<_$InitialLoadEvent> get copyWith =>
+      __$$InitialLoadEventCopyWithImpl<_$InitialLoadEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -5984,9 +6220,9 @@ class _$InitialLoadEvent implements InitialLoadEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -6054,14 +6290,14 @@ class _$InitialLoadEvent implements InitialLoadEvent {
     required TResult Function(ListTheme listTheme) loadFromTheme,
     required TResult Function(ListTheme listTheme) takeTheme,
   }) {
-    return initialLoad();
+    return initialLoad(isThemeTaken);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -6083,9 +6319,9 @@ class _$InitialLoadEvent implements InitialLoadEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -6151,14 +6387,14 @@ class _$InitialLoadEvent implements InitialLoadEvent {
     TResult? Function(ListTheme listTheme)? loadFromTheme,
     TResult? Function(ListTheme listTheme)? takeTheme,
   }) {
-    return initialLoad?.call();
+    return initialLoad?.call(isThemeTaken);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -6180,9 +6416,9 @@ class _$InitialLoadEvent implements InitialLoadEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -6250,7 +6486,7 @@ class _$InitialLoadEvent implements InitialLoadEvent {
     required TResult orElse(),
   }) {
     if (initialLoad != null) {
-      return initialLoad();
+      return initialLoad(isThemeTaken);
     }
     return orElse();
   }
@@ -6431,7 +6667,13 @@ class _$InitialLoadEvent implements InitialLoadEvent {
 }
 
 abstract class InitialLoadEvent implements DiaryListEvent {
-  const factory InitialLoadEvent() = _$InitialLoadEvent;
+  const factory InitialLoadEvent({required final bool isThemeTaken}) =
+      _$InitialLoadEvent;
+
+  bool get isThemeTaken;
+  @JsonKey(ignore: true)
+  _$$InitialLoadEventCopyWith<_$InitialLoadEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -6507,7 +6749,7 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -6533,9 +6775,9 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -6610,7 +6852,7 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -6632,9 +6874,9 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -6707,7 +6949,7 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -6729,9 +6971,9 @@ class _$GetDiaryListEvent implements GetDiaryListEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -6998,6 +7240,8 @@ abstract class _$$GetDiaryColumnsEventCopyWith<$Res> {
       __$$GetDiaryColumnsEventCopyWithImpl<$Res>;
   @useResult
   $Res call({DiaryList diaryList, List<DiaryList> lists});
+
+  $DiaryListCopyWith<$Res> get diaryList;
 }
 
 /// @nodoc
@@ -7024,6 +7268,14 @@ class __$$GetDiaryColumnsEventCopyWithImpl<$Res>
           : lists // ignore: cast_nullable_to_non_nullable
               as List<DiaryList>,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryListCopyWith<$Res> get diaryList {
+    return $DiaryListCopyWith<$Res>(_value.diaryList, (value) {
+      return _then(_value.copyWith(diaryList: value));
+    });
   }
 }
 
@@ -7074,7 +7326,7 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -7100,9 +7352,9 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -7177,7 +7429,7 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -7199,9 +7451,9 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -7274,7 +7526,7 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -7296,9 +7548,9 @@ class _$GetDiaryColumnsEvent implements GetDiaryColumnsEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -7569,6 +7821,8 @@ abstract class _$$GetDiaryCellsEventCopyWith<$Res> {
       List<DiaryColumn> diaryColumns,
       List<CapitalCell> capitalCells,
       List<DiaryList> lists});
+
+  $DiaryListCopyWith<$Res> get diaryList;
 }
 
 /// @nodoc
@@ -7605,6 +7859,14 @@ class __$$GetDiaryCellsEventCopyWithImpl<$Res>
           : lists // ignore: cast_nullable_to_non_nullable
               as List<DiaryList>,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryListCopyWith<$Res> get diaryList {
+    return $DiaryListCopyWith<$Res>(_value.diaryList, (value) {
+      return _then(_value.copyWith(diaryList: value));
+    });
   }
 }
 
@@ -7684,7 +7946,7 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -7710,9 +7972,9 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -7787,7 +8049,7 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -7809,9 +8071,9 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -7884,7 +8146,7 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -7906,9 +8168,9 @@ class _$GetDiaryCellsEvent implements GetDiaryCellsEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -8179,6 +8441,8 @@ abstract class _$$SelectDiaryCellEventCopyWith<$Res> {
       __$$SelectDiaryCellEventCopyWithImpl<$Res>;
   @useResult
   $Res call({DiaryCell diaryCell});
+
+  $DiaryCellCopyWith<$Res> get diaryCell;
 }
 
 /// @nodoc
@@ -8200,6 +8464,14 @@ class __$$SelectDiaryCellEventCopyWithImpl<$Res>
           : diaryCell // ignore: cast_nullable_to_non_nullable
               as DiaryCell,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellCopyWith<$Res> get diaryCell {
+    return $DiaryCellCopyWith<$Res>(_value.diaryCell, (value) {
+      return _then(_value.copyWith(diaryCell: value));
+    });
   }
 }
 
@@ -8239,7 +8511,7 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -8265,9 +8537,9 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -8342,7 +8614,7 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -8364,9 +8636,9 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -8439,7 +8711,7 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -8461,9 +8733,9 @@ class _$SelectDiaryCellEvent implements SelectDiaryCellEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -8795,7 +9067,7 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -8821,9 +9093,9 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -8898,7 +9170,7 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -8920,9 +9192,9 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -8995,7 +9267,7 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -9017,9 +9289,9 @@ class _$SelectDiaryCellsEvent implements SelectDiaryCellsEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -9284,6 +9556,8 @@ abstract class _$$SelectCapitalCellEventCopyWith<$Res> {
       __$$SelectCapitalCellEventCopyWithImpl<$Res>;
   @useResult
   $Res call({CapitalCell capitalCell});
+
+  $CapitalCellCopyWith<$Res> get capitalCell;
 }
 
 /// @nodoc
@@ -9305,6 +9579,14 @@ class __$$SelectCapitalCellEventCopyWithImpl<$Res>
           : capitalCell // ignore: cast_nullable_to_non_nullable
               as CapitalCell,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CapitalCellCopyWith<$Res> get capitalCell {
+    return $CapitalCellCopyWith<$Res>(_value.capitalCell, (value) {
+      return _then(_value.copyWith(capitalCell: value));
+    });
   }
 }
 
@@ -9344,7 +9626,7 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -9370,9 +9652,9 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -9447,7 +9729,7 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -9469,9 +9751,9 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -9544,7 +9826,7 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -9566,9 +9848,9 @@ class _$SelectCapitalCellEvent implements SelectCapitalCellEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -9837,6 +10119,8 @@ abstract class _$$OnPanUpdateEventCopyWith<$Res> {
       GlobalObjectKey<State<StatefulWidget>> cellKey,
       DragUpdateDetails details,
       double scaleFactor});
+
+  $DiaryCellCopyWith<$Res> get diaryCell;
 }
 
 /// @nodoc
@@ -9873,6 +10157,14 @@ class __$$OnPanUpdateEventCopyWithImpl<$Res>
           : scaleFactor // ignore: cast_nullable_to_non_nullable
               as double,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellCopyWith<$Res> get diaryCell {
+    return $DiaryCellCopyWith<$Res>(_value.diaryCell, (value) {
+      return _then(_value.copyWith(diaryCell: value));
+    });
   }
 }
 
@@ -9926,7 +10218,7 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -9952,9 +10244,9 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -10029,7 +10321,7 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -10051,9 +10343,9 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -10126,7 +10418,7 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -10148,9 +10440,9 @@ class _$OnPanUpdateEvent implements OnPanUpdateEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -10421,6 +10713,8 @@ abstract class _$$StartEditingListEventCopyWith<$Res> {
       __$$StartEditingListEventCopyWithImpl<$Res>;
   @useResult
   $Res call({DiaryList? selectedList});
+
+  $DiaryListCopyWith<$Res>? get selectedList;
 }
 
 /// @nodoc
@@ -10442,6 +10736,18 @@ class __$$StartEditingListEventCopyWithImpl<$Res>
           : selectedList // ignore: cast_nullable_to_non_nullable
               as DiaryList?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryListCopyWith<$Res>? get selectedList {
+    if (_value.selectedList == null) {
+      return null;
+    }
+
+    return $DiaryListCopyWith<$Res>(_value.selectedList!, (value) {
+      return _then(_value.copyWith(selectedList: value));
+    });
   }
 }
 
@@ -10481,7 +10787,7 @@ class _$StartEditingListEvent implements StartEditingListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -10507,9 +10813,9 @@ class _$StartEditingListEvent implements StartEditingListEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -10584,7 +10890,7 @@ class _$StartEditingListEvent implements StartEditingListEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -10606,9 +10912,9 @@ class _$StartEditingListEvent implements StartEditingListEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -10681,7 +10987,7 @@ class _$StartEditingListEvent implements StartEditingListEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -10703,9 +11009,9 @@ class _$StartEditingListEvent implements StartEditingListEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -11049,7 +11355,7 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -11075,9 +11381,9 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -11152,7 +11458,7 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -11174,9 +11480,9 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -11249,7 +11555,7 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -11271,9 +11577,9 @@ class _$ReturnToLoadedEvent implements ReturnToLoadedEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -11577,7 +11883,7 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -11603,9 +11909,9 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -11680,7 +11986,7 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -11702,9 +12008,9 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -11777,7 +12083,7 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -11799,9 +12105,9 @@ class _$ReturnToCellsSelectedEvent implements ReturnToCellsSelectedEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -12060,6 +12366,8 @@ abstract class _$$UpdateDiaryListNameEventCopyWith<$Res> {
       __$$UpdateDiaryListNameEventCopyWithImpl<$Res>;
   @useResult
   $Res call({DiaryList diaryList, String newName});
+
+  $DiaryListCopyWith<$Res> get diaryList;
 }
 
 /// @nodoc
@@ -12086,6 +12394,14 @@ class __$$UpdateDiaryListNameEventCopyWithImpl<$Res>
           : newName // ignore: cast_nullable_to_non_nullable
               as String,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryListCopyWith<$Res> get diaryList {
+    return $DiaryListCopyWith<$Res>(_value.diaryList, (value) {
+      return _then(_value.copyWith(diaryList: value));
+    });
   }
 }
 
@@ -12130,7 +12446,7 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -12156,9 +12472,9 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -12233,7 +12549,7 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -12255,9 +12571,9 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -12330,7 +12646,7 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -12352,9 +12668,9 @@ class _$UpdateDiaryListNameEvent implements UpdateDiaryListNameEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -12620,7 +12936,9 @@ abstract class _$$ChangeDiaryCellEventCopyWith<$Res> {
           $Res Function(_$ChangeDiaryCellEvent) then) =
       __$$ChangeDiaryCellEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({DiaryCell diaryCell, String? textFieldText});
+  $Res call({DiaryCell diaryCell, String textFieldText});
+
+  $DiaryCellCopyWith<$Res> get diaryCell;
 }
 
 /// @nodoc
@@ -12635,30 +12953,39 @@ class __$$ChangeDiaryCellEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? diaryCell = null,
-    Object? textFieldText = freezed,
+    Object? textFieldText = null,
   }) {
     return _then(_$ChangeDiaryCellEvent(
       diaryCell: null == diaryCell
           ? _value.diaryCell
           : diaryCell // ignore: cast_nullable_to_non_nullable
               as DiaryCell,
-      textFieldText: freezed == textFieldText
+      textFieldText: null == textFieldText
           ? _value.textFieldText
           : textFieldText // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellCopyWith<$Res> get diaryCell {
+    return $DiaryCellCopyWith<$Res>(_value.diaryCell, (value) {
+      return _then(_value.copyWith(diaryCell: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
-  const _$ChangeDiaryCellEvent({required this.diaryCell, this.textFieldText});
+  const _$ChangeDiaryCellEvent(
+      {required this.diaryCell, required this.textFieldText});
 
   @override
   final DiaryCell diaryCell;
   @override
-  final String? textFieldText;
+  final String textFieldText;
 
   @override
   String toString() {
@@ -12690,7 +13017,7 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -12716,9 +13043,9 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -12793,7 +13120,7 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -12815,9 +13142,9 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -12890,7 +13217,7 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -12912,9 +13239,9 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -13165,10 +13492,10 @@ class _$ChangeDiaryCellEvent implements ChangeDiaryCellEvent {
 abstract class ChangeDiaryCellEvent implements DiaryListEvent {
   const factory ChangeDiaryCellEvent(
       {required final DiaryCell diaryCell,
-      final String? textFieldText}) = _$ChangeDiaryCellEvent;
+      required final String textFieldText}) = _$ChangeDiaryCellEvent;
 
   DiaryCell get diaryCell;
-  String? get textFieldText;
+  String get textFieldText;
   @JsonKey(ignore: true)
   _$$ChangeDiaryCellEventCopyWith<_$ChangeDiaryCellEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -13180,7 +13507,9 @@ abstract class _$$ChangeCapitalCellEventCopyWith<$Res> {
           $Res Function(_$ChangeCapitalCellEvent) then) =
       __$$ChangeCapitalCellEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({CapitalCell capitalCell, String? textFieldText});
+  $Res call({CapitalCell capitalCell, String textFieldText});
+
+  $CapitalCellCopyWith<$Res> get capitalCell;
 }
 
 /// @nodoc
@@ -13195,18 +13524,26 @@ class __$$ChangeCapitalCellEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? capitalCell = null,
-    Object? textFieldText = freezed,
+    Object? textFieldText = null,
   }) {
     return _then(_$ChangeCapitalCellEvent(
       capitalCell: null == capitalCell
           ? _value.capitalCell
           : capitalCell // ignore: cast_nullable_to_non_nullable
               as CapitalCell,
-      textFieldText: freezed == textFieldText
+      textFieldText: null == textFieldText
           ? _value.textFieldText
           : textFieldText // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CapitalCellCopyWith<$Res> get capitalCell {
+    return $CapitalCellCopyWith<$Res>(_value.capitalCell, (value) {
+      return _then(_value.copyWith(capitalCell: value));
+    });
   }
 }
 
@@ -13214,12 +13551,12 @@ class __$$ChangeCapitalCellEventCopyWithImpl<$Res>
 
 class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
   const _$ChangeCapitalCellEvent(
-      {required this.capitalCell, this.textFieldText});
+      {required this.capitalCell, required this.textFieldText});
 
   @override
   final CapitalCell capitalCell;
   @override
-  final String? textFieldText;
+  final String textFieldText;
 
   @override
   String toString() {
@@ -13251,7 +13588,7 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -13277,9 +13614,9 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -13354,7 +13691,7 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -13376,9 +13713,9 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -13451,7 +13788,7 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -13473,9 +13810,9 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -13726,10 +14063,10 @@ class _$ChangeCapitalCellEvent implements ChangeCapitalCellEvent {
 abstract class ChangeCapitalCellEvent implements DiaryListEvent {
   const factory ChangeCapitalCellEvent(
       {required final CapitalCell capitalCell,
-      final String? textFieldText}) = _$ChangeCapitalCellEvent;
+      required final String textFieldText}) = _$ChangeCapitalCellEvent;
 
   CapitalCell get capitalCell;
-  String? get textFieldText;
+  String get textFieldText;
   @JsonKey(ignore: true)
   _$$ChangeCapitalCellEventCopyWith<_$ChangeCapitalCellEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -13743,6 +14080,8 @@ abstract class _$$UpdateDiaryCellInFirebaseEventCopyWith<$Res> {
       __$$UpdateDiaryCellInFirebaseEventCopyWithImpl<$Res>;
   @useResult
   $Res call({DiaryCell diaryCell, String? textFieldText});
+
+  $DiaryCellCopyWith<$Res> get diaryCell;
 }
 
 /// @nodoc
@@ -13770,6 +14109,14 @@ class __$$UpdateDiaryCellInFirebaseEventCopyWithImpl<$Res>
           : textFieldText // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellCopyWith<$Res> get diaryCell {
+    return $DiaryCellCopyWith<$Res>(_value.diaryCell, (value) {
+      return _then(_value.copyWith(diaryCell: value));
+    });
   }
 }
 
@@ -13815,7 +14162,7 @@ class _$UpdateDiaryCellInFirebaseEvent
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -13841,9 +14188,9 @@ class _$UpdateDiaryCellInFirebaseEvent
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -13918,7 +14265,7 @@ class _$UpdateDiaryCellInFirebaseEvent
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -13940,9 +14287,9 @@ class _$UpdateDiaryCellInFirebaseEvent
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -14015,7 +14362,7 @@ class _$UpdateDiaryCellInFirebaseEvent
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -14037,9 +14384,9 @@ class _$UpdateDiaryCellInFirebaseEvent
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -14455,7 +14802,7 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -14481,9 +14828,9 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -14566,7 +14913,7 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -14588,9 +14935,9 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -14671,7 +15018,7 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -14693,9 +15040,9 @@ class _$ChangeDiaryCellsSettingsEvent implements ChangeDiaryCellsSettingsEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -15072,7 +15419,7 @@ class _$ChangeDiaryCellsBordersSettingsEvent
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -15098,9 +15445,9 @@ class _$ChangeDiaryCellsBordersSettingsEvent
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -15176,7 +15523,7 @@ class _$ChangeDiaryCellsBordersSettingsEvent
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -15198,9 +15545,9 @@ class _$ChangeDiaryCellsBordersSettingsEvent
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -15274,7 +15621,7 @@ class _$ChangeDiaryCellsBordersSettingsEvent
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -15296,9 +15643,9 @@ class _$ChangeDiaryCellsBordersSettingsEvent
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -15744,7 +16091,7 @@ class _$ChangeCapitalCellSettingsEvent
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -15770,9 +16117,9 @@ class _$ChangeCapitalCellSettingsEvent
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -15857,7 +16204,7 @@ class _$ChangeCapitalCellSettingsEvent
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -15879,9 +16226,9 @@ class _$ChangeCapitalCellSettingsEvent
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -15964,7 +16311,7 @@ class _$ChangeCapitalCellSettingsEvent
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -15986,9 +16333,9 @@ class _$ChangeCapitalCellSettingsEvent
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -16286,6 +16633,10 @@ abstract class _$$UpdateDiaryCellSettingsInFirebaseEventCopyWith<$Res> {
       int index,
       DiaryCellTextSettings? newTextSettings,
       DiaryCellSettings? newSettings});
+
+  $DiaryCellCopyWith<$Res> get diaryCell;
+  $DiaryCellTextSettingsCopyWith<$Res>? get newTextSettings;
+  $DiaryCellSettingsCopyWith<$Res>? get newSettings;
 }
 
 /// @nodoc
@@ -16324,6 +16675,39 @@ class __$$UpdateDiaryCellSettingsInFirebaseEventCopyWithImpl<$Res>
           : newSettings // ignore: cast_nullable_to_non_nullable
               as DiaryCellSettings?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellCopyWith<$Res> get diaryCell {
+    return $DiaryCellCopyWith<$Res>(_value.diaryCell, (value) {
+      return _then(_value.copyWith(diaryCell: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellTextSettingsCopyWith<$Res>? get newTextSettings {
+    if (_value.newTextSettings == null) {
+      return null;
+    }
+
+    return $DiaryCellTextSettingsCopyWith<$Res>(_value.newTextSettings!,
+        (value) {
+      return _then(_value.copyWith(newTextSettings: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellSettingsCopyWith<$Res>? get newSettings {
+    if (_value.newSettings == null) {
+      return null;
+    }
+
+    return $DiaryCellSettingsCopyWith<$Res>(_value.newSettings!, (value) {
+      return _then(_value.copyWith(newSettings: value));
+    });
   }
 }
 
@@ -16381,7 +16765,7 @@ class _$UpdateDiaryCellSettingsInFirebaseEvent
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -16407,9 +16791,9 @@ class _$UpdateDiaryCellSettingsInFirebaseEvent
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -16485,7 +16869,7 @@ class _$UpdateDiaryCellSettingsInFirebaseEvent
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -16507,9 +16891,9 @@ class _$UpdateDiaryCellSettingsInFirebaseEvent
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -16583,7 +16967,7 @@ class _$UpdateDiaryCellSettingsInFirebaseEvent
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -16605,9 +16989,9 @@ class _$UpdateDiaryCellSettingsInFirebaseEvent
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -16883,6 +17267,8 @@ abstract class _$$UpdateCapitalCellSettingsInFirebaseEventCopyWith<$Res> {
       __$$UpdateCapitalCellSettingsInFirebaseEventCopyWithImpl<$Res>;
   @useResult
   $Res call({DiaryColumnSettings newSettings});
+
+  $DiaryColumnSettingsCopyWith<$Res> get newSettings;
 }
 
 /// @nodoc
@@ -16906,6 +17292,14 @@ class __$$UpdateCapitalCellSettingsInFirebaseEventCopyWithImpl<$Res>
           : newSettings // ignore: cast_nullable_to_non_nullable
               as DiaryColumnSettings,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryColumnSettingsCopyWith<$Res> get newSettings {
+    return $DiaryColumnSettingsCopyWith<$Res>(_value.newSettings, (value) {
+      return _then(_value.copyWith(newSettings: value));
+    });
   }
 }
 
@@ -16947,7 +17341,7 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -16973,9 +17367,9 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -17050,7 +17444,7 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -17072,9 +17466,9 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -17147,7 +17541,7 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -17169,9 +17563,9 @@ class _$UpdateCapitalCellSettingsInFirebaseEvent
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -17500,7 +17894,7 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -17526,9 +17920,9 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -17603,7 +17997,7 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -17625,9 +18019,9 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -17700,7 +18094,7 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -17722,9 +18116,9 @@ class _$UpdateCapitalCellWidthEvent implements UpdateCapitalCellWidthEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -18054,7 +18448,7 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -18080,9 +18474,9 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -18157,7 +18551,7 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -18179,9 +18573,9 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -18254,7 +18648,7 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -18276,9 +18670,9 @@ class _$UpdateCapitalCellWidthInFirebaseEvent
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -18605,7 +18999,7 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -18631,9 +19025,9 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -18708,7 +19102,7 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -18730,9 +19124,9 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -18805,7 +19199,7 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -18827,9 +19221,9 @@ class _$StartEditingCellsEvent implements StartEditingCellsEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -19098,6 +19492,8 @@ abstract class _$$CreateDiaryColumnEventCopyWith<$Res> {
       String name,
       int columnsCount,
       List<DiaryColumn> diaryColumns});
+
+  $DiaryListCopyWith<$Res> get diaryList;
 }
 
 /// @nodoc
@@ -19134,6 +19530,14 @@ class __$$CreateDiaryColumnEventCopyWithImpl<$Res>
           : diaryColumns // ignore: cast_nullable_to_non_nullable
               as List<DiaryColumn>,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryListCopyWith<$Res> get diaryList {
+    return $DiaryListCopyWith<$Res>(_value.diaryList, (value) {
+      return _then(_value.copyWith(diaryList: value));
+    });
   }
 }
 
@@ -19195,7 +19599,7 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -19221,9 +19625,9 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -19298,7 +19702,7 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -19320,9 +19724,9 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -19395,7 +19799,7 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -19417,9 +19821,9 @@ class _$CreateDiaryColumnEvent implements CreateDiaryColumnEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -19691,6 +20095,8 @@ abstract class _$$DeleteDiaryColumnEventCopyWith<$Res> {
       __$$DeleteDiaryColumnEventCopyWithImpl<$Res>;
   @useResult
   $Res call({DiaryList diaryList, String columnId});
+
+  $DiaryListCopyWith<$Res> get diaryList;
 }
 
 /// @nodoc
@@ -19717,6 +20123,14 @@ class __$$DeleteDiaryColumnEventCopyWithImpl<$Res>
           : columnId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryListCopyWith<$Res> get diaryList {
+    return $DiaryListCopyWith<$Res>(_value.diaryList, (value) {
+      return _then(_value.copyWith(diaryList: value));
+    });
   }
 }
 
@@ -19761,7 +20175,7 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -19787,9 +20201,9 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -19864,7 +20278,7 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -19886,9 +20300,9 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -19961,7 +20375,7 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -19983,9 +20397,9 @@ class _$DeleteDiaryColumnEvent implements DeleteDiaryColumnEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -20257,6 +20671,8 @@ abstract class _$$UpdateDiaryListSettingsEventCopyWith<$Res> {
       String? themeColor,
       String? themeBorderColor,
       String? themePanelBackgroundColor});
+
+  $DiaryListCopyWith<$Res> get diaryList;
 }
 
 /// @nodoc
@@ -20294,6 +20710,14 @@ class __$$UpdateDiaryListSettingsEventCopyWithImpl<$Res>
           : themePanelBackgroundColor // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryListCopyWith<$Res> get diaryList {
+    return $DiaryListCopyWith<$Res>(_value.diaryList, (value) {
+      return _then(_value.copyWith(diaryList: value));
+    });
   }
 }
 
@@ -20351,7 +20775,7 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -20377,9 +20801,9 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -20455,7 +20879,7 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -20477,9 +20901,9 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -20553,7 +20977,7 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -20575,9 +20999,9 @@ class _$UpdateDiaryListSettingsEvent implements UpdateDiaryListSettingsEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -20856,6 +21280,8 @@ abstract class _$$ShareThemeEventCopyWith<$Res> {
       List<CapitalCell> capitalCells,
       String themeName,
       String description});
+
+  $DiaryListCopyWith<$Res> get diaryList;
 }
 
 /// @nodoc
@@ -20902,6 +21328,14 @@ class __$$ShareThemeEventCopyWithImpl<$Res>
           : description // ignore: cast_nullable_to_non_nullable
               as String,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryListCopyWith<$Res> get diaryList {
+    return $DiaryListCopyWith<$Res>(_value.diaryList, (value) {
+      return _then(_value.copyWith(diaryList: value));
+    });
   }
 }
 
@@ -20994,7 +21428,7 @@ class _$ShareThemeEvent implements ShareThemeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -21020,9 +21454,9 @@ class _$ShareThemeEvent implements ShareThemeEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -21098,7 +21532,7 @@ class _$ShareThemeEvent implements ShareThemeEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -21120,9 +21554,9 @@ class _$ShareThemeEvent implements ShareThemeEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -21196,7 +21630,7 @@ class _$ShareThemeEvent implements ShareThemeEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -21218,9 +21652,9 @@ class _$ShareThemeEvent implements ShareThemeEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -21528,7 +21962,7 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -21554,9 +21988,9 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -21631,7 +22065,7 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -21653,9 +22087,9 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -21728,7 +22162,7 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -21750,9 +22184,9 @@ class _$StartEditingColorEvent implements StartEditingColorEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -22044,7 +22478,7 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -22070,9 +22504,9 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -22147,7 +22581,7 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -22169,9 +22603,9 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -22244,7 +22678,7 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -22266,9 +22700,9 @@ class _$StartEditingBordersEvent implements StartEditingBordersEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -22562,7 +22996,7 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -22588,9 +23022,9 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -22665,7 +23099,7 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -22687,9 +23121,9 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -22762,7 +23196,7 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -22784,9 +23218,9 @@ class _$StartEditingBordersStyleEvent implements StartEditingBordersStyleEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -23078,7 +23512,7 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -23104,9 +23538,9 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -23181,7 +23615,7 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -23203,9 +23637,9 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -23278,7 +23712,7 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -23300,9 +23734,9 @@ class _$TurnBackEditingEvent implements TurnBackEditingEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -23594,7 +24028,7 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -23620,9 +24054,9 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -23697,7 +24131,7 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -23719,9 +24153,9 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -23794,7 +24228,7 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -23816,9 +24250,9 @@ class _$StartColumnDeletingEvent implements StartColumnDeletingEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -24112,7 +24546,7 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -24138,9 +24572,9 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -24215,7 +24649,7 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -24237,9 +24671,9 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -24312,7 +24746,7 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -24334,9 +24768,9 @@ class _$StartColorThemeEditingEvent implements StartColorThemeEditingEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -24627,7 +25061,7 @@ class _$DeleteColumnsEvent implements DeleteColumnsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -24653,9 +25087,9 @@ class _$DeleteColumnsEvent implements DeleteColumnsEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -24730,7 +25164,7 @@ class _$DeleteColumnsEvent implements DeleteColumnsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -24752,9 +25186,9 @@ class _$DeleteColumnsEvent implements DeleteColumnsEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -24827,7 +25261,7 @@ class _$DeleteColumnsEvent implements DeleteColumnsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -24849,9 +25283,9 @@ class _$DeleteColumnsEvent implements DeleteColumnsEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -25142,7 +25576,7 @@ class _$LoadThemesEvent implements LoadThemesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -25168,9 +25602,9 @@ class _$LoadThemesEvent implements LoadThemesEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -25245,7 +25679,7 @@ class _$LoadThemesEvent implements LoadThemesEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -25267,9 +25701,9 @@ class _$LoadThemesEvent implements LoadThemesEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -25342,7 +25776,7 @@ class _$LoadThemesEvent implements LoadThemesEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -25364,9 +25798,9 @@ class _$LoadThemesEvent implements LoadThemesEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -25625,6 +26059,8 @@ abstract class _$$LoadFromThemeEventCopyWith<$Res> {
       __$$LoadFromThemeEventCopyWithImpl<$Res>;
   @useResult
   $Res call({ListTheme listTheme});
+
+  $ListThemeCopyWith<$Res> get listTheme;
 }
 
 /// @nodoc
@@ -25646,6 +26082,14 @@ class __$$LoadFromThemeEventCopyWithImpl<$Res>
           : listTheme // ignore: cast_nullable_to_non_nullable
               as ListTheme,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ListThemeCopyWith<$Res> get listTheme {
+    return $ListThemeCopyWith<$Res>(_value.listTheme, (value) {
+      return _then(_value.copyWith(listTheme: value));
+    });
   }
 }
 
@@ -25685,7 +26129,7 @@ class _$LoadFromThemeEvent implements LoadFromThemeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -25711,9 +26155,9 @@ class _$LoadFromThemeEvent implements LoadFromThemeEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -25788,7 +26232,7 @@ class _$LoadFromThemeEvent implements LoadFromThemeEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -25810,9 +26254,9 @@ class _$LoadFromThemeEvent implements LoadFromThemeEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -25885,7 +26329,7 @@ class _$LoadFromThemeEvent implements LoadFromThemeEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -25907,9 +26351,9 @@ class _$LoadFromThemeEvent implements LoadFromThemeEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -26174,6 +26618,8 @@ abstract class _$$TakeThemeEventCopyWith<$Res> {
       __$$TakeThemeEventCopyWithImpl<$Res>;
   @useResult
   $Res call({ListTheme listTheme});
+
+  $ListThemeCopyWith<$Res> get listTheme;
 }
 
 /// @nodoc
@@ -26195,6 +26641,14 @@ class __$$TakeThemeEventCopyWithImpl<$Res>
           : listTheme // ignore: cast_nullable_to_non_nullable
               as ListTheme,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ListThemeCopyWith<$Res> get listTheme {
+    return $ListThemeCopyWith<$Res>(_value.listTheme, (value) {
+      return _then(_value.copyWith(listTheme: value));
+    });
   }
 }
 
@@ -26233,7 +26687,7 @@ class _$TakeThemeEvent implements TakeThemeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createSample,
-    required TResult Function() initialLoad,
+    required TResult Function(bool isThemeTaken) initialLoad,
     required TResult Function(DateTime date, int delay) getDiaryList,
     required TResult Function(DiaryList diaryList, List<DiaryList> lists)
         getDiaryColumns,
@@ -26259,9 +26713,9 @@ class _$TakeThemeEvent implements TakeThemeEvent {
     required TResult Function() returnToCellsSelected,
     required TResult Function(DiaryList diaryList, String newName)
         updateDiaryListName,
-    required TResult Function(DiaryCell diaryCell, String? textFieldText)
+    required TResult Function(DiaryCell diaryCell, String textFieldText)
         changeDiaryCell,
-    required TResult Function(CapitalCell capitalCell, String? textFieldText)
+    required TResult Function(CapitalCell capitalCell, String textFieldText)
         changeCapitalCell,
     required TResult Function(DiaryCell diaryCell, String? textFieldText)
         updateDiaryCellInFirebase,
@@ -26336,7 +26790,7 @@ class _$TakeThemeEvent implements TakeThemeEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? createSample,
-    TResult? Function()? initialLoad,
+    TResult? Function(bool isThemeTaken)? initialLoad,
     TResult? Function(DateTime date, int delay)? getDiaryList,
     TResult? Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -26358,9 +26812,9 @@ class _$TakeThemeEvent implements TakeThemeEvent {
         returnToLoaded,
     TResult? Function()? returnToCellsSelected,
     TResult? Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult? Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult? Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult? Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult? Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult? Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,
@@ -26433,7 +26887,7 @@ class _$TakeThemeEvent implements TakeThemeEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createSample,
-    TResult Function()? initialLoad,
+    TResult Function(bool isThemeTaken)? initialLoad,
     TResult Function(DateTime date, int delay)? getDiaryList,
     TResult Function(DiaryList diaryList, List<DiaryList> lists)?
         getDiaryColumns,
@@ -26455,9 +26909,9 @@ class _$TakeThemeEvent implements TakeThemeEvent {
         returnToLoaded,
     TResult Function()? returnToCellsSelected,
     TResult Function(DiaryList diaryList, String newName)? updateDiaryListName,
-    TResult Function(DiaryCell diaryCell, String? textFieldText)?
+    TResult Function(DiaryCell diaryCell, String textFieldText)?
         changeDiaryCell,
-    TResult Function(CapitalCell capitalCell, String? textFieldText)?
+    TResult Function(CapitalCell capitalCell, String textFieldText)?
         changeCapitalCell,
     TResult Function(DiaryCell diaryCell, String? textFieldText)?
         updateDiaryCellInFirebase,

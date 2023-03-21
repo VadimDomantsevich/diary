@@ -20,7 +20,7 @@ class DiaryListService {
         .get();
     if (defaultSettingsDoc.data() == null) {
       getDiaryListCollection().doc(Constants.listsDefaultSettingsDocName).set(
-            createDefaultSettings().toFirestore(),
+            createDefaultSettings().toJson(),
           );
     }
     final defaultSettings = await getDefaultListSettings();
@@ -31,7 +31,7 @@ class DiaryListService {
       settings: defaultSettings,
     );
     await getDiaryListDoc(diaryList: newList).set(
-      newList.toFirestore(),
+      newList.toJson(),
     );
   }
 
@@ -88,7 +88,7 @@ class DiaryListService {
   }
 
   DiaryListSettings createDefaultSettings() {
-    return DiaryListSettings(
+    return const DiaryListSettings(
       themeColor: Constants.defaultDiaryListThemeColor,
       themeBorderColor: Constants.defaultDiaryListThemeBorderColor,
       themePanelBackgroundColor:
@@ -113,7 +113,7 @@ class DiaryListService {
     if (doc.data() != null) {
       final newList = diaryList.copyWith(name: newName);
       await FirebaseFirestore.instance.doc(doc.reference.path).update(
-            newList.toFirestore(),
+            newList.toJson(),
           );
     }
   }
@@ -125,7 +125,7 @@ class DiaryListService {
     final doc = await getDiaryListDoc(diaryList: diaryList).get();
     if (doc.data() != null) {
       await FirebaseFirestore.instance.doc(doc.reference.path).update(
-            settings.toFirestore(),
+            settings.toJson(),
           );
     }
   }
@@ -138,7 +138,7 @@ class DiaryListService {
         await listsCollection.doc(Constants.listsDefaultSettingsDocName).get();
     if (doc.data() != null) {
       await FirebaseFirestore.instance.doc(doc.reference.path).update(
-            settings.toFirestore(),
+            settings.toJson(),
           );
     }
   }
@@ -177,7 +177,7 @@ class DiaryListService {
       settings: defaultSettings,
     );
     await getDiaryListDoc(diaryList: newList).set(
-      newList.toFirestore(),
+      newList.toJson(),
     );
   }
 
@@ -187,35 +187,34 @@ class DiaryListService {
     final themesCollection = getThemesCollection();
     final themeDoc = themesCollection.doc(getListThemeName(listTheme));
     await themeDoc.set(
-      listTheme.toFirestore(),
+      listTheme.toJson(),
     );
-    await themeDoc.update(listTheme.diaryList.settings.toFirestore());
+    await themeDoc.update(listTheme.diaryList.settings.toJson());
     final columnsCollection =
         themeDoc.collection(Collections.diaryColumnsCollection);
     for (var diaryColumn in listTheme.diaryColumns) {
       final columnDoc = columnsCollection.doc(diaryColumn.id);
       await columnDoc.set(
-        diaryColumn.toFirestore(),
+        diaryColumn.toJson(),
       );
-      await columnDoc.update(diaryColumn.settings.toFirestore());
+      await columnDoc.update(diaryColumn.settings.toJson());
       final cellsCollection =
           columnDoc.collection(Collections.diaryCellsCollection);
       final defaultCellSettingsDoc =
           cellsCollection.doc(Constants.cellsDefaultSettingsDocName);
-      await defaultCellSettingsDoc.set(listTheme.cellSettings.toFirestore());
-      await defaultCellSettingsDoc
-          .update(listTheme.cellTextSettings.toFirestore());
+      await defaultCellSettingsDoc.set(listTheme.cellSettings.toJson());
+      await defaultCellSettingsDoc.update(listTheme.cellTextSettings.toJson());
       final columnCells = listTheme.diaryCells
           .where((element) => element.columnName == diaryColumn.id);
       for (var cell in columnCells) {
         if (cell.columnName != Constants.diaryColumnDateField) {
           final clearCell = cell.copyWith(content: '');
           await cellsCollection.doc(getDiaryCellName(cell)).set(
-                clearCell.toFirestore(),
+                clearCell.toJson(),
               );
         } else {
           await cellsCollection.doc(getDiaryCellName(cell)).set(
-                cell.toFirestore(),
+                cell.toJson(),
               );
         }
       }

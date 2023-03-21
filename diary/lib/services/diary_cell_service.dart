@@ -30,10 +30,10 @@ class DiaryCellService {
       Collections.diaryCellsCollection,
     );
     await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).set(
-          createDefaultSettings().toFirestore(),
+          createDefaultSettings().toJson(),
         );
     await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).update(
-          createDefaultTextSettings().toFirestore(),
+          createDefaultTextSettings().toJson(),
         );
 
     final defaultSettings = await getDefaultCellSettings(
@@ -59,7 +59,7 @@ class DiaryCellService {
           ),
         );
         await cellsCollection.doc(getDiaryCellName(newCell)).set(
-              newCell.toFirestore(),
+              newCell.toJson(),
             );
       }
     }
@@ -80,10 +80,10 @@ class DiaryCellService {
       Collections.diaryCellsCollection,
     );
     await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).set(
-          createDefaultSettings().toFirestore(),
+          createDefaultSettings().toJson(),
         );
     await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).update(
-          createDefaultTextSettings().toFirestore(),
+          createDefaultTextSettings().toJson(),
         );
 
     final defaultSettings = await getDefaultCellSettings(
@@ -249,7 +249,7 @@ class DiaryCellService {
     if (doc.data() != null) {
       final newCell = diaryCell.copyWith(content: content);
       await FirebaseFirestore.instance.doc(doc.reference.path).update(
-            newCell.toFirestore(),
+            newCell.toJson(),
           );
     }
   }
@@ -266,7 +266,7 @@ class DiaryCellService {
     if (doc.data() != null) {
       final newCell = diaryCell.copyWith(settings: settings);
       await FirebaseFirestore.instance.doc(doc.reference.path).update(
-            newCell.settings.toFirestore(),
+            newCell.settings.toJson(),
           );
     }
   }
@@ -284,7 +284,7 @@ class DiaryCellService {
         await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).get();
     if (doc.data() != null) {
       await FirebaseFirestore.instance.doc(doc.reference.path).update(
-            settings.toFirestore(),
+            settings.toJson(),
           );
     }
   }
@@ -301,7 +301,7 @@ class DiaryCellService {
     if (doc.data() != null) {
       final newCell = diaryCell.copyWith(textSettings: settings);
       await FirebaseFirestore.instance.doc(doc.reference.path).update(
-            newCell.textSettings.toFirestore(),
+            newCell.textSettings.toJson(),
           );
     }
   }
@@ -319,7 +319,7 @@ class DiaryCellService {
         await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).get();
     if (doc.data() != null) {
       await FirebaseFirestore.instance.doc(doc.reference.path).update(
-            settings.toFirestore(),
+            settings.toJson(),
           );
     }
   }
@@ -334,10 +334,10 @@ class DiaryCellService {
     ).collection(Collections.diaryCellsCollection);
     await cellsCollection
         .doc(Constants.cellsDefaultSettingsDocName)
-        .set(createDefaultSettings().toFirestore());
+        .set(createDefaultSettings().toJson());
     await cellsCollection
         .doc(Constants.cellsDefaultSettingsDocName)
-        .update(createDefaultTextSettings().toFirestore());
+        .update(createDefaultTextSettings().toJson());
     final defaultSettings = await getDefaultCellSettings(
       diaryList: diaryList,
       diaryColumn: diaryColumn,
@@ -357,13 +357,13 @@ class DiaryCellService {
             columnName: Constants.diaryColumnDateField,
             columnPosition: i,
             day: j,
-            content: j,
+            content: j.toString(),
             settings: defaultSettings,
             textSettings: defaultTextSettings,
             capitalColumnPosition: 0,
           );
           await cellsCollection.doc(getDiaryCellName(newCell)).set(
-                newCell.toFirestore(),
+                newCell.toJson(),
               );
         } else {
           final day = DateUtils.addDaysToDate(firstDayOfMonth, j - 1);
@@ -378,7 +378,7 @@ class DiaryCellService {
             capitalColumnPosition: 0,
           );
           await cellsCollection.doc(getDiaryCellName(newCell)).set(
-                newCell.toFirestore(),
+                newCell.toJson(),
               );
         }
       }
@@ -401,7 +401,7 @@ class DiaryCellService {
   }
 
   DiaryCellTextSettings createDefaultTextSettings() {
-    return DiaryCellTextSettings(
+    return const DiaryCellTextSettings(
       alignment: AlignmentsEnum.center,
       fontWeight: FontWeightEnum.normal,
       textDecoration: TextDecorationEnum.none,
@@ -431,10 +431,10 @@ class DiaryCellService {
           Collections.diaryCellsCollection,
         );
         await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).set(
-              listTheme.cellSettings.toFirestore(),
+              listTheme.cellSettings.toJson(),
             );
         await cellsCollection.doc(Constants.cellsDefaultSettingsDocName).update(
-              listTheme.cellTextSettings.toFirestore(),
+              listTheme.cellTextSettings.toJson(),
             );
         for (var i = 1; i < diaryColumn.columnsCount + 1; i++) {
           for (var j = 1; j <= daysInMonth; j++) {
@@ -451,7 +451,7 @@ class DiaryCellService {
               ),
             );
             await cellsCollection.doc(getDiaryCellName(newCell)).set(
-                  newCell.toFirestore(),
+                  newCell.toJson(),
                 );
           }
         }

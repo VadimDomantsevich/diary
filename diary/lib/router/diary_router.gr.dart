@@ -50,9 +50,13 @@ class DiaryRouter extends _i11.RootStackRouter {
       );
     },
     BlocHomeWidgetRoute.name: (routeData) {
+      final args = routeData.argsAs<BlocHomeWidgetRouteArgs>();
       return _i11.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i3.BlocHomeWidget(),
+        child: _i3.BlocHomeWidget(
+          key: args.key,
+          isThemeTaken: args.isThemeTaken,
+        ),
       );
     },
     ProfileScreenWidgetRoute.name: (routeData) {
@@ -68,9 +72,13 @@ class DiaryRouter extends _i11.RootStackRouter {
       );
     },
     BlocDataGridSampleRoute.name: (routeData) {
+      final args = routeData.argsAs<BlocDataGridSampleRouteArgs>();
       return _i11.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i6.BlocDataGridSample(),
+        child: _i6.BlocDataGridSample(
+          key: args.key,
+          isThemeTaken: args.isThemeTaken,
+        ),
       );
     },
     AddColumnScreenWidgetRoute.name: (routeData) {
@@ -213,14 +221,36 @@ class ForgotPasswordScreenWidgetRouteArgs {
 
 /// generated route for
 /// [_i3.BlocHomeWidget]
-class BlocHomeWidgetRoute extends _i11.PageRouteInfo<void> {
-  const BlocHomeWidgetRoute()
-      : super(
+class BlocHomeWidgetRoute extends _i11.PageRouteInfo<BlocHomeWidgetRouteArgs> {
+  BlocHomeWidgetRoute({
+    _i12.Key? key,
+    required bool isThemeTaken,
+  }) : super(
           BlocHomeWidgetRoute.name,
           path: '/bloc-home-widget',
+          args: BlocHomeWidgetRouteArgs(
+            key: key,
+            isThemeTaken: isThemeTaken,
+          ),
         );
 
   static const String name = 'BlocHomeWidgetRoute';
+}
+
+class BlocHomeWidgetRouteArgs {
+  const BlocHomeWidgetRouteArgs({
+    this.key,
+    required this.isThemeTaken,
+  });
+
+  final _i12.Key? key;
+
+  final bool isThemeTaken;
+
+  @override
+  String toString() {
+    return 'BlocHomeWidgetRouteArgs{key: $key, isThemeTaken: $isThemeTaken}';
+  }
 }
 
 /// generated route for
@@ -249,14 +279,37 @@ class DataGridSampleRoute extends _i11.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.BlocDataGridSample]
-class BlocDataGridSampleRoute extends _i11.PageRouteInfo<void> {
-  const BlocDataGridSampleRoute()
-      : super(
+class BlocDataGridSampleRoute
+    extends _i11.PageRouteInfo<BlocDataGridSampleRouteArgs> {
+  BlocDataGridSampleRoute({
+    _i12.Key? key,
+    required bool isThemeTaken,
+  }) : super(
           BlocDataGridSampleRoute.name,
           path: '/bloc-data-grid-sample',
+          args: BlocDataGridSampleRouteArgs(
+            key: key,
+            isThemeTaken: isThemeTaken,
+          ),
         );
 
   static const String name = 'BlocDataGridSampleRoute';
+}
+
+class BlocDataGridSampleRouteArgs {
+  const BlocDataGridSampleRouteArgs({
+    this.key,
+    required this.isThemeTaken,
+  });
+
+  final _i12.Key? key;
+
+  final bool isThemeTaken;
+
+  @override
+  String toString() {
+    return 'BlocDataGridSampleRouteArgs{key: $key, isThemeTaken: $isThemeTaken}';
+  }
 }
 
 /// generated route for

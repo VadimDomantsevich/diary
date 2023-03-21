@@ -177,6 +177,8 @@ abstract class _$$_GetConstraintsEventCopyWith<$Res> {
       bool isAppBarShown,
       bool isPanelShown,
       bool isEditCellPanelShown});
+
+  $DiaryListCopyWith<$Res> get diaryList;
 }
 
 /// @nodoc
@@ -233,6 +235,14 @@ class __$$_GetConstraintsEventCopyWithImpl<$Res>
           : isEditCellPanelShown // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryListCopyWith<$Res> get diaryList {
+    return $DiaryListCopyWith<$Res>(_value.diaryList, (value) {
+      return _then(_value.copyWith(diaryList: value));
+    });
   }
 }
 
@@ -531,6 +541,9 @@ abstract class _$$_OnPointerSelectMoveEventCopyWith<$Res> {
       DiaryCell firstSelectedCell,
       List<DiaryCell> selectedCells,
       CapitalCell capitalCell});
+
+  $DiaryCellCopyWith<$Res> get firstSelectedCell;
+  $CapitalCellCopyWith<$Res> get capitalCell;
 }
 
 /// @nodoc
@@ -567,6 +580,22 @@ class __$$_OnPointerSelectMoveEventCopyWithImpl<$Res>
           : capitalCell // ignore: cast_nullable_to_non_nullable
               as CapitalCell,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellCopyWith<$Res> get firstSelectedCell {
+    return $DiaryCellCopyWith<$Res>(_value.firstSelectedCell, (value) {
+      return _then(_value.copyWith(firstSelectedCell: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CapitalCellCopyWith<$Res> get capitalCell {
+    return $CapitalCellCopyWith<$Res>(_value.capitalCell, (value) {
+      return _then(_value.copyWith(capitalCell: value));
+    });
   }
 }
 
@@ -1041,6 +1070,8 @@ abstract class _$$_OnPointerDownEventCopyWith<$Res> {
       DiaryCell firstSelectedCell,
       List<DiaryCell> selectedCells,
       GlobalObjectKey<State<StatefulWidget>> selectedCellKey});
+
+  $DiaryCellCopyWith<$Res> get firstSelectedCell;
 }
 
 /// @nodoc
@@ -1077,6 +1108,14 @@ class __$$_OnPointerDownEventCopyWithImpl<$Res>
           : selectedCellKey // ignore: cast_nullable_to_non_nullable
               as GlobalObjectKey<State<StatefulWidget>>,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellCopyWith<$Res> get firstSelectedCell {
+    return $DiaryCellCopyWith<$Res>(_value.firstSelectedCell, (value) {
+      return _then(_value.copyWith(firstSelectedCell: value));
+    });
   }
 }
 
@@ -2965,6 +3004,8 @@ abstract class _$$_SelectedMovingCopyWith<$Res>
       double translateY,
       DiaryCell firstSelectedCell,
       bool isAppBarShown});
+
+  $DiaryCellCopyWith<$Res> get firstSelectedCell;
 }
 
 /// @nodoc
@@ -3026,6 +3067,14 @@ class __$$_SelectedMovingCopyWithImpl<$Res>
           : isAppBarShown // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellCopyWith<$Res> get firstSelectedCell {
+    return $DiaryCellCopyWith<$Res>(_value.firstSelectedCell, (value) {
+      return _then(_value.copyWith(firstSelectedCell: value));
+    });
   }
 }
 

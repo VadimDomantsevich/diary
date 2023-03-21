@@ -1,29 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:diary/core/constants/diary_list_fields.dart';
 import 'package:diary/model/diary_list_settings.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'diary_list.freezed.dart';
 part 'diary_list.g.dart';
 
-@CopyWith()
-class DiaryList {
-  final String name;
-  final DateTime listDate;
-  final String uid;
-  final DiaryListSettings settings;
+@Freezed(
+  copyWith: true,
+  toJson: true,
+  fromJson: true,
+)
+class DiaryList with _$DiaryList {
+  const factory DiaryList({
+    required String name,
+    required DateTime listDate,
+    required String uid,
+    @JsonKey(includeToJson: false) required DiaryListSettings settings,
+  }) = _DiaryList;
 
-  DiaryList({
-    required this.name,
-    required this.listDate,
-    required this.uid,
-    required this.settings,
-  });
-
-  Map<String, dynamic> toFirestore() => {
-        DiaryListFields.name: name,
-        DiaryListFields.listDate: listDate,
-        DiaryListFields.uid: uid,
-      };
+  factory DiaryList.fromJson(Map<String, dynamic> json) =>
+      _$DiaryListFromJson(json);
 
   factory DiaryList.fromFirestore({
     required DocumentSnapshot doc,
@@ -31,12 +28,13 @@ class DiaryList {
   }) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     return DiaryList(
-        name: data[DiaryListFields.name]! as String,
-        listDate: (data[DiaryListFields.listDate]! as Timestamp).toDate(),
-        uid: data[DiaryListFields.uid]! as String,
-        settings: DiaryListSettings.fromFirestore(
-          doc: doc,
-          defaultSettings: defaultSettings,
-        ));
+      name: data[DiaryListFields.name]! as String,
+      listDate: DateTime.parse(data[DiaryListFields.listDate]! as String),
+      uid: data[DiaryListFields.uid]! as String,
+      settings: DiaryListSettings.fromFirestore(
+        doc: doc,
+        defaultSettings: defaultSettings,
+      ),
+    );
   }
 }

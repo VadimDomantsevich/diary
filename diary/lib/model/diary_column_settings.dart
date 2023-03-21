@@ -1,59 +1,34 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:diary/core/constants/constants.dart';
 import 'package:diary/core/constants/diary_column_settings_fields.dart';
 import 'package:diary/core/constants/enums.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'diary_column_settings.freezed.dart';
 part 'diary_column_settings.g.dart';
 
-@CopyWith()
-class DiaryColumnSettings {
-  final List<double> width;
-  final double capitalCellBorderWidth;
-  final String capitalCellBorderColor;
-  final double capitalCellHeight;
-  final String capitalCellBackgroundColor;
-  final AlignmentsEnum capitalCellAlignment;
-  final FontWeightEnum capitalCellFontWeight;
-  final TextDecorationEnum capitalCellTextDecoration;
-  final FontStyleEnum capitalCellFontStyle;
-  final double capitalCellFontSize;
-  final String capitalCellTextColor;
+@Freezed(
+  copyWith: true,
+  toJson: true,
+  fromJson: true,
+)
+class DiaryColumnSettings with _$DiaryColumnSettings {
+  const factory DiaryColumnSettings({
+    required List<double> width,
+    required double capitalCellBorderWidth,
+    required String capitalCellBorderColor,
+    required double capitalCellHeight,
+    required String capitalCellBackgroundColor,
+    required AlignmentsEnum capitalCellAlignment,
+    required FontWeightEnum capitalCellFontWeight,
+    required TextDecorationEnum capitalCellTextDecoration,
+    required FontStyleEnum capitalCellFontStyle,
+    required double capitalCellFontSize,
+    required String capitalCellTextColor,
+  }) = _DiaryColumnSettings;
 
-  DiaryColumnSettings({
-    required this.width,
-    required this.capitalCellBorderWidth,
-    required this.capitalCellBorderColor,
-    required this.capitalCellHeight,
-    required this.capitalCellBackgroundColor,
-    required this.capitalCellAlignment,
-    required this.capitalCellFontWeight,
-    required this.capitalCellTextDecoration,
-    required this.capitalCellFontStyle,
-    required this.capitalCellFontSize,
-    required this.capitalCellTextColor,
-  });
-
-  Map<String, dynamic> toFirestore() => {
-        DiaryColumnSettingsFields.width: width,
-        DiaryColumnSettingsFields.capitalCellBorderWidth:
-            capitalCellBorderWidth,
-        DiaryColumnSettingsFields.capitalCellBorderColor:
-            capitalCellBorderColor,
-        DiaryColumnSettingsFields.capitalCellHeight: capitalCellHeight,
-        DiaryColumnSettingsFields.capitalCellBackgroundColor:
-            capitalCellBackgroundColor,
-        DiaryColumnSettingsFields.capitalCellAlignment:
-            capitalCellAlignment.name,
-        DiaryColumnSettingsFields.capitalCellFontWeight:
-            capitalCellFontWeight.name,
-        DiaryColumnSettingsFields.capitalCellTextDecoration:
-            capitalCellTextDecoration.name,
-        DiaryColumnSettingsFields.capitalCellFontStyle:
-            capitalCellFontStyle.name,
-        DiaryColumnSettingsFields.capitalCellFontSize: capitalCellFontSize,
-        DiaryColumnSettingsFields.capitalCellTextColor: capitalCellTextColor,
-      };
+  factory DiaryColumnSettings.fromJson(Map<String, dynamic> json) =>
+      _$DiaryColumnSettingsFromJson(json);
 
   factory DiaryColumnSettings.fromFirestore({
     required DocumentSnapshot doc,
@@ -61,35 +36,7 @@ class DiaryColumnSettings {
   }) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     if (doc.id == Constants.columnsDefaultSettingsDocName) {
-      return DiaryColumnSettings(
-        width: List.from(data[DiaryColumnSettingsFields.width]),
-        capitalCellBorderWidth:
-            data[DiaryColumnSettingsFields.capitalCellBorderWidth] as double,
-        capitalCellBorderColor:
-            data[DiaryColumnSettingsFields.capitalCellBorderColor] as String,
-        capitalCellHeight:
-            data[DiaryColumnSettingsFields.capitalCellHeight] as double,
-        capitalCellBackgroundColor:
-            data[DiaryColumnSettingsFields.capitalCellBackgroundColor]
-                as String,
-        capitalCellAlignment: AlignmentsEnum.values.firstWhere((element) =>
-            element.name ==
-            data[DiaryColumnSettingsFields.capitalCellAlignment]),
-        capitalCellFontWeight: FontWeightEnum.values.firstWhere((element) =>
-            element.name ==
-            data[DiaryColumnSettingsFields.capitalCellFontWeight]),
-        capitalCellTextDecoration: TextDecorationEnum.values.firstWhere(
-            (element) =>
-                element.name ==
-                data[DiaryColumnSettingsFields.capitalCellTextDecoration]),
-        capitalCellFontStyle: FontStyleEnum.values.firstWhere((element) =>
-            element.name ==
-            data[DiaryColumnSettingsFields.capitalCellFontStyle]),
-        capitalCellFontSize:
-            data[DiaryColumnSettingsFields.capitalCellFontSize] as double,
-        capitalCellTextColor:
-            data[DiaryColumnSettingsFields.capitalCellTextColor] as String,
-      );
+      return DiaryColumnSettings.fromJson(data);
     } else {
       List<double> width = defaultSettings!.width;
       double capitalCellBorderWidth = defaultSettings.capitalCellBorderWidth;
@@ -175,31 +122,6 @@ class DiaryColumnSettings {
     required DocumentSnapshot doc,
   }) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-    return DiaryColumnSettings(
-      width: List.from(data[DiaryColumnSettingsFields.width]),
-      capitalCellBorderWidth:
-          data[DiaryColumnSettingsFields.capitalCellBorderWidth] as double,
-      capitalCellBorderColor:
-          data[DiaryColumnSettingsFields.capitalCellBorderColor] as String,
-      capitalCellHeight:
-          data[DiaryColumnSettingsFields.capitalCellHeight] as double,
-      capitalCellBackgroundColor:
-          data[DiaryColumnSettingsFields.capitalCellBackgroundColor] as String,
-      capitalCellAlignment: AlignmentsEnum.values.firstWhere((element) =>
-          element.name == data[DiaryColumnSettingsFields.capitalCellAlignment]),
-      capitalCellFontWeight: FontWeightEnum.values.firstWhere((element) =>
-          element.name ==
-          data[DiaryColumnSettingsFields.capitalCellFontWeight]),
-      capitalCellTextDecoration: TextDecorationEnum.values.firstWhere(
-          (element) =>
-              element.name ==
-              data[DiaryColumnSettingsFields.capitalCellTextDecoration]),
-      capitalCellFontStyle: FontStyleEnum.values.firstWhere((element) =>
-          element.name == data[DiaryColumnSettingsFields.capitalCellFontStyle]),
-      capitalCellFontSize:
-          data[DiaryColumnSettingsFields.capitalCellFontSize] as double,
-      capitalCellTextColor:
-          data[DiaryColumnSettingsFields.capitalCellTextColor] as String,
-    );
+    return DiaryColumnSettings.fromJson(data);
   }
 }

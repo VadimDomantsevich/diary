@@ -41,12 +41,13 @@ class SignInScreenWidget extends StatelessWidget {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                        AppLocalizations.of(context).verifyEmailSnackBarText),
+                      AppLocalizations.of(context).verifyEmailSnackBarText,
+                    ),
                   ),
                 );
               }
               context.router.push(
-                const BlocHomeWidgetRoute(),
+                BlocHomeWidgetRoute(isThemeTaken: false),
               );
             }
           }),

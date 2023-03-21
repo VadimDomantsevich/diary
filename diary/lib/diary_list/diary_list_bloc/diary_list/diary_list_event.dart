@@ -4,7 +4,9 @@ part of 'diary_list_bloc.dart';
 class DiaryListEvent with _$DiaryListEvent {
   const factory DiaryListEvent.createSample() = CreateSampleEvent;
 
-  const factory DiaryListEvent.initialLoad() = InitialLoadEvent;
+  const factory DiaryListEvent.initialLoad({
+    required bool isThemeTaken,
+  }) = InitialLoadEvent;
 
   const factory DiaryListEvent.getDiaryList({
     required DateTime date,
@@ -62,12 +64,12 @@ class DiaryListEvent with _$DiaryListEvent {
 
   const factory DiaryListEvent.changeDiaryCell({
     required DiaryCell diaryCell,
-    String? textFieldText,
+    required String textFieldText,
   }) = ChangeDiaryCellEvent;
 
   const factory DiaryListEvent.changeCapitalCell({
     required CapitalCell capitalCell,
-    String? textFieldText,
+    required String textFieldText,
   }) = ChangeCapitalCellEvent;
 
   const factory DiaryListEvent.updateDiaryCellInFirebase({

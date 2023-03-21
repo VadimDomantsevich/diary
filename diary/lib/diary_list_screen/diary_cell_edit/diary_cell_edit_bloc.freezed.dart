@@ -523,6 +523,9 @@ abstract class _$$TextEditingCopyWith<$Res> {
       bool isVerticalBottom,
       DiaryCellTextSettings defaultTextSettings,
       DiaryCellSettings defaultSettings});
+
+  $DiaryCellTextSettingsCopyWith<$Res> get defaultTextSettings;
+  $DiaryCellSettingsCopyWith<$Res> get defaultSettings;
 }
 
 /// @nodoc
@@ -609,6 +612,23 @@ class __$$TextEditingCopyWithImpl<$Res>
           : defaultSettings // ignore: cast_nullable_to_non_nullable
               as DiaryCellSettings,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellTextSettingsCopyWith<$Res> get defaultTextSettings {
+    return $DiaryCellTextSettingsCopyWith<$Res>(_value.defaultTextSettings,
+        (value) {
+      return _then(_value.copyWith(defaultTextSettings: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellSettingsCopyWith<$Res> get defaultSettings {
+    return $DiaryCellSettingsCopyWith<$Res>(_value.defaultSettings, (value) {
+      return _then(_value.copyWith(defaultSettings: value));
+    });
   }
 }
 
@@ -1702,6 +1722,8 @@ abstract class _$$CapitalCellEditingCopyWith<$Res> {
       __$$CapitalCellEditingCopyWithImpl<$Res>;
   @useResult
   $Res call({CapitalCell capitalCell});
+
+  $CapitalCellCopyWith<$Res> get capitalCell;
 }
 
 /// @nodoc
@@ -1723,6 +1745,14 @@ class __$$CapitalCellEditingCopyWithImpl<$Res>
           : capitalCell // ignore: cast_nullable_to_non_nullable
               as CapitalCell,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CapitalCellCopyWith<$Res> get capitalCell {
+    return $CapitalCellCopyWith<$Res>(_value.capitalCell, (value) {
+      return _then(_value.copyWith(capitalCell: value));
+    });
   }
 }
 
@@ -2657,6 +2687,8 @@ abstract class _$$CapitalCellTextEditingCopyWith<$Res> {
       bool isVerticalCenter,
       bool isVerticalBottom,
       DiaryColumnSettings defaultSettings});
+
+  $DiaryColumnSettingsCopyWith<$Res> get defaultSettings;
 }
 
 /// @nodoc
@@ -2738,6 +2770,14 @@ class __$$CapitalCellTextEditingCopyWithImpl<$Res>
           : defaultSettings // ignore: cast_nullable_to_non_nullable
               as DiaryColumnSettings,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryColumnSettingsCopyWith<$Res> get defaultSettings {
+    return $DiaryColumnSettingsCopyWith<$Res>(_value.defaultSettings, (value) {
+      return _then(_value.copyWith(defaultSettings: value));
+    });
   }
 }
 
@@ -3663,6 +3703,10 @@ abstract class _$$StartTextEditingEventCopyWith<$Res> {
       {DiaryCell firstSelectedCell,
       DiaryCellTextSettings defaultTextSettings,
       DiaryCellSettings defaultSettings});
+
+  $DiaryCellCopyWith<$Res> get firstSelectedCell;
+  $DiaryCellTextSettingsCopyWith<$Res> get defaultTextSettings;
+  $DiaryCellSettingsCopyWith<$Res> get defaultSettings;
 }
 
 /// @nodoc
@@ -3694,6 +3738,31 @@ class __$$StartTextEditingEventCopyWithImpl<$Res>
           : defaultSettings // ignore: cast_nullable_to_non_nullable
               as DiaryCellSettings,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellCopyWith<$Res> get firstSelectedCell {
+    return $DiaryCellCopyWith<$Res>(_value.firstSelectedCell, (value) {
+      return _then(_value.copyWith(firstSelectedCell: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellTextSettingsCopyWith<$Res> get defaultTextSettings {
+    return $DiaryCellTextSettingsCopyWith<$Res>(_value.defaultTextSettings,
+        (value) {
+      return _then(_value.copyWith(defaultTextSettings: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellSettingsCopyWith<$Res> get defaultSettings {
+    return $DiaryCellSettingsCopyWith<$Res>(_value.defaultSettings, (value) {
+      return _then(_value.copyWith(defaultSettings: value));
+    });
   }
 }
 
@@ -3975,6 +4044,8 @@ abstract class _$$StartCellEditingEventCopyWith<$Res> {
       __$$StartCellEditingEventCopyWithImpl<$Res>;
   @useResult
   $Res call({DiaryCell firstSelectedCell});
+
+  $DiaryCellCopyWith<$Res> get firstSelectedCell;
 }
 
 /// @nodoc
@@ -3996,6 +4067,14 @@ class __$$StartCellEditingEventCopyWithImpl<$Res>
           : firstSelectedCell // ignore: cast_nullable_to_non_nullable
               as DiaryCell,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryCellCopyWith<$Res> get firstSelectedCell {
+    return $DiaryCellCopyWith<$Res>(_value.firstSelectedCell, (value) {
+      return _then(_value.copyWith(firstSelectedCell: value));
+    });
   }
 }
 
@@ -6089,6 +6168,9 @@ abstract class _$$StartCapitalCellTextEditingEventCopyWith<$Res> {
   @useResult
   $Res call(
       {CapitalCell selectedCapitalCell, DiaryColumnSettings defaultSettings});
+
+  $CapitalCellCopyWith<$Res> get selectedCapitalCell;
+  $DiaryColumnSettingsCopyWith<$Res> get defaultSettings;
 }
 
 /// @nodoc
@@ -6117,6 +6199,22 @@ class __$$StartCapitalCellTextEditingEventCopyWithImpl<$Res>
           : defaultSettings // ignore: cast_nullable_to_non_nullable
               as DiaryColumnSettings,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CapitalCellCopyWith<$Res> get selectedCapitalCell {
+    return $CapitalCellCopyWith<$Res>(_value.selectedCapitalCell, (value) {
+      return _then(_value.copyWith(selectedCapitalCell: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DiaryColumnSettingsCopyWith<$Res> get defaultSettings {
+    return $DiaryColumnSettingsCopyWith<$Res>(_value.defaultSettings, (value) {
+      return _then(_value.copyWith(defaultSettings: value));
+    });
   }
 }
 
@@ -6392,6 +6490,8 @@ abstract class _$$StartCapitalCellEditingEventCopyWith<$Res> {
       __$$StartCapitalCellEditingEventCopyWithImpl<$Res>;
   @useResult
   $Res call({CapitalCell selectedCapitalCell});
+
+  $CapitalCellCopyWith<$Res> get selectedCapitalCell;
 }
 
 /// @nodoc
@@ -6415,6 +6515,14 @@ class __$$StartCapitalCellEditingEventCopyWithImpl<$Res>
           : selectedCapitalCell // ignore: cast_nullable_to_non_nullable
               as CapitalCell,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CapitalCellCopyWith<$Res> get selectedCapitalCell {
+    return $CapitalCellCopyWith<$Res>(_value.selectedCapitalCell, (value) {
+      return _then(_value.copyWith(selectedCapitalCell: value));
+    });
   }
 }
 
@@ -6678,6 +6786,8 @@ abstract class _$$StartCapitalCellBordersEditingEventCopyWith<$Res> {
       __$$StartCapitalCellBordersEditingEventCopyWithImpl<$Res>;
   @useResult
   $Res call({CapitalCell capitalCell});
+
+  $CapitalCellCopyWith<$Res> get capitalCell;
 }
 
 /// @nodoc
@@ -6701,6 +6811,14 @@ class __$$StartCapitalCellBordersEditingEventCopyWithImpl<$Res>
           : capitalCell // ignore: cast_nullable_to_non_nullable
               as CapitalCell,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CapitalCellCopyWith<$Res> get capitalCell {
+    return $CapitalCellCopyWith<$Res>(_value.capitalCell, (value) {
+      return _then(_value.copyWith(capitalCell: value));
+    });
   }
 }
 

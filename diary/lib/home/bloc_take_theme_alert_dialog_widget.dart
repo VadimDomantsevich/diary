@@ -25,7 +25,7 @@ class BlocTakeThemeAlertDialogWidget extends StatelessWidget {
               ),
             );
         context.router.push(
-          const BlocHomeWidgetRoute(),
+          BlocHomeWidgetRoute(isThemeTaken: true),
         );
       },
     );

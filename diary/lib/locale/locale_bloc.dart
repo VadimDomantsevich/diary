@@ -13,8 +13,8 @@ class LocaleBloc extends Bloc<LocaleEvent, LocaleState> {
           locale: Locale('en'),
           localeType: LocaleType.en,
         )) {
-    on<ChooseLocaleEvent>((event, emit) => _onChooseLocaleEvent(event, emit));
-    on<ChangeLocaleEvent>((event, emit) => _onChangeLocaleEvent(event, emit));
+    on<ChooseLocaleEvent>(_onChooseLocaleEvent);
+    on<ChangeLocaleEvent>(_onChangeLocaleEvent);
   }
 
   void _onChooseLocaleEvent(
@@ -35,9 +35,13 @@ class LocaleBloc extends Bloc<LocaleEvent, LocaleState> {
       initial: (locale, localeType) {
         locale == const Locale('en')
             ? emit(const LocaleState.initial(
-                locale: Locale('ru'), localeType: LocaleType.ru))
+                locale: Locale('ru'),
+                localeType: LocaleType.ru,
+              ))
             : emit(const LocaleState.initial(
-                locale: Locale('en'), localeType: LocaleType.en));
+                locale: Locale('en'),
+                localeType: LocaleType.en,
+              ));
       },
     );
   }

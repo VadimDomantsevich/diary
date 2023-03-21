@@ -30,7 +30,7 @@ class BlocTextFieldWidget extends StatelessWidget {
       onChanged: (value) => context.read<DiaryListBloc>().add(
             DiaryListEvent.changeDiaryCell(
               diaryCell: diaryCell,
-              textFieldText: value,
+              textFieldText: value!,
             ),
           ),
           themeBorderColor: themeBorderColor,

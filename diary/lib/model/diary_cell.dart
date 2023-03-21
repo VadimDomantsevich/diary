@@ -1,30 +1,32 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:diary/core/constants/diary_cell_fields.dart';
 import 'package:diary/model/diary_cell_settings.dart';
 import 'package:diary/model/diary_cell_text_settings.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'diary_cell.freezed.dart';
 part 'diary_cell.g.dart';
 
-@CopyWith()
-class DiaryCell extends Comparable {
-  final String columnName;
-  final int columnPosition;
-  final int day;
-  final dynamic content;
-  final DiaryCellSettings settings;
-  final DiaryCellTextSettings textSettings;
-  final int capitalColumnPosition;
+@Freezed(
+  copyWith: true,
+  toJson: true,
+  fromJson: true,
+)
+class DiaryCell extends Comparable with _$DiaryCell{
+  const factory DiaryCell({
+    required String columnName,
+    required int columnPosition,
+    required int day,
+    required String content,
+    @JsonKey(includeToJson: false)
+    required DiaryCellSettings settings,
+    @JsonKey(includeToJson: false)
+    required DiaryCellTextSettings textSettings,
+    required int capitalColumnPosition,
+  }) = _DiaryCell;
 
-  DiaryCell({
-    required this.columnName,
-    required this.columnPosition,
-    required this.day,
-    required this.settings,
-    required this.textSettings,
-    required this.capitalColumnPosition,
-    this.content,
-  });
+  factory DiaryCell.fromJson(Map<String, dynamic> json) =>
+      _$DiaryCellFromJson(json);
 
   @override
   int compareTo(other) {
@@ -48,14 +50,6 @@ class DiaryCell extends Comparable {
     return 0;
   }
 
-  Map<String, dynamic> toFirestore() => {
-        DiaryCellFields.columnName: columnName,
-        DiaryCellFields.columnPosition: columnPosition,
-        DiaryCellFields.day: day,
-        DiaryCellFields.content: content,
-        DiaryCellFields.capitalColumnPosition: capitalColumnPosition,
-      };
-
   factory DiaryCell.fromFirestore({
     required DocumentSnapshot doc,
     required DiaryCellSettings defaultSettings,
@@ -66,7 +60,7 @@ class DiaryCell extends Comparable {
       columnName: data[DiaryCellFields.columnName]! as String,
       columnPosition: data[DiaryCellFields.columnPosition]! as int,
       day: data[DiaryCellFields.day]! as int,
-      content: data[DiaryCellFields.content],
+      content: data[DiaryCellFields.content] as String,
       settings: DiaryCellSettings.fromFirestore(
         doc: doc,
         defaultSettings: defaultSettings,

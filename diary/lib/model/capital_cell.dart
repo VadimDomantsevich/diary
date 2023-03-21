@@ -1,21 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:diary/core/constants/capital_cell_fields.dart';
 import 'package:diary/model/diary_column_settings.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'capital_cell.g.dart';
+part 'capital_cell.freezed.dart';
 
-@CopyWith()
-class CapitalCell {
-  final String name;
-  final String columnId;
-  final DiaryColumnSettings settings;
-
-  CapitalCell({
-    required this.name,
-    required this.columnId,
-    required this.settings,
-  });
+@Freezed(
+  copyWith: true,
+)
+class CapitalCell with _$CapitalCell{
+  const factory CapitalCell({
+    required String name,
+    required String columnId,
+    @JsonKey(includeToJson: false)
+    required DiaryColumnSettings settings,
+  }) = _CapitalCell;
 
   factory CapitalCell.fromFirestore({
     required DocumentSnapshot doc,

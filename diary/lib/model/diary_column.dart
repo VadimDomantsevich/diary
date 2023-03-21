@@ -1,32 +1,27 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:diary/core/constants/diary_column_fields.dart';
 import 'package:diary/model/diary_column_settings.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'diary_column.freezed.dart';
 part 'diary_column.g.dart';
 
-@CopyWith()
-class DiaryColumn {
-  final String id;
-  final String name;
-  final int columnsCount;
-  final DateTime creationTime;
-  final DiaryColumnSettings settings;
+@Freezed(
+  copyWith: true,
+  toJson: true,
+  fromJson: true,
+)
+class DiaryColumn with _$DiaryColumn {
+  const factory DiaryColumn({
+    required String id,
+    required String name,
+    required int columnsCount,
+    required DateTime creationTime,
+    @JsonKey(includeToJson: false) required DiaryColumnSettings settings,
+  }) = _DiaryColumn;
 
-  DiaryColumn({
-    required this.id,
-    required this.name,
-    required this.columnsCount,
-    required this.creationTime,
-    required this.settings,
-  });
-
-  Map<String, dynamic> toFirestore() => {
-        DiaryColumnFields.id: id,
-        DiaryColumnFields.name: name,
-        DiaryColumnFields.columnsCount: columnsCount,
-        DiaryColumnFields.creationTime: creationTime,
-      };
+  factory DiaryColumn.fromJson(Map<String, dynamic> json) =>
+      _$DiaryColumnFromJson(json);
 
   factory DiaryColumn.fromFirestore({
     required DocumentSnapshot doc,
@@ -38,7 +33,7 @@ class DiaryColumn {
       name: data[DiaryColumnFields.name]! as String,
       columnsCount: data[DiaryColumnFields.columnsCount]! as int,
       creationTime:
-          (data[DiaryColumnFields.creationTime]! as Timestamp).toDate(),
+          DateTime.parse(data[DiaryColumnFields.creationTime]! as String),
       settings: DiaryColumnSettings.fromFirestore(
         doc: doc,
         defaultSettings: defaultSettings,

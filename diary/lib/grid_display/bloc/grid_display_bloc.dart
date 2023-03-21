@@ -31,19 +31,14 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
           translateX: 0,
           translateY: 0,
         )) {
-    on<_GetConstraintsEvent>(
-        (event, emit) => _onGetConstraintsEvent(event, emit));
-    on<_OnPointerDownEvent>((event, emit) => _onPointerDownEvent(event, emit));
-    on<_OnPointerUpEvent>((event, emit) => _onPointerUpEvent(event, emit));
-    on<_OnPointerSelectMoveEvent>(
-        (event, emit) => _onPointerSelectMoveEvent(event, emit));
-    on<_OnInteractionEndEvent>(
-        (event, emit) => _onInteractionEndEvent(event, emit));
-    on<_ShowAppBarEvent>((event, emit) => _onShowAppBarEvent(event, emit));
-    on<_ShowEditCellPanelEvent>(
-        (event, emit) => _onShowEditCellPanelEvent(event, emit));
-    on<_ShowBottomPanelEvent>(
-        (event, emit) => _onShowBottomPanelEvent(event, emit));
+    on<_GetConstraintsEvent>(_onGetConstraintsEvent);
+    on<_OnPointerDownEvent>(_onPointerDownEvent);
+    on<_OnPointerUpEvent>(_onPointerUpEvent);
+    on<_OnPointerSelectMoveEvent>(_onPointerSelectMoveEvent);
+    on<_OnInteractionEndEvent>(_onInteractionEndEvent);
+    on<_ShowAppBarEvent>(_onShowAppBarEvent);
+    on<_ShowEditCellPanelEvent>(_onShowEditCellPanelEvent);
+    on<_ShowBottomPanelEvent>(_onShowBottomPanelEvent);
     add(GridDisplayEvent.getConstraints(
       scaleFactor: 1,
       diaryList: diaryList,
@@ -112,26 +107,15 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
     _OnPointerDownEvent event,
     Emitter<GridDisplayState> emit,
   ) {
-    state.whenOrNull(
-      loaded: (
-        scaleFactor,
-        diaryColumns,
-        width,
-        height,
-        transformationController,
-        translateX,
-        translateY,
-        isAppBarShown,
-        isPanelShown,
-        isEditCellPanelShown,
-      ) {
+    state.mapOrNull(
+      loaded: (value) {
         final cellBox = event.selectedCellKey.currentContext!.findRenderObject()
             as RenderBox;
         final cellRect = Rect.fromLTWH(
           cellBox.localToGlobal(Offset.zero).dx,
           cellBox.localToGlobal(Offset.zero).dy,
-          cellBox.size.width * scaleFactor,
-          cellBox.size.height * scaleFactor,
+          cellBox.size.width * value.scaleFactor,
+          cellBox.size.height * value.scaleFactor,
         );
         if (event.details.position.dx <= cellRect.right &&
             event.details.position.dx >= cellRect.left &&
@@ -139,15 +123,15 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
             event.details.position.dy >= cellRect.top) {
           emit(
             GridDisplayState.selectedMoving(
-              scaleFactor: scaleFactor,
+              scaleFactor: value.scaleFactor,
               diaryColumns: diaryColumns,
-              width: width,
-              height: height,
+              width: value.width,
+              height: value.height,
               transformationController: transformationController,
-              translateX: translateX,
-              translateY: translateY,
+              translateX: value.translateX,
+              translateY: value.translateY,
               firstSelectedCell: event.firstSelectedCell,
-              isAppBarShown: isAppBarShown,
+              isAppBarShown: value.isAppBarShown,
             ),
           );
         }
@@ -159,26 +143,16 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
     _OnPointerUpEvent event,
     Emitter<GridDisplayState> emit,
   ) {
-    state.whenOrNull(
-      selectedMoving: (
-        scaleFactor,
-        diaryColumns,
-        width,
-        height,
-        transformationController,
-        translateX,
-        translateY,
-        firstSelectedCell,
-        isAppBarShown,
-      ) {
+    state.mapOrNull(
+      selectedMoving: (value) {
         add(
           GridDisplayEvent.getConstraints(
-            scaleFactor: scaleFactor,
+            scaleFactor: value.scaleFactor,
             diaryList: diaryList,
             diaryColumns: diaryColumns,
             diaryCells: diaryCells,
             capitalCells: capitalCells,
-            isAppBarShown: isAppBarShown,
+            isAppBarShown: value.isAppBarShown,
             isPanelShown: false,
             isEditCellPanelShown: false,
           ),
@@ -191,18 +165,8 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
     _OnPointerSelectMoveEvent event,
     Emitter<GridDisplayState> emit,
   ) {
-    state.whenOrNull(
-      selectedMoving: (
-        scaleFactor,
-        diaryColumns,
-        width,
-        height,
-        transformationController,
-        translateX,
-        translateY,
-        firstSelectedCell,
-        isAppBarShown,
-      ) {
+    state.mapOrNull(
+      selectedMoving: (value) {
         final screenHeight =
             MediaQueryData.fromWindow(WidgetsBinding.instance.window)
                 .size
@@ -211,12 +175,13 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
             MediaQueryData.fromWindow(WidgetsBinding.instance.window)
                 .size
                 .width;
-        final scaledWidth = screenWidth + width * scaleFactor * -1;
+        final scaledWidth = screenWidth + value.width * value.scaleFactor * -1;
 
-        final scaledHeight = -height * scaleFactor -
+        final scaledHeight = -value.height * value.scaleFactor -
             kToolbarHeight -
             WidgetsBinding.instance.window.padding.bottom +
-            height - event.capitalCell.settings.capitalCellHeight;
+            value.height -
+            event.capitalCell.settings.capitalCellHeight;
         double currentTranslationX =
             transformationController.value.getTranslation().x;
         double currentTranslationY =
@@ -237,23 +202,18 @@ class GridDisplayBloc extends Bloc<GridDisplayEvent, GridDisplayState> {
           currentTranslationY -= 10;
           transformationController.value.setTranslation(
               Vector3(currentTranslationX, currentTranslationY, 0));
-        } else if (event.details.position.dy <= height * 0.15 &&
+        } else if (event.details.position.dy <= value.height * 0.15 &&
             currentTranslationY < -10) {
           currentTranslationY += 10;
           transformationController.value.setTranslation(
               Vector3(currentTranslationX, currentTranslationY, 0));
         }
         emit(
-          _SelectedMoving(
-            scaleFactor: scaleFactor,
+          value.copyWith(
             diaryColumns: diaryColumns,
-            width: width,
-            height: height,
             transformationController: transformationController,
             translateX: currentTranslationX,
             translateY: currentTranslationY,
-            firstSelectedCell: firstSelectedCell,
-            isAppBarShown: isAppBarShown,
           ),
         );
       },

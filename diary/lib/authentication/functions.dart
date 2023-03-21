@@ -9,5 +9,5 @@ void addNewUserToFirestore() {
   FirebaseFirestore.instance
       .collection(Collections.usersCollection)
       .doc(FirebaseAuth.instance.currentUser!.uid)
-      .set(createdUser.toFirestore());
+      .set(createdUser.toJson());
 }

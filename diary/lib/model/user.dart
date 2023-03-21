@@ -1,21 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:diary/core/constants/user_fields.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class UserModel {
-  final String uid;
+part 'user.freezed.dart';
+part 'user.g.dart';
 
-  UserModel({
-    required this.uid,
-  });
+@Freezed(
+  copyWith: true,
+  toJson: true,
+  fromJson: true,
+)
+class UserModel with _$UserModel {
+  const factory UserModel({
+    required String uid,
+  }) = _UserModel;
 
-  Map<String, dynamic> toFirestore() => {
-        UserFields.uid: uid,
-      };
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
 
   factory UserModel.fromFirestore(DocumentSnapshot doc) {
-    Map data = doc.data() as Map<dynamic, String>;
-    return UserModel(
-      uid: data[UserFields.uid]!,
-    );
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+    return UserModel.fromJson(data);
   }
 }

@@ -30,7 +30,7 @@ class BlocTextFieldCapitalCellWidget extends StatelessWidget {
       onChanged: (value) => context.read<DiaryListBloc>().add(
             DiaryListEvent.changeCapitalCell(
               capitalCell: capitalCell,
-              textFieldText: value,
+              textFieldText: value!,
             ),
           ),
       themeBorderColor: themeBorderColor,

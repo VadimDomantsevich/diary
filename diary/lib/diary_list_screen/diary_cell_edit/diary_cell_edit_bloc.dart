@@ -20,28 +20,20 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
       : super(
           const DiaryCellEditState.initial(),
         ) {
-    on<StartTextEditingEvent>(
-        (event, emit) => _onStartTextEditingEvent(event, emit));
-    on<StartColorEditingEvent>(
-        (event, emit) => _onStartColorEditingEvent(event, emit));
-    on<ChangeCellEvent>((event, emit) => _onChangeCellEvent(event, emit));
-    on<ChangeColorEvent>((event, emit) => _onChangeColorEvent(event, emit));
-    on<ReloadColorEvent>((event, emit) => _onReloadColorEvent(event, emit));
-    on<StartCellEditingEvent>(
-        (event, emit) => _onStartCellEditingEvent(event, emit));
-    on<StartBordersEditingEvent>(
-        (event, emit) => _onStartBordersEditingEvent(event, emit));
-    on<ChangeBordersEvent>((event, emit) => _onChangeBordersEvent(event, emit));
-    on<StartCapitalCellTextEditingEvent>(
-        (event, emit) => _onStartCapitalCellTextEditingEvent(event, emit));
-    on<StartCapitalCellEditingEvent>(
-        (event, emit) => _onStartCapitalCellEditingEvent(event, emit));
+    on<StartTextEditingEvent>(_onStartTextEditingEvent);
+    on<StartColorEditingEvent>(_onStartColorEditingEvent);
+    on<ChangeCellEvent>(_onChangeCellEvent);
+    on<ChangeColorEvent>(_onChangeColorEvent);
+    on<ReloadColorEvent>(_onReloadColorEvent);
+    on<StartCellEditingEvent>(_onStartCellEditingEvent);
+    on<StartBordersEditingEvent>(_onStartBordersEditingEvent);
+    on<ChangeBordersEvent>(_onChangeBordersEvent);
+    on<StartCapitalCellTextEditingEvent>(_onStartCapitalCellTextEditingEvent);
+    on<StartCapitalCellEditingEvent>(_onStartCapitalCellEditingEvent);
     on<StartCapitalCellBordersEditingEvent>(
-        (event, emit) => _onStartCapitalCellBordersEditingEvent(event, emit));
-    on<StartColumnsCountEditingEvent>(
-        (event, emit) => _onStartColumnsCountEditingEvent(event, emit));
-    on<ChangeColumnsCountEvent>(
-        (event, emit) => _onChangeColumnsCountEvent(event, emit));
+        _onStartCapitalCellBordersEditingEvent);
+    on<StartColumnsCountEditingEvent>(_onStartColumnsCountEditingEvent);
+    on<ChangeColumnsCountEvent>(_onChangeColumnsCountEvent);
   }
 
   void _onStartTextEditingEvent(
@@ -138,111 +130,82 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
     StartColorEditingEvent event,
     Emitter<DiaryCellEditState> emit,
   ) {
-    state.whenOrNull(
-      cellEditing: (fillColor) {
-        String mainColorString = fillColor.toColorString();
+    state.mapOrNull(
+      cellEditing: (value) {
+        String mainColorString = value.fillColor.toColorString();
         final mainColor = mainColorString.toMainColorsEnum();
         emit(
           DiaryCellEditState.colorEditing(
             colorEditingEnum: event.colorEditingEnum,
             mainColor: mainColor,
-            selectedColor: fillColor,
+            selectedColor: value.fillColor,
             defaultColor: event.defaultColor,
           ),
         );
       },
-      textEditing: (
-        isBold,
-        isItalic,
-        isUnderline,
-        isLineThrough,
-        fontSize,
-        color,
-        isHorizontalLeft,
-        isHorizontalCenter,
-        isHorizontalRight,
-        isVerticalTop,
-        isVerticalCenter,
-        isVerticalBottom,
-        defaultTextSettings,
-        defaultSettings,
-      ) {
-        String mainColorString = color.toColorString();
+      textEditing: (value) {
+        String mainColorString = value.color.toColorString();
         final mainColor = mainColorString.toMainColorsEnum();
         emit(
           DiaryCellEditState.colorEditing(
             colorEditingEnum: event.colorEditingEnum,
             mainColor: mainColor,
-            selectedColor: color,
+            selectedColor: value.color,
             defaultColor: event.defaultColor,
           ),
         );
       },
-      bordersEditing: (bordersEditingEnum, bordersStyleEnum, bordersColor) {
-        String mainColorString = bordersColor.toColorString();
+      bordersEditing: (value) {
+        String mainColorString = value.bordersColor.toColorString();
         final mainColor = mainColorString.toMainColorsEnum();
         emit(
           DiaryCellEditState.colorEditing(
             colorEditingEnum: event.colorEditingEnum,
             mainColor: mainColor,
-            selectedColor: bordersColor,
+            selectedColor: value.bordersColor,
             defaultColor: event.defaultColor,
-            bordersEditingEnum: bordersEditingEnum,
-            bordersStyleEnum: bordersStyleEnum,
+            bordersEditingEnum: value.bordersEditingEnum,
+            bordersStyleEnum: value.bordersStyleEnum,
           ),
         );
       },
-      capitalCellTextEditing: (
-        isBold,
-        isItalic,
-        isUnderline,
-        isLineThrough,
-        fontSize,
-        color,
-        isHorizontalLeft,
-        isHorizontalCenter,
-        isHorizontalRight,
-        isVerticalTop,
-        isVerticalCenter,
-        isVerticalBottom,
-        defaultSettings,
-      ) {
-        String mainColorString = color.toColorString();
+      capitalCellTextEditing: (value) {
+        String mainColorString = value.color.toColorString();
         final mainColor = mainColorString.toMainColorsEnum();
         emit(
           DiaryCellEditState.colorEditing(
             colorEditingEnum: event.colorEditingEnum,
             mainColor: mainColor,
-            selectedColor: color,
+            selectedColor: value.color,
             defaultColor: event.defaultColor,
           ),
         );
       },
-      capitalCellEditing: (capitalCell) {
+      capitalCellEditing: (value) {
         String mainColorString =
-            capitalCell.settings.capitalCellBackgroundColor;
+            value.capitalCell.settings.capitalCellBackgroundColor;
         final mainColor = mainColorString.toMainColorsEnum();
         emit(
           DiaryCellEditState.colorEditing(
             colorEditingEnum: event.colorEditingEnum,
             mainColor: mainColor,
             selectedColor:
-                capitalCell.settings.capitalCellBackgroundColor.toColor(),
+                value.capitalCell.settings.capitalCellBackgroundColor.toColor(),
             defaultColor: event.defaultColor,
           ),
         );
       },
-      capitalCellBordersEditing: (bordersStyleEnum, bordersColor) {
-        String mainColorString = bordersColor.toColorString();
+      capitalCellBordersEditing: (value) {
+        String mainColorString = value.bordersColor.toColorString();
         final mainColor = mainColorString.toMainColorsEnum();
         emit(
           DiaryCellEditState.colorEditing(
             colorEditingEnum: event.colorEditingEnum,
             mainColor: mainColor,
-            selectedColor: bordersColor,
+            selectedColor: value.bordersColor,
             defaultColor: event.defaultColor,
             bordersEditingEnum: event.bordersEditingEnum,
-            bordersStyleEnum: bordersStyleEnum,
+            bordersStyleEnum: value.bordersStyleEnum,
           ),
         );
       },
@@ -253,39 +216,24 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
     ChangeCellEvent event,
     Emitter<DiaryCellEditState> emit,
   ) {
-    state.whenOrNull(
-      textEditing: (
-        isBold,
-        isItalic,
-        isUnderline,
-        isLineThrough,
-        fontSize,
-        color,
-        isHorizontalLeft,
-        isHorizontalCenter,
-        isHorizontalRight,
-        isVerticalTop,
-        isVerticalCenter,
-        isVerticalBottom,
-        defaultTextSettings,
-        defaultSettings,
-      ) {
-        var newColor = color;
+    state.mapOrNull(
+      textEditing: (value) {
+        var newColor = value.color;
         if (event.color != null) {
           newColor = event.color!.toColor();
         }
         final newFontWeightEnum = event.fontWeight ??
-            (isBold ? FontWeightEnum.bold : FontWeightEnum.normal);
+            (value.isBold ? FontWeightEnum.bold : FontWeightEnum.normal);
         final newIsBold =
             newFontWeightEnum == FontWeightEnum.bold ? true : false;
         final newFontStyleEnum = event.fontStyle ??
-            (isItalic ? FontStyleEnum.italic : FontStyleEnum.normal);
+            (value.isItalic ? FontStyleEnum.italic : FontStyleEnum.normal);
         final newIsItalic =
             newFontStyleEnum == FontStyleEnum.italic ? true : false;
         final newTextDecorationEnum = event.textDecoration ??
-            (isUnderline
+            (value.isUnderline
                 ? TextDecorationEnum.underline
-                : isLineThrough
+                : value.isLineThrough
                     ? TextDecorationEnum.lineThrough
                     : TextDecorationEnum.none);
         final newIsUnderline =
@@ -296,7 +244,7 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
             newTextDecorationEnum == TextDecorationEnum.lineThrough
                 ? true
                 : false;
-        var newFontSize = event.fontSize ?? fontSize;
+        var newFontSize = event.fontSize ?? value.fontSize;
         newFontSize < Constants.minFontSize
             ? newFontSize = Constants.minFontSize
             : newFontSize + 1;
@@ -320,9 +268,9 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
             newHorizontalRight = true;
             break;
           case null:
-            newHorizontalLeft = isHorizontalLeft;
-            newHorizontalCenter = isHorizontalCenter;
-            newHorizontalRight = isHorizontalRight;
+            newHorizontalLeft = value.isHorizontalLeft;
+            newHorizontalCenter = value.isHorizontalCenter;
+            newHorizontalRight = value.isHorizontalRight;
             break;
         }
         switch (event.verticalAlignment) {
@@ -336,13 +284,13 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
             newVerticalBottom = true;
             break;
           case null:
-            newVerticalTop = isVerticalTop;
-            newVerticalCenter = isVerticalCenter;
-            newVerticalBottom = isVerticalBottom;
+            newVerticalTop = value.isVerticalTop;
+            newVerticalCenter = value.isVerticalCenter;
+            newVerticalBottom = value.isVerticalBottom;
             break;
         }
         emit(
-          DiaryCellEditState.textEditing(
+          value.copyWith(
             isBold: newIsBold,
             isItalic: newIsItalic,
             isUnderline: newIsUnderline,
@@ -355,42 +303,26 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
             isVerticalTop: newVerticalTop,
             isVerticalCenter: newVerticalCenter,
             isVerticalBottom: newVerticalBottom,
-            defaultTextSettings: defaultTextSettings,
-            defaultSettings: defaultSettings,
           ),
         );
       },
-      capitalCellTextEditing: (
-        isBold,
-        isItalic,
-        isUnderline,
-        isLineThrough,
-        fontSize,
-        color,
-        isHorizontalLeft,
-        isHorizontalCenter,
-        isHorizontalRight,
-        isVerticalTop,
-        isVerticalCenter,
-        isVerticalBottom,
-        defaultSettings,
-      ) {
-        var newColor = color;
+      capitalCellTextEditing: (value) {
+        var newColor = value.color;
         if (event.color != null) {
           newColor = event.color!.toColor();
         }
         final newFontWeightEnum = event.fontWeight ??
-            (isBold ? FontWeightEnum.bold : FontWeightEnum.normal);
+            (value.isBold ? FontWeightEnum.bold : FontWeightEnum.normal);
         final newIsBold =
             newFontWeightEnum == FontWeightEnum.bold ? true : false;
         final newFontStyleEnum = event.fontStyle ??
-            (isItalic ? FontStyleEnum.italic : FontStyleEnum.normal);
+            (value.isItalic ? FontStyleEnum.italic : FontStyleEnum.normal);
         final newIsItalic =
             newFontStyleEnum == FontStyleEnum.italic ? true : false;
         final newTextDecorationEnum = event.textDecoration ??
-            (isUnderline
+            (value.isUnderline
                 ? TextDecorationEnum.underline
-                : isLineThrough
+                : value.isLineThrough
                     ? TextDecorationEnum.lineThrough
                     : TextDecorationEnum.none);
         final newIsUnderline =
@@ -401,7 +333,7 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
             newTextDecorationEnum == TextDecorationEnum.lineThrough
                 ? true
                 : false;
-        var newFontSize = event.fontSize ?? fontSize;
+        var newFontSize = event.fontSize ?? value.fontSize;
         newFontSize < Constants.minFontSize
             ? newFontSize = Constants.minFontSize
             : newFontSize + 1;
@@ -425,9 +357,9 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
             newHorizontalRight = true;
             break;
           case null:
-            newHorizontalLeft = isHorizontalLeft;
-            newHorizontalCenter = isHorizontalCenter;
-            newHorizontalRight = isHorizontalRight;
+            newHorizontalLeft = value.isHorizontalLeft;
+            newHorizontalCenter = value.isHorizontalCenter;
+            newHorizontalRight = value.isHorizontalRight;
             break;
         }
         switch (event.verticalAlignment) {
@@ -441,9 +373,9 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
             newVerticalBottom = true;
             break;
           case null:
-            newVerticalTop = isVerticalTop;
-            newVerticalCenter = isVerticalCenter;
-            newVerticalBottom = isVerticalBottom;
+            newVerticalTop = value.isVerticalTop;
+            newVerticalCenter = value.isVerticalCenter;
+            newVerticalBottom = value.isVerticalBottom;
             break;
         }
         emit(
@@ -460,7 +392,7 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
             isVerticalTop: newVerticalTop,
             isVerticalCenter: newVerticalCenter,
             isVerticalBottom: newVerticalBottom,
-            defaultSettings: defaultSettings,
+            defaultSettings: value.defaultSettings,
           ),
         );
       },
@@ -471,32 +403,23 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
     ChangeColorEvent event,
     Emitter<DiaryCellEditState> emit,
   ) {
-    state.whenOrNull(
-      colorEditing: (colorEditingEnum, mainColor, selectedColor, defaultColor,
-          bordersEditingEnum, bordersStyleEnum) {
+    state.mapOrNull(
+      colorEditing: (value) {
         if (event.color != null) {
           final string = event.color!;
           final newSelectedColor = string.toColor();
           emit(
-            DiaryCellEditState.colorEditing(
-              colorEditingEnum: colorEditingEnum,
+            value.copyWith(
               mainColor: event.mainColor,
               selectedColor: newSelectedColor,
-              defaultColor: defaultColor,
-              bordersEditingEnum: bordersEditingEnum,
-              bordersStyleEnum: bordersStyleEnum,
             ),
           );
         } else {
           final newSelectedColor = event.mainColor.toColor();
           emit(
-            DiaryCellEditState.colorEditing(
-              colorEditingEnum: colorEditingEnum,
+            value.copyWith(
               mainColor: event.mainColor,
               selectedColor: newSelectedColor,
-              defaultColor: defaultColor,
-              bordersEditingEnum: bordersEditingEnum,
-              bordersStyleEnum: bordersStyleEnum,
             ),
           );
         }
@@ -508,17 +431,12 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
     ReloadColorEvent event,
     Emitter<DiaryCellEditState> emit,
   ) {
-    state.whenOrNull(
-      colorEditing: (colorEditingEnum, mainColor, selectedColor, defaultColor,
-          bordersEditingEnum, bordersStyleEnum) {
+    state.mapOrNull(
+      colorEditing: (value) {
         emit(
-          DiaryCellEditState.colorEditing(
-            colorEditingEnum: colorEditingEnum,
+          value.copyWith(
             mainColor: event.mainColor,
             selectedColor: event.color,
-            defaultColor: defaultColor,
-            bordersEditingEnum: bordersEditingEnum,
-            bordersStyleEnum: bordersStyleEnum,
           ),
         );
       },
@@ -529,14 +447,11 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
     StartBordersEditingEvent event,
     Emitter<DiaryCellEditState> emit,
   ) {
-    state.whenOrNull(
-      cellEditing: (fillColor) {
-        Color bordersColor =
-            BlackColorConstants.black1.toColor();
-        const bordersEditingEnum =
-            BordersEditingEnum.none;
-        const bordersStyleEnum =
-            BordersStyleEnum.thin;
+    state.mapOrNull(
+      cellEditing: (value) {
+        Color bordersColor = BlackColorConstants.black1.toColor();
+        const bordersEditingEnum = BordersEditingEnum.none;
+        const bordersStyleEnum = BordersStyleEnum.thin;
         emit(
           DiaryCellEditState.bordersEditing(
             bordersEditingEnum: bordersEditingEnum,
@@ -545,13 +460,13 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
           ),
         );
       },
-      colorEditing: (colorEditingEnum, mainColor, selectedColor, defaultColor,
-          bordersEditingEnum, bordersStyleEnum) {
-        Color bordersColor = selectedColor;
+      colorEditing: (value) {
+        Color bordersColor = value.selectedColor;
         emit(
           DiaryCellEditState.bordersEditing(
-            bordersEditingEnum: bordersEditingEnum ?? BordersEditingEnum.none,
-            bordersStyleEnum: bordersStyleEnum ?? BordersStyleEnum.thin,
+            bordersEditingEnum:
+                value.bordersEditingEnum ?? BordersEditingEnum.none,
+            bordersStyleEnum: value.bordersStyleEnum ?? BordersStyleEnum.thin,
             bordersColor: bordersColor,
           ),
         );
@@ -563,8 +478,8 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
     StartCapitalCellBordersEditingEvent event,
     Emitter<DiaryCellEditState> emit,
   ) {
-    state.whenOrNull(
-      capitalCellEditing: (capitalCell) {
+    state.mapOrNull(
+      capitalCellEditing: (value) {
         Color bordersColor =
             event.capitalCell.settings.capitalCellBorderColor.toColor();
         var bordersStyleEnum = BordersStyleEnum.thin;
@@ -581,12 +496,11 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
           ),
         );
       },
-      colorEditing: (colorEditingEnum, mainColor, selectedColor, defaultColor,
-          bordersEditingEnum, bordersStyleEnum) {
-        Color bordersColor = selectedColor;
+      colorEditing: (value) {
+        Color bordersColor = value.selectedColor;
         emit(
           DiaryCellEditState.capitalCellBordersEditing(
-            bordersStyleEnum: bordersStyleEnum ?? BordersStyleEnum.thick,
+            bordersStyleEnum: value.bordersStyleEnum ?? BordersStyleEnum.thick,
             bordersColor: bordersColor,
           ),
         );
@@ -598,25 +512,27 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
     ChangeBordersEvent event,
     Emitter<DiaryCellEditState> emit,
   ) {
-    state.whenOrNull(
-      bordersEditing: (bordersEditingEnum, bordersStyleEnum, bordersColor) {
-        Color newBordersColor = event.color ?? bordersColor;
+    state.mapOrNull(
+      bordersEditing: (value) {
+        Color newBordersColor = event.color ?? value.bordersColor;
         final newBordersEditingEnum =
-            event.bordersEditingEnum ?? bordersEditingEnum;
-        final newBordersStyleEnum = event.bordersStyleEnum ?? bordersStyleEnum;
+            event.bordersEditingEnum ?? value.bordersEditingEnum;
+        final newBordersStyleEnum =
+            event.bordersStyleEnum ?? value.bordersStyleEnum;
         emit(
-          DiaryCellEditState.bordersEditing(
+          value.copyWith(
             bordersEditingEnum: newBordersEditingEnum,
             bordersStyleEnum: newBordersStyleEnum,
             bordersColor: newBordersColor,
           ),
         );
       },
-      capitalCellBordersEditing: (bordersStyleEnum, bordersColor) {
-        Color newBordersColor = event.color ?? bordersColor;
-        final newBordersStyleEnum = event.bordersStyleEnum ?? bordersStyleEnum;
+      capitalCellBordersEditing: (value) {
+        Color newBordersColor = event.color ?? value.bordersColor;
+        final newBordersStyleEnum =
+            event.bordersStyleEnum ?? value.bordersStyleEnum;
         emit(
-          DiaryCellEditState.capitalCellBordersEditing(
+          value.copyWith(
             bordersStyleEnum: newBordersStyleEnum,
             bordersColor: newBordersColor,
           ),
@@ -730,9 +646,9 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
     ChangeColumnsCountEvent event,
     Emitter<DiaryCellEditState> emit,
   ) {
-    state.whenOrNull(
-      columnsCountEditing: (columnsCount) {
-        var newColumnsCount = columnsCount;
+    state.mapOrNull(
+      columnsCountEditing: (value) {
+        var newColumnsCount = value.columnsCount;
         if (event.columnsCount < 1) {
           newColumnsCount = 1;
         } else if (event.columnsCount > 5) {
@@ -741,7 +657,7 @@ class DiaryCellEditBloc extends Bloc<DiaryCellEditEvent, DiaryCellEditState> {
           newColumnsCount = event.columnsCount;
         }
         emit(
-          DiaryCellEditState.columnsCountEditing(
+          value.copyWith(
             columnsCount: newColumnsCount,
           ),
         );

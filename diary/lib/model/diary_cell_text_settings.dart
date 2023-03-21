@@ -1,37 +1,29 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:diary/core/constants/constants.dart';
 import 'package:diary/core/constants/diary_cell_text_settings.dart';
 import 'package:diary/core/constants/enums.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'diary_cell_text_settings.freezed.dart';
 part 'diary_cell_text_settings.g.dart';
 
-@CopyWith()
-class DiaryCellTextSettings {
-  final AlignmentsEnum alignment;
-  final FontWeightEnum fontWeight;
-  final TextDecorationEnum textDecoration;
-  final FontStyleEnum fontStyle;
-  final double fontSize;
-  final String color;
+@Freezed(
+  copyWith: true,
+  toJson: true,
+  fromJson: true,
+)
+class DiaryCellTextSettings with _$DiaryCellTextSettings {
+  const factory DiaryCellTextSettings({
+    required AlignmentsEnum alignment,
+    required FontWeightEnum fontWeight,
+    required TextDecorationEnum textDecoration,
+    required FontStyleEnum fontStyle,
+    required double fontSize,
+    required String color,
+  }) = _DiaryCellTextSettings;
 
-  DiaryCellTextSettings({
-    required this.alignment,
-    required this.fontWeight,
-    required this.textDecoration,
-    required this.fontStyle,
-    required this.fontSize,
-    required this.color,
-  });
-
-  Map<String, dynamic> toFirestore() => {
-        DiaryCellTextSettingsFields.alignment: alignment.name,
-        DiaryCellTextSettingsFields.fontWeight: fontWeight.name,
-        DiaryCellTextSettingsFields.textDecoration: textDecoration.name,
-        DiaryCellTextSettingsFields.fontStyle: fontStyle.name,
-        DiaryCellTextSettingsFields.fontSize: fontSize,
-        DiaryCellTextSettingsFields.color: color,
-      };
+  factory DiaryCellTextSettings.fromJson(Map<String, dynamic> json) =>
+      _$DiaryCellTextSettingsFromJson(json);
 
   factory DiaryCellTextSettings.fromFirestore({
     required DocumentSnapshot doc,
@@ -39,18 +31,7 @@ class DiaryCellTextSettings {
   }) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     if (doc.id == Constants.cellsDefaultSettingsDocName) {
-      return DiaryCellTextSettings(
-        alignment: AlignmentsEnum.values.firstWhere((element) =>
-            element.name == data[DiaryCellTextSettingsFields.alignment]),
-        fontWeight: FontWeightEnum.values.firstWhere((element) =>
-            element.name == data[DiaryCellTextSettingsFields.fontWeight]),
-        textDecoration: TextDecorationEnum.values.firstWhere((element) =>
-            element.name == data[DiaryCellTextSettingsFields.textDecoration]),
-        fontStyle: FontStyleEnum.values.firstWhere((element) =>
-            element.name == data[DiaryCellTextSettingsFields.fontStyle]),
-        fontSize: data[DiaryCellTextSettingsFields.fontSize] as double,
-        color: data[DiaryCellTextSettingsFields.color] as String,
-      );
+      return DiaryCellTextSettings.fromJson(data);
     } else {
       AlignmentsEnum alignment = defaultSettings!.alignment;
       FontWeightEnum fontWeight = defaultSettings.fontWeight;
