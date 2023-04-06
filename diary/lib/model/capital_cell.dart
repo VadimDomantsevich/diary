@@ -5,9 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'capital_cell.freezed.dart';
 
-@Freezed(
-  copyWith: true,
-)
+@freezed
 class CapitalCell with _$CapitalCell{
   const factory CapitalCell({
     required String name,

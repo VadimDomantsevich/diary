@@ -210,6 +210,26 @@ class _$_DiaryCell implements _DiaryCell {
       @JsonKey(includeToJson: false) required this.textSettings,
       required this.capitalColumnPosition});
 
+  factory _$_DiaryCell.fromJson(Map<String, dynamic> json) =>
+      _$$_DiaryCellFromJson(json);
+
+  @override
+  final String columnName;
+  @override
+  final int columnPosition;
+  @override
+  final int day;
+  @override
+  final String content;
+  @override
+  @JsonKey(includeToJson: false)
+  final DiaryCellSettings settings;
+  @override
+  @JsonKey(includeToJson: false)
+  final DiaryCellTextSettings textSettings;
+  @override
+  final int capitalColumnPosition;
+
   @override
   int compareTo(other) {
     if (day < other.day ||
@@ -231,26 +251,6 @@ class _$_DiaryCell implements _DiaryCell {
 
     return 0;
   }
-
-  factory _$_DiaryCell.fromJson(Map<String, dynamic> json) =>
-      _$$_DiaryCellFromJson(json);
-
-  @override
-  final String columnName;
-  @override
-  final int columnPosition;
-  @override
-  final int day;
-  @override
-  final String content;
-  @override
-  @JsonKey(includeToJson: false)
-  final DiaryCellSettings settings;
-  @override
-  @JsonKey(includeToJson: false)
-  final DiaryCellTextSettings textSettings;
-  @override
-  final int capitalColumnPosition;
 
   @override
   String toString() {

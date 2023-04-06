@@ -1,13 +1,24 @@
+import 'package:flutter/material.dart';
+
 enum AlignmentsEnum {
-  bottomCenter,
-  bottomLeft,
-  bottomRight,
-  center,
-  centerLeft,
-  centerRight,
-  topCenter,
-  topLeft,
-  topRight,
+  bottomCenter(Alignment.bottomCenter),
+  bottomLeft(Alignment.bottomLeft),
+  bottomRight(Alignment.bottomRight),
+  center(Alignment.center),
+  centerLeft(Alignment.centerLeft),
+  centerRight(Alignment.centerRight),
+  topCenter(Alignment.topCenter),
+  topLeft(Alignment.topLeft),
+  topRight(Alignment.topRight);
+
+  const AlignmentsEnum(
+    this.alignment,
+  );
+
+  final Alignment alignment;
+
+  static AlignmentsEnum getAlignmentsEnumByName(String title) =>
+      AlignmentsEnum.values.firstWhere((element) => element.name == title);
 }
 
 enum HorizontalAlignmentsEnum {

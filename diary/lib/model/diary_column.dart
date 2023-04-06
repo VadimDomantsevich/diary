@@ -6,11 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'diary_column.freezed.dart';
 part 'diary_column.g.dart';
 
-@Freezed(
-  copyWith: true,
-  toJson: true,
-  fromJson: true,
-)
+@freezed
 class DiaryColumn with _$DiaryColumn {
   const factory DiaryColumn({
     required String id,

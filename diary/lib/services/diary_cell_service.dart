@@ -487,7 +487,7 @@ class DiaryCellService {
         break;
     }
 
-    return alignment.toAlignmentsEnum();
+    return AlignmentsEnum.getAlignmentsEnumByName(alignment);
   }
 
   bool isRectTouchTheCell({
@@ -613,5 +613,316 @@ class DiaryCellService {
           : isRightBorderNeedToBeDrawn = true;
     }
     return isRightBorderNeedToBeDrawn;
+  }
+
+  List<DiaryCell> fillBorders({
+    required List<DiaryCell> diaryCells,
+    required List<DiaryCell> selectedCells,
+    required int columnsCount,
+    required BordersStyleEnum bordersStyleEnum,
+    required Color bordersColor,
+    required BordersEditingEnum bordersEditing,
+  }) {
+    var sorted = List<DiaryCell>.empty(growable: true);
+    sorted.addAll(selectedCells);
+    sorted.length > 1
+        ? sorted.sort(
+            (a, b) => diaryCells.indexOf(a).compareTo(diaryCells.indexOf(b)))
+        : sorted;
+    var topLeftCell = sorted.first;
+    int topLeftCellIndex = diaryCells.indexOf(topLeftCell);
+    int topRightCellIndex = diaryCells.indexOf(topLeftCell);
+    int bottomLeftCellIndex = diaryCells.indexOf(topLeftCell);
+    int bottomRightCellIndex = diaryCells.indexOf(topLeftCell);
+
+    bool isTopRightIndexFinded = false;
+    if (selectedCells.length > 1) {
+      for (var cell in sorted.skip(1)) {
+        final cellIndex = diaryCells.indexOf(cell);
+        if (cellIndex % columnsCount == topLeftCellIndex % columnsCount) {
+          isTopRightIndexFinded = true;
+        }
+        if (!isTopRightIndexFinded) {
+          topRightCellIndex = cellIndex;
+        }
+        if (cellIndex % columnsCount == topLeftCellIndex % columnsCount) {
+          bottomLeftCellIndex = cellIndex;
+        }
+        if (cellIndex % columnsCount == topRightCellIndex % columnsCount) {
+          bottomRightCellIndex = cellIndex;
+        }
+      }
+    }
+    var newDiaryCells = List<DiaryCell>.empty(growable: true);
+    newDiaryCells.addAll(diaryCells);
+
+    double newBorderWidth = bordersStyleEnum.toDoubleWidth();
+    var newBorderColor = bordersColor;
+    var cellsWithTopBorders = List<DiaryCell>.empty(growable: true);
+    var cellsWithLeftBorders = List<DiaryCell>.empty(growable: true);
+    var cellsWithBottomBorders = List<DiaryCell>.empty(growable: true);
+    var cellsWithRightBorders = List<DiaryCell>.empty(growable: true);
+    for (var cell in selectedCells) {
+      final index = diaryCells.indexOf(cell);
+      switch (bordersEditing) {
+        case BordersEditingEnum.all:
+          cellsWithTopBorders.add(cell);
+          cellsWithLeftBorders.add(cell);
+          cellsWithBottomBorders.add(cell);
+          cellsWithRightBorders.add(cell);
+          break;
+        case BordersEditingEnum.outer:
+          {
+            if (index >= topLeftCellIndex && index <= topRightCellIndex) {
+              cellsWithTopBorders.add(cell);
+            }
+            if (index % columnsCount == topLeftCellIndex % columnsCount) {
+              cellsWithLeftBorders.add(cell);
+            }
+            if (index >= bottomLeftCellIndex && index <= bottomRightCellIndex) {
+              cellsWithBottomBorders.add(cell);
+            }
+            if (index % columnsCount == topRightCellIndex % columnsCount) {
+              cellsWithRightBorders.add(cell);
+            }
+          }
+          break;
+        case BordersEditingEnum.inner:
+          if (selectedCells.length > 1) {
+            if (index % columnsCount >= topLeftCellIndex % columnsCount &&
+                index % columnsCount < topRightCellIndex % columnsCount) {
+              cellsWithRightBorders.add(cell);
+            }
+            if (index % columnsCount >= topLeftCellIndex % columnsCount &&
+                index % columnsCount <= topRightCellIndex % columnsCount &&
+                index < bottomLeftCellIndex) {
+              cellsWithBottomBorders.add(cell);
+            }
+          }
+          break;
+        case BordersEditingEnum.vertical:
+          if (selectedCells.length > 1) {
+            if (index % columnsCount >= topLeftCellIndex % columnsCount &&
+                index % columnsCount < topRightCellIndex % columnsCount) {
+              cellsWithRightBorders.add(cell);
+            }
+          }
+          break;
+        case BordersEditingEnum.horizontal:
+          if (selectedCells.length > 1) {
+            if (index % columnsCount >= topLeftCellIndex % columnsCount &&
+                index % columnsCount <= topRightCellIndex % columnsCount &&
+                index < bottomLeftCellIndex) {
+              cellsWithBottomBorders.add(cell);
+            }
+          }
+          break;
+        case BordersEditingEnum.left:
+          if (index % columnsCount == topLeftCellIndex % columnsCount) {
+            cellsWithLeftBorders.add(cell);
+          }
+          break;
+        case BordersEditingEnum.right:
+          if (index % columnsCount == topRightCellIndex % columnsCount) {
+            cellsWithRightBorders.add(cell);
+          }
+          break;
+        case BordersEditingEnum.top:
+          if (index >= topLeftCellIndex && index <= topRightCellIndex) {
+            cellsWithTopBorders.add(cell);
+          }
+          break;
+        case BordersEditingEnum.bottom:
+          if (index >= bottomLeftCellIndex && index <= bottomRightCellIndex) {
+            cellsWithBottomBorders.add(cell);
+          }
+          break;
+        case BordersEditingEnum.clear:
+          cellsWithTopBorders.add(cell);
+          cellsWithLeftBorders.add(cell);
+          cellsWithBottomBorders.add(cell);
+          cellsWithRightBorders.add(cell);
+          bordersStyleEnum = Constants.defaultBordersStyleEnum;
+          bordersColor = Constants.defaultBordersColor.toColor();
+          newBorderWidth = bordersStyleEnum.toDoubleWidth();
+          newBorderColor = Constants.defaultBordersColor.toColor();
+          break;
+        case BordersEditingEnum.none:
+          break;
+      }
+    }
+    for (var cell in cellsWithTopBorders) {
+      final index = diaryCells.indexOf(cell);
+      final isTopBorder = isTopBorderNeedToBeDrawn(
+        diaryCells: diaryCells,
+        diaryCell: cell,
+        columnsCount: columnsCount,
+        bordersStyleEnum: bordersStyleEnum,
+        color: bordersColor,
+      );
+      if (isTopBorder && index - columnsCount >= 0 ||
+          bordersEditing == BordersEditingEnum.clear &&
+              index - columnsCount >= 0) {
+        final topCell = newDiaryCells[index - columnsCount];
+        newDiaryCells[index - columnsCount] = DiaryCell(
+          columnName: topCell.columnName,
+          columnPosition: topCell.columnPosition,
+          day: topCell.day,
+          settings: topCell.settings.copyWith(
+            bottomBorderWidth: 0,
+            bottomBorderColor: bordersColor.toColorString(),
+          ),
+          textSettings: topCell.textSettings,
+          content: topCell.content,
+          capitalColumnPosition: topCell.capitalColumnPosition,
+        );
+      }
+      if (isTopBorder || bordersEditing == BordersEditingEnum.clear) {
+        final cell = newDiaryCells[index];
+        newDiaryCells[index] = DiaryCell(
+          columnName: cell.columnName,
+          columnPosition: cell.columnPosition,
+          day: cell.day,
+          settings: cell.settings.copyWith(
+            topBorderWidth: newBorderWidth,
+            topBorderColor: newBorderColor.toColorString(),
+          ),
+          textSettings: cell.textSettings,
+          content: cell.content,
+          capitalColumnPosition: cell.capitalColumnPosition,
+        );
+      }
+    }
+    for (var cell in cellsWithLeftBorders) {
+      final index = diaryCells.indexOf(cell);
+      final isLeftBorder = isLeftBorderNeedToBeDrawn(
+        diaryCells: diaryCells,
+        diaryCell: cell,
+        columnsCount: columnsCount,
+        bordersStyleEnum: bordersStyleEnum,
+        color: bordersColor,
+      );
+      if (isLeftBorder && index % columnsCount != 0 && index != 0 ||
+          bordersEditing == BordersEditingEnum.clear &&
+              index % columnsCount != 0 &&
+              index != 0) {
+        final leftCell = newDiaryCells[index - 1];
+        newDiaryCells[index - 1] = DiaryCell(
+          columnName: leftCell.columnName,
+          columnPosition: leftCell.columnPosition,
+          day: leftCell.day,
+          settings: leftCell.settings.copyWith(
+            rightBorderWidth: 0,
+            rightBorderColor: bordersColor.toColorString(),
+          ),
+          textSettings: leftCell.textSettings,
+          content: leftCell.content,
+          capitalColumnPosition: leftCell.capitalColumnPosition,
+        );
+      }
+      if (isLeftBorder || bordersEditing == BordersEditingEnum.clear) {
+        final cell = newDiaryCells[index];
+        newDiaryCells[index] = DiaryCell(
+          columnName: cell.columnName,
+          columnPosition: cell.columnPosition,
+          day: cell.day,
+          settings: cell.settings.copyWith(
+            leftBorderWidth: newBorderWidth,
+            leftBorderColor: newBorderColor.toColorString(),
+          ),
+          textSettings: cell.textSettings,
+          content: cell.content,
+          capitalColumnPosition: cell.capitalColumnPosition,
+        );
+      }
+    }
+    for (var cell in cellsWithBottomBorders) {
+      final index = diaryCells.indexOf(cell);
+      final isBottomBorder = isBottomBorderNeedToBeDrawn(
+        diaryCells: diaryCells,
+        diaryCell: cell,
+        columnsCount: columnsCount,
+        bordersStyleEnum: bordersStyleEnum,
+        color: bordersColor,
+      );
+      if (isBottomBorder && index + columnsCount < diaryCells.length ||
+          bordersEditing == BordersEditingEnum.clear &&
+              index + columnsCount < diaryCells.length) {
+        final bottomCell = newDiaryCells[index + columnsCount];
+        newDiaryCells[index + columnsCount] = DiaryCell(
+          columnName: bottomCell.columnName,
+          columnPosition: bottomCell.columnPosition,
+          day: bottomCell.day,
+          settings: bottomCell.settings.copyWith(
+            topBorderWidth: 0,
+            topBorderColor: bordersColor.toColorString(),
+          ),
+          textSettings: bottomCell.textSettings,
+          content: bottomCell.content,
+          capitalColumnPosition: bottomCell.capitalColumnPosition,
+        );
+      }
+      if (isBottomBorder || bordersEditing == BordersEditingEnum.clear) {
+        final cell = newDiaryCells[index];
+        newDiaryCells[index] = DiaryCell(
+          columnName: cell.columnName,
+          columnPosition: cell.columnPosition,
+          day: cell.day,
+          settings: cell.settings.copyWith(
+            bottomBorderWidth: newBorderWidth,
+            bottomBorderColor: newBorderColor.toColorString(),
+          ),
+          textSettings: cell.textSettings,
+          content: cell.content,
+          capitalColumnPosition: cell.capitalColumnPosition,
+        );
+      }
+    }
+    for (var cell in cellsWithRightBorders) {
+      final index = diaryCells.indexOf(cell);
+      final isRightBorder = isRightBorderNeedToBeDrawn(
+        diaryCells: diaryCells,
+        diaryCell: cell,
+        columnsCount: columnsCount,
+        bordersStyleEnum: bordersStyleEnum,
+        color: bordersColor,
+      );
+      if (isRightBorder &&
+              index % columnsCount != columnsCount - 1 &&
+              index < diaryCells.length ||
+          bordersEditing == BordersEditingEnum.clear &&
+              index % columnsCount != columnsCount - 1 &&
+              index < diaryCells.length) {
+        final rightCell = newDiaryCells[index + 1];
+        newDiaryCells[index + 1] = DiaryCell(
+          columnName: rightCell.columnName,
+          columnPosition: rightCell.columnPosition,
+          day: rightCell.day,
+          settings: rightCell.settings.copyWith(
+            leftBorderWidth: 0,
+            leftBorderColor: bordersColor.toColorString(),
+          ),
+          textSettings: rightCell.textSettings,
+          content: rightCell.content,
+          capitalColumnPosition: rightCell.capitalColumnPosition,
+        );
+      }
+      if (isRightBorder || bordersEditing == BordersEditingEnum.clear) {
+        final cell = newDiaryCells[index];
+        newDiaryCells[index] = DiaryCell(
+          columnName: cell.columnName,
+          columnPosition: cell.columnPosition,
+          day: cell.day,
+          settings: cell.settings.copyWith(
+            rightBorderWidth: newBorderWidth,
+            rightBorderColor: newBorderColor.toColorString(),
+          ),
+          textSettings: cell.textSettings,
+          content: cell.content,
+          capitalColumnPosition: cell.capitalColumnPosition,
+        );
+      }
+    }
+    return newDiaryCells;
   }
 }

@@ -7,11 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'diary_column_settings.freezed.dart';
 part 'diary_column_settings.g.dart';
 
-@Freezed(
-  copyWith: true,
-  toJson: true,
-  fromJson: true,
-)
+@freezed
 class DiaryColumnSettings with _$DiaryColumnSettings {
   const factory DiaryColumnSettings({
     required List<double> width,

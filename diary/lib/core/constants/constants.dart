@@ -87,6 +87,8 @@ class Constants {
 
   static const themesLoadedAppBarWidgetForegroundColor = '0xFF000000';
 
+  static const shadowColorOpacity = 0.35;
+
   static const createSampleDelay = 2000;
 
   static const addColumnDelay = 5000;

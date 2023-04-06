@@ -7,11 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'diary_cell.freezed.dart';
 part 'diary_cell.g.dart';
 
-@Freezed(
-  copyWith: true,
-  toJson: true,
-  fromJson: true,
-)
+@freezed
 class DiaryCell extends Comparable with _$DiaryCell{
   const factory DiaryCell({
     required String columnName,

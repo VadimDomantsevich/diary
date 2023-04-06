@@ -6,11 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'diary_cell_settings.freezed.dart';
 part 'diary_cell_settings.g.dart';
 
-@Freezed(
-  copyWith: true,
-  toJson: true,
-  fromJson: true,
-)
+@freezed
 class DiaryCellSettings with _$DiaryCellSettings {
   const factory DiaryCellSettings({
     required String topBorderColor,
