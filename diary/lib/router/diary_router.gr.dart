@@ -17,13 +17,15 @@ import 'package:flutter/material.dart' as _i12;
 import '../authentication/forgot_password_screen_widget.dart' as _i2;
 import '../authentication/profile_screen_widget.dart' as _i4;
 import '../authentication/sign_in_screen_widget.dart' as _i1;
-import '../home/bloc_datagrid_sample.dart' as _i6;
-import '../home/bloc_home_widget.dart' as _i3;
-import '../home/bloc_list_themes_widget.dart' as _i8;
-import '../home/bloc_provider_datagrid_view_mode.dart' as _i9;
-import '../home/datagrid_sample.dart' as _i5;
-import '../home/edit_panel/edit_list/add_column_screen_widget.dart' as _i7;
-import '../home/take_theme_alert_dialog_widget.dart' as _i10;
+import '../home_screen/bloc_widgets/bloc_datagrid_sample.dart' as _i6;
+import '../home_screen/bloc_widgets/bloc_home_widget.dart' as _i3;
+import '../home_screen/bloc_widgets/bloc_list_themes_widget.dart' as _i8;
+import '../home_screen/bloc_widgets/bloc_provider_datagrid_view_mode.dart'
+    as _i9;
+import '../home_screen/edit_panel/edit_list/widgets/add_column_screen_widget.dart'
+    as _i7;
+import '../home_screen/widgets/datagrid_sample.dart' as _i5;
+import '../home_screen/widgets/take_theme_alert_dialog_widget.dart' as _i10;
 import '../model/diary_list.dart' as _i13;
 import '../model/list_theme.dart' as _i14;
 

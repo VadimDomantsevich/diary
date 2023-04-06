@@ -2,13 +2,13 @@ import 'package:auto_route/annotations.dart';
 import 'package:diary/authentication/forgot_password_screen_widget.dart';
 import 'package:diary/authentication/profile_screen_widget.dart';
 import 'package:diary/authentication/sign_in_screen_widget.dart';
-import 'package:diary/home/bloc_datagrid_sample.dart';
-import 'package:diary/home/bloc_list_themes_widget.dart';
-import 'package:diary/home/bloc_provider_datagrid_view_mode.dart';
-import 'package:diary/home/datagrid_sample.dart';
-import 'package:diary/home/edit_panel/edit_list/add_column_screen_widget.dart';
-import 'package:diary/home/bloc_home_widget.dart';
-import 'package:diary/home/take_theme_alert_dialog_widget.dart';
+import 'package:diary/home_screen/bloc_widgets/bloc_datagrid_sample.dart';
+import 'package:diary/home_screen/bloc_widgets/bloc_home_widget.dart';
+import 'package:diary/home_screen/bloc_widgets/bloc_list_themes_widget.dart';
+import 'package:diary/home_screen/bloc_widgets/bloc_provider_datagrid_view_mode.dart';
+import 'package:diary/home_screen/edit_panel/edit_list/widgets/add_column_screen_widget.dart';
+import 'package:diary/home_screen/widgets/datagrid_sample.dart';
+import 'package:diary/home_screen/widgets/take_theme_alert_dialog_widget.dart';
 
 @MaterialAutoRouter(
   routes: <AutoRoute>[

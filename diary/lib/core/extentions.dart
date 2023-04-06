@@ -189,42 +189,11 @@ extension ColorStringExtension on Color {
   }
 
   toShadowColor() {
-    var colorString = toString();
-    colorString = colorString.substring(6, colorString.length - 1);
-    colorString = colorString.replaceRange(2, 4, '55');
-    return colorString.toColor();
+    return withOpacity(Constants.shadowColorOpacity);
   }
-}
-
-extension AlignmentsEnumExtension on String {
-  toAlignmentsEnum() =>
-      AlignmentsEnum.values.firstWhere((element) => element.name == this);
 }
 
 extension AlignmentExtension on AlignmentsEnum {
-  toAlignment() {
-    switch (this) {
-      case AlignmentsEnum.bottomCenter:
-        return Alignment.bottomCenter;
-      case AlignmentsEnum.bottomLeft:
-        return Alignment.bottomLeft;
-      case AlignmentsEnum.bottomRight:
-        return Alignment.bottomRight;
-      case AlignmentsEnum.center:
-        return Alignment.center;
-      case AlignmentsEnum.centerLeft:
-        return Alignment.centerLeft;
-      case AlignmentsEnum.centerRight:
-        return Alignment.centerRight;
-      case AlignmentsEnum.topCenter:
-        return Alignment.topCenter;
-      case AlignmentsEnum.topLeft:
-        return Alignment.topLeft;
-      case AlignmentsEnum.topRight:
-        return Alignment.topRight;
-    }
-  }
-
   toHorizontalAlignmentsEnum() {
     switch (this) {
       case AlignmentsEnum.bottomCenter:

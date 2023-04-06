@@ -6,11 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'diary_list_settings.freezed.dart';
 part 'diary_list_settings.g.dart';
 
-@Freezed(
-  copyWith: true,
-  toJson: true,
-  fromJson: true,
-)
+@freezed
 class DiaryListSettings with _$DiaryListSettings {
   const factory DiaryListSettings({
     required String themeColor,
